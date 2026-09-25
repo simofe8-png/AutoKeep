@@ -81,7 +81,7 @@ export function VehicleTargetBanner({
       <AppText variant="small" color="textSecondary">
         {label}:
       </AppText>
-      <AppText variant="smallStrong" style={styles.bannerName} numberOfLines={1}>
+      <AppText variant="smallStrong" style={styles.bannerName}>
         {vehicleDisplayName(vehicle)} · {vehicle.registration}
       </AppText>
     </View>
@@ -119,5 +119,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.primaryBorder,
   },
-  bannerName: { flexShrink: 1 },
+  bannerName: { flexShrink: 1, flexGrow: 1 },
 });

@@ -13,3 +13,4 @@ export * from './components/SegmentedControl';
 export * from './components/States';
 export * from './components/TextField';
 export * from './components/Verification';
+export * from './components/SwitchRow';

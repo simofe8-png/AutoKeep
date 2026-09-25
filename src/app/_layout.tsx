@@ -5,8 +5,7 @@ import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { ActiveVehicleProvider } from '@/features/vehicles/ActiveVehicleContext';
-import { MOCK_VEHICLES } from '@/mocks/vehicles';
+import { AppProviders } from '@/features/shell/AppProviders';
 import { APP_DIRECTION, colors, rootDirectionStyle, useAppFonts } from '@/ui';
 
 void SplashScreen.preventAutoHideAsync();
@@ -28,8 +27,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <LocaleProvider direction={APP_DIRECTION}>
         <View style={[styles.root, rootDirectionStyle]}>
-          {/* M01–M03: labeled mock data (UI-first). Replaced by persistence adapters in M13. */}
-          <ActiveVehicleProvider vehicles={MOCK_VEHICLES} isDemoData>
+          <AppProviders>
             <StatusBar style="dark" />
             <Stack
               screenOptions={{
@@ -38,11 +36,8 @@ export default function RootLayout() {
               }}
             >
               <Stack.Screen name="(tabs)" />
-              <Stack.Screen name="vehicles" options={{ presentation: 'modal' }} />
-              <Stack.Screen name="alerts" />
-              <Stack.Screen name="settings" />
             </Stack>
-          </ActiveVehicleProvider>
+          </AppProviders>
         </View>
       </LocaleProvider>
     </SafeAreaProvider>

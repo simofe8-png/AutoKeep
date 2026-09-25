@@ -27,3 +27,19 @@ export function maskIdentifier(value: string, visible = 4): string {
   if (clean.length <= visible) return clean;
   return `${'•'.repeat(Math.min(clean.length - visible, 6))}${clean.slice(-visible)}`;
 }
+
+/** Parses a user-entered odometer value (digits, optional thousands separators). */
+export function parseOdometer(raw: string): number | undefined {
+  const digits = raw.replace(/[,\s.]/g, '');
+  if (!/^\d{1,7}$/.test(digits)) return undefined;
+  const n = Number(digits);
+  return n > 0 ? n : undefined;
+}
+
+/** Today's date as ISO YYYY-MM-DD in local time. */
+export function todayIso(now: Date = new Date()): string {
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}

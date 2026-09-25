@@ -1,50 +1,67 @@
 import { useRouter } from 'expo-router';
 
+import { usePrototypeData } from '@/features/data/PrototypeDataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
-import { vehicleKindIcon } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatKm } from '@/features/vehicles/format';
-import { vehicleDisplayName } from '@/features/vehicles/types';
+import { VehicleCard } from '@/features/vehicles/VehicleCard';
 import { he } from '@/i18n/he';
-import { Badge, Card, ListRow, Screen, spacing, Stack } from '@/ui';
+import { Button, Screen, SectionHeader, Stack } from '@/ui';
 
-// T011 switcher; expanded into the full "כלי הרכב שלי" screen in T025.
+/**
+ * כלי הרכב שלי (T025): identity, odometer and important status per vehicle; the active one is
+ * clearly marked. Selecting changes context only. Adding reuses onboarding.
+ */
 export default function VehiclesScreen() {
   const router = useRouter();
+  const { getBundle } = usePrototypeData();
   const { vehicles, activeVehicleId, setActiveVehicleId } = useActiveVehicle();
-  const selectable = vehicles.filter((v) => !v.archived);
+  const current = vehicles.filter((v) => !v.archived);
+  const archived = vehicles.filter((v) => v.archived);
 
   return (
-    <Screen header={<ScreenHeader title={he.vehicles.title} closeIcon />} testID="screen-vehicles">
+    <Screen
+      header={<ScreenHeader title={he.vehicles.title} closeIcon />}
+      testID="screen-vehicles"
+      footer={
+        <Button
+          testID="vehicles-add"
+          label={he.myVehicles.add}
+          icon="plus"
+          fullWidth
+          onPress={() => router.push('/onboarding')}
+        />
+      }
+    >
       <Stack>
-        {selectable.map((v) => {
-          const active = v.id === activeVehicleId;
-          return (
-            <Card
-              key={v.id}
-              tone={active ? 'highlight' : 'default'}
-              padded={false}
-              style={{ paddingHorizontal: spacing.md }}
-            >
-              <ListRow
-                testID={`vehicle-row-${v.id}`}
-                icon={vehicleKindIcon[v.kind]}
-                title={vehicleDisplayName(v)}
-                subtitle={`${he.vehicleType[v.kind]} · ${v.registration} · ${formatKm(v.odometerKm)}`}
-                trailing={
-                  active ? <Badge label={he.activeVehicle.activeBadge} tone="info" /> : undefined
-                }
-                showChevron={!active}
-                accessibilityLabel={`${vehicleDisplayName(v)}, ${v.registration}${active ? `, ${he.activeVehicle.activeBadge}` : ''}`}
-                onPress={() => {
-                  setActiveVehicleId(v.id);
-                  router.back();
-                }}
-              />
-            </Card>
-          );
-        })}
+        {current.map((v) => (
+          <VehicleCard
+            key={v.id}
+            vehicle={v}
+            bundle={getBundle(v.id)}
+            active={v.id === activeVehicleId}
+            onSelect={() => {
+              setActiveVehicleId(v.id);
+              router.back();
+            }}
+            onManage={() => router.push(`/vehicle/${v.id}`)}
+          />
+        ))}
       </Stack>
+
+      {archived.length > 0 ? (
+        <Stack testID="vehicles-archived">
+          <SectionHeader title={he.myVehicles.archived} />
+          {archived.map((v) => (
+            <VehicleCard
+              key={v.id}
+              vehicle={v}
+              bundle={getBundle(v.id)}
+              active={false}
+              onManage={() => router.push(`/vehicle/${v.id}`)}
+            />
+          ))}
+        </Stack>
+      ) : null}
     </Screen>
   );
 }

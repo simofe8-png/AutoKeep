@@ -32,24 +32,24 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T013 | Onboarding and registration/license scan UI. | TODO | |
-| T014 | Vehicle confirmation and missing-data flow. | TODO | |
-| T015 | Source-search progress/result states. | TODO | |
-| T016 | Home. | TODO | |
-| T017 | Maintenance schedule and next-service screen. | TODO | |
-| T018 | Expandable maintenance-item evidence. | TODO | |
-| T019 | Garage Mode. | TODO | |
-| T020 | Service capture: photo/file/manual. | TODO | |
-| T021 | Service review and confirmation. | TODO | |
-| T022 | Service history and detail. | TODO | |
-| T023 | Documents. | TODO | |
-| T024 | Alerts. | TODO | |
-| T025 | My Vehicles, switcher and add vehicle. | TODO | |
-| T026 | Account/backup UX. | TODO | |
-| T027 | Settings. | TODO | |
-| T028 | Archive/sale/permanent-delete UX. | TODO | |
-| T029 | Vehicle Dossier preview/share UX. | TODO | |
-| T030 | Mock end-to-end navigation verification and M02 PASS. | TODO | |
+| T013 | Onboarding and registration/license scan UI. | PASS | src/app/onboarding: welcome (no registration barrier), scan (viewfinder placeholder; camera boundary is M06), identify with in-context outcomes (success/partial/ambiguous/failed via labeled DemoScenarioPicker). Tests: onboarding.test.tsx (5). Device: sources screen rendered RTL on SM-A546E. |
+| T014 | Vehicle confirmation and missing-data flow. | PASS | confirm.tsx: identified fields with provenance tags (זוהה מרישיון/הוזן ידנית), VIN masked to last 4, missing-fields engine asks only for missing necessary fields (missingFields), manual fallback prefilled; ambiguous candidates require user choice. Tests: partial asks only engine; ambiguous no guess; VIN masked. |
+| T015 | Source-search progress/result states. | PASS | sources.tsx: single updating progress screen (discovery→authority→applicability→retrieval→extraction→validation) then verified/pending/not-found results; not-found states no recommendations are shown; guard against incomplete draft. Tests: verified→Home new vehicle active; notFound wording. Device screenshot verified. |
+| T016 | Home. | PASS | Home: active vehicle, next service (interval, due, km/time remaining split stats, צפי forecast), due badge, alerts, garage mode, record service, odometer card, delayed account offer, offline banner, schedule-unavailable state; never 'healthy' (test asserts). Device screenshot verified; fixed duplicated 'נותרו' label. |
+| T017 | Maintenance schedule and next-service screen. | PASS | (tabs)/maintenance: one scrollable screen — summary on top, action list, upcoming services, schedule source line; unverified → ScheduleUnavailable, verified-without-next → 'אין כרגע משימות תחזוקה נוספות שזוהו'. Device screenshots verified. |
+| T018 | Expandable maintenance-item evidence. | PASS | MaintenanceItemRow expands in place: manufacturer text, action type badge, verification badge, exact source locator + open-source → document detail. Tests: expand details + evidence navigation. |
+| T019 | Garage Mode. | PASS | garage.tsx: three visually separate sections (manufacturer / known / garage), garage disclaimer, add-note dialog stores GarageRecommendation only, share placeholder labeled. Test: note never appears in manufacturer section. Device screenshot verified. |
+| T020 | Service capture: photo/file/manual. | PASS | service/new (photo/file/manual, VehicleTargetBanner), manual form (date/odometer/actions minimum validation), checkbox=performed with separate action-type SegmentedControl, unlisted actions. Test: manual validation + unlisted action. |
+| T021 | Service review and confirmation. | PASS | service/extract (mock draft only) → review with uncertain-field flags + original document card → explicit confirm dialog naming vehicle → history. Tests: confirm required; leaving review leaves history unchanged (no auto-commit). |
+| T022 | Service history and detail. | PASS | (tabs)/history chronological with provenance badges + 'history ≠ schedule' note, empty state with action; service/[id] detail with performed/not performed, action types, evidence/source, linked docs. Tests + device screenshot. |
+| T023 | Documents. | PASS | (tabs)/documents vehicle-scoped, grouped by kind, verification per doc; documents/[id] shows original and derived extraction separately. Tests: scoping by vehicle; evidence link opens detail. |
+| T024 | Alerts. | PASS | alerts/index + alerts/[id]: why/basis/vehicle/last completion, kind-specific actions (view service, update odometer, record with item preselected, mark handled); deep link switches context to the alert's vehicle. Tests + device screenshot (scooter overdue). |
+| T025 | My Vehicles, switcher and add vehicle. | PASS | vehicles.tsx (כלי הרכב שלי): VehicleCard with identity/odometer/status/alerts, active marked, switch, manage, add (reuses onboarding), archived section. Device screenshot verified. |
+| T026 | Account/backup UX. | PASS | AccountOfferCard shown only when data exists; account.tsx framed around backup, email validation, clear note that real auth arrives with Supabase (nothing sent in demo). Test: offer → create → backup status. |
+| T027 | Settings. | PASS | settings.tsx: profile/account, backup, notifications, vehicle management, documents, language, accessibility, about; demo-only offline simulation. Test: offline toggle shows offline banner in context. |
+| T028 | Archive/sale/permanent-delete UX. | PASS | vehicle/[id]: archive (keeps data) / restore / permanent delete with preview counts + typed registration confirmation + result screen. Test covers archive→restore→delete. |
+| T029 | Vehicle Dossier preview/share UX. | PASS | vehicle/[id]/dossier: generated from existing data; odometer readings, history with verification + user-reported labels, documents; share placeholder labeled. Test: user-reported labeling. |
+| T030 | Mock end-to-end navigation verification and M02 PASS. | PASS | M02 gate: prototype-e2e.test.tsx (15) + onboarding (5) + navigation (4); npm run verify green (7 suites/45 tests, lint 0 warnings); Android export OK; device pass on SM-A546E fixed: duplicated remaining label, split km/time stats, compact card padding, VehicleTargetBanner truncating plate, typedRoutes generator broken on this machine (disabled). M02 PASS. |
 
 ## M03 Visual Acceptance
 

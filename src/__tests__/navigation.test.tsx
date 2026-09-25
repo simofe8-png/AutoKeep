@@ -42,7 +42,7 @@ describe('active vehicle context', () => {
 
     await fireEvent.press(screen.getByTestId('active-vehicle-chip'));
     await waitFor(() => expect(screen.getByTestId('screen-vehicles')).toBeOnTheScreen());
-    await fireEvent.press(screen.getByTestId('vehicle-row-mock-vehicle-motorcycle'));
+    await fireEvent.press(screen.getByTestId('vehicle-select-mock-vehicle-motorcycle'));
 
     await waitFor(() => expect(screen.queryByTestId('screen-vehicles')).toBeNull());
     expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/CB500F/);

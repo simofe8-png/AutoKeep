@@ -79,24 +79,36 @@ export function Stack({
   children,
   gap = spacing.md,
   style,
+  testID,
 }: {
   children: ReactNode;
   gap?: number;
   style?: ViewStyle;
+  testID?: string;
 }) {
-  return <View style={[{ gap }, style]}>{children}</View>;
+  return (
+    <View testID={testID} style={[{ gap }, style]}>
+      {children}
+    </View>
+  );
 }
 
 export function Row({
   children,
   gap = spacing.sm,
   style,
+  testID,
 }: {
   children: ReactNode;
   gap?: number;
   style?: ViewStyle;
+  testID?: string;
 }) {
-  return <View style={[styles.row, { gap }, style]}>{children}</View>;
+  return (
+    <View testID={testID} style={[styles.row, { gap }, style]}>
+      {children}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

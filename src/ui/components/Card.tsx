@@ -12,6 +12,8 @@ export interface CardProps {
   accessibilityLabel?: string;
   accessibilityHint?: string;
   padded?: boolean;
+  /** Horizontal padding only — for cards that wrap ListRows. */
+  compact?: boolean;
   style?: ViewStyle;
   testID?: string;
 }
@@ -32,10 +34,16 @@ export function Card({
   accessibilityLabel,
   accessibilityHint,
   padded = true,
+  compact = false,
   style,
   testID,
 }: CardProps) {
-  const base = [styles.card, toneStyles[tone], padded && styles.padded, style];
+  const base = [
+    styles.card,
+    toneStyles[tone],
+    compact ? styles.compact : padded && styles.padded,
+    style,
+  ];
   if (!onPress) {
     return (
       <View testID={testID} style={base} accessibilityLabel={accessibilityLabel}>
@@ -66,5 +74,6 @@ const styles = StyleSheet.create({
     ...elevation.card,
   },
   padded: { padding: spacing.lg },
+  compact: { paddingHorizontal: spacing.md, paddingVertical: spacing.xs },
   pressed: { opacity: 0.92 },
 });

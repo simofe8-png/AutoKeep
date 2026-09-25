@@ -38,13 +38,9 @@ export function ActiveVehicleProvider({
     () => initialActiveId ?? selectable[0]?.id ?? null,
   );
 
-  const setActiveVehicleId = useCallback(
-    (id: string) => {
-      // Only an existing, non-archived vehicle can become the active context.
-      if (selectable.some((v) => v.id === id)) setActiveId(id);
-    },
-    [selectable],
-  );
+  // The id is stored as requested (a just-added vehicle may not be in `vehicles` yet); resolution
+  // below guarantees only an existing, non-archived vehicle is ever the active context.
+  const setActiveVehicleId = useCallback((id: string) => setActiveId(id), []);
 
   const activeVehicle = selectable.find((v) => v.id === activeId) ?? selectable[0] ?? null;
 

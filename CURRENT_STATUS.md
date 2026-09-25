@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M02 Full UI Prototype
-- **Current task:** T013 (Onboarding and registration/license scan UI)
-- **Last verified PASS:** T012 — M01 PASS
-- **Next action:** build onboarding flow screens on labeled mock data
+- **Milestone:** M03 Visual Acceptance
+- **Current task:** T031 (Android device rendering verification)
+- **Last verified PASS:** T030 (M02 PASS)
+- **Next action:** systematic device pass over all screens (screens list in task-plan T030 evidence)
 
 ## Granted policies
 
@@ -23,6 +23,8 @@ _Last updated: 2026-09-25_
 
 ## Open issues
 
+- expo-router `typedRoutes` disabled: its incremental generator registered non-route files as routes on this machine (stale .expo/types broke tsc). Revisit if upstream fixes it.
+
 - Device: run Metro with `npm run start:device` (Node 24 localhost→::1 breaks Expo Go over adb reverse). Expo Go was installed on the user phone by Expo CLI (2026-09-25).
 - `@types/jest` 30 vs expected 29.5 (expo install --check); harmless for now, align in M03.
 
@@ -34,4 +36,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`, `M01` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`, `M01`, `M02` on `master` (local only, not pushed).
