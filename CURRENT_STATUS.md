@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M06 Vehicle Identification
-- **Current task:** T051 (camera/file acquisition boundary)
-- **Last verified PASS:** T050 — M05 PASS
-- **Next action:** provider-independent acquisition boundary (expo-image-picker / document-picker)
+- **Milestone:** M07 Cloud Foundation
+- **Current task:** T058 (Supabase local/dev integration design)
+- **Last verified PASS:** T057 — M06 PASS
+- **Next action:** local Supabase via Docker (npx supabase), schema + RLS design
 
 ## Granted policies
 
@@ -22,6 +22,9 @@ _Last updated: 2026-09-25_
 - The project path contains Hebrew characters, so avoid local Gradle builds (ADR-0005).
 
 ## Open issues
+
+- Acquisition (camera/picker) on-device verification deferred to M13 wiring (T106).
+- Candidate provider needing approval later: data.gov.il vehicle registry lookup by plate (privacy data flow) — ADR-0009.
 
 - adb can wedge after long sessions: bound every adb call with `timeout`; recover with `Stop-Process adb` + `adb start-server` (start-device.mjs now times out adb reverse).
 
@@ -42,4 +45,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M05` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M06` on `master` (local only, not pushed).

@@ -94,13 +94,13 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T051 | Camera/file acquisition boundary. | TODO | |
-| T052 | Registration-document extraction contract. | TODO | |
-| T053 | Vehicle-type recognition: car/motorcycle/scooter. | TODO | |
-| T054 | Confidence and ambiguity handling. | TODO | |
-| T055 | Confirmation and missing-fields engine. | TODO | |
-| T056 | Manual fallback. | TODO | |
-| T057 | Identification acceptance tests and M06 PASS. | TODO | |
+| T051 | Camera/file acquisition boundary. | PASS | src/providers/acquisition: AcquisitionProvider port (camera/library/file), screenAcquiredFile allow-list + size bounds, expo-image-picker/document-picker adapter (no EXIF, cache dir). Tests: screening, cancelled/permission_denied returned in context. On-device camera/picker check deferred to M13 wiring (open item). |
+| T052 | Registration-document extraction contract. | PASS | identification/contract.ts: zod schema, per-field value+confidence, documentType, strip unknown keys; no owner name/ID/address fields (data minimization); RegistrationExtractor port; MockRegistrationExtractor (labeled) validates via same schema. Tests: malformed rejected, PII stripped. |
+| T053 | Vehicle-type recognition: car/motorcycle/scooter. | PASS | recognizeType: deterministic from category text (car/M1/N1 → car; explicit אופנוע/קטנוע), L-category two-wheelers → ambiguous (never guesses motorcycle vs scooter). Tests. |
+| T054 | Confidence and ambiguity handling. | PASS | Confidence thresholds 0.9/0.6 (accept/uncertain/missing), malformed → missing; resolveIdentification: multiple catalog variants → needs_selection, single → fills gaps as catalog without overwriting scan; non-license → failed. Tests. |
+| T055 | Confirmation and missing-fields engine. | PASS | Draft engine: REQUIRED_FIELDS, missingFields (only missing necessary), uncertainFields, applyUserInput (validated, origin user), confirmUncertain, toVehicleInput blocks until complete → domain createVehicle. Test end-to-end to Vehicle. |
+| T056 | Manual fallback. | PASS | manualDraft: same draft shape, all origin=user, validated per field. Test. |
+| T057 | Identification acceptance tests and M06 PASS. | PASS | identification.test.ts 15 acceptance tests (pipeline with mock extractor: full scan, unreadable/error/junk, ambiguous two-wheeler type, catalog ambiguity). Purity lint extended to src/identification. ADR-0009 (incl. data.gov.il registry as approval-gated candidate). npm run verify green (11 suites/101 tests). M06 PASS. |
 
 ## M07 Cloud Foundation
 
