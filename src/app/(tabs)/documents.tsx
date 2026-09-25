@@ -6,17 +6,16 @@ import type { DocumentKind } from '@/features/data/types';
 import { documentIcon } from '@/features/documents/icons';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate } from '@/features/vehicles/format';
+import { formatDate, joinParts } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
-  AppText,
   Button,
   Card,
   Divider,
   EmptyState,
   InlineNotice,
   ListRow,
-  Row,
+  PageTitle,
   Screen,
   SectionHeader,
   Stack,
@@ -55,12 +54,7 @@ export default function DocumentsScreen() {
       edges={['top']}
       testID="screen-documents"
     >
-      <Row>
-        <AppText variant="title" accessibilityRole="header" style={{ flex: 1 }}>
-          {he.documents.title}
-        </AppText>
-        {upload}
-      </Row>
+      <PageTitle title={he.documents.title} action={upload} />
       {uploadInfo ? <InlineNotice tone="info" message={he.documents.uploadUnavailable} /> : null}
       {documents.length === 0 ? (
         <EmptyState icon="file-document-multiple-outline" title={he.documents.empty} />
@@ -79,14 +73,12 @@ export default function DocumentsScreen() {
                       testID={`document-${d.id}`}
                       icon={documentIcon[d.kind]}
                       title={d.title}
-                      subtitle={[
+                      subtitle={joinParts([
                         formatDate(d.addedAt),
                         d.pages ? he.documents.pages(d.pages) : null,
                         he.authority[d.authority],
-                      ]
-                        .filter(Boolean)
-                        .join(' · ')}
-                      trailing={<VerificationBadge state={d.verification} />}
+                      ])}
+                      below={<VerificationBadge state={d.verification} />}
                       onPress={() => router.push(`/documents/${d.id}`)}
                     />
                   </Stack>

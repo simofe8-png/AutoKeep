@@ -1,11 +1,30 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import type { ColorValue } from 'react-native';
+import { Text, type ColorValue } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Tabs } from 'expo-router/js-tabs';
 
 import { he } from '@/i18n/he';
 import { colors, fontFamily } from '@/ui';
 
 type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
+
+/**
+ * Tab labels scale with the system font but are capped: at the Android maximum (2.0) uncapped
+ * labels were clipped/truncated in the fixed-height tab bar (device-verified, M03).
+ */
+export const TAB_LABEL_MAX_SCALE = 1.3;
+
+function TabLabel({ color, children }: { color: ColorValue; children: string }) {
+  return (
+    <Text
+      numberOfLines={1}
+      maxFontSizeMultiplier={TAB_LABEL_MAX_SCALE}
+      style={{ color, fontFamily: fontFamily.medium, fontSize: 12, textAlign: 'center' }}
+    >
+      {children}
+    </Text>
+  );
+}
 
 function tabIcon(name: IconName, focusedName: IconName) {
   function TabIcon({
@@ -27,15 +46,22 @@ function tabIcon(name: IconName, focusedName: IconName) {
  * alerts (bell) and settings (profile) are secondary entries in the header.
  */
 export default function TabsLayout() {
+  // Explicit height: the default 49dp clipped scaled Hebrew labels on small screens (M03).
+  const insets = useSafeAreaInsets();
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
-        tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.border },
-        tabBarLabelStyle: { fontFamily: fontFamily.medium, fontSize: 12 },
-        tabBarAllowFontScaling: true,
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopColor: colors.border,
+          height: 62 + insets.bottom,
+          paddingTop: 6,
+          paddingBottom: insets.bottom + 6,
+        },
+        tabBarLabel: TabLabel,
         sceneStyle: { backgroundColor: colors.background },
       }}
     >

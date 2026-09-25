@@ -9,8 +9,10 @@ export interface ListRowProps {
   title: string;
   subtitle?: string;
   icon?: IconName;
-  /** Content shown at the end of the row (badge, value). */
+  /** Content shown at the end of the row (short values only). */
   trailing?: ReactNode;
+  /** Content under the subtitle (badges) — keeps the text column wide at large font sizes. */
+  below?: ReactNode;
   onPress?: () => void;
   showChevron?: boolean;
   accessibilityLabel?: string;
@@ -22,6 +24,7 @@ export function ListRow({
   subtitle,
   icon,
   trailing,
+  below,
   onPress,
   showChevron = onPress != null,
   accessibilityLabel,
@@ -41,6 +44,7 @@ export function ListRow({
             {subtitle}
           </AppText>
         ) : null}
+        {below}
       </View>
       {trailing}
       {showChevron ? <Icon name={directionalIcons.forward} size={22} color="textMuted" /> : null}

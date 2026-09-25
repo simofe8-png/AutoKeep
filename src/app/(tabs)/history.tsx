@@ -5,7 +5,7 @@ import { useVehicleData } from '@/features/data/PrototypeDataContext';
 import type { ServiceEventVM } from '@/features/data/types';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate, formatKm } from '@/features/vehicles/format';
+import { formatDate, formatKm, joinParts } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -14,6 +14,7 @@ import {
   Card,
   EmptyState,
   Icon,
+  PageTitle,
   Row,
   Screen,
   spacing,
@@ -49,18 +50,18 @@ export default function HistoryScreen() {
         />
       ) : (
         <>
-          <Row>
-            <AppText variant="title" accessibilityRole="header" style={styles.flex}>
-              {he.history.title}
-            </AppText>
-            <Button
-              testID="history-add"
-              label={he.history.add}
-              icon="plus"
-              variant="secondary"
-              onPress={() => router.push('/service/new')}
-            />
-          </Row>
+          <PageTitle
+            title={he.history.title}
+            action={
+              <Button
+                testID="history-add"
+                label={he.history.add}
+                icon="plus"
+                variant="secondary"
+                onPress={() => router.push('/service/new')}
+              />
+            }
+          />
           <AppText variant="small" color="textMuted">
             {he.history.historyNotSchedule}
           </AppText>
@@ -93,7 +94,7 @@ function HistoryCard({ event, onPress }: { event: ServiceEventVM; onPress: () =>
           </AppText>
         </Row>
         <AppText variant="small" color="textSecondary" numberOfLines={2}>
-          {performed.map((a) => a.title).join(' · ')}
+          {joinParts(performed.map((a) => a.title))}
         </AppText>
         <Row style={styles.wrap}>
           <VerificationBadge state={event.verification} />

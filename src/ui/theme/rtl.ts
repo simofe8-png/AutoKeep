@@ -28,6 +28,31 @@ export function resolveTextAlign(align: 'start' | 'center' | 'end'): 'left' | 'r
   return align === 'start' ? 'left' : 'right';
 }
 
+/**
+ * TextInput does NOT get the left/right swap that Text gets: on device, `left` rendered input at
+ * the physical left edge inside the RTL root (M03). Reading start for inputs is therefore the
+ * physical right edge. Native-RTL release builds are re-verified in M24 (T182).
+ */
+export const INPUT_TEXT_ALIGN_START = 'right' as const;
+
+const RLM = String.fromCharCode(0x200f);
+const HEBREW = /[֐-׿]/;
+const LATIN = /[A-Za-zÀ-ɏ]/;
+
+/**
+ * Android picks a paragraph's direction from its first strong character. A Hebrew UI string that
+ * starts with Latin (e.g. "ABS · 300 סמ״ק" or a manufacturer like "BMW") would become an LTR
+ * paragraph and reorder its parts (device-verified, M03). Prefix a RIGHT-TO-LEFT MARK only in
+ * that case; Hebrew-leading and neutral-leading strings are returned unchanged.
+ */
+export function ensureRtlParagraph(text: string): string {
+  for (const ch of text) {
+    if (HEBREW.test(ch)) return text;
+    if (LATIN.test(ch)) return RLM + text;
+  }
+  return text;
+}
+
 /** Icons that imply direction ("forward", "back") must use these names, not raw chevrons. */
 export const directionalIcons = {
   forward: 'chevron-left',

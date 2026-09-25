@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M03 Visual Acceptance
-- **Current task:** T031 (Android device rendering verification)
-- **Last verified PASS:** T030 (M02 PASS)
-- **Next action:** systematic device pass over all screens (screens list in task-plan T030 evidence)
+- **Milestone:** M04 Domain
+- **Current task:** T036 (core vehicle/account value objects and stable IDs)
+- **Last verified PASS:** T035 — M03 PASS (UI frozen; see docs/ui-baseline)
+- **Next action:** build pure TypeScript domain model in src/domain (no React/IO)
 
 ## Granted policies
 
@@ -23,6 +23,10 @@ _Last updated: 2026-09-25_
 
 ## Open issues
 
+- UI is FROZEN (ADR-0007, docs/ui-baseline). Backend work must feed the existing screens without redesign.
+- Native-RTL release build must re-verify TextInput alignment and text rules (M24 T182).
+- Device verification tooling: `tools/device-shots.sh`, `tools/adb-tap.py` (python + PIL available).
+
 - expo-router `typedRoutes` disabled: its incremental generator registered non-route files as routes on this machine (stale .expo/types broke tsc). Revisit if upstream fixes it.
 
 - Device: run Metro with `npm run start:device` (Node 24 localhost→::1 breaks Expo Go over adb reverse). Expo Go was installed on the user phone by Expo CLI (2026-09-25).
@@ -36,4 +40,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`, `M01`, `M02` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M03` on `master` (local only, not pushed).

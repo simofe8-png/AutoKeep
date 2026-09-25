@@ -6,7 +6,7 @@ import { he } from '@/i18n/he';
 import { AppText, Badge, Button, Card, Icon, Row, spacing, VerificationBadge } from '@/ui';
 
 import { vehicleKindIcon } from './ActiveVehicleBar';
-import { formatKm } from './format';
+import { formatKm, joinParts } from './format';
 import { vehicleDisplayName, type VehicleSummary } from './types';
 
 /** Most important maintenance state for the card: due status, or schedule verification state. */
@@ -50,7 +50,11 @@ export function VehicleCard({
             {vehicle.archived ? <Badge label={he.lifecycle.archivedBadge} tone="neutral" /> : null}
           </Row>
           <AppText variant="small" color="textSecondary">
-            {he.vehicleType[vehicle.kind]} · {vehicle.registration} · {formatKm(vehicle.odometerKm)}
+            {joinParts([
+              he.vehicleType[vehicle.kind],
+              vehicle.registration,
+              formatKm(vehicle.odometerKm),
+            ])}
           </AppText>
           <Row style={styles.wrap}>
             <VehicleStatus bundle={bundle} />

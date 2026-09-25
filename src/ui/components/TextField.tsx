@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, View, type KeyboardTypeOptions } from 'react-nat
 
 import { he } from '@/i18n/he';
 
-import { colors, radii, resolveTextAlign, spacing, touchTarget, typography } from '../theme';
+import { colors, INPUT_TEXT_ALIGN_START, radii, spacing, touchTarget, typography } from '../theme';
 import { AppText } from './AppText';
 
 export interface TextFieldProps {
@@ -73,7 +73,7 @@ export function TextField({
           maxFontSizeMultiplier={2}
           style={[
             styles.input,
-            { textAlign: resolveTextAlign('start') },
+            { textAlign: INPUT_TEXT_ALIGN_START },
             multiline && styles.inputMultiline,
           ]}
         />

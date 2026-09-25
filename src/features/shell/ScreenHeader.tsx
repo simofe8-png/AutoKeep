@@ -25,7 +25,7 @@ export function ScreenHeader({ title, onBack, trailing, closeIcon = false }: Scr
         accessibilityLabel={closeIcon ? he.common.close : he.common.back}
         onPress={back}
       />
-      <AppText variant="heading" accessibilityRole="header" numberOfLines={1} style={styles.title}>
+      <AppText variant="heading" accessibilityRole="header" numberOfLines={2} style={styles.title}>
         {title}
       </AppText>
       {trailing ?? <View style={styles.spacer} />}

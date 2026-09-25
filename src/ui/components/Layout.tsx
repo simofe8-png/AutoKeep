@@ -1,12 +1,5 @@
 import type { ReactNode } from 'react';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  View,
-  type ViewStyle,
-} from 'react-native';
+import { KeyboardAvoidingView, ScrollView, StyleSheet, View, type ViewStyle } from 'react-native';
 import { SafeAreaView, type Edge } from 'react-native-safe-area-context';
 
 import { colors, gutter, spacing } from '../theme';
@@ -51,7 +44,9 @@ export function Screen({
       {header}
       <KeyboardAvoidingView
         style={styles.fill}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        // Android (SDK 57 edge-to-edge) no longer resizes the window for the keyboard, so padding
+        // is required on both platforms (device-verified, M03).
+        behavior="padding"
       >
         {content}
         {footer ? <View style={styles.footer}>{footer}</View> : null}
@@ -67,6 +62,21 @@ export function SectionHeader({ title, action }: { title: string; action?: React
         {title}
       </AppText>
       {action}
+    </View>
+  );
+}
+
+/**
+ * Page title with an optional action placed underneath (not beside), so long Hebrew titles never
+ * break mid-word at large font scales (device-verified, M03).
+ */
+export function PageTitle({ title, action }: { title: string; action?: ReactNode }) {
+  return (
+    <View style={styles.pageTitle}>
+      <AppText variant="title" accessibilityRole="header">
+        {title}
+      </AppText>
+      {action ? <View style={styles.pageAction}>{action}</View> : null}
     </View>
   );
 }
@@ -129,6 +139,8 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
   },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  pageTitle: { gap: spacing.sm },
+  pageAction: { alignSelf: 'flex-start' },
   divider: { height: StyleSheet.hairlineWidth, backgroundColor: colors.divider },
   row: { flexDirection: 'row', alignItems: 'center' },
 });

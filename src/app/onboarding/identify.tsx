@@ -5,6 +5,7 @@ import { useOnboarding } from '@/features/onboarding/OnboardingContext';
 import type { VehicleDraft } from '@/features/onboarding/types';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { vehicleKindIcon } from '@/features/vehicles/ActiveVehicleBar';
+import { joinParts } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import { MOCK_SCAN_CANDIDATES, MOCK_SCAN_PARTIAL, MOCK_SCAN_SUCCESS } from '@/mocks/onboarding';
 import { AppText, Card, ErrorState, ListRow, LoadingState, Screen, Stack } from '@/ui';
@@ -13,7 +14,7 @@ import { AppText, Card, ErrorState, ListRow, LoadingState, Screen, Stack } from 
 export const IDENTIFY_DELAY_MS = 900;
 
 function candidateSubtitle(c: VehicleDraft) {
-  return [c.trim, c.engine, c.registration].filter(Boolean).join(' · ');
+  return joinParts([c.trim, c.engine, c.registration]);
 }
 
 /** Identification result (T013/T014): success → confirm; ambiguity → user chooses; failure in context. */

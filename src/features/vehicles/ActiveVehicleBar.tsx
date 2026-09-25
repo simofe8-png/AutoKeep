@@ -4,7 +4,7 @@ import { he } from '@/i18n/he';
 import { AppText, colors, Icon, radii, spacing, touchTarget, type IconName } from '@/ui';
 
 import { useActiveVehicle } from './ActiveVehicleContext';
-import { formatKm } from './format';
+import { formatKm, joinParts } from './format';
 import { vehicleDisplayName, type VehicleKind, type VehicleSummary } from './types';
 
 export const vehicleKindIcon: Record<VehicleKind, IconName> = {
@@ -50,7 +50,7 @@ export function ActiveVehicleChip({ onPress, compact = false }: ActiveVehicleChi
         </AppText>
         {activeVehicle && !compact ? (
           <AppText variant="small" color="textMuted" numberOfLines={2}>
-            {activeVehicle.registration} · {formatKm(activeVehicle.odometerKm)}
+            {joinParts([activeVehicle.registration, formatKm(activeVehicle.odometerKm)])}
           </AppText>
         ) : null}
       </View>
@@ -82,7 +82,7 @@ export function VehicleTargetBanner({
         {label}:
       </AppText>
       <AppText variant="smallStrong" style={styles.bannerName}>
-        {vehicleDisplayName(vehicle)} · {vehicle.registration}
+        {joinParts([vehicleDisplayName(vehicle), vehicle.registration])}
       </AppText>
     </View>
   );

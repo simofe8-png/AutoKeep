@@ -56,11 +56,11 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T031 | Android device rendering verification. | TODO | |
-| T032 | RTL, keyboard, scrolling, safe area and font-scaling verification. | TODO | |
-| T033 | Loading/error/empty/offline visual-state verification. | TODO | |
-| T034 | Resolve visual defects within approved design. | TODO | |
-| T035 | Freeze UI baseline and record M03 PASS. | TODO | |
+| T031 | Android device rendering verification. | PASS | tools/device-shots.sh deep-link pass over 18 screens on SM-A546E (Android 16, he-IL, 1080x2340@450, font 1.3, Expo Go SDK 57); contact-sheet review. Found+fixed: dossier date collapsing (flex:1 in wrapping row), bidi reorder of '·' metadata (RLM joinParts), unit wrapping (NBSP). |
+| T032 | RTL, keyboard, scrolling, safe area and font-scaling verification. | PASS | RTL/keyboard/scroll/safe-area/font-scale: font_scale 2.0 pass (restored to 1.3) fixed tab-label clipping (cap x1.3), mid-word title breaks (PageTitle), squeezed rows (ListRow below slot), 2-line headers; small screen 720x1280@320 (reset after) fixed tab bar height (inset-aware 62dp); keyboard: footer hidden → KAV padding on Android; TextInput physical alignment (INPUT_TEXT_ALIGN_START). Screens re-verified after fixes. |
+| T033 | Loading/error/empty/offline visual-state verification. | PASS | tools/adb-tap.py scripted state pass: failed scan (retry/manual), ambiguous candidates (user choice), partial identification (only missing field), pending schedule (motorcycle), user-reported history, offline simulation, alerts list; Latin-leading bidi defect fixed via ensureRtlParagraph in AppText (+unit tests). |
+| T034 | Resolve visual defects within approved design. | PASS | All M03 defects resolved within approved design (no new screens/flows): see T031–T033; ADR-0007 records the text/bidi/keyboard rules. npm run verify green (7 suites/47 tests). |
+| T035 | Freeze UI baseline and record M03 PASS. | PASS | UI baseline frozen: docs/ui-baseline/ (26 downscaled device screenshots + README acceptance checklist), ADR-0007. M03 gate: verify green, Android export OK. Device settings restored (font_scale 1.3, wm size/density reset). M03 PASS. |
 
 ## M04 Domain
 

@@ -8,7 +8,7 @@ import type {
   ScheduleVM,
   SourceRefVM,
 } from '@/features/data/types';
-import { formatDate, formatKm } from '@/features/vehicles/format';
+import { formatDate, formatKm, joinParts, NBSP } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -85,7 +85,7 @@ export function remainingStats(next: NextServiceVM): RemainingStat[] {
     const overdue = next.remainingDays < 0;
     stats.push({
       label: overdue ? he.home.daysOverdue : he.home.daysRemaining,
-      value: `${Math.abs(next.remainingDays)} ${he.home.days}`,
+      value: `${Math.abs(next.remainingDays)}${NBSP}${he.home.days}`,
       overdue,
     });
   }
@@ -93,12 +93,10 @@ export function remainingStats(next: NextServiceVM): RemainingStat[] {
 }
 
 export function dueAtText(next: NextServiceVM): string {
-  return [
+  return joinParts([
     next.dueAtKm != null ? formatKm(next.dueAtKm) : null,
     next.dueDate ? formatDate(next.dueDate) : null,
-  ]
-    .filter(Boolean)
-    .join(' · ');
+  ]);
 }
 
 /** Top of Home / next-service screen: interval, remaining distance/time and labeled forecast. */
@@ -159,7 +157,7 @@ export function SourceLine({ source, onOpen }: { source: SourceRefVM; onOpen?: (
       <Icon name="file-document-outline" size={18} color="primary" />
       <View style={styles.flex}>
         <AppText variant="smallStrong">
-          {source.sourceTitle} · {he.authority[source.authority]}
+          {joinParts([source.sourceTitle, he.authority[source.authority]])}
         </AppText>
         {source.locator ? (
           <AppText variant="small" color="textSecondary">

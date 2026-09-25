@@ -6,7 +6,7 @@ import { ActionTypeBadge } from '@/features/maintenance/components';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate, formatKm, todayIso } from '@/features/vehicles/format';
+import { formatDate, formatKm, joinParts, todayIso } from '@/features/vehicles/format';
 import { vehicleDisplayName } from '@/features/vehicles/types';
 import { he } from '@/i18n/he';
 import {
@@ -83,7 +83,7 @@ export default function GarageModeScreen() {
                     <AppText variant="bodyStrong">{item.title}</AppText>
                     {item.source?.locator ? (
                       <AppText variant="caption" color="textMuted">
-                        {item.source.sourceTitle} · {item.source.locator}
+                        {joinParts([item.source.sourceTitle, item.source.locator])}
                       </AppText>
                     ) : null}
                   </View>
@@ -141,7 +141,7 @@ export default function GarageModeScreen() {
             <View key={r.id} style={styles.note} testID={`garage-note-${r.id}`}>
               <AppText>{r.text}</AppText>
               <AppText variant="caption" color="textMuted">
-                {[r.garage, formatDate(r.date)].filter(Boolean).join(' · ')}
+                {joinParts([r.garage, formatDate(r.date)])}
               </AppText>
             </View>
           ))

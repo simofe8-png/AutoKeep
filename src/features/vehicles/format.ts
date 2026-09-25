@@ -2,8 +2,23 @@ import { he } from '@/i18n/he';
 
 const numberFormat = new Intl.NumberFormat('he-IL');
 
+/** No-break space keeps a value and its unit on the same line. */
+export const NBSP = String.fromCharCode(0x00a0);
+
 export function formatKm(km: number): string {
-  return `${numberFormat.format(km)} ${he.common.km}`;
+  return `${numberFormat.format(km)}${NBSP}${he.common.km}`;
+}
+
+/**
+ * Inline "·" separator for mixed Hebrew/numeric metadata. A neutral separator between two numeric
+ * runs would be resolved LTR by the bidi algorithm and visually swap the runs (device-verified);
+ * RIGHT-TO-LEFT MARKs on both sides pin it to the RTL paragraph direction.
+ */
+const RLM = String.fromCharCode(0x200f);
+export const SEP = `${RLM} · ${RLM}`;
+
+export function joinParts(parts: readonly (string | number | null | undefined | false)[]): string {
+  return parts.filter((p) => p !== null && p !== undefined && p !== false && p !== '').join(SEP);
 }
 
 const dateFormat = new Intl.DateTimeFormat('he-IL', {

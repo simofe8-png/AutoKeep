@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { usePrototypeData } from '@/features/data/PrototypeDataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
+import { SEP } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -151,7 +152,7 @@ export default function VehicleManageScreen() {
             he.lifecycle.previewServices(bundle.history.length),
             he.lifecycle.previewDocuments(bundle.documents.length),
             he.lifecycle.previewAlerts(bundle.alerts.length),
-          ].join(' · ')}
+          ].join(SEP)}
           testID="delete-preview"
         />
         <TextField

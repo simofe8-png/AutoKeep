@@ -270,7 +270,7 @@ export const he = {
       registration: 'רישיון רכב',
       other: 'מסמכים נוספים',
     },
-    pages: (n: number) => `${n} עמודים`,
+    pages: (n: number) => `${n}${String.fromCharCode(0x00a0)}עמודים`,
     original: 'המסמך המקורי',
     originalHint: 'הקובץ המקורי נשמר ללא שינוי.',
     openOriginal: 'פתיחת המקור',

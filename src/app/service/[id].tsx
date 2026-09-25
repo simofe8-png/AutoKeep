@@ -5,7 +5,7 @@ import { usePrototypeData } from '@/features/data/PrototypeDataContext';
 import { ActionTypeBadge } from '@/features/maintenance/components';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
-import { formatDate, formatKm } from '@/features/vehicles/format';
+import { formatDate, formatKm, SEP } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -78,7 +78,7 @@ export default function ServiceDetailScreen() {
                 <AppText variant="bodyStrong">{a.title}</AppText>
                 <AppText variant="caption" color="textMuted">
                   {a.performed ? he.history.performed : he.history.notPerformed}
-                  {a.unlisted ? ` · ${he.service.unlisted}` : ''}
+                  {a.unlisted ? `${SEP}${he.service.unlisted}` : ''}
                 </AppText>
               </View>
               <ActionTypeBadge type={a.actionType} />

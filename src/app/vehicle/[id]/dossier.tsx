@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { usePrototypeData } from '@/features/data/PrototypeDataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
-import { formatDate, formatKm, todayIso } from '@/features/vehicles/format';
+import { formatDate, formatKm, joinParts, SEP, todayIso } from '@/features/vehicles/format';
 import { vehicleDisplayName } from '@/features/vehicles/types';
 import { he } from '@/i18n/he';
 import {
@@ -71,7 +71,7 @@ export default function DossierScreen() {
         <SectionHeader title={he.dossier.vehicleDetails} />
         <AppText variant="heading">{vehicleDisplayName(vehicle)}</AppText>
         <AppText color="textSecondary">
-          {he.vehicleType[vehicle.kind]} · {vehicle.registration}
+          {joinParts([he.vehicleType[vehicle.kind], vehicle.registration])}
         </AppText>
         <AppText variant="caption" color="textMuted">
           {he.dossier.generatedAt}: {formatDate(todayIso())}
@@ -83,11 +83,13 @@ export default function DossierScreen() {
         {readings.map((r, i) => (
           <View key={`${r.date}-${i}`}>
             {i > 0 ? <Divider /> : null}
-            <Row style={styles.line}>
-              <AppText style={styles.flex}>{formatDate(r.date)}</AppText>
-              <AppText variant="bodyStrong">{formatKm(r.km)}</AppText>
+            <Stack gap={spacing.xs} style={styles.event}>
+              <Row>
+                <AppText style={styles.flex}>{formatDate(r.date)}</AppText>
+                <AppText variant="bodyStrong">{formatKm(r.km)}</AppText>
+              </Row>
               {r.userReported ? <Badge label={he.dossier.userReported} tone="neutral" /> : null}
-            </Row>
+            </Stack>
           </View>
         ))}
       </Card>
@@ -103,14 +105,14 @@ export default function DossierScreen() {
               <Stack gap={spacing.xs} style={styles.event}>
                 <Row>
                   <AppText variant="bodyStrong" style={styles.flex}>
-                    {formatDate(e.date)} · {formatKm(e.odometerKm)}
+                    {joinParts([formatDate(e.date), formatKm(e.odometerKm)])}
                   </AppText>
                 </Row>
                 <AppText variant="small" color="textSecondary">
                   {e.actions
                     .filter((a) => a.performed)
                     .map((a) => a.title)
-                    .join(' · ')}
+                    .join(SEP)}
                 </AppText>
                 <Row style={styles.wrap}>
                   <VerificationBadge state={e.verification} />
@@ -142,6 +144,6 @@ export default function DossierScreen() {
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   wrap: { flexWrap: 'wrap' },
-  line: { paddingVertical: spacing.sm, flexWrap: 'wrap' },
+  line: { paddingVertical: spacing.sm },
   event: { paddingVertical: spacing.sm },
 });

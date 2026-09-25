@@ -9,7 +9,7 @@ import {
 } from '@/features/maintenance/components';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate, formatKm } from '@/features/vehicles/format';
+import { formatDate, formatKm, joinParts } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -95,12 +95,10 @@ export default function MaintenanceScreen() {
               <ListRow
                 icon="calendar-blank-outline"
                 title={u.title}
-                subtitle={[
+                subtitle={joinParts([
                   u.dueAtKm != null ? formatKm(u.dueAtKm) : null,
                   u.dueDate ? formatDate(u.dueDate) : null,
-                ]
-                  .filter(Boolean)
-                  .join(' · ')}
+                ])}
               />
             </Stack>
           ))}
