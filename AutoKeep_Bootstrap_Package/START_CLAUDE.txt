@@ -1,0 +1,7 @@
+Read MASTER_EXECUTION.md, AUTOKEEP_V1_SPEC.md, TASK_PLAN.md, and UX_DESIGN_BASELINE.md in full.
+
+Treat them as the authoritative AutoKeep V1 bootstrap package.
+
+The project root is otherwise empty. Follow MASTER_EXECUTION.md strictly, create the required governance/state files, begin at T001, and continue autonomously until a genuine approval gate, unresolved blocker, bounded-retry exhaustion, or AUTOKEEP V1 RC PASS.
+
+Do not stop after routine task PASSes.
