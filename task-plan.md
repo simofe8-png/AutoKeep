@@ -67,13 +67,13 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T036 | Core vehicle/account value objects and stable IDs. | TODO | |
-| T037 | Provenance and verification model. | TODO | |
-| T038 | Maintenance schedule/interval/item model. | TODO | |
-| T039 | Service event/action model. | TODO | |
-| T040 | Documents/sources/source-reference model. | TODO | |
-| T041 | Garage recommendations and alerts domain. | TODO | |
-| T042 | Domain invariants/tests and M04 PASS. | TODO | |
+| T036 | Core vehicle/account value objects and stable IDs. | PASS | src/domain/core.ts (branded UUID ids, injected IdGenerator, IsoDate/Timestamp + date math, Result, EntityMeta version) + vehicle.ts (LocalProfile, Vehicle, registration normalize/format, VIN validate/mask, archive/restore, OdometerReading). Tests: dates/ids/identifiers/validation/lifecycle/odometer. |
+| T037 | Provenance and verification model. | PASS | provenance.ts: authorities, 5 internal states → 3 display states, SourceReference (page/section/table), decideVerification (no evidence→pending; user/non-authoritative→unverified; not exact→pending; disagreement→conflicting). Tests (3). |
+| T038 | Maintenance schedule/interval/item model. | PASS | maintenance.ts: schedule/interval/item, rules earliest_of/distance_only/time_only, first-occurrence fields, verification decided from evidence+exact applicability, usableSchedule gate. Tests (2). |
+| T039 | Service event/action model. | PASS | service.ts: ServiceDraft → confirmServiceDraft(UserConfirmation) only path to history; minimum data date/odometer/performed action; performed-only storage; independent actionType; manual=user_report/unverified, document=garage_document/verified with doc required. Tests (4). |
+| T040 | Documents/sources/source-reference model. | PASS | documents.ts: VehicleDocument with immutable OriginalFile (mime/size/sha256, no public URLs, no self-asserted manufacturer authority), Source (edition), DerivedExtraction separate from original. Tests (2). |
+| T041 | Garage recommendations and alerts domain. | PASS | garage.ts: GarageRecommendation distinct type (ts-expect-error proves not assignable to MaintenanceItem), DeferredItem, Alert with required explainable basis per kind, handle/snooze. Tests (2). |
+| T042 | Domain invariants/tests and M04 PASS. | PASS | domain.test.ts 20 invariant tests incl. vehicle isolation (outOfScope); ESLint purity rule for src/domain + src/engine; DOMAIN.md implementation table. M04 gate: npm run verify green (8 suites/67 tests). M04 PASS. |
 
 ## M05 Local-first Persistence
 

@@ -21,6 +21,28 @@ module.exports = defineConfig([
     },
   },
   {
+    // The domain and engine are pure TypeScript: no UI, platform or I/O dependencies.
+    files: ['src/domain/**/*.ts', 'src/engine/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            'react',
+            'react-native',
+            'react-native-*',
+            'expo',
+            'expo-*',
+            '@expo/*',
+            '@/ui*',
+            '@/features/*',
+            '@/app/*',
+          ],
+        },
+      ],
+    },
+  },
+  {
     files: ['tools/**/*.mjs', '*.config.js', 'jest.setup.ts'],
     rules: { 'no-console': 'off' },
   },

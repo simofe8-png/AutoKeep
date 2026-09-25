@@ -35,3 +35,17 @@ Derived from AUTOKEEP_V1_SPEC.md §21 and MASTER_EXECUTION.md core invariants. T
 6. Extraction output can only create drafts. Confirmed ServiceEvents require an explicit user confirmation command.
 7. Archive sets lifecycle state and deletes nothing. Permanent delete is a separate command that requires confirmation.
 8. The engine never emits "healthy". The empty result is "no maintenance tasks currently identified".
+
+## Implementation (M04)
+
+The code is in `src/domain` (pure TypeScript; purity is enforced by the ESLint `no-restricted-imports` rule for `src/domain` and `src/engine`).
+
+| Module           | Contents                                                                                                                                                                          |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `core.ts`        | Branded UUID ids, `IdGenerator` (injected), `IsoDate`/`Timestamp`, date math (`addMonths` clamps), `Result`/issues, `EntityMeta` (version for sync), `outOfScope` isolation check |
+| `vehicle.ts`     | `LocalProfile`, `Vehicle` (type, identity, normalized registration, validated VIN + `maskVin`), archive/restore, `OdometerReading` (per vehicle, dated, no silent decrease)       |
+| `provenance.ts`  | Authorities, internal verification states → 3 display states, `SourceReference`, `decideVerification` (deterministic)                                                             |
+| `documents.ts`   | `VehicleDocument` with immutable `OriginalFile` (no public URLs, type/size/hash checks), `Source`, `DerivedExtraction` kept separate                                              |
+| `maintenance.ts` | `MaintenanceSchedule`/`Interval`/`Item`; verification is decided from evidence plus exact applicability; `usableSchedule`                                                         |
+| `service.ts`     | `ServiceDraft` → `confirmServiceDraft(UserConfirmation)` is the only path to a confirmed `ServiceEvent`; only performed actions are stored                                        |
+| `garage.ts`      | `GarageRecommendation` (distinct type), `DeferredItem`, explainable `Alert` with required basis, handle/snooze                                                                    |

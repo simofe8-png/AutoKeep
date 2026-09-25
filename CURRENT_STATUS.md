@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M04 Domain
-- **Current task:** T036 (core vehicle/account value objects and stable IDs)
-- **Last verified PASS:** T035 — M03 PASS (UI frozen; see docs/ui-baseline)
-- **Next action:** build pure TypeScript domain model in src/domain (no React/IO)
+- **Milestone:** M05 Local-first Persistence
+- **Current task:** T043 (SQLite integration and migration framework)
+- **Last verified PASS:** T042 — M04 PASS
+- **Next action:** expo-sqlite + migration runner + Jest SQLite adapter
 
 ## Granted policies
 
@@ -40,4 +40,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M03` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M04` on `master` (local only, not pushed).
