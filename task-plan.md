@@ -20,12 +20,12 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T007 | RTL Hebrew foundation, typography, layout and design tokens. | TODO | |
-| T008 | Reusable buttons, inputs, cards, checkboxes, badges and dialogs. | TODO | |
-| T009 | Reusable loading, empty, error and verification-state components. | TODO | |
-| T010 | Navigation shell with four primary bottom destinations. | TODO | |
-| T011 | Active Vehicle Context UI. | TODO | |
-| T012 | Accessibility/responsive verification and M01 PASS. | TODO | |
+| T007 | RTL Hebrew foundation, typography, layout and design tokens. | PASS | src/ui/theme: tokens (white/light-blue palette, spacing, radii, 48dp touch target, Heebo typography scale, per-variant font-scale caps), rtl.ts (3-layer RTL: expo-localization forcesRTL plugin, LocaleProvider rtl, root direction rtl; logical textAlign per ADR-0006), fonts.ts (Heebo OFL). Device: RTL layout + Hebrew typography verified on SM-A546E (screens home/vehicles). rtl.test.ts green. |
+| T008 | Reusable buttons, inputs, cards, checkboxes, badges and dialogs. | PASS | src/ui/components: AppText, Icon, Button (variants/loading/disabled), IconButton (badge), Card, TextField (label/optional/error/suffix), Checkbox (checked=performed, a11y checkbox), Badge, Dialog (explicit/destructive confirm), SegmentedControl (action type radiogroup), ListRow, Layout (Screen/SectionHeader/Stack/Row). 9 RNTL tests (roles, disabled/busy state, touch target, toggle, confirm/cancel). |
+| T009 | Reusable loading, empty, error and verification-state components. | PASS | States.tsx: LoadingState, EmptyState, ErrorState (with actions, no dead ends), InlineNotice (in-context failure + corrective action), OfflineBanner (what resumes later); Verification.tsx: single vocabulary VerificationBadge (מאומת / חסר מידע / ממתין לאימות / לא ניתן לאמת) + ForecastValue always labeled צפי. 8 tests. |
+| T010 | Navigation shell with four primary bottom destinations. | PASS | src/app/(tabs) via expo-router/js-tabs: exactly 4 tabs בית/תחזוקה/היסטוריה/מסמכים with Hebrew a11y labels (replacing English 'tab, n of 4' suffix); alerts (bell) and settings (profile) as header secondary entries; unstable_settings initialRouteName=(tabs) so deep-link back returns into app (device-verified hardware back). navigation.test.tsx 3 tests; device: tab order RTL (בית rightmost). |
+| T011 | Active Vehicle Context UI. | PASS | ActiveVehicleContext (switch = context only; archived not selectable), ActiveVehicleChip (switcher entry, model+plate+odometer), VehicleTargetBanner (for high-impact actions), vehicles switcher screen, DemoDataStrip labeling mock data. Test: switch car→motorcycle updates header; device: switch verified on phone. |
+| T012 | Accessibility/responsive verification and M01 PASS. | PASS | A11y: roles/labels/states on all interactive components (tests), 48dp touch targets, font scaling with caps, colour never sole signal (badges have text). Responsive/device: SM-A546E 1080x2340 @450dpi, system font scale 1.3 — found+fixed: single-line title misaligned (ADR-0006), odometer & vehicle name truncation (2-line wrap), deep-link back exiting app. M01 gate: npm run verify green twice (5 suites/25 tests), Android bundle loads in Expo Go SDK 57. M01 PASS. |
 
 ## M02 Full UI Prototype
 

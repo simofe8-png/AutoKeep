@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M01 Design System
-- **Current task:** T007 (RTL Hebrew foundation, typography, layout, design tokens)
-- **Last verified PASS:** T006 — M00 PASS
-- **Next action:** build src/ui tokens and the RTL foundation
+- **Milestone:** M02 Full UI Prototype
+- **Current task:** T013 (Onboarding and registration/license scan UI)
+- **Last verified PASS:** T012 — M01 PASS
+- **Next action:** build onboarding flow screens on labeled mock data
 
 ## Granted policies
 
@@ -23,6 +23,9 @@ _Last updated: 2026-09-25_
 
 ## Open issues
 
+- Device: run Metro with `npm run start:device` (Node 24 localhost→::1 breaks Expo Go over adb reverse). Expo Go was installed on the user phone by Expo CLI (2026-09-25).
+- `@types/jest` 30 vs expected 29.5 (expo install --check); harmless for now, align in M03.
+
 - `npm audit`: 14 moderate advisories in the Expo template's transitive dependencies (dev tooling). Review in T166.
 
 ## Pending approval gates
@@ -31,4 +34,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commit: `M00: foundation` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`, `M01` on `master` (local only, not pushed).
