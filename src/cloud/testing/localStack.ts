@@ -40,8 +40,10 @@ export function adminClient(): SupabaseClient {
   return createClient(s.API_URL, s.SERVICE_ROLE_KEY, noPersist);
 }
 
-/** Creates a confirmed user and returns a client signed in as that user. */
-export async function userClient(tag: string): Promise<{ client: SupabaseClient; userId: string }> {
+/** Creates a confirmed user and returns a client signed in as that user (plus a way to sign in again). */
+export async function userClient(
+  tag: string,
+): Promise<{ client: SupabaseClient; userId: string; signInAgain: () => Promise<SupabaseClient> }> {
   const email = `${tag}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}@autokeep.test`;
   const password = `pw-${Math.random().toString(36).slice(2)}-A1!`;
   const admin = adminClient();
@@ -51,10 +53,13 @@ export async function userClient(tag: string): Promise<{ client: SupabaseClient;
     email_confirm: true,
   });
   if (error || !data.user) throw error ?? new Error('createUser failed');
-  const client = anonClient();
-  const signIn = await client.auth.signInWithPassword({ email, password });
-  if (signIn.error) throw signIn.error;
-  return { client, userId: data.user.id };
+  const signInAgain = async () => {
+    const c = anonClient();
+    const r = await c.auth.signInWithPassword({ email, password });
+    if (r.error) throw r.error;
+    return c;
+  };
+  return { client: await signInAgain(), userId: data.user.id, signInAgain };
 }
 
 export const uuid = (): string =>

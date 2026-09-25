@@ -9,6 +9,8 @@ import {
   type AdoptionBundle,
   type AdoptionTable,
 } from './bundle';
+import { writeShadow } from '@/sync/engine';
+import { toLocalRow } from '@/sync/mapping';
 
 /**
  * Local identity strategy (T067) and transactional local→account adoption (T069) with recovery
@@ -109,6 +111,9 @@ export async function adoptLocalData(
   };
   await writeState(db, pending, now());
 
+  // High-water mark of the sync outbox at snapshot time (changes after it remain queued).
+  const outboxMark =
+    (await db.first<{ m: number | null }>('SELECT MAX(seq) AS m FROM sync_outbox'))?.m ?? 0;
   const bundle = await buildAdoptionBundle(db);
 
   let inserted: Record<string, number>;
@@ -133,10 +138,15 @@ export async function adoptLocalData(
   }
 
   await db.transaction(async (tx) => {
-    await tx.run(
-      'UPDATE profiles SET account_user_id = ?, updated_at = ?, version = version + 1 WHERE id = ?',
-      [userId, now(), profileId],
-    );
+    // Local bookkeeping only: suppress sync triggers (the account link is never replicated).
+    await tx.run('UPDATE sync_control SET applying = 1 WHERE id = 1');
+    await tx.run('UPDATE profiles SET account_user_id = ? WHERE id = ?', [userId, profileId]);
+    // Everything up to the snapshot is now in the cloud; later changes stay queued for sync.
+    await tx.run('DELETE FROM sync_outbox WHERE seq <= ?', [outboxMark]);
+    for (const table of ADOPTION_TABLES) {
+      for (const row of bundle[table]) await writeShadow(tx, table, toLocalRow(table, row));
+    }
+    await tx.run('UPDATE sync_control SET applying = 0 WHERE id = 1');
   });
   const done: AdoptionState = {
     ...pending,

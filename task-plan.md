@@ -133,13 +133,13 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T072 | Sync protocol/version model. | TODO | |
-| T073 | Outbound queue. | TODO | |
-| T074 | Inbound synchronization. | TODO | |
-| T075 | Retry/idempotency. | TODO | |
-| T076 | Entity-aware conflict resolution. | TODO | |
-| T077 | Multi-device scenarios. | TODO | |
-| T078 | Offline-to-online acceptance and M09 PASS. | TODO | |
+| T072 | Sync protocol/version model. | PASS | ADR-0011 protocol: op model (op_id, table, op, base_version, row), versioned entities, append-only vs mutable classes, cursors on (server_updated_at,id), tombstones; shared local↔cloud mapping (src/sync/mapping.ts) reused by adoption; per-device profiles (cloud unique dropped, deviceProfileId pinned). |
+| T073 | Outbound queue. | PASS | Local migration v2: trigger-based outbox (same transaction), coalescing keeping original base_version + fresh op_id, applying flag suppression, vehicle-delete trigger. Tests (4): enqueue/coalesce/re-key, suppression, delete handling, atomic rollback with change. |
+| T074 | Inbound synchronization. | PASS | pullChanges: keyset cursor per table + tombstones, triggers suppressed, pending rows merged not overwritten, shadows maintained; supabaseSyncTransport. Cloud test: fresh second device restores all account data identical to device A. |
+| T075 | Retry/idempotency. | PASS | sync_push idempotent via sync_applied_ops ledger (cloud test: same op twice → applied then duplicate), outbox ack only if op_id unchanged, backoff with jitter 5s→15min (unit), network failure keeps outbox and returns retryInMs (cloud test). |
+| T076 | Entity-aware conflict resolution. | PASS | merge.ts entity-aware: append-only both kept, alerts monotonic (handled terminal), deferred resolution sticky, vehicles/profiles 3-way field merge vs sync_shadow with lifecycle group; conflicts recorded in sync_conflicts. Unit (5) + cloud (same-field conflict → later wins + recorded; handled vs snoozed → handled). |
+| T077 | Multi-device scenarios. | PASS | sync.cloud.test.ts multi-device: two SQLite devices on one account — independent services both kept, A archives car while B edits trim on same car → both preserved, no false conflicts; tombstone deletion propagates; negative control (shadows disabled) fails the archive assertion as expected. |
+| T078 | Offline-to-online acceptance and M09 PASS. | PASS | Offline→online acceptance: offline edits on both devices, sync in any order → converge, outboxes empty, no data loss; npm run test:cloud 21/21 (stable x3), npm run verify 15 suites/129 tests. M09 PASS. |
 
 ## M10 Official Source Discovery
 

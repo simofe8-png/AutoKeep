@@ -26,12 +26,18 @@ interface ProfileRow {
 export class ProfileRepository {
   constructor(private readonly db: Executor) {}
 
-  /** The single local profile on this device, created on first use (no registration needed). */
+  /**
+   * This device's own profile, created on first use (no registration needed). Other devices'
+   * profiles may arrive through sync, so the device's profile id is pinned in settings.
+   */
   async getOrCreate(ids: IdGenerator, now: Timestamp): Promise<LocalProfile> {
-    const existing = await this.db.first<ProfileRow>(
-      'SELECT * FROM profiles ORDER BY created_at LIMIT 1',
-    );
+    const settings = new SettingsRepository(this.db);
+    const pinned = await settings.get<string>('deviceProfileId');
+    const existing = pinned
+      ? await this.db.first<ProfileRow>('SELECT * FROM profiles WHERE id = ?', [pinned])
+      : await this.db.first<ProfileRow>('SELECT * FROM profiles ORDER BY created_at LIMIT 1');
     if (existing) {
+      if (!pinned) await settings.set('deviceProfileId', existing.id, now);
       return {
         id: existing.id as ProfileId,
         accountUserId: existing.account_user_id,
@@ -45,6 +51,7 @@ export class ProfileRepository {
       'INSERT INTO profiles (id, account_user_id, created_at, updated_at, version) VALUES (?, ?, ?, ?, ?)',
       [p.id, p.accountUserId, p.createdAt, p.updatedAt, p.version],
     );
+    await settings.set('deviceProfileId', p.id, now);
     return p;
   }
 }

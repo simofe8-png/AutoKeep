@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M09 Sync
-- **Current task:** T072 (sync protocol/version model)
-- **Last verified PASS:** T071 — M08 PASS
-- **Next action:** outbox + pull protocol design (ADR), migrations local v2 + cloud tombstones
+- **Milestone:** M10 Official Source Discovery
+- **Current task:** T079 (provider-independent discovery interface)
+- **Last verified PASS:** T078 — M09 PASS
+- **Next action:** discovery port + authority/applicability rules with fixtures; real search provider = approval gate
 
 ## Granted policies
 
@@ -48,4 +48,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M08` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M09` on `master` (local only, not pushed).
