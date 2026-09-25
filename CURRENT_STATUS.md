@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M07 Cloud Foundation
-- **Current task:** T058 (Supabase local/dev integration design)
-- **Last verified PASS:** T057 — M06 PASS
-- **Next action:** local Supabase via Docker (npx supabase), schema + RLS design
+- **Milestone:** M08 Account Migration
+- **Current task:** T067 (local identity strategy)
+- **Last verified PASS:** T066 — M07 PASS
+- **Next action:** local profile → account adoption design + transactional adoption
 
 ## Granted policies
 
@@ -22,6 +22,9 @@ _Last updated: 2026-09-25_
 - The project path contains Hebrew characters, so avoid local Gradle builds (ADR-0005).
 
 ## Open issues
+
+- Local Supabase: `npm run cloud:start` (ports 566xx; other local projects use 543xx/557xx — never stop them). Cloud tests: `npm run test:cloud`.
+- Intermittent UI test timeouts once under heavy load (Docker running); not reproduced in 3 runs — watch.
 
 - Acquisition (camera/picker) on-device verification deferred to M13 wiring (T106).
 - Candidate provider needing approval later: data.gov.il vehicle registry lookup by plate (privacy data flow) — ADR-0009.
@@ -41,8 +44,8 @@ _Last updated: 2026-09-25_
 
 ## Pending approval gates
 
-- none
+- none active. Deferred: hosted Supabase project creation (T065 → M24), real OCR/AI + registry providers (M10/M11).
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M06` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M07` on `master` (local only, not pushed).

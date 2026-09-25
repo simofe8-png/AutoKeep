@@ -22,3 +22,19 @@ jobs:
       - run: npm run verify
       - name: Bundle Android JS (smoke)
         run: npx expo export --platform android --output-dir dist
+
+  cloud-security:
+    # RLS / storage authorization tests against an ephemeral local Supabase stack (no cloud resources).
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx supabase start
+      - run: npm run test:cloud
+      - if: always()
+        run: npx supabase stop --no-backup

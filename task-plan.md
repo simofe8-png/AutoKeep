@@ -107,15 +107,15 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T058 | Supabase local/dev integration design. | TODO | |
-| T059 | PostgreSQL schema and migrations. | TODO | |
-| T060 | Authentication integration. | TODO | |
-| T061 | Ownership/authorization/RLS. | TODO | |
-| T062 | Private document storage. | TODO | |
-| T063 | Server-side API/security boundaries. | TODO | |
-| T064 | Local security tests. | TODO | |
-| T065 | APPROVAL GATE for material external Supabase resources/migrations when required. | TODO | |
-| T066 | Cloud verification and M07 PASS. | TODO | |
+| T058 | Supabase local/dev integration design. | PASS | docs/cloud/SUPABASE.md: local (Docker) vs hosted (gated) environments, data mapping, ownership model, RLS, storage, auth, server boundary, tests. Local stack via pinned supabase CLI 2.118.0 on ports 566xx (coexists with other local projects), unneeded services disabled for 4GB Docker VM. |
+| T059 | PostgreSQL schema and migrations. | PASS | supabase/migrations/20260926000001_initial_schema.sql: Postgres schema mirroring SQLite (typed dates/timestamptz/jsonb, CHECKs), owner_id everywhere, composite (vehicle_id, owner_id) FKs, server_updated_at + owner-immutability triggers. Applied by supabase start/db reset. |
+| T060 | Authentication integration. | PASS | src/cloud/client.ts (supabase-js, anon key only, PKCE, session in expo-secure-store via chunked adapter), auth.ts (email OTP request/verify, error mapping, sign-out). secureSessionStorage.test.ts (3): >2KB sessions, cleanup, partial-write safety. |
+| T061 | Ownership/authorization/RLS. | PASS | RLS enabled+forced on all 12 tables, owner policies for select/insert/update/delete, anon revoked; composite FK blocks client-supplied foreign vehicle_id. Cloud tests: cross-user select/update/delete/insert denied, forged owner_id denied, owner immutable; negative control (leaky policy) detected by suite. |
+| T062 | Private document storage. | PASS | Private bucket 'documents' (public=false, 50MB, MIME allow-list), path {owner}/{vehicle}/{doc} policies via can_access_document_path. Cloud tests: owner upload + signed URL, public URL refused, cross-user download/sign/list/overwrite denied, foreign-vehicle folder denied, text/html rejected. |
+| T063 | Server-side API/security boundaries. | PASS | Boundary: client = anon key + JWT under RLS; RPC vehicle_deletion_preview/delete_vehicle_permanently SECURITY INVOKER (cloud-tested ownership); service role server-only; secrets-boundary.test.ts scans app sources for service_role/sb_secret/JWT_SECRET/EXPO_PUBLIC secrets (none). |
+| T064 | Local security tests. | PASS | npm run test:cloud (jest.cloud.config.js, real Node fetch) — rls.cloud.test.ts 11/11 against local stack with two real users; negative control failed as expected then db reset → 11/11; CI job cloud-security added (ephemeral local stack). |
+| T065 | APPROVAL GATE for material external Supabase resources/migrations when required. | PASS — gate not triggered | No material external Supabase resources were needed: all M07 work and upcoming M08/M09 tests run on the local Docker stack. Creating a hosted Supabase project (account/region/plan/cost/data residency) remains an approval gate, deferred to release (M24) and will be requested before any creation. |
+| T066 | Cloud verification and M07 PASS. | PASS | M07 gate: npm run verify green (13 suites/109 tests; one earlier run had 5 load-related failures not reproduced in 3 subsequent runs — tracked), npm run test:cloud 11/11, docs + ADR updated. M07 PASS. |
 
 ## M08 Account Migration
 

@@ -4,7 +4,7 @@ module.exports = {
   // Router-tree renders on Windows CI/dev machines can exceed the 5s default on a cold cache.
   testTimeout: 20000,
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testPathIgnorePatterns: ['/node_modules/', '/AutoKeep_Bootstrap_Package/'],
+  testPathIgnorePatterns: ['/node_modules/', '/AutoKeep_Bootstrap_Package/', '\.cloud\.test\.ts$'],
   moduleNameMapper: {
     '^@/assets/(.*)$': '<rootDir>/assets/$1',
     '^@/(.*)$': '<rootDir>/src/$1',
