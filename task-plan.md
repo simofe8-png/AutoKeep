@@ -80,14 +80,14 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T043 | SQLite integration and migration framework. | TODO | |
-| T044 | Vehicle repository and active-vehicle persistence. | TODO | |
-| T045 | Odometer repository/history. | TODO | |
-| T046 | Maintenance/document repositories. | TODO | |
-| T047 | Service/history repositories. | TODO | |
-| T048 | Alerts/settings persistence. | TODO | |
-| T049 | Vehicle archive lifecycle persistence. | TODO | |
-| T050 | Restart/offline/isolation tests and M05 PASS. | TODO | |
+| T043 | SQLite integration and migration framework. | PASS | SqlDatabase port; expo-sqlite adapter (WAL, FK on, exclusive serialized tx); sql.js test adapter; forward-only migration runner + schema v1. migrations.test.ts (5): idempotent, vehicle_id NOT NULL on all scoped tables, atomic rollback, refuses newer DB, FK enforced. On device (Expo Go, SM-A546E) /dev/db-check: MIGRATE 0->1, ROLLBACK OK. ADR-0008. |
+| T044 | Vehicle repository and active-vehicle persistence. | PASS | ProfileRepository.getOrCreate, VehicleRepository (insert/update optimistic version/get/list active|all), ActiveVehicleStore (persisted pointer, only active vehicles). Tests: round-trip, ConcurrencyError, switch changes pointer only. Device: active=true after reopen. |
+| T045 | Odometer repository/history. | PASS | OdometerRepository add/listForVehicle/latest; test: independent per-vehicle readings and dates. |
+| T046 | Maintenance/document repositories. | PASS | ScheduleRepository (append-only, current(vehicleId)), DocumentRepository (original file columns), ExtractionRepository (separate table). Tests: schedule round-trip incl. verification, original vs derived kept separate. |
+| T047 | Service/history repositories. | PASS | ServiceRepository: atomic event+ordered actions+doc links, list sorted history, get(vehicleId,id); refuses cross-vehicle document link with full rollback (test). |
+| T048 | Alerts/settings persistence. | PASS | AlertRepository (basis json, status update w/ version, ownerOf for deep links), GarageRecommendationRepository, DeferredItemRepository.listOpen, SettingsRepository. Tests. |
+| T049 | Vehicle archive lifecycle persistence. | PASS | persistence/lifecycle.ts archive/restore (keeps all data, clears active pointer) + VehicleRepository.deletionPreview/deletePermanently (atomic cascade, only that vehicle). Tests. |
+| T050 | Restart/offline/isolation tests and M05 PASS. | PASS | M05 gate: restart test (export bytes → reopen → migrate no-op → data + active vehicle intact), zero cross-vehicle leakage test across documents/services/recs/deferred/alerts; device restart simulation via /dev/db-check REOPEN vehicle=true active=true, UUID OK, DBCHECK PASS; npm run verify green (10 suites/86 tests); Android export OK. M05 PASS. |
 
 ## M06 Vehicle Identification
 

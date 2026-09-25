@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M05 Local-first Persistence
-- **Current task:** T043 (SQLite integration and migration framework)
-- **Last verified PASS:** T042 — M04 PASS
-- **Next action:** expo-sqlite + migration runner + Jest SQLite adapter
+- **Milestone:** M06 Vehicle Identification
+- **Current task:** T051 (camera/file acquisition boundary)
+- **Last verified PASS:** T050 — M05 PASS
+- **Next action:** provider-independent acquisition boundary (expo-image-picker / document-picker)
 
 ## Granted policies
 
@@ -22,6 +22,8 @@ _Last updated: 2026-09-25_
 - The project path contains Hebrew characters, so avoid local Gradle builds (ADR-0005).
 
 ## Open issues
+
+- adb can wedge after long sessions: bound every adb call with `timeout`; recover with `Stop-Process adb` + `adb start-server` (start-device.mjs now times out adb reverse).
 
 - UI is FROZEN (ADR-0007, docs/ui-baseline). Backend work must feed the existing screens without redesign.
 - Native-RTL release build must re-verify TextInput alignment and text rules (M24 T182).
@@ -40,4 +42,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M04` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M05` on `master` (local only, not pushed).

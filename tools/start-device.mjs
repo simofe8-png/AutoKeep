@@ -7,7 +7,11 @@ import { execFileSync, spawn } from 'node:child_process';
 
 const port = process.env.RCT_METRO_PORT ?? '8081';
 try {
-  execFileSync('adb', ['reverse', `tcp:${port}`, `tcp:${port}`], { stdio: 'inherit' });
+  // Bounded: a wedged adb server must fail fast instead of hanging the dev workflow.
+  execFileSync('adb', ['reverse', `tcp:${port}`, `tcp:${port}`], {
+    stdio: 'inherit',
+    timeout: 20_000,
+  });
 } catch {
   console.error('adb reverse failed — is the phone connected with USB debugging enabled?');
   process.exit(1);

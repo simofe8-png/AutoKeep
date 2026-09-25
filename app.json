@@ -41,7 +41,8 @@
         {
           "forcesRTL": true
         }
-      ]
+      ],
+      "expo-sqlite"
     ],
     "experiments": {
       "reactCompiler": true
