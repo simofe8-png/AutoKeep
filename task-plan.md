@@ -122,11 +122,11 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T067 | Local identity strategy. | TODO | |
-| T068 | Delayed account-creation flow. | TODO | |
-| T069 | Transactional local-to-account adoption. | TODO | |
-| T070 | Recovery/failure handling. | TODO | |
-| T071 | No-data-loss tests and M08 PASS. | TODO | |
+| T067 | Local identity strategy. | PASS | Local identity: device LocalProfile owns all data pre-account (accountUserId null), adoption state machine none/pending/adopted persisted in settings; bundle maps every local table to cloud columns excluding device-only settings. Tests (2). |
+| T068 | Delayed account-creation flow. | PASS | account/offer.ts accountOfferDecision: not on first use or vehicle-only, shown once history/documents exist, 14-day snooze on 'not now', hidden with account. Tests (2). UI wiring of real OTP flow scheduled with M13/M19 (account screen already framed as backup). |
+| T069 | Transactional local-to-account adoption. | PASS | Migration 20260926000002 RPC adopt_local_data(jsonb): single transaction, SECURITY INVOKER (RLS + composite FKs), dynamic column lists, ON CONFLICT DO NOTHING; adoptLocalData with read-back verification before linking profile; supabaseAdoptionCloud adapter. Unit + cloud tests. |
+| T070 | Recovery/failure handling. | PASS | Recovery: pending persisted across restart (tested via DB export/reopen), network/not_signed_in/server_rejected/verification_mismatch all non-destructive and retryable, different_account refused, local history unchanged by adoption. Tests (5). |
+| T071 | No-data-loss tests and M08 PASS. | PASS | adoption.cloud.test.ts (4) on local Supabase: every row uploaded with field-level equality + idempotent retry; invalid row → entire bundle rolled back (0 rows); adopted data invisible to others; hostile id collision → safe pending, no leak. npm run test:cloud 15/15, npm run verify 14 suites/119 tests. ADR-0010. M08 PASS. |
 
 ## M09 Sync
 

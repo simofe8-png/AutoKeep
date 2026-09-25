@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M08 Account Migration
-- **Current task:** T067 (local identity strategy)
-- **Last verified PASS:** T066 — M07 PASS
-- **Next action:** local profile → account adoption design + transactional adoption
+- **Milestone:** M09 Sync
+- **Current task:** T072 (sync protocol/version model)
+- **Last verified PASS:** T071 — M08 PASS
+- **Next action:** outbox + pull protocol design (ADR), migrations local v2 + cloud tombstones
 
 ## Granted policies
 
@@ -48,4 +48,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M07` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M08` on `master` (local only, not pushed).
