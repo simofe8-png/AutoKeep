@@ -5,9 +5,9 @@ _Last updated: 2026-09-25_
 ## Position
 
 - **Milestone:** M10 Official Source Discovery
-- **Current task:** T079 (provider-independent discovery interface)
-- **Last verified PASS:** T078 — M09 PASS
-- **Next action:** discovery port + authority/applicability rules with fixtures; real search provider = approval gate
+- **Current task:** T081 — ⏸ APPROVAL GATE G1 (external providers)
+- **Last verified PASS:** T085 (T079/T080/T082–T085 PASS; T086 fixtures green)
+- **Next action:** WAIT for user decision on docs/gates/G1-providers.md; then implement approved provider adapters (Edge Function), seed verified official-domain registry, finish T081/T086 → M10 PASS, continue M11.
 
 ## Granted policies
 
@@ -44,8 +44,9 @@ _Last updated: 2026-09-25_
 
 ## Pending approval gates
 
-- none active. Deferred: hosted Supabase project creation (T065 → M24), real OCR/AI + registry providers (M10/M11).
+- **G1 (ACTIVE):** discovery provider + OCR/AI extraction provider (+ optional data.gov.il registry) — docs/gates/G1-providers.md.
+- Deferred: hosted Supabase project creation (T065 → needed for production Edge Functions / M24).
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M09` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M09` + `M10 (partial, pre-gate)` on `master` (local only, not pushed).

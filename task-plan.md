@@ -146,14 +146,14 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T079 | Provider-independent discovery interface. | TODO | |
-| T080 | Source authority/classification rules. | TODO | |
-| T081 | Manufacturer/official-importer source discovery. | TODO | |
-| T082 | Exact vehicle applicability matching. | TODO | |
-| T083 | Document retrieval/versioning. | TODO | |
-| T084 | Provenance capture. | TODO | |
-| T085 | Uncertain/no-source handling. | TODO | |
-| T086 | Discovery fixtures/tests and M10 PASS. | TODO | |
+| T079 | Provider-independent discovery interface. | PASS | src/discovery/types.ts: VehicleIdentityQuery, SourceCandidate, DiscoveryProvider port, DocumentCoverage (facts from document itself, never guessed). |
+| T080 | Source authority/classification rules. | PASS | authority.ts: authority only from HTTPS host ∈ verified official-domain registry (manufacturer > importer), lookalike/credentials-in-URL/other-manufacturer rejected; shipped registry intentionally empty until verified (no guessing). Tests (3). |
+| T081 | Manufacturer/official-importer source discovery. | GATE — G1 | Discovery orchestration implemented & tested with fixtures (pipeline.ts); a REAL discovery provider requires approval (cost/privacy/lock-in) — see docs/gates/G1-providers.md. Not marked PASS: no real discovery is operational yet. |
+| T082 | Exact vehicle applicability matching. | PASS | applicability.ts: exact only when manufacturer/model/year/engine/modelCode/market proven from document coverage; hard mismatch vs not_proven (missing/ambiguous facts never assumed); engine normalization. Tests (4). |
+| T083 | Document retrieval/versioning. | PASS | retrieval.ts: HTTPS + final URL must stay official, PDF only, size/empty/hash checks; versioning appends new version on content change, never overwrites. Tests (2). |
+| T084 | Provenance capture. | PASS | pipeline.ts produces Evidence {authority, reference.sourceId, exactApplicability} + retrievedAt for ADR-0003 provenance; tested. |
+| T085 | Uncertain/no-source handling. | PASS | Uncertain/no-source: not_found (with rejected reasons / providerError) and pending (official but not exact) — never verified by assumption, no schedule invented; poisoning test (unofficial 'OFFICIAL manual' rejected). Tests (4). |
+| T086 | Discovery fixtures/tests and M10 PASS. | BLOCKED — awaiting G1 | discovery.test.ts 14 fixture tests green (reserved .test domains); npm run verify green. M10 PASS blocked only by T081 provider approval (G1). |
 
 ## M11 Document Intelligence
 

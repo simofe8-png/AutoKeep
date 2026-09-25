@@ -22,7 +22,12 @@ module.exports = defineConfig([
   },
   {
     // The domain and engine are pure TypeScript: no UI, platform or I/O dependencies.
-    files: ['src/domain/**/*.ts', 'src/engine/**/*.ts', 'src/identification/**/*.ts'],
+    files: [
+      'src/domain/**/*.ts',
+      'src/engine/**/*.ts',
+      'src/identification/**/*.ts',
+      'src/discovery/**/*.ts',
+    ],
     rules: {
       'no-restricted-imports': [
         'error',
