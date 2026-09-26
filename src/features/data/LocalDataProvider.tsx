@@ -35,11 +35,24 @@ class StoreRuntime {
     this.store = store;
   }
 
+  /** A read that waits for pending writes (so it sees them); failures yield the fallback. */
+  read<T>(op: (s: LocalStore) => Promise<T>, fallback: T): Promise<T> {
+    return this.queue.then(async () => {
+      const s = this.store;
+      if (!s) return fallback;
+      try {
+        return await op(s);
+      } catch {
+        return fallback;
+      }
+    });
+  }
+
   /** Runs a write after all earlier writes, then reports a fresh snapshot. */
   write(
     op: (s: LocalStore) => Promise<unknown>,
     onSnapshot: (s: Snapshot) => void,
-    onWriteFailed: () => void,
+    onWriteFailed: (e: unknown) => void,
     onReadFailed: () => void,
   ) {
     this.queue = this.queue.then(async () => {
@@ -47,8 +60,9 @@ class StoreRuntime {
       if (!s) return;
       try {
         await op(s);
-      } catch {
-        onWriteFailed();
+      } catch (e) {
+        if (__DEV__) console.warn('AutoKeep: write failed', e);
+        onWriteFailed(e);
       }
       try {
         onSnapshot(await s.snapshot());
@@ -72,7 +86,7 @@ export function LocalDataProvider({
   children,
 }: LocalDataProviderProps) {
   const [phase, setPhase] = useState<Phase>({ kind: 'loading' });
-  const [saveFailed, setSaveFailed] = useState(false);
+  const [saveFailed, setSaveFailed] = useState<string | null>(null);
   const [account, setAccount] = useState<AccountState>({ hasAccount: false });
   const [network, setNetwork] = useState<NetworkMode>('online');
   const [runtime] = useState(() => new StoreRuntime());
@@ -106,7 +120,8 @@ export function LocalDataProvider({
       runtime.write(
         op,
         (next) => setPhase({ kind: 'ready', snapshot: next }),
-        () => setSaveFailed(true),
+        // Dev builds show the technical cause to speed up diagnosis; users see plain language.
+        (e) => setSaveFailed(__DEV__ ? String(e) : ''),
         () => setPhase({ kind: 'failed' }),
       );
     return {
@@ -139,6 +154,10 @@ export function LocalDataProvider({
       addServiceEvent: (e, attachment) => write((s) => s.addServiceEvent(e, attachment)),
       setAlertHandled: (vid, aid) => write((s) => s.setAlertHandled(vid, aid)),
       addGarageRecommendation: (r) => write((s) => s.addGarageRecommendation(r)),
+      addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
+      // Reads of the original go straight to the store (no snapshot change).
+      getOriginal: (vid, did) => runtime.read((s) => s.original(vid, did), null),
+      openOriginal: (vid, did) => runtime.read((s) => s.openOriginal(vid, did), false),
       network,
       setNetwork,
       account,
@@ -172,13 +191,18 @@ export function LocalDataProvider({
     <DataCtx.Provider value={value}>
       {children}
       <Dialog
-        visible={saveFailed}
+        visible={saveFailed !== null}
         testID="data-save-failed"
         title={he.states.genericErrorTitle}
-        message={he.data.saveFailed}
+        message={
+          saveFailed
+            ? `${he.data.saveFailed}
+${saveFailed}`
+            : he.data.saveFailed
+        }
         confirmLabel={he.common.close}
-        onConfirm={() => setSaveFailed(false)}
-        onCancel={() => setSaveFailed(false)}
+        onConfirm={() => setSaveFailed(null)}
+        onCancel={() => setSaveFailed(null)}
       />
     </DataCtx.Provider>
   );

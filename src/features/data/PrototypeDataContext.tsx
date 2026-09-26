@@ -10,7 +10,14 @@ import {
   type AppDataValue,
   type NetworkMode,
 } from './DataContext';
-import type { AlertVM, GarageRecommendationVM, ServiceEventVM, VehicleDataBundle } from './types';
+import { uploadAuthority } from './documentUpload';
+import type {
+  AlertVM,
+  DocumentKind,
+  GarageRecommendationVM,
+  ServiceEventVM,
+  VehicleDataBundle,
+} from './types';
 
 /**
  * PROTOTYPE data provider — labeled mock data held in memory (demo mode and UI tests). The app's
@@ -128,6 +135,27 @@ export function PrototypeDataProvider({
     [updateBundle],
   );
 
+  const addDocument = useCallback(
+    (vehicleId: string, attachment: AttachmentInput, kind: DocumentKind) =>
+      updateBundle(vehicleId, (b) => ({
+        ...b,
+        documents: [
+          {
+            id: attachment.documentId,
+            vehicleId,
+            kind,
+            title: attachment.title,
+            addedAt: new Date().toISOString().slice(0, 10),
+            authority: uploadAuthority(kind),
+            verification: 'pending' as const,
+            extraction: 'none' as const,
+          },
+          ...b.documents,
+        ],
+      })),
+    [updateBundle],
+  );
+
   const value = useMemo<AppDataValue>(
     () => ({
       vehicles,
@@ -140,6 +168,10 @@ export function PrototypeDataProvider({
       addServiceEvent,
       setAlertHandled,
       addGarageRecommendation,
+      addDocument,
+      // Prototype documents have no stored file.
+      getOriginal: async () => null,
+      openOriginal: async () => false,
       network,
       setNetwork,
       account,
@@ -156,6 +188,7 @@ export function PrototypeDataProvider({
       addServiceEvent,
       setAlertHandled,
       addGarageRecommendation,
+      addDocument,
       network,
       account,
       isDemoData,

@@ -311,6 +311,17 @@ export const he = {
     addedAt: 'נוסף',
     uploadUnavailable: 'העלאת קבצים תתווסף בשלב חיבור המצלמה והקבצים.',
     source: 'סוג מקור',
+    chooseKind: 'איזה מסמך זה?',
+    uploadTitle: (kind: string, date: string) => `${kind} — ${date}`,
+    uploadedNote: 'הועלה על ידך. מסמך שהועלה אינו נחשב מקור רשמי מאומת.',
+    integrity: {
+      intact: 'הקובץ המקורי נבדק — זהה לקובץ שנשמר',
+      modified: 'הקובץ המקורי השתנה מאז שנשמר — אין להסתמך עליו',
+      missing: 'הקובץ המקורי אינו זמין במכשיר',
+    },
+    noFile: 'למסמך זה אין קובץ שמור במכשיר.',
+    openFailed: 'לא ניתן לפתוח את הקובץ במכשיר זה.',
+    evidenceLocation: 'מיקום הראיה במסמך',
   },
   alerts: {
     title: 'התראות',

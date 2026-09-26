@@ -33,7 +33,11 @@ export default function MaintenanceScreen() {
   const router = useRouter();
   const { activeVehicle } = useActiveVehicle();
   const { schedule, alerts } = useVehicleData(activeVehicle?.id ?? null);
-  const openSource = (documentId: string) => router.push(`/documents/${documentId}`);
+  // Evidence links open the document at the exact locator (page / section / table).
+  const openSource = (documentId: string, locator?: string) =>
+    router.push(
+      `/documents/${documentId}${locator ? `?locator=${encodeURIComponent(locator)}` : ''}`,
+    );
   const alertCount = alerts.filter((a) => !a.handled).length;
 
   return (

@@ -45,8 +45,14 @@ import {
 } from '@/persistence';
 
 import { toBundle, toVehicleSummary, type VehicleRecords } from './adapters';
-import type { AttachmentInput } from './DataContext';
-import type { GarageRecommendationVM, ServiceEventVM, VehicleDataBundle } from './types';
+import type { AttachmentInput, OriginalView } from './DataContext';
+import { uploadAuthority } from './documentUpload';
+import type {
+  DocumentKind,
+  GarageRecommendationVM,
+  ServiceEventVM,
+  VehicleDataBundle,
+} from './types';
 
 /**
  * Local (SQLite) data store behind the approved UI (M13). Reads load persisted domain records,
@@ -387,6 +393,58 @@ export class LocalStore {
       );
       if (reading.ok) await odo.add(reading.value);
     });
+  }
+
+  /** T122: stores an uploaded document; the original is retained, nothing is extracted. */
+  async addDocument(vehicleId: string, attachment: AttachmentInput, kind: DocumentKind) {
+    if (!this.files) throw new Error('No original-file storage configured');
+    const stored = await this.files.importFile(attachment.file);
+    const created = createDocument(
+      {
+        vehicleId: vehicleId as VehicleId,
+        kind,
+        title: attachment.title,
+        origin: attachment.file.source === 'camera' ? 'camera_scan' : 'user_upload',
+        authority: uploadAuthority(kind),
+        original: {
+          storageKey: stored.storageKey,
+          mimeType: stored.mimeType,
+          sizeBytes: stored.sizeBytes,
+          sha256: stored.sha256,
+        },
+      },
+      preferId(attachment.documentId, this.ids),
+      this.clock.now(),
+    );
+    try {
+      await new DocumentRepository(this.db).add(must(created));
+    } catch (e) {
+      await this.files.remove(stored.storageKey);
+      throw e;
+    }
+  }
+
+  /** T123/T125: the stored original, re-hashed against the hash recorded at import. */
+  async original(vehicleId: string, documentId: string): Promise<OriginalView | null> {
+    const doc = await new DocumentRepository(this.db).get(
+      vehicleId as VehicleId,
+      documentId as VehicleDocument['id'],
+    );
+    if (!doc || !this.files) return null;
+    return {
+      uri: this.files.uriFor(doc.original.storageKey),
+      mimeType: doc.original.mimeType,
+      integrity: await this.files.verify(doc.original.storageKey, doc.original.sha256),
+    };
+  }
+
+  async openOriginal(vehicleId: string, documentId: string): Promise<boolean> {
+    const doc = await new DocumentRepository(this.db).get(
+      vehicleId as VehicleId,
+      documentId as VehicleDocument['id'],
+    );
+    if (!doc || !this.files) return false;
+    return this.files.open(doc.original.storageKey, doc.original.mimeType);
   }
 
   async setAlertHandled(vehicleId: string, alertId: string): Promise<void> {

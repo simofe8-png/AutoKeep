@@ -12,11 +12,17 @@ export interface StoredOriginal {
   sha256: string;
 }
 
+/** Result of re-hashing a stored original against the hash recorded when it was imported. */
+export type Integrity = 'intact' | 'modified' | 'missing';
+
 export interface OriginalFileStore {
   importFile(file: AcquiredFile): Promise<StoredOriginal>;
   /** Local URI for viewing the original (app sandbox). */
   uriFor(storageKey: string): string;
   remove(storageKey: string): Promise<void>;
+  verify(storageKey: string, sha256: string): Promise<Integrity>;
+  /** Hands the original to the system viewer (share sheet); false if it cannot be opened. */
+  open(storageKey: string, mimeType: string): Promise<boolean>;
 }
 
 const EXT: Record<string, string> = {
@@ -64,5 +70,24 @@ export class MemoryFileStore implements OriginalFileStore {
 
   async remove(storageKey: string) {
     this.files.delete(storageKey);
+  }
+
+  /** Simulates tampering with a stored original (tests). */
+  corrupt(storageKey: string) {
+    const f = this.files.get(storageKey);
+    if (f) this.files.set(storageKey, { ...f, sha256: 'f'.repeat(64) });
+  }
+
+  async verify(storageKey: string, sha256: string): Promise<Integrity> {
+    const f = this.files.get(storageKey);
+    if (!f) return 'missing';
+    return f.sha256 === sha256 ? 'intact' : 'modified';
+  }
+
+  readonly opened: string[] = [];
+  async open(storageKey: string): Promise<boolean> {
+    if (!this.files.has(storageKey)) return false;
+    this.opened.push(storageKey);
+    return true;
   }
 }

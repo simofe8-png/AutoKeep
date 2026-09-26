@@ -104,6 +104,8 @@ export interface DocumentVM {
   extraction: ExtractionStatus;
   /** Short note on derived data (kept separate from the original). */
   extractionNote?: string;
+  /** Type of the stored original file (absent for prototype documents without a file). */
+  mimeType?: string;
 }
 
 export type AlertKind = 'upcoming' | 'overdue' | 'deferred' | 'stale_odometer';

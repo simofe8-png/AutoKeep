@@ -1,8 +1,8 @@
 import { useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Image, StyleSheet, View } from 'react-native';
 
-import { useAppData } from '@/features/data/DataContext';
+import { useAppData, type OriginalView } from '@/features/data/DataContext';
 import { documentIcon } from '@/features/documents/icons';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
@@ -31,12 +31,27 @@ import {
  * things. Evidence links in the app point here with an exact locator where possible.
  */
 export default function DocumentDetailScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle } = useAppData();
-  const [openInfo, setOpenInfo] = useState(false);
+  const { id, locator } = useLocalSearchParams<{ id: string; locator?: string }>();
+  const { vehicles, getBundle, getOriginal, openOriginal } = useAppData();
+  const [openInfo, setOpenInfo] = useState<string | null>(null);
+  const [original, setOriginal] = useState<OriginalView | null | undefined>(undefined);
 
   const owner = vehicles.find((v) => getBundle(v.id).documents.some((d) => d.id === id));
   const doc = owner ? getBundle(owner.id).documents.find((d) => d.id === id) : undefined;
+  const ownerId = owner?.id;
+
+  // T123/T125: load the stored original and re-verify it against the hash recorded at import.
+  useEffect(() => {
+    let cancelled = false;
+    if (ownerId && id) {
+      void getOriginal(ownerId, id).then((o) => {
+        if (!cancelled) setOriginal(o);
+      });
+    }
+    return () => {
+      cancelled = true;
+    };
+  }, [ownerId, id, getOriginal]);
 
   if (!owner || !doc) {
     return (
@@ -49,11 +64,28 @@ export default function DocumentDetailScreen() {
   return (
     <Screen testID="screen-document-detail" header={<ScreenHeader title={doc.title} />}>
       <VehicleTargetBanner vehicle={owner} label={he.alerts.vehicle} />
+      {locator ? (
+        <InlineNotice
+          testID="document-evidence-locator"
+          tone="info"
+          title={he.documents.evidenceLocation}
+          message={locator}
+        />
+      ) : null}
 
       <Card testID="document-original">
         <SectionHeader title={he.documents.original} />
         <View style={styles.preview} accessible accessibilityLabel={doc.title}>
-          <Icon name={documentIcon[doc.kind]} size={48} color="primary" />
+          {original && original.integrity === 'intact' && original.mimeType.startsWith('image/') ? (
+            <Image
+              testID="document-original-image"
+              source={{ uri: original.uri }}
+              style={styles.image}
+              resizeMode="contain"
+            />
+          ) : (
+            <Icon name={documentIcon[doc.kind]} size={48} color="primary" />
+          )}
           <AppText variant="smallStrong" align="center">
             {doc.title}
           </AppText>
@@ -64,9 +96,18 @@ export default function DocumentDetailScreen() {
           ) : null}
         </View>
         <Stack gap={spacing.sm}>
-          <AppText variant="small" color="textMuted">
-            {he.documents.originalHint}
-          </AppText>
+          {original ? (
+            <Badge
+              testID={`document-integrity-${original.integrity}`}
+              label={he.documents.integrity[original.integrity]}
+              tone={original.integrity === 'intact' ? 'success' : 'danger'}
+              icon={original.integrity === 'intact' ? 'shield-check-outline' : 'alert-outline'}
+            />
+          ) : (
+            <AppText variant="small" color="textMuted">
+              {original === null ? he.documents.noFile : he.documents.originalHint}
+            </AppText>
+          )}
           <Row style={styles.wrap}>
             <VerificationBadge state={doc.verification} />
             <Badge
@@ -82,9 +123,16 @@ export default function DocumentDetailScreen() {
             label={he.documents.openOriginal}
             icon="open-in-new"
             variant="secondary"
-            onPress={() => setOpenInfo(true)}
+            disabled={original?.integrity === 'missing'}
+            onPress={async () => {
+              if (!original) return setOpenInfo(he.documents.noFile);
+              const ok = await openOriginal(owner.id, doc.id);
+              setOpenInfo(ok ? null : he.documents.openFailed);
+            }}
           />
-          {openInfo ? <InlineNotice tone="info" message={he.documents.uploadUnavailable} /> : null}
+          {openInfo ? (
+            <InlineNotice testID="document-open-info" tone="info" message={openInfo} />
+          ) : null}
         </Stack>
       </Card>
 
@@ -105,6 +153,7 @@ export default function DocumentDetailScreen() {
 
 const styles = StyleSheet.create({
   wrap: { flexWrap: 'wrap' },
+  image: { width: '100%', height: 220 },
   preview: {
     alignItems: 'center',
     gap: spacing.xs,

@@ -259,6 +259,7 @@ export function toDocumentVM(
     authority: d.authority,
     verification: d.verification ? displayState(d.verification.state) : 'pending',
     extraction: latest ? EXTRACTION_STATUS[latest.status] : 'none',
+    mimeType: d.original.mimeType,
   };
 }
 

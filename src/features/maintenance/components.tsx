@@ -183,7 +183,7 @@ export function MaintenanceItemRow({
   onOpenSource,
 }: {
   item: MaintenanceItemVM;
-  onOpenSource?: (documentId: string) => void;
+  onOpenSource?: (documentId: string, locator?: string) => void;
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -223,7 +223,7 @@ export function MaintenanceItemRow({
               source={item.source}
               onOpen={
                 item.source.documentId && onOpenSource
-                  ? () => onOpenSource(item.source!.documentId!)
+                  ? () => onOpenSource(item.source!.documentId!, item.source!.locator)
                   : undefined
               }
             />
@@ -239,7 +239,7 @@ export function MaintenanceItemList({
   onOpenSource,
 }: {
   items: MaintenanceItemVM[];
-  onOpenSource?: (documentId: string) => void;
+  onOpenSource?: (documentId: string, locator?: string) => void;
 }) {
   return (
     <View>

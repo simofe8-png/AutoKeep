@@ -1,4 +1,7 @@
+import * as Crypto from 'expo-crypto';
 import * as DocumentPicker from 'expo-document-picker';
+import { Directory, Paths } from 'expo-file-system';
+import * as LegacyFileSystem from 'expo-file-system/legacy';
 import * as ImagePicker from 'expo-image-picker';
 
 import {
@@ -37,6 +40,15 @@ const IMAGE_OPTIONS: ImagePicker.ImagePickerOptions = {
   allowsEditing: false,
 };
 
+/** Copies an acquired file into the app's private cache and returns the new file URI. */
+async function toPrivateCache(uri: string): Promise<string> {
+  const dir = new Directory(Paths.cache, 'acquired');
+  if (!dir.exists) dir.create({ intermediates: true });
+  const to = `${dir.uri.replace(/\/?$/, '/')}${Crypto.randomUUID()}`;
+  await LegacyFileSystem.copyAsync({ from: uri, to });
+  return to;
+}
+
 /** expo-image-picker / expo-document-picker implementation (bundled in Expo Go). */
 export const expoAcquisition: AcquisitionProvider = {
   async captureWithCamera() {
@@ -60,16 +72,28 @@ export const expoAcquisition: AcquisitionProvider = {
 
   async pickDocument() {
     try {
+      // The picker's own cache copy can land outside this app's scoped storage (device-verified
+      // in Expo Go), so take the content URI and copy it into our private cache ourselves.
       const r = await DocumentPicker.getDocumentAsync({
         type: [...ACCEPTED_DOCUMENT_TYPES],
-        copyToCacheDirectory: true,
+        copyToCacheDirectory: false,
         multiple: false,
       });
       if (r.canceled || !r.assets?.[0]) return { status: 'cancelled' };
       const a = r.assets[0];
-      return screenAcquiredFile(
+      const screened = screenAcquiredFile(
         {
           uri: a.uri,
+          mimeType: a.mimeType ?? 'application/octet-stream',
+          sizeBytes: a.size ?? null,
+          source: 'file',
+        },
+        ACCEPTED_DOCUMENT_TYPES,
+      );
+      if (screened.status !== 'acquired') return screened;
+      return screenAcquiredFile(
+        {
+          uri: await toPrivateCache(a.uri),
           mimeType: a.mimeType ?? 'application/octet-stream',
           sizeBytes: a.size ?? null,
           source: 'file',

@@ -223,12 +223,12 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T120 | Chronological history. | TODO | |
-| T121 | Service detail. | TODO | |
-| T122 | Document library. | TODO | |
-| T123 | Original-document access. | TODO | |
-| T124 | Source/evidence navigation. | TODO | |
-| T125 | Provenance verification and M16 PASS. | TODO | |
+| T120 | Chronological history. | PASS | History newest-first from ServiceRepository (sortHistory), independent of insertion order; separate from schedule. history-documents.test (chronology). |
+| T121 | Service detail. | PASS | Service detail on real data: all actions + performed state, provenance badges (authority/origin/verification), linked originals navigate to document. history-documents.test (detail). |
+| T122 | Document library. | PASS | Library upload (real): document picker → kind dialog → addDocument; original stored (originals/, SHA-256); authority by kind (invoice→garage_document, registration→vehicle_document, else user_report) — uploads never manufacturer/importer. Device: test image uploaded as owners manual, shown 'user report / pending'. Fixed device-found: Expo Go picker cache outside scoped storage → content URI copied into private cache. |
+| T123 | Original-document access. | PASS | Document detail loads the stored original: inline image preview, SHA-256 re-verified (intact/modified/missing badges), 'open original' via system share sheet (expo-sharing); missing file disables open. Device: preview + 'intact' + share sheet verified. Tests: history-documents (intact/open/tamper/missing). |
+| T124 | Source/evidence navigation. | PASS | Evidence links carry the exact locator (page/section/table) to the document screen (document-evidence-locator). history-documents.test (T124). |
+| T125 | Provenance verification and M16 PASS. | PASS | M16 PASS: uploads stay user-level evidence (schedules untouched), originals integrity-checked, derived extraction shown separately; verify 26 suites/229 tests. |
 
 ## M17 Alerts
 

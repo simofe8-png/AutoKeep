@@ -3,8 +3,14 @@ import { createContext, useContext } from 'react';
 
 import type { VehicleSummary } from '@/features/vehicles/types';
 import type { AcquiredFile } from '@/providers/acquisition/types';
+import type { Integrity } from '@/providers/storage/types';
 
-import type { GarageRecommendationVM, ServiceEventVM, VehicleDataBundle } from './types';
+import type {
+  DocumentKind,
+  GarageRecommendationVM,
+  ServiceEventVM,
+  VehicleDataBundle,
+} from './types';
 
 /**
  * The app's data contract (M13). Screens depend only on this interface; it is provided either by
@@ -37,6 +43,13 @@ export interface AttachmentInput {
   title: string;
 }
 
+/** The stored original of a document, re-verified against its recorded hash. */
+export interface OriginalView {
+  uri: string;
+  mimeType: string;
+  integrity: Integrity;
+}
+
 export interface AppDataValue {
   vehicles: readonly VehicleSummary[];
   getBundle: (vehicleId: string) => VehicleDataBundle;
@@ -52,6 +65,11 @@ export interface AppDataValue {
   /** Explicit user confirmation: stores the record (and its original document) atomically. */
   addServiceEvent: (event: ServiceEventVM, attachment?: AttachmentInput) => void;
   setAlertHandled: (vehicleId: string, alertId: string) => void;
+  /** T122: adds an uploaded document (the original is kept; nothing is extracted or trusted). */
+  addDocument: (vehicleId: string, attachment: AttachmentInput, kind: DocumentKind) => void;
+  /** T123: the stored original (null when there is no file, e.g. prototype data). */
+  getOriginal: (vehicleId: string, documentId: string) => Promise<OriginalView | null>;
+  openOriginal: (vehicleId: string, documentId: string) => Promise<boolean>;
   addGarageRecommendation: (rec: GarageRecommendationVM) => void;
   network: NetworkMode;
   setNetwork: (mode: NetworkMode) => void;
