@@ -17,6 +17,8 @@ export type Integrity = 'intact' | 'modified' | 'missing';
 
 export interface OriginalFileStore {
   importFile(file: AcquiredFile): Promise<StoredOriginal>;
+  /** Stores downloaded bytes (e.g. a retrieved official manual) as a new original. */
+  importBytes(bytes: Uint8Array, mimeType: string): Promise<StoredOriginal>;
   /** Local URI for viewing the original (app sandbox). */
   uriFor(storageKey: string): string;
   remove(storageKey: string): Promise<void>;
@@ -81,6 +83,13 @@ export class MemoryFileStore implements OriginalFileStore {
       sizeBytes: bytes.length,
       sha256: testDigest(bytes),
     };
+  }
+
+  async importBytes(bytes: Uint8Array, mimeType: string): Promise<StoredOriginal> {
+    this.n += 1;
+    const key = `originals/test-${this.n}-${Math.random().toString(36).slice(2, 8)}.${extensionFor(mimeType)}`;
+    this.files.set(key, { bytes, mimeType });
+    return { storageKey: key, mimeType, sizeBytes: bytes.length, sha256: testDigest(bytes) };
   }
 
   uriFor(storageKey: string) {

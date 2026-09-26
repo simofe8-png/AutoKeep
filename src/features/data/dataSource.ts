@@ -1,6 +1,9 @@
 import { getSupabase } from '@/cloud/client';
+import { MANUFACTURER_ALIASES, OFFICIAL_DOMAINS } from '@/discovery/registry';
 import type { IdGenerator } from '@/domain';
 import { supabaseAccountBackend, type AccountBackend } from '@/features/account/backend';
+import { httpRetriever } from '@/features/sources/httpRetriever';
+import type { SourceServices } from '@/features/sources/sourceService';
 import type { OnboardingServices } from '@/features/onboarding/services';
 import type { SqlDatabase } from '@/persistence';
 import { openExpoDatabase } from '@/persistence/db/expoDatabase';
@@ -39,6 +42,8 @@ export type DataSourceConfig =
       exporter?: DocumentExporter | null;
       /** Connectivity (absent: assumed online). */
       network?: NetworkMonitor | null;
+      /** Official-source discovery + schedule reading (absent: none configured). */
+      sources?: Omit<SourceServices, 'uriFor'> | null;
     };
 
 const openDefault = () => openExpoDatabase();
@@ -58,6 +63,14 @@ const production: DataSourceConfig = {
   account: accountBackend(),
   exporter: expoExporter,
   network: netInfoNetwork,
+  sources: {
+    // G1: no discovery or OCR/AI provider approved yet — the search honestly finds nothing.
+    discovery: null,
+    retriever: httpRetriever(expoFileStore),
+    registry: OFFICIAL_DOMAINS,
+    aliases: MANUFACTURER_ALIASES,
+    reader: null,
+  },
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.

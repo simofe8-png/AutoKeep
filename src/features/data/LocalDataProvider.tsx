@@ -6,6 +6,7 @@ import type { IdGenerator } from '@/domain';
 import { he } from '@/i18n/he';
 import type { SqlDatabase } from '@/persistence';
 import type { AccountBackend } from '@/features/account/backend';
+import { planOfficialSource, type SourceServices } from '@/features/sources/sourceService';
 import type { NetworkMonitor } from '@/providers/network/types';
 import type { OriginalFileStore } from '@/providers/storage/types';
 import { colors, Dialog, ErrorState, LoadingState } from '@/ui';
@@ -26,6 +27,7 @@ export interface LocalDataProviderProps {
   files: OriginalFileStore | null;
   account?: AccountBackend | null;
   network?: NetworkMonitor | null;
+  sources?: Omit<SourceServices, 'uriFor'> | null;
   children: ReactNode;
 }
 
@@ -90,6 +92,7 @@ export function LocalDataProvider({
   files,
   account: backend = null,
   network: monitor = null,
+  sources = null,
   children,
 }: LocalDataProviderProps) {
   const [phase, setPhase] = useState<Phase>({ kind: 'loading' });
@@ -188,7 +191,25 @@ export function LocalDataProvider({
     return {
       vehicles: snapshot.vehicles,
       getBundle: (id) => snapshot.bundles[id] ?? emptyBundle(),
-      addVehicle: (vehicle, _prototypeBundle, details) => {
+      planOfficialSource: async (vehicleId, identity, onStep) => {
+        if (!sources || !files) {
+          onStep('discovery');
+          return { status: 'not_found' };
+        }
+        try {
+          return await planOfficialSource(
+            vehicleId as never,
+            identity,
+            { ...sources, uriFor: (k) => files.uriFor(k) },
+            ids,
+            clock.now,
+            onStep,
+          );
+        } catch {
+          return { status: 'not_found' };
+        }
+      },
+      addVehicle: (vehicle, _prototypeBundle, details, plan) => {
         // Shown immediately (onboarding navigates Home at once); the persisted snapshot replaces
         // it, or removes it again if the write fails (and the failure is reported).
         setPhase((p) =>
@@ -204,7 +225,7 @@ export function LocalDataProvider({
             : p,
         );
         write(async (s) => {
-          const id = await s.addVehicle(vehicle, details);
+          const id = await s.addVehicle(vehicle, details, plan ?? null);
           await s.setActiveVehicle(id);
         });
       },
@@ -272,7 +293,7 @@ export function LocalDataProvider({
       // Best effort: a selection that is no longer valid simply is not remembered.
       rememberActiveVehicle: (id) => write((s) => s.setActiveVehicle(id).catch(() => undefined)),
     };
-  }, [snapshot, runtime, network, account, clock, backend, email]);
+  }, [snapshot, runtime, network, account, clock, backend, email, sources, files, ids]);
 
   if (phase.kind === 'failed') {
     return (

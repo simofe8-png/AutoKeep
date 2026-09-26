@@ -7,6 +7,7 @@ import {
   createDocument,
   createGarageRecommendation,
   createOdometerReading,
+  createSchedule,
   createVehicle,
   handleAlert,
   reactivateAlert,
@@ -53,6 +54,8 @@ import {
   VehicleRepository,
   type SqlDatabase,
 } from '@/persistence';
+
+import type { SourcePlan } from '@/features/sources/sourceService';
 
 import { toBundle, toVehicleSummary, type VehicleRecords } from './adapters';
 import type { AttachmentInput, OriginalView } from './DataContext';
@@ -266,7 +269,11 @@ export class LocalStore {
 
   // ---------- writes ----------
 
-  async addVehicle(vm: VehicleSummary, details: VehicleDetails = {}): Promise<VehicleId> {
+  async addVehicle(
+    vm: VehicleSummary,
+    details: VehicleDetails = {},
+    plan: SourcePlan | null = null,
+  ): Promise<VehicleId> {
     const now = this.clock.now();
     const vehicle = must(
       createVehicle(
@@ -305,6 +312,16 @@ export class LocalStore {
           ),
         );
         await new OdometerRepository(tx).add(reading);
+      }
+      // T170: the official source found during onboarding — retrieved original, its provenance,
+      // and the schedule (verification DECIDED by the domain from the evidence, never assumed).
+      if (plan && plan.status !== 'not_found' && plan.document.vehicleId === vehicle.id) {
+        await new DocumentRepository(tx).add(plan.document);
+        await new SourceRepository(tx).add(plan.source);
+        if (plan.schedule) {
+          const s = createSchedule(plan.schedule, this.ids, now);
+          if (s.ok) await new ScheduleRepository(tx).add(s.value);
+        }
       }
     });
     return vehicle.id;

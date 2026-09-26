@@ -314,15 +314,15 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T169 | Fresh-user E2E. | TODO | |
-| T170 | Verified-source-to-maintenance E2E. | TODO | |
-| T171 | Garage-to-service-to-history E2E. | TODO | |
-| T172 | Offline-to-sync E2E. | TODO | |
-| T173 | Account/device-recovery E2E. | TODO | |
-| T174 | Multi-vehicle E2E. | TODO | |
-| T175 | Motorcycle/scooter E2E. | TODO | |
-| T176 | Archive/dossier E2E. | TODO | |
-| T177 | Complete regression and M23 PASS. | TODO | |
+| T169 | Fresh-user E2E. | PASS | Fresh-user E2E: real-data.test (onboarding via registry → Home from SQLite → restart) + device M13 journey. |
+| T170 | Verified-source-to-maintenance E2E. | PASS | Pipeline wired into the app (SourceService: discovery→authority→retrieval→coverage→applicability→M11 extraction→domain verification; plan persisted with the vehicle incl. retrieved original + Source). sources-e2e.test (4, negative control) with LABELED mock providers + fixture registry. PRODUCTION needs a real discovery + OCR/AI provider and verified registry entries → G1 runtime-provider approval gate. |
+| T171 | Garage-to-service-to-history E2E. | PASS | acceptance.test (garage note → recorded service → history; schedule untouched) + garage-mode/service-capture suites. |
+| T172 | Offline-to-sync E2E. | PASS | failure-recovery.test (offline → pending → auto-resume; negative control) + account.test; device offline banner. |
+| T173 | Account/device-recovery E2E. | PASS | account.test + account.cloud.test (adoption, sync, second-device restore of rows and originals with SHA-256 re-verify, RLS); device: code sign-in, adoption, original uploaded to private bucket (9239 B). |
+| T174 | Multi-vehicle E2E. | PASS | multi-vehicle.test + leakage.test (randomized isolation gate). |
+| T175 | Motorcycle/scooter E2E. | PASS | acceptance.test (scooter onboarding, type never guessed), multi-vehicle, identification + live two-wheeler registry tests; device motorcycle. |
+| T176 | Archive/dossier E2E. | PASS | lifecycle.test (archive/restore/exact preview/deletion incl. originals/dossier export) + device PDF share. |
+| T177 | Complete regression and M23 PASS. | PASS | M23 PASS (within approved G1 scope): verify 36 suites/283 tests; cloud 23/23; live 1/1; device sweep of all real-mode screens; matrix docs/acceptance/M23.md. |
 
 ## M24 Release Candidate
 

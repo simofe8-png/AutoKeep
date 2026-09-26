@@ -56,6 +56,18 @@ export const expoFileStore: OriginalFileStore = {
     }
   },
 
+  async importBytes(bytes: Uint8Array, mimeType: string): Promise<StoredOriginal> {
+    if (bytes.length === 0) throw new Error('Empty file');
+    const name = `${Crypto.randomUUID()}.${extensionFor(mimeType)}`;
+    const target = new File(dir(), name);
+    target.create();
+    target.write(bytes);
+    const sha256 = toHex(
+      await Crypto.digest(Crypto.CryptoDigestAlgorithm.SHA256, new Uint8Array(bytes)),
+    );
+    return { storageKey: `${ROOT}/${name}`, mimeType, sizeBytes: bytes.length, sha256 };
+  },
+
   uriFor(storageKey: string) {
     return new File(Paths.document, storageKey).uri;
   },

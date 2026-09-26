@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M23 Full Acceptance
-- **Current task:** T169 (Fresh-user E2E)
-- **Last verified PASS:** T168 — M22 PASS (threat model, originals backup/restore, redaction; no open Critical/High)
-- **Next action:** M23 per task-plan (full E2E acceptance). T170 "verified-source-to-maintenance E2E" needs a real discovery/OCR/AI provider → likely the G1 runtime-provider approval gate.
+- **Milestone:** M24 Release Candidate
+- **Current task:** T178 (Release configuration)
+- **Last verified PASS:** T177 — M23 PASS within the approved G1 scope (docs/acceptance/M23.md)
+- **Next action:** non-gated M24 work (release config review, docs, known limitations, clean-clone reproducibility); then STOP at the approval gate: real discovery + OCR/AI providers (G1), hosted Supabase (T065), release build/signing credentials.
 
 ## Granted policies
 
@@ -58,4 +58,4 @@ _Last updated: 2026-09-26_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M22` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M23` on `master` (local only, not pushed).

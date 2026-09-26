@@ -180,6 +180,7 @@ export function PrototypeDataProvider({
       setAlertHandled,
       addGarageRecommendation,
       addDocument,
+      planOfficialSource: async () => ({ status: 'not_found' }) as const,
       deletionPreview: async (vehicleId: string) => {
         const b = data[vehicleId] ?? emptyBundle();
         return {

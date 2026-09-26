@@ -45,6 +45,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
       files={source.files}
       account={source.account ?? null}
       network={source.network ?? null}
+      sources={source.sources ?? null}
     >
       <ActiveVehicleBridge>{children}</ActiveVehicleBridge>
     </LocalDataProvider>

@@ -12,6 +12,7 @@ import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { todayIso } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import { he } from '@/i18n/he';
+import type { SourcePlan } from '@/features/sources/sourceService';
 import type { SourceScenario } from '@/mocks/onboarding';
 import {
   AppText,
@@ -141,19 +142,62 @@ export default function OnboardingSources() {
     sourceScenario: demoScenario,
     setSourceScenario,
   } = useOnboarding();
-  // Outside demo mode no discovery provider is configured yet (G1): the honest outcome is that no
-  // verified official source was found, and the schedule stays unavailable.
-  const sourceScenario: SourceScenario = isDemoData ? demoScenario : 'notFound';
   const { setActiveVehicleId } = useActiveVehicle();
+  const { planOfficialSource } = useAppData();
+  // The vehicle id exists before the vehicle, so a found source/schedule can reference it.
+  const [vehicleId] = useState(() => newLocalId('vehicle'));
+  // Real mode: the actual pipeline drives the steps (T170). Demo mode: scripted scenarios.
+  const [plan, setPlan] = useState<SourcePlan | null>(null);
+  const [reached, setReached] = useState(0);
+  const realScenario: SourceScenario = !plan
+    ? 'notFound'
+    : plan.status === 'not_found'
+      ? 'notFound'
+      : plan.status === 'verified' && plan.schedule?.applicability.exact
+        ? 'verified'
+        : 'pending';
+  const sourceScenario: SourceScenario = isDemoData ? demoScenario : realScenario;
   const [progress, setProgress] = useState(0);
-  const last = stopAt[sourceScenario];
-  const finished = progress > last;
+  const last = isDemoData
+    ? stopAt[sourceScenario]
+    : realScenario === 'verified'
+      ? STEPS.length - 1
+      : reached;
+  const finished = isDemoData ? progress > last : plan !== null;
+  const shownProgress = isDemoData ? progress : finished ? last + 1 : reached;
 
   useEffect(() => {
-    if (finished) return;
+    if (!isDemoData || finished) return;
     const t = setTimeout(() => setProgress((p) => p + 1), SOURCE_STEP_MS);
     return () => clearTimeout(t);
-  }, [progress, finished]);
+  }, [progress, finished, isDemoData]);
+
+  useEffect(() => {
+    if (isDemoData || !draft.kind || !draft.manufacturer || !draft.model || !draft.year) return;
+    let cancelled = false;
+    void planOfficialSource(
+      vehicleId,
+      {
+        type: draft.kind,
+        manufacturer: draft.manufacturer,
+        model: draft.model,
+        year: draft.year,
+        engine: draft.engine,
+        trim: draft.trim,
+        market: 'IL',
+      },
+      (step) => {
+        if (!cancelled) setReached((r) => Math.max(r, STEPS.indexOf(step)));
+      },
+    ).then((p) => {
+      if (!cancelled) setPlan(p);
+    });
+    return () => {
+      cancelled = true;
+    };
+    // Runs once for this onboarding draft.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Never create a vehicle from an incomplete draft (e.g. a stale deep link into this step).
   if (missingFields(draft).length > 0 || odometerKm == null) {
@@ -173,12 +217,13 @@ export default function OnboardingSources() {
   }
 
   const finish = () => {
-    const id = newLocalId('vehicle');
+    const id = vehicleId;
     addVehicle(
       toVehicle(id, draft, odometerKm ?? 0, today()),
       // Prototype placeholders only in demo mode; the real store records nothing it cannot back.
       isDemoData ? buildBundle(id, sourceScenario, origins.registration === 'scan') : undefined,
       { trim: draft.trim, engine: draft.engine, fuel: draft.fuel, vin: draft.vin },
+      plan,
     );
     setActiveVehicleId(id);
     router.dismissTo('/');
@@ -229,11 +274,11 @@ export default function OnboardingSources() {
               key={step}
               step={step}
               state={
-                i < progress
+                i < shownProgress
                   ? i === last && sourceScenario !== 'verified'
                     ? 'stopped'
                     : 'done'
-                  : i === progress && !finished
+                  : i === shownProgress && !finished
                     ? 'active'
                     : 'pending'
               }

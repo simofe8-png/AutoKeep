@@ -2,6 +2,9 @@ import * as Crypto from 'expo-crypto';
 import { createContext, useContext } from 'react';
 
 import type { VehicleSummary } from '@/features/vehicles/types';
+import type { DiscoveryStep } from '@/discovery/pipeline';
+import type { VehicleIdentityQuery } from '@/discovery/types';
+import type { SourcePlan } from '@/features/sources/sourceService';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import type { Integrity } from '@/providers/storage/types';
 
@@ -82,7 +85,15 @@ export interface AppDataValue {
     vehicle: VehicleSummary,
     bundle?: VehicleDataBundle,
     details?: VehicleDetailsInput,
+    /** Official source found during onboarding (persisted with the vehicle). */
+    plan?: SourcePlan | null,
   ) => void;
+  /** T170: searches the official source + schedule for a vehicle being added (not persisted). */
+  planOfficialSource: (
+    vehicleId: string,
+    identity: VehicleIdentityQuery,
+    onStep: (step: DiscoveryStep) => void,
+  ) => Promise<SourcePlan>;
   archiveVehicle: (vehicleId: string) => void;
   restoreVehicle: (vehicleId: string) => void;
   deleteVehicle: (vehicleId: string) => void;
