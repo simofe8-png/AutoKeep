@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M24 Release Candidate
-- **Current task:** T178 (Release configuration)
-- **Last verified PASS:** T177 — M23 PASS within the approved G1 scope (docs/acceptance/M23.md)
-- **Next action:** non-gated M24 work (release config review, docs, known limitations, clean-clone reproducibility); then STOP at the approval gate: real discovery + OCR/AI providers (G1), hosted Supabase (T065), release build/signing credentials.
+- **Milestone:** M24 Release Candidate — **STOPPED AT APPROVAL GATE G2**
+- **Current task:** T184 (BLOCKED on G2)
+- **Last verified PASS:** T183 — final security/regression gate (verify 283, cloud 23, live 1, audit 0 high/critical); T182 clean-clone cold reproducibility
+- **Next action:** wait for the user's G2 decisions (docs/gates/G2-release-providers.md): discovery provider, OCR/AI provider, verified registry entries, hosted Supabase project, release build/signing. Then: configure behind existing ports → staging cloud suite → release APK + device re-verification → RC report → AUTOKEEP V1 RC PASS.
 
 ## Granted policies
 
@@ -54,8 +54,8 @@ _Last updated: 2026-09-26_
 ## Pending approval gates
 
 - G1 decided 2026-09-26: data.gov.il primary; discovery/OCR/AI behind ports with labeled mocks; NO paid services/keys/calls. Next gate when a real runtime AI/discovery provider is required to continue V1.
-- Deferred: hosted Supabase project creation (T065 → needed for production Edge Functions / M24).
+- **G2 (open, 2026-09-26):** runtime providers (discovery, OCR/AI, registry entries), hosted Supabase (T065), release build/signing — docs/gates/G2-release-providers.md.
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M23` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M23` + M24 pre-gate work on `master` (local only, not pushed).

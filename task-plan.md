@@ -329,10 +329,10 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T178 | Release configuration. | TODO | |
-| T179 | Backup/restore validation. | TODO | |
-| T180 | Production-readiness documentation. | TODO | |
-| T181 | Known-limitations review. | TODO | |
-| T182 | Clean-build/reproducibility check. | TODO | |
-| T183 | Final security/regression gate. | TODO | |
-| T184 | Produce V1 RC report and AUTOKEEP V1 RC PASS. | TODO | |
+| T178 | Release configuration. | PASS | app.json release config: version 1.0.0 / versionCode 1 / buildNumber 1; permissions CAMERA + POST_NOTIFICATIONS (+INTERNET) with Hebrew rationale; microphone/location/storage/overlay blocked; expo-doctor 21/21 (@types/jest aligned). Production env (hosted Supabase) is part of gate G2. |
+| T179 | Backup/restore validation. | PASS | Backup/restore validated: account.cloud.test — adoption + sync + second device restores rows and document originals (SHA-256 re-verified), other user locked out; device: sign-in, adoption, original uploaded to private bucket. |
+| T180 | Production-readiness documentation. | PASS | docs/release/PRODUCTION_READINESS.md (what is ready, what needs approval, release configuration). |
+| T181 | Known-limitations review. | PASS | Known limitations table (PRODUCTION_READINESS.md §Known limitations): no verified schedules/scan/invoice reading without G1 providers; notifications not in Expo Go; release-build re-verifications (camera storage, registry on connected phone, native RTL inputs); SQLite at rest; moderate advisories. |
+| T182 | Clean-build/reproducibility check. | PASS | Clean clone (git clone → npm ci) with cold transform cache (--no-cache): format/lint/typecheck clean, 36 suites/283 tests pass. Found+fixed: cold-cache UI tests exceeded the 20 s global timeout (reproduced with --no-cache) → 90 s. Release binary build is part of gate G2 (EAS/signing). |
+| T183 | Final security/regression gate. | PASS | Final gate (2026-09-26): verify 36 suites/283 tests; cloud 23/23; live 1/1; npm audit 0 critical/0 high (15 moderate accepted, THREAT_MODEL §6); no open Critical/High findings. |
+| T184 | Produce V1 RC report and AUTOKEEP V1 RC PASS. | BLOCKED | Awaiting approval gate G2 (docs/gates/G2-release-providers.md): real discovery + OCR/AI providers and verified registry entries, hosted Supabase (T065), release build/signing. RC PASS cannot be declared truthfully before these. |
