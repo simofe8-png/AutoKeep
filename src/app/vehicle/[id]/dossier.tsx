@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { useAppData } from '@/features/data/DataContext';
+import { documentExporter } from '@/features/data/dataSource';
+import { buildDossierHtml, readingSource } from '@/features/dossier/dossierHtml';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
-import { formatDate, formatKm, joinParts, SEP, todayIso } from '@/features/vehicles/format';
+import { formatDate, formatKm, joinParts, SEP } from '@/features/vehicles/format';
 import { vehicleDisplayName } from '@/features/vehicles/types';
 import { he } from '@/i18n/he';
 import {
@@ -29,8 +31,9 @@ import {
  */
 export default function DossierScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle } = useAppData();
-  const [shareInfo, setShareInfo] = useState(false);
+  const { vehicles, getBundle, isDemoData, today } = useAppData();
+  const [shareInfo, setShareInfo] = useState<string | null>(null);
+  const [sharing, setSharing] = useState(false);
   const vehicle = vehicles.find((v) => v.id === id);
 
   if (!vehicle) {
@@ -40,15 +43,43 @@ export default function DossierScreen() {
       </Screen>
     );
   }
-  const { history, documents } = getBundle(vehicle.id);
-  const readings = [
-    { date: vehicle.odometerMeasuredAt, km: vehicle.odometerKm, userReported: true },
-    ...history.map((e) => ({
-      date: e.date,
-      km: e.odometerKm,
-      userReported: e.sourceAuthority === 'user_report',
-    })),
-  ].sort((a, b) => b.date.localeCompare(a.date));
+  const bundle = getBundle(vehicle.id);
+  const { history, documents } = bundle;
+  // Real recorded readings with their source; prototype data only has the latest reading.
+  const readings = (
+    bundle.readings ?? [
+      {
+        id: 'latest',
+        date: vehicle.odometerMeasuredAt,
+        km: vehicle.odometerKm,
+        source: 'user' as const,
+      },
+    ]
+  )
+    .slice()
+    .sort((a, b) => b.date.localeCompare(a.date));
+
+  // T149: PDF through the system share sheet — the user decides where it goes.
+  const share = async () => {
+    const exporter = isDemoData ? null : documentExporter();
+    if (!exporter) return setShareInfo(he.dossier.shareUnavailable);
+    setSharing(true);
+    setShareInfo(null);
+    try {
+      const html = buildDossierHtml(vehicle, bundle, today());
+      if (!(await exporter.shareHtml(html, he.dossier.title))) setShareInfo(he.dossier.shareFailed);
+    } catch (e) {
+      // Dev builds show the technical cause to speed up diagnosis; users see plain language.
+      setShareInfo(
+        __DEV__
+          ? `${he.dossier.shareFailed}
+${String(e)}`
+          : he.dossier.shareFailed,
+      );
+    } finally {
+      setSharing(false);
+    }
+  };
 
   return (
     <Screen
@@ -60,12 +91,16 @@ export default function DossierScreen() {
           label={he.dossier.share}
           icon="share-variant-outline"
           fullWidth
-          onPress={() => setShareInfo(true)}
+          loading={sharing}
+          disabled={sharing}
+          onPress={() => void share()}
         />
       }
     >
       <AppText color="textSecondary">{he.dossier.intro}</AppText>
-      {shareInfo ? <InlineNotice tone="info" message={he.dossier.shareUnavailable} /> : null}
+      {shareInfo ? (
+        <InlineNotice testID="dossier-share-info" tone="info" message={shareInfo} />
+      ) : null}
 
       <Card>
         <SectionHeader title={he.dossier.vehicleDetails} />
@@ -74,21 +109,24 @@ export default function DossierScreen() {
           {joinParts([he.vehicleType[vehicle.kind], vehicle.registration])}
         </AppText>
         <AppText variant="caption" color="textMuted">
-          {he.dossier.generatedAt}: {formatDate(todayIso())}
+          {he.dossier.generatedAt}: {formatDate(today())}
         </AppText>
       </Card>
 
       <Card testID="dossier-readings">
         <SectionHeader title={he.dossier.odometerReadings} />
         {readings.map((r, i) => (
-          <View key={`${r.date}-${i}`}>
+          <View key={r.id}>
             {i > 0 ? <Divider /> : null}
             <Stack gap={spacing.xs} style={styles.event}>
               <Row>
                 <AppText style={styles.flex}>{formatDate(r.date)}</AppText>
                 <AppText variant="bodyStrong">{formatKm(r.km)}</AppText>
               </Row>
-              {r.userReported ? <Badge label={he.dossier.userReported} tone="neutral" /> : null}
+              <Badge
+                label={readingSource(r)}
+                tone={r.source === 'user' || r.source === 'onboarding' ? 'neutral' : 'info'}
+              />
             </Stack>
           </View>
         ))}

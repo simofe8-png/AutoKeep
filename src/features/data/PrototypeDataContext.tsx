@@ -180,6 +180,16 @@ export function PrototypeDataProvider({
       setAlertHandled,
       addGarageRecommendation,
       addDocument,
+      deletionPreview: async (vehicleId: string) => {
+        const b = data[vehicleId] ?? emptyBundle();
+        return {
+          serviceEvents: b.history.length,
+          documents: b.documents.length,
+          odometerReadings: b.readings?.length ?? 1,
+          alerts: b.alerts.length,
+          garageRecommendations: b.garageRecommendations.length,
+        };
+      },
       // Prototype: a snoozed alert simply leaves the list for this session.
       snoozeAlert: (vehicleId: string, alertId: string) =>
         updateBundle(vehicleId, (b) => ({
@@ -218,6 +228,7 @@ export function PrototypeDataProvider({
       addGarageRecommendation,
       addDocument,
       updateBundle,
+      data,
       network,
       account,
       notificationsEnabled,

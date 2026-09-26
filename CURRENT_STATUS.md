@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M20 Vehicle Lifecycle
-- **Current task:** T144 (Archive/restore)
-- **Last verified PASS:** T143 — M19 PASS (real account sign-in, adoption, backup status; device E2E vs local Supabase)
-- **Next action:** M20 per task-plan (archive/restore/permanent delete with preview, dossier export on real data)
+- **Milestone:** M21 Failure/Recovery
+- **Current task:** T151 (No-network behavior)
+- **Last verified PASS:** T150 — M20 PASS (archive/restore, exact delete preview, controlled deletion incl. originals, provenance-aware dossier PDF share)
+- **Next action:** M21 per task-plan (failure/recovery: offline, interrupted writes, crash/restart recovery, retry/backoff, storage errors)
 
 ## Granted policies
 
@@ -59,4 +59,4 @@ _Last updated: 2026-09-26_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M19` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M20` on `master` (local only, not pushed).

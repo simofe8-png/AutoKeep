@@ -172,6 +172,14 @@ export function LocalDataProvider({
       archiveVehicle: (id) => write((s) => s.archiveVehicle(id)),
       restoreVehicle: (id) => write((s) => s.restoreVehicle(id)),
       deleteVehicle: (id) => write((s) => s.deleteVehicle(id)),
+      deletionPreview: (id) =>
+        runtime.read((s) => s.deletionPreview(id), {
+          serviceEvents: 0,
+          documents: 0,
+          odometerReadings: 0,
+          alerts: 0,
+          garageRecommendations: 0,
+        }),
       updateOdometer: (id, km, at) => write((s) => s.updateOdometer(id, km, at)),
       addServiceEvent: (e, attachment) => write((s) => s.addServiceEvent(e, attachment)),
       setAlertHandled: (vid, aid) => write((s) => s.setAlertHandled(vid, aid)),

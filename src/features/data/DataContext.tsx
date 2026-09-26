@@ -64,6 +64,15 @@ export interface OriginalView {
   integrity: Integrity;
 }
 
+/** Exactly what a permanent deletion would remove (T145). */
+export interface DeletionPreviewVM {
+  serviceEvents: number;
+  documents: number;
+  odometerReadings: number;
+  alerts: number;
+  garageRecommendations: number;
+}
+
 export interface AppDataValue {
   vehicles: readonly VehicleSummary[];
   getBundle: (vehicleId: string) => VehicleDataBundle;
@@ -75,6 +84,7 @@ export interface AppDataValue {
   archiveVehicle: (vehicleId: string) => void;
   restoreVehicle: (vehicleId: string) => void;
   deleteVehicle: (vehicleId: string) => void;
+  deletionPreview: (vehicleId: string) => Promise<DeletionPreviewVM>;
   updateOdometer: (vehicleId: string, km: number, measuredAt: string) => void;
   /** Explicit user confirmation: stores the record (and its original document) atomically. */
   addServiceEvent: (event: ServiceEventVM, attachment?: AttachmentInput) => void;

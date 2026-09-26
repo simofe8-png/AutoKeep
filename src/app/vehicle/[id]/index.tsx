@@ -1,7 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 
-import { useAppData } from '@/features/data/DataContext';
+import { useAppData, type DeletionPreviewVM } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { SEP } from '@/features/vehicles/format';
@@ -27,7 +27,8 @@ import {
 export default function VehicleManageScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle, archiveVehicle, restoreVehicle, deleteVehicle } = useAppData();
+  const { vehicles, archiveVehicle, restoreVehicle, deleteVehicle, deletionPreview } = useAppData();
+  const [preview, setPreview] = useState<DeletionPreviewVM | null>(null);
   const [archiveOpen, setArchiveOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [typed, setTyped] = useState('');
@@ -54,7 +55,6 @@ export default function VehicleManageScreen() {
     );
   }
 
-  const bundle = getBundle(vehicle.id);
   const confirmMatches = typed.trim() === vehicle.registration;
 
   return (
@@ -104,8 +104,9 @@ export default function VehicleManageScreen() {
             icon="delete-forever-outline"
             title={he.lifecycle.deleteTitle}
             subtitle={he.lifecycle.archiveInstead}
-            onPress={() => {
+            onPress={async () => {
               setTyped('');
+              setPreview(await deletionPreview(vehicle.id));
               setDeleteOpen(true);
             }}
           />
@@ -148,11 +149,17 @@ export default function VehicleManageScreen() {
         <InlineNotice
           tone="danger"
           title={he.lifecycle.previewTitle}
-          message={[
-            he.lifecycle.previewServices(bundle.history.length),
-            he.lifecycle.previewDocuments(bundle.documents.length),
-            he.lifecycle.previewAlerts(bundle.alerts.length),
-          ].join(SEP)}
+          message={
+            preview
+              ? [
+                  he.lifecycle.previewServices(preview.serviceEvents),
+                  he.lifecycle.previewDocuments(preview.documents),
+                  he.lifecycle.previewReadings(preview.odometerReadings),
+                  he.lifecycle.previewNotes(preview.garageRecommendations),
+                  he.lifecycle.previewAlerts(preview.alerts),
+                ].join(SEP)
+              : ''
+          }
           testID="delete-preview"
         />
         <TextField

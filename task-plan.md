@@ -271,13 +271,13 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T144 | Archive/restore. | TODO | |
-| T145 | Permanent-delete preview. | TODO | |
-| T146 | Controlled deletion. | TODO | |
-| T147 | Dossier generation. | TODO | |
-| T148 | Provenance-aware dossier. | TODO | |
-| T149 | Export/share. | TODO | |
-| T150 | Lifecycle acceptance and M20 PASS. | TODO | |
+| T144 | Archive/restore. | PASS | Archive keeps every record, clears active context; restore returns the vehicle with history intact; archived excluded from notifications (M17). lifecycle.test (2). |
+| T145 | Permanent-delete preview. | PASS | Delete preview = exact DB counts (services, documents, readings, garage notes, alerts) via VehicleRepository.deletionPreview. lifecycle.test. |
+| T146 | Controlled deletion. | PASS | Typed-registration confirmation; one-transaction row deletion, then stored originals removed; other vehicles untouched. lifecycle.test (rows + files + isolation). |
+| T147 | Dossier generation. | PASS | Dossier from source-of-truth records incl. real odometer readings (bundle.readings) with source labels; device-verified screen. |
+| T148 | Provenance-aware dossier. | PASS | buildDossierHtml: RTL, provenance on every fact (user-reported labeled, authority · verification), schedule only if verified, HTML-escaped user text. lifecycle.test (HTML unit). |
+| T149 | Export/share. | PASS | DocumentExporter port: expo-print (base64) → app-private PDF → system share sheet (user chooses target; nothing uploaded). Device: PDF generated and share sheet opened. Fixed device-found: expo-print output outside readable scope. Failure explained (lifecycle.test). |
+| T150 | Lifecycle acceptance and M20 PASS. | PASS | M20 PASS: lifecycle.test (6) + device dossier/PDF share; verify 32 suites/262 tests. |
 
 ## M21 Failure/Recovery
 

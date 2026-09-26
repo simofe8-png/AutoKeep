@@ -8,6 +8,8 @@ import { uuidIds } from '@/persistence/ids';
 import { expoAcquisition } from '@/providers/acquisition/expoAcquisition';
 import { createExpoNotifications } from '@/providers/notifications/expoNotifications';
 import type { NotificationScheduler } from '@/providers/notifications/types';
+import { expoExporter } from '@/providers/export/expoExporter';
+import type { DocumentExporter } from '@/providers/export/types';
 import { DataGovIlRegistry } from '@/providers/registry/dataGovIl';
 import { expoFileStore } from '@/providers/storage/expoFileStore';
 import type { OriginalFileStore } from '@/providers/storage/types';
@@ -31,6 +33,8 @@ export type DataSourceConfig =
       notifications?: NotificationScheduler | null;
       /** Cloud account/backup (null when this build has no cloud configuration). */
       account?: AccountBackend | null;
+      /** Dossier export (PDF + share sheet). */
+      exporter?: DocumentExporter | null;
     };
 
 const openDefault = () => openExpoDatabase();
@@ -48,6 +52,7 @@ const production: DataSourceConfig = {
   files: expoFileStore,
   notifications: createExpoNotifications(),
   account: accountBackend(),
+  exporter: expoExporter,
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.
@@ -63,6 +68,12 @@ let override: DataSourceConfig | null = null;
 /** Test/dev hook: select a data source (null restores the default). */
 export function configureDataSource(config: DataSourceConfig | null): void {
   override = config;
+}
+
+/** The document exporter, or null (demo mode / not configured). */
+export function documentExporter(): DocumentExporter | null {
+  const s = currentDataSource();
+  return s.kind === 'local' ? (s.exporter ?? null) : null;
 }
 
 /** The local-notification scheduler, or null (demo mode / not configured). */

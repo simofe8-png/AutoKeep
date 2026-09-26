@@ -149,6 +149,14 @@ export interface DeferredItemVM {
   reason?: string;
 }
 
+/** A recorded odometer reading and where it came from (dossier provenance). */
+export interface OdometerReadingVM {
+  id: string;
+  date: string;
+  km: number;
+  source: 'user' | 'onboarding' | 'service_event' | 'document';
+}
+
 export interface VehicleDataBundle {
   schedule: ScheduleVM;
   history: ServiceEventVM[];
@@ -156,4 +164,6 @@ export interface VehicleDataBundle {
   alerts: AlertVM[];
   garageRecommendations: GarageRecommendationVM[];
   deferred: DeferredItemVM[];
+  /** All recorded odometer readings (real data; absent in prototype bundles). */
+  readings?: OdometerReadingVM[];
 }

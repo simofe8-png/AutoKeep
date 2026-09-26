@@ -366,8 +366,22 @@ export class LocalStore {
     must(await lifecycle.restore(this.db, id as VehicleId, this.clock.now()));
   }
 
+  /** T145: exact counts of what a permanent deletion would remove. */
+  async deletionPreview(id: string) {
+    return new VehicleRepository(this.db).deletionPreview(id as VehicleId);
+  }
+
+  /**
+   * T146: permanent deletion (after preview + explicit confirmation in the UI). All vehicle rows go
+   * in one transaction; the stored original files are removed only after that succeeded, so a
+   * failure never leaves records pointing at deleted files.
+   */
   async deleteVehicle(id: string): Promise<void> {
+    const docs = await new DocumentRepository(this.db).list(id as VehicleId);
     await new VehicleRepository(this.db).deletePermanently(id as VehicleId);
+    if (this.files) {
+      for (const d of docs) await this.files.remove(d.original.storageKey).catch(() => undefined);
+    }
   }
 
   async updateOdometer(vehicleId: string, km: number, measuredAt: string): Promise<void> {

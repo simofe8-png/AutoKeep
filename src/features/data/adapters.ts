@@ -403,5 +403,11 @@ export function toBundle(
       .map(({ alert, candidate }) => toAlertVM(alert, candidate, ctx)),
     garageRecommendations: rec.garageRecommendations.map(toGarageRecommendationVM),
     deferred: rec.deferred.map((d) => toDeferredVM(d, rec.schedule)),
+    readings: rec.readings.map((r) => ({
+      id: r.id,
+      date: r.measuredAt,
+      km: r.valueKm,
+      source: r.source,
+    })),
   };
 }
