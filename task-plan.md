@@ -284,15 +284,15 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T151 | No-network behavior. | TODO | |
-| T152 | Failed scan/ambiguous identification. | TODO | |
-| T153 | Source unavailable/unverified. | TODO | |
-| T154 | Corrupt/unreadable document. | TODO | |
-| T155 | OCR/AI failure. | TODO | |
-| T156 | Upload/sync failure. | TODO | |
-| T157 | Stale odometer behavior. | TODO | |
-| T158 | Conflict/recovery. | TODO | |
-| T159 | No-dead-end/no-fabrication gate and M21 PASS. | TODO | |
+| T151 | No-network behavior. | PASS | NetworkMonitor port (NetInfo; unknown reachability = online, never blocks): offline banner, registry lookup paused with reason, all local actions keep working. Device: phone with no active network shows the offline banner. failure-recovery.test. |
+| T152 | Failed scan/ambiguous identification. | PASS | Unreadable scan → in-context failure with retry + manual; multiple registry matches → user chooses, nothing guessed. failure-recovery.test (+ onboarding tests). |
+| T153 | Source unavailable/unverified. | PASS | No/unverified/not-exact/conflicting source → schedule unavailable with the specific reason; onboarding honest not-found (adapters.test, real-data.test, garage-mode.test). |
+| T154 | Corrupt/unreadable document. | PASS | Corrupt/unreadable document → reading failed explained, draft stays editable; rejected/empty files explained at capture; tampered originals detected (history-documents.test). failure-recovery.test. |
+| T155 | OCR/AI failure. | PASS | OCR failure / invalid AI output discarded (never shown as data) / instruction-carrying document flagged with all values marked for review. failure-recovery.test + intelligence tests (M11). |
+| T156 | Upload/sync failure. | PASS | Sync failure recorded and shown; changes stay pending; backup resumes automatically when the connection returns (negative control: disabling resume fails the test). failure-recovery.test + account.test. |
+| T157 | Stale odometer behavior. | PASS | Stale odometer only where it impairs a distance calculation; explained; resolved by a new reading (alerts.test, adapters.test). |
+| T158 | Conflict/recovery. | PASS | Interrupted write (failure after document insert) leaves no partial rows and no orphaned file; two-device conflicts shown once with acknowledgement (sync_conflicts.resolved); DB open failure → retry + fresh-connection recovery (M13 device-verified). failure-recovery.test. |
+| T159 | No-dead-end/no-fabrication gate and M21 PASS. | PASS | M21 PASS: every failure path tested offers a next action and fabricates nothing; verify 33 suites/272 tests; cloud 22/22. |
 
 ## M22 Security/Privacy
 

@@ -5,6 +5,7 @@ import type { IdGenerator } from '@/domain';
 import { he } from '@/i18n/he';
 import type { SqlDatabase } from '@/persistence';
 import type { AccountBackend } from '@/features/account/backend';
+import type { NetworkMonitor } from '@/providers/network/types';
 import type { OriginalFileStore } from '@/providers/storage/types';
 import { colors, Dialog, ErrorState, LoadingState } from '@/ui';
 
@@ -23,6 +24,7 @@ export interface LocalDataProviderProps {
   clock: Clock;
   files: OriginalFileStore | null;
   account?: AccountBackend | null;
+  network?: NetworkMonitor | null;
   children: ReactNode;
 }
 
@@ -86,12 +88,51 @@ export function LocalDataProvider({
   clock,
   files,
   account: backend = null,
+  network: monitor = null,
   children,
 }: LocalDataProviderProps) {
   const [phase, setPhase] = useState<Phase>({ kind: 'loading' });
   const [saveFailed, setSaveFailed] = useState<string | null>(null);
   const [account, setAccount] = useState<AccountState>({ hasAccount: false });
   const [email, setEmail] = useState<string | null>(null);
+  const [network, setNetwork] = useState<NetworkMode>('online');
+  const [runtime] = useState(() => new StoreRuntime());
+  const [attempt, setAttempt] = useState(0);
+
+  // T151: real connectivity. The app never blocks on it; it explains, and resumes when back.
+  // T156: when the connection returns, a signed-in, adopted device backs up pending changes.
+  useEffect(() => {
+    if (!monitor) return;
+    let cancelled = false;
+    let offline = false;
+    const apply = (on: boolean) => {
+      if (cancelled) return;
+      setNetwork(on ? 'online' : 'offline');
+      if (!on) {
+        offline = true;
+        return;
+      }
+      if (!offline) return;
+      offline = false;
+      if (!backend) return;
+      runtime.write(
+        async (s) => {
+          if (!(await backend.currentEmail())) return;
+          if ((await s.backupStatus()).adoption !== 'adopted') return;
+          await s.sync(backend).catch(() => undefined);
+        },
+        (next) => setPhase({ kind: 'ready', snapshot: next }),
+        () => undefined,
+        () => setPhase({ kind: 'failed' }),
+      );
+    };
+    void monitor.isOnline().then(apply);
+    const unsubscribe = monitor.subscribe(apply);
+    return () => {
+      cancelled = true;
+      unsubscribe();
+    };
+  }, [monitor, backend, runtime]);
 
   // The signed-in account (session persisted securely by the backend).
   useEffect(() => {
@@ -107,9 +148,6 @@ export function LocalDataProvider({
       cancelled = true;
     };
   }, [backend]);
-  const [network, setNetwork] = useState<NetworkMode>('online');
-  const [runtime] = useState(() => new StoreRuntime());
-  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -203,6 +241,7 @@ export function LocalDataProvider({
             adoption: snapshot.backup.adoption,
             pending: snapshot.backup.pending,
             syncError: snapshot.backup.lastError,
+            conflicts: snapshot.backup.conflicts,
           }
         : { ...account, available: false },
       setAccount,
@@ -220,6 +259,7 @@ export function LocalDataProvider({
       syncNow: () => {
         if (backend) quietly((s) => s.sync(backend));
       },
+      acknowledgeConflicts: () => quietly((s) => s.acknowledgeConflicts()),
       signOutAccount: async () => {
         if (!backend) return;
         await backend.signOut().catch(() => undefined);

@@ -210,6 +210,7 @@ export function PrototypeDataProvider({
         return { ok: true } as const;
       },
       syncNow: () => undefined,
+      acknowledgeConflicts: () => undefined,
       signOutAccount: async () => setAccount({ hasAccount: false }),
       today: () => todayIso(),
       notificationsEnabled,

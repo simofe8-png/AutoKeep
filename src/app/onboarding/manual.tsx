@@ -20,7 +20,7 @@ import { Button, Screen, Stack } from '@/ui';
 export default function OnboardingManual() {
   const router = useRouter();
   const { draft, setUserFields, setFields } = useOnboarding();
-  const { isDemoData } = useAppData();
+  const { isDemoData, network } = useAppData();
   const services = isDemoData ? null : onboardingServices();
   /** Values filled from the official registry (kept as registry-origin unless edited). */
   const [fromRegistry, setFromRegistry] = useState<Partial<VehicleDraft>>({});
@@ -77,6 +77,7 @@ export default function OnboardingManual() {
           <RegistryLookup
             plate={inputs.registration ?? ''}
             registry={services.registry}
+            offline={network === 'offline'}
             onFilled={(filled) => {
               setFromRegistry(filled);
               setInputs((s) => ({

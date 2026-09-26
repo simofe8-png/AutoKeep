@@ -32,6 +32,8 @@ export interface AccountState {
   /** Local changes not yet backed up. */
   pending?: number;
   syncError?: 'network' | 'server_rejected' | 'different_account' | 'not_signed_in' | null;
+  /** Reconciled two-device edits awaiting acknowledgement. */
+  conflicts?: number;
 }
 
 export type AccountResult =
@@ -106,6 +108,7 @@ export interface AppDataValue {
   /** Verifies the code; on success this device's data is adopted and backed up. */
   verifyAccountCode: (email: string, code: string) => Promise<AccountResult>;
   syncNow: () => void;
+  acknowledgeConflicts: () => void;
   /** Signs out of the account; local data stays on the device. */
   signOutAccount: () => Promise<void>;
   /**

@@ -100,6 +100,8 @@ export interface BackupStatus {
   pending: number;
   lastSyncAt: string | null;
   lastError: 'network' | 'server_rejected' | 'different_account' | 'not_signed_in' | null;
+  /** Fields changed on two devices at once, reconciled by sync and not yet acknowledged (T158). */
+  conflicts: number;
 }
 
 /** Optional identity details captured at onboarding (beyond the display summary). */
@@ -314,7 +316,14 @@ export class LocalStore {
     const settings = new SettingsRepository(this.db);
     const adoption = await readAdoptionState(this.db);
     const lastError = (await settings.get<BackupStatus['lastError']>('syncLastError')) ?? null;
+    const conflicts =
+      (
+        await this.db.first<{ n: number }>(
+          'SELECT COUNT(*) AS n FROM sync_conflicts WHERE resolved = 0',
+        )
+      )?.n ?? 0;
     return {
+      conflicts,
       adoption: adoption.status,
       pending: adoption.status === 'adopted' ? await pendingCount(this.db) : 0,
       lastSyncAt: await settings.get<string>('lastSyncAt'),
@@ -336,6 +345,11 @@ export class LocalStore {
     const r = await adoptLocalData(this.db, backend.adoption, this.profile.id, this.clock.now);
     if (!r.ok) throw new Error(`adoption: ${r.failure}`);
     await this.sync(backend);
+  }
+
+  /** The user has seen the reconciled conflicts (the kept values stay; this only clears the notice). */
+  async acknowledgeConflicts(): Promise<void> {
+    await this.db.run('UPDATE sync_conflicts SET resolved = 1 WHERE resolved = 0');
   }
 
   /** One sync round (push, then pull). Only for adopted data; failures are recorded, not lost. */

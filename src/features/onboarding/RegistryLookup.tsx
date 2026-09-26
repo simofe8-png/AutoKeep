@@ -19,6 +19,7 @@ type State =
 
 export interface RegistryLookupProps {
   plate: string;
+  offline?: boolean;
   registry: Parameters<typeof identifyByRegistration>[1];
   onFilled: (draft: VehicleDraft, origins: Partial<Record<DraftField, FieldOrigin>>) => void;
 }
@@ -27,7 +28,7 @@ export interface RegistryLookupProps {
  * Official registry lookup (ADR-0012). Pressing the button — after the notice that states exactly
  * what is sent — is the user's consent. Only the registration number leaves the device.
  */
-export function RegistryLookup({ plate, registry, onFilled }: RegistryLookupProps) {
+export function RegistryLookup({ plate, registry, onFilled, offline }: RegistryLookupProps) {
   const [state, setState] = useState<State>({ kind: 'idle' });
 
   const fill = (d: IdentificationDraft) => {
@@ -75,9 +76,16 @@ export function RegistryLookup({ plate, registry, onFilled }: RegistryLookupProp
           variant="secondary"
           fullWidth
           loading={state.kind === 'loading'}
-          disabled={state.kind === 'loading'}
+          disabled={state.kind === 'loading' || offline}
           onPress={() => void lookup()}
         />
+        {offline ? (
+          <InlineNotice
+            testID="registry-offline"
+            tone="neutral"
+            message={he.onboarding.registryOffline}
+          />
+        ) : null}
         {state.kind === 'notice' ? (
           <InlineNotice testID="registry-result" tone={state.tone} message={state.message} />
         ) : null}

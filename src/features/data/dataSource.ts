@@ -9,6 +9,8 @@ import { expoAcquisition } from '@/providers/acquisition/expoAcquisition';
 import { createExpoNotifications } from '@/providers/notifications/expoNotifications';
 import type { NotificationScheduler } from '@/providers/notifications/types';
 import { expoExporter } from '@/providers/export/expoExporter';
+import { netInfoNetwork } from '@/providers/network/netInfoNetwork';
+import type { NetworkMonitor } from '@/providers/network/types';
 import type { DocumentExporter } from '@/providers/export/types';
 import { DataGovIlRegistry } from '@/providers/registry/dataGovIl';
 import { expoFileStore } from '@/providers/storage/expoFileStore';
@@ -35,6 +37,8 @@ export type DataSourceConfig =
       account?: AccountBackend | null;
       /** Dossier export (PDF + share sheet). */
       exporter?: DocumentExporter | null;
+      /** Connectivity (absent: assumed online). */
+      network?: NetworkMonitor | null;
     };
 
 const openDefault = () => openExpoDatabase();
@@ -53,6 +57,7 @@ const production: DataSourceConfig = {
   notifications: createExpoNotifications(),
   account: accountBackend(),
   exporter: expoExporter,
+  network: netInfoNetwork,
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.

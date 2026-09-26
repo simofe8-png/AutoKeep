@@ -46,6 +46,7 @@ export default function AccountScreen() {
     verifyAccountCode,
     syncNow,
     signOutAccount,
+    acknowledgeConflicts,
   } = useAppData();
   const [email, setEmail] = useState('');
   const [touched, setTouched] = useState(false);
@@ -104,6 +105,14 @@ export default function AccountScreen() {
         ) : (
           <Badge label={he.account.notBackedUp} tone="warning" icon="cellphone" />
         )}
+        {account.conflicts ? (
+          <InlineNotice
+            testID="backup-conflicts"
+            tone="info"
+            message={he.account.conflicts(account.conflicts)}
+            action={{ label: he.account.acknowledge, onPress: acknowledgeConflicts }}
+          />
+        ) : null}
         {account.syncError ? (
           <InlineNotice
             testID="backup-error"

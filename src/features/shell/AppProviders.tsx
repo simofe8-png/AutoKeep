@@ -44,6 +44,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
       clock={source.clock}
       files={source.files}
       account={source.account ?? null}
+      network={source.network ?? null}
     >
       <ActiveVehicleBridge>{children}</ActiveVehicleBridge>
     </LocalDataProvider>

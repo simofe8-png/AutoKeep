@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M21 Failure/Recovery
-- **Current task:** T151 (No-network behavior)
-- **Last verified PASS:** T150 — M20 PASS (archive/restore, exact delete preview, controlled deletion incl. originals, provenance-aware dossier PDF share)
-- **Next action:** M21 per task-plan (failure/recovery: offline, interrupted writes, crash/restart recovery, retry/backoff, storage errors)
+- **Milestone:** M22 Security/Privacy
+- **Current task:** T160 (AutoKeep threat model)
+- **Last verified PASS:** T159 — M21 PASS (no dead ends, no fabrication across failure paths)
+- **Next action:** M22 per task-plan (security/privacy review: secrets, RLS/BOLA re-run, storage privacy, data minimization, npm audit, document originals upload to private bucket)
 
 ## Granted policies
 
@@ -59,4 +59,4 @@ _Last updated: 2026-09-26_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M20` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M21` on `master` (local only, not pushed).
