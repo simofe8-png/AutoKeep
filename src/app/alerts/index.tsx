@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 
 import { activeAlerts, AlertCard } from '@/features/alerts/components';
-import { useVehicleData } from '@/features/data/PrototypeDataContext';
+import { useVehicleData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';

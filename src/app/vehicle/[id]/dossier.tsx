@@ -2,7 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { formatDate, formatKm, joinParts, SEP, todayIso } from '@/features/vehicles/format';
 import { vehicleDisplayName } from '@/features/vehicles/types';
@@ -29,7 +29,7 @@ import {
  */
 export default function DossierScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle } = usePrototypeData();
+  const { vehicles, getBundle } = useAppData();
   const [shareInfo, setShareInfo] = useState(false);
   const vehicle = vehicles.find((v) => v.id === id);
 

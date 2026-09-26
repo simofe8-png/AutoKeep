@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { he } from '@/i18n/he';
 import { Card, Divider, ListRow, Screen, SectionHeader, Stack, SwitchRow } from '@/ui';
@@ -12,7 +12,7 @@ import { Card, Divider, ListRow, Screen, SectionHeader, Stack, SwitchRow } from 
  */
 export default function SettingsScreen() {
   const router = useRouter();
-  const { account, network, setNetwork, isDemoData } = usePrototypeData();
+  const { account, network, setNetwork, isDemoData } = useAppData();
   const [notifications, setNotifications] = useState(true);
 
   return (

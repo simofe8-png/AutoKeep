@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { newLocalId } from '@/features/data/PrototypeDataContext';
+import { newLocalId } from '@/features/data/DataContext';
 import type { ActionType, ServiceActionVM } from '@/features/data/types';
 import { he } from '@/i18n/he';
 import {

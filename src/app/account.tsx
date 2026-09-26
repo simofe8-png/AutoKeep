@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { formatDate } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
@@ -28,7 +28,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
  */
 export default function AccountScreen() {
   const router = useRouter();
-  const { account, setAccount, network } = usePrototypeData();
+  const { account, setAccount, network } = useAppData();
   const [email, setEmail] = useState('');
   const [touched, setTouched] = useState(false);
   const valid = EMAIL.test(email.trim());

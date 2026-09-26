@@ -1,7 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { SEP } from '@/features/vehicles/format';
@@ -27,7 +27,7 @@ import {
 export default function VehicleManageScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle, archiveVehicle, restoreVehicle, deleteVehicle } = usePrototypeData();
+  const { vehicles, getBundle, archiveVehicle, restoreVehicle, deleteVehicle } = useAppData();
   const [archiveOpen, setArchiveOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [typed, setTyped] = useState('');

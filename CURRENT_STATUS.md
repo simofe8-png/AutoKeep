@@ -1,13 +1,13 @@
 # AutoKeep — Current Status (resume pointer)
 
-_Last updated: 2026-09-25_
+_Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M13 Real Data Integration
-- **Current task:** T103 (Home adapters)
-- **Last verified PASS:** T102 — M12 PASS
-- **Next action:** SQLite-backed data provider + domain→view-model adapters behind the frozen UI; seed demo data only when explicitly in demo mode
+- **Milestone:** M14 Garage Mode
+- **Current task:** T109 (Manufacturer section)
+- **Last verified PASS:** T108 — M13 PASS (real SQLite data behind the frozen UI, ADR-0015)
+- **Next action:** Garage mode on real data: manufacturer section from the verified schedule (with sources), AutoKeep-known section (history/odometer/deferred), garage-recommendation section kept separate; provenance-separation tests
 
 ## Granted policies
 
@@ -28,8 +28,10 @@ _Last updated: 2026-09-25_
 - Local Supabase: `npm run cloud:start` (ports 566xx; other local projects use 543xx/557xx — never stop them). Cloud tests: `npm run test:cloud`.
 - Intermittent UI test timeouts once under heavy load (Docker running); not reproduced in 3 runs — watch.
 
-- Acquisition (camera/picker) on-device verification deferred to M13 wiring (T106).
-- Candidate provider needing approval later: data.gov.il vehicle registry lookup by plate (privacy data flow) — ADR-0009.
+- Real mode is the default; demo data only with `EXPO_PUBLIC_DEMO_DATA=1` (restart Metro) or in UI tests (ADR-0015).
+- Device (M13): the phone had NO network during T107 (DNS failed for all hosts) → the data.gov.il lookup on device showed the correct "unavailable" state; re-verify a successful on-device registry lookup when the phone is online (Node live test passes).
+- Expo Go: dismissing the Android camera-permission sheet with Back leaves the permission promise pending (no result). Explicit denial is covered by a UI test; re-verify in the dev/release build (T182). Camera permission was NOT granted on the user's phone (user decision).
+- Git Bash rewrites `/sdcard/...` adb paths — use `MSYS_NO_PATHCONV=1` for adb shell/exec-out with device paths.
 
 - adb can wedge after long sessions: bound every adb call with `timeout`; recover with `Stop-Process adb` + `adb start-server` (start-device.mjs now times out adb reverse).
 
@@ -51,4 +53,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M12` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M13` on `master` (local only, not pushed).

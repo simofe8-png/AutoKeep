@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { newLocalId, usePrototypeData, useVehicleData } from '@/features/data/PrototypeDataContext';
+import { newLocalId, useAppData, useVehicleData } from '@/features/data/DataContext';
 import { ActionTypeBadge } from '@/features/maintenance/components';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
@@ -34,7 +34,7 @@ import {
  */
 export default function GarageModeScreen() {
   const { activeVehicle } = useActiveVehicle();
-  const { addGarageRecommendation } = usePrototypeData();
+  const { addGarageRecommendation } = useAppData();
   const data = useVehicleData(activeVehicle?.id ?? null);
   const [noteOpen, setNoteOpen] = useState(false);
   const [note, setNote] = useState('');

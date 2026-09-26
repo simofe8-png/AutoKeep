@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
@@ -13,7 +13,7 @@ import { AppText, Button, Card, Screen, TextField } from '@/ui';
 export default function OdometerScreen() {
   const router = useRouter();
   const { activeVehicle } = useActiveVehicle();
-  const { updateOdometer } = usePrototypeData();
+  const { updateOdometer } = useAppData();
   const [value, setValue] = useState('');
 
   if (!activeVehicle) return null;

@@ -188,12 +188,12 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T103 | Home adapters. | TODO | |
-| T104 | Maintenance adapters. | TODO | |
-| T105 | Source/evidence adapters. | TODO | |
-| T106 | Replace UI mock data. | TODO | |
-| T107 | Preserve approved visual baseline. | TODO | |
-| T108 | Integration tests and M13 PASS. | TODO | |
+| T103 | Home adapters. | PASS | features/data/adapters.ts toVehicleSummary + LocalStore snapshot (records→engine→VMs); vehicles/odometer/active vehicle from SQLite. Tests: localStore.test (9), device Home from SQLite. |
+| T104 | Maintenance adapters. | PASS | toScheduleVM: verified schedule → next/upcoming/interval labels from engine; unverified → reason (no source/not exact/not official/conflicting), no next. engine/alerts.ts candidates, persisted identity+handled. Tests: adapters.test (10). |
+| T105 | Source/evidence adapters. | PASS | SourceRepository + toSourceRef/locatorOf: title, edition, authority, exact locator (page/section/table/figure), documentId; document extraction status separate from original; user-report services never claim garage evidence. Tests: adapters/localStore. |
+| T106 | Replace UI mock data. | PASS | AppDataValue contract; LocalDataProvider default, PrototypeDataProvider only in demo/UI tests; onboarding real services (expo acquisition, extractor null per G1, data.gov.il lookup with consent, no discovery → honest not-found); no placeholder docs in real store. ADR-0015. Device: manual onboarding → Home from SQLite, persisted across cold restart; camera permission prompt shown (acquisition boundary live). |
+| T107 | Preserve approved visual baseline. | PASS | Device (SM-A546E, Expo Go) real mode: welcome, manual entry + registry card, confirm (origin badges), odometer, sources not-found, Home/Maintenance/History/Documents/Alerts honest empty/unavailable states match baseline layout & RTL; demo mode unchanged (UI suites 29/29). Fixed device-found: SQLite reopen NPE after reload, scan denial feedback. |
+| T108 | Integration tests and M13 PASS. | PASS | M13 PASS: verify 22 suites/209 tests (format, lint, tsc); real-data.test.tsx router integration (onboarding via registry, restart persistence, odometer update clears stale alert, camera denial); cloud 21/21. |
 
 ## M14 Garage Mode
 

@@ -53,8 +53,14 @@ export function FieldRow({
       </View>
       {origin ? (
         <Badge
-          label={origin === 'scan' ? he.onboarding.fromScan : he.onboarding.fromUser}
-          tone={origin === 'scan' ? 'info' : 'neutral'}
+          label={
+            origin === 'scan'
+              ? he.onboarding.fromScan
+              : origin === 'registry'
+                ? he.onboarding.fromRegistry
+                : he.onboarding.fromUser
+          }
+          tone={origin === 'user' ? 'neutral' : 'info'}
         />
       ) : null}
     </View>

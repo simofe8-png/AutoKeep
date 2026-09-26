@@ -8,6 +8,8 @@ import {
   type MaintenanceSchedule,
   type ServiceEvent,
   type ServiceEventId,
+  type Source,
+  type SourceId,
   type Timestamp,
   type VehicleDocument,
   type VehicleId,
@@ -201,15 +203,84 @@ export class ExtractionRepository {
       'SELECT * FROM extractions WHERE vehicle_id = ? AND document_id = ? ORDER BY created_at',
       [vehicleId, documentId],
     );
+    return rows.map(toExtraction);
+  }
+
+  /** All extractions of ONE vehicle, oldest first. */
+  async listForVehicle(vehicleId: VehicleId): Promise<DerivedExtraction[]> {
+    const rows = await this.db.all<ExtractionRow>(
+      'SELECT * FROM extractions WHERE vehicle_id = ? ORDER BY created_at, id',
+      [vehicleId],
+    );
+    return rows.map(toExtraction);
+  }
+}
+
+function toExtraction(r: ExtractionRow): DerivedExtraction {
+  return {
+    id: r.id as DerivedExtraction['id'],
+    documentId: r.document_id as DocumentId,
+    vehicleId: r.vehicle_id as VehicleId,
+    kind: r.kind,
+    status: r.status,
+    producedBy: r.produced_by,
+    payload: fromJson(r.payload_json),
+    uncertainFields: fromJson(r.uncertain_json),
+    ...meta(r),
+  };
+}
+
+// ---------- Sources (provenance of schedules; T105) ----------
+
+interface SourceRow extends Meta {
+  id: string;
+  authority: Source['authority'];
+  title: string;
+  publisher: string;
+  retrieved_from: string | null;
+  edition: string | null;
+  retrieved_at: string | null;
+  document_id: string | null;
+}
+
+export class SourceRepository {
+  constructor(private readonly db: Executor) {}
+
+  async add(s: Source): Promise<void> {
+    await this.db.run(
+      `INSERT INTO sources (id, authority, title, publisher, retrieved_from, edition, retrieved_at, document_id,
+         created_at, updated_at, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        s.id,
+        s.authority,
+        s.title,
+        s.publisher,
+        s.retrievedFrom ?? null,
+        s.edition ?? null,
+        s.retrievedAt ?? null,
+        s.documentId ?? null,
+        s.createdAt,
+        s.updatedAt,
+        s.version,
+      ],
+    );
+  }
+
+  async getMany(ids: readonly SourceId[]): Promise<Source[]> {
+    if (ids.length === 0) return [];
+    const rows = await this.db.all<SourceRow>(
+      `SELECT * FROM sources WHERE id IN (${ids.map(() => '?').join(', ')})`,
+      [...ids],
+    );
     return rows.map((r) => ({
-      id: r.id as DerivedExtraction['id'],
-      documentId: r.document_id as DocumentId,
-      vehicleId: r.vehicle_id as VehicleId,
-      kind: r.kind,
-      status: r.status,
-      producedBy: r.produced_by,
-      payload: fromJson(r.payload_json),
-      uncertainFields: fromJson(r.uncertain_json),
+      id: r.id as SourceId,
+      authority: r.authority,
+      title: r.title,
+      publisher: r.publisher,
+      retrievedFrom: r.retrieved_from ?? undefined,
+      edition: r.edition ?? undefined,
+      retrievedAt: (r.retrieved_at ?? undefined) as Timestamp | undefined,
+      documentId: (r.document_id ?? undefined) as DocumentId | undefined,
       ...meta(r),
     }));
   }

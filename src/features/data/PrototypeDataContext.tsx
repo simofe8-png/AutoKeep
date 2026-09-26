@@ -1,60 +1,21 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useMemo, useState, type ReactNode } from 'react';
 
 import type { VehicleSummary } from '@/features/vehicles/types';
 
+import {
+  DataCtx,
+  emptyBundle,
+  type AccountState,
+  type AppDataValue,
+  type NetworkMode,
+} from './DataContext';
 import type { AlertVM, GarageRecommendationVM, ServiceEventVM, VehicleDataBundle } from './types';
 
 /**
- * PROTOTYPE data store (M02–M03). Holds labeled mock data in memory so the complete approved
- * flows can be exercised end to end (e.g. confirming a service makes it appear in History).
- * Replaced by SQLite repositories (M05) behind adapters (M13). All reads/writes take an explicit
- * vehicleId — nothing is implicitly scoped to "the active vehicle".
+ * PROTOTYPE data provider — labeled mock data held in memory (demo mode and UI tests). The app's
+ * default source is the local SQLite store (LocalDataProvider, M13). Implements the same
+ * AppDataValue contract, so screens do not know which source is active.
  */
-
-export type NetworkMode = 'online' | 'offline';
-
-export interface AccountState {
-  hasAccount: boolean;
-  email?: string;
-  lastBackupAt?: string;
-}
-
-export interface PrototypeDataValue {
-  vehicles: readonly VehicleSummary[];
-  getBundle: (vehicleId: string) => VehicleDataBundle;
-  addVehicle: (vehicle: VehicleSummary, bundle?: VehicleDataBundle) => void;
-  archiveVehicle: (vehicleId: string) => void;
-  restoreVehicle: (vehicleId: string) => void;
-  deleteVehicle: (vehicleId: string) => void;
-  updateOdometer: (vehicleId: string, km: number, measuredAt: string) => void;
-  addServiceEvent: (event: ServiceEventVM) => void;
-  setAlertHandled: (vehicleId: string, alertId: string) => void;
-  addGarageRecommendation: (rec: GarageRecommendationVM) => void;
-  network: NetworkMode;
-  setNetwork: (mode: NetworkMode) => void;
-  account: AccountState;
-  setAccount: (account: AccountState) => void;
-  isDemoData: boolean;
-}
-
-export function emptyBundle(): VehicleDataBundle {
-  return {
-    schedule: { status: 'pending', upcoming: [] },
-    history: [],
-    documents: [],
-    alerts: [],
-    garageRecommendations: [],
-    deferred: [],
-  };
-}
-
-let idCounter = 0;
-export function newLocalId(prefix: string): string {
-  idCounter += 1;
-  return `${prefix}-${Date.now().toString(36)}-${idCounter}`;
-}
-
-const Ctx = createContext<PrototypeDataValue | null>(null);
 
 export interface PrototypeDataProviderProps {
   initialVehicles: readonly VehicleSummary[];
@@ -149,7 +110,7 @@ export function PrototypeDataProvider({
     [updateBundle],
   );
 
-  const value = useMemo<PrototypeDataValue>(
+  const value = useMemo<AppDataValue>(
     () => ({
       vehicles,
       getBundle,
@@ -183,17 +144,5 @@ export function PrototypeDataProvider({
     ],
   );
 
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
-}
-
-export function usePrototypeData(): PrototypeDataValue {
-  const v = useContext(Ctx);
-  if (!v) throw new Error('usePrototypeData must be used inside PrototypeDataProvider');
-  return v;
-}
-
-/** Vehicle-scoped bundle for an explicit vehicle id. */
-export function useVehicleData(vehicleId: string | null): VehicleDataBundle {
-  const { getBundle } = usePrototypeData();
-  return vehicleId ? getBundle(vehicleId) : emptyBundle();
+  return <DataCtx.Provider value={value}>{children}</DataCtx.Provider>;
 }

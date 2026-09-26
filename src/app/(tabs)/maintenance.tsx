@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 
-import { useVehicleData } from '@/features/data/PrototypeDataContext';
+import { useVehicleData } from '@/features/data/DataContext';
 import {
   MaintenanceItemList,
   NextServiceSummary,

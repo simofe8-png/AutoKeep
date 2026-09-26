@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
-import { newLocalId, usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { newLocalId, useAppData } from '@/features/data/DataContext';
 import type { DocumentVM, VehicleDataBundle } from '@/features/data/types';
 import { useOnboarding } from '@/features/onboarding/OnboardingContext';
 import { missingFields, type VehicleDraft } from '@/features/onboarding/types';
@@ -128,8 +128,17 @@ function toVehicle(id: string, draft: VehicleDraft, odometerKm: number): Vehicle
 /** One progress screen that updates, then a result (UX baseline "Source discovery UX"). */
 export default function OnboardingSources() {
   const router = useRouter();
-  const { draft, origins, odometerKm, sourceScenario, setSourceScenario } = useOnboarding();
-  const { addVehicle } = usePrototypeData();
+  const { addVehicle, isDemoData } = useAppData();
+  const {
+    draft,
+    origins,
+    odometerKm,
+    sourceScenario: demoScenario,
+    setSourceScenario,
+  } = useOnboarding();
+  // Outside demo mode no discovery provider is configured yet (G1): the honest outcome is that no
+  // verified official source was found, and the schedule stays unavailable.
+  const sourceScenario: SourceScenario = isDemoData ? demoScenario : 'notFound';
   const { setActiveVehicleId } = useActiveVehicle();
   const [progress, setProgress] = useState(0);
   const last = stopAt[sourceScenario];
@@ -162,7 +171,9 @@ export default function OnboardingSources() {
     const id = newLocalId('vehicle');
     addVehicle(
       toVehicle(id, draft, odometerKm ?? 0),
-      buildBundle(id, sourceScenario, origins.registration === 'scan'),
+      // Prototype placeholders only in demo mode; the real store records nothing it cannot back.
+      isDemoData ? buildBundle(id, sourceScenario, origins.registration === 'scan') : undefined,
+      { trim: draft.trim, engine: draft.engine, fuel: draft.fuel, vin: draft.vin },
     );
     setActiveVehicleId(id);
     router.dismissTo('/');

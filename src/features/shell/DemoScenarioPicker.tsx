@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import { he } from '@/i18n/he';
 import { AppText, colors, radii, SegmentedControl, spacing, type SegmentOption } from '@/ui';
 
@@ -21,7 +21,7 @@ export function DemoScenarioPicker<T extends string>({
   onChange,
   testID,
 }: DemoScenarioPickerProps<T>) {
-  const { isDemoData } = usePrototypeData();
+  const { isDemoData } = useAppData();
   if (!isDemoData) return null;
   return (
     <View style={styles.box} testID={testID}>

@@ -2,7 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import { documentIcon } from '@/features/documents/icons';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
@@ -32,7 +32,7 @@ import {
  */
 export default function DocumentDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle } = usePrototypeData();
+  const { vehicles, getBundle } = useAppData();
   const [openInfo, setOpenInfo] = useState(false);
 
   const owner = vehicles.find((v) => getBundle(v.id).documents.some((d) => d.id === id));

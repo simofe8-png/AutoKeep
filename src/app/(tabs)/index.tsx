@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { AccountOfferCard } from '@/features/account/AccountOfferCard';
 import { activeAlerts, AlertCard } from '@/features/alerts/components';
-import { usePrototypeData, useVehicleData } from '@/features/data/PrototypeDataContext';
+import { useAppData, useVehicleData } from '@/features/data/DataContext';
 import { NextServiceSummary, ScheduleUnavailable } from '@/features/maintenance/components';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
@@ -31,7 +31,7 @@ import {
 export default function HomeScreen() {
   const router = useRouter();
   const { activeVehicle, vehicles } = useActiveVehicle();
-  const { network, account } = usePrototypeData();
+  const { network, account } = useAppData();
   const data = useVehicleData(activeVehicle?.id ?? null);
 
   if (vehicles.length === 0) {

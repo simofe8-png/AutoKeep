@@ -1,12 +1,15 @@
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { useAppData } from '@/features/data/DataContext';
+import { onboardingServices } from '@/features/data/dataSource';
 import { useOnboarding } from '@/features/onboarding/OnboardingContext';
 import { DemoScenarioPicker } from '@/features/shell/DemoScenarioPicker';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { he } from '@/i18n/he';
 import type { ScanScenario } from '@/mocks/onboarding';
-import { AppText, Button, colors, Icon, radii, Row, Screen, spacing } from '@/ui';
+import { AppText, Button, colors, Icon, InlineNotice, radii, Row, Screen, spacing } from '@/ui';
 
 const scenarioOptions: { value: ScanScenario; label: string }[] = [
   { value: 'success', label: he.onboarding.scenarios.success },
@@ -15,11 +18,37 @@ const scenarioOptions: { value: ScanScenario; label: string }[] = [
   { value: 'failed', label: he.onboarding.scenarios.failed },
 ];
 
-/** Registration/license scan (T013). Camera integration arrives in M06 (acquisition boundary). */
+/**
+ * Registration/license scan (T013). Outside demo mode the camera / photo picker run through the
+ * acquisition boundary (M06); the acquired image is then identified on the next step.
+ */
 export default function OnboardingScan() {
   const router = useRouter();
-  const { scanScenario, setScanScenario } = useOnboarding();
-  const identify = () => router.push('/onboarding/identify');
+  const { isDemoData } = useAppData();
+  const { scanScenario, setScanScenario, setAcquired } = useOnboarding();
+  const services = isDemoData ? null : onboardingServices();
+  const [problem, setProblem] = useState<string | null>(null);
+  const acquire = (from: 'camera' | 'library') => async () => {
+    if (services) {
+      const a = services.acquisition;
+      setProblem(null);
+      const result = from === 'camera' ? await a.captureWithCamera() : await a.pickImage();
+      // Only an acquired image moves on; anything else is explained here, in context.
+      if (result.status === 'cancelled') return;
+      if (result.status !== 'acquired') {
+        setProblem(
+          result.status === 'permission_denied'
+            ? he.onboarding.permissionDenied
+            : result.status === 'rejected'
+              ? he.onboarding.fileRejected
+              : he.onboarding.scanFailedBody,
+        );
+        return;
+      }
+      setAcquired(result);
+    }
+    router.push('/onboarding/identify');
+  };
 
   return (
     <Screen
@@ -32,7 +61,7 @@ export default function OnboardingScan() {
             label={he.onboarding.capture}
             icon="camera"
             fullWidth
-            onPress={identify}
+            onPress={acquire('camera')}
           />
           <Row gap={spacing.sm}>
             <Button
@@ -41,7 +70,7 @@ export default function OnboardingScan() {
               icon="image-outline"
               variant="secondary"
               style={styles.half}
-              onPress={identify}
+              onPress={acquire('library')}
             />
             <Button
               testID="scan-manual"
@@ -68,6 +97,7 @@ export default function OnboardingScan() {
         </View>
       </View>
       <AppText color="textSecondary">{he.onboarding.scanHint}</AppText>
+      {problem ? <InlineNotice testID="scan-problem" tone="warning" message={problem} /> : null}
       <DemoScenarioPicker
         testID="scan-scenario"
         options={scenarioOptions}

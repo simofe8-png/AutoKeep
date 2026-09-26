@@ -67,7 +67,10 @@ export class DataGovIlRegistry implements VehicleRegistryProvider {
   }
 
   private async call(action: string, params: Record<string, string>): Promise<Json> {
-    const qs = new URLSearchParams(params).toString();
+    // Explicit encoding: identical query strings on Hermes and Node (no URLSearchParams polyfill).
+    const qs = Object.entries(params)
+      .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+      .join('&');
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), this.timeoutMs);
     let body: unknown;

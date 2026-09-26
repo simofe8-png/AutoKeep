@@ -1,7 +1,10 @@
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 
+import { useAppData } from '@/features/data/DataContext';
+import { onboardingServices } from '@/features/data/dataSource';
 import { useOnboarding } from '@/features/onboarding/OnboardingContext';
+import { RealIdentify } from '@/features/onboarding/RealIdentify';
 import type { VehicleDraft } from '@/features/onboarding/types';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { vehicleKindIcon } from '@/features/vehicles/ActiveVehicleBar';
@@ -19,6 +22,13 @@ function candidateSubtitle(c: VehicleDraft) {
 
 /** Identification result (T013/T014): success → confirm; ambiguity → user chooses; failure in context. */
 export default function OnboardingIdentify() {
+  const { isDemoData } = useAppData();
+  const services = isDemoData ? null : onboardingServices();
+  return services ? <RealIdentify services={services} /> : <DemoIdentify />;
+}
+
+/** Demo mode: scripted scan outcomes (labeled prototype data). */
+function DemoIdentify() {
   const router = useRouter();
   const { scanScenario, setIdentified } = useOnboarding();
   const [done, setDone] = useState(false);

@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
-import { newLocalId, usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { newLocalId, useAppData } from '@/features/data/DataContext';
 import { draftToEvent, hasErrors, validateDraft } from '@/features/service/draft';
 import { ServiceForm } from '@/features/service/ServiceForm';
 import { useServiceDraft } from '@/features/service/ServiceDraftContext';
@@ -20,7 +20,7 @@ export default function ReviewServiceScreen() {
   const router = useRouter();
   const { draft, update, setDraft } = useServiceDraft();
   const { vehicles } = useActiveVehicle();
-  const { addServiceEvent } = usePrototypeData();
+  const { addServiceEvent } = useAppData();
   const [showErrors, setShowErrors] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const vehicle = vehicles.find((v) => v.id === draft?.vehicleId);

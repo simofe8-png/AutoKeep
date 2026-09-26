@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { VehicleCard } from '@/features/vehicles/VehicleCard';
@@ -13,7 +13,7 @@ import { Button, Screen, SectionHeader, Stack } from '@/ui';
  */
 export default function VehiclesScreen() {
   const router = useRouter();
-  const { getBundle } = usePrototypeData();
+  const { getBundle } = useAppData();
   const { vehicles, activeVehicleId, setActiveVehicleId } = useActiveVehicle();
   const current = vehicles.filter((v) => !v.archived);
   const archived = vehicles.filter((v) => v.archived);

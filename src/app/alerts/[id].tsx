@@ -2,7 +2,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 
 import { alertTone } from '@/features/alerts/components';
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import type { AlertVM } from '@/features/data/types';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
@@ -29,7 +29,7 @@ import {
 export default function AlertDetailScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle, setAlertHandled } = usePrototypeData();
+  const { vehicles, getBundle, setAlertHandled } = useAppData();
   const { activeVehicleId, setActiveVehicleId } = useActiveVehicle();
 
   const owner = vehicles.find((v) => getBundle(v.id).alerts.some((a) => a.id === id));

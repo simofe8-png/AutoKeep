@@ -1,7 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
-import { usePrototypeData } from '@/features/data/PrototypeDataContext';
+import { useAppData } from '@/features/data/DataContext';
 import { ActionTypeBadge } from '@/features/maintenance/components';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
@@ -27,7 +27,7 @@ import {
 export default function ServiceDetailScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle } = usePrototypeData();
+  const { vehicles, getBundle } = useAppData();
 
   // Resolve by explicit id across vehicles; the owning vehicle is shown, never assumed active.
   const owner = vehicles.find((v) => getBundle(v.id).history.some((e) => e.id === id));

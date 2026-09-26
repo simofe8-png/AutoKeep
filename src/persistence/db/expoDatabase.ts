@@ -19,10 +19,39 @@ function wrap(db: ExpoExecutor): SqlExecutor {
   };
 }
 
-/** Opens the on-device database (app sandbox; private to AutoKeep). */
-export async function openExpoDatabase(name = 'autokeep.db'): Promise<SqlDatabase> {
-  const db = await SQLite.openDatabaseAsync(name);
-  await db.execAsync('PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;');
+async function openNative(name: string): Promise<SQLite.SQLiteDatabase> {
+  const init = async (db: SQLite.SQLiteDatabase) => {
+    await db.execAsync('PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;');
+    return db;
+  };
+  try {
+    return await init(await SQLite.openDatabaseAsync(name));
+  } catch {
+    // A reload within the same process can hand back a stale shared native handle
+    // (device-verified: NullPointerException in execAsync). Open a fresh connection instead.
+    return init(await SQLite.openDatabaseAsync(name, { useNewConnection: true }));
+  }
+}
+
+const connections = new Map<string, Promise<SqlDatabase>>();
+
+/**
+ * Opens the on-device database (app sandbox; private to AutoKeep). One connection per database
+ * per JS runtime: remounting the data layer reuses it instead of opening another handle.
+ */
+export function openExpoDatabase(name = 'autokeep.db'): Promise<SqlDatabase> {
+  let p = connections.get(name);
+  if (!p) {
+    p = createDatabase(name);
+    connections.set(name, p);
+    // A failed open is not cached, so "retry" really retries.
+    p.catch(() => connections.delete(name));
+  }
+  return p;
+}
+
+async function createDatabase(name: string): Promise<SqlDatabase> {
+  const db = await openNative(name);
   const base = wrap(db);
   let queue: Promise<unknown> = Promise.resolve();
   return {
@@ -38,6 +67,9 @@ export async function openExpoDatabase(name = 'autokeep.db'): Promise<SqlDatabas
       queue = run.catch(() => undefined);
       return run;
     },
-    close: () => db.closeAsync(),
+    close: async () => {
+      connections.delete(name);
+      await db.closeAsync();
+    },
   };
 }

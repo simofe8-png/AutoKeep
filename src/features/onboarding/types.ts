@@ -33,4 +33,5 @@ export function missingFields(draft: VehicleDraft): DraftField[] {
 }
 
 /** Where each field value came from, so the confirm screen can show provenance. */
-export type FieldOrigin = 'scan' | 'user';
+/** registry = the official government vehicle registry (data.gov.il), fetched with consent. */
+export type FieldOrigin = 'scan' | 'user' | 'registry';

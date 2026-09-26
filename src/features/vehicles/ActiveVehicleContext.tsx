@@ -24,6 +24,8 @@ export interface ActiveVehicleProviderProps {
   vehicles: readonly VehicleSummary[];
   initialActiveId?: string | null;
   isDemoData?: boolean;
+  /** Persists the user's selection (the store keeps it across launches). */
+  onActiveChange?: (id: string) => void;
   children: ReactNode;
 }
 
@@ -31,6 +33,7 @@ export function ActiveVehicleProvider({
   vehicles,
   initialActiveId,
   isDemoData = false,
+  onActiveChange,
   children,
 }: ActiveVehicleProviderProps) {
   const selectable = useMemo(() => vehicles.filter((v) => !v.archived), [vehicles]);
@@ -40,7 +43,13 @@ export function ActiveVehicleProvider({
 
   // The id is stored as requested (a just-added vehicle may not be in `vehicles` yet); resolution
   // below guarantees only an existing, non-archived vehicle is ever the active context.
-  const setActiveVehicleId = useCallback((id: string) => setActiveId(id), []);
+  const setActiveVehicleId = useCallback(
+    (id: string) => {
+      setActiveId(id);
+      onActiveChange?.(id);
+    },
+    [onActiveChange],
+  );
 
   const activeVehicle = selectable.find((v) => v.id === activeId) ?? selectable[0] ?? null;
 
