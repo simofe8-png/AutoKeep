@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M19 Settings/Account
-- **Current task:** T138 (Profile/account)
-- **Last verified PASS:** T137 — M18 PASS (zero cross-vehicle leakage gate)
-- **Next action:** M19 per task-plan (settings/account on real data: OTP account + adoption + backup/sync wiring against local Supabase; hosted project stays a gate)
+- **Milestone:** M20 Vehicle Lifecycle
+- **Current task:** T144 (Archive/restore)
+- **Last verified PASS:** T143 — M19 PASS (real account sign-in, adoption, backup status; device E2E vs local Supabase)
+- **Next action:** M20 per task-plan (archive/restore/permanent delete with preview, dossier export on real data)
 
 ## Granted policies
 
@@ -35,6 +35,8 @@ _Last updated: 2026-09-26_
 - Expo Go file scoping: picker/cached files outside the project scope are unreadable by expo-file-system (device-verified). Documents: content URI copied into private cache (fixed). Camera/library image capture → storage NOT yet device-verified (camera permission not granted on the user's phone) — verify in dev build (T182).
 - Device test data in Expo Go app storage: vehicle 'Honda XR650L 2001' (public registry sample plate), a garage note, a manual service, an uploaded test document. Harmless; clear via app data if desired.
 - Local notifications cannot run in Expo Go (importing expo-notifications throws on Android since SDK 53 — device-verified). Scheduler is lazy and disabled there; verify notifications on a development/release build (T182). Remote push would need an external account (approval gate) — not used.
+- OPEN (before RC): document ORIGINAL files are not uploaded to the private `documents` bucket — only metadata rows sync (docs/cloud/SUPABASE.md).
+- Dev device ↔ local Supabase: `.env.local` (git-ignored, local demo keys) + `adb reverse tcp:56621 tcp:56621`; OTP code from Mailpit http://127.0.0.1:56624.
 - Git Bash rewrites `/sdcard/...` adb paths — use `MSYS_NO_PATHCONV=1` for adb shell/exec-out with device paths.
 
 - adb can wedge after long sessions: bound every adb call with `timeout`; recover with `Stop-Process adb` + `adb start-server` (start-device.mjs now times out adb reverse).
@@ -57,4 +59,4 @@ _Last updated: 2026-09-26_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M18` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M19` on `master` (local only, not pushed).

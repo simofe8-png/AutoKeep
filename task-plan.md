@@ -259,12 +259,12 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T138 | Profile/account. | TODO | |
-| T139 | Notification preferences. | TODO | |
-| T140 | Sync/backup status. | TODO | |
-| T141 | Vehicle management. | TODO | |
-| T142 | General/accessibility preferences. | TODO | |
-| T143 | Settings acceptance and M19 PASS. | TODO | |
+| T138 | Profile/account. | PASS | Account screen real mode: email → one-time code → verify (AccountBackend port; Supabase impl only with cloud config, else honest 'unavailable'); on sign-in the device data is adopted (read-back verified) and synced; sign-out keeps local data. Device E2E vs local Supabase (adb reverse): code sign-in, adoption, first backup; phone's Honda+service+document+note present in the account. Fixed: magic-link email → code template; PKCE→implicit (Hermes lacks WebCrypto). Tests: account.test (5), account.cloud.test. |
+| T139 | Notification preferences. | PASS | Notification preferences: opt-in switch with OS permission, denied/unavailable explained (M17). account.test settings + alerts.test. |
+| T140 | Sync/backup status. | PASS | Backup status: connected/adopting, last backup date, pending-change count, sync errors (network/server/different account/not signed in), 'backup now'. Offline change stays pending then backs up (account.test); real push/pull vs local Supabase with RLS isolation (account.cloud.test). |
+| T141 | Vehicle management. | PASS | Vehicle management reachable from Settings on real data (list, manage, archive/restore/delete screens from M05/M13). account.test settings; lifecycle depth in M20. |
+| T142 | General/accessibility preferences. | PASS | General/accessibility: Hebrew/RTL, text follows device font scale (capped where needed, M03), shown in Settings. account.test settings. |
+| T143 | Settings acceptance and M19 PASS. | PASS | M19 PASS: verify 31 suites/256 tests; cloud 22/22 twice (store adoption+sync+RLS; fixed test id collision with rows kept from earlier runs — adoption correctly refused foreign ids). |
 
 ## M20 Vehicle Lifecycle
 

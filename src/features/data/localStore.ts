@@ -29,7 +29,10 @@ import {
 } from '@/domain';
 import { alertCandidates, planAlerts, type AlertCandidate } from '@/engine/alerts';
 import { computeMaintenance, type EngineResult } from '@/engine/maintenance';
+import { adoptLocalData, readAdoptionState, type AdoptionStatus } from '@/account/adoption';
+import type { AccountBackend } from '@/features/account/backend';
 import type { VehicleSummary } from '@/features/vehicles/types';
+import { pendingCount, syncOnce } from '@/sync/engine';
 import type { OriginalFileStore } from '@/providers/storage/types';
 import {
   ActiveVehicleStore,
@@ -87,6 +90,16 @@ export interface Snapshot {
   activeVehicleId: string | null;
   /** The user opted in to device notifications (T130). */
   notificationsEnabled: boolean;
+  /** Backup/sync state from the local database (T140). */
+  backup: BackupStatus;
+}
+
+export interface BackupStatus {
+  adoption: AdoptionStatus;
+  /** Local changes not yet accepted by the server. */
+  pending: number;
+  lastSyncAt: string | null;
+  lastError: 'network' | 'server_rejected' | 'different_account' | 'not_signed_in' | null;
 }
 
 /** Optional identity details captured at onboarding (beyond the display summary). */
@@ -240,7 +253,13 @@ export class LocalStore {
     const activeVehicleId = await new ActiveVehicleStore(this.db).get();
     const notificationsEnabled =
       (await new SettingsRepository(this.db).get<boolean>('notificationsEnabled')) === true;
-    return { vehicles: summaries, bundles, activeVehicleId, notificationsEnabled };
+    return {
+      vehicles: summaries,
+      bundles,
+      activeVehicleId,
+      notificationsEnabled,
+      backup: await this.backupStatus(),
+    };
   }
 
   // ---------- writes ----------
@@ -287,6 +306,48 @@ export class LocalStore {
       }
     });
     return vehicle.id;
+  }
+
+  // ---------- account / backup (M19) ----------
+
+  async backupStatus(): Promise<BackupStatus> {
+    const settings = new SettingsRepository(this.db);
+    const adoption = await readAdoptionState(this.db);
+    const lastError = (await settings.get<BackupStatus['lastError']>('syncLastError')) ?? null;
+    return {
+      adoption: adoption.status,
+      pending: adoption.status === 'adopted' ? await pendingCount(this.db) : 0,
+      lastSyncAt: await settings.get<string>('lastSyncAt'),
+      lastError:
+        adoption.lastError === 'network' ||
+        adoption.lastError === 'server_rejected' ||
+        adoption.lastError === 'different_account' ||
+        adoption.lastError === 'not_signed_in'
+          ? adoption.lastError
+          : lastError,
+    };
+  }
+
+  /**
+   * After sign-in: adopt this device's local data into the account (one server transaction,
+   * read-back verified — local data is never deleted), then run the first sync.
+   */
+  async connectAccount(backend: AccountBackend): Promise<void> {
+    const r = await adoptLocalData(this.db, backend.adoption, this.profile.id, this.clock.now);
+    if (!r.ok) throw new Error(`adoption: ${r.failure}`);
+    await this.sync(backend);
+  }
+
+  /** One sync round (push, then pull). Only for adopted data; failures are recorded, not lost. */
+  async sync(backend: AccountBackend): Promise<void> {
+    const settings = new SettingsRepository(this.db);
+    const r = await syncOnce(this.db, backend.transport, this.clock.now);
+    if (r.ok) {
+      await settings.set('lastSyncAt', this.clock.now(), this.clock.now());
+      await settings.set('syncLastError', null, this.clock.now());
+    } else if (r.reason === 'network') {
+      await settings.set('syncLastError', 'network', this.clock.now());
+    }
   }
 
   async setNotificationsEnabled(enabled: boolean): Promise<void> {

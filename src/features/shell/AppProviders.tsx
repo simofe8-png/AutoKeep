@@ -43,6 +43,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
       ids={source.ids}
       clock={source.clock}
       files={source.files}
+      account={source.account ?? null}
     >
       <ActiveVehicleBridge>{children}</ActiveVehicleBridge>
     </LocalDataProvider>

@@ -242,6 +242,11 @@ otp_expiry = 3600
 # admin_email = "admin@email.com"
 # sender_name = "Admin"
 
+# Passwordless sign-in sends a one-time CODE (the app has no magic-link redirect).
+[auth.email.template.magic_link]
+subject = "קוד הכניסה שלך ל-AutoKeep"
+content_path = "./supabase/templates/magic_link.html"
+
 # Uncomment to customize email template
 # [auth.email.template.invite]
 # subject = "You have been invited"

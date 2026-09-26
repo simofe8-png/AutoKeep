@@ -193,6 +193,14 @@ export function PrototypeDataProvider({
       setNetwork,
       account,
       setAccount,
+      // Prototype: nothing is sent anywhere (the demo account screen sets the state directly).
+      requestAccountCode: async () => ({ ok: true }) as const,
+      verifyAccountCode: async (email: string) => {
+        setAccount({ hasAccount: true, email, lastBackupAt: todayIso() });
+        return { ok: true } as const;
+      },
+      syncNow: () => undefined,
+      signOutAccount: async () => setAccount({ hasAccount: false }),
       today: () => todayIso(),
       notificationsEnabled,
       setNotificationsEnabled,

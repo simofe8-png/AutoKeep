@@ -25,7 +25,21 @@ export interface AccountState {
   hasAccount: boolean;
   email?: string;
   lastBackupAt?: string;
+  /** A cloud backend is configured in this build (false: local-only, said so honestly). */
+  available?: boolean;
+  /** Adoption of this device's data into the account. */
+  adoption?: 'none' | 'pending' | 'adopted';
+  /** Local changes not yet backed up. */
+  pending?: number;
+  syncError?: 'network' | 'server_rejected' | 'different_account' | 'not_signed_in' | null;
 }
+
+export type AccountResult =
+  | { ok: true }
+  | {
+      ok: false;
+      reason: 'invalid_email' | 'invalid_code' | 'network' | 'rate_limited' | 'unknown';
+    };
 
 /** Identity details captured at onboarding beyond the display summary. */
 export interface VehicleDetailsInput {
@@ -77,6 +91,13 @@ export interface AppDataValue {
   setNetwork: (mode: NetworkMode) => void;
   account: AccountState;
   setAccount: (account: AccountState) => void;
+  /** Passwordless sign-in: send a one-time code to the email. */
+  requestAccountCode: (email: string) => Promise<AccountResult>;
+  /** Verifies the code; on success this device's data is adopted and backed up. */
+  verifyAccountCode: (email: string, code: string) => Promise<AccountResult>;
+  syncNow: () => void;
+  /** Signs out of the account; local data stays on the device. */
+  signOutAccount: () => Promise<void>;
   /**
    * Today's date (YYYY-MM-DD) from the data source's clock — the same clock that validates writes,
    * so a record dated "today" by a screen can never be judged to be in the future.

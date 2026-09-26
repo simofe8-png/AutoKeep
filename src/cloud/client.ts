@@ -22,7 +22,9 @@ export function getSupabase(): SupabaseClient | null {
       persistSession: true,
       autoRefreshToken: true,
       detectSessionInUrl: false,
-      flowType: 'pkce',
+      // Sign-in is a one-time email CODE verified in-app (no redirect), so PKCE adds nothing —
+      // and Hermes has no WebCrypto for its challenge (device-verified warning).
+      flowType: 'implicit',
     },
   });
   return client;

@@ -47,3 +47,18 @@ The cloud mirrors the local SQLite schema (ADR-0008) with these additions:
 ## Tests (T064)
 
 `npm run test:cloud` runs `src/cloud/__tests__/*.cloud.test.ts` against the local stack with two real users. It covers anon denial, cross-user select/update/delete/insert denial, forged `owner_id`/`vehicle_id`, owner immutability, and storage isolation including signed URLs.
+
+## Sign-in email (M19)
+
+Sign-in is a one-time **code** entered in the app (no magic-link redirect), so the auth client uses
+the implicit flow (no PKCE: nothing is exchanged via a URL, and Hermes has no WebCrypto for the
+challenge). The `magic_link` email template must contain the code — see
+`supabase/templates/magic_link.html` (`{{ .Token }}`), wired in `supabase/config.toml`. A hosted
+project needs the same template (part of the hosted-project approval gate, T065/M24).
+
+Device verification (2026-09-26): phone → `adb reverse tcp:56621` → local stack; code read from the
+local mail catcher; sign-in, adoption and first sync succeeded; the phone's vehicle, service,
+document record and garage note were present in the account (RLS-scoped).
+
+Open: document **original files** are not yet uploaded to the private `documents` bucket — only
+their metadata rows sync. Required before RC for full document backup/restore.

@@ -1,4 +1,6 @@
+import { getSupabase } from '@/cloud/client';
 import type { IdGenerator } from '@/domain';
+import { supabaseAccountBackend, type AccountBackend } from '@/features/account/backend';
 import type { OnboardingServices } from '@/features/onboarding/services';
 import type { SqlDatabase } from '@/persistence';
 import { openExpoDatabase } from '@/persistence/db/expoDatabase';
@@ -27,9 +29,16 @@ export type DataSourceConfig =
       services: OnboardingServices;
       /** Local notifications (optional: tests and platforms without them pass null). */
       notifications?: NotificationScheduler | null;
+      /** Cloud account/backup (null when this build has no cloud configuration). */
+      account?: AccountBackend | null;
     };
 
 const openDefault = () => openExpoDatabase();
+
+function accountBackend(): AccountBackend | null {
+  const sb = getSupabase();
+  return sb ? supabaseAccountBackend(sb) : null;
+}
 
 const production: DataSourceConfig = {
   kind: 'local',
@@ -38,6 +47,7 @@ const production: DataSourceConfig = {
   clock: systemClock,
   files: expoFileStore,
   notifications: createExpoNotifications(),
+  account: accountBackend(),
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.

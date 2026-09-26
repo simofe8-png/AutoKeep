@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import type { IdGenerator } from '@/domain';
 import { he } from '@/i18n/he';
 import type { SqlDatabase } from '@/persistence';
+import type { AccountBackend } from '@/features/account/backend';
 import type { OriginalFileStore } from '@/providers/storage/types';
 import { colors, Dialog, ErrorState, LoadingState } from '@/ui';
 
@@ -21,6 +22,7 @@ export interface LocalDataProviderProps {
   ids: IdGenerator;
   clock: Clock;
   files: OriginalFileStore | null;
+  account?: AccountBackend | null;
   children: ReactNode;
 }
 
@@ -83,11 +85,28 @@ export function LocalDataProvider({
   ids,
   clock,
   files,
+  account: backend = null,
   children,
 }: LocalDataProviderProps) {
   const [phase, setPhase] = useState<Phase>({ kind: 'loading' });
   const [saveFailed, setSaveFailed] = useState<string | null>(null);
   const [account, setAccount] = useState<AccountState>({ hasAccount: false });
+  const [email, setEmail] = useState<string | null>(null);
+
+  // The signed-in account (session persisted securely by the backend).
+  useEffect(() => {
+    if (!backend) return;
+    let cancelled = false;
+    void backend
+      .currentEmail()
+      .then((e) => {
+        if (!cancelled) setEmail(e);
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, [backend]);
   const [network, setNetwork] = useState<NetworkMode>('online');
   const [runtime] = useState(() => new StoreRuntime());
   const [attempt, setAttempt] = useState(0);
@@ -124,6 +143,9 @@ export function LocalDataProvider({
         (e) => setSaveFailed(__DEV__ ? String(e) : ''),
         () => setPhase({ kind: 'failed' }),
       );
+    // Adoption/sync failures are recorded in the backup status, not raised as write failures.
+    const quietly = (op: (s: LocalStore) => Promise<unknown>) =>
+      write((s) => op(s).catch(() => undefined));
     return {
       vehicles: snapshot.vehicles,
       getBundle: (id) => snapshot.bundles[id] ?? emptyBundle(),
@@ -164,14 +186,43 @@ export function LocalDataProvider({
       openOriginal: (vid, did) => runtime.read((s) => s.openOriginal(vid, did), false),
       network,
       setNetwork,
-      account,
+      account: backend
+        ? {
+            hasAccount: email !== null,
+            email: email ?? undefined,
+            lastBackupAt: snapshot.backup.lastSyncAt?.slice(0, 10),
+            available: true,
+            adoption: snapshot.backup.adoption,
+            pending: snapshot.backup.pending,
+            syncError: snapshot.backup.lastError,
+          }
+        : { ...account, available: false },
       setAccount,
+      requestAccountCode: async (e) =>
+        backend ? backend.requestCode(e) : { ok: false, reason: 'unknown' },
+      verifyAccountCode: async (e, code) => {
+        if (!backend) return { ok: false, reason: 'unknown' };
+        const r = await backend.verifyCode(e, code);
+        if (r.ok) {
+          setEmail((await backend.currentEmail().catch(() => null)) ?? e.trim().toLowerCase());
+          quietly((s) => s.connectAccount(backend));
+        }
+        return r;
+      },
+      syncNow: () => {
+        if (backend) quietly((s) => s.sync(backend));
+      },
+      signOutAccount: async () => {
+        if (!backend) return;
+        await backend.signOut().catch(() => undefined);
+        setEmail(null);
+      },
       isDemoData: false,
       initialActiveVehicleId: snapshot.activeVehicleId,
       // Best effort: a selection that is no longer valid simply is not remembered.
       rememberActiveVehicle: (id) => write((s) => s.setActiveVehicle(id).catch(() => undefined)),
     };
-  }, [snapshot, runtime, network, account, clock]);
+  }, [snapshot, runtime, network, account, clock, backend, email]);
 
   if (phase.kind === 'failed') {
     return (
