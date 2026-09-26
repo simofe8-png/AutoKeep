@@ -1,4 +1,5 @@
 import * as Crypto from 'expo-crypto';
+import { safeErrorText } from '@/security/redact';
 import * as DocumentPicker from 'expo-document-picker';
 import { Directory, Paths } from 'expo-file-system';
 import * as LegacyFileSystem from 'expo-file-system/legacy';
@@ -57,7 +58,7 @@ export const expoAcquisition: AcquisitionProvider = {
       if (!perm.granted) return { status: 'permission_denied' };
       return fromImageResult(await ImagePicker.launchCameraAsync(IMAGE_OPTIONS), 'camera');
     } catch (e) {
-      return { status: 'error', message: String(e) };
+      return { status: 'error', message: safeErrorText(e) };
     }
   },
 
@@ -66,7 +67,7 @@ export const expoAcquisition: AcquisitionProvider = {
       // The system photo picker needs no broad media permission on modern Android.
       return fromImageResult(await ImagePicker.launchImageLibraryAsync(IMAGE_OPTIONS), 'library');
     } catch (e) {
-      return { status: 'error', message: String(e) };
+      return { status: 'error', message: safeErrorText(e) };
     }
   },
 
@@ -101,7 +102,7 @@ export const expoAcquisition: AcquisitionProvider = {
         ACCEPTED_DOCUMENT_TYPES,
       );
     } catch (e) {
-      return { status: 'error', message: String(e) };
+      return { status: 'error', message: safeErrorText(e) };
     }
   },
 };

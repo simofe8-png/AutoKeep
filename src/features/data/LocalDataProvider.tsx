@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { safeErrorText } from '@/security/redact';
 import { StyleSheet, View } from 'react-native';
 
 import type { IdGenerator } from '@/domain';
@@ -65,7 +66,7 @@ class StoreRuntime {
       try {
         await op(s);
       } catch (e) {
-        if (__DEV__) console.warn('AutoKeep: write failed', e);
+        if (__DEV__) console.warn('AutoKeep: write failed', safeErrorText(e));
         onWriteFailed(e);
       }
       try {
@@ -160,7 +161,7 @@ export function LocalDataProvider({
         runtime.attach(s);
         setPhase({ kind: 'ready', snapshot });
       } catch (e) {
-        if (__DEV__) console.warn('AutoKeep: local data failed to open', e);
+        if (__DEV__) console.warn('AutoKeep: local data failed to open', safeErrorText(e));
         if (!cancelled) setPhase({ kind: 'failed' });
       }
     })();
@@ -178,7 +179,7 @@ export function LocalDataProvider({
         op,
         (next) => setPhase({ kind: 'ready', snapshot: next }),
         // Dev builds show the technical cause to speed up diagnosis; users see plain language.
-        (e) => setSaveFailed(__DEV__ ? String(e) : ''),
+        (e) => setSaveFailed(__DEV__ ? safeErrorText(e) : ''),
         () => setPhase({ kind: 'failed' }),
       );
     // Adoption/sync failures are recorded in the backup status, not raised as write failures.
@@ -228,7 +229,8 @@ export function LocalDataProvider({
       addGarageRecommendation: (r) => write((s) => s.addGarageRecommendation(r)),
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
       // Reads of the original go straight to the store (no snapshot change).
-      getOriginal: (vid, did) => runtime.read((s) => s.original(vid, did), null),
+      getOriginal: (vid, did) =>
+        runtime.read((s) => s.original(vid, did, email ? backend : null), null),
       openOriginal: (vid, did) => runtime.read((s) => s.openOriginal(vid, did), false),
       network,
       setNetwork,

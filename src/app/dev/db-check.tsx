@@ -1,4 +1,5 @@
 import { Redirect } from 'expo-router';
+import { safeErrorText } from '@/security/redact';
 import { useEffect, useState } from 'react';
 
 import { createVehicle, timestamp } from '@/domain';
@@ -66,7 +67,7 @@ export default function DbCheck() {
       await db2.close();
       log.push('DBCHECK PASS');
     })()
-      .catch((e: unknown) => log.push(`DBCHECK FAIL ${String(e)}`))
+      .catch((e: unknown) => log.push(`DBCHECK FAIL ${safeErrorText(e)}`))
       .finally(() => setLines([...log]));
   }, []);
 

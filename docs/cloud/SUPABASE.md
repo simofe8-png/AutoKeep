@@ -60,5 +60,6 @@ Device verification (2026-09-26): phone → `adb reverse tcp:56621` → local st
 local mail catcher; sign-in, adoption and first sync succeeded; the phone's vehicle, service,
 document record and garage note were present in the account (RLS-scoped).
 
-Open: document **original files** are not yet uploaded to the private `documents` bucket — only
-their metadata rows sync. Required before RC for full document backup/restore.
+Document originals (M22): uploaded to the private `documents` bucket after each sync
+(`<user>/<vehicle>/<document>`, storage RLS), restored on demand on another device and accepted only
+if their SHA-256 matches the record (`account.cloud.test.ts`).

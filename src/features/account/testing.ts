@@ -17,6 +17,20 @@ export class MemoryAccountBackend implements AccountBackend {
   offline = false;
   readonly stored = new Map<string, Set<string>>();
   readonly pushed: PushOp[] = [];
+  readonly objects = new Map<string, Uint8Array>();
+
+  originals = {
+    upload: async (path: string, bytes: Uint8Array) => {
+      if (this.offline) throw new Error('offline');
+      // Mirrors storage RLS: only under the signed-in user's own folder.
+      if (!this.email || !path.startsWith(`user:${this.email}/`)) throw new Error('forbidden');
+      this.objects.set(path, bytes);
+    },
+    download: async (path: string) => {
+      if (this.offline || !this.email || !path.startsWith(`user:${this.email}/`)) return null;
+      return this.objects.get(path) ?? null;
+    },
+  };
 
   async requestCode(email: string): Promise<AuthResult> {
     if (this.offline) return { ok: false, reason: 'network' };

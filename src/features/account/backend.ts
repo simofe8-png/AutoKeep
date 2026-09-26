@@ -19,6 +19,19 @@ export interface AccountBackend {
   signOut(): Promise<void>;
   adoption: AdoptionCloud;
   transport: SyncTransport;
+  /**
+   * Document originals in the account's PRIVATE bucket (path `<user>/<vehicle>/<document>`,
+   * enforced by storage RLS). Downloads use short-lived signed URLs only.
+   */
+  originals: {
+    upload(path: string, bytes: Uint8Array, mimeType: string): Promise<void>;
+    download(path: string): Promise<Uint8Array | null>;
+  };
+}
+
+/** Private-bucket path of a document original (first two folders are checked by storage RLS). */
+export function originalPath(userId: string, vehicleId: string, documentId: string): string {
+  return `${userId}/${vehicleId}/${documentId}`;
 }
 
 export function supabaseAccountBackend(sb: SupabaseClient): AccountBackend {
@@ -29,5 +42,20 @@ export function supabaseAccountBackend(sb: SupabaseClient): AccountBackend {
     signOut: () => signOut(sb),
     adoption: supabaseAdoptionCloud(sb),
     transport: supabaseSyncTransport(sb),
+    originals: {
+      async upload(path, bytes, mimeType) {
+        const { error } = await sb.storage
+          .from('documents')
+          .upload(path, bytes, { contentType: mimeType, upsert: true });
+        if (error) throw new Error(`upload: ${error.message}`);
+      },
+      async download(path) {
+        const { data, error } = await sb.storage.from('documents').createSignedUrl(path, 60);
+        if (error || !data?.signedUrl) return null;
+        const r = await fetch(data.signedUrl);
+        if (!r.ok) return null;
+        return new Uint8Array(await r.arrayBuffer());
+      },
+    },
   };
 }

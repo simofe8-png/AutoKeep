@@ -1,6 +1,7 @@
 # AutoKeep Security
 
-Source: AUTOKEEP_V1_SPEC.md §23. The full threat model is produced in M22 (T160).
+Source: AUTOKEEP_V1_SPEC.md §23. The full threat model, MASVS review, dependency disposition and
+findings register are in [docs/security/THREAT_MODEL.md](docs/security/THREAT_MODEL.md) (M22).
 
 ## Principles
 
@@ -22,7 +23,7 @@ Source: AUTOKEEP_V1_SPEC.md §23. The full threat model is produced in M22 (T160
 | Source poisoning (fake "official" manual) | authority classification, exact-applicability matching, provenance, unverified by default           |
 | Prompt injection in invoices or manuals   | data/instruction separation, schema validation, draft-only output                                   |
 | Fabricated maintenance advice             | engine requires verified schedule; no AI-authored requirements                                      |
-| PII in logs                               | redaction utility, tested                                                                           |
+| PII in logs                               | `src/security/redact.ts` (`safeErrorText`) on every log/technical-error path, tested                |
 | Lost device                               | cloud backup after account creation; no secrets on device beyond the auth session in secure storage |
 
 ## Reporting

@@ -307,8 +307,7 @@ describe('service with its original document (T114/T118)', () => {
       documentIds: [invoice.documentId],
     });
     expect(files.files.size).toBe(1);
-    const stored = [...files.files.values()][0];
-    expect(stored.storageKey).toMatch(/^originals\//);
+    expect([...files.files.keys()][0]).toMatch(/^originals\//);
   });
 
   it('a rejected record leaves no document row and no orphaned file', async () => {

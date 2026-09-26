@@ -299,15 +299,15 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T160 | AutoKeep threat model. | TODO | |
-| T161 | Auth/RLS/BOLA/IDOR testing. | TODO | |
-| T162 | Storage/upload security. | TODO | |
-| T163 | Secrets/config review. | TODO | |
-| T164 | PII/VIN/registration/log redaction. | TODO | |
-| T165 | AI/source-poisoning review. | TODO | |
-| T166 | Dependency/security scanning. | TODO | |
-| T167 | OWASP-oriented review. | TODO | |
-| T168 | Remediate Critical/High findings and M22 PASS. | TODO | |
+| T160 | AutoKeep threat model. | PASS | docs/security/THREAT_MODEL.md: assets, actors, trust boundaries, STRIDE table (18 threats) each mapped to code + test evidence. |
+| T161 | Auth/RLS/BOLA/IDOR testing. | PASS | RLS/BOLA/IDOR: rls.cloud (anon, ownership, forged owner, client-supplied vehicle_id, SECURITY INVOKER RPCs, storage), adoption.cloud (hostile id collision), account.cloud (other user cannot read/sign objects); cloud 23/23. |
+| T162 | Storage/upload security. | PASS | Originals: private bucket upload after sync (uid/vehicle/document path, storage RLS), on-demand restore on a new device with SHA-256 re-verification (mismatch discarded); missing/modified never uploaded; type/size bounds. account.cloud.test + account.test. Finding F-01 (High) fixed. |
+| T163 | Secrets/config review. | PASS | Secrets: only EXPO_PUBLIC_* in client; .env*/.env.local git-ignored (dev .env.local not committed); repo scan for keys finds only detector regex; secrets-boundary.test. |
+| T164 | PII/VIN/registration/log redaction. | PASS | src/security/redact.ts (VIN/plate → last 4, email/phone removed, bounded) applied to all log/technical-error paths; UI masks VIN; registry sends plate only with consent; no EXIF. redact.test (4). Finding F-02 fixed. |
+| T165 | AI/source-poisoning review. | PASS | Source poisoning & prompt injection reviewed: verified-domain registry only (ships empty), exact applicability, uploads never official, boundary-wrapped untrusted content, flags, schema + grounding, draft-only (THREAT_MODEL T4/T5; intelligence + failure-recovery tests). |
+| T166 | Dependency/security scanning. | PASS | npm audit: 0 critical / 0 high / 15 moderate (Expo build tooling; expo-router query-string DoS via malformed deep link) — accepted residual with rationale, re-check at RC (THREAT_MODEL §6). |
+| T167 | OWASP-oriented review. | PASS | OWASP MASVS-oriented review (STORAGE/CRYPTO/AUTH/NETWORK/PLATFORM/CODE/PRIVACY) in THREAT_MODEL §5; residual: SQLite not encrypted at rest (accepted, F-04). |
+| T168 | Remediate Critical/High findings and M22 PASS. | PASS | M22 PASS: findings register — no open Critical/High (F-01 High fixed, F-02/F-03 Medium fixed, F-04/F-05 Low accepted); verify 34 suites/277 tests; cloud 23/23. |
 
 ## M23 Full Acceptance
 

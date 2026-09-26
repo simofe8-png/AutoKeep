@@ -72,6 +72,18 @@ export const expoFileStore: OriginalFileStore = {
     return hash === sha256 ? 'intact' : 'modified';
   },
 
+  async readBytes(storageKey: string): Promise<Uint8Array> {
+    return new File(Paths.document, storageKey).bytes();
+  },
+
+  async writeBytes(storageKey: string, bytes: Uint8Array): Promise<void> {
+    dir();
+    const f = new File(Paths.document, storageKey);
+    if (f.exists) f.delete();
+    f.create();
+    f.write(bytes);
+  },
+
   async open(storageKey: string, mimeType: string): Promise<boolean> {
     const f = new File(Paths.document, storageKey);
     if (!f.exists || !(await Sharing.isAvailableAsync())) return false;

@@ -23,6 +23,10 @@ export interface OriginalFileStore {
   verify(storageKey: string, sha256: string): Promise<Integrity>;
   /** Hands the original to the system viewer (share sheet); false if it cannot be opened. */
   open(storageKey: string, mimeType: string): Promise<boolean>;
+  /** Raw bytes of a stored original (for the encrypted-in-transit cloud backup). */
+  readBytes(storageKey: string): Promise<Uint8Array>;
+  /** Restores an original under its key (e.g. downloaded from the account's private backup). */
+  writeBytes(storageKey: string, bytes: Uint8Array): Promise<void>;
 }
 
 const EXT: Record<string, string> = {
@@ -36,13 +40,29 @@ export function extensionFor(mimeType: string): string {
   return EXT[mimeType] ?? 'bin';
 }
 
-export function toHex(buf: ArrayBuffer): string {
-  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+export function toHex(buf: ArrayBuffer | Uint8Array): string {
+  return [...new Uint8Array(buf instanceof Uint8Array ? buf : new Uint8Array(buf))]
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
 }
 
-/** In-memory store for tests (records imports; hash is derived from the uri, not real bytes). */
+/** Deterministic 64-hex digest for the in-memory test store (NOT cryptographic). */
+function testDigest(bytes: Uint8Array): string {
+  let h = [0x811c9dc5, 0x01000193, 0x9e3779b9, 0x85ebca6b];
+  bytes.forEach((b, i) => {
+    const k = i % 4;
+    h[k] = Math.imul(h[k] ^ b, 16777619) >>> 0;
+  });
+  h = h.map((x, i) => Math.imul(x ^ (bytes.length + i), 2246822507) >>> 0);
+  return h
+    .map((x) => x.toString(16).padStart(8, '0'))
+    .join('')
+    .repeat(2);
+}
+
+/** In-memory store for tests: real bytes (the file URI's text), digest recomputed on verify. */
 export class MemoryFileStore implements OriginalFileStore {
-  readonly files = new Map<string, StoredOriginal>();
+  readonly files = new Map<string, { bytes: Uint8Array; mimeType: string }>();
   failNext = false;
   private n = 0;
 
@@ -52,16 +72,15 @@ export class MemoryFileStore implements OriginalFileStore {
       throw new Error('storage full');
     }
     this.n += 1;
-    const key = `originals/test-${this.n}.${extensionFor(file.mimeType)}`;
-    const hex = [...file.uri].map((c) => c.charCodeAt(0).toString(16)).join('');
-    const stored = {
+    const key = `originals/test-${this.n}-${Math.random().toString(36).slice(2, 8)}.${extensionFor(file.mimeType)}`;
+    const bytes = new TextEncoder().encode(`original:${file.uri}`);
+    this.files.set(key, { bytes, mimeType: file.mimeType });
+    return {
       storageKey: key,
       mimeType: file.mimeType,
-      sizeBytes: file.sizeBytes ?? 1,
-      sha256: hex.padEnd(64, '0').slice(0, 64),
+      sizeBytes: bytes.length,
+      sha256: testDigest(bytes),
     };
-    this.files.set(key, stored);
-    return stored;
   }
 
   uriFor(storageKey: string) {
@@ -75,13 +94,13 @@ export class MemoryFileStore implements OriginalFileStore {
   /** Simulates tampering with a stored original (tests). */
   corrupt(storageKey: string) {
     const f = this.files.get(storageKey);
-    if (f) this.files.set(storageKey, { ...f, sha256: 'f'.repeat(64) });
+    if (f) this.files.set(storageKey, { ...f, bytes: new Uint8Array([...f.bytes, 0x21]) });
   }
 
   async verify(storageKey: string, sha256: string): Promise<Integrity> {
     const f = this.files.get(storageKey);
     if (!f) return 'missing';
-    return f.sha256 === sha256 ? 'intact' : 'modified';
+    return testDigest(f.bytes) === sha256 ? 'intact' : 'modified';
   }
 
   readonly opened: string[] = [];
@@ -89,5 +108,15 @@ export class MemoryFileStore implements OriginalFileStore {
     if (!this.files.has(storageKey)) return false;
     this.opened.push(storageKey);
     return true;
+  }
+
+  async readBytes(storageKey: string): Promise<Uint8Array> {
+    const f = this.files.get(storageKey);
+    if (!f) throw new Error('missing');
+    return f.bytes;
+  }
+
+  async writeBytes(storageKey: string, bytes: Uint8Array): Promise<void> {
+    this.files.set(storageKey, { bytes, mimeType: 'application/octet-stream' });
   }
 }

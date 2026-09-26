@@ -30,7 +30,7 @@ import {
 import { alertCandidates, planAlerts, type AlertCandidate } from '@/engine/alerts';
 import { computeMaintenance, type EngineResult } from '@/engine/maintenance';
 import { adoptLocalData, readAdoptionState, type AdoptionStatus } from '@/account/adoption';
-import type { AccountBackend } from '@/features/account/backend';
+import { originalPath, type AccountBackend } from '@/features/account/backend';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import { pendingCount, syncOnce } from '@/sync/engine';
 import type { OriginalFileStore } from '@/providers/storage/types';
@@ -322,10 +322,12 @@ export class LocalStore {
           'SELECT COUNT(*) AS n FROM sync_conflicts WHERE resolved = 0',
         )
       )?.n ?? 0;
+    const originalsPending =
+      adoption.status === 'adopted' ? (await this.originalsToUpload()).length : 0;
     return {
       conflicts,
       adoption: adoption.status,
-      pending: adoption.status === 'adopted' ? await pendingCount(this.db) : 0,
+      pending: adoption.status === 'adopted' ? (await pendingCount(this.db)) + originalsPending : 0,
       lastSyncAt: await settings.get<string>('lastSyncAt'),
       lastError:
         adoption.lastError === 'network' ||
@@ -347,6 +349,55 @@ export class LocalStore {
     await this.sync(backend);
   }
 
+  private async allDocuments(): Promise<VehicleDocument[]> {
+    const out: VehicleDocument[] = [];
+    for (const v of await new VehicleRepository(this.db).list({ includeArchived: true })) {
+      out.push(...(await new DocumentRepository(this.db).list(v.id)));
+    }
+    return out;
+  }
+
+  /**
+   * Intact local originals not yet in the account's private bucket. A missing or modified file
+   * can never be uploaded, so it is not reported as "waiting for backup".
+   */
+  private async originalsToUpload(): Promise<VehicleDocument[]> {
+    const files = this.files;
+    if (!files) return [];
+    const done = new Set(
+      (await new SettingsRepository(this.db).get<string[]>('uploadedOriginals')) ?? [],
+    );
+    const out: VehicleDocument[] = [];
+    for (const d of await this.allDocuments()) {
+      if (done.has(d.id)) continue;
+      if ((await files.verify(d.original.storageKey, d.original.sha256)) === 'intact') out.push(d);
+    }
+    return out;
+  }
+
+  /**
+   * T162: uploads intact originals to the private bucket (after their rows synced). A file that
+   * is missing or no longer matches its recorded hash is never uploaded.
+   */
+  private async uploadOriginals(backend: AccountBackend): Promise<void> {
+    if (!this.files) return;
+    const userId = await backend.adoption.currentUserId();
+    if (!userId) return;
+    const settings = new SettingsRepository(this.db);
+    const done = (await settings.get<string[]>('uploadedOriginals')) ?? [];
+    // originalsToUpload() already re-verified each file against its recorded hash.
+    for (const d of await this.originalsToUpload()) {
+      const bytes = await this.files.readBytes(d.original.storageKey);
+      await backend.originals.upload(
+        originalPath(userId, d.vehicleId, d.id),
+        bytes,
+        d.original.mimeType,
+      );
+      done.push(d.id);
+      await settings.set('uploadedOriginals', done, this.clock.now());
+    }
+  }
+
   /** The user has seen the reconciled conflicts (the kept values stay; this only clears the notice). */
   async acknowledgeConflicts(): Promise<void> {
     await this.db.run('UPDATE sync_conflicts SET resolved = 1 WHERE resolved = 0');
@@ -357,8 +408,13 @@ export class LocalStore {
     const settings = new SettingsRepository(this.db);
     const r = await syncOnce(this.db, backend.transport, this.clock.now);
     if (r.ok) {
-      await settings.set('lastSyncAt', this.clock.now(), this.clock.now());
-      await settings.set('syncLastError', null, this.clock.now());
+      try {
+        await this.uploadOriginals(backend);
+        await settings.set('lastSyncAt', this.clock.now(), this.clock.now());
+        await settings.set('syncLastError', null, this.clock.now());
+      } catch {
+        await settings.set('syncLastError', 'network', this.clock.now());
+      }
     } else if (r.reason === 'network') {
       await settings.set('syncLastError', 'network', this.clock.now());
     }
@@ -571,18 +627,38 @@ export class LocalStore {
     }
   }
 
-  /** T123/T125: the stored original, re-hashed against the hash recorded at import. */
-  async original(vehicleId: string, documentId: string): Promise<OriginalView | null> {
+  /**
+   * T123/T125: the stored original, re-hashed against the hash recorded at import. On a device
+   * that does not hold it yet (e.g. restored from the account), it is fetched from the private
+   * backup and accepted only if its hash matches the record.
+   */
+  async original(
+    vehicleId: string,
+    documentId: string,
+    backend: AccountBackend | null = null,
+  ): Promise<OriginalView | null> {
     const doc = await new DocumentRepository(this.db).get(
       vehicleId as VehicleId,
       documentId as VehicleDocument['id'],
     );
     if (!doc || !this.files) return null;
-    return {
-      uri: this.files.uriFor(doc.original.storageKey),
-      mimeType: doc.original.mimeType,
-      integrity: await this.files.verify(doc.original.storageKey, doc.original.sha256),
-    };
+    const key = doc.original.storageKey;
+    let integrity = await this.files.verify(key, doc.original.sha256);
+    if (integrity === 'missing' && backend) {
+      const userId = await backend.adoption.currentUserId().catch(() => null);
+      const bytes = userId
+        ? await backend.originals
+            .download(originalPath(userId, doc.vehicleId, doc.id))
+            .catch(() => null)
+        : null;
+      if (bytes) {
+        await this.files.writeBytes(key, bytes);
+        integrity = await this.files.verify(key, doc.original.sha256);
+        if (integrity !== 'intact') await this.files.remove(key); // never keep a mismatching copy
+        if (integrity !== 'intact') integrity = 'missing';
+      }
+    }
+    return { uri: this.files.uriFor(key), mimeType: doc.original.mimeType, integrity };
   }
 
   async openOriginal(vehicleId: string, documentId: string): Promise<boolean> {

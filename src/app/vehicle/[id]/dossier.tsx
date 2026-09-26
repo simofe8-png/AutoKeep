@@ -1,4 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
+import { safeErrorText } from '@/security/redact';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
@@ -73,7 +74,7 @@ export default function DossierScreen() {
       setShareInfo(
         __DEV__
           ? `${he.dossier.shareFailed}
-${String(e)}`
+${safeErrorText(e)}`
           : he.dossier.shareFailed,
       );
     } finally {

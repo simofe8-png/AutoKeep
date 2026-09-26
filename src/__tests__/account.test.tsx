@@ -4,6 +4,7 @@ import { isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds, T0 } from '@/domain/testing';
 import { MemoryAccountBackend, VALID_CODE } from '@/features/account/testing';
 import { configureDataSource } from '@/features/data/dataSource';
+import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
 import { OdometerRepository, VehicleRepository, SettingsRepository } from '@/persistence';
 import { populatedWorld, type PopulatedWorld } from '@/persistence/testing/world';
@@ -82,6 +83,47 @@ describe('account & backup (T138, T140)', () => {
     // Every local vehicle reached the account's store.
     expect(backend.stored.get('vehicles')?.size).toBe(2);
     expect(await new SettingsRepository(world.db).get('lastSyncAt')).not.toBeNull();
+  }, 40000);
+
+  it('document originals are backed up to the private folder of the user after sign-in (T162)', async () => {
+    const files = new MemoryFileStore();
+    configureDataSource({
+      kind: 'local',
+      openDatabase: async () => world.db,
+      ids: sequentialIds(8000),
+      clock,
+      files,
+      notifications: null,
+      account: backend,
+      services: {
+        acquisition: {} as OnboardingServices['acquisition'],
+        extractor: null,
+        registry: {} as OnboardingServices['registry'],
+        invoiceReader: null,
+      },
+    });
+    const store = await LocalStore.open(world.db, sequentialIds(70000), clock, files);
+    await store.addDocument(
+      world.car.id,
+      {
+        documentId: '00000000-0000-4000-8000-00000000d0e1',
+        file: {
+          uri: 'file:///cache/m.pdf',
+          mimeType: 'application/pdf',
+          sizeBytes: 5,
+          source: 'file',
+        },
+        title: 'ספר בעלים',
+      },
+      'owners_manual',
+    );
+    await open('/account', 'screen-account');
+    await signIn();
+    await waitFor(() => expect(backend.objects.size).toBe(1), LONG);
+    const [path] = [...backend.objects.keys()];
+    expect(path).toBe(
+      `user:owner@example.com/${world.car.id}/00000000-0000-4000-8000-00000000d0e1`,
+    );
   }, 40000);
 
   it('a wrong code is explained and nothing is adopted', async () => {
