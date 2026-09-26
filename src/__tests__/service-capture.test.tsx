@@ -109,6 +109,9 @@ describe('invoice capture on real data (T114, T115, T118)', () => {
   it('without a reading provider: the original is attached, the user fills the draft', async () => {
     await setup(null);
     await open('/service/new', 'screen-service-new');
+    // G3: with no reader the entry never promises automatic extraction.
+    expect(screen.getByTestId('service-method-photo')).toHaveTextContent(/ממלאים בעצמכם/);
+    expect(screen.getByTestId('service-method-photo')).not.toHaveTextContent(/יחלץ/);
     await fireEvent.press(screen.getByTestId('service-method-photo'));
     await waitFor(
       () => expect(screen.getByTestId('screen-service-review')).toBeOnTheScreen(),

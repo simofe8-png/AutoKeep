@@ -308,3 +308,17 @@ describe('discovery pipeline: provenance & no-source handling (T081/T084/T085)',
     );
   });
 });
+
+describe('manufacturer names as the Ministry of Transport writes them', () => {
+  it('maps spelling variants and (truncated) country suffixes to one key, whole words only', () => {
+    expect(key('מזדה')).toBe('mazda');
+    expect(key('מאזדה')).toBe('mazda');
+    expect(key('פולקסווגן גרמנ')).toBe('volkswagen');
+    expect(key('קיה ד. קוריאה')).toBe('kia');
+    expect(key('סאן יאנג  טייוואן')).toBe('sym');
+    expect(key('Toyota')).toBe('toyota');
+    // No partial-word matches: an unknown maker never borrows a known key.
+    expect(key('קיהמוטורס')).toBe('קיהמוטורס');
+    expect(key('טויוטהX יפן')).toBe('טויוטהx יפן');
+  });
+});

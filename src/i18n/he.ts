@@ -235,6 +235,8 @@ export const he = {
     chooseMethod: 'איך לתעד את הטיפול?',
     photo: 'צילום חשבונית',
     photoHint: 'AutoKeep יחלץ טיוטה לבדיקתך — שום דבר לא נשמר בלי אישור.',
+    /** Without an invoice reader (V1, G3): never promise extraction. */
+    photoHintNoReader: 'התמונה נשמרת כמקור ומקושרת לטיפול; את הפרטים ממלאים בעצמכם.',
     file: 'העלאת קובץ',
     fileHint: 'PDF או תמונה של חשבונית',
     manual: 'הזנה ידנית',
@@ -415,7 +417,7 @@ export const he = {
     accessibility: 'נגישות',
     accessibilityValue: 'גודל הטקסט עוקב אחר הגדרות המכשיר',
     about: 'אודות ואבטחה',
-    aboutValue: 'AutoKeep V1 (אב-טיפוס)',
+    aboutValue: 'AutoKeep V1',
     demoSection: 'כלי הדגמה',
     offlineMode: 'הדמיית מצב לא מקוון',
   },

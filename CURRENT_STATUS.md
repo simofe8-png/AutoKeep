@@ -4,17 +4,18 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M24 Release Candidate. G3 (ZERO-COST V1) was approved 2026-09-26 and everything that can be done at zero cost is implemented.
-- **STOPPED:** (1) retry exhaustion on the local release build (5/5); (2) human approval required for official-source candidates.
-- **Current task:** T184 (BLOCKED).
-- **Last verified PASS:** G3 implementation (task-plan § G3): zero-cost official-site discovery (RFC 9309 robots), curated hash-pinned schedules without OCR/AI, `npm run curate:check`, candidate research.
-- **Next action (choose one):**
-  - **Release build**, per `docs/release/LOCAL_BUILD.md`, either option:
-    - **A.** Retry 6: make `C:k-sdk` a REAL ASCII copy of the SDK subset (cmake, ndk, build-tools, platforms). CMake/ninja canonicalizes the junction back to the Hebrew path.
-    - **B.** Wait for the free EAS quota reset (2026-10-01) and run `eas build --profile rc-local --platform android`.
-  - After either: install on the Galaxy A54 → device acceptance → RC report.
-  - **Sources:** a person reviews `docs/sources/CANDIDATES.md`. Approved domains go to `OFFICIAL_DOMAINS`; curated schedules follow REGISTRY_PROCEDURE.
-  - **Google Play and hosted production remain separate gates.**
+- **Milestone:** M24 Release Candidate, under G3 (ZERO-COST V1).
+- **Current task:** T184, PENDING: the RC build is produced and accepted, but RC PASS is not declared.
+- **Last verified:**
+  - local release APK (Option A);
+  - Galaxy A54 acceptance, with 5 device defects fixed;
+  - verify 42/302, cloud 26/26, live 1/1;
+  - report: `docs/release/RC_REPORT.md`.
+- **STOPPED:** 3 device checks need the device state changed by the user, and source candidates await human approval.
+- **Next action:**
+  1. With the phone on Wi-Fi and camera allowed for AutoKeep, install the kept APK (`adb install -r`), then run the registry lookup and a photo capture. Record the results in `docs/acceptance/RC-device-A54.md`, then declare RC PASS.
+  2. Record decisions on `docs/sources/CANDIDATES.md` (approved domains go to `OFFICIAL_DOMAINS`; curated schedules follow REGISTRY_PROCEDURE).
+- **Rebuilding the APK:** see `docs/release/LOCAL_BUILD.md`. The temporary build copies were removed after verification.
 
 ## Granted policies
 

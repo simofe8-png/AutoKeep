@@ -26,6 +26,35 @@ manufacturer's distributor page.
 | kawasaki      | Metro Motor (מטרו מוטור שיווק (1981) בע"מ) | kawasaki.co.il                                            | Footer copyright names Metro Motor; there is no explicit "official importer" sentence                                                           | Medium      | Not checked                                                       |
 | sym           | Metro Motor                                | sanyang.co.il                                             | The page title "... מטרו freesbe (מטרו מוטור) יבואן רשמי" appeared in search results only                                                       | Medium      | Not checked                                                       |
 
+## Government evidence (Ministry of Transport, data.gov.il, 2026-09-26)
+
+Source: the dataset `mehir_yevuan`, "מחירון רכב יבואנים", resource
+`39f455bf-6db0-4926-859d-017f34eacbcb`, read through the public CKAN API (`datastore_search`, free).
+The dataset page returned 403 earlier, but the API is open. Counts are model rows for model years
+2023 and later, P = private car. Smaller importers of the same brand are parallel importers.
+
+| Key                   | Dominant importer in the MoT list (rows)       | Next importer (rows)   | Matches candidate row                                           |
+| --------------------- | ---------------------------------------------- | ---------------------- | --------------------------------------------------------------- |
+| toyota                | יוניון מוטורס בע"מ (288 P + 111 M)             | טרגט מוטורס (173)      | Yes                                                             |
+| hyundai               | כלמוביל יונדאי (352 P + 42 M)                  | קבוצת עמק איילון (18)  | Yes                                                             |
+| kia                   | טל - קאר (237 P + 7 M)                         | עמק איילון / טרגט (14) | Yes. Fills the gap left by kia-israel.co.il's indirect evidence |
+| mazda                 | דלק מוטורס בע"מ (174); MoT spelling **"מזדה"** | גלובל אוטו מקס (8)     | Yes                                                             |
+| skoda                 | צ'מפיון מוטורס בע"מ (480 P + 12 M)             | גלובל אוטו מקס (21)    | Yes                                                             |
+| volkswagen            | צ'מפיון מוטורס בע"מ (228 P + 149 M)            | אוטופוינט (21)         | Yes                                                             |
+| suzuki                | מכשירי תנועה ומכוניות (97 P + 6 M)             | עמק איילון (7)         | Yes (cars)                                                      |
+| honda                 | מאיר חברה למכוניות ומשאיות (80)                | טרגט מוטורס (14)       | Yes (cars)                                                      |
+| yamaha, kawasaki, sym | not in this dataset (a car price list)         | Not applicable         | Still needs another source                                      |
+
+**What this proves and what it doesn't.** It independently confirms **which company** imports each
+brand. It does **not** prove that a given **domain** belongs to that company. The domain
+evidence is still the importer-controlled pages above. A reviewer can accept a domain when the
+company named on that domain matches the MoT importer, as it does for all 8 car brands.
+
+Side effect found and fixed in code: the MoT spelling "מזדה" was not a known alias, and registry
+names with truncated countries ("פולקסווגן גרמנ", "קיה ד. קוריאה") only normalized by chance.
+Aliases now include "מזדה", and a whole-word prefix match handles country suffixes
+(`discovery.test.ts`).
+
 ## Documents found (candidates for `KNOWN_OFFICIAL_SOURCES` / curation)
 
 **None of the sources found has an official per-model maintenance schedule as a static PDF.**

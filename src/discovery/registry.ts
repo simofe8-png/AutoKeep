@@ -21,6 +21,8 @@ export const KNOWN_OFFICIAL_SOURCES: readonly KnownOfficialDocument[] = [];
 export const MANUFACTURER_ALIASES: ManufacturerAliases = {
   טויוטה: 'toyota',
   מאזדה: 'mazda',
+  // Ministry of Transport spelling (data.gov.il importer price list).
+  מזדה: 'mazda',
   יונדאי: 'hyundai',
   קיה: 'kia',
   הונדה: 'honda',

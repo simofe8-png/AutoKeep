@@ -88,7 +88,8 @@ export default function NewServiceScreen() {
       id: 'photo',
       icon: 'camera-outline',
       title: he.service.photo,
-      subtitle: he.service.photoHint,
+      subtitle:
+        services && !services.invoiceReader ? he.service.photoHintNoReader : he.service.photoHint,
       onPress: fromDocument('camera'),
     },
     {

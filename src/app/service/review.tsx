@@ -74,7 +74,9 @@ export default function ReviewServiceScreen() {
                 <AppText variant="small" color="textMuted">
                   {he.service.originalDocument}:
                 </AppText>
-                <AppText variant="smallStrong">{draft.documentTitle}</AppText>
+                <AppText variant="smallStrong" numberOfLines={2} style={{ flex: 1 }}>
+                  {draft.documentTitle}
+                </AppText>
               </Row>
             </Card>
           ) : null}
