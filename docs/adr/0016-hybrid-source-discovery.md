@@ -37,3 +37,16 @@ the retrieved original.
 - Web discovery can widen coverage but can never lower the trust bar.
 - With an empty registry and no web provider configured, the app honestly reports "no verified
   official source".
+
+## Amendment (G3, 2026-09-26): zero-cost web tier
+
+There's no paid search API. The web tier is `OfficialSiteDiscoveryProvider`, which crawls only the
+**verified official domains** of the vehicle's manufacturer:
+
+- through their public `robots.txt` and sitemaps (including sitemap indexes), respecting robots
+  rules;
+- bounded to 6 sitemaps, 20,000 URLs and 10 candidates, with a 10 s timeout and a size cap per
+  fetch.
+
+It proposes on-domain PDF documents that name the model or look like a manual or maintenance
+document. The results are candidates only, and the unchanged verification chain decides.

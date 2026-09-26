@@ -44,3 +44,17 @@ approved, the function answers `not_configured` and the app keeps "reading unava
 - Documents leave the device for reading once a vendor is configured, and the privacy notice must
   say so.
 - AI output is always derived data and never mutates confirmed history.
+
+## Amendment (G3, 2026-09-26): no paid OCR/AI in V1
+
+**Manual service entry is the complete, first-class workflow.** Invoice, photo and PDF attachment
+works without OCR: the original is stored with SHA-256 and linked to the confirmed record (M15).
+
+The `document-intelligence` function and the client ports remain in place, answering
+`not_configured`, as an optional future convenience that keeps the same draft → review →
+confirmation flow.
+
+Without paid OCR/AI, a verified manual can only become a maintenance schedule through a
+**human-curated, evidence-pinned schedule** in the verified registry. That schedule is approved by
+a person, and every item carries page/section references to the pinned official document.
+Otherwise the app reports "unable to verify".

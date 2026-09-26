@@ -43,3 +43,16 @@ repository never publishes automatically.
 
 - Cloud builds avoid the non-ASCII local path problem (ADR-0005).
 - Release configuration uses hosted env values (never `.env.local`).
+
+## Amendment (G3, 2026-09-26): zero-cost RC
+
+- **Backend for RC:** the verified **local** Supabase stack. A device reaches it through
+  `adb reverse`, with an `rc-local` build variant whose network security config allows cleartext
+  **only** to 127.0.0.1/localhost. Production builds never include that plugin. The sign-in code
+  email goes to the local mail catcher. Production SMTP, domain and hosting are a later
+  production dependency.
+- **Build:** EAS stays configured (project `@vr47252/autokeep`, EAS-managed keystore). When the
+  free plan's build quota is exhausted, builds use the **local Gradle path**. The project, SDK and
+  JDK are reached through ASCII junctions (`C:k`, `C:k-sdk`, `C:k-jdk`) with
+  `NODE_OPTIONS=--preserve-symlinks` (ADR-0005 mitigation). The local APK is signed with the
+  debug keystore and is **for device testing only**. Play builds use the EAS-managed keystore.

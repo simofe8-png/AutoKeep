@@ -1,5 +1,6 @@
 import { getSupabase } from '@/cloud/client';
 import { HybridDiscoveryProvider, KnownSourceProvider } from '@/discovery/hybrid';
+import { OfficialSiteDiscoveryProvider } from '@/discovery/officialSiteDiscovery';
 import {
   KNOWN_OFFICIAL_SOURCES,
   MANUFACTURER_ALIASES,
@@ -53,6 +54,22 @@ export type DataSourceConfig =
 
 const openDefault = () => openExpoDatabase();
 
+/** HTTPS GET of a small text resource (robots.txt / sitemaps) with a hard timeout and size cap. */
+async function boundedText(url: string): Promise<{ ok: boolean; text: string }> {
+  if (!url.startsWith('https://')) return { ok: false, text: '' };
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 10_000);
+  try {
+    const r = await fetch(url, { signal: controller.signal });
+    const text = r.ok ? (await r.text()).slice(0, 5_000_000) : '';
+    return { ok: r.ok, text };
+  } catch {
+    return { ok: false, text: '' };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 function accountBackend(): AccountBackend | null {
   const sb = getSupabase();
   return sb ? supabaseAccountBackend(sb) : null;
@@ -69,17 +86,19 @@ const production: DataSourceConfig = {
   exporter: expoExporter,
   network: netInfoNetwork,
   sources: {
-    // ADR-0016 hybrid discovery: verified known sources first; web discovery joins once its
-    // vendor is approved. Reading needs the approved OCR/AI vendor (ADR-0017) — until then the
-    // search honestly finds nothing verifiable.
+    // ADR-0016 hybrid discovery, zero-cost (G3): verified known sources first; otherwise crawl the
+    // verified official domains' robots/sitemaps (no paid search API). Reading the found manual
+    // needs an OCR/AI provider, which V1 does not buy — so without a curated schedule the honest
+    // outcome is "unable to verify".
     discovery: new HybridDiscoveryProvider(
       new KnownSourceProvider(KNOWN_OFFICIAL_SOURCES, MANUFACTURER_ALIASES),
-      null,
+      new OfficialSiteDiscoveryProvider(OFFICIAL_DOMAINS, MANUFACTURER_ALIASES, boundedText),
     ),
     retriever: httpRetriever(expoFileStore),
     registry: OFFICIAL_DOMAINS,
     aliases: MANUFACTURER_ALIASES,
     reader: null,
+    curated: KNOWN_OFFICIAL_SOURCES,
   },
   services: {
     acquisition: expoAcquisition,
@@ -108,6 +127,12 @@ export function documentExporter(): DocumentExporter | null {
 export function notificationScheduler(): NotificationScheduler | null {
   const s = currentDataSource();
   return s.kind === 'local' ? (s.notifications ?? null) : null;
+}
+
+/** The clock the store stamps data with; "now" everywhere else must agree with it. */
+export function dataClock(): Clock {
+  const s = currentDataSource();
+  return s.kind === 'local' ? s.clock : systemClock;
 }
 
 /** Onboarding runtime services, or null in demo mode (which uses scripted scenarios). */

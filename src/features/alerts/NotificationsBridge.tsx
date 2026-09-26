@@ -2,7 +2,7 @@ import { router } from 'expo-router';
 import { useEffect } from 'react';
 
 import { useAppData } from '@/features/data/DataContext';
-import { notificationScheduler } from '@/features/data/dataSource';
+import { dataClock, notificationScheduler } from '@/features/data/dataSource';
 
 import { planNotifications } from './notificationPlan';
 
@@ -23,8 +23,9 @@ export function NotificationsBridge() {
         if (!cancelled) await scheduler.cancelAll();
         return;
       }
-      if (!cancelled)
-        await scheduler.replaceAll(planNotifications(vehicles, getBundle, new Date()));
+      // "Now" comes from the same clock that stamped the alerts (never a second wall clock).
+      const now = new Date(dataClock().now());
+      if (!cancelled) await scheduler.replaceAll(planNotifications(vehicles, getBundle, now));
     })().catch(() => undefined);
     return () => {
       cancelled = true;

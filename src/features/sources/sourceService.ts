@@ -13,6 +13,7 @@ import {
   type VehicleId,
 } from '@/domain';
 import type { ManufacturerAliases, OfficialDomainEntry } from '@/discovery/authority';
+import type { CuratedSchedule, KnownOfficialDocument } from '@/discovery/hybrid';
 import { discoverOfficialSource, type DiscoveryStep } from '@/discovery/pipeline';
 import type { FetchedFile, Retriever } from '@/discovery/retrieval';
 import type { DiscoveryProvider, VehicleIdentityQuery } from '@/discovery/types';
@@ -33,6 +34,8 @@ export interface SourceServices {
   registry: readonly OfficialDomainEntry[];
   aliases: ManufacturerAliases;
   reader: { ocr: OcrProvider; extractor: StructuredExtractor } | null;
+  /** Human-curated, hash-pinned schedules from the verified registry (zero-cost path, G3). */
+  curated?: readonly KnownOfficialDocument[];
   /** Local URI of a retrieved original (for OCR). */
   uriFor: (storageKey: string) => string;
 }
@@ -58,16 +61,27 @@ export async function planOfficialSource(
   onStep?: (step: DiscoveryStep) => void,
 ): Promise<SourcePlan> {
   const { discovery, retriever, reader } = services;
-  if (!discovery || !retriever || !reader) {
+  const curatedDocs = (services.curated ?? []).filter((d) => d.curated);
+  if (!discovery || !retriever || (!reader && curatedDocs.length === 0)) {
     onStep?.('discovery');
     return { status: 'not_found' };
   }
+  // Document verification for curated entries: the retrieved bytes must be EXACTLY the pinned
+  // document the person transcribed (same SHA-256); anything else is not that document.
+  const curatedFor = (file: FetchedFile): CuratedSchedule | null =>
+    curatedDocs.find((d) => d.curated!.sha256 === file.sha256)?.curated ?? null;
 
   // One document/source id pair per retrieved file; the coverage read comes first (M10 order).
   const perFile = new Map<string, { documentId: DocumentId; sourceId: SourceId }>();
   let current: { documentId: DocumentId; sourceId: SourceId } | null = null;
-  const extract = (file: FetchedFile, evidence: Evidence): Promise<ScheduleExtractionResult> => {
+  const extract = async (
+    file: FetchedFile,
+    evidence: Evidence,
+  ): Promise<ScheduleExtractionResult> => {
     const idsFor = perFile.get(file.storageKey)!;
+    const curated = curatedFor(file);
+    if (curated) return fromCurated(vehicleId, curated, idsFor, evidence, ids);
+    if (!reader) return { status: 'failed', reason: 'extraction_failed' };
     return extractMaintenanceSchedule(
       vehicleId,
       {
@@ -155,5 +169,55 @@ export async function planOfficialSource(
     document: doc.value,
     source,
     schedule: extraction.status === 'ok' ? extraction.input : null,
+  };
+}
+
+/**
+ * A human-curated schedule as an extraction result: same shape as machine extraction, with every
+ * item referenced to its page/section/table and quote in the pinned official document. The
+ * evidence (authority + exact applicability) still comes from the pipeline, and the domain still
+ * decides verification.
+ */
+function fromCurated(
+  vehicleId: VehicleId,
+  curated: CuratedSchedule,
+  idsFor: { documentId: DocumentId; sourceId: SourceId },
+  evidence: Evidence,
+  ids: IdGenerator,
+): ScheduleExtractionResult {
+  return {
+    status: 'ok',
+    input: {
+      vehicleId,
+      intervals: curated.intervals.map((iv) => ({
+        id: ids.next<'Interval'>(),
+        label: iv.label,
+        rule: iv.rule,
+        everyKm: iv.everyKm,
+        everyMonths: iv.everyMonths,
+        firstAtKm: iv.firstAtKm,
+        firstAtMonths: iv.firstAtMonths,
+        items: iv.items.map((it) => ({
+          id: ids.next<'MaintenanceItem'>(),
+          title: it.title,
+          actionType: it.actionType,
+          manufacturerText: it.manufacturerText,
+          reference: {
+            sourceId: idsFor.sourceId,
+            documentId: idsFor.documentId,
+            page: it.page,
+            section: it.section,
+            table: it.table,
+            quote: it.quote,
+          },
+        })),
+      })),
+      evidence: [evidence],
+      applicability: { matchedOn: [], exact: evidence.exactApplicability },
+    },
+    coverage: curated.coverage,
+    dropped: [],
+    flags: [],
+    reviewRequired: false,
   };
 }

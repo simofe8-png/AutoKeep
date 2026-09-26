@@ -3,7 +3,12 @@ import {
   type ManufacturerAliases,
   type OfficialDomainEntry,
 } from './authority';
-import type { DiscoveryProvider, SourceCandidate, VehicleIdentityQuery } from './types';
+import type {
+  DiscoveryProvider,
+  DocumentCoverage,
+  SourceCandidate,
+  VehicleIdentityQuery,
+} from './types';
 
 /**
  * Hybrid official-source discovery (ADR-0016, G2):
@@ -12,6 +17,43 @@ import type { DiscoveryProvider, SourceCandidate, VehicleIdentityQuery } from '.
  * Every result is only a CANDIDATE: authority, retrieval, applicability, grounding and domain
  * verification still decide trust downstream. Ranking here confers nothing.
  */
+
+/** An item of a human-curated schedule, with its exact location in the pinned document. */
+export interface CuratedItem {
+  title: string;
+  actionType: 'inspection' | 'replacement' | 'other';
+  /** Verbatim (or faithfully transcribed) manufacturer text. */
+  manufacturerText: string;
+  page: number;
+  section?: string;
+  table?: string;
+  /** Verbatim quote; checked against the PDF text by the curation tool. */
+  quote: string;
+}
+
+export interface CuratedInterval {
+  label: string;
+  rule: 'earliest_of' | 'distance_only' | 'time_only';
+  everyKm?: number;
+  everyMonths?: number;
+  firstAtKm?: number;
+  firstAtMonths?: number;
+  items: CuratedItem[];
+}
+
+/**
+ * Zero-cost path to a verified schedule (ADR-0017 amendment): a person transcribes the schedule
+ * from the official document, pins the document's SHA-256, and records coverage AS STATED IN THE
+ * DOCUMENT. At runtime the app still retrieves the document and requires the same hash; then
+ * applicability and domain verification decide exactly as for machine extraction.
+ */
+export interface CuratedSchedule {
+  sha256: string;
+  coverage: DocumentCoverage;
+  intervals: CuratedInterval[];
+  curatedBy: string;
+  curatedAt: string;
+}
 
 /** A document known to be published by a verified official source (evidence-backed entry). */
 export interface KnownOfficialDocument {
@@ -24,6 +66,8 @@ export interface KnownOfficialDocument {
   market?: 'IL';
   verifiedBy: string;
   verifiedAt: string;
+  /** Optional human-curated, hash-pinned schedule (approved together with the entry). */
+  curated?: CuratedSchedule;
 }
 
 /** Web search port (search API / AI-assisted browsing). The vendor is a separate approval. */
