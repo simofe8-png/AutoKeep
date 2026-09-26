@@ -200,10 +200,10 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T109 | Manufacturer section. | TODO | |
-| T110 | AutoKeep-known section. | TODO | |
-| T111 | Garage-recommendation section. | TODO | |
-| T112 | Provenance-separation tests and M14 PASS. | TODO | |
+| T109 | Manufacturer section. | PASS | Manufacturer section from verified schedule only: next title + DueStatusBadge, due point, interval label, items with action type + exact locator, schedule source (title·authority·edition); unavailable → statement + reason. Test garage-mode.test (manufacturer). |
+| T110 | AutoKeep-known section. | PASS | Known section: vehicle, registration, odometer+date, last service with provenance (מסמך מוסך / דיווח משתמש), record count, open deferrals. Test garage-mode.test (known). |
+| T111 | Garage-recommendation section. | PASS | Garage section: disclaimer, notes with provenance (מתוך מסמך מוסך / הוזן ידנית); add note → GarageRecommendation user_report persisted. Device: note saved on SQLite, shown only in garage section. Fixed device-found: Dialog now keyboard-avoiding (Save was under keyboard). |
+| T112 | Provenance-separation tests and M14 PASS. | PASS | M14 PASS: garage-mode.test (4) — note never alters schedule row/items, scoped to vehicle, unverified schedule shows nothing invented; verify 23 suites/213 tests. |
 
 ## M15 Service Capture
 

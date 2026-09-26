@@ -105,7 +105,8 @@ export function PrototypeDataProvider({
     (rec: GarageRecommendationVM) =>
       updateBundle(rec.vehicleId, (b) => ({
         ...b,
-        garageRecommendations: [rec, ...b.garageRecommendations],
+        // Typed in by the user: never garage-document evidence.
+        garageRecommendations: [{ ...rec, authority: 'user_report' }, ...b.garageRecommendations],
       })),
     [updateBundle],
   );

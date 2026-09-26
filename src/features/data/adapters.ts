@@ -269,6 +269,7 @@ export function toGarageRecommendationVM(g: GarageRecommendation): GarageRecomme
     text: g.text,
     date: g.date,
     garage: g.garageName ?? undefined,
+    authority: g.authority,
   };
 }
 

@@ -246,6 +246,7 @@ export const MOCK_VEHICLE_DATA: Record<string, VehicleDataBundle> = {
         text: 'מומלץ לשקול החלפת רפידות בלם קדמיות בטיפול הבא.',
         date: '2025-12-10',
         garage: 'מוסך הדגמה',
+        authority: 'garage_document',
       },
     ],
     deferred: [

@@ -129,6 +129,8 @@ export interface GarageRecommendationVM {
   text: string;
   date: string;
   garage?: string;
+  /** Where the note came from: a garage document, or typed in by the user. */
+  authority?: 'garage_document' | 'user_report';
 }
 
 export interface DeferredItemVM {

@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M14 Garage Mode
-- **Current task:** T109 (Manufacturer section)
-- **Last verified PASS:** T108 — M13 PASS (real SQLite data behind the frozen UI, ADR-0015)
-- **Next action:** Garage mode on real data: manufacturer section from the verified schedule (with sources), AutoKeep-known section (history/odometer/deferred), garage-recommendation section kept separate; provenance-separation tests
+- **Milestone:** M15 Service Capture
+- **Current task:** T113 (Manual service entry)
+- **Last verified PASS:** T112 — M14 PASS (Garage Mode on real data, provenance separation)
+- **Next action:** Manual service entry on real data (manufacturer items preselect, unlisted actions, deferred items recorded for unperformed manufacturer items), then invoice photo/file ingestion (document stored, extraction draft via port — no OCR provider yet per G1)
 
 ## Granted policies
 
@@ -53,4 +53,4 @@ _Last updated: 2026-09-26_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M13` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M14` on `master` (local only, not pushed).

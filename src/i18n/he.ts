@@ -222,6 +222,12 @@ export const he = {
     share: 'שיתוף / PDF',
     shareUnavailable: 'שיתוף ויצוא PDF יתווספו בהמשך הפיתוח.',
     noHistory: 'לא תועדו טיפולים',
+    dueAt: 'מועד',
+    interval: 'מרווח',
+    scheduleSource: 'מקור',
+    recordedServices: 'טיפולים מתועדים',
+    noteFromDocument: 'מתוך מסמך מוסך',
+    noteFromUser: 'הוזן ידנית',
   },
   service: {
     newTitle: 'רישום טיפול',

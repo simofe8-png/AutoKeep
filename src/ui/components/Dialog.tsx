@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, Modal, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { he } from '@/i18n/he';
 
@@ -49,7 +49,8 @@ export function Dialog({
       onRequestClose={onCancel}
       statusBarTranslucent
     >
-      <View style={[styles.backdrop, rootDirectionStyle]}>
+      {/* Keeps the actions above the keyboard when a dialog contains a field (device-verified). */}
+      <KeyboardAvoidingView behavior="padding" style={[styles.backdrop, rootDirectionStyle]}>
         <Pressable
           style={StyleSheet.absoluteFill}
           onPress={onCancel}
@@ -63,7 +64,7 @@ export function Dialog({
           accessibilityViewIsModal
           accessibilityRole="alert"
         >
-          <ScrollView contentContainerStyle={styles.content}>
+          <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
             <AppText variant="title" accessibilityRole="header">
               {title}
             </AppText>
@@ -89,7 +90,7 @@ export function Dialog({
             />
           </View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </Modal>
   );
 }

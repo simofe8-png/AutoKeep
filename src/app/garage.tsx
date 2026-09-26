@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { newLocalId, useAppData, useVehicleData } from '@/features/data/DataContext';
-import { ActionTypeBadge } from '@/features/maintenance/components';
+import { ActionTypeBadge, dueAtText, DueStatusBadge } from '@/features/maintenance/components';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
@@ -74,7 +74,14 @@ export default function GarageModeScreen() {
       >
         {schedule.status === 'verified' && schedule.next ? (
           <Stack gap={spacing.xs}>
-            <AppText variant="bodyStrong">{schedule.next.title}</AppText>
+            <Row gap={spacing.sm}>
+              <AppText variant="bodyStrong" style={styles.flex}>
+                {schedule.next.title}
+              </AppText>
+              <DueStatusBadge status={schedule.next.status} />
+            </Row>
+            <KV label={he.garage.dueAt} value={dueAtText(schedule.next)} />
+            <KV label={he.garage.interval} value={schedule.next.intervalLabel} />
             {schedule.next.items.map((item, i) => (
               <View key={item.id}>
                 {i > 0 ? <Divider /> : null}
@@ -91,9 +98,25 @@ export default function GarageModeScreen() {
                 </View>
               </View>
             ))}
+            {schedule.source ? (
+              <AppText variant="caption" color="textMuted" testID="garage-schedule-source">
+                {`${he.garage.scheduleSource}: ${joinParts([
+                  schedule.source.sourceTitle,
+                  he.authority[schedule.source.authority],
+                  schedule.source.version,
+                ])}`}
+              </AppText>
+            ) : null}
           </Stack>
         ) : (
-          <AppText color="textSecondary">{he.garage.noManufacturer}</AppText>
+          <Stack gap={spacing.xs}>
+            <AppText color="textSecondary">{he.garage.noManufacturer}</AppText>
+            {schedule.statusReason ? (
+              <AppText variant="caption" color="textMuted">
+                {schedule.statusReason}
+              </AppText>
+            ) : null}
+          </Stack>
         )}
       </Section>
 
@@ -114,13 +137,22 @@ export default function GarageModeScreen() {
             label={he.garage.lastService}
             value={
               last
-                ? `${formatDate(last.date)} · ${formatKm(last.odometerKm)} · ${last.actions
-                    .filter((a) => a.performed)
-                    .map((a) => a.title)
-                    .join(', ')}`
+                ? joinParts([
+                    formatDate(last.date),
+                    formatKm(last.odometerKm),
+                    last.actions
+                      .filter((a) => a.performed)
+                      .map((a) => a.title)
+                      .join(', '),
+                    // Provenance: a garage document vs. the user's own report.
+                    he.authority[last.sourceAuthority],
+                  ])
                 : he.garage.noHistory
             }
           />
+          {history.length > 0 ? (
+            <KV label={he.garage.recordedServices} value={String(history.length)} />
+          ) : null}
           {deferred.length > 0 ? (
             <KV label={he.garage.deferred} value={deferred.map((d) => d.title).join(', ')} />
           ) : null}
@@ -141,7 +173,15 @@ export default function GarageModeScreen() {
             <View key={r.id} style={styles.note} testID={`garage-note-${r.id}`}>
               <AppText>{r.text}</AppText>
               <AppText variant="caption" color="textMuted">
-                {joinParts([r.garage, formatDate(r.date)])}
+                {joinParts([
+                  r.garage,
+                  formatDate(r.date),
+                  r.authority === 'garage_document'
+                    ? he.garage.noteFromDocument
+                    : r.authority === 'user_report'
+                      ? he.garage.noteFromUser
+                      : null,
+                ])}
               </AppText>
             </View>
           ))
