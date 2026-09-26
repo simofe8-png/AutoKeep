@@ -15,7 +15,8 @@ import type { RegistrationExtraction, RegistrationField } from './contract';
 export const CONFIDENCE_ACCEPT = 0.9;
 export const CONFIDENCE_MIN = 0.6;
 
-export type FieldOrigin = 'scan' | 'user' | 'catalog';
+/** registry = official government vehicle registry (ADR-0012); outranks OCR, never outranked by it. */
+export type FieldOrigin = 'scan' | 'user' | 'catalog' | 'registry';
 
 export interface DraftValue {
   value: string;
@@ -218,7 +219,16 @@ export interface VehicleVariant {
 }
 
 export type IdentificationResult =
-  | { kind: 'failed'; reason: 'unreadable' | 'error' | 'not_a_license' }
+  | {
+      kind: 'failed';
+      reason:
+        | 'unreadable'
+        | 'error'
+        | 'not_a_license'
+        | 'registry_not_found'
+        | 'registry_unavailable'
+        | 'consent_required';
+    }
   | { kind: 'needs_selection'; draft: IdentificationDraft; candidates: VehicleVariant[] }
   | { kind: 'draft'; draft: IdentificationDraft; missing: DraftField[]; uncertain: DraftField[] };
 

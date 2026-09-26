@@ -27,10 +27,13 @@ const norm = (s: string) => s.toLowerCase().replace(/[\s\-_.]/g, '');
 /** Engine strings like "2.0", "2.0L", "2000cc", "1998 סמ״ק" normalize to liters (1 decimal). */
 export function engineLiters(s: string): string | null {
   const t = s.toLowerCase().replace(',', '.');
-  const cc = /(\d{3,4})\s*(cc|סמ)/.exec(t);
+  const cc = /(\d{2,4})\s*(cc|סמ)/.exec(t);
   if (cc) return (Math.round(Number(cc[1]) / 100) / 10).toFixed(1);
-  const l = /(\d(?:\.\d)?)\s*(l|ליטר)?/.exec(t);
-  return l ? Number(l[1]).toFixed(1) : null;
+  // Only real displacement notations ("1.6", "2.0L", "2 liters"); engine codes like "2ZR" -> null.
+  const dec = /(?:^|[^\d])(\d\.\d)(?!\d)/.exec(t);
+  if (dec) return Number(dec[1]).toFixed(1);
+  const unit = /(?:^|[^\d.])(\d)\s*(l\b|ליטר)/.exec(t);
+  return unit ? Number(unit[1]).toFixed(1) : null;
 }
 
 export function matchApplicability(
@@ -68,7 +71,9 @@ export function matchApplicability(
       if (new Set(covered).size > 1) soft.push('engine_ambiguous');
     } else {
       const mine = engineLiters(identity.engine);
-      if (mine && covered.includes(mine)) matchedOn.push('engine');
+      // An engine code we cannot convert to a displacement proves nothing either way.
+      if (!mine) soft.push('engine_ambiguous');
+      else if (covered.includes(mine)) matchedOn.push('engine');
       else hard.push('engine_not_covered');
     }
   }

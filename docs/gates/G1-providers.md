@@ -2,7 +2,7 @@
 
 - **Raised at:** T081 (M10). This decision also covers M11 (OCR/AI extraction) and the real registration scan (M06).
 - **Date:** 2026-09-26
-- **Status:** ⏸ awaiting user decision
+- **Status:** ✅ decided 2026-09-26 (see Decision record below)
 
 ## Why this is a gate
 
@@ -61,3 +61,13 @@ data.gov.il (Ministry of Transport open data, CKAN `datastore_search` by `mispar
 ## If not approved yet
 
 AutoKeep stays fully usable. Manual vehicle entry, manual service recording and user-uploaded documents all work, and the maintenance schedule shows as "unavailable/pending" instead of inventing recommendations.
+
+## Decision record (user, 2026-09-26)
+
+1. The **data.gov.il** official vehicle registry is the primary Israeli vehicle-data source, behind a provider-independent interface.
+2. Owner's-manual and official maintenance-source discovery stays behind a provider-independent interface. Only verified official manufacturer/importer sources may become trusted. AI or search results are never authoritative evidence.
+3. OCR, document reading and AI stay behind provider-independent interfaces. **No runtime AI provider is chosen or purchased yet**; clearly labeled fixtures/mocks continue.
+4. Development continues with Opus 5.5 High.
+5. **No paid services, API keys or paid API calls.** When a real runtime provider becomes necessary to continue V1, stop at that gate and present options.
+
+Consequence for the task plan: T081/M10 and M11 complete within this approved scope (interfaces, rules, orchestration, labeled mocks). A real discovery/extraction runtime provider is a later gate (expected before the V1 RC acceptance of verified-source behavior).

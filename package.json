@@ -62,11 +62,12 @@
     "test": "jest",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test -- --ci",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test -- --ci --maxWorkers=2",
     "start:device": "node tools/start-device.mjs",
     "test:cloud": "jest -c jest.cloud.config.js",
     "cloud:start": "supabase start",
-    "cloud:stop": "supabase stop"
+    "cloud:stop": "supabase stop",
+    "test:live": "jest -c jest.live.config.js"
   },
   "private": true
 }

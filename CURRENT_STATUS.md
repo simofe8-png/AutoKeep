@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M10 Official Source Discovery
-- **Current task:** T081 — ⏸ APPROVAL GATE G1 (external providers)
-- **Last verified PASS:** T085 (T079/T080/T082–T085 PASS; T086 fixtures green)
-- **Next action:** WAIT for user decision on docs/gates/G1-providers.md; then implement approved provider adapters (Edge Function), seed verified official-domain registry, finish T081/T086 → M10 PASS, continue M11.
+- **Milestone:** M11 Document Intelligence
+- **Current task:** T087 (OCR abstraction)
+- **Last verified PASS:** T086 — M10 PASS (approved G1 scope)
+- **Next action:** OCR/AI ports + schemas + evidence refs + confidence + injection defenses + invoice draft — labeled mocks only (G1: no runtime AI provider)
 
 ## Granted policies
 
@@ -22,6 +22,8 @@ _Last updated: 2026-09-25_
 - The project path contains Hebrew characters, so avoid local Gradle builds (ADR-0005).
 
 ## Open issues
+
+- UI test load-flake recurred once (M10, 9 failures inside verify, not reproducible standalone). Mitigation: verify uses --maxWorkers=2. If it recurs → investigate with --runInBand timing.
 
 - Local Supabase: `npm run cloud:start` (ports 566xx; other local projects use 543xx/557xx — never stop them). Cloud tests: `npm run test:cloud`.
 - Intermittent UI test timeouts once under heavy load (Docker running); not reproduced in 3 runs — watch.
@@ -44,9 +46,9 @@ _Last updated: 2026-09-25_
 
 ## Pending approval gates
 
-- **G1 (ACTIVE):** discovery provider + OCR/AI extraction provider (+ optional data.gov.il registry) — docs/gates/G1-providers.md.
+- G1 decided 2026-09-26: data.gov.il primary; discovery/OCR/AI behind ports with labeled mocks; NO paid services/keys/calls. Next gate when a real runtime AI/discovery provider is required to continue V1.
 - Deferred: hosted Supabase project creation (T065 → needed for production Edge Functions / M24).
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M09` + `M10 (partial, pre-gate)` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M10` on `master` (local only, not pushed).
