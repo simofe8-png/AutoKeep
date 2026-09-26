@@ -9,7 +9,12 @@
     "userInterfaceStyle": "light",
     "ios": {
       "icon": "./assets/expo.icon",
-      "bundleIdentifier": "com.autokeep.app"
+      "bundleIdentifier": "com.autokeep.app",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "AutoKeep משתמשת במצלמה רק כשאתם בוחרים לצלם רישיון רכב או חשבונית.",
+        "NSPhotoLibraryUsageDescription": "AutoKeep ניגשת לתמונה שבחרתם בלבד, כדי לצרף רישיון רכב או חשבונית."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -20,7 +25,17 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.autokeep.app",
-      "softwareKeyboardLayoutMode": "resize"
+      "softwareKeyboardLayoutMode": "resize",
+      "versionCode": 1,
+      "permissions": ["android.permission.CAMERA", "android.permission.POST_NOTIFICATIONS"],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.SYSTEM_ALERT_WINDOW"
+      ]
     },
     "web": {
       "output": "static",
@@ -44,7 +59,21 @@
       ],
       "expo-sqlite",
       "expo-secure-store",
-      "expo-sharing"
+      "expo-sharing",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "AutoKeep משתמשת במצלמה רק כשאתם בוחרים לצלם רישיון רכב או חשבונית.",
+          "photosPermission": "AutoKeep ניגשת לתמונה שבחרתם בלבד, כדי לצרף רישיון רכב או חשבונית.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#1B64D6"
+        }
+      ]
     ],
     "experiments": {
       "reactCompiler": true
