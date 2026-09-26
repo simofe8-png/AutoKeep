@@ -1,4 +1,5 @@
 import type { RegistrationExtractor } from '@/identification/contract';
+import type { OcrProvider, StructuredExtractor } from '@/intelligence/ports';
 import type { IdentificationDraft } from '@/identification/engine';
 import type { AcquisitionProvider } from '@/providers/acquisition/types';
 import type { VehicleRegistryProvider } from '@/providers/registry/types';
@@ -15,6 +16,8 @@ export interface OnboardingServices {
   acquisition: AcquisitionProvider;
   extractor: RegistrationExtractor | null;
   registry: VehicleRegistryProvider;
+  /** Invoice OCR + structured extraction (M11 ports); null until a provider is approved (G1). */
+  invoiceReader: { ocr: OcrProvider; extractor: StructuredExtractor } | null;
 }
 
 const UI_FIELD: Record<string, DraftField | undefined> = {

@@ -2,6 +2,7 @@ import {
   asId,
   confirmServiceDraft,
   createAlert,
+  createDocument,
   createGarageRecommendation,
   createOdometerReading,
   createVehicle,
@@ -15,12 +16,15 @@ import {
   type Result,
   type SourceId,
   type Timestamp,
+  type Id,
   type Vehicle,
+  type VehicleDocument,
   type VehicleId,
 } from '@/domain';
 import { alertCandidates, type AlertCandidate } from '@/engine/alerts';
 import { computeMaintenance, type EngineResult } from '@/engine/maintenance';
 import type { VehicleSummary } from '@/features/vehicles/types';
+import type { OriginalFileStore } from '@/providers/storage/types';
 import {
   ActiveVehicleStore,
   AlertRepository,
@@ -41,6 +45,7 @@ import {
 } from '@/persistence';
 
 import { toBundle, toVehicleSummary, type VehicleRecords } from './adapters';
+import type { AttachmentInput } from './DataContext';
 import type { GarageRecommendationVM, ServiceEventVM, VehicleDataBundle } from './types';
 
 /**
@@ -106,13 +111,19 @@ export class LocalStore {
     private readonly ids: IdGenerator,
     private readonly clock: Clock,
     readonly profile: LocalProfile,
+    private readonly files: OriginalFileStore | null,
   ) {}
 
   /** Opens the store: runs pending migrations and ensures this device's local profile. */
-  static async open(db: SqlDatabase, ids: IdGenerator, clock: Clock): Promise<LocalStore> {
+  static async open(
+    db: SqlDatabase,
+    ids: IdGenerator,
+    clock: Clock,
+    files: OriginalFileStore | null = null,
+  ): Promise<LocalStore> {
     await migrate(db, MIGRATIONS, clock.now);
     const profile = await new ProfileRepository(db).getOrCreate(ids, clock.now());
-    return new LocalStore(db, ids, clock, profile);
+    return new LocalStore(db, ids, clock, profile, files);
   }
 
   // ---------- reads ----------
@@ -277,13 +288,61 @@ export class LocalStore {
   }
 
   /**
-   * Stores a user-confirmed service (the review dialog is the explicit confirmation). A record
-   * without its original document can only be a user report — it never claims garage evidence.
+   * T118: stores a user-confirmed service — the review dialog is the explicit confirmation.
+   * With an attachment, the original is copied to private storage first, then the document, the
+   * service record and its odometer reading are written in ONE transaction; if that fails, the
+   * copied file is removed again. A record without its original document can only be a user
+   * report — it never claims garage evidence.
    */
-  async addServiceEvent(vm: ServiceEventVM): Promise<void> {
+  async addServiceEvent(vm: ServiceEventVM, attachment?: AttachmentInput): Promise<void> {
     const now = this.clock.now();
     const vid = vm.vehicleId as VehicleId;
-    const documentIds = vm.documentIds.filter(isUuid).map((d) => asId<'Document'>(d));
+    let doc: VehicleDocument | null = null;
+    if (attachment) {
+      if (!this.files) throw new Error('No original-file storage configured');
+      const stored = await this.files.importFile(attachment.file);
+      const created = createDocument(
+        {
+          vehicleId: vid,
+          kind: 'invoice',
+          title: attachment.title,
+          origin: attachment.file.source === 'camera' ? 'camera_scan' : 'user_upload',
+          authority: 'garage_document',
+          original: {
+            storageKey: stored.storageKey,
+            mimeType: stored.mimeType,
+            sizeBytes: stored.sizeBytes,
+            sha256: stored.sha256,
+          },
+        },
+        preferId(attachment.documentId, this.ids),
+        now,
+      );
+      if (!created.ok) {
+        await this.files.remove(stored.storageKey);
+        throw new DomainError(created.issues);
+      }
+      doc = created.value;
+    }
+    const documentIds = [
+      ...vm.documentIds.filter(isUuid).map((d) => asId<'Document'>(d)),
+      ...(doc ? [doc.id] : []),
+    ].filter((d, i, all) => all.indexOf(d) === i);
+    try {
+      await this.saveServiceEvent(vm, vid, documentIds, now, doc);
+    } catch (e) {
+      if (doc && this.files) await this.files.remove(doc.original.storageKey);
+      throw e;
+    }
+  }
+
+  private async saveServiceEvent(
+    vm: ServiceEventVM,
+    vid: VehicleId,
+    documentIds: Id<'Document'>[],
+    now: Timestamp,
+    doc: VehicleDocument | null,
+  ): Promise<void> {
     const event = must(
       confirmServiceDraft(
         {
@@ -311,6 +370,7 @@ export class LocalStore {
       ),
     );
     await this.db.transaction(async (tx) => {
+      if (doc) await new DocumentRepository(tx).add(doc);
       await new ServiceRepository(tx).add(event);
       // The service odometer is also a reading (only if it does not contradict later readings).
       const odo = new OdometerRepository(tx);

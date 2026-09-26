@@ -5,6 +5,7 @@ import { sequentialIds } from '@/domain/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
+import { MemoryFileStore } from '@/providers/storage/types';
 import { openTestDatabase, type TestDatabase } from '@/persistence/testing/sqljsDatabase';
 import type { VehicleRegistryProvider } from '@/providers/registry/types';
 
@@ -60,6 +61,7 @@ const services: OnboardingServices = {
   },
   extractor: null,
   registry,
+  invoiceReader: null,
 };
 
 function useLocal(db: TestDatabase) {
@@ -68,6 +70,7 @@ function useLocal(db: TestDatabase) {
     openDatabase: async () => db,
     ids: sequentialIds(1),
     clock,
+    files: new MemoryFileStore(),
     services,
   });
 }
@@ -177,6 +180,7 @@ describe('real local data behind the approved UI', () => {
       openDatabase: async () => db,
       ids: sequentialIds(1),
       clock,
+      files: new MemoryFileStore(),
       services: {
         ...services,
         acquisition: {

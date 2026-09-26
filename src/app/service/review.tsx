@@ -46,11 +46,28 @@ export default function ReviewServiceScreen() {
       <AppText color="textSecondary">{he.service.reviewBody}</AppText>
       {draft.origin === 'document' ? (
         <>
-          <InlineNotice
-            tone="warning"
-            title={he.service.draftFromDocument}
-            message={he.service.photoHint}
-          />
+          {draft.readingNote === 'unavailable' || draft.readingNote === 'failed' ? (
+            <InlineNotice
+              testID="review-reading-note"
+              tone="info"
+              title={
+                draft.readingNote === 'unavailable' ? he.service.readingUnavailableTitle : undefined
+              }
+              message={
+                draft.readingNote === 'unavailable'
+                  ? he.service.readingUnavailable
+                  : he.service.readingFailed
+              }
+            />
+          ) : (
+            <InlineNotice
+              tone="warning"
+              title={he.service.draftFromDocument}
+              message={
+                draft.readingNote === 'flagged' ? he.service.readingFlagged : he.service.photoHint
+              }
+            />
+          )}
           {draft.documentTitle ? (
             <Card tone="muted" testID="review-original-document">
               <Row gap={spacing.sm}>
@@ -75,7 +92,7 @@ export default function ReviewServiceScreen() {
         confirmLabel={he.service.confirmSave}
         onCancel={() => setConfirming(false)}
         onConfirm={() => {
-          addServiceEvent(draftToEvent(draft, newLocalId('svc')));
+          addServiceEvent(draftToEvent(draft, newLocalId('svc')), draft.attachment);
           setConfirming(false);
           setDraft(null);
           router.dismissTo('/history');

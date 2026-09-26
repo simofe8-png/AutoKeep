@@ -36,7 +36,12 @@ export function AppProviders({ children }: { children: ReactNode }) {
     );
   }
   return (
-    <LocalDataProvider openDatabase={source.openDatabase} ids={source.ids} clock={source.clock}>
+    <LocalDataProvider
+      openDatabase={source.openDatabase}
+      ids={source.ids}
+      clock={source.clock}
+      files={source.files}
+    >
       <ActiveVehicleBridge>{children}</ActiveVehicleBridge>
     </LocalDataProvider>
   );

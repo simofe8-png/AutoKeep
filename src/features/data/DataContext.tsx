@@ -2,6 +2,7 @@ import * as Crypto from 'expo-crypto';
 import { createContext, useContext } from 'react';
 
 import type { VehicleSummary } from '@/features/vehicles/types';
+import type { AcquiredFile } from '@/providers/acquisition/types';
 
 import type { GarageRecommendationVM, ServiceEventVM, VehicleDataBundle } from './types';
 
@@ -28,6 +29,14 @@ export interface VehicleDetailsInput {
   vin?: string;
 }
 
+/** The original document a service record rests on (stored together with the record). */
+export interface AttachmentInput {
+  /** Reserved when the file was captured, so an extraction draft can reference it. */
+  documentId: string;
+  file: AcquiredFile;
+  title: string;
+}
+
 export interface AppDataValue {
   vehicles: readonly VehicleSummary[];
   getBundle: (vehicleId: string) => VehicleDataBundle;
@@ -40,7 +49,8 @@ export interface AppDataValue {
   restoreVehicle: (vehicleId: string) => void;
   deleteVehicle: (vehicleId: string) => void;
   updateOdometer: (vehicleId: string, km: number, measuredAt: string) => void;
-  addServiceEvent: (event: ServiceEventVM) => void;
+  /** Explicit user confirmation: stores the record (and its original document) atomically. */
+  addServiceEvent: (event: ServiceEventVM, attachment?: AttachmentInput) => void;
   setAlertHandled: (vehicleId: string, alertId: string) => void;
   addGarageRecommendation: (rec: GarageRecommendationVM) => void;
   network: NetworkMode;

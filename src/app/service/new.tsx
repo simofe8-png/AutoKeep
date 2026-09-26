@@ -1,14 +1,17 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useState } from 'react';
 
-import { useVehicleData } from '@/features/data/DataContext';
+import { newLocalId, useAppData, useVehicleData } from '@/features/data/DataContext';
+import { onboardingServices } from '@/features/data/dataSource';
 import { actionsFromSchedule, type DraftOrigin } from '@/features/service/draft';
 import { useServiceDraft } from '@/features/service/ServiceDraftContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { todayIso } from '@/features/vehicles/format';
+import { formatDate, todayIso } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
-import { AppText, Card, ListRow, Screen, Stack, type IconName } from '@/ui';
+import type { AcquisitionResult } from '@/providers/acquisition/types';
+import { AppText, Card, InlineNotice, ListRow, Screen, Stack, type IconName } from '@/ui';
 
 /**
  * Service capture entry (T020): photo invoice / uploaded file / manual. Manual is always
@@ -20,10 +23,18 @@ export default function NewServiceScreen() {
   const { activeVehicle } = useActiveVehicle();
   const { schedule } = useVehicleData(activeVehicle?.id ?? null);
   const { setDraft } = useServiceDraft();
+  const { isDemoData } = useAppData();
+  const services = isDemoData ? null : onboardingServices();
+  const [problem, setProblem] = useState<string | null>(null);
 
   if (!activeVehicle) return null;
 
-  const start = (origin: DraftOrigin, next: '/service/extract' | '/service/manual') => {
+  const start = (
+    origin: DraftOrigin,
+    next: '/service/extract' | '/service/manual',
+    acquired?: Extract<AcquisitionResult, { status: 'acquired' }>,
+  ) => {
+    const today = todayIso();
     setDraft({
       vehicleId: activeVehicle.id,
       origin,
@@ -33,8 +44,37 @@ export default function NewServiceScreen() {
       notes: '',
       actions: actionsFromSchedule(schedule.next?.items ?? [], item),
       uncertain: [],
+      ...(acquired
+        ? {
+            attachment: {
+              documentId: newLocalId('doc'),
+              file: acquired.file,
+              title: he.service.invoiceTitle(formatDate(today)),
+            },
+            documentTitle: he.service.invoiceTitle(formatDate(today)),
+          }
+        : {}),
     });
     router.push(next);
+  };
+
+  /** Outside demo mode the invoice is really captured / picked (acquisition boundary). */
+  const fromDocument = (how: 'camera' | 'file') => async () => {
+    if (!services) return start('document', '/service/extract');
+    setProblem(null);
+    const a = services.acquisition;
+    const r = how === 'camera' ? await a.captureWithCamera() : await a.pickDocument();
+    if (r.status === 'cancelled') return;
+    if (r.status !== 'acquired') {
+      return setProblem(
+        r.status === 'permission_denied'
+          ? he.onboarding.permissionDenied
+          : r.status === 'rejected'
+            ? he.onboarding.fileRejected
+            : he.service.readingFailed,
+      );
+    }
+    start('document', '/service/extract', r);
   };
 
   const methods: {
@@ -49,14 +89,14 @@ export default function NewServiceScreen() {
       icon: 'camera-outline',
       title: he.service.photo,
       subtitle: he.service.photoHint,
-      onPress: () => start('document', '/service/extract'),
+      onPress: fromDocument('camera'),
     },
     {
       id: 'file',
       icon: 'file-upload-outline',
       title: he.service.file,
       subtitle: he.service.fileHint,
-      onPress: () => start('document', '/service/extract'),
+      onPress: fromDocument('file'),
     },
     {
       id: 'manual',
@@ -74,6 +114,9 @@ export default function NewServiceScreen() {
     >
       <VehicleTargetBanner vehicle={activeVehicle} />
       <AppText variant="heading">{he.service.chooseMethod}</AppText>
+      {problem ? (
+        <InlineNotice testID="service-capture-problem" tone="warning" message={problem} />
+      ) : null}
       <Stack>
         {methods.map((m) => (
           <Card key={m.id} compact>

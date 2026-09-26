@@ -5,6 +5,8 @@ import { openExpoDatabase } from '@/persistence/db/expoDatabase';
 import { uuidIds } from '@/persistence/ids';
 import { expoAcquisition } from '@/providers/acquisition/expoAcquisition';
 import { DataGovIlRegistry } from '@/providers/registry/dataGovIl';
+import { expoFileStore } from '@/providers/storage/expoFileStore';
+import type { OriginalFileStore } from '@/providers/storage/types';
 
 import { systemClock, type Clock } from './localStore';
 
@@ -19,6 +21,7 @@ export type DataSourceConfig =
       openDatabase: () => Promise<SqlDatabase>;
       ids: IdGenerator;
       clock: Clock;
+      files: OriginalFileStore;
       services: OnboardingServices;
     };
 
@@ -29,11 +32,14 @@ const production: DataSourceConfig = {
   openDatabase: openDefault,
   ids: uuidIds,
   clock: systemClock,
+  files: expoFileStore,
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.
     extractor: null,
     registry: new DataGovIlRegistry(),
+    // G1: no OCR/AI runtime provider is approved yet — invoices are not read automatically.
+    invoiceReader: null,
   },
 };
 

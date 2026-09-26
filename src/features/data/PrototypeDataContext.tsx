@@ -6,6 +6,7 @@ import {
   DataCtx,
   emptyBundle,
   type AccountState,
+  type AttachmentInput,
   type AppDataValue,
   type NetworkMode,
 } from './DataContext';
@@ -84,10 +85,26 @@ export function PrototypeDataProvider({
   }, []);
 
   const addServiceEvent = useCallback(
-    (event: ServiceEventVM) =>
+    (event: ServiceEventVM, attachment?: AttachmentInput) =>
       updateBundle(event.vehicleId, (b) => ({
         ...b,
         history: [event, ...b.history].sort((x, y) => y.date.localeCompare(x.date)),
+        documents: attachment
+          ? [
+              {
+                id: attachment.documentId,
+                vehicleId: event.vehicleId,
+                kind: 'invoice' as const,
+                title: attachment.title,
+                addedAt: event.date,
+                pages: 1,
+                authority: 'garage_document' as const,
+                verification: 'pending' as const,
+                extraction: 'partial' as const,
+              },
+              ...b.documents,
+            ]
+          : b.documents,
       })),
     [updateBundle],
   );

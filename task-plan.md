@@ -210,13 +210,13 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T113 | Manual service entry. | TODO | |
-| T114 | Invoice photo/file ingestion. | TODO | |
-| T115 | Extracted-draft review. | TODO | |
-| T116 | Performed checkboxes plus independent action type. | TODO | |
-| T117 | Unlisted actions. | TODO | |
-| T118 | Explicit confirmation transaction. | TODO | |
-| T119 | Service/history tests and M15 PASS. | TODO | |
+| T113 | Manual service entry. | PASS | Manual entry on real data: schedule items preselectable, date/odometer/work minimum, stored via confirmServiceDraft (user_report, unverified) + odometer reading. service-capture.test (manual). Device: manual record saved to SQLite, shown in History with user-report badge. |
+| T114 | Invoice photo/file ingestion. | PASS | Invoice photo (camera) / file (document picker) through acquisition port; original copied to app-private originals/ with SHA-256 (expo-file-system + expo-crypto, OriginalFileStore port); stored only on confirmation. Rejected/denied explained in place. Tests: localStore (attachment), service-capture (invoice). |
+| T115 | Extracted-draft review. | PASS | extract.tsx runs M11 extractInvoiceDraft via invoiceReader port (null in prod per G1 → 'reading unavailable', user fills from invoice); mergeInvoiceDraft prefills, uncertain marks, flagged docs mark all. Tests: invoiceDraft.test (3), service-capture (mock reader: draft only, wrapped untrusted content). |
+| T116 | Performed checkboxes plus independent action type. | PASS | Checkbox = performed; action type chosen independently (inspection stored for a replacement item). Only performed actions stored. service-capture.test + device review screen. |
+| T117 | Unlisted actions. | PASS | Unlisted actions added in form/extraction are stored unlisted=true with maintenanceItemId=null (never count for the schedule, ADR-0014). service-capture.test. |
+| T118 | Explicit confirmation transaction. | PASS | Confirmation dialog names target vehicle; LocalStore.addServiceEvent: file import → ONE transaction (document + event + reading); failure removes copied file; rejected record leaves no rows/files. Negative control: dropping the attachment fails 2 tests. Tests: localStore (3), service-capture. |
+| T119 | Service/history tests and M15 PASS. | PASS | M15 PASS: verify 25 suites/223 tests (format, lint, tsc). |
 
 ## M16 History & Documents
 

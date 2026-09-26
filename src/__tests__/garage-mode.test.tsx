@@ -4,6 +4,7 @@ import { isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds, T0 } from '@/domain/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import type { OnboardingServices } from '@/features/onboarding/services';
+import { MemoryFileStore } from '@/providers/storage/types';
 import {
   ActiveVehicleStore,
   GarageRecommendationRepository,
@@ -25,6 +26,7 @@ const services = {
   acquisition: {},
   extractor: null,
   registry: {},
+  invoiceReader: null,
 } as unknown as OnboardingServices;
 
 let world: PopulatedWorld;
@@ -36,6 +38,7 @@ beforeEach(async () => {
     openDatabase: async () => world.db,
     ids: sequentialIds(8000),
     clock,
+    files: new MemoryFileStore(),
     services,
   });
 });

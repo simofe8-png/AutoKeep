@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M15 Service Capture
-- **Current task:** T113 (Manual service entry)
-- **Last verified PASS:** T112 — M14 PASS (Garage Mode on real data, provenance separation)
-- **Next action:** Manual service entry on real data (manufacturer items preselect, unlisted actions, deferred items recorded for unperformed manufacturer items), then invoice photo/file ingestion (document stored, extraction draft via port — no OCR provider yet per G1)
+- **Milestone:** M16 History & Documents
+- **Current task:** T120 (Chronological history)
+- **Last verified PASS:** T119 — M15 PASS (service capture on real data; originals stored with SHA-256 on confirmation)
+- **Next action:** M16 per task-plan: history/detail with evidence, document library (original retained, derived separate), document viewer for originals (OriginalFileStore.uriFor), exact evidence links
 
 ## Granted policies
 
@@ -31,6 +31,7 @@ _Last updated: 2026-09-26_
 - Real mode is the default; demo data only with `EXPO_PUBLIC_DEMO_DATA=1` (restart Metro) or in UI tests (ADR-0015).
 - Device (M13): the phone had NO network during T107 (DNS failed for all hosts) → the data.gov.il lookup on device showed the correct "unavailable" state; re-verify a successful on-device registry lookup when the phone is online (Node live test passes).
 - Expo Go: dismissing the Android camera-permission sheet with Back leaves the permission promise pending (no result). Explicit denial is covered by a UI test; re-verify in the dev/release build (T182). Camera permission was NOT granted on the user's phone (user decision).
+- Invoice/registration reading: no OCR/AI provider (G1) — capture stores the original and the user fills the draft. Provider approval gate expected before V1 RC (T170).
 - Git Bash rewrites `/sdcard/...` adb paths — use `MSYS_NO_PATHCONV=1` for adb shell/exec-out with device paths.
 
 - adb can wedge after long sessions: bound every adb call with `timeout`; recover with `Stop-Process adb` + `adb start-server` (start-device.mjs now times out adb reverse).
@@ -53,4 +54,4 @@ _Last updated: 2026-09-26_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M14` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M15` on `master` (local only, not pushed).

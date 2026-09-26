@@ -4,6 +4,7 @@ import { he } from '@/i18n/he';
 import { AlertRepository } from '@/persistence';
 import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { populatedWorld } from '@/persistence/testing/world';
+import { MemoryFileStore } from '@/providers/storage/types';
 
 import { DomainError, LocalStore, type Clock } from '../localStore';
 
@@ -246,5 +247,88 @@ describe('vehicle lifecycle and restart', () => {
         archived: false,
       }),
     ).rejects.toBeInstanceOf(DomainError);
+  });
+});
+
+describe('service with its original document (T114/T118)', () => {
+  const invoice = {
+    documentId: '00000000-0000-4000-8000-00000000d0c1',
+    file: {
+      uri: 'file:///cache/invoice.jpg',
+      mimeType: 'image/jpeg',
+      sizeBytes: 2048,
+      source: 'camera' as const,
+    },
+    title: 'חשבונית טיפול',
+  };
+  const serviceVm = (vehicleId: string, performed: boolean) => ({
+    id: '00000000-0000-4000-8000-00000000e001',
+    vehicleId,
+    date: '2026-09-20',
+    odometerKm: 85000,
+    origin: 'document' as const,
+    verification: 'verified' as const,
+    sourceAuthority: 'garage_document' as const,
+    actions: [
+      {
+        id: 'x',
+        title: 'החלפת מצבר',
+        actionType: 'replacement' as const,
+        performed,
+        unlisted: true,
+      },
+    ],
+    documentIds: [invoice.documentId],
+  });
+
+  async function storeWithFiles() {
+    const w = await populatedWorld(sequentialIds(1), T0);
+    const files = new MemoryFileStore();
+    const store = await LocalStore.open(w.db, sequentialIds(5000), clockAt('2026-09-26'), files);
+    return { ...w, store, files };
+  }
+
+  it('stores the original, the document and the record together; evidence is the invoice', async () => {
+    const { store, car, files } = await storeWithFiles();
+    await store.addServiceEvent(serviceVm(car.id, true), invoice);
+    const b = (await store.snapshot()).bundles[car.id];
+    const doc = b.documents.find((d) => d.id === invoice.documentId)!;
+    expect(doc).toMatchObject({
+      kind: 'invoice',
+      authority: 'garage_document',
+      title: 'חשבונית טיפול',
+    });
+    const rec = b.history.find((e) => e.id === '00000000-0000-4000-8000-00000000e001')!;
+    expect(rec).toMatchObject({
+      origin: 'document',
+      sourceAuthority: 'garage_document',
+      verification: 'verified',
+      documentIds: [invoice.documentId],
+    });
+    expect(files.files.size).toBe(1);
+    const stored = [...files.files.values()][0];
+    expect(stored.storageKey).toMatch(/^originals\//);
+  });
+
+  it('a rejected record leaves no document row and no orphaned file', async () => {
+    const { store, car, files, db } = await storeWithFiles();
+    await expect(store.addServiceEvent(serviceVm(car.id, false), invoice)).rejects.toBeInstanceOf(
+      DomainError,
+    );
+    expect(files.files.size).toBe(0);
+    const docs = await db.all<{ id: string }>('SELECT id FROM documents WHERE id = ?', [
+      invoice.documentId,
+    ]);
+    expect(docs).toEqual([]);
+  });
+
+  it('a storage failure stores nothing', async () => {
+    const { store, car, files, db } = await storeWithFiles();
+    files.failNext = true;
+    await expect(store.addServiceEvent(serviceVm(car.id, true), invoice)).rejects.toThrow();
+    const n = await db.first<{ n: number }>(
+      "SELECT COUNT(*) AS n FROM service_events WHERE id = '00000000-0000-4000-8000-00000000e001'",
+    );
+    expect(n?.n).toBe(0);
   });
 });

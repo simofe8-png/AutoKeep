@@ -4,6 +4,7 @@ import type {
   ServiceActionVM,
   ServiceEventVM,
 } from '@/features/data/types';
+import type { AttachmentInput } from '@/features/data/DataContext';
 import { parseOdometer } from '@/features/vehicles/format';
 
 export type DraftOrigin = 'manual' | 'document';
@@ -20,6 +21,10 @@ export interface ServiceDraft {
   /** Fields the extraction was not confident about (document drafts only). */
   uncertain: ('date' | 'odometer' | 'garage' | `action:${string}`)[];
   documentTitle?: string;
+  /** The captured original (stored together with the record on confirmation). */
+  attachment?: AttachmentInput;
+  /** Why no values were read from the document (no provider / failed / flagged). */
+  readingNote?: 'unavailable' | 'failed' | 'flagged';
 }
 
 export function actionsFromSchedule(
@@ -88,6 +93,6 @@ export function draftToEvent(draft: ServiceDraft, id: string): ServiceEventVM {
     verification: draft.origin === 'document' ? 'verified' : 'pending',
     sourceAuthority: draft.origin === 'document' ? 'garage_document' : 'user_report',
     actions: draft.actions.filter((a) => a.title.trim() !== '').filter((a) => a.performed),
-    documentIds: [],
+    documentIds: draft.attachment ? [draft.attachment.documentId] : [],
   };
 }

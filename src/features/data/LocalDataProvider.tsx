@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import type { IdGenerator } from '@/domain';
 import { he } from '@/i18n/he';
 import type { SqlDatabase } from '@/persistence';
+import type { OriginalFileStore } from '@/providers/storage/types';
 import { colors, Dialog, ErrorState, LoadingState } from '@/ui';
 
 import {
@@ -19,6 +20,7 @@ export interface LocalDataProviderProps {
   openDatabase: () => Promise<SqlDatabase>;
   ids: IdGenerator;
   clock: Clock;
+  files: OriginalFileStore | null;
   children: ReactNode;
 }
 
@@ -62,7 +64,13 @@ class StoreRuntime {
  * then serves snapshots computed from persisted records. Each write runs through the store and
  * is followed by a fresh snapshot; writes are serialized so they apply in the user's order.
  */
-export function LocalDataProvider({ openDatabase, ids, clock, children }: LocalDataProviderProps) {
+export function LocalDataProvider({
+  openDatabase,
+  ids,
+  clock,
+  files,
+  children,
+}: LocalDataProviderProps) {
   const [phase, setPhase] = useState<Phase>({ kind: 'loading' });
   const [saveFailed, setSaveFailed] = useState(false);
   const [account, setAccount] = useState<AccountState>({ hasAccount: false });
@@ -75,7 +83,7 @@ export function LocalDataProvider({ openDatabase, ids, clock, children }: LocalD
     (async () => {
       try {
         const db = await openDatabase();
-        const s = await LocalStore.open(db, ids, clock);
+        const s = await LocalStore.open(db, ids, clock, files);
         const snapshot = await s.snapshot();
         if (cancelled) return;
         runtime.attach(s);
@@ -88,7 +96,7 @@ export function LocalDataProvider({ openDatabase, ids, clock, children }: LocalD
     return () => {
       cancelled = true;
     };
-  }, [openDatabase, ids, clock, attempt, runtime]);
+  }, [openDatabase, ids, clock, files, attempt, runtime]);
 
   const snapshot = phase.kind === 'ready' ? phase.snapshot : null;
 
@@ -128,7 +136,7 @@ export function LocalDataProvider({ openDatabase, ids, clock, children }: LocalD
       restoreVehicle: (id) => write((s) => s.restoreVehicle(id)),
       deleteVehicle: (id) => write((s) => s.deleteVehicle(id)),
       updateOdometer: (id, km, at) => write((s) => s.updateOdometer(id, km, at)),
-      addServiceEvent: (e) => write((s) => s.addServiceEvent(e)),
+      addServiceEvent: (e, attachment) => write((s) => s.addServiceEvent(e, attachment)),
       setAlertHandled: (vid, aid) => write((s) => s.setAlertHandled(vid, aid)),
       addGarageRecommendation: (r) => write((s) => s.addGarageRecommendation(r)),
       network,
