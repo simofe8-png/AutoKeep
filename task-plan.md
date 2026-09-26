@@ -160,14 +160,14 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T087 | OCR abstraction. | TODO | |
-| T088 | AI extraction abstraction. | TODO | |
-| T089 | Structured schemas and validation. | TODO | |
-| T090 | Page/section evidence references. | TODO | |
-| T091 | Confidence/verification pipeline. | TODO | |
-| T092 | Prompt-injection and untrusted-document defenses. | TODO | |
-| T093 | Invoice extraction to draft only. | TODO | |
-| T094 | Extraction security/tests and M11 PASS. | TODO | |
+| T087 | OCR abstraction. | PASS | intelligence/ports.ts OcrProvider (pages/lines/confidence, he+en) + MockOcrProvider (labeled; G1: no runtime provider). |
+| T088 | AI extraction abstraction. | PASS | StructuredExtractor port whose signature only accepts UntrustedContent (document never concatenated into instructions) + MockStructuredExtractor recording what it received (test: only wrapped data). |
+| T089 | Structured schemas and validation. | PASS | schemas.ts zod: maintenance (coverage, intervals with rule/limit consistency, items with evidence page+quote, confidence) and invoice (value+confidence+optional evidence, lines); unknown keys stripped, invalid rejected. Tests (2). |
+| T090 | Page/section evidence references. | PASS | evidence.ts groundQuote: quote must exist on cited page (normalized exact or ≥90% token coverage); paraphrase/invented/wrong page not grounded; digit grouping/quotes/dash normalization via code-point-built regexes (no invisible literals in source). Tests (3). |
+| T091 | Confidence/verification pipeline. | PASS | pipeline.ts extractMaintenanceSchedule: OCR→wrap→AI→schema→grounding→confidence (<0.6 drop, <0.9 review)→domain input; flagged docs withhold exact applicability; domain decides verification. Tests (7): clean official→verified, fabricated/low-confidence dropped, nothing grounded→failed, injected doc→pending, non-official→unverified, failures reported. |
+| T092 | Prompt-injection and untrusted-document defenses. | PASS | injection.ts: hidden/bidi char stripping, instruction-like (EN/HE) + line-start role markers + boundary-tag forgery flagged, unforgeable random boundary, length bounds, UNTRUSTED_DATA_POLICY for adapters. Tests (3). |
+| T093 | Invoice extraction to draft only. | PASS | extractInvoiceDraft → ServiceDraft only (origin document, doc linked), uncertain fields listed, <0.6 values not prefilled, flagged docs marked; history only via confirmServiceDraft (test). Tests (2). |
+| T094 | Extraction security/tests and M11 PASS. | PASS | intelligence.test.ts 17 security/behavior tests; ADR-0013; purity lint extended to src/intelligence; npm run verify 18 suites/168 tests. M11 PASS (approved G1 scope: labeled mocks, no runtime AI provider). |
 
 ## M12 Maintenance Engine
 

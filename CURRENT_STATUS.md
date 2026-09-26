@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M11 Document Intelligence
-- **Current task:** T087 (OCR abstraction)
-- **Last verified PASS:** T086 — M10 PASS (approved G1 scope)
-- **Next action:** OCR/AI ports + schemas + evidence refs + confidence + injection defenses + invoice draft — labeled mocks only (G1: no runtime AI provider)
+- **Milestone:** M12 Maintenance Engine
+- **Current task:** T095 (mileage intervals)
+- **Last verified PASS:** T094 — M11 PASS (approved G1 scope)
+- **Next action:** deterministic engine in src/engine (pure, now injected, fixture suite)
 
 ## Granted policies
 
@@ -51,4 +51,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M10` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M11` on `master` (local only, not pushed).
