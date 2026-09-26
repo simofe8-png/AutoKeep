@@ -174,14 +174,14 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T095 | Mileage intervals. | TODO | |
-| T096 | Time intervals. | TODO | |
-| T097 | Earliest-of rules. | TODO | |
-| T098 | Service-history reconciliation. | TODO | |
-| T099 | Next-due/overdue computation. | TODO | |
-| T100 | Driving-rate forecast explicitly represented as forecast. | TODO | |
-| T101 | Deferred-item logic. | TODO | |
-| T102 | Deterministic fixture suite and M12 PASS. | TODO | |
+| T095 | Mileage intervals. | PASS | engine: due km = last performed id-linked service + everyKm; tests (last-service, distance-first overdue, upcoming window, distance_only). |
+| T096 | Time intervals. | PASS | due date = last service + everyMonths with month-end clamping; time-only rule; tests (time-first overdue, Jan31+1m). |
+| T097 | Earliest-of rules. | PASS | earliest_of: status from whichever limit first; both remainders reported; tests. |
+| T098 | Service-history reconciliation. | PASS | lastPerformance: latest performed action linked by maintenanceItemId; not-performed and unlisted same-title actions ignored; test. |
+| T099 | Next-due/overdue computation. | PASS | next service = most urgent item + bundle within 1500 km/45 days; no-history never overdue (historyMissing), first-service & milestone baselines, time unknown without in-service date; stale odometer flag (>60 days); tests. |
+| T100 | Driving-rate forecast explicitly represented as forecast. | PASS | drivingRate (≥30 days span, positive distance) → Forecast<number>; kmDueForecast Forecast<IsoDate> with basis, separate from facts; insufficient data → null; tests (exact expected date verified by hand after correcting my own arithmetic). |
+| T101 | Deferred-item logic. | PASS | openDeferral: open deferral → due now (basis deferred) until a later service performs the item; tests. |
+| T102 | Deterministic fixture suite and M12 PASS. | PASS | engine/**tests**/maintenance.test.ts 19 deterministic fixture tests incl. schedule gate, determinism/no mutation, 200 randomized inputs without NaN; ADR-0014; verify 19 suites/187 tests. M12 PASS. |
 
 ## M13 Real Data Integration
 

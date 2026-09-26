@@ -4,10 +4,10 @@ _Last updated: 2026-09-25_
 
 ## Position
 
-- **Milestone:** M12 Maintenance Engine
-- **Current task:** T095 (mileage intervals)
-- **Last verified PASS:** T094 — M11 PASS (approved G1 scope)
-- **Next action:** deterministic engine in src/engine (pure, now injected, fixture suite)
+- **Milestone:** M13 Real Data Integration
+- **Current task:** T103 (Home adapters)
+- **Last verified PASS:** T102 — M12 PASS
+- **Next action:** SQLite-backed data provider + domain→view-model adapters behind the frozen UI; seed demo data only when explicitly in demo mode
 
 ## Granted policies
 
@@ -51,4 +51,4 @@ _Last updated: 2026-09-25_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M11` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M12` on `master` (local only, not pushed).
