@@ -6,7 +6,7 @@ import { ActionTypeBadge, dueAtText, DueStatusBadge } from '@/features/maintenan
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate, formatKm, joinParts, todayIso } from '@/features/vehicles/format';
+import { formatDate, formatKm, joinParts } from '@/features/vehicles/format';
 import { vehicleDisplayName } from '@/features/vehicles/types';
 import { he } from '@/i18n/he';
 import {
@@ -34,7 +34,7 @@ import {
  */
 export default function GarageModeScreen() {
   const { activeVehicle } = useActiveVehicle();
-  const { addGarageRecommendation } = useAppData();
+  const { addGarageRecommendation, today } = useAppData();
   const data = useVehicleData(activeVehicle?.id ?? null);
   const [noteOpen, setNoteOpen] = useState(false);
   const [note, setNote] = useState('');
@@ -205,7 +205,7 @@ export default function GarageModeScreen() {
             id: newLocalId('rec'),
             vehicleId: activeVehicle.id,
             text: note.trim(),
-            date: todayIso(),
+            date: today(),
           });
           setNote('');
           setNoteOpen(false);

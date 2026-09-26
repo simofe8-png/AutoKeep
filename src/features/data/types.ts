@@ -68,6 +68,8 @@ export interface ServiceActionVM {
   maintenanceItemId?: string;
   /** Added by the user; not part of the manufacturer schedule. */
   unlisted: boolean;
+  /** A manufacturer item consciously NOT performed now, to be done later (T129). */
+  deferred?: boolean;
 }
 
 export type ServiceOrigin = 'manual' | 'document';
@@ -85,6 +87,8 @@ export interface ServiceEventVM {
   sourceAuthority: SourceAuthority;
   actions: ServiceActionVM[];
   documentIds: string[];
+  /** Manufacturer items deferred at this service (not performed; tracked until done). */
+  deferredItemIds?: string[];
 }
 
 export type DocumentKind =
@@ -121,6 +125,8 @@ export interface AlertVM {
   basis: string;
   lastCompletion?: string;
   createdAt: string;
+  /** Exact time the alert was raised (ISO timestamp), when known. */
+  raisedAt?: string;
   maintenanceItemId?: string;
   handled: boolean;
 }

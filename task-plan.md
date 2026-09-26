@@ -235,13 +235,13 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T126 | Alert rule engine. | TODO | |
-| T127 | Upcoming/overdue maintenance. | TODO | |
-| T128 | Stale odometer. | TODO | |
-| T129 | Deferred actions. | TODO | |
-| T130 | Notification scheduling. | TODO | |
-| T131 | Vehicle-aware deep links. | TODO | |
-| T132 | Alert explainability tests and M17 PASS. | TODO | |
+| T126 | Alert rule engine. | PASS | engine/alerts.ts: alertCandidates (stable keys) + pure planAlerts lifecycle (create / resolve cleared → handled+resolution=condition_cleared / reactivate expired snooze; handled stays handled). Domain resolveAlert/reactivateAlert. Tests: notificationPlan.test (lifecycle), alerts.test. |
+| T127 | Upcoming/overdue maintenance. | PASS | Upcoming/overdue only from a verified computed schedule; missing history never overdue (engine); visit due only by deferral → deferred alert, no duplicate overdue. Explainable reason/basis/last completion. Tests: adapters, localStore, alerts.test. |
+| T128 | Stale odometer. | PASS | Stale odometer only where it impairs a distance-based due point of a verified schedule (spec §14). Updating the reading resolves it. Tests: adapters (both ways), alerts.test (stale → resolved). |
+| T129 | Deferred actions. | PASS | Service form: 'defer to next service' on unperformed manufacturer items → DeferredItem at confirmation; a later service performing the item resolves open deferrals in the same transaction (sync-merge sticky). Tests: alerts.test (defer + resolve). |
+| T130 | Notification scheduling. | PASS | Local notifications only (no push service): pure planNotifications (one notice per alert out of quiet hours, week-before reminder for dated upcoming, past never rescheduled, vehicle-named); opt-in in Settings requests OS permission; NotificationScheduler port (lazy expo-notifications; unavailable in Expo Go — device-verified import crash → honest Settings notice). Tests: notificationPlan (5), alerts.test (opt-in/denied/unavailable). |
+| T131 | Vehicle-aware deep links. | PASS | Notification tap → /alerts/<id>; alert detail switches the active context to the alert's vehicle (persisted). alerts.test: car reminder tapped while motorcycle active → car active. |
+| T132 | Alert explainability tests and M17 PASS. | PASS | M17 PASS: alerts.test (7) + notificationPlan (5); snooze 7 days via store clock; screens date records with the data source clock (deterministic); verify 28 suites/242 tests; cloud 21/21. |
 
 ## M18 Multi-Vehicle Hardening
 

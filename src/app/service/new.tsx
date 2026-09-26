@@ -8,7 +8,7 @@ import { useServiceDraft } from '@/features/service/ServiceDraftContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate, todayIso } from '@/features/vehicles/format';
+import { formatDate } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import type { AcquisitionResult } from '@/providers/acquisition/types';
 import { AppText, Card, InlineNotice, ListRow, Screen, Stack, type IconName } from '@/ui';
@@ -23,7 +23,7 @@ export default function NewServiceScreen() {
   const { activeVehicle } = useActiveVehicle();
   const { schedule } = useVehicleData(activeVehicle?.id ?? null);
   const { setDraft } = useServiceDraft();
-  const { isDemoData } = useAppData();
+  const { isDemoData, today: todayOf } = useAppData();
   const services = isDemoData ? null : onboardingServices();
   const [problem, setProblem] = useState<string | null>(null);
 
@@ -34,11 +34,11 @@ export default function NewServiceScreen() {
     next: '/service/extract' | '/service/manual',
     acquired?: Extract<AcquisitionResult, { status: 'acquired' }>,
   ) => {
-    const today = todayIso();
+    const today = todayOf();
     setDraft({
       vehicleId: activeVehicle.id,
       origin,
-      date: todayIso(),
+      date: today,
       odometer: String(activeVehicle.odometerKm),
       garage: '',
       notes: '',

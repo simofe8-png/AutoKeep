@@ -67,6 +67,43 @@ export interface DeferredItem extends EntityMeta {
   resolvedByServiceEventId: ServiceEventId | null;
 }
 
+/**
+ * T129: a manufacturer item consciously not performed at a service. It stays open (and raises a
+ * "deferred" alert) until a later service performs the item.
+ */
+export function createDeferredItem(
+  input: {
+    vehicleId: VehicleId;
+    maintenanceItemId: MaintenanceItemId;
+    deferredAt: IsoDate;
+    serviceEventId: ServiceEventId | null;
+    reason?: string | null;
+  },
+  ids: IdGenerator,
+  now: Timestamp,
+): DeferredItem {
+  return {
+    id: ids.next<'DeferredItem'>(),
+    vehicleId: input.vehicleId,
+    maintenanceItemId: input.maintenanceItemId,
+    deferredAt: input.deferredAt,
+    serviceEventId: input.serviceEventId,
+    reason: input.reason?.trim() || null,
+    resolvedByServiceEventId: null,
+    ...newMeta(now),
+  };
+}
+
+/** A later service performed the deferred item. */
+export function resolveDeferredItem(
+  d: DeferredItem,
+  byServiceEventId: ServiceEventId,
+  now: Timestamp,
+): Result<DeferredItem> {
+  if (d.resolvedByServiceEventId) return fail(issue('deferred.resolved', 'Already resolved'));
+  return ok({ ...d, resolvedByServiceEventId: byServiceEventId, ...touch(d, now) });
+}
+
 // ---------- Alerts ----------
 
 export type AlertKind = 'upcoming' | 'overdue' | 'deferred' | 'stale_odometer';
@@ -128,6 +165,24 @@ export function createAlert(
 export function handleAlert(a: Alert, now: Timestamp): Result<Alert> {
   if (a.status === 'handled') return fail(issue('alert.handled', 'Alert already handled'));
   return ok({ ...a, status: 'handled', ...touch(a, now) });
+}
+
+/** The alert's condition no longer holds (e.g. the service was recorded): resolved, not deleted. */
+export function resolveAlert(a: Alert, now: Timestamp): Result<Alert> {
+  if (a.status === 'handled') return fail(issue('alert.handled', 'Alert already handled'));
+  return ok({
+    ...a,
+    status: 'handled',
+    snoozedUntil: null,
+    basis: { ...a.basis, facts: { ...a.basis.facts, resolution: 'condition_cleared' } },
+    ...touch(a, now),
+  });
+}
+
+/** A snooze has ended while the condition still holds: the alert is active again. */
+export function reactivateAlert(a: Alert, now: Timestamp): Result<Alert> {
+  if (a.status !== 'deferred') return fail(issue('alert.notSnoozed', 'Alert is not snoozed'));
+  return ok({ ...a, status: 'active', snoozedUntil: null, ...touch(a, now) });
 }
 
 export function snoozeAlert(a: Alert, until: IsoDate, now: Timestamp): Result<Alert> {

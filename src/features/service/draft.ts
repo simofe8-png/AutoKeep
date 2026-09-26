@@ -94,5 +94,8 @@ export function draftToEvent(draft: ServiceDraft, id: string): ServiceEventVM {
     sourceAuthority: draft.origin === 'document' ? 'garage_document' : 'user_report',
     actions: draft.actions.filter((a) => a.title.trim() !== '').filter((a) => a.performed),
     documentIds: draft.attachment ? [draft.attachment.documentId] : [],
+    deferredItemIds: draft.actions
+      .filter((a) => !a.performed && a.deferred && a.maintenanceItemId)
+      .map((a) => a.maintenanceItemId!),
   };
 }

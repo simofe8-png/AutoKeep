@@ -1,12 +1,18 @@
 import {
+  addDays,
   asId,
   confirmServiceDraft,
   createAlert,
+  createDeferredItem,
   createDocument,
   createGarageRecommendation,
   createOdometerReading,
   createVehicle,
   handleAlert,
+  reactivateAlert,
+  resolveAlert,
+  resolveDeferredItem,
+  snoozeAlert,
   isUuid,
   latestReading,
   type DomainIssue,
@@ -21,7 +27,7 @@ import {
   type VehicleDocument,
   type VehicleId,
 } from '@/domain';
-import { alertCandidates, type AlertCandidate } from '@/engine/alerts';
+import { alertCandidates, planAlerts, type AlertCandidate } from '@/engine/alerts';
 import { computeMaintenance, type EngineResult } from '@/engine/maintenance';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import type { OriginalFileStore } from '@/providers/storage/types';
@@ -39,6 +45,7 @@ import {
   ProfileRepository,
   ScheduleRepository,
   ServiceRepository,
+  SettingsRepository,
   SourceRepository,
   VehicleRepository,
   type SqlDatabase,
@@ -78,6 +85,8 @@ export interface Snapshot {
   vehicles: VehicleSummary[];
   bundles: Record<string, VehicleDataBundle>;
   activeVehicleId: string | null;
+  /** The user opted in to device notifications (T130). */
+  notificationsEnabled: boolean;
 }
 
 /** Optional identity details captured at onboarding (beyond the display summary). */
@@ -178,26 +187,41 @@ export class LocalStore {
   }
 
   /**
-   * Persists an alert for every justified candidate that has none yet, so its identity and
-   * handled/snoozed status survive restarts and sync. Returns true if anything was added.
+   * T126: applies the alert lifecycle — persists new justified alerts (identity and status then
+   * survive restarts and sync), resolves alerts whose condition cleared, and re-activates alerts
+   * whose snooze ended. Returns true if anything changed.
    */
   private async reconcileAlerts(rec: VehicleRecords, candidates: AlertCandidate[]) {
-    const known = new Set(rec.alerts.map((a) => a.basis.facts.key));
+    const now = this.clock.now();
+    const plan = planAlerts(rec.alerts, candidates, this.clock.today());
     const repo = new AlertRepository(this.db);
-    let added = false;
-    for (const c of candidates) {
-      if (known.has(c.key)) continue;
+    let changed = false;
+    for (const c of plan.create) {
       const r = createAlert(
         { vehicleId: rec.vehicle.id, kind: c.kind, basis: c.basis },
         this.ids,
-        this.clock.now(),
+        now,
       );
       if (r.ok) {
         await repo.add(r.value);
-        added = true;
+        changed = true;
       }
     }
-    return added;
+    for (const a of plan.resolve) {
+      const r = resolveAlert(a, now);
+      if (r.ok) {
+        await repo.update(r.value);
+        changed = true;
+      }
+    }
+    for (const a of plan.reactivate) {
+      const r = reactivateAlert(a, now);
+      if (r.ok) {
+        await repo.update(r.value);
+        changed = true;
+      }
+    }
+    return changed;
   }
 
   async snapshot(): Promise<Snapshot> {
@@ -214,7 +238,9 @@ export class LocalStore {
       bundles[v.id] = toBundle(rec, result, candidates, this.clock.today());
     }
     const activeVehicleId = await new ActiveVehicleStore(this.db).get();
-    return { vehicles: summaries, bundles, activeVehicleId };
+    const notificationsEnabled =
+      (await new SettingsRepository(this.db).get<boolean>('notificationsEnabled')) === true;
+    return { vehicles: summaries, bundles, activeVehicleId, notificationsEnabled };
   }
 
   // ---------- writes ----------
@@ -261,6 +287,10 @@ export class LocalStore {
       }
     });
     return vehicle.id;
+  }
+
+  async setNotificationsEnabled(enabled: boolean): Promise<void> {
+    await new SettingsRepository(this.db).set('notificationsEnabled', enabled, this.clock.now());
   }
 
   async setActiveVehicle(id: string): Promise<void> {
@@ -378,6 +408,34 @@ export class LocalStore {
     await this.db.transaction(async (tx) => {
       if (doc) await new DocumentRepository(tx).add(doc);
       await new ServiceRepository(tx).add(event);
+      // T129: a later service that performs a deferred item resolves the deferral…
+      const deferrals = new DeferredItemRepository(tx);
+      const performedItems = new Set(
+        event.actions
+          .filter((a) => a.performed && a.maintenanceItemId)
+          .map((a) => a.maintenanceItemId),
+      );
+      for (const d of await deferrals.listOpen(vid)) {
+        if (performedItems.has(d.maintenanceItemId) && d.deferredAt <= event.date) {
+          await deferrals.update(must(resolveDeferredItem(d, event.id, now)));
+        }
+      }
+      // …and items the user consciously deferred now are tracked until done.
+      for (const itemId of (vm.deferredItemIds ?? []).filter(isUuid)) {
+        if (performedItems.has(itemId as never)) continue;
+        await deferrals.add(
+          createDeferredItem(
+            {
+              vehicleId: vid,
+              maintenanceItemId: asId<'MaintenanceItem'>(itemId),
+              deferredAt: event.date,
+              serviceEventId: event.id,
+            },
+            this.ids,
+            now,
+          ),
+        );
+      }
       // The service odometer is also a reading (only if it does not contradict later readings).
       const odo = new OdometerRepository(tx);
       const reading = createOdometerReading(
@@ -445,6 +503,15 @@ export class LocalStore {
     );
     if (!doc || !this.files) return false;
     return this.files.open(doc.original.storageKey, doc.original.mimeType);
+  }
+
+  /** "Remind me later": the alert leaves view until the date, then returns if still justified. */
+  async snoozeAlert(vehicleId: string, alertId: string, days: number): Promise<void> {
+    const repo = new AlertRepository(this.db);
+    const alert = await repo.get(vehicleId as VehicleId, alertId as never);
+    if (!alert) throw new Error('Alert not found for this vehicle');
+    const until = addDays(this.clock.today(), days);
+    await repo.update(must(snoozeAlert(alert, until, this.clock.now())));
   }
 
   async setAlertHandled(vehicleId: string, alertId: string): Promise<void> {

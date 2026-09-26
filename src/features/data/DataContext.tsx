@@ -65,6 +65,8 @@ export interface AppDataValue {
   /** Explicit user confirmation: stores the record (and its original document) atomically. */
   addServiceEvent: (event: ServiceEventVM, attachment?: AttachmentInput) => void;
   setAlertHandled: (vehicleId: string, alertId: string) => void;
+  /** "Remind me later": hidden until the date, then shown again if still justified. */
+  snoozeAlert: (vehicleId: string, alertId: string, days: number) => void;
   /** T122: adds an uploaded document (the original is kept; nothing is extracted or trusted). */
   addDocument: (vehicleId: string, attachment: AttachmentInput, kind: DocumentKind) => void;
   /** T123: the stored original (null when there is no file, e.g. prototype data). */
@@ -75,6 +77,14 @@ export interface AppDataValue {
   setNetwork: (mode: NetworkMode) => void;
   account: AccountState;
   setAccount: (account: AccountState) => void;
+  /**
+   * Today's date (YYYY-MM-DD) from the data source's clock — the same clock that validates writes,
+   * so a record dated "today" by a screen can never be judged to be in the future.
+   */
+  today: () => string;
+  /** Device notifications opted in by the user (T130). */
+  notificationsEnabled: boolean;
+  setNotificationsEnabled: (enabled: boolean) => void;
   /** True while the labeled prototype data is shown (demo banner). */
   isDemoData: boolean;
   /** Persisted active vehicle (restored on launch), if the source remembers one. */

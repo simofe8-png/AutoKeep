@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M17 Alerts
-- **Current task:** T126 (Alert rule engine)
-- **Last verified PASS:** T125 — M16 PASS (history/documents on real data; originals stored + SHA-256 re-verified)
-- **Next action:** M17 per task-plan: alert lifecycle on engine candidates (engine/alerts.ts, persisted identity), explainability, handle/snooze, local notifications (no remote push service without approval), deep links to the right vehicle
+- **Milestone:** M18 Multi-Vehicle Hardening
+- **Current task:** T133 (Car + motorcycle + scooter scenario)
+- **Last verified PASS:** T132 — M17 PASS (alert lifecycle, deferrals, local notifications, vehicle-aware deep links)
+- **Next action:** M18 per task-plan (multi-vehicle hardening on real data: switching, scoping, misfiling prevention, archived handling)
 
 ## Granted policies
 
@@ -34,6 +34,7 @@ _Last updated: 2026-09-26_
 - Invoice/registration reading: no OCR/AI provider (G1) — capture stores the original and the user fills the draft. Provider approval gate expected before V1 RC (T170).
 - Expo Go file scoping: picker/cached files outside the project scope are unreadable by expo-file-system (device-verified). Documents: content URI copied into private cache (fixed). Camera/library image capture → storage NOT yet device-verified (camera permission not granted on the user's phone) — verify in dev build (T182).
 - Device test data in Expo Go app storage: vehicle 'Honda XR650L 2001' (public registry sample plate), a garage note, a manual service, an uploaded test document. Harmless; clear via app data if desired.
+- Local notifications cannot run in Expo Go (importing expo-notifications throws on Android since SDK 53 — device-verified). Scheduler is lazy and disabled there; verify notifications on a development/release build (T182). Remote push would need an external account (approval gate) — not used.
 - Git Bash rewrites `/sdcard/...` adb paths — use `MSYS_NO_PATHCONV=1` for adb shell/exec-out with device paths.
 
 - adb can wedge after long sessions: bound every adb call with `timeout`; recover with `Stop-Process adb` + `adb start-server` (start-device.mjs now times out adb reverse).
@@ -56,4 +57,4 @@ _Last updated: 2026-09-26_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M16` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M17` on `master` (local only, not pushed).

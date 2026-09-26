@@ -153,6 +153,10 @@ export function LocalDataProvider({
       updateOdometer: (id, km, at) => write((s) => s.updateOdometer(id, km, at)),
       addServiceEvent: (e, attachment) => write((s) => s.addServiceEvent(e, attachment)),
       setAlertHandled: (vid, aid) => write((s) => s.setAlertHandled(vid, aid)),
+      snoozeAlert: (vid, aid, days) => write((s) => s.snoozeAlert(vid, aid, days)),
+      today: () => clock.today(),
+      notificationsEnabled: snapshot.notificationsEnabled,
+      setNotificationsEnabled: (enabled) => write((s) => s.setNotificationsEnabled(enabled)),
       addGarageRecommendation: (r) => write((s) => s.addGarageRecommendation(r)),
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
       // Reads of the original go straight to the store (no snapshot change).
@@ -167,7 +171,7 @@ export function LocalDataProvider({
       // Best effort: a selection that is no longer valid simply is not remembered.
       rememberActiveVehicle: (id) => write((s) => s.setActiveVehicle(id).catch(() => undefined)),
     };
-  }, [snapshot, runtime, network, account]);
+  }, [snapshot, runtime, network, account, clock]);
 
   if (phase.kind === 'failed') {
     return (

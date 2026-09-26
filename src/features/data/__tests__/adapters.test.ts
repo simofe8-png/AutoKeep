@@ -232,7 +232,7 @@ describe('alerts', () => {
     expect(vm.lastCompletion).toBe(he.data.noRecordedCompletion);
   });
 
-  it('no maintenance alerts from an unverified schedule; stale odometer still reported', () => {
+  it('no alerts from an unverified schedule — a stale reading impairs nothing there (T128)', () => {
     const s = schedule([manufacturer], false);
     const today = isoDate('2026-09-26');
     const readings = [reading(9900, '2026-06-01')];
@@ -244,6 +244,22 @@ describe('alerts', () => {
       deferred: [],
       latestReading: readings[0],
     }).map((c) => c.kind);
-    expect(kinds).toEqual(['stale_odometer']);
+    expect(kinds).toEqual([]);
+  });
+
+  it('a stale reading is reported where it impairs a distance-based due point (T128)', () => {
+    const s = schedule([manufacturer]);
+    const today = isoDate('2026-09-26');
+    const readings = [reading(2000, '2026-06-01')];
+    const result = computeMaintenance({ today, schedule: s, history: [], readings, deferred: [] });
+    const c = alertCandidates({
+      today,
+      result,
+      schedule: s,
+      deferred: [],
+      latestReading: readings[0],
+    });
+    expect(c.map((x) => x.kind)).toEqual(['stale_odometer']);
+    expect(c[0].basis.facts).toMatchObject({ ageDays: 117, odometerKm: 2000 });
   });
 });

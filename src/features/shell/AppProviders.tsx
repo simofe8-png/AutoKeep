@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react';
 
+import { NotificationsBridge } from '@/features/alerts/NotificationsBridge';
 import { useAppData } from '@/features/data/DataContext';
 import { currentDataSource } from '@/features/data/dataSource';
 import { LocalDataProvider } from '@/features/data/LocalDataProvider';
@@ -18,6 +19,7 @@ function ActiveVehicleBridge({ children }: { children: ReactNode }) {
       onActiveChange={rememberActiveVehicle}
     >
       {children}
+      <NotificationsBridge />
     </ActiveVehicleProvider>
   );
 }

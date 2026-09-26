@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState, type ReactNode } from 'react';
 
+import { todayIso } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
 
 import {
@@ -44,6 +45,7 @@ export function PrototypeDataProvider({
   const [data, setData] = useState<Record<string, VehicleDataBundle>>(() => ({ ...initialData }));
   const [network, setNetwork] = useState<NetworkMode>(initialNetwork);
   const [account, setAccount] = useState<AccountState>({ hasAccount: false });
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
   const getBundle = useCallback((vehicleId: string) => data[vehicleId] ?? emptyBundle(), [data]);
 
@@ -96,6 +98,15 @@ export function PrototypeDataProvider({
       updateBundle(event.vehicleId, (b) => ({
         ...b,
         history: [event, ...b.history].sort((x, y) => y.date.localeCompare(x.date)),
+        deferred: [
+          ...(event.deferredItemIds ?? []).map((itemId) => ({
+            id: `def-${event.id}-${itemId}`,
+            vehicleId: event.vehicleId,
+            title: b.schedule.next?.items.find((i) => i.id === itemId)?.title ?? itemId,
+            deferredAt: event.date,
+          })),
+          ...b.deferred,
+        ],
         documents: attachment
           ? [
               {
@@ -169,6 +180,12 @@ export function PrototypeDataProvider({
       setAlertHandled,
       addGarageRecommendation,
       addDocument,
+      // Prototype: a snoozed alert simply leaves the list for this session.
+      snoozeAlert: (vehicleId: string, alertId: string) =>
+        updateBundle(vehicleId, (b) => ({
+          ...b,
+          alerts: b.alerts.filter((a) => a.id !== alertId),
+        })),
       // Prototype documents have no stored file.
       getOriginal: async () => null,
       openOriginal: async () => false,
@@ -176,6 +193,9 @@ export function PrototypeDataProvider({
       setNetwork,
       account,
       setAccount,
+      today: () => todayIso(),
+      notificationsEnabled,
+      setNotificationsEnabled,
       isDemoData,
     }),
     [
@@ -189,8 +209,10 @@ export function PrototypeDataProvider({
       setAlertHandled,
       addGarageRecommendation,
       addDocument,
+      updateBundle,
       network,
       account,
+      notificationsEnabled,
       isDemoData,
     ],
   );

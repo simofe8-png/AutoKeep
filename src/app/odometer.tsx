@@ -5,7 +5,7 @@ import { useAppData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate, formatKm, parseOdometer, todayIso } from '@/features/vehicles/format';
+import { formatDate, formatKm, parseOdometer } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import { AppText, Button, Card, Screen, TextField } from '@/ui';
 
@@ -13,7 +13,7 @@ import { AppText, Button, Card, Screen, TextField } from '@/ui';
 export default function OdometerScreen() {
   const router = useRouter();
   const { activeVehicle } = useActiveVehicle();
-  const { updateOdometer } = useAppData();
+  const { updateOdometer, today } = useAppData();
   const [value, setValue] = useState('');
 
   if (!activeVehicle) return null;
@@ -40,7 +40,7 @@ export default function OdometerScreen() {
           disabled={km == null || lower}
           onPress={() => {
             if (km == null || lower) return;
-            updateOdometer(activeVehicle.id, km, todayIso());
+            updateOdometer(activeVehicle.id, km, today());
             router.back();
           }}
         />

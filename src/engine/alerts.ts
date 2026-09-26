@@ -1,5 +1,6 @@
 import {
   daysBetween,
+  type Alert,
   type AlertBasis,
   type AlertKind,
   type DeferredItem,
@@ -45,7 +46,18 @@ export function alertCandidates(input: AlertInput): AlertCandidate[] {
   const out: AlertCandidate[] = [];
   const { result, schedule } = input;
 
-  if (result.status === 'computed' && schedule && result.next && result.next.status !== 'ok') {
+  // A visit due ONLY because of deferrals is covered by the deferred alerts (no duplicate).
+  const onlyDeferred =
+    result.status === 'computed' &&
+    result.next !== null &&
+    result.next.items.every((i) => i.basis === 'deferred');
+  if (
+    result.status === 'computed' &&
+    schedule &&
+    result.next &&
+    result.next.status !== 'ok' &&
+    !onlyDeferred
+  ) {
     const next = result.next;
     const first = next.items[0];
     const last = next.items.find((i) => i.lastPerformed)?.lastPerformed ?? null;
@@ -93,9 +105,12 @@ export function alertCandidates(input: AlertInput): AlertCandidate[] {
     });
   }
 
+  // T128: a stale reading is only alert-worthy where it impairs a calculation — i.e. a verified
+  // schedule has distance-based due points computed from the odometer.
   const r = input.latestReading;
   const staleDays = input.staleOdometerDays ?? DEFAULT_THRESHOLDS.staleOdometerDays;
-  if (r) {
+  const usesDistance = result.status === 'computed' && result.items.some((i) => i.dueKm !== null);
+  if (r && usesDistance) {
     const ageDays = daysBetween(r.measuredAt, input.today);
     if (ageDays > staleDays) {
       const key = `stale_odometer:${r.id}`;
@@ -110,4 +125,39 @@ export function alertCandidates(input: AlertInput): AlertCandidate[] {
     }
   }
   return out;
+}
+
+// ---------- T126: alert lifecycle ----------
+
+export interface AlertPlan {
+  /** Candidates with no persisted alert yet. */
+  create: AlertCandidate[];
+  /** Active/snoozed alerts whose condition no longer holds (resolved automatically). */
+  resolve: Alert[];
+  /** Snoozed alerts whose snooze date has passed (active again). */
+  reactivate: Alert[];
+}
+
+/**
+ * Pure reconciliation of persisted alerts with the candidates the current data justifies.
+ * A handled alert stays handled while its condition (key) holds — the user already acted on it.
+ */
+export function planAlerts(
+  existing: readonly Alert[],
+  candidates: readonly AlertCandidate[],
+  today: IsoDate,
+): AlertPlan {
+  const keys = new Set(candidates.map((c) => c.key));
+  const known = new Set(existing.map((a) => a.basis.facts.key));
+  return {
+    create: candidates.filter((c) => !known.has(c.key)),
+    resolve: existing.filter((a) => a.status !== 'handled' && !keys.has(String(a.basis.facts.key))),
+    reactivate: existing.filter(
+      (a) =>
+        a.status === 'deferred' &&
+        keys.has(String(a.basis.facts.key)) &&
+        a.snoozedUntil !== null &&
+        a.snoozedUntil <= today,
+    ),
+  };
 }

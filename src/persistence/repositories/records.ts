@@ -507,6 +507,23 @@ export class DeferredItemRepository {
     );
   }
 
+  async update(d: DeferredItem): Promise<void> {
+    const r = await this.db.run(
+      `UPDATE deferred_items SET reason = ?, resolved_by_service_event_id = ?, updated_at = ?, version = ?
+       WHERE id = ? AND vehicle_id = ? AND version = ?`,
+      [
+        d.reason,
+        d.resolvedByServiceEventId,
+        d.updatedAt,
+        d.version,
+        d.id,
+        d.vehicleId,
+        d.version - 1,
+      ],
+    );
+    if (r.changes !== 1) throw new ConcurrencyError('DeferredItem', d.id);
+  }
+
   async listOpen(vehicleId: VehicleId): Promise<DeferredItem[]> {
     const rows = await this.db.all<DeferredRow>(
       `SELECT * FROM deferred_items WHERE vehicle_id = ? AND resolved_by_service_event_id IS NULL

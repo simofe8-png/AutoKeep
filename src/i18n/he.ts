@@ -264,6 +264,8 @@ export const he = {
     },
     originalDocument: 'מסמך מקורי',
     invoiceTitle: (date: string) => `חשבונית טיפול — ${date}`,
+    defer: 'לא בוצע — לדחות לטיפול הבא',
+    deferredOn: 'נדחה — תופיע תזכורת עד שיבוצע',
     readingUnavailableTitle: 'קריאה אוטומטית של החשבונית אינה זמינה עדיין',
     readingUnavailable:
       'מלאו את הפרטים מתוך החשבונית. הקובץ המקורי יישמר יחד עם הטיפול ויקושר אליו.',
@@ -335,6 +337,7 @@ export const he = {
     updateOdometer: 'עדכון מד אוץ',
     recordHandled: 'טופל — תיעוד טיפול',
     markHandled: 'סימון כטופל',
+    snooze: 'הזכר לי בעוד שבוע',
     handled: 'טופל',
     kinds: {
       upcoming: 'טיפול מתקרב',
@@ -376,6 +379,10 @@ export const he = {
     profile: 'פרופיל וחשבון',
     notifications: 'התראות ותזכורות',
     notificationsEnabled: 'התראות במכשיר',
+    notificationsHint:
+      'תזכורות על טיפולים מתקרבים, פעולות שנדחו ומד אוץ לא עדכני. מתוזמנות במכשיר בלבד.',
+    notificationsUnavailable: 'התראות במכשיר אינן זמינות בגרסת התצוגה המקדימה (Expo Go).',
+    notificationsDenied: 'לא ניתנה הרשאה להתראות. ניתן לאפשר אותה בהגדרות המכשיר ולנסות שוב.',
     vehicles: 'ניהול כלי רכב',
     backup: 'גיבוי וסנכרון',
     documents: 'ניהול מסמכים',

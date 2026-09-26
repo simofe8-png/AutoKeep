@@ -2,9 +2,20 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
 import { useAppData } from '@/features/data/DataContext';
+import { notificationScheduler } from '@/features/data/dataSource';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { he } from '@/i18n/he';
-import { Card, Divider, ListRow, Screen, SectionHeader, Stack, SwitchRow } from '@/ui';
+import {
+  AppText,
+  Card,
+  Divider,
+  InlineNotice,
+  ListRow,
+  Screen,
+  SectionHeader,
+  Stack,
+  SwitchRow,
+} from '@/ui';
 
 /**
  * Settings (T027): manages behavior and reaches account/backup, notifications, vehicles,
@@ -12,8 +23,26 @@ import { Card, Divider, ListRow, Screen, SectionHeader, Stack, SwitchRow } from 
  */
 export default function SettingsScreen() {
   const router = useRouter();
-  const { account, network, setNetwork, isDemoData } = useAppData();
-  const [notifications, setNotifications] = useState(true);
+  const {
+    account,
+    network,
+    setNetwork,
+    isDemoData,
+    notificationsEnabled,
+    setNotificationsEnabled,
+  } = useAppData();
+  const [denied, setDenied] = useState(false);
+  const scheduler = isDemoData ? null : notificationScheduler();
+  const unavailable = !isDemoData && scheduler === null;
+
+  // Opt-in only: the OS permission is requested when the user turns notifications on.
+  const toggleNotifications = async (on: boolean) => {
+    setDenied(false);
+    if (!on) return setNotificationsEnabled(false);
+    if (unavailable) return;
+    if (scheduler && !(await scheduler.requestPermission())) return setDenied(true);
+    setNotificationsEnabled(true);
+  };
 
   return (
     <Screen header={<ScreenHeader title={he.settings.title} />} testID="screen-settings">
@@ -41,9 +70,26 @@ export default function SettingsScreen() {
           testID="settings-notifications"
           icon="bell-outline"
           label={he.settings.notificationsEnabled}
-          value={notifications}
-          onValueChange={setNotifications}
+          value={notificationsEnabled && !unavailable}
+          onValueChange={(on) => void toggleNotifications(on)}
         />
+        <AppText variant="caption" color="textMuted">
+          {he.settings.notificationsHint}
+        </AppText>
+        {unavailable ? (
+          <InlineNotice
+            testID="settings-notifications-unavailable"
+            tone="info"
+            message={he.settings.notificationsUnavailable}
+          />
+        ) : null}
+        {denied ? (
+          <InlineNotice
+            testID="settings-notifications-denied"
+            tone="warning"
+            message={he.settings.notificationsDenied}
+          />
+        ) : null}
       </Card>
 
       <Card compact>

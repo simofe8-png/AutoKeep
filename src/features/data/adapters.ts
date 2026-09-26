@@ -316,6 +316,7 @@ export function toAlertVM(
     vehicleId: alert.vehicleId,
     kind: alert.kind,
     createdAt: dateOf(alert.raisedAt),
+    raisedAt: alert.raisedAt,
     maintenanceItemId: candidate.basis.maintenanceItemId,
     handled: alert.status === 'handled',
   };

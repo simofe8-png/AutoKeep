@@ -7,7 +7,7 @@ import type { DocumentKind } from '@/features/data/types';
 import { documentIcon } from '@/features/documents/icons';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate, joinParts, todayIso } from '@/features/vehicles/format';
+import { formatDate, joinParts } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import {
@@ -39,7 +39,7 @@ export default function DocumentsScreen() {
   const { activeVehicle } = useActiveVehicle();
   const { documents, alerts } = useVehicleData(activeVehicle?.id ?? null);
   const [uploadInfo, setUploadInfo] = useState(false);
-  const { isDemoData, addDocument } = useAppData();
+  const { isDemoData, addDocument, today } = useAppData();
   const services = isDemoData ? null : onboardingServices();
   const [picked, setPicked] = useState<AcquiredFile | null>(null);
   const [problem, setProblem] = useState<string | null>(null);
@@ -65,7 +65,7 @@ export default function DocumentsScreen() {
       {
         documentId: newLocalId('doc'),
         file: picked,
-        title: he.documents.uploadTitle(he.documents.kinds[kind], formatDate(todayIso())),
+        title: he.documents.uploadTitle(he.documents.kinds[kind], formatDate(today())),
       },
       kind,
     );

@@ -1,11 +1,12 @@
 import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
 
-import { isoDate, type IsoDate, type Timestamp } from '@/domain';
+import { createSchedule, isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds } from '@/domain/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
 import { MemoryFileStore } from '@/providers/storage/types';
+import { ScheduleRepository } from '@/persistence';
 import { openTestDatabase, type TestDatabase } from '@/persistence/testing/sqljsDatabase';
 import type { VehicleRegistryProvider } from '@/providers/registry/types';
 
@@ -158,6 +159,36 @@ describe('real local data behind the approved UI', () => {
       archived: false,
     });
     await store.setActiveVehicle(id);
+    // A verified distance-based schedule: here a stale reading impairs the calculation (T128).
+    const ids = sequentialIds(900);
+    const schedule = createSchedule(
+      {
+        vehicleId: id,
+        intervals: [
+          {
+            id: ids.next(),
+            label: 'A',
+            rule: 'distance_only',
+            everyKm: 6000,
+            items: [
+              {
+                id: ids.next(),
+                title: 'שרשרת הנעה',
+                actionType: 'inspection',
+                manufacturerText: 'בדיקה',
+                reference: { sourceId: ids.next(), page: 1 },
+              },
+            ],
+          },
+        ],
+        evidence: [{ authority: 'manufacturer', exactApplicability: true }],
+        applicability: { matchedOn: ['model'], exact: true },
+      },
+      ids,
+      clock.now(),
+    );
+    if (!schedule.ok) throw new Error('fixture');
+    await new ScheduleRepository(db).add(schedule.value);
 
     await renderRouter('./src/app', { initialUrl: '/' });
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);

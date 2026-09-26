@@ -8,7 +8,6 @@ import { useServiceDraft } from '@/features/service/ServiceDraftContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { todayIso } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import { AppText, Button, Card, Dialog, Icon, InlineNotice, Row, Screen, spacing } from '@/ui';
 
@@ -20,13 +19,13 @@ export default function ReviewServiceScreen() {
   const router = useRouter();
   const { draft, update, setDraft } = useServiceDraft();
   const { vehicles } = useActiveVehicle();
-  const { addServiceEvent } = useAppData();
+  const { addServiceEvent, today } = useAppData();
   const [showErrors, setShowErrors] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const vehicle = vehicles.find((v) => v.id === draft?.vehicleId);
 
   if (!draft || !vehicle) return null;
-  const errors = validateDraft(draft, todayIso());
+  const errors = validateDraft(draft, today());
 
   return (
     <Screen

@@ -29,7 +29,7 @@ import {
 export default function AlertDetailScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle, setAlertHandled } = useAppData();
+  const { vehicles, getBundle, setAlertHandled, snoozeAlert } = useAppData();
   const { activeVehicleId, setActiveVehicleId } = useActiveVehicle();
 
   const owner = vehicles.find((v) => getBundle(v.id).alerts.some((a) => a.id === id));
@@ -83,6 +83,17 @@ export default function AlertDetailScreen() {
           {actions.map((a) => (
             <Button key={a.label} {...a} fullWidth />
           ))}
+          <Button
+            testID="alert-snooze"
+            label={he.alerts.snooze}
+            icon="bell-sleep-outline"
+            variant="ghost"
+            fullWidth
+            onPress={() => {
+              snoozeAlert(owner.id, alert.id, 7);
+              router.back();
+            }}
+          />
           <Button
             testID="alert-mark-handled"
             label={he.alerts.markHandled}

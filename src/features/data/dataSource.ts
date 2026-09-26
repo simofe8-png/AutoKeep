@@ -4,6 +4,8 @@ import type { SqlDatabase } from '@/persistence';
 import { openExpoDatabase } from '@/persistence/db/expoDatabase';
 import { uuidIds } from '@/persistence/ids';
 import { expoAcquisition } from '@/providers/acquisition/expoAcquisition';
+import { createExpoNotifications } from '@/providers/notifications/expoNotifications';
+import type { NotificationScheduler } from '@/providers/notifications/types';
 import { DataGovIlRegistry } from '@/providers/registry/dataGovIl';
 import { expoFileStore } from '@/providers/storage/expoFileStore';
 import type { OriginalFileStore } from '@/providers/storage/types';
@@ -23,6 +25,8 @@ export type DataSourceConfig =
       clock: Clock;
       files: OriginalFileStore;
       services: OnboardingServices;
+      /** Local notifications (optional: tests and platforms without them pass null). */
+      notifications?: NotificationScheduler | null;
     };
 
 const openDefault = () => openExpoDatabase();
@@ -33,6 +37,7 @@ const production: DataSourceConfig = {
   ids: uuidIds,
   clock: systemClock,
   files: expoFileStore,
+  notifications: createExpoNotifications(),
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.
@@ -48,6 +53,12 @@ let override: DataSourceConfig | null = null;
 /** Test/dev hook: select a data source (null restores the default). */
 export function configureDataSource(config: DataSourceConfig | null): void {
   override = config;
+}
+
+/** The local-notification scheduler, or null (demo mode / not configured). */
+export function notificationScheduler(): NotificationScheduler | null {
+  const s = currentDataSource();
+  return s.kind === 'local' ? (s.notifications ?? null) : null;
 }
 
 /** Onboarding runtime services, or null in demo mode (which uses scripted scenarios). */

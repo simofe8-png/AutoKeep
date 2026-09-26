@@ -89,11 +89,12 @@ describe('alerts (explainable, persisted identity)', () => {
     const first = await store.snapshot();
     const alerts = first.bundles[car.id].alerts;
     const kinds = alerts.map((a) => a.kind).sort();
-    // Open deferral, due in 20 days, reading 71 days old.
-    expect(kinds).toEqual(['deferred', 'overdue', 'stale_odometer']);
-    const overdue = alerts.find((a) => a.kind === 'overdue')!;
-    expect(overdue.reason).toBe(he.data.overdueDeferred);
-    expect(overdue.basis).toMatch(/לוח תחזוקה מאומת/);
+    // The oil item is due only because it was deferred: one deferred alert, no duplicate
+    // "overdue"; the 71-day-old reading impairs the distance calculation.
+    expect(kinds).toEqual(['deferred', 'stale_odometer']);
+    const deferred = alerts.find((a) => a.kind === 'deferred')!;
+    expect(deferred.title).toBe(he.data.deferredTitle('שמן מנוע'));
+    expect(deferred.reason).toBe('נדחה');
     const stale = alerts.find((a) => a.kind === 'stale_odometer')!;
     expect(stale.reason).toBe(he.data.staleReason(71));
     expect(stale.basis).toMatch(/84,250/);

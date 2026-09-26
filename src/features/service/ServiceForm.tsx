@@ -97,7 +97,9 @@ export function ServiceForm({ draft, onChange, errors, showErrors }: ServiceForm
               <Checkbox
                 testID={`action-${a.id}`}
                 checked={a.performed}
-                onChange={(performed) => setAction(a.id, { performed })}
+                onChange={(performed) =>
+                  setAction(a.id, performed ? { performed, deferred: false } : { performed })
+                }
                 label={a.title}
                 description={a.unlisted ? he.service.unlisted : undefined}
               >
@@ -120,6 +122,15 @@ export function ServiceForm({ draft, onChange, errors, showErrors }: ServiceForm
                   </Stack>
                 ) : null}
               </Checkbox>
+              {!a.performed && a.maintenanceItemId && !a.unlisted ? (
+                <Button
+                  testID={`action-defer-${a.id}`}
+                  label={a.deferred ? he.service.deferredOn : he.service.defer}
+                  icon={a.deferred ? 'calendar-check' : 'calendar-arrow-right'}
+                  variant="ghost"
+                  onPress={() => setAction(a.id, { deferred: !a.deferred })}
+                />
+              ) : null}
             </View>
           ))}
           <Divider />

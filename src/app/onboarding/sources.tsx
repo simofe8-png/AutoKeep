@@ -111,7 +111,12 @@ function buildBundle(vehicleId: string, scenario: SourceScenario, fromScan: bool
   return bundle;
 }
 
-function toVehicle(id: string, draft: VehicleDraft, odometerKm: number): VehicleSummary {
+function toVehicle(
+  id: string,
+  draft: VehicleDraft,
+  odometerKm: number,
+  today: string,
+): VehicleSummary {
   return {
     id,
     kind: draft.kind ?? 'car',
@@ -120,7 +125,7 @@ function toVehicle(id: string, draft: VehicleDraft, odometerKm: number): Vehicle
     year: draft.year ?? 0,
     registration: draft.registration ?? '',
     odometerKm,
-    odometerMeasuredAt: todayIso(),
+    odometerMeasuredAt: today,
     archived: false,
   };
 }
@@ -128,7 +133,7 @@ function toVehicle(id: string, draft: VehicleDraft, odometerKm: number): Vehicle
 /** One progress screen that updates, then a result (UX baseline "Source discovery UX"). */
 export default function OnboardingSources() {
   const router = useRouter();
-  const { addVehicle, isDemoData } = useAppData();
+  const { addVehicle, isDemoData, today } = useAppData();
   const {
     draft,
     origins,
@@ -170,7 +175,7 @@ export default function OnboardingSources() {
   const finish = () => {
     const id = newLocalId('vehicle');
     addVehicle(
-      toVehicle(id, draft, odometerKm ?? 0),
+      toVehicle(id, draft, odometerKm ?? 0, today()),
       // Prototype placeholders only in demo mode; the real store records nothing it cannot back.
       isDemoData ? buildBundle(id, sourceScenario, origins.registration === 'scan') : undefined,
       { trim: draft.trim, engine: draft.engine, fuel: draft.fuel, vin: draft.vin },
