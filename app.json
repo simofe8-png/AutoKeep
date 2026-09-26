@@ -13,7 +13,8 @@
       "buildNumber": "1",
       "infoPlist": {
         "NSCameraUsageDescription": "AutoKeep משתמשת במצלמה רק כשאתם בוחרים לצלם רישיון רכב או חשבונית.",
-        "NSPhotoLibraryUsageDescription": "AutoKeep ניגשת לתמונה שבחרתם בלבד, כדי לצרף רישיון רכב או חשבונית."
+        "NSPhotoLibraryUsageDescription": "AutoKeep ניגשת לתמונה שבחרתם בלבד, כדי לצרף רישיון רכב או חשבונית.",
+        "ExpoLocalization_forcesRTL": true
       }
     },
     "android": {
@@ -77,6 +78,13 @@
     ],
     "experiments": {
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d243d46c-a4fb-4232-b17d-ae39b158b3a8"
+      }
+    },
+    "owner": "vr47252"
   }
 }
