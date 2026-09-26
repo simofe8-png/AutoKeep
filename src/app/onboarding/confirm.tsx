@@ -8,7 +8,10 @@ import {
   formatDraftValue,
   toDraftValue,
 } from '@/features/onboarding/fields';
+import { useAppData } from '@/features/data/DataContext';
+import { onboardingServices } from '@/features/data/dataSource';
 import { useOnboarding } from '@/features/onboarding/OnboardingContext';
+import { RegistryLookup } from '@/features/onboarding/RegistryLookup';
 import { missingFields, type DraftField, type VehicleDraft } from '@/features/onboarding/types';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { he } from '@/i18n/he';
@@ -17,7 +20,13 @@ import { AppText, Button, Card, Divider, InlineNotice, Screen, spacing, Stack } 
 /** Vehicle confirmation + missing-data completion (T014): ask only for what is missing. */
 export default function OnboardingConfirm() {
   const router = useRouter();
-  const { draft, origins, setUserFields } = useOnboarding();
+  const { draft, origins, setUserFields, setFields } = useOnboarding();
+  const { isDemoData, network } = useAppData();
+  const services = isDemoData ? null : onboardingServices();
+  // ADR-0017: plate first → official registry → OCR only for what is still missing. Registry
+  // values replace scanned ones but never what the user typed.
+  const offerRegistry =
+    services !== null && Boolean(draft.registration) && origins.manufacturer !== 'registry';
   const missing = missingFields(draft);
   const [inputs, setInputs] = useState<Partial<Record<DraftField, string>>>({});
 
@@ -69,6 +78,20 @@ export default function OnboardingConfirm() {
           ))}
         </Stack>
       </Card>
+
+      {offerRegistry && services ? (
+        <RegistryLookup
+          plate={String(draft.registration)}
+          registry={services.registry}
+          offline={network === 'offline'}
+          onFilled={(filled) => {
+            const notTyped = Object.fromEntries(
+              Object.entries(filled).filter(([k]) => origins[k as DraftField] !== 'user'),
+            ) as Partial<VehicleDraft>;
+            setFields(notTyped, 'registry');
+          }}
+        />
+      ) : null}
 
       {missing.length > 0 ? (
         <Stack testID="missing-fields">

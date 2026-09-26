@@ -1,4 +1,5 @@
 import type { ManufacturerAliases, OfficialDomainEntry } from './authority';
+import type { KnownOfficialDocument } from './hybrid';
 
 /**
  * Registry of VERIFIED official manufacturer / official-importer domains.
@@ -9,6 +10,12 @@ import type { ManufacturerAliases, OfficialDomainEntry } from './authority';
  * schedule stays unavailable rather than invented.
  */
 export const OFFICIAL_DOMAINS: readonly OfficialDomainEntry[] = [];
+
+/**
+ * Known official documents (ADR-0016): direct manual/schedule URLs published by an entry above.
+ * Added only through docs/sources/REGISTRY_PROCEDURE.md (evidence: who, when, how verified).
+ */
+export const KNOWN_OFFICIAL_SOURCES: readonly KnownOfficialDocument[] = [];
 
 /** Spelling aliases only (no authority implied). */
 export const MANUFACTURER_ALIASES: ManufacturerAliases = {

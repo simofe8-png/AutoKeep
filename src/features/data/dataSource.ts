@@ -1,5 +1,10 @@
 import { getSupabase } from '@/cloud/client';
-import { MANUFACTURER_ALIASES, OFFICIAL_DOMAINS } from '@/discovery/registry';
+import { HybridDiscoveryProvider, KnownSourceProvider } from '@/discovery/hybrid';
+import {
+  KNOWN_OFFICIAL_SOURCES,
+  MANUFACTURER_ALIASES,
+  OFFICIAL_DOMAINS,
+} from '@/discovery/registry';
 import type { IdGenerator } from '@/domain';
 import { supabaseAccountBackend, type AccountBackend } from '@/features/account/backend';
 import { httpRetriever } from '@/features/sources/httpRetriever';
@@ -64,8 +69,13 @@ const production: DataSourceConfig = {
   exporter: expoExporter,
   network: netInfoNetwork,
   sources: {
-    // G1: no discovery or OCR/AI provider approved yet — the search honestly finds nothing.
-    discovery: null,
+    // ADR-0016 hybrid discovery: verified known sources first; web discovery joins once its
+    // vendor is approved. Reading needs the approved OCR/AI vendor (ADR-0017) — until then the
+    // search honestly finds nothing verifiable.
+    discovery: new HybridDiscoveryProvider(
+      new KnownSourceProvider(KNOWN_OFFICIAL_SOURCES, MANUFACTURER_ALIASES),
+      null,
+    ),
     retriever: httpRetriever(expoFileStore),
     registry: OFFICIAL_DOMAINS,
     aliases: MANUFACTURER_ALIASES,

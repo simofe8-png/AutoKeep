@@ -12,6 +12,8 @@ module.exports = defineConfig([
       '.expo/*',
       'coverage/*',
       'supabase/.temp/*',
+      // Deno Edge Functions: typechecked by the Deno runtime, not the app's TS config.
+      'supabase/functions/**',
       'AutoKeep_Bootstrap_Package/*',
     ],
   },

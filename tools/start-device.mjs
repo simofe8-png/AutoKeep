@@ -19,7 +19,8 @@ try {
 
 const child = spawn(
   'npx',
-  ['expo', 'start', '--localhost', '--port', port, ...process.argv.slice(2)],
+  // --go: expo-dev-client is installed for EAS development builds; the phone check uses Expo Go.
+  ['expo', 'start', '--go', '--localhost', '--port', port, ...process.argv.slice(2)],
   {
     stdio: 'inherit',
     shell: true,

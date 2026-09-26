@@ -1,6 +1,6 @@
 # Gate G2 — Runtime providers, hosted backend and release build (M24)
 
-_Status: **awaiting approval** (2026-09-26). This gate follows the G1 decision: "When a real
+_Status: **decided 2026-09-26** (see decision record at the end); originally This gate follows the G1 decision: "When a real
 runtime provider becomes necessary to continue V1, stop at that approval gate and present the
 options." V1 RC can't truthfully pass without these decisions, because the core promise (a
 verified manufacturer schedule) can't be delivered to real users._
@@ -48,3 +48,37 @@ Both paths also need a **Google Play Console** developer account (one-time fee) 
 2. Create the staging and hosted Supabase project, set EAS secrets and env, and run the cloud suite against staging.
 3. Build a release APK and re-verify on the phone: native RTL inputs, camera capture storage, notifications, and the registry lookup on a connected network.
 4. Run the final regression, write the RC report, and declare **AUTOKEEP V1 RC PASS** (T184).
+
+## Decision record (user, 2026-09-26)
+
+Approved as part of the V1 execution contract:
+
+1. **Hybrid source discovery.** AutoKeep's verified registry of known official sources is searched
+   first. Automated web discovery runs only when that finds nothing. Every result is a candidate
+   and becomes trusted only after official-source verification, exact vehicle/version
+   applicability, document verification, and provenance capture. Anything unverifiable ends as
+   unable-to-verify or pending. Never fabricate a schedule. AI output and search ranking are never
+   evidence. It stays behind provider-independent interfaces (ADR-0016).
+2. **Document reading.**
+   - Registration: plate → official government registry, with OCR/AI only for what's still
+     missing.
+   - Invoice: OCR/AI → draft → user review → explicit confirmation → history.
+   - Manual: extraction → structured data with page/section evidence → verification →
+     deterministic engine.
+   - Originals remain the evidence; AI output is derived data. Provider-independent (ADR-0017).
+3. **Backend.** Hosted Supabase in an EU region (Postgres, Auth, RLS, private Storage). Email
+   OTP. Account is optional and offered after valuable local data exists; local data is preserved
+   through adoption (ADR-0018).
+4. **Android.** Expo EAS Build. The sequence is: development → EAS test build → Galaxy A54
+   acceptance → corrections → release build → AAB → Google Play Internal Testing → later
+   production. **No automatic Play publication** (ADR-0018).
+
+Still approval-gated, requiring a stop immediately before the action:
+
+- account creation, credentials or secrets;
+- choosing a specific paid provider or vendor (web search API, OCR/AI API);
+- hosted resource creation and production migrations;
+- DNS or email-provider setup;
+- signing decisions;
+- any payment or plan change;
+- any Google Play upload.

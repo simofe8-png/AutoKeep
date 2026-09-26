@@ -21,19 +21,14 @@ _Date: 2026-09-26 · Audience: the product owner deciding on release._
 - **Security:** threat model, MASVS review and findings register ([THREAT_MODEL.md](../security/THREAT_MODEL.md)). No open Critical/High findings.
 - **Quality gates:** format, lint, types, unit and UI tests (`npm run verify`), plus the cloud suite, the live registry test, and device verification on a Samsung SM-A546E.
 
-## What requires your approval before a production release
+## Approval status
 
-These are genuine approval gates. Nothing below was created, purchased or configured.
-
-1. **Runtime providers (G1)**, needed for AutoKeep's core promise of a verified manufacturer schedule:
-   - a **source discovery** provider;
-   - an **OCR/AI extraction** provider;
-   - **verified official-domain registry entries**, with evidence of who verified them and when.
-
-   Without these, production users always see "no verified official source".
-
-2. **Hosted Supabase project (T065):** region, plan, and production SMTP for the sign-in code email. The one-time-code email template is in `supabase/templates/magic_link.html`.
-3. **Release build & signing:** an EAS (Expo account) or local Gradle build, the Android keystore, and a Play Console listing. Local Gradle is fragile with the non-ASCII project path (ADR-0005); the mitigation is a `subst` drive or EAS.
+- **G2 (2026-09-26): approved.** The architecture is in ADR-0016 (hybrid discovery), ADR-0017
+  (document intelligence) and ADR-0018 (hosted EU Supabase, EAS). Everything it allows without
+  accounts, credentials, vendors or money is implemented.
+- **G3 (open):** the Expo account, EAS init and signing, the hosted Supabase project, SMTP, the
+  OCR/AI vendor, the optional web-search vendor, and who verifies registry entries. See
+  [G3](../gates/G3-accounts-and-vendors.md).
 
 ## Configuration for a release build
 

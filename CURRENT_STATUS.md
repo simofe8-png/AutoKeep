@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M24 Release Candidate — **STOPPED AT APPROVAL GATE G2**
-- **Current task:** T184 (BLOCKED on G2)
-- **Last verified PASS:** T183 — final security/regression gate (verify 283, cloud 23, live 1, audit 0 high/critical); T182 clean-clone cold reproducibility
-- **Next action:** wait for the user's G2 decisions (docs/gates/G2-release-providers.md): discovery provider, OCR/AI provider, verified registry entries, hosted Supabase project, release build/signing. Then: configure behind existing ports → staging cloud suite → release APK + device re-verification → RC report → AUTOKEEP V1 RC PASS.
+- **Milestone:** M24 Release Candidate — G2 implemented; **STOPPED AT THE NEXT APPROVAL GATE (G3: accounts/credentials/vendors)**
+- **Current task:** T184 (BLOCKED on G3)
+- **Last verified PASS:** G2 implementation (task-plan § G2 implementation): hybrid discovery, registration-first, server-side document intelligence contract, hosted-backend runbook, EAS profiles; verify 288, cloud 26.
+- **Next action:** wait for the user's G3 approvals (see docs/gates/G3-accounts-and-vendors.md). Then: EAS test build (preview APK) → Galaxy A54 acceptance → corrections → hosted staging → release AAB → RC report → AUTOKEEP V1 RC PASS. Google Play upload remains a separate gate.
 
 ## Granted policies
 
@@ -54,7 +54,7 @@ _Last updated: 2026-09-26_
 ## Pending approval gates
 
 - G1 decided 2026-09-26: data.gov.il primary; discovery/OCR/AI behind ports with labeled mocks; NO paid services/keys/calls. Next gate when a real runtime AI/discovery provider is required to continue V1.
-- **G2 (open, 2026-09-26):** runtime providers (discovery, OCR/AI, registry entries), hosted Supabase (T065), release build/signing — docs/gates/G2-release-providers.md.
+- **G2 decided 2026-09-26** (docs/gates/G2-release-providers.md, ADR-0016/17/18). **G3 open:** runtime providers (discovery, OCR/AI, registry entries), hosted Supabase (T065), release build/signing — docs/gates/G2-release-providers.md.
 
 ## Repository / checkpoint
 
