@@ -4,10 +4,10 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M18 Multi-Vehicle Hardening
-- **Current task:** T133 (Car + motorcycle + scooter scenario)
-- **Last verified PASS:** T132 — M17 PASS (alert lifecycle, deferrals, local notifications, vehicle-aware deep links)
-- **Next action:** M18 per task-plan (multi-vehicle hardening on real data: switching, scoping, misfiling prevention, archived handling)
+- **Milestone:** M19 Settings/Account
+- **Current task:** T138 (Profile/account)
+- **Last verified PASS:** T137 — M18 PASS (zero cross-vehicle leakage gate)
+- **Next action:** M19 per task-plan (settings/account on real data: OTP account + adoption + backup/sync wiring against local Supabase; hosted project stays a gate)
 
 ## Granted policies
 
@@ -57,4 +57,4 @@ _Last updated: 2026-09-26_
 
 ## Repository / checkpoint
 
-- Checkpoint commits: `M00`–`M17` on `master` (local only, not pushed).
+- Checkpoint commits: `M00`–`M18` on `master` (local only, not pushed).

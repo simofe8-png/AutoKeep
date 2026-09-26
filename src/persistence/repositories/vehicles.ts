@@ -255,7 +255,7 @@ export class OdometerRepository {
   async latest(vehicleId: VehicleId): Promise<OdometerReading | null> {
     const r = await this.db.first<ReadingRow>(
       `SELECT * FROM odometer_readings WHERE vehicle_id = ?
-       ORDER BY measured_at DESC, created_at DESC LIMIT 1`,
+       ORDER BY measured_at DESC, created_at DESC, value_km DESC LIMIT 1`,
       [vehicleId],
     );
     return r ? toReading(r) : null;

@@ -205,14 +205,20 @@ export function createOdometerReading(
   );
 }
 
-/** Most recent reading by measurement date, then by record time. */
+/**
+ * Most recent reading by measurement date, then by record time; on a full tie the higher value
+ * (an odometer only moves forward).
+ */
 export function latestReading(readings: readonly OdometerReading[]): OdometerReading | null {
   let best: OdometerReading | null = null;
   for (const r of readings) {
     if (
       !best ||
       compareDates(r.measuredAt, best.measuredAt) > 0 ||
-      (r.measuredAt === best.measuredAt && r.createdAt > best.createdAt)
+      (r.measuredAt === best.measuredAt && r.createdAt > best.createdAt) ||
+      (r.measuredAt === best.measuredAt &&
+        r.createdAt === best.createdAt &&
+        r.valueKm > best.valueKm)
     ) {
       best = r;
     }

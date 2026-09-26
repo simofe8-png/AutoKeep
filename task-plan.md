@@ -248,11 +248,11 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Task | Description | Status | Evidence |
 | ---- | ----------- | ------ | -------- |
 
-| T133 | Car + motorcycle + scooter scenario. | TODO | |
-| T134 | Switch-context stress tests. | TODO | |
-| T135 | Documents/history isolation. | TODO | |
-| T136 | Notifications/deep-link isolation. | TODO | |
-| T137 | Zero-cross-vehicle-leakage gate and M18 PASS. | TODO | |
+| T133 | Car + motorcycle + scooter scenario. | PASS | Car + motorcycle + scooter in one real store: own schedule state (verified only for moto), odometer, garage notes, alerts per vehicle. multi-vehicle.test. |
+| T134 | Switch-context stress tests. | PASS | Repeated switching (7 switches) — history always the active vehicle's only; switching persists only the pointer. multi-vehicle.test. Found+fixed: latest-reading tie on equal date/time now prefers the higher value (odometer monotonic). |
+| T135 | Documents/history isolation. | PASS | Records opened by id show their own vehicle; wrong-vehicle reads return nothing (original(), alert handling). multi-vehicle + leakage tests. |
+| T136 | Notifications/deep-link isolation. | PASS | Reminders name their vehicle; tap opens that vehicle's alert and switches context; no other vehicle's data on the screen. multi-vehicle.test (T136). |
+| T137 | Zero-cross-vehicle-leakage gate and M18 PASS. | PASS | M18 PASS: leakage.test — seeded random op sequences (3 seeds × 40 ops) with isolation asserted after every step + orphan-row check; negative control (history leak) fails 5/8 tests. verify 30 suites/250 tests. |
 
 ## M19 Settings/Account
 
