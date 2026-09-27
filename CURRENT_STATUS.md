@@ -4,14 +4,12 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **AUTOKEEP V1 RC PASS (2026-09-27).** M24 PASS; T178–T184 PASS. Report: `docs/release/RC_REPORT.md`.
-- **Final verification:** verify 44 suites / 305 tests; cloud 27/27; live 1/1; Galaxy A54 acceptance complete.
-- **Next (each is a separate approval gate, not started):**
-  - approve official sources (`docs/sources/CANDIDATES.md`);
-  - hosted Supabase and production e-mail;
-  - store signing and Google Play;
-  - an optional OCR/AI provider.
-- **Rebuilding the APK:** `docs/release/LOCAL_BUILD.md`. The temporary build copies were removed.
+- **AUTOKEEP V1 RC PASS (2026-09-27)**, baseline `35478a2`. It is frozen: do not modify it until approved.
+- **P1, official source verification: research complete; STOPPED at the approval gate.**
+  - Findings: `docs/sources/P1_SOURCE_VERIFICATION.md`.
+  - No code, configuration or allowlist was changed.
+- **P1 decided (2026-09-27):** the 21 domains are approved as authority-only; terms of use are binding for automation; only the SYM verification pilot is approved; the user-supplied-document path is approved; importer outreach stays gated (P1 doc §8).
+- **Next action:** wait for an explicit instruction to start P2. Nothing is implemented yet.
 
 ## Granted policies
 

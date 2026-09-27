@@ -1,5 +1,7 @@
 # Official-source candidates: PENDING HUMAN APPROVAL
 
+> **Superseded by `P1_SOURCE_VERIFICATION.md` (2026-09-27)**, which re-verified every entry with manufacturer listings, government data and ISOC-IL WHOIS, and added access and terms restrictions. Kept for history.
+
 Researched 2026-09-26 by Claude with free web search and fetch (read-only). **Nothing here is
 trusted yet.** `OFFICIAL_DOMAINS` and `KNOWN_OFFICIAL_SOURCES` stay empty until a person approves
 entries under `docs/sources/REGISTRY_PROCEDURE.md`.
