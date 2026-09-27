@@ -1,6 +1,7 @@
 import * as Crypto from 'expo-crypto';
 import { createContext, useContext } from 'react';
 
+import type { AuthResult } from '@/cloud/auth';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import type { DiscoveryStep } from '@/discovery/pipeline';
 import type { VehicleIdentityQuery } from '@/discovery/types';
@@ -26,7 +27,8 @@ export type NetworkMode = 'online' | 'offline';
 
 export interface AccountState {
   hasAccount: boolean;
-  email?: string;
+  /** The signed-in account's username (Private Beta: the only user-facing identity). */
+  username?: string;
   lastBackupAt?: string;
   /** A cloud backend is configured in this build (false: local-only, said so honestly). */
   available?: boolean;
@@ -44,18 +46,7 @@ export interface AccountState {
 export type DeleteAccountOutcome =
   { ok: true } | { ok: false; reason: 'network' | 'not_signed_in' | 'server' };
 
-export type AccountResult =
-  | { ok: true }
-  | {
-      ok: false;
-      reason:
-        | 'invalid_email'
-        | 'email_rejected'
-        | 'invalid_code'
-        | 'network'
-        | 'rate_limited'
-        | 'unknown';
-    };
+export type AccountResult = AuthResult;
 
 /** Identity details captured at onboarding beyond the display summary. */
 export interface VehicleDetailsInput {
@@ -125,10 +116,16 @@ export interface AppDataValue {
   setNetwork: (mode: NetworkMode) => void;
   account: AccountState;
   setAccount: (account: AccountState) => void;
-  /** Passwordless sign-in: send a one-time code to the email. */
-  requestAccountCode: (email: string) => Promise<AccountResult>;
-  /** Verifies the code; on success this device's data is adopted and backed up. */
-  verifyAccountCode: (email: string, code: string) => Promise<AccountResult>;
+  /** Username + Password sign-in; on success this device's data is adopted and backed up. */
+  signInAccount: (username: string, password: string) => Promise<AccountResult>;
+  /** Invitation registration (Private Beta), then signed in like signInAccount. */
+  registerAccount: (
+    invitation: string,
+    username: string,
+    password: string,
+  ) => Promise<AccountResult>;
+  /** Changes the signed-in account's password. */
+  changeAccountPassword: (password: string) => Promise<AccountResult>;
   syncNow: () => void;
   acknowledgeConflicts: () => void;
   /** Signs out of the account on this device; local data stays on the device. */

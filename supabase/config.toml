@@ -172,12 +172,17 @@ enable_refresh_token_rotation = true
 # Requires enable_refresh_token_rotation = true.
 refresh_token_reuse_interval = 10
 # Allow/disallow new user signups to your project.
-enable_signup = true
+# Private Beta: invitation-only. Accounts are created ONLY by the `register` function (admin API);
+# public sign-up is off everywhere (docs/release/PRIVATE_BETA_AUTH.md).
+enable_signup = false
 # Allow/disallow anonymous sign-ins to your project.
 enable_anonymous_sign_ins = false
 # Allow/disallow testing manual linking of accounts
 enable_manual_linking = false
 # Passwords shorter than this value will be rejected as weak. Minimum 6, recommended 8 or more.
+# Private Beta (owner decision): AutoKeep imposes NO password policy. 6 is Supabase Auth's hard
+# floor (lower values are raised to 6 by the server) and Auth also caps passwords at 72 bytes
+# (bcrypt). Both are provider constraints, not AutoKeep rules. No character requirements.
 minimum_password_length = 6
 # Passwords that do not meet the following requirements will be rejected as weak. Supported values
 # are: `letters_digits`, `lower_upper_letters_digits`, `lower_upper_letters_digits_symbols`
@@ -217,6 +222,8 @@ web3 = 30
 
 [auth.email]
 # Allow/disallow new user signups via email to your project.
+# Must stay true: in Supabase this flag enables the whole e-mail provider, which password sign-in
+# uses. New accounts are still impossible because [auth] enable_signup = false.
 enable_signup = true
 # If enabled, a user will be required to confirm any email change on both the old, and new email
 # addresses. If disabled, only the new email is required to confirm.
@@ -224,6 +231,7 @@ double_confirm_changes = true
 # If enabled, users need to confirm their email address before signing in.
 enable_confirmations = false
 # If enabled, users will need to reauthenticate or have logged in recently to change their password.
+# Must stay false: reauthentication sends an e-mail nonce, and Beta accounts have no mailbox.
 secure_password_change = false
 # Controls the minimum amount of time that must pass before sending another signup confirmation or password reset email.
 max_frequency = "1s"
@@ -241,17 +249,6 @@ otp_expiry = 3600
 # pass = "env(SENDGRID_API_KEY)"
 # admin_email = "admin@email.com"
 # sender_name = "Admin"
-
-# Passwordless sign-in sends a one-time CODE (the app has no magic-link redirect).
-[auth.email.template.magic_link]
-subject = "קוד הכניסה שלך ל-AutoKeep"
-content_path = "./supabase/templates/magic_link.html"
-
-# P2B: with email confirmations on (hosted default), a NEW user gets the confirmation email
-# instead of the magic-link one. It must carry the same one-time code ({{ .Token }}).
-[auth.email.template.confirmation]
-subject = "קוד הכניסה שלך ל-AutoKeep"
-content_path = "./supabase/templates/magic_link.html"
 
 # Uncomment to customize email template
 # [auth.email.template.invite]
@@ -431,6 +428,12 @@ enabled = true
 enabled = true
 verify_jwt = true
 
+# Private Beta: invitation-only registration. Public (no user JWT exists yet); the invitation
+# token is the only authorization and it can only create one account.
+[functions.register]
+enabled = true
+verify_jwt = false
+
 # P2B: hosted TECHNICAL STAGING project (Free, eu-central-1). Test data only.
 # Values here override the local ones above when pushed with `supabase config push`.
 [remotes.staging]
@@ -441,25 +444,7 @@ site_url = "https://bqgyaiqfubumkhmrztra.supabase.co"
 additional_redirect_urls = []
 
 [remotes.staging.auth.email]
-# A 6-digit code should be short-lived (docs/release/HOSTED_AUTH_SETTINGS.md).
+# Not used by the Private Beta (no e-mail codes); kept at the stricter hosted values so the
+# unused provider paths are never loosened to the local test values above.
 otp_expiry = 900
-# At most one code e-mail per address per minute (local runs use 1s for tests).
 max_frequency = "60s"
-
-# P2C pre-gate (zero-domain auth validation): staging sends sign-in codes through a DEDICATED
-# consumer Gmail account (smtp.gmail.com, App Password; 2-Step Verification required). The
-# credential is read from the environment at push time and never stored in the repository:
-#   AUTOKEEP_SMTP_USER=<the dedicated @gmail.com address>  AUTOKEEP_SMTP_PASS=<its App Password>
-# The sender must be exactly the authenticated Gmail address (Gmail rules).
-[remotes.staging.auth.email.smtp]
-enabled = true
-host = "smtp.gmail.com"
-port = 587
-user = "env(AUTOKEEP_SMTP_USER)"
-pass = "env(AUTOKEEP_SMTP_PASS)"
-admin_email = "env(AUTOKEEP_SMTP_USER)"
-sender_name = "AutoKeep"
-
-[remotes.staging.auth.rate_limit]
-# Supabase's default once custom SMTP is on; far below Gmail's 500/day.
-email_sent = 30

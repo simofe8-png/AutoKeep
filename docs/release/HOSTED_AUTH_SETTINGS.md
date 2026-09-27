@@ -1,5 +1,19 @@
 # Hosted Supabase settings required before real users (P2A, updated P2B 2026-09-27)
 
+> **Updated 2026-09-28:** Private Beta authentication is **Invitation → Username + Password**
+> (`PRIVATE_BETA_AUTH.md`). Supersedes the e-mail-code sections below, which are historical.
+> Hosted auth settings now required:
+>
+> - `enable_signup = false` (accounts only through the `register` function);
+> - e-mail provider enabled (password sign-in uses it);
+> - `minimum_password_length = 6` (the Supabase floor);
+> - `password_requirements = ""`;
+> - `secure_password_change = false`;
+> - no SMTP and no templates.
+>
+> Deploy both `delete-account` (verify_jwt = true) and `register` (verify_jwt = false). Apply
+> migration `20260928000001_beta_invitations`.
+
 > **P2B finding:** on a Free project using Supabase's default sender, e-mail templates cannot be changed ("Email template modification is not available for free tier projects using the default email provider"), and the default templates carry a link, not the code the app expects. The built-in sender also refuses non-team addresses. **The code templates can only be applied once custom SMTP is configured.** Staging settings are declared in `supabase/config.toml` `[remotes.staging]`; see `P2B_STAGING_REPORT.md`.
 
 These are **hosted-project settings**. None of them has been applied: no hosted project exists,

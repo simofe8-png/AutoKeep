@@ -392,3 +392,19 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Galaxy A54 staging APK                        | PASS (limited)             | Release guard accepts HTTPS; secret scan clean; address refusal shown correctly (fix `email_rejected`); authenticated device flows not executable on Free |
 | Cleanup                                       | PASS                       | 0 users / 0 objects / 0 rows; staging app uninstalled; temporary build copies removed                                                                     |
 | Local regression                              | PASS                       | verify 50/342; local cloud 42/42 (+3 staging-only skipped)                                                                                                |
+
+## Private Beta auth: Invitation → Username + Password (2026-09-28)
+
+| Item                                                                            | Status | Evidence                                                                                                                           |
+| ------------------------------------------------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Invitations (hash-only, single-use, expiring, revocable, atomic claim/complete) | PASS   | Migration `20260928000001`; `privateBeta.cloud.test` (valid/used/expired/revoked/random, 5-way race → 1 account, no client access) |
+| Username → Supabase identity (internal `.invalid` address, no lookup endpoint)  | PASS   | `_shared/username.ts`; the unit test pins a Deno digest; sign-up disabled (`signUp` refused)                                       |
+| Registration function `register`                                                | PASS   | Duplicate username / short password never consume the invitation; the identity is rolled back if completion fails                  |
+| Password: no AutoKeep policy; Supabase floor 6 / cap 72 bytes                   | PASS   | Source-verified (`supabase/auth` configuration.go, password.go); `111111`/`aaaaaa` accepted                                        |
+| Login, sessions, device-local sign-out                                          | PASS   | Cloud suite + A54 (force-stop persistence, wrong password, any case)                                                               |
+| Password change (in-app) and admin reset (`tools/beta-admin.mjs`)               | PASS   | Cloud suite + A54; the admin never reads a password                                                                                |
+| OTP/e-mail flow removed                                                         | PASS   | Code, templates, SMTP block, OTP suites removed; docs marked historical                                                            |
+| Hosted staging                                                                  | PASS   | Cloud suite 52/52 against staging                                                                                                  |
+| Galaxy A54 (release APK, hosted staging)                                        | PASS   | 13/13 checks, `PRIVATE_BETA_AUTH.md` §8; APK secret scan clean                                                                     |
+| Cleanup                                                                         | PASS   | Staging: 0 users/identities/sessions/invitations/objects/rows; staging app uninstalled; build copies removed                       |
+| Local regression                                                                | PASS   | verify 50/365; local cloud 52/52                                                                                                   |

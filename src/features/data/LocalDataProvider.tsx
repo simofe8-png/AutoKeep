@@ -14,6 +14,7 @@ import { colors, Dialog, ErrorState, LoadingState } from '@/ui';
 import {
   DataCtx,
   emptyBundle,
+  type AccountResult,
   type AccountState,
   type AppDataValue,
   type NetworkMode,
@@ -56,7 +57,7 @@ class StoreRuntime {
       async (s) => {
         const backend = this.backend;
         if (!backend || !this.online) return 'skipped';
-        if (!(await backend.currentEmail())) return 'skipped';
+        if ((await backend.currentUsername()) === null) return 'skipped';
         return s.backUp(backend);
       },
       { ok: false, transient: true },
@@ -155,7 +156,7 @@ export function LocalDataProvider({
   const [phase, setPhase] = useState<Phase>({ kind: 'loading' });
   const [saveFailed, setSaveFailed] = useState<string | null>(null);
   const [account, setAccount] = useState<AccountState>({ hasAccount: false });
-  const [email, setEmail] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
   const [network, setNetwork] = useState<NetworkMode>('online');
   const [runtime] = useState(() => new StoreRuntime());
   const [attempt, setAttempt] = useState(0);
@@ -218,7 +219,7 @@ export function LocalDataProvider({
   // Session changes made elsewhere (refresh failed, signed out, account deleted) are reflected.
   useEffect(() => {
     if (!backend) return;
-    return backend.onSessionChange((e) => setEmail(e));
+    return backend.onSessionChange((u) => setUsername(u));
   }, [backend]);
 
   // The signed-in account (session persisted securely by the backend).
@@ -226,9 +227,9 @@ export function LocalDataProvider({
     if (!backend) return;
     let cancelled = false;
     void backend
-      .currentEmail()
+      .currentUsername()
       .then((e) => {
-        if (!cancelled) setEmail(e);
+        if (!cancelled) setUsername(e);
       })
       .catch(() => undefined);
     return () => {
@@ -270,11 +271,22 @@ export function LocalDataProvider({
         () => setPhase({ kind: 'failed' }),
       );
       // A local change is backed up after a short quiet period (if signed in and online).
-      if (email) scheduler.request('soon');
+      if (username !== null) scheduler.request('soon');
     };
     // Adoption/sync failures are recorded in the backup status, not raised as write failures.
     const quietly = (op: (s: LocalStore) => Promise<unknown>) =>
       write((s) => op(s).catch(() => undefined));
+    // After signing in or registering: this device's data is adopted into the account, then
+    // backed up (retried if needed).
+    const signedIn = async (typed: string, op: () => Promise<AccountResult>) => {
+      if (!backend) return { ok: false, reason: 'unknown' } as const;
+      const r = await op();
+      if (r.ok) {
+        setUsername((await backend.currentUsername().catch(() => null)) || typed.trim());
+        scheduler.request('now');
+      }
+      return r;
+    };
     return {
       vehicles: snapshot.vehicles,
       getBundle: (id) => snapshot.bundles[id] ?? emptyBundle(),
@@ -338,14 +350,14 @@ export function LocalDataProvider({
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
       // Reads of the original go straight to the store (no snapshot change).
       getOriginal: (vid, did) =>
-        runtime.read((s) => s.original(vid, did, email ? backend : null), null),
+        runtime.read((s) => s.original(vid, did, username !== null ? backend : null), null),
       openOriginal: (vid, did) => runtime.read((s) => s.openOriginal(vid, did), false),
       network,
       setNetwork,
       account: backend
         ? {
-            hasAccount: email !== null,
-            email: email ?? undefined,
+            hasAccount: username !== null,
+            username: username ?? undefined,
             lastBackupAt: snapshot.backup.lastSyncAt?.slice(0, 10),
             available: true,
             adoption: snapshot.backup.adoption,
@@ -356,18 +368,12 @@ export function LocalDataProvider({
           }
         : { ...account, available: false },
       setAccount,
-      requestAccountCode: async (e) =>
-        backend ? backend.requestCode(e) : { ok: false, reason: 'unknown' },
-      verifyAccountCode: async (e, code) => {
-        if (!backend) return { ok: false, reason: 'unknown' };
-        const r = await backend.verifyCode(e, code);
-        if (r.ok) {
-          setEmail((await backend.currentEmail().catch(() => null)) ?? e.trim().toLowerCase());
-          // Adopts this device's data into the account, then backs it up (retried if needed).
-          scheduler.request('now');
-        }
-        return r;
-      },
+      signInAccount: (username, password) =>
+        signedIn(username, () => backend!.signIn(username, password)),
+      registerAccount: (invitation, username, password) =>
+        signedIn(username, () => backend!.register(invitation, username, password)),
+      changeAccountPassword: async (password) =>
+        backend ? backend.changePassword(password) : { ok: false, reason: 'unknown' },
       syncNow: () => scheduler.request('now'),
       deleteAccount: async () => {
         if (!backend) return { ok: false, reason: 'server' };
@@ -377,21 +383,33 @@ export function LocalDataProvider({
           toReady,
           toFailed,
         );
-        if (r.ok) setEmail(null);
+        if (r.ok) setUsername(null);
         return r;
       },
       acknowledgeConflicts: () => quietly((s) => s.acknowledgeConflicts()),
       signOutAccount: async () => {
         if (!backend) return;
         await backend.signOut().catch(() => undefined);
-        setEmail(null);
+        setUsername(null);
       },
       isDemoData: false,
       initialActiveVehicleId: snapshot.activeVehicleId,
       // Best effort: a selection that is no longer valid simply is not remembered.
       rememberActiveVehicle: (id) => write((s) => s.setActiveVehicle(id).catch(() => undefined)),
     };
-  }, [snapshot, runtime, network, account, clock, backend, email, sources, files, ids, scheduler]);
+  }, [
+    snapshot,
+    runtime,
+    network,
+    account,
+    clock,
+    backend,
+    username,
+    sources,
+    files,
+    ids,
+    scheduler,
+  ]);
 
   if (phase.kind === 'failed') {
     return (

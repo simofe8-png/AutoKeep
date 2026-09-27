@@ -1,5 +1,10 @@
 # Zero-domain auth validation (P2C pre-gate), 2026-09-27
 
+> **SUPERSEDED (2026-09-28), historical only.** The owner decided the Private Beta uses
+> **Invitation → Username + Password** with no e-mail at all (`PRIVATE_BETA_AUTH.md`). The Gmail
+> account, App Password and SMTP configuration below are **not needed and not an outstanding
+> blocker**. The SMTP block and the delivery test suite were removed.
+
 **Status: research done; configuration and the test harness are prepared. VALIDATION IS WAITING
 for the dedicated Gmail credential, which only the owner can create.** Nothing has been pushed to
 staging yet. P2C has not started.

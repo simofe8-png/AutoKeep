@@ -13,6 +13,7 @@ module.exports = {
   transform: {
     '^.+\\.[jt]sx?$': ['babel-jest', { presets: ['babel-preset-expo'] }],
   },
+  setupFilesAfterEnv: ['<rootDir>/jest.cloud.setup.ts'],
   testTimeout: 60000,
   maxWorkers: 1,
   moduleNameMapper: {

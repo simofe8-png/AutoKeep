@@ -1,7 +1,8 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
-import { useAppData, type AccountResult } from '@/features/data/DataContext';
+import { authErrorText } from '@/features/account/authText';
+import { useAppData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { formatDate } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
@@ -21,21 +22,11 @@ import {
   TextField,
 } from '@/ui';
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-const errorText: Record<Exclude<AccountResult, { ok: true }>['reason'], string> = {
-  invalid_email: he.account.invalidEmail,
-  email_rejected: he.account.emailRejected,
-  invalid_code: he.account.invalidCode,
-  network: he.account.networkError,
-  rate_limited: he.account.rateLimited,
-  unknown: he.states.genericErrorTitle,
-};
-
 /**
  * Account & backup (T026/T138/T140). Framed around saving/backing up data; registration never
- * blocks use. Real mode: passwordless email code (proven provider), then this device's data is
- * adopted into the account and synced. Without a configured cloud, the screen says so.
+ * blocks use. Private Beta: Username + Password sign-in (accounts are created by invitation only,
+ * on the invite screen); then this device's data is adopted into the account and synced. Without a
+ * configured cloud, the screen says so. No password rules of AutoKeep's own.
  */
 export default function AccountScreen() {
   const router = useRouter();
@@ -44,8 +35,8 @@ export default function AccountScreen() {
     setAccount,
     network,
     isDemoData,
-    requestAccountCode,
-    verifyAccountCode,
+    signInAccount,
+    changeAccountPassword,
     syncNow,
     signOutAccount,
     acknowledgeConflicts,
@@ -57,23 +48,38 @@ export default function AccountScreen() {
   const [deleteError, setDeleteError] = useState<string | null>(null);
   const confirmMatches =
     typed.trim().toLowerCase() !== '' &&
-    typed.trim().toLowerCase() === (account.email ?? '').trim().toLowerCase();
-  const [email, setEmail] = useState('');
-  const [touched, setTouched] = useState(false);
-  const [code, setCode] = useState('');
-  const [step, setStep] = useState<'email' | 'code'>('email');
+    typed.trim().toLowerCase() === (account.username ?? '').trim().toLowerCase();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const valid = EMAIL.test(email.trim());
+  const [changing, setChanging] = useState(false);
+  const [newPassword, setNewPassword] = useState('');
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState('');
+  const [changeNotice, setChangeNotice] = useState<{ ok: boolean; text: string } | null>(null);
+  const differ = newPasswordConfirm !== '' && newPassword !== newPasswordConfirm;
   const unavailable = !isDemoData && account.available === false;
 
-  const run = async (op: () => Promise<AccountResult>, next?: () => void) => {
+  const signIn = async () => {
     setBusy(true);
     setError(null);
-    const r = await op();
+    const r = await signInAccount(username, password);
     setBusy(false);
-    if (r.ok) next?.();
-    else setError(errorText[r.reason]);
+    if (r.ok) setPassword('');
+    else setError(authErrorText(r));
+  };
+
+  const savePassword = async () => {
+    setBusy(true);
+    setChangeNotice(null);
+    const r = await changeAccountPassword(newPassword);
+    setBusy(false);
+    if (r.ok) {
+      setChanging(false);
+      setNewPassword('');
+      setNewPasswordConfirm('');
+      setChangeNotice({ ok: true, text: he.account.passwordChanged });
+    } else setChangeNotice({ ok: false, text: authErrorText(r) });
   };
 
   return (
@@ -147,74 +153,65 @@ export default function AccountScreen() {
         <InlineNotice testID="account-unavailable" tone="info" message={he.account.unavailable} />
       ) : !account.hasAccount ? (
         <Stack>
+          {!isDemoData ? <InlineNotice tone="info" message={he.account.inviteOnly} /> : null}
           <TextField
-            testID="account-email"
-            label={he.account.email}
-            value={email}
-            onChangeText={(v) => {
-              setEmail(v);
-              setTouched(true);
-            }}
-            keyboardType="email-address"
+            testID="account-username"
+            label={he.account.username}
+            value={username}
+            onChangeText={setUsername}
+            plain
+            autoComplete="username"
             required
-            error={touched && email !== '' && !valid ? he.account.invalidEmail : undefined}
+          />
+          <TextField
+            testID="account-password"
+            label={he.account.password}
+            value={password}
+            onChangeText={setPassword}
+            secure
+            autoComplete="current-password"
+            required
           />
           {isDemoData ? <InlineNotice tone="info" message={he.account.authPending} /> : null}
-          {step === 'code' ? (
-            <TextField
-              testID="account-code"
-              label={he.account.code}
-              value={code}
-              onChangeText={setCode}
-              keyboardType="number-pad"
-              maxLength={10}
-              required
-            />
-          ) : null}
-          {step === 'code' ? (
-            <InlineNotice testID="account-code-sent" tone="info" message={he.account.codeSent} />
-          ) : null}
           {error ? <InlineNotice testID="account-error" tone="danger" message={error} /> : null}
           {isDemoData ? (
             <Button
-              testID="account-create"
+              testID="account-sign-in"
               label={he.account.create}
               icon="account-plus-outline"
               fullWidth
-              disabled={!valid}
+              disabled={username.trim() === ''}
               onPress={() =>
                 setAccount({
                   hasAccount: true,
-                  email: email.trim(),
+                  username: username.trim(),
                   lastBackupAt: new Date().toISOString().slice(0, 10),
                 })
               }
             />
-          ) : step === 'email' ? (
-            <Button
-              testID="account-create"
-              label={he.account.sendCode}
-              icon="email-fast-outline"
-              fullWidth
-              disabled={!valid || busy}
-              loading={busy}
-              onPress={() =>
-                void run(
-                  () => requestAccountCode(email),
-                  () => setStep('code'),
-                )
-              }
-            />
           ) : (
-            <Button
-              testID="account-verify"
-              label={he.account.verify}
-              icon="check"
-              fullWidth
-              disabled={code.trim().length < 6 || busy}
-              loading={busy}
-              onPress={() => void run(() => verifyAccountCode(email, code))}
-            />
+            <>
+              <Button
+                testID="account-sign-in"
+                label={he.account.signIn}
+                icon="login"
+                fullWidth
+                disabled={username.trim() === '' || password === '' || busy}
+                loading={busy}
+                onPress={() => void signIn()}
+              />
+              <Button
+                testID="account-have-invitation"
+                label={he.account.haveInvitation}
+                icon="email-open-outline"
+                variant="secondary"
+                fullWidth
+                onPress={() => router.push('/invite')}
+              />
+              <AppText variant="small" color="textSecondary">
+                {he.account.forgotPassword}
+              </AppText>
+            </>
           )}
           <Button
             testID="account-later"
@@ -228,10 +225,10 @@ export default function AccountScreen() {
         <Stack>
           <Card>
             <AppText variant="small" color="textMuted">
-              {he.account.email}
+              {he.account.username}
             </AppText>
             <AppText variant="bodyStrong" testID="account-signed-in">
-              {account.email}
+              {account.username}
             </AppText>
           </Card>
           {!isDemoData ? (
@@ -244,6 +241,60 @@ export default function AccountScreen() {
                 fullWidth
                 onPress={syncNow}
               />
+              {changing ? (
+                <Card testID="account-change-password">
+                  <Stack>
+                    <TextField
+                      testID="account-new-password"
+                      label={he.account.newPassword}
+                      value={newPassword}
+                      onChangeText={setNewPassword}
+                      secure
+                      autoComplete="new-password"
+                      required
+                    />
+                    <TextField
+                      testID="account-new-password-confirm"
+                      label={he.account.passwordConfirm}
+                      value={newPasswordConfirm}
+                      onChangeText={setNewPasswordConfirm}
+                      secure
+                      autoComplete="new-password"
+                      required
+                      error={differ ? he.account.passwordsDiffer : undefined}
+                    />
+                    <Button
+                      testID="account-save-password"
+                      label={he.account.changePasswordAction}
+                      icon="lock-reset"
+                      fullWidth
+                      disabled={newPassword === '' || newPassword !== newPasswordConfirm || busy}
+                      loading={busy}
+                      onPress={() => void savePassword()}
+                    />
+                  </Stack>
+                </Card>
+              ) : (
+                <Button
+                  testID="account-change-password-open"
+                  label={he.account.changePassword}
+                  icon="lock-outline"
+                  variant="secondary"
+                  fullWidth
+                  disabled={network === 'offline'}
+                  onPress={() => {
+                    setChangeNotice(null);
+                    setChanging(true);
+                  }}
+                />
+              )}
+              {changeNotice ? (
+                <InlineNotice
+                  testID="account-password-notice"
+                  tone={changeNotice.ok ? 'success' : 'danger'}
+                  message={changeNotice.text}
+                />
+              ) : null}
               <Button
                 testID="account-sign-out"
                 label={he.account.signOut}
@@ -306,8 +357,8 @@ export default function AccountScreen() {
           label={he.account.deleteAccountConfirm}
           value={typed}
           onChangeText={setTyped}
-          keyboardType="email-address"
-          placeholder={account.email}
+          plain
+          placeholder={account.username}
           required
         />
       </Dialog>

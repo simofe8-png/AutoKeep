@@ -1,5 +1,5 @@
 import { sequentialIds, T0 } from '@/domain/testing';
-import { MemoryAccountBackend, VALID_CODE } from '@/features/account/testing';
+import { MemoryAccountBackend } from '@/features/account/testing';
 import { populatedWorld } from '@/persistence/testing/world';
 import { MemoryFileStore } from '@/providers/storage/types';
 
@@ -35,7 +35,7 @@ async function signedInDevice(email = 'rc@autokeep.test') {
     'invoice',
   );
   const backend = new MemoryAccountBackend();
-  await backend.verifyCode(email, VALID_CODE);
+  await backend.signInAs(email);
   await store.connectAccount(backend);
   return { w, files, store, backend };
 }
@@ -62,7 +62,7 @@ it('success: the server copy goes first, then everything on this device; signed 
     expect(await count(w.db, t)).toBe(0);
   }
   expect(files.files.size).toBe(0);
-  expect(await backend.currentEmail()).toBeNull();
+  expect(await backend.currentUsername()).toBeNull();
   expect((await store.backupStatus()).adoption).toBe('none');
   // Nothing of the wipe was queued for sync.
   expect(await count(w.db, 'sync_outbox')).toBe(0);
@@ -80,7 +80,7 @@ it.each(['network', 'server'] as const)(
     expect(r).toEqual({ ok: false, reason: failure });
     expect(await count(w.db, 'vehicles')).toBe(vehicles);
     expect(files.files.size).toBe(1);
-    expect(await backend.currentEmail()).toBe('rc@autokeep.test');
+    expect(await backend.currentUsername()).toBe('rc@autokeep.test');
     expect((await store.backupStatus()).adoption).toBe('adopted');
 
     // Retrying is safe and completes the deletion.
@@ -109,7 +109,7 @@ it('a signed-in device whose adoption did not complete retries it automatically'
   const w = await populatedWorld(sequentialIds(1), T0);
   const store = await LocalStore.open(w.db, sequentialIds(50_000), clock, new MemoryFileStore());
   const backend = new MemoryAccountBackend();
-  await backend.verifyCode('rc@autokeep.test', VALID_CODE);
+  await backend.signInAs('rc@autokeep.test');
   backend.offline = true;
   expect(await store.backUp(backend)).toEqual({ ok: false, transient: true });
   expect((await store.backupStatus()).adoption).not.toBe('adopted');

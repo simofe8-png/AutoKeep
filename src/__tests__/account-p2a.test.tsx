@@ -3,7 +3,7 @@ import { AppState, type AppStateStatus } from 'react-native';
 
 import { isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds, T0 } from '@/domain/testing';
-import { MemoryAccountBackend, VALID_CODE } from '@/features/account/testing';
+import { MemoryAccountBackend, TEST_PASSWORD } from '@/features/account/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
@@ -62,11 +62,10 @@ async function open(url: string, testID: string) {
 }
 
 async function signIn() {
-  await fireEvent.changeText(screen.getByTestId('account-email'), 'owner@example.com');
-  await fireEvent.press(screen.getByTestId('account-create'));
-  await waitFor(() => expect(screen.getByTestId('account-code')).toBeOnTheScreen());
-  await fireEvent.changeText(screen.getByTestId('account-code'), VALID_CODE);
-  await fireEvent.press(screen.getByTestId('account-verify'));
+  backend.addAccount('owner');
+  await fireEvent.changeText(screen.getByTestId('account-username'), 'owner');
+  await fireEvent.changeText(screen.getByTestId('account-password'), TEST_PASSWORD);
+  await fireEvent.press(screen.getByTestId('account-sign-in'));
   await waitFor(() => expect(screen.getByTestId('account-signed-in')).toBeOnTheScreen(), LONG);
   await waitFor(() => expect(screen.getByTestId('backup-status')).toHaveTextContent(/מחובר/), LONG);
 }
@@ -75,7 +74,7 @@ const vehicles = async () =>
   (await world.db.first<{ n: number }>('SELECT COUNT(*) AS n FROM vehicles'))?.n ?? 0;
 
 describe('account deletion (P2A)', () => {
-  it('requires typing the account email, then deletes the account and this device’s data', async () => {
+  it('requires typing the account username, then deletes the account and this device’s data', async () => {
     await open('/account', 'screen-account');
     await signIn();
     await fireEvent.press(screen.getByTestId('account-delete'));
@@ -83,22 +82,16 @@ describe('account deletion (P2A)', () => {
     expect(dialog).toHaveTextContent(/לא ניתן לבטל/);
     expect(dialog).toHaveTextContent(/המסמכים והקבצים המקוריים/);
 
-    // Not armed until the exact account email is typed.
+    // Not armed until the account's username is typed (case-insensitive).
     await fireEvent.press(screen.getByTestId('account-delete-dialog-confirm'));
     expect(backend.deletedAccounts).toEqual([]);
-    await fireEvent.changeText(
-      screen.getByTestId('account-delete-confirm-input'),
-      'someone@else.com',
-    );
+    await fireEvent.changeText(screen.getByTestId('account-delete-confirm-input'), 'someone');
     await fireEvent.press(screen.getByTestId('account-delete-dialog-confirm'));
     expect(backend.deletedAccounts).toEqual([]);
 
-    await fireEvent.changeText(
-      screen.getByTestId('account-delete-confirm-input'),
-      'Owner@Example.com',
-    );
+    await fireEvent.changeText(screen.getByTestId('account-delete-confirm-input'), ' OWNER ');
     await fireEvent.press(screen.getByTestId('account-delete-dialog-confirm'));
-    await waitFor(() => expect(backend.deletedAccounts).toEqual(['owner@example.com']), LONG);
+    await waitFor(() => expect(backend.deletedAccounts).toEqual(['owner']), LONG);
     await waitFor(() => expect(screen.queryByTestId('screen-account')).toBeNull(), LONG);
     expect(await vehicles()).toBe(0);
   }, 60000);
@@ -108,10 +101,7 @@ describe('account deletion (P2A)', () => {
     await signIn();
     backend.deleteFails = 'server';
     await fireEvent.press(screen.getByTestId('account-delete'));
-    await fireEvent.changeText(
-      screen.getByTestId('account-delete-confirm-input'),
-      'owner@example.com',
-    );
+    await fireEvent.changeText(screen.getByTestId('account-delete-confirm-input'), 'owner');
     await fireEvent.press(screen.getByTestId('account-delete-dialog-confirm'));
     await waitFor(() => expect(screen.getByTestId('account-delete-error')).toBeOnTheScreen(), LONG);
     expect(screen.getByTestId('account-delete-error')).toHaveTextContent(/דבר לא נמחק מהמכשיר/);
@@ -138,7 +128,7 @@ describe('session lifecycle and automatic backup (P2A)', () => {
     await open('/account', 'screen-account');
     await signIn();
     await act(async () => backend.expireSession());
-    await waitFor(() => expect(screen.getByTestId('account-email')).toBeOnTheScreen(), LONG);
+    await waitFor(() => expect(screen.getByTestId('account-username')).toBeOnTheScreen(), LONG);
     expect(await vehicles()).toBe(2);
   }, 60000);
 
@@ -150,7 +140,7 @@ describe('session lifecycle and automatic backup (P2A)', () => {
       clock,
       new MemoryFileStore(),
     );
-    await backend.verifyCode('owner@example.com', VALID_CODE);
+    await backend.signInAs('owner');
     await store.connectAccount(backend);
     await world.db.run("UPDATE vehicles SET trim = 'offline-edit' WHERE id = ?", [world.car.id]);
     const before = backend.pushed.length;
@@ -166,6 +156,6 @@ it('sign-out affects this device only (wording) and keeps the data', async () =>
   await signIn();
   expect(screen.getByTestId('account-sign-out')).toHaveTextContent(/מהמכשיר הזה/);
   await fireEvent.press(screen.getByTestId('account-sign-out'));
-  await waitFor(() => expect(screen.getByTestId('account-email')).toBeOnTheScreen(), LONG);
+  await waitFor(() => expect(screen.getByTestId('account-username')).toBeOnTheScreen(), LONG);
   expect(await vehicles()).toBe(2);
 }, 60000);

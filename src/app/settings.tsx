@@ -51,7 +51,7 @@ export default function SettingsScreen() {
           testID="settings-account"
           icon="account-circle-outline"
           title={he.settings.profile}
-          subtitle={account.hasAccount ? account.email : he.account.notBackedUp}
+          subtitle={account.hasAccount ? account.username : he.account.notBackedUp}
           onPress={() => router.push('/account')}
         />
         <Divider />

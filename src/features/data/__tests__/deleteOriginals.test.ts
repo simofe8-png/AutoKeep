@@ -1,5 +1,5 @@
 import { sequentialIds, T0 } from '@/domain/testing';
-import { MemoryAccountBackend, VALID_CODE } from '@/features/account/testing';
+import { MemoryAccountBackend } from '@/features/account/testing';
 import { populatedWorld } from '@/persistence/testing/world';
 import { MemoryFileStore } from '@/providers/storage/types';
 
@@ -34,7 +34,7 @@ it('originals go first; a failed removal keeps the deletion queued', async () =>
     'invoice',
   );
   const backend = new MemoryAccountBackend();
-  await backend.verifyCode('rc@autokeep.test', VALID_CODE);
+  await backend.signInAs('rc@autokeep.test');
   await store.connectAccount(backend);
   const prefix = `user:rc@autokeep.test/${w.car.id}/`;
   const carObjects = () => [...backend.objects.keys()].filter((k) => k.startsWith(prefix));

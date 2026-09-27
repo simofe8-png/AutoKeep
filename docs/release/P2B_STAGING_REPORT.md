@@ -1,5 +1,9 @@
 # P2B: Technical cloud staging report (2026-09-27)
 
+> **Update 2026-09-28:** the authentication limitation below is **resolved by a different
+> design**: Invitation → Username + Password, with no e-mail (`PRIVATE_BETA_AUTH.md`). It was
+> verified on this staging project. The e-mail-code suites referenced here were retired.
+
 **Result: P2B PASS, with one documented authentication limitation, which is a P2C blocker.**
 Test data only. No real user and no personal data were used.
 

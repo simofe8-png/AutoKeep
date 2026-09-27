@@ -3,10 +3,12 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import type { AdoptionCloud } from '@/account/adoption';
 import { supabaseAdoptionCloud } from '@/account/cloudAdoption';
 import {
+  changePassword,
   deleteAccount,
-  requestEmailCode,
+  registerWithInvitation,
+  signInWithUsername,
   signOut,
-  verifyEmailCode,
+  usernameOf,
   type AuthResult,
   type DeleteAccountResult,
 } from '@/cloud/auth';
@@ -14,15 +16,19 @@ import type { SyncTransport } from '@/sync/engine';
 import { supabaseSyncTransport } from '@/sync/supabaseTransport';
 
 /**
- * Account backend port (M19): passwordless sign-in, adoption of local data and sync transport.
+ * Account backend port (M19; Private Beta auth): invitation registration and Username + Password
+ * sign-in, adoption of local data and sync transport.
  * Provider-independent; the Supabase implementation exists only when cloud config is present —
  * without it the app stays fully usable locally and says that cloud backup is unavailable.
  */
 export interface AccountBackend {
-  requestCode(email: string): Promise<AuthResult>;
-  verifyCode(email: string, code: string): Promise<AuthResult>;
-  /** Signed-in account email, or null. */
-  currentEmail(): Promise<string | null>;
+  /** Creates the account with an invitation link/token, then signs in. */
+  register(invitation: string, username: string, password: string): Promise<AuthResult>;
+  signIn(username: string, password: string): Promise<AuthResult>;
+  /** Changes the signed-in account's password. */
+  changePassword(password: string): Promise<AuthResult>;
+  /** Signed-in account's username, or null. */
+  currentUsername(): Promise<string | null>;
   /** Signs out this device only; the account and other devices are unaffected. */
   signOut(): Promise<void>;
   /**
@@ -31,7 +37,7 @@ export interface AccountBackend {
    */
   deleteAccount(): Promise<DeleteAccountResult>;
   /** Session changes (signed out, refresh failed, account deleted). Returns an unsubscribe. */
-  onSessionChange(listener: (email: string | null) => void): () => void;
+  onSessionChange(listener: (username: string | null) => void): () => void;
   /** Token auto-refresh runs only while the app is in the foreground (React Native guidance). */
   setActive(active: boolean): void;
   adoption: AdoptionCloud;
@@ -58,14 +64,20 @@ export function originalPath(userId: string, vehicleId: string, documentId: stri
 
 export function supabaseAccountBackend(sb: SupabaseClient): AccountBackend {
   return {
-    requestCode: (email) => requestEmailCode(sb, email),
-    verifyCode: (email, code) => verifyEmailCode(sb, email, code),
-    currentEmail: async () => (await sb.auth.getSession()).data.session?.user.email ?? null,
+    register: (invitation, username, password) =>
+      registerWithInvitation(sb, invitation, username, password),
+    signIn: (username, password) => signInWithUsername(sb, username, password),
+    changePassword: (password) => changePassword(sb, password),
+    currentUsername: async () => {
+      const session = (await sb.auth.getSession()).data.session;
+      // Every Beta account has a username; a session without one still counts as signed in.
+      return session ? (usernameOf(session.user) ?? '') : null;
+    },
     signOut: () => signOut(sb),
     deleteAccount: () => deleteAccount(sb),
     onSessionChange(listener) {
       const { data } = sb.auth.onAuthStateChange((_event, session) => {
-        listener(session?.user.email ?? null);
+        listener(session ? (usernameOf(session.user) ?? '') : null);
       });
       return () => data.subscription.unsubscribe();
     },

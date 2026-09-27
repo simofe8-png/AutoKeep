@@ -1,6 +1,6 @@
 # AutoKeep — Current Status (resume pointer)
 
-_Last updated: 2026-09-26_
+_Last updated: 2026-09-28_
 
 ## Position
 
@@ -8,7 +8,12 @@ _Last updated: 2026-09-26_
 - **P2B technical cloud staging: PASS (2026-09-27)**, with a documented authentication limitation. Report: `docs/release/P2B_STAGING_REPORT.md`.
   - Staging project `autokeep-staging` (`bqgyaiqfubumkhmrztra`), Free, eu-central-1, $0. Retained; empty after cleanup.
   - Staging secrets live outside the repository in `~/.autokeep/staging.env`.
-- **P2C pre-gate (zero-domain auth validation): research done, config and harness prepared; WAITING for the dedicated Gmail account and App Password** (owner-only step). See `docs/release/ZERO_DOMAIN_AUTH_VALIDATION.md`. P2C not started.
+- **Private Beta authentication: Invitation → Username + Password: PASS on staging (2026-09-28).** Owner decision; supersedes the e-mail-code flow and the Gmail SMTP plan (no e-mail, SMTP, OTP or domain). Details: `docs/release/PRIVATE_BETA_AUTH.md`, ADR-0019.
+  - Migration `20260928000001_beta_invitations` and function `register` (verify_jwt=false) are on staging. Public sign-up is off. Supabase password floor: 6 characters (provider constraint), 72-byte cap; no AutoKeep rules.
+  - Admin tool: `tools/beta-admin.mjs --target local|staging` (invite create/list/revoke/delete, user list/set-password).
+  - Verified: verify 50/365; cloud 52/52 local **and** hosted staging; Galaxy A54 13/13 on hosted staging. Staging empty after cleanup.
+  - The Gmail/App Password step is **no longer needed** (the ZERO_DOMAIN doc is historical).
+- **Next action:** stop. P2C (real beta users, beta project) is **not** started and needs explicit owner approval. Before the first real invitation: see "Remaining before the first real Beta invitation" in `PRIVATE_BETA_AUTH.md`/the P2C readiness matrix (beta backend project, privacy notice, distribution/signing, runbook). Minor pre-existing findings from the A54 run: UTC day in "last backed up"/"added" dates near midnight; delete-vehicle confirmation requires the dashed plate.
 
 ## Granted policies
 

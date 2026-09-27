@@ -104,7 +104,7 @@ it('deletes every row, every original and the account itself; another user is un
   // Device wiped, signed out.
   expect(await a.w.db.first('SELECT id FROM vehicles LIMIT 1')).toBeNull();
   expect(a.files.files.size).toBe(0);
-  expect(await a.backend.currentEmail()).toBeNull();
+  expect(await a.backend.currentUsername()).toBeNull();
   // Isolation: the other account keeps everything.
   expect(await rowsOf(b.user.userId)).toBe(bRows);
   expect(await objectsOf(b.user.userId)).toBe(1);

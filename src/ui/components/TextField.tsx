@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { StyleSheet, TextInput, View, type KeyboardTypeOptions } from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  type KeyboardTypeOptions,
+  type TextInputProps,
+} from 'react-native';
 
 import { he } from '@/i18n/he';
 
@@ -21,6 +27,11 @@ export interface TextFieldProps {
   editable?: boolean;
   testID?: string;
   maxLength?: number;
+  /** Hidden input (passwords); also disables auto-correct and auto-capitalization. */
+  secure?: boolean;
+  /** Identifiers (usernames): no auto-correct, no auto-capitalization. */
+  plain?: boolean;
+  autoComplete?: TextInputProps['autoComplete'];
 }
 
 export function TextField({
@@ -37,6 +48,9 @@ export function TextField({
   editable = true,
   testID,
   maxLength,
+  secure = false,
+  plain = false,
+  autoComplete,
 }: TextFieldProps) {
   const [focused, setFocused] = useState(false);
   const borderColor = error ? colors.danger : focused ? colors.primary : colors.border;
@@ -65,6 +79,10 @@ export function TextField({
           multiline={multiline}
           editable={editable}
           maxLength={maxLength}
+          secureTextEntry={secure}
+          autoCapitalize={secure || plain ? 'none' : undefined}
+          autoCorrect={secure || plain ? false : undefined}
+          autoComplete={autoComplete}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           accessibilityLabel={labelText}

@@ -2,7 +2,7 @@ import { act, fireEvent, renderRouter, screen, waitFor } from 'expo-router/testi
 
 import { isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds, T0 } from '@/domain/testing';
-import { MemoryAccountBackend, VALID_CODE } from '@/features/account/testing';
+import { MemoryAccountBackend, TEST_PASSWORD } from '@/features/account/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
@@ -94,11 +94,10 @@ describe('no network (T151, T156)', () => {
 
   it('pending backups resume by themselves when the connection returns', async () => {
     await open('/account', 'screen-account');
-    await fireEvent.changeText(screen.getByTestId('account-email'), 'owner@example.com');
-    await fireEvent.press(screen.getByTestId('account-create'));
-    await waitFor(() => expect(screen.getByTestId('account-code')).toBeOnTheScreen());
-    await fireEvent.changeText(screen.getByTestId('account-code'), VALID_CODE);
-    await fireEvent.press(screen.getByTestId('account-verify'));
+    backend.addAccount('owner');
+    await fireEvent.changeText(screen.getByTestId('account-username'), 'owner');
+    await fireEvent.changeText(screen.getByTestId('account-password'), TEST_PASSWORD);
+    await fireEvent.press(screen.getByTestId('account-sign-in'));
     await waitFor(
       () => expect(screen.getByTestId('backup-status')).toHaveTextContent(/מחובר/),
       LONG,
@@ -265,7 +264,8 @@ describe('interrupted writes, conflicts (T158)', () => {
 
   it('two-device conflicts are explained once and can be acknowledged', async () => {
     const store = await LocalStore.open(world.db, sequentialIds(92000), clock);
-    await store.connectAccount(Object.assign(backend, { email: 'o@example.com' }));
+    await backend.signInAs('o');
+    await store.connectAccount(backend);
     await world.db.run(
       `INSERT INTO sync_conflicts (entity_table, entity_id, field, local_value, remote_value, kept, detected_at)
        VALUES ('vehicles', ?, 'model', '"A"', '"B"', 'remote', ?)`,

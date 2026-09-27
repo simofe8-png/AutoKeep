@@ -1,66 +1,126 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 
-/**
- * Passwordless email sign-in with a one-time code (proven provider; no custom password crypto).
- * Account creation is optional and offered only once data worth protecting exists (M08).
- */
-export type AuthResult =
-  | { ok: true }
-  | {
-      ok: false;
-      reason:
-        | 'invalid_email'
-        | 'email_rejected'
-        | 'invalid_code'
-        | 'network'
-        | 'rate_limited'
-        | 'unknown';
-    };
-
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-function mapError(message: string, status?: number): AuthResult {
-  if (status === 429 || /rate limit/i.test(message)) return { ok: false, reason: 'rate_limited' };
-  if (/network|fetch/i.test(message)) return { ok: false, reason: 'network' };
-  if (/token|otp|expired|invalid/i.test(message)) return { ok: false, reason: 'invalid_code' };
-  return { ok: false, reason: 'unknown' };
-}
-
-export async function requestEmailCode(sb: SupabaseClient, email: string): Promise<AuthResult> {
-  const normalized = email.trim().toLowerCase();
-  if (!EMAIL.test(normalized)) return { ok: false, reason: 'invalid_email' };
-  const { error } = await sb.auth.signInWithOtp({
-    email: normalized,
-    options: { shouldCreateUser: true },
-  });
-  return error ? mapRequestError(error.message, error.status) : { ok: true };
-}
+import { internalEmail, usernameProblem } from './username';
 
 /**
- * Sending a code has no code yet: a refusal of the ADDRESS by the auth server (e.g. "Email address
- * … is invalid", which is also what a restricted sender answers) must never read as "wrong code".
+ * Private Beta authentication: invitation → Username + Password registration → Username +
+ * Password sign-in. Supabase Auth checks and stores passwords (no custom password crypto, no
+ * AutoKeep password policy). The internal e-mail Supabase needs is derived from the username and
+ * never shown (see supabase/functions/_shared/username.ts).
  */
-export function mapRequestError(message: string, status?: number): AuthResult {
-  if (status === 429 || /rate limit/i.test(message)) return { ok: false, reason: 'rate_limited' };
-  if (/network|fetch/i.test(message)) return { ok: false, reason: 'network' };
-  if (/email/i.test(message) && /invalid|not authorized|not allowed/i.test(message)) {
-    return { ok: false, reason: 'email_rejected' };
-  }
-  return { ok: false, reason: 'unknown' };
+export type AuthFailure =
+  | 'invalid_username'
+  | 'invalid_credentials'
+  | 'username_taken'
+  | 'invitation_invalid'
+  | 'invitation_used'
+  | 'invitation_expired'
+  | 'invitation_busy'
+  | 'password_too_short'
+  | 'password_too_long'
+  | 'same_password'
+  | 'network'
+  | 'rate_limited'
+  | 'unknown';
+
+export type AuthResult = { ok: true } | { ok: false; reason: AuthFailure };
+
+const fail = (reason: AuthFailure): AuthResult => ({ ok: false, reason });
+
+function isNetwork(message: string, status?: number): boolean {
+  return status === 0 || /network|fetch|timed? ?out|abort/i.test(message);
 }
 
-export async function verifyEmailCode(
+/** Supabase Auth's own password constraints (6 characters minimum, 72 bytes maximum). */
+function passwordFailure(code: string, message: string): AuthFailure | null {
+  if (/longer than/i.test(message)) return 'password_too_long';
+  if (code === 'same_password' || /different from the old/i.test(message)) return 'same_password';
+  if (code === 'weak_password' || /at least|too short/i.test(message)) return 'password_too_short';
+  return null;
+}
+
+export async function signInWithUsername(
   sb: SupabaseClient,
-  email: string,
-  code: string,
+  username: string,
+  password: string,
 ): Promise<AuthResult> {
-  if (!/^\d{6,10}$/.test(code.trim())) return { ok: false, reason: 'invalid_code' };
-  const { error } = await sb.auth.verifyOtp({
-    email: email.trim().toLowerCase(),
-    token: code.trim(),
-    type: 'email',
+  // An impossible username cannot belong to an account; it reads like any wrong credential.
+  if (usernameProblem(username)) return fail('invalid_credentials');
+  if (password === '') return fail('invalid_credentials');
+  const { error } = await sb.auth.signInWithPassword({
+    email: await internalEmail(username),
+    password,
   });
-  return error ? mapError(error.message, error.status) : { ok: true };
+  if (!error) return { ok: true };
+  if (error.status === 429 || /rate limit/i.test(error.message)) return fail('rate_limited');
+  if (isNetwork(error.message, error.status)) return fail('network');
+  if (error.status === 400 || /invalid login credentials/i.test(error.message)) {
+    return fail('invalid_credentials');
+  }
+  return fail('unknown');
+}
+
+const FUNCTION_FAILURES: readonly AuthFailure[] = [
+  'invalid_username',
+  'username_taken',
+  'invitation_invalid',
+  'invitation_used',
+  'invitation_expired',
+  'invitation_busy',
+  'password_too_short',
+  'password_too_long',
+];
+
+/** The invitation token from a pasted/opened invitation link, or the bare token itself. */
+export function invitationToken(input: string): string | null {
+  const text = input.trim();
+  const fromLink = /[?&]t=([A-Za-z0-9_-]{32,128})(?:[&#]|$)/.exec(text);
+  if (fromLink) return fromLink[1];
+  return /^[A-Za-z0-9_-]{32,128}$/.test(text) ? text : null;
+}
+
+/** Creates the account with an invitation (server-side), then signs in with the new credentials. */
+export async function registerWithInvitation(
+  sb: SupabaseClient,
+  invitation: string,
+  username: string,
+  password: string,
+): Promise<AuthResult> {
+  const token = invitationToken(invitation);
+  if (!token) return fail('invitation_invalid');
+  if (usernameProblem(username)) return fail('invalid_username');
+  const { error } = await sb.functions.invoke('register', {
+    method: 'POST',
+    body: { invitation: token, username, password },
+  });
+  if (error) {
+    const name = (error as { name?: string }).name ?? '';
+    if (name === 'FunctionsFetchError') return fail('network');
+    const response = (error as { context?: Response }).context;
+    const code = await response
+      ?.clone()
+      .json()
+      .then((b: { error?: string }) => b.error)
+      .catch(() => undefined);
+    const known = FUNCTION_FAILURES.find((f) => f === code);
+    return fail(known ?? 'unknown');
+  }
+  return signInWithUsername(sb, username, password);
+}
+
+/** Changes the signed-in user's password (Supabase Auth; no e-mail step). */
+export async function changePassword(sb: SupabaseClient, password: string): Promise<AuthResult> {
+  const { error } = await sb.auth.updateUser({ password });
+  if (!error) return { ok: true };
+  if (isNetwork(error.message, error.status)) return fail('network');
+  if (error.status === 429) return fail('rate_limited');
+  return fail(passwordFailure(error.code ?? '', error.message) ?? 'unknown');
+}
+
+/** The account's username (set by the server at registration; not user-editable). */
+export function usernameOf(user: { app_metadata?: Record<string, unknown> } | null | undefined) {
+  const u = user?.app_metadata?.username;
+  return typeof u === 'string' && u !== '' ? u : null;
 }
 
 /**

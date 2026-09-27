@@ -205,11 +205,15 @@ export function PrototypeDataProvider({
       account,
       setAccount,
       // Prototype: nothing is sent anywhere (the demo account screen sets the state directly).
-      requestAccountCode: async () => ({ ok: true }) as const,
-      verifyAccountCode: async (email: string) => {
-        setAccount({ hasAccount: true, email, lastBackupAt: todayIso() });
+      signInAccount: async (username: string) => {
+        setAccount({ hasAccount: true, username: username.trim(), lastBackupAt: todayIso() });
         return { ok: true } as const;
       },
+      registerAccount: async (_invitation: string, username: string) => {
+        setAccount({ hasAccount: true, username: username.trim(), lastBackupAt: todayIso() });
+        return { ok: true } as const;
+      },
+      changeAccountPassword: async () => ({ ok: true }) as const,
       syncNow: () => undefined,
       acknowledgeConflicts: () => undefined,
       signOutAccount: async () => setAccount({ hasAccount: false }),

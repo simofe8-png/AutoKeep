@@ -213,9 +213,9 @@ describe('Account & settings (T026, T027)', () => {
     await fireEvent.press(screen.getByTestId('account-offer-action'));
     await waitFor(() => expect(screen.getByTestId('screen-account')).toBeOnTheScreen());
     expect(screen.getByTestId('backup-status')).toHaveTextContent(/הנתונים שמורים במכשיר בלבד/);
-    expect(screen.getByTestId('account-create')).toBeDisabled();
-    await fireEvent.changeText(screen.getByTestId('account-email'), 'owner@example.com');
-    await fireEvent.press(screen.getByTestId('account-create'));
+    expect(screen.getByTestId('account-sign-in')).toBeDisabled();
+    await fireEvent.changeText(screen.getByTestId('account-username'), 'owner');
+    await fireEvent.press(screen.getByTestId('account-sign-in'));
     await waitFor(() => expect(screen.getByTestId('backup-status')).toHaveTextContent(/מחובר/));
   });
 
