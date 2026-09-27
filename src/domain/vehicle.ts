@@ -178,6 +178,8 @@ export function createOdometerReading(
   existing: readonly OdometerReading[],
   ids: IdGenerator,
   now: Timestamp,
+  /** The user's local date (see UserConfirmation.today); the UTC date is only a fallback. */
+  today: IsoDate = now.slice(0, 10) as IsoDate,
 ): Result<OdometerReading> {
   const prior = latestReadingOnOrBefore(
     existing.filter((r) => r.vehicleId === input.vehicleId),
@@ -187,7 +189,7 @@ export function createOdometerReading(
     [
       (!Number.isInteger(input.valueKm) || input.valueKm < 0 || input.valueKm > MAX_ODOMETER_KM) &&
         issue('odometer.range', 'Odometer value is out of range', 'valueKm'),
-      input.measuredAt > now.slice(0, 10) &&
+      input.measuredAt > today &&
         issue('odometer.future', 'Measurement date is in the future', 'measuredAt'),
       prior !== null &&
         input.valueKm < prior.valueKm &&

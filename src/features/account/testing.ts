@@ -30,6 +30,12 @@ export class MemoryAccountBackend implements AccountBackend {
       if (this.offline || !this.email || !path.startsWith(`user:${this.email}/`)) return null;
       return this.objects.get(path) ?? null;
     },
+    removeFolder: async (prefix: string) => {
+      if (this.offline) throw new Error('offline');
+      if (!this.email || !prefix.startsWith(`user:${this.email}/`)) throw new Error('forbidden');
+      for (const k of [...this.objects.keys()])
+        if (k.startsWith(`${prefix}/`)) this.objects.delete(k);
+    },
   };
 
   async requestCode(email: string): Promise<AuthResult> {

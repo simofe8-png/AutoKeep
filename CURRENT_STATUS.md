@@ -4,18 +4,14 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **Milestone:** M24 Release Candidate, under G3 (ZERO-COST V1).
-- **Current task:** T184, PENDING: the RC build is produced and accepted, but RC PASS is not declared.
-- **Last verified:**
-  - local release APK (Option A);
-  - Galaxy A54 acceptance, with 5 device defects fixed;
-  - verify 42/302, cloud 26/26, live 1/1;
-  - report: `docs/release/RC_REPORT.md`.
-- **STOPPED:** 3 device checks need the device state changed by the user, and source candidates await human approval.
-- **Next action:**
-  1. With the phone on Wi-Fi and camera allowed for AutoKeep, install the kept APK (`adb install -r`), then run the registry lookup and a photo capture. Record the results in `docs/acceptance/RC-device-A54.md`, then declare RC PASS.
-  2. Record decisions on `docs/sources/CANDIDATES.md` (approved domains go to `OFFICIAL_DOMAINS`; curated schedules follow REGISTRY_PROCEDURE).
-- **Rebuilding the APK:** see `docs/release/LOCAL_BUILD.md`. The temporary build copies were removed after verification.
+- **AUTOKEEP V1 RC PASS (2026-09-27).** M24 PASS; T178–T184 PASS. Report: `docs/release/RC_REPORT.md`.
+- **Final verification:** verify 44 suites / 305 tests; cloud 27/27; live 1/1; Galaxy A54 acceptance complete.
+- **Next (each is a separate approval gate, not started):**
+  - approve official sources (`docs/sources/CANDIDATES.md`);
+  - hosted Supabase and production e-mail;
+  - store signing and Google Play;
+  - an optional OCR/AI provider.
+- **Rebuilding the APK:** `docs/release/LOCAL_BUILD.md`. The temporary build copies were removed.
 
 ## Granted policies
 

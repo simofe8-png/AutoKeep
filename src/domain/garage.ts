@@ -185,9 +185,14 @@ export function reactivateAlert(a: Alert, now: Timestamp): Result<Alert> {
   return ok({ ...a, status: 'active', snoozedUntil: null, ...touch(a, now) });
 }
 
-export function snoozeAlert(a: Alert, until: IsoDate, now: Timestamp): Result<Alert> {
+export function snoozeAlert(
+  a: Alert,
+  until: IsoDate,
+  now: Timestamp,
+  /** The user's local date (see UserConfirmation.today); the UTC date is only a fallback. */
+  today: IsoDate = now.slice(0, 10) as IsoDate,
+): Result<Alert> {
   if (a.status === 'handled') return fail(issue('alert.handled', 'Alert already handled'));
-  if (until <= now.slice(0, 10))
-    return fail(issue('alert.snooze', 'Snooze date must be in the future'));
+  if (until <= today) return fail(issue('alert.snooze', 'Snooze date must be in the future'));
   return ok({ ...a, status: 'deferred', snoozedUntil: until, ...touch(a, now) });
 }

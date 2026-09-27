@@ -26,6 +26,11 @@ export interface AccountBackend {
   originals: {
     upload(path: string, bytes: Uint8Array, mimeType: string): Promise<void>;
     download(path: string): Promise<Uint8Array | null>;
+    /**
+     * Removes every original under `<user>/<vehicle>` (permanent vehicle deletion). Storage RLS
+     * only allows this while the vehicle row still exists, so it runs BEFORE the deletion is pushed.
+     */
+    removeFolder(prefix: string): Promise<void>;
   };
 }
 
@@ -55,6 +60,18 @@ export function supabaseAccountBackend(sb: SupabaseClient): AccountBackend {
         const r = await fetch(data.signedUrl);
         if (!r.ok) return null;
         return new Uint8Array(await r.arrayBuffer());
+      },
+      async removeFolder(prefix) {
+        for (;;) {
+          const { data, error } = await sb.storage.from('documents').list(prefix, { limit: 100 });
+          if (error) throw new Error(`list: ${error.message}`);
+          if (!data || data.length === 0) return;
+          const { error: rmError } = await sb.storage
+            .from('documents')
+            .remove(data.map((o) => `${prefix}/${o.name}`));
+          if (rmError) throw new Error(`remove: ${rmError.message}`);
+          if (data.length < 100) return;
+        }
       },
     },
   };

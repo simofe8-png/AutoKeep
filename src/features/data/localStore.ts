@@ -309,6 +309,7 @@ export class LocalStore {
             [],
             this.ids,
             now,
+            this.clock.today(),
           ),
         );
         await new OdometerRepository(tx).add(reading);
@@ -415,6 +416,18 @@ export class LocalStore {
     }
   }
 
+  private async removeDeletedVehicleOriginals(backend: AccountBackend): Promise<void> {
+    const pending = await this.db.all<{ entity_id: string }>(
+      "SELECT DISTINCT entity_id FROM sync_outbox WHERE entity_table = 'vehicles' AND op = 'delete'",
+    );
+    if (pending.length === 0) return;
+    const userId = await backend.adoption.currentUserId();
+    if (!userId) return;
+    for (const { entity_id } of pending) {
+      await backend.originals.removeFolder(`${userId}/${entity_id}`);
+    }
+  }
+
   /** The user has seen the reconciled conflicts (the kept values stay; this only clears the notice). */
   async acknowledgeConflicts(): Promise<void> {
     await this.db.run('UPDATE sync_conflicts SET resolved = 1 WHERE resolved = 0');
@@ -423,6 +436,14 @@ export class LocalStore {
   /** One sync round (push, then pull). Only for adopted data; failures are recorded, not lost. */
   async sync(backend: AccountBackend): Promise<void> {
     const settings = new SettingsRepository(this.db);
+    // A permanently deleted vehicle takes its backed-up originals with it. This must happen before
+    // the deletion is pushed (storage RLS needs the vehicle row); on failure nothing is pushed.
+    try {
+      await this.removeDeletedVehicleOriginals(backend);
+    } catch {
+      await settings.set('syncLastError', 'network', this.clock.now());
+      return;
+    }
     const r = await syncOnce(this.db, backend.transport, this.clock.now);
     if (r.ok) {
       try {
@@ -480,6 +501,7 @@ export class LocalStore {
         await repo.listForVehicle(vid),
         this.ids,
         this.clock.now(),
+        this.clock.today(),
       ),
     );
     await repo.add(reading);
@@ -563,7 +585,7 @@ export class LocalStore {
           documentIds,
           extractionId: null,
         },
-        { confirmedBy: 'user', confirmedAt: now },
+        { confirmedBy: 'user', confirmedAt: now, today: this.clock.today() },
         preferId(vm.id, this.ids),
       ),
     );
@@ -610,6 +632,7 @@ export class LocalStore {
         await odo.listForVehicle(vid),
         this.ids,
         now,
+        this.clock.today(),
       );
       if (reading.ok) await odo.add(reading.value);
     });
@@ -693,7 +716,7 @@ export class LocalStore {
     const alert = await repo.get(vehicleId as VehicleId, alertId as never);
     if (!alert) throw new Error('Alert not found for this vehicle');
     const until = addDays(this.clock.today(), days);
-    await repo.update(must(snoozeAlert(alert, until, this.clock.now())));
+    await repo.update(must(snoozeAlert(alert, until, this.clock.now(), this.clock.today())));
   }
 
   async setAlertHandled(vehicleId: string, alertId: string): Promise<void> {

@@ -74,6 +74,12 @@ export interface ServiceDraft {
 export interface UserConfirmation {
   confirmedBy: 'user';
   confirmedAt: Timestamp;
+  /**
+   * The user's LOCAL calendar date. `confirmedAt` is UTC, so its date part is yesterday for the
+   * first hours of a day east of UTC (Israel: 00:00–03:00): a service dated today would be
+   * rejected as "in the future". Callers with a clock pass it; the UTC date is only a fallback.
+   */
+  today?: IsoDate;
 }
 
 export function confirmServiceDraft(
@@ -83,7 +89,7 @@ export function confirmServiceDraft(
 ): Result<ServiceEvent> {
   const now = confirmation.confirmedAt;
   const performed = draft.actions.filter((a) => a.performed && a.title.trim() !== '');
-  const today = now.slice(0, 10);
+  const today = confirmation.today ?? now.slice(0, 10);
   const authority: SourceAuthority =
     draft.origin === 'document' && draft.documentIds.length > 0 ? 'garage_document' : 'user_report';
   return validate(

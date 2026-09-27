@@ -1,6 +1,6 @@
 import { isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds, T0 } from '@/domain/testing';
-import { userClient } from '@/cloud/testing/localStack';
+import { adminClient, userClient } from '@/cloud/testing/localStack';
 import { supabaseAccountBackend } from '@/features/account/backend';
 import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { populatedWorld } from '@/persistence/testing/world';
@@ -18,6 +18,13 @@ const clock: Clock = {
   now: () => new Date().toISOString() as Timestamp,
   today: () => isoDate(new Date().toISOString().slice(0, 10)) as IsoDate,
 };
+
+/** Objects under a bucket folder, seen with the service role (RLS would hide orphans). */
+async function objectsUnder(folder: string): Promise<number> {
+  const { data, error } = await adminClient().storage.from('documents').list(folder);
+  if (error) throw error;
+  return data.length;
+}
 
 describe('LocalStore account backup (local Supabase)', () => {
   it('adopts the device data into the account and syncs a later change', async () => {
@@ -96,5 +103,50 @@ describe('LocalStore account backup (local Supabase)', () => {
       .from('documents')
       .createSignedUrl(`${user.userId}/${w.car.id}/${docId}`, 60);
     expect(foreign?.signedUrl ?? null).toBeNull();
+  });
+
+  it('permanent deletion also removes the backed-up originals (found on device, RC)', async () => {
+    const base = Math.floor(Math.random() * 2 ** 40);
+    const w = await populatedWorld(sequentialIds(base), T0);
+    const store = await LocalStore.open(
+      w.db,
+      sequentialIds(base + 100_000),
+      clock,
+      new MemoryFileStore(),
+    );
+    const docId = `00000000-0000-4000-8000-${(base + 777).toString(16).padStart(12, '0')}`;
+    await store.addDocument(
+      w.car.id,
+      {
+        documentId: docId,
+        file: {
+          uri: 'file:///cache/invoice.pdf',
+          mimeType: 'application/pdf',
+          sizeBytes: 9,
+          source: 'file',
+        },
+        title: 'חשבונית',
+      },
+      'invoice',
+    );
+    const user = await userClient('rc-delete');
+    const backend = supabaseAccountBackend(user.client);
+    await store.connectAccount(backend);
+    const folder = `${user.userId}/${w.car.id}`;
+    const listed = async () =>
+      (await user.client.storage.from('documents').list(folder)).data?.map((o) => o.name) ?? [];
+    expect(await listed()).toEqual([docId]);
+
+    await store.deleteVehicle(w.car.id);
+    await store.sync(backend);
+
+    expect((await store.backupStatus()).lastError).toBeNull();
+    const { data: vehicles } = await user.client.from('vehicles').select('id').eq('id', w.car.id);
+    expect(vehicles).toEqual([]);
+    // Checked with a privileged view: nothing of the deleted vehicle is left in the bucket.
+    expect(await objectsUnder(folder)).toBe(0);
+    // The other vehicle's data is untouched.
+    const { data: moto } = await user.client.from('vehicles').select('id').eq('id', w.moto.id);
+    expect(moto).toHaveLength(1);
   });
 });
