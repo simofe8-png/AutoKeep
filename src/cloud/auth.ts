@@ -8,7 +8,13 @@ export type AuthResult =
   | { ok: true }
   | {
       ok: false;
-      reason: 'invalid_email' | 'invalid_code' | 'network' | 'rate_limited' | 'unknown';
+      reason:
+        | 'invalid_email'
+        | 'email_rejected'
+        | 'invalid_code'
+        | 'network'
+        | 'rate_limited'
+        | 'unknown';
     };
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -27,7 +33,20 @@ export async function requestEmailCode(sb: SupabaseClient, email: string): Promi
     email: normalized,
     options: { shouldCreateUser: true },
   });
-  return error ? mapError(error.message, error.status) : { ok: true };
+  return error ? mapRequestError(error.message, error.status) : { ok: true };
+}
+
+/**
+ * Sending a code has no code yet: a refusal of the ADDRESS by the auth server (e.g. "Email address
+ * … is invalid", which is also what a restricted sender answers) must never read as "wrong code".
+ */
+export function mapRequestError(message: string, status?: number): AuthResult {
+  if (status === 429 || /rate limit/i.test(message)) return { ok: false, reason: 'rate_limited' };
+  if (/network|fetch/i.test(message)) return { ok: false, reason: 'network' };
+  if (/email/i.test(message) && /invalid|not authorized|not allowed/i.test(message)) {
+    return { ok: false, reason: 'email_rejected' };
+  }
+  return { ok: false, reason: 'unknown' };
 }
 
 export async function verifyEmailCode(

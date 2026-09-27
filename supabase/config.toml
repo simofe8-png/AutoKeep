@@ -247,6 +247,12 @@ otp_expiry = 3600
 subject = "קוד הכניסה שלך ל-AutoKeep"
 content_path = "./supabase/templates/magic_link.html"
 
+# P2B: with email confirmations on (hosted default), a NEW user gets the confirmation email
+# instead of the magic-link one. It must carry the same one-time code ({{ .Token }}).
+[auth.email.template.confirmation]
+subject = "קוד הכניסה שלך ל-AutoKeep"
+content_path = "./supabase/templates/magic_link.html"
+
 # Uncomment to customize email template
 # [auth.email.template.invite]
 # subject = "You have been invited"
@@ -424,3 +430,18 @@ enabled = true
 [functions.delete-account]
 enabled = true
 verify_jwt = true
+
+# P2B: hosted TECHNICAL STAGING project (Free, eu-central-1). Test data only.
+# Values here override the local ones above when pushed with `supabase config push`.
+[remotes.staging]
+project_id = "bqgyaiqfubumkhmrztra"
+
+[remotes.staging.auth]
+site_url = "https://bqgyaiqfubumkhmrztra.supabase.co"
+additional_redirect_urls = []
+
+[remotes.staging.auth.email]
+# A 6-digit code should be short-lived (docs/release/HOSTED_AUTH_SETTINGS.md).
+otp_expiry = 900
+# At most one code e-mail per address per minute (local runs use 1s for tests).
+max_frequency = "60s"

@@ -25,6 +25,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const errorText: Record<Exclude<AccountResult, { ok: true }>['reason'], string> = {
   invalid_email: he.account.invalidEmail,
+  email_rejected: he.account.emailRejected,
   invalid_code: he.account.invalidCode,
   network: he.account.networkError,
   rate_limited: he.account.rateLimited,

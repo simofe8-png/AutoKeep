@@ -379,3 +379,16 @@ Evidence gives the concrete commands and results (or file references) proving th
 | Auth client lifecycle and release guard (B5/B6) | PASS   | `account-p2a.test`, `backendUrl.test`                                                                          |
 | Unused OCR function removed (B8)                | PASS   | Function and adapter deleted; ADR-0017 amended                                                                 |
 | Full local verification                         | PASS   | verify 49/340; cloud 42/42; live 1/1                                                                           |
+
+## P2B: technical cloud staging (2026-09-27)
+
+| Item                                          | Status                     | Evidence                                                                                                                                                  |
+| --------------------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Staging project (Free, eu-central-1, $0)      | PASS                       | `autokeep-staging`; secrets outside the repository                                                                                                        |
+| Migrations from scratch + structural equality | PASS                       | `db push` of 4 migrations; 254 catalog facts identical to local                                                                                           |
+| Documented configuration                      | PASS (template limitation) | `config.toml` `[remotes.staging]`; templates not changeable on Free with the default sender                                                               |
+| Functions                                     | PASS                       | Only `delete-account` deployed (verify_jwt)                                                                                                               |
+| Hosted security, sync, deletion               | PASS                       | Cloud suite against staging 42/42; `auth.staging.cloud.test` 3/3                                                                                          |
+| Galaxy A54 staging APK                        | PASS (limited)             | Release guard accepts HTTPS; secret scan clean; address refusal shown correctly (fix `email_rejected`); authenticated device flows not executable on Free |
+| Cleanup                                       | PASS                       | 0 users / 0 objects / 0 rows; staging app uninstalled; temporary build copies removed                                                                     |
+| Local regression                              | PASS                       | verify 50/342; local cloud 42/42 (+3 staging-only skipped)                                                                                                |

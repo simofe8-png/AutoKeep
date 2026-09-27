@@ -4,16 +4,11 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **AUTOKEEP V1 RC PASS** (`35478a2`). P1 docs `7a1c798`. P2 plan `f6dd6a9`.
-- **P2A local production hardening: PASS (2026-09-27).**
-  - Blocker → fix → evidence: `docs/release/P2_PRODUCTION_BACKEND_PLAN.md` § P2A status.
-  - Hosted settings still to apply: `docs/release/HOSTED_AUTH_SETTINGS.md`.
-- **Verification:**
-  - verify: 49 suites / 340 tests;
-  - local-stack cloud: 42/42;
-  - live: 1/1;
-  - migrations from scratch (`db reset`) and `db lint` clean.
-- **Next action:** STOPPED at the staging gate (P2 plan §I items 2–8). Nothing hosted has been created.
+- **Baselines:** RC `35478a2`; P1 `7a1c798`; P2 plan `f6dd6a9`; P2A `6984342`.
+- **P2B technical cloud staging: PASS (2026-09-27)**, with a documented authentication limitation. Report: `docs/release/P2B_STAGING_REPORT.md`.
+  - Staging project `autokeep-staging` (`bqgyaiqfubumkhmrztra`), Free, eu-central-1, $0. Retained; empty after cleanup.
+  - Staging secrets live outside the repository in `~/.autokeep/staging.env`.
+- **STOPPED:** P2C (real-user Private Beta) needs approval. Readiness: `docs/release/P2C_PRIVATE_BETA_READINESS.md`. Real-user authentication (custom SMTP without a domain, or an alternative) is the first decision.
 
 ## Granted policies
 

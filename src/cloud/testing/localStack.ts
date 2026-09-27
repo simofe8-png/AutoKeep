@@ -1,6 +1,9 @@
 /**
- * TEST-ONLY helpers for the local Supabase stack. Keys are read at runtime from
- * `supabase status` (well-known local-dev keys) and never committed.
+ * TEST-ONLY helpers for the Supabase backend under test. By default the LOCAL stack (keys read at
+ * runtime from `supabase status`: well-known local-dev keys). With AUTOKEEP_TEST_TARGET=staging
+ * the same suites run against the hosted technical-staging project (P2B); its URL, keys and DB
+ * URL are read from a file OUTSIDE the repository (AUTOKEEP_STAGING_ENV, default
+ * ~/.autokeep/staging.env). Nothing secret is ever committed or embedded in the app.
  */
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
@@ -14,7 +17,38 @@ interface LocalStatus {
 
 let status: LocalStatus | null = null;
 
+interface StagingEnv extends LocalStatus {
+  DB_URL: string;
+}
+
+let staging: StagingEnv | null = null;
+
+/** Hosted staging target (P2B), or null when testing against the local stack. */
+export function stagingTarget(): StagingEnv | null {
+  const env = (globalThis as { process?: { env: Record<string, string | undefined> } }).process
+    ?.env;
+  if (env?.AUTOKEEP_TEST_TARGET !== 'staging') return null;
+  if (staging) return staging;
+  const fs = require('fs') as { readFileSync: (p: string, e: string) => string };
+  const os = require('os') as { homedir: () => string };
+  const file = env.AUTOKEEP_STAGING_ENV ?? `${os.homedir()}/.autokeep/staging.env`;
+  const vars: Record<string, string> = {};
+  for (const line of fs.readFileSync(file, 'utf8').split(/\r?\n/)) {
+    const i = line.indexOf('=');
+    if (i > 0) vars[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+  }
+  staging = {
+    API_URL: vars.AUTOKEEP_STAGING_API_URL,
+    ANON_KEY: vars.AUTOKEEP_STAGING_ANON_KEY,
+    SERVICE_ROLE_KEY: vars.AUTOKEEP_STAGING_SERVICE_ROLE_KEY,
+    DB_URL: vars.AUTOKEEP_STAGING_DB_URL,
+  };
+  return staging;
+}
+
 export function localStatus(): LocalStatus {
+  const hosted = stagingTarget();
+  if (hosted) return hosted;
   if (status) return status;
   const { execSync } = require('child_process') as {
     execSync: (cmd: string, opts: object) => string;
@@ -90,6 +124,10 @@ export function sqlAsUser(
     commit ? 'commit;' : 'rollback;',
   ].join('\n');
   try {
+    // The local Postgres container's psql is the client; for staging it connects to the hosted
+    // database (session pooler) instead of the local one.
+    const hosted = stagingTarget();
+    const target = hosted ? [hosted.DB_URL] : ['-U', 'postgres', '-d', 'postgres'];
     const output = execFileSync(
       'docker',
       [
@@ -97,10 +135,7 @@ export function sqlAsUser(
         '-i',
         'supabase_db_autokeep',
         'psql',
-        '-U',
-        'postgres',
-        '-d',
-        'postgres',
+        ...target,
         '-v',
         'ON_ERROR_STOP=1',
         '-tA',

@@ -1,4 +1,6 @@
-# Hosted Supabase settings required before real users (P2A, 2026-09-27)
+# Hosted Supabase settings required before real users (P2A, updated P2B 2026-09-27)
+
+> **P2B finding:** on a Free project using Supabase's default sender, e-mail templates cannot be changed ("Email template modification is not available for free tier projects using the default email provider"), and the default templates carry a link, not the code the app expects. The built-in sender also refuses non-team addresses. **The code templates can only be applied once custom SMTP is configured.** Staging settings are declared in `supabase/config.toml` `[remotes.staging]`; see `P2B_STAGING_REPORT.md`.
 
 These are **hosted-project settings**. None of them has been applied: no hosted project exists,
 and creating one is an approval gate (P2 plan §I). `supabase db push` applies migrations only.

@@ -48,7 +48,13 @@ export type AccountResult =
   | { ok: true }
   | {
       ok: false;
-      reason: 'invalid_email' | 'invalid_code' | 'network' | 'rate_limited' | 'unknown';
+      reason:
+        | 'invalid_email'
+        | 'email_rejected'
+        | 'invalid_code'
+        | 'network'
+        | 'rate_limited'
+        | 'unknown';
     };
 
 /** Identity details captured at onboarding beyond the display summary. */
