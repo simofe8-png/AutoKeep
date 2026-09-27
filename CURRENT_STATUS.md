@@ -9,7 +9,8 @@ _Last updated: 2026-09-26_
   - Findings: `docs/sources/P1_SOURCE_VERIFICATION.md`.
   - No code, configuration or allowlist was changed.
 - **P1 decided (2026-09-27):** the 21 domains are approved as authority-only; terms of use are binding for automation; only the SYM verification pilot is approved; the user-supplied-document path is approved; importer outreach stays gated (P1 doc §8).
-- **Next action:** wait for an explicit instruction to start P2. Nothing is implemented yet.
+- **P2, production backend planning: audit and plan complete; STOPPED at the approval gate.** Plan: `docs/release/P2_PRODUCTION_BACKEND_PLAN.md`. No code, migration, cloud resource or secret was created or changed.
+- **Next action:** the user's decisions on the P2 gates (§I). Implementation step H1 (local code) starts only when explicitly instructed.
 
 ## Granted policies
 
