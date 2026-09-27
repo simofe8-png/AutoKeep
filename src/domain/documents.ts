@@ -51,6 +51,13 @@ export const ALLOWED_MIME_TYPES = [
   'image/heic',
 ] as const;
 export const MAX_DOCUMENT_BYTES = 50 * 1024 * 1024;
+/** Photos of invoices/licenses stay far below this; the server enforces the same limit (P2A). */
+export const MAX_IMAGE_BYTES = 15 * 1024 * 1024;
+
+/** Per-type size limit: PDFs (owner's manuals) up to 50 MB, images up to 15 MB. */
+export function maxBytesFor(mimeType: string): number {
+  return mimeType.startsWith('image/') ? MAX_IMAGE_BYTES : MAX_DOCUMENT_BYTES;
+}
 
 export interface NewDocumentInput {
   vehicleId: VehicleId;
@@ -72,7 +79,7 @@ export function createDocument(
       !input.title.trim() && issue('document.title', 'Title is required', 'title'),
       !(ALLOWED_MIME_TYPES as readonly string[]).includes(original.mimeType) &&
         issue('document.mime', 'Unsupported file type', 'mimeType'),
-      (original.sizeBytes <= 0 || original.sizeBytes > MAX_DOCUMENT_BYTES) &&
+      (original.sizeBytes <= 0 || original.sizeBytes > maxBytesFor(original.mimeType)) &&
         issue('document.size', 'File size is out of range', 'sizeBytes'),
       !/^[0-9a-f]{64}$/.test(original.sha256) &&
         issue('document.hash', 'Invalid content hash', 'sha256'),

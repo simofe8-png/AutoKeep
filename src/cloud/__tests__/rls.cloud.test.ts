@@ -102,11 +102,22 @@ describe('row ownership (BOLA / IDOR)', () => {
     expect(r.error).not.toBeNull();
   });
 
-  it('deletion RPCs respect ownership (SECURITY INVOKER)', async () => {
-    const preview = await b.client.rpc('vehicle_deletion_preview', { p_vehicle_id: aVehicle });
-    expect(preview.data?.[0]).toMatchObject({ service_events: 0, documents: 0 });
-    const del = await b.client.rpc('delete_vehicle_permanently', { p_vehicle_id: aVehicle });
-    expect(del.data).toBe(false);
+  it('a vehicle deletion pushed by another user is rejected and leaves no tombstone', async () => {
+    const r = await b.client.rpc('sync_push', {
+      p_ops: [
+        { op_id: uuid(), table: 'vehicles', op: 'delete', entity_id: aVehicle, base_version: 1 },
+      ],
+    });
+    expect(r.data?.[0]?.status).toBe('rejected');
+    const still = await a.client.from('vehicles').select('id').eq('id', aVehicle);
+    expect(still.data).toHaveLength(1);
+    const stones = await b.client.from('sync_tombstones').select('entity_id');
+    expect(stones.data ?? []).toEqual([]);
+  });
+
+  it('the removed bypass deletion RPCs no longer exist', async () => {
+    const del = await a.client.rpc('delete_vehicle_permanently', { p_vehicle_id: aVehicle });
+    expect(del.error).not.toBeNull();
     const still = await a.client.from('vehicles').select('id').eq('id', aVehicle);
     expect(still.data).toHaveLength(1);
   });
@@ -115,8 +126,28 @@ describe('row ownership (BOLA / IDOR)', () => {
 describe('private document storage (T062)', () => {
   const pdf = new Uint8Array([0x25, 0x50, 0x44, 0x46, 0x2d, 0x31, 0x2e, 0x34]); // "%PDF-1.4"
 
+  /** P2A: an object may only be stored for a document row the caller owns (synced first). */
+  async function seedDocument(sb: SupabaseClient, vehicleId: string): Promise<string> {
+    const id = uuid();
+    const r = await sb.from('documents').insert({
+      id,
+      vehicle_id: vehicleId,
+      kind: 'invoice',
+      title: 'חשבונית',
+      origin: 'user_upload',
+      authority: 'garage_document',
+      storage_key: `originals/${id}.pdf`,
+      mime_type: 'application/pdf',
+      size_bytes: pdf.length,
+      sha256: 'a'.repeat(64),
+      ...meta,
+    });
+    if (r.error) throw r.error;
+    return id;
+  }
+
   it('owner can upload under their own vehicle path and get a short-lived signed URL', async () => {
-    const path = `${a.userId}/${aVehicle}/${uuid()}`;
+    const path = `${a.userId}/${aVehicle}/${await seedDocument(a.client, aVehicle)}`;
     const up = await a.client.storage
       .from('documents')
       .upload(path, pdf, { contentType: 'application/pdf' });
@@ -130,8 +161,11 @@ describe('private document storage (T062)', () => {
   });
 
   it('another user cannot read, sign, list or overwrite it', async () => {
-    const path = `${a.userId}/${aVehicle}/${uuid()}`;
-    await a.client.storage.from('documents').upload(path, pdf, { contentType: 'application/pdf' });
+    const path = `${a.userId}/${aVehicle}/${await seedDocument(a.client, aVehicle)}`;
+    const up = await a.client.storage
+      .from('documents')
+      .upload(path, pdf, { contentType: 'application/pdf' });
+    expect(up.error).toBeNull();
     const dl = await b.client.storage.from('documents').download(path);
     expect(dl.error).not.toBeNull();
     const signed = await b.client.storage.from('documents').createSignedUrl(path, 60);
@@ -155,12 +189,44 @@ describe('private document storage (T062)', () => {
     expect(ownFolderForeignVehicle.error).not.toBeNull();
   });
 
+  it('without an owned document row, nothing can be stored (no free-form uploads)', async () => {
+    const r = await a.client.storage
+      .from('documents')
+      .upload(`${a.userId}/${aVehicle}/${uuid()}`, pdf, { contentType: 'application/pdf' });
+    expect(r.error).not.toBeNull();
+    const deeper = await a.client.storage
+      .from('documents')
+      .upload(`${a.userId}/${aVehicle}/x/${await seedDocument(a.client, aVehicle)}`, pdf, {
+        contentType: 'application/pdf',
+      });
+    expect(deeper.error).not.toBeNull();
+  });
+
+  it('a stored original is never overwritten, not even by its owner', async () => {
+    const path = `${a.userId}/${aVehicle}/${await seedDocument(a.client, aVehicle)}`;
+    expect(
+      (
+        await a.client.storage
+          .from('documents')
+          .upload(path, pdf, { contentType: 'application/pdf' })
+      ).error,
+    ).toBeNull();
+    const again = await a.client.storage
+      .from('documents')
+      .upload(path, new Uint8Array([1, 2, 3]), { contentType: 'application/pdf', upsert: true });
+    expect(again.error).not.toBeNull();
+  });
+
   it('rejects disallowed content types', async () => {
     const r = await a.client.storage
       .from('documents')
-      .upload(`${a.userId}/${aVehicle}/${uuid()}`, new Uint8Array([60, 104, 116, 109, 108, 62]), {
-        contentType: 'text/html',
-      });
+      .upload(
+        `${a.userId}/${aVehicle}/${await seedDocument(a.client, aVehicle)}`,
+        new Uint8Array([60, 104, 116, 109, 108, 62]),
+        {
+          contentType: 'text/html',
+        },
+      );
     expect(r.error).not.toBeNull();
   });
 });

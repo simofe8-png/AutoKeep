@@ -1,6 +1,7 @@
 import { createVehicle, createLocalProfile } from '@/domain';
 import { sequentialIds, T0 } from '@/domain/testing';
 import {
+  ACCEPTED_DOCUMENT_TYPES,
   screenAcquiredFile,
   ACCEPTED_IMAGE_TYPES,
   type AcquisitionResult,
@@ -69,6 +70,17 @@ describe('acquisition boundary (T051)', () => {
     expect(
       screenAcquiredFile({ ...base, mimeType: 'image/png' }, ACCEPTED_IMAGE_TYPES).status,
     ).toBe('acquired');
+  });
+
+  it('per-type limits match the server (P2A): images 15 MB, PDFs 50 MB', () => {
+    const base = { uri: 'file:///x', source: 'file' as const };
+    const MB = 1024 * 1024;
+    const screen = (mimeType: string, sizeBytes: number) =>
+      screenAcquiredFile({ ...base, mimeType, sizeBytes }, ACCEPTED_DOCUMENT_TYPES).status;
+    expect(screen('image/jpeg', 15 * MB)).toBe('acquired');
+    expect(screen('image/jpeg', 15 * MB + 1)).toBe('rejected');
+    expect(screen('application/pdf', 40 * MB)).toBe('acquired');
+    expect(screen('application/pdf', 50 * MB + 1)).toBe('rejected');
   });
 
   it('cancel / denied permission are returned in context (no dead end)', async () => {

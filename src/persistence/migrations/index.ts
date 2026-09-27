@@ -1,5 +1,5 @@
 import type { Migration } from './runner';
-import { V2_SYNC } from './v2_sync';
+import { V2_SYNC, V3_SYNC_PARKED } from './v2_sync';
 
 /**
  * Schema history. Append-only: add a new migration for every change (ADR-0008).
@@ -177,4 +177,5 @@ CREATE TABLE settings (
 `,
   },
   V2_SYNC,
+  V3_SYNC_PARKED,
 ];

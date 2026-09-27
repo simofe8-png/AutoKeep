@@ -29,6 +29,8 @@ export interface AcquisitionProvider {
 export const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/heic'] as const;
 export const ACCEPTED_DOCUMENT_TYPES = [...ACCEPTED_IMAGE_TYPES, 'application/pdf'] as const;
 export const MAX_ACQUIRED_BYTES = 50 * 1024 * 1024;
+/** Same per-type limits as the domain and the server (P2A). */
+export const MAX_ACQUIRED_IMAGE_BYTES = 15 * 1024 * 1024;
 
 /** Validates an acquired file before any processing (type allow-list, size bound). */
 export function screenAcquiredFile(
@@ -38,7 +40,8 @@ export function screenAcquiredFile(
   if (!accepted.includes(file.mimeType)) return { status: 'rejected', reason: 'unsupported_type' };
   if (file.sizeBytes !== null && file.sizeBytes <= 0)
     return { status: 'rejected', reason: 'empty' };
-  if (file.sizeBytes !== null && file.sizeBytes > MAX_ACQUIRED_BYTES) {
+  const limit = file.mimeType.startsWith('image/') ? MAX_ACQUIRED_IMAGE_BYTES : MAX_ACQUIRED_BYTES;
+  if (file.sizeBytes !== null && file.sizeBytes > limit) {
     return { status: 'rejected', reason: 'too_large' };
   }
   return { status: 'acquired', file };

@@ -2,7 +2,7 @@
  * TEST-ONLY in-memory account backend: OTP with a fixed valid code, an atomic/idempotent adoption
  * store (like the adopt_local_data RPC) and a sync transport, each with switchable faults.
  */
-import type { AuthResult } from '@/cloud/auth';
+import type { AuthResult, DeleteAccountResult } from '@/cloud/auth';
 import { ADOPTION_TABLES, rowKey, type AdoptionBundle } from '@/account/bundle';
 import { AdoptionCloudError } from '@/account/adoption';
 import { SyncNetworkError, type PushOp, type PushResult } from '@/sync/engine';
@@ -57,6 +57,46 @@ export class MemoryAccountBackend implements AccountBackend {
 
   async signOut() {
     this.email = null;
+    this.emit();
+  }
+
+  /** Fault injection for account deletion: 'network' | 'server' | null. */
+  deleteFails: 'network' | 'server' | null = null;
+  deletedAccounts: string[] = [];
+  active = true;
+  private listeners = new Set<(email: string | null) => void>();
+
+  private emit() {
+    for (const l of this.listeners) l(this.email);
+  }
+
+  async deleteAccount(): Promise<DeleteAccountResult> {
+    if (this.offline || this.deleteFails === 'network') return { ok: false, reason: 'network' };
+    if (!this.email) return { ok: false, reason: 'not_signed_in' };
+    if (this.deleteFails === 'server') return { ok: false, reason: 'server' };
+    // Mirrors the function: originals first, then the account (and its rows).
+    const prefix = `user:${this.email}/`;
+    for (const k of [...this.objects.keys()]) if (k.startsWith(prefix)) this.objects.delete(k);
+    this.stored.clear();
+    this.deletedAccounts.push(this.email);
+    this.email = null;
+    this.emit();
+    return { ok: true };
+  }
+
+  onSessionChange(listener: (email: string | null) => void): () => void {
+    this.listeners.add(listener);
+    return () => this.listeners.delete(listener);
+  }
+
+  setActive(active: boolean) {
+    this.active = active;
+  }
+
+  /** Test hook: the session ended elsewhere (e.g. refresh failed, signed out on the server). */
+  expireSession() {
+    this.email = null;
+    this.emit();
   }
 
   adoption = {

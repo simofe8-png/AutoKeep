@@ -213,6 +213,11 @@ export function PrototypeDataProvider({
       syncNow: () => undefined,
       acknowledgeConflicts: () => undefined,
       signOutAccount: async () => setAccount({ hasAccount: false }),
+      // Prototype: there is no server account; the demo state is simply cleared.
+      deleteAccount: async () => {
+        setAccount({ hasAccount: false });
+        return { ok: true } as const;
+      },
       today: () => todayIso(),
       notificationsEnabled,
       setNotificationsEnabled,

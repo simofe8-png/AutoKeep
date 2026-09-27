@@ -37,7 +37,12 @@ export interface AccountState {
   syncError?: 'network' | 'server_rejected' | 'different_account' | 'not_signed_in' | null;
   /** Reconciled two-device edits awaiting acknowledgement. */
   conflicts?: number;
+  /** Local changes the server permanently refused (kept on this device). */
+  notBackedUp?: number;
 }
+
+export type DeleteAccountOutcome =
+  { ok: true } | { ok: false; reason: 'network' | 'not_signed_in' | 'server' };
 
 export type AccountResult =
   | { ok: true }
@@ -120,8 +125,13 @@ export interface AppDataValue {
   verifyAccountCode: (email: string, code: string) => Promise<AccountResult>;
   syncNow: () => void;
   acknowledgeConflicts: () => void;
-  /** Signs out of the account; local data stays on the device. */
+  /** Signs out of the account on this device; local data stays on the device. */
   signOutAccount: () => Promise<void>;
+  /**
+   * Permanently deletes the account, every backed-up original and — only after the server
+   * confirmed — all data on this device. Never reports success otherwise.
+   */
+  deleteAccount: () => Promise<DeleteAccountOutcome>;
   /**
    * Today's date (YYYY-MM-DD) from the data source's clock — the same clock that validates writes,
    * so a record dated "today" by a screen can never be judged to be in the future.

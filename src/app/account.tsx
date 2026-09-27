@@ -10,6 +10,7 @@ import {
   Badge,
   Button,
   Card,
+  Dialog,
   Icon,
   InlineNotice,
   Row,
@@ -47,7 +48,15 @@ export default function AccountScreen() {
     syncNow,
     signOutAccount,
     acknowledgeConflicts,
+    deleteAccount,
   } = useAppData();
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [typed, setTyped] = useState('');
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+  const confirmMatches =
+    typed.trim().toLowerCase() !== '' &&
+    typed.trim().toLowerCase() === (account.email ?? '').trim().toLowerCase();
   const [email, setEmail] = useState('');
   const [touched, setTouched] = useState(false);
   const [code, setCode] = useState('');
@@ -118,6 +127,13 @@ export default function AccountScreen() {
             testID="backup-error"
             tone="warning"
             message={he.account.syncErrors[account.syncError]}
+          />
+        ) : null}
+        {account.notBackedUp ? (
+          <InlineNotice
+            testID="backup-not-backed-up"
+            tone="warning"
+            message={he.account.refusedChanges(account.notBackedUp)}
           />
         ) : null}
       </Card>
@@ -234,10 +250,66 @@ export default function AccountScreen() {
                 fullWidth
                 onPress={() => void signOutAccount()}
               />
+              <Card compact tone="danger">
+                <Stack gap={spacing.xs}>
+                  <Button
+                    testID="account-delete"
+                    label={he.account.deleteAccount}
+                    icon="delete-forever-outline"
+                    variant="ghost"
+                    fullWidth
+                    disabled={network === 'offline' || deleting}
+                    onPress={() => {
+                      setTyped('');
+                      setDeleteError(null);
+                      setDeleteOpen(true);
+                    }}
+                  />
+                  <AppText variant="small" color="textSecondary">
+                    {network === 'offline'
+                      ? he.account.deleteAccountOffline
+                      : he.account.deleteAccountHint}
+                  </AppText>
+                </Stack>
+              </Card>
+              {deleteError ? (
+                <InlineNotice testID="account-delete-error" tone="danger" message={deleteError} />
+              ) : null}
             </>
           ) : null}
         </Stack>
       )}
+
+      <Dialog
+        visible={deleteOpen}
+        testID="account-delete-dialog"
+        destructive
+        title={he.account.deleteAccount}
+        message={he.account.deleteAccountBody}
+        confirmLabel={he.account.deleteAccountAction}
+        confirmDisabled={!confirmMatches || deleting}
+        onCancel={() => setDeleteOpen(false)}
+        onConfirm={() => {
+          if (!confirmMatches || deleting) return;
+          setDeleting(true);
+          void deleteAccount().then((r) => {
+            setDeleting(false);
+            setDeleteOpen(false);
+            if (r.ok) router.replace('/');
+            else setDeleteError(he.account.deleteAccountFailed[r.reason]);
+          });
+        }}
+      >
+        <TextField
+          testID="account-delete-confirm-input"
+          label={he.account.deleteAccountConfirm}
+          value={typed}
+          onChangeText={setTyped}
+          keyboardType="email-address"
+          placeholder={account.email}
+          required
+        />
+      </Dialog>
     </Screen>
   );
 }

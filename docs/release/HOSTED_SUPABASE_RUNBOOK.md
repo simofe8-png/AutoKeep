@@ -31,8 +31,9 @@ secrets, DNS/SMTP, payment/plan, or a production mutation. Stop before it and as
    - no redirect URLs needed (code-only sign-in).
 3. 🔒 Production SMTP: set up a transactional email provider plus sender-domain DNS (SPF/DKIM).
    Supabase's built-in email is rate-limited and meant for testing only.
-4. 🔒 Deploy the edge function: `npx supabase functions deploy document-intelligence`. It answers
-   `not_configured` until an approved OCR/AI vendor's secret is set (ADR-0017).
+4. 🔒 Deploy the account-deletion function: `npx supabase functions deploy delete-account`
+   (`verify_jwt = true`). The OCR function `document-intelligence` was removed in P2A, so there is
+   nothing else to deploy. Every hosted setting is listed in `docs/release/HOSTED_AUTH_SETTINGS.md`.
 
 ## 3. Verify against staging
 

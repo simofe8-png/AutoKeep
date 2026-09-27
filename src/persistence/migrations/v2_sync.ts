@@ -36,7 +36,7 @@ const HAS_VERSION = new Set([
   'alerts',
 ]);
 
-function triggers(): string {
+function triggers(conflictSet = ''): string {
   return SYNCED_TABLES.map(({ table, key, vehicleCol }) => {
     const vehicle = vehicleCol ?? 'NULL';
     const insertBase = '0';
@@ -44,7 +44,7 @@ function triggers(): string {
     const enqueue = (base: string) => `
   INSERT INTO sync_outbox (entity_table, entity_id, vehicle_id, op, base_version, created_at)
   VALUES ('${table}', ${key}, ${vehicle}, 'upsert', ${base}, strftime('%Y-%m-%dT%H:%M:%fZ','now'))
-  ON CONFLICT (entity_table, entity_id) DO UPDATE SET op = 'upsert', op_id = ${UUID_EXPR}, attempts = 0, last_error = NULL;`;
+  ON CONFLICT (entity_table, entity_id) DO UPDATE SET op = 'upsert', op_id = ${UUID_EXPR}, attempts = 0, last_error = NULL${conflictSet};`;
     return `
 CREATE TRIGGER sync_ins_${table} AFTER INSERT ON ${table}
 WHEN (SELECT applying FROM sync_control WHERE id = 1) = 0
@@ -118,5 +118,21 @@ BEGIN
   INSERT INTO sync_outbox (entity_table, entity_id, vehicle_id, op, base_version, created_at)
   VALUES ('vehicles', OLD.id, NULL, 'delete', OLD.version, strftime('%Y-%m-%dT%H:%M:%fZ','now'));
 END;
+`,
+};
+
+/**
+ * v3 (P2A): an op the server permanently refuses is PARKED (kept, reported, retried only after
+ * the user changes the entity again) instead of blocking the whole queue. The enqueue triggers
+ * are recreated so that a new local change un-parks the op.
+ */
+export const V3_SYNC_PARKED: Migration = {
+  version: 3,
+  name: 'sync_outbox_parked',
+  up: `
+ALTER TABLE sync_outbox ADD COLUMN parked INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE sync_outbox ADD COLUMN parked_code TEXT;
+${SYNCED_TABLES.map(({ table }) => `DROP TRIGGER sync_ins_${table};\nDROP TRIGGER sync_upd_${table};`).join('\n')}
+${triggers(', parked = 0, parked_code = NULL')}
 `,
 };

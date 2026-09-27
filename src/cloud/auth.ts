@@ -44,6 +44,26 @@ export async function verifyEmailCode(
   return error ? mapError(error.message, error.status) : { ok: true };
 }
 
+/**
+ * Signs out THIS device only (P2A). The Supabase default scope is 'global', which would revoke the
+ * user's sessions on every other device as well. The local data stays on the device (by design).
+ */
 export async function signOut(sb: SupabaseClient): Promise<void> {
-  await sb.auth.signOut();
+  await sb.auth.signOut({ scope: 'local' });
+}
+
+export type DeleteAccountResult =
+  { ok: true } | { ok: false; reason: 'network' | 'not_signed_in' | 'server' };
+
+/** Calls the server-side account deletion (supabase/functions/delete-account). */
+export async function deleteAccount(sb: SupabaseClient): Promise<DeleteAccountResult> {
+  const { data, error } = await sb.functions.invoke<{ status?: string }>('delete-account', {
+    method: 'POST',
+  });
+  if (!error) return data?.status === 'deleted' ? { ok: true } : { ok: false, reason: 'server' };
+  const name = (error as { name?: string }).name ?? '';
+  const status = (error as { context?: { status?: number } }).context?.status;
+  if (name === 'FunctionsFetchError') return { ok: false, reason: 'network' };
+  if (status === 401) return { ok: false, reason: 'not_signed_in' };
+  return { ok: false, reason: 'server' };
 }

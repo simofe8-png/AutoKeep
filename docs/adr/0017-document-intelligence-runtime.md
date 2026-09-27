@@ -58,3 +58,17 @@ Without paid OCR/AI, a verified manual can only become a maintenance schedule th
 **human-curated, evidence-pinned schedule** in the verified registry. That schedule is approved by
 a person, and every item carries page/section references to the pinned official document.
 Otherwise the app reports "unable to verify".
+
+## Amendment (P2A, 2026-09-27): function removed
+
+The `document-intelligence` Edge Function and its client adapter (`edgeDocumentReader`) were
+removed.
+
+- No production path used them.
+- As written, the function relied only on the gateway's JWT check, which accepts the public anon
+  key. It had no per-user check and no quota: a paid vendor wired into it later could have been
+  spent by anyone holding the app.
+
+The provider-independent ports (`OcrProvider`, `StructuredExtractor`) and the draft → review →
+confirmation flow remain. A future vendor needs a new function that verifies the user, enforces a
+quota and bounds its input, behind a new approval gate.

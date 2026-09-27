@@ -67,3 +67,50 @@ export const uuid = (): string =>
     const r = (Math.random() * 16) | 0;
     return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
   });
+
+/**
+ * Runs SQL in the LOCAL database as the `authenticated` role with the given user's JWT claims
+ * (exactly what PostgREST does per request), in one transaction that is rolled back unless
+ * `commit` is set. Returns psql's output; a SQL error becomes { error }.
+ */
+export function sqlAsUser(
+  userId: string,
+  sql: string,
+  commit = false,
+): { output: string } | { error: string } {
+  const { execFileSync } = require('child_process') as {
+    execFileSync: (cmd: string, args: string[], opts: object) => string;
+  };
+  const claims = JSON.stringify({ sub: userId, role: 'authenticated' });
+  const script = [
+    'begin;',
+    `do $$ begin perform set_config('request.jwt.claims', '${claims}', true); end $$;`,
+    'set local role authenticated;',
+    sql,
+    commit ? 'commit;' : 'rollback;',
+  ].join('\n');
+  try {
+    const output = execFileSync(
+      'docker',
+      [
+        'exec',
+        '-i',
+        'supabase_db_autokeep',
+        'psql',
+        '-U',
+        'postgres',
+        '-d',
+        'postgres',
+        '-v',
+        'ON_ERROR_STOP=1',
+        '-tA',
+        '-q',
+      ],
+      { encoding: 'utf8', input: script, stdio: ['pipe', 'pipe', 'pipe'] },
+    );
+    return { output: output.trim() };
+  } catch (e) {
+    const err = e as { stderr?: string; message: string };
+    return { error: String(err.stderr || err.message) };
+  }
+}

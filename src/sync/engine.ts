@@ -33,16 +33,28 @@ export interface PushOp {
   row?: Row;
 }
 
-export type PushStatus = 'applied' | 'duplicate' | 'conflict' | 'rejected';
+/**
+ * 'invalid' = the server permanently refuses this op (constraint, quota, ownership). It is parked
+ * locally and reported; it never blocks the rest of the queue (P2A, Y3).
+ */
+export type PushStatus = 'applied' | 'duplicate' | 'conflict' | 'rejected' | 'invalid';
 export interface PushResult {
   op_id: string;
   status: PushStatus;
   server_row?: Row;
+  /** Server-decided version after an applied upsert of a mutable entity. */
+  version?: number | null;
+  code?: string;
+  message?: string;
 }
 
+/**
+ * Keyset position: rows strictly after (ts, key) are returned. `key: null` means "from ts on,
+ * inclusive" (used for the overlap re-read at the start of a round).
+ */
 export interface Cursor {
   ts: string;
-  key: string;
+  key: string | null;
 }
 
 export interface Tombstone {
@@ -58,7 +70,19 @@ export interface SyncTransport {
   pullTombstones(cursor: Cursor | null, limit: number): Promise<Tombstone[]>;
 }
 
+/** Transient: network, timeout, 5xx, auth refresh, rate limit. Retried with backoff. */
 export class SyncNetworkError extends Error {}
+/** Permanent for the whole request (e.g. malformed batch). Ops are then retried one by one. */
+export class SyncRejectedError extends Error {}
+
+/**
+ * Rows are stamped with the server transaction's START time, so a row committed late by a long
+ * transaction can carry a timestamp below a cursor another device already passed. Every round
+ * therefore re-reads the last PULL_OVERLAP_MS before its cursor (applying is idempotent and
+ * version-guarded). Must exceed the longest server transaction (statement_timeout: 8 s for the
+ * authenticated role on Supabase).
+ */
+export const PULL_OVERLAP_MS = 5 * 60_000;
 
 // ---------- retry policy (T075) ----------
 
@@ -198,6 +222,34 @@ export interface PushSummary {
   applied: number;
   conflicts: number;
   fieldConflicts: number;
+  /** Ops the server permanently refused in this round (parked). */
+  invalid: number;
+}
+
+async function parkOp(db: SqlDatabase, o: OutboxRow, code: string, message: string) {
+  await db.run(
+    `UPDATE sync_outbox SET parked = 1, parked_code = ?, last_error = ?
+     WHERE seq = ? AND op_id = ?`,
+    [code, message.slice(0, 200), o.seq, o.op_id],
+  );
+}
+
+async function sendOps(transport: SyncTransport, payload: PushOp[]): Promise<PushResult[]> {
+  try {
+    return await transport.push(payload);
+  } catch (e) {
+    if (e instanceof SyncRejectedError || e instanceof SyncNetworkError) throw e;
+    throw new SyncNetworkError(String(e));
+  }
+}
+
+async function failBatch(db: SqlDatabase, batch: OutboxRow[], e: unknown): Promise<Error> {
+  await db.run(
+    `UPDATE sync_outbox SET attempts = attempts + 1, last_error = ?
+     WHERE seq IN (${batch.map(() => '?').join(',')})`,
+    [String(e instanceof Error ? e.message : e).slice(0, 200), ...batch.map((o) => o.seq)],
+  );
+  return e instanceof SyncNetworkError ? e : new SyncNetworkError(String(e));
 }
 
 export async function pushPending(
@@ -206,12 +258,12 @@ export async function pushPending(
   now: () => Timestamp,
   batchSize = 50,
 ): Promise<PushSummary> {
-  const summary: PushSummary = { sent: 0, applied: 0, conflicts: 0, fieldConflicts: 0 };
+  const summary: PushSummary = { sent: 0, applied: 0, conflicts: 0, fieldConflicts: 0, invalid: 0 };
   const attempted = new Set<number>();
   for (;;) {
-    const ops = (await db.all<OutboxRow>('SELECT * FROM sync_outbox ORDER BY seq')).filter(
-      (o) => !attempted.has(o.seq),
-    );
+    const ops = (
+      await db.all<OutboxRow>('SELECT * FROM sync_outbox WHERE parked = 0 ORDER BY seq')
+    ).filter((o) => !attempted.has(o.seq));
     if (ops.length === 0) return summary;
     const batch = ops.slice(0, batchSize);
     batch.forEach((o) => attempted.add(o.seq));
@@ -246,27 +298,51 @@ export async function pushPending(
 
     let results: PushResult[];
     try {
-      results = await transport.push(payload);
+      results = await sendOps(transport, payload);
     } catch (e) {
-      await db.run(
-        `UPDATE sync_outbox SET attempts = attempts + 1, last_error = ?
-         WHERE seq IN (${batch.map(() => '?').join(',')})`,
-        [String(e instanceof Error ? e.message : e), ...batch.map((o) => o.seq)],
-      );
-      throw e instanceof SyncNetworkError ? e : new SyncNetworkError(String(e));
+      if (!(e instanceof SyncRejectedError)) throw await failBatch(db, batch, e);
+      // The request as a whole was refused: isolate the poison op(s) one by one.
+      results = [];
+      for (const p of payload) {
+        try {
+          results.push(...(await sendOps(transport, [p])));
+        } catch (single) {
+          if (!(single instanceof SyncRejectedError)) throw await failBatch(db, batch, single);
+          results.push({
+            op_id: p.op_id,
+            status: 'invalid',
+            code: 'rejected',
+            message: single.message,
+          });
+        }
+      }
     }
     summary.sent += payload.length;
 
-    const bySeq = new Map(batch.map((o) => [o.op_id, o]));
+    const byOpId = new Map(batch.map((o) => [o.op_id, o]));
     for (const r of results) {
-      const o = bySeq.get(r.op_id);
+      const o = byOpId.get(r.op_id);
       if (!o) continue;
       const sent = payload.find((p) => p.op_id === r.op_id)!;
       if (r.status === 'applied' || r.status === 'duplicate') {
-        await db.transaction(async (tx) => {
+        await withTriggersSuppressed(db, async (tx) => {
           // Only acknowledge if no newer local change re-keyed the op meanwhile.
-          await tx.run('DELETE FROM sync_outbox WHERE seq = ? AND op_id = ?', [o.seq, o.op_id]);
-          if (sent.row) await writeShadow(tx, o.entity_table, toLocalRow(o.entity_table, sent.row));
+          const ack = await tx.run('DELETE FROM sync_outbox WHERE seq = ? AND op_id = ?', [
+            o.seq,
+            o.op_id,
+          ]);
+          if (!sent.row) return;
+          const shadow = toLocalRow(o.entity_table, sent.row);
+          // The server decides versions: adopt its value (only if nothing newer is pending).
+          if (ack.changes === 1 && typeof r.version === 'number' && 'version' in shadow) {
+            shadow.version = r.version;
+            const w = keyWhere(o.entity_table, o.entity_id);
+            await tx.run(`UPDATE ${o.entity_table} SET version = ? WHERE ${w.sql}`, [
+              r.version,
+              ...w.params,
+            ]);
+          }
+          await writeShadow(tx, o.entity_table, shadow);
         });
         summary.applied++;
       } else if (r.status === 'conflict' && r.server_row) {
@@ -278,6 +354,10 @@ export async function pushPending(
           return mergeIntoPending(tx, o.entity_table, o.entity_id, local, remote, now());
         });
         attempted.delete(o.seq); // retry the merged row in a following batch
+      } else if (r.status === 'invalid') {
+        // Permanent: park it (the user is told), keep the local data, never block the queue.
+        await parkOp(db, o, r.code ?? 'invalid', r.message ?? 'invalid');
+        summary.invalid++;
       } else {
         // Rejected (e.g. the entity was deleted on another device): the pull reconciles it.
         await db.run('DELETE FROM sync_outbox WHERE seq = ? AND op_id = ?', [o.seq, o.op_id]);
@@ -293,6 +373,8 @@ export interface PullSummary {
   merged: number;
   fieldConflicts: number;
   tombstones: number;
+  /** Storage keys of local originals whose vehicle was deleted on another device. */
+  removedOriginals: string[];
 }
 
 const cursorKey = (name: string) => `syncCursor:${name}`;
@@ -313,25 +395,103 @@ async function setCursor(db: SqlExecutor, name: string, c: Cursor, now: Timestam
   );
 }
 
+async function parentPresent(tx: SqlExecutor, table: SyncTable, row: Row): Promise<boolean> {
+  if (table === 'service_event_documents') {
+    const e = await tx.first('SELECT 1 AS x FROM service_events WHERE id = ?', [
+      String(row.service_event_id),
+    ]);
+    return e !== null;
+  }
+  if (table === 'vehicles' || table === 'profiles' || !row.vehicle_id) return true;
+  const v = await tx.first('SELECT 1 AS x FROM vehicles WHERE id = ?', [String(row.vehicle_id)]);
+  return v !== null;
+}
+
+/**
+ * Microseconds since the epoch of a server timestamp ("…T10:00:00.123456+00:00" or "…Z").
+ * Exact to the microsecond (Postgres precision), independent of the textual format.
+ */
+export function tsMicros(ts: string): number {
+  const m = /^(.*T\d{2}:\d{2}:\d{2})(?:\.(\d+))?(Z|[+-]\d{2}:?\d{2})$/.exec(ts);
+  if (!m) return Date.parse(ts) * 1000;
+  const whole = Date.parse(`${m[1]}${m[3]}`);
+  return whole * 1000 + Number((m[2] ?? '').padEnd(6, '0').slice(0, 6));
+}
+
+/** Total order of keyset positions: time (µs), then the key. */
+export function compareCursor(a: Cursor, b: Cursor): number {
+  const d = tsMicros(a.ts) - tsMicros(b.ts);
+  if (d !== 0) return d;
+  const ka = a.key ?? '';
+  const kb = b.key ?? '';
+  return ka < kb ? -1 : ka > kb ? 1 : 0;
+}
+
+/** Start of a round: PULL_OVERLAP_MS before the stored cursor, inclusive. */
+export function rewind(c: Cursor | null, overlapMs = PULL_OVERLAP_MS): Cursor | null {
+  if (!c) return null;
+  return { ts: new Date(Math.floor(tsMicros(c.ts) / 1000) - overlapMs).toISOString(), key: null };
+}
+
+async function pagesOf<T>(
+  db: SqlDatabase,
+  name: string,
+  fetchPage: (after: Cursor | null) => Promise<T[]>,
+  positionOf: (item: T) => Cursor,
+  apply: (tx: SqlExecutor, page: T[]) => Promise<void>,
+  pageSize: number,
+  now: () => Timestamp,
+  overlapMs: number,
+): Promise<void> {
+  const stored = await getCursor(db, name);
+  let position = rewind(stored, overlapMs);
+  let high = stored;
+  for (;;) {
+    let page: T[];
+    try {
+      page = await fetchPage(position);
+    } catch (e) {
+      throw e instanceof SyncNetworkError ? e : new SyncNetworkError(String(e));
+    }
+    if (page.length === 0) return;
+    const last = positionOf(page[page.length - 1]);
+    // A stable keyset always moves strictly forward; anything else would loop forever.
+    if (position && compareCursor(last, position) <= 0) {
+      throw new SyncNetworkError(`pull of ${name} did not advance`);
+    }
+    position = last;
+    if (!high || compareCursor(last, high) > 0) high = last;
+    const next = high;
+    await withTriggersSuppressed(db, async (tx) => {
+      await apply(tx, page);
+      await setCursor(tx, name, next, now());
+    });
+    if (page.length < pageSize) return;
+  }
+}
+
 export async function pullChanges(
   db: SqlDatabase,
   transport: SyncTransport,
   now: () => Timestamp,
   pageSize = 500,
+  overlapMs = PULL_OVERLAP_MS,
 ): Promise<PullSummary> {
-  const summary: PullSummary = { rows: 0, merged: 0, fieldConflicts: 0, tombstones: 0 };
+  const summary: PullSummary = {
+    rows: 0,
+    merged: 0,
+    fieldConflicts: 0,
+    tombstones: 0,
+    removedOriginals: [],
+  };
 
   for (const table of SYNC_TABLES) {
-    for (;;) {
-      const cursor = await getCursor(db, table);
-      let page: Row[];
-      try {
-        page = await transport.pull(table, cursor, pageSize);
-      } catch (e) {
-        throw e instanceof SyncNetworkError ? e : new SyncNetworkError(String(e));
-      }
-      if (page.length === 0) break;
-      await withTriggersSuppressed(db, async (tx) => {
+    await pagesOf<Row>(
+      db,
+      table,
+      (after) => transport.pull(table, after, pageSize),
+      (row) => ({ ts: String(row.server_updated_at), key: entityKey(table, row) }),
+      async (tx, page) => {
         for (const cloud of page) {
           const remote = toLocalRow(table, cloud);
           const key = entityKey(table, remote);
@@ -341,6 +501,9 @@ export async function pullChanges(
           );
           const local = await localRow(tx, table, key);
           if (pending?.op === 'delete') continue; // local deletion wins; it will be pushed
+          // A child whose vehicle (or service event) is gone locally cannot be applied: its
+          // parent was deleted here (the deletion is being pushed) or on the server (tombstone).
+          if (!local && !(await parentPresent(tx, table, remote))) continue;
           if (pending && local) {
             summary.merged++;
             summary.fieldConflicts += await mergeIntoPending(tx, table, key, local, remote, now());
@@ -354,37 +517,38 @@ export async function pullChanges(
           }
           summary.rows++;
         }
-        const last = page[page.length - 1];
-        await setCursor(
-          tx,
-          table,
-          { ts: String(last.server_updated_at), key: entityKey(table, last) },
-          now(),
-        );
-      });
-      if (page.length < pageSize) break;
-    }
+      },
+      pageSize,
+      now,
+      overlapMs,
+    );
   }
 
-  for (;;) {
-    const cursor = await getCursor(db, 'tombstones');
-    const stones = await transport.pullTombstones(cursor, pageSize);
-    if (stones.length === 0) break;
-    await withTriggersSuppressed(db, async (tx) => {
+  await pagesOf<Tombstone>(
+    db,
+    'tombstones',
+    (after) => transport.pullTombstones(after, pageSize),
+    (t) => ({ ts: t.server_updated_at, key: t.entity_id }),
+    async (tx, stones) => {
       for (const s of stones) {
         if (s.entity_table !== 'vehicles') continue;
+        const docs = await tx.all<{ storage_key: string }>(
+          'SELECT storage_key FROM documents WHERE vehicle_id = ?',
+          [s.entity_id],
+        );
         await tx.run(
           'DELETE FROM sync_outbox WHERE vehicle_id = ? OR (entity_table = ? AND entity_id = ?)',
           [s.entity_id, 'vehicles', s.entity_id],
         );
         const r = await tx.run('DELETE FROM vehicles WHERE id = ?', [s.entity_id]);
+        if (r.changes > 0) summary.removedOriginals.push(...docs.map((d) => d.storage_key));
         summary.tombstones += r.changes;
       }
-      const last = stones[stones.length - 1];
-      await setCursor(tx, 'tombstones', { ts: last.server_updated_at, key: last.entity_id }, now());
-    });
-    if (stones.length < pageSize) break;
-  }
+    },
+    pageSize,
+    now,
+    overlapMs,
+  );
   return summary;
 }
 
@@ -412,7 +576,7 @@ export async function syncOnce(
   } catch (e) {
     if (!(e instanceof SyncNetworkError)) throw e;
     const maxAttempts = await db.first<{ a: number | null }>(
-      'SELECT MAX(attempts) AS a FROM sync_outbox',
+      'SELECT MAX(attempts) AS a FROM sync_outbox WHERE parked = 0',
     );
     return {
       ok: false,
@@ -423,7 +587,18 @@ export async function syncOnce(
   }
 }
 
-/** Number of local changes not yet accepted by the server (for the backup/sync status UI). */
+/** Number of local changes still waiting to be accepted by the server (backup status UI). */
 export async function pendingCount(db: SqlExecutor): Promise<number> {
-  return (await db.first<{ n: number }>('SELECT COUNT(*) AS n FROM sync_outbox'))?.n ?? 0;
+  return (
+    (await db.first<{ n: number }>('SELECT COUNT(*) AS n FROM sync_outbox WHERE parked = 0'))?.n ??
+    0
+  );
+}
+
+/** Local changes the server permanently refused (kept on the device, reported to the user). */
+export async function parkedCount(db: SqlExecutor): Promise<number> {
+  return (
+    (await db.first<{ n: number }>('SELECT COUNT(*) AS n FROM sync_outbox WHERE parked = 1'))?.n ??
+    0
+  );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { safeErrorText } from '@/security/redact';
-import { StyleSheet, View } from 'react-native';
+import { AppState, StyleSheet, View } from 'react-native';
 
 import type { IdGenerator } from '@/domain';
 import { he } from '@/i18n/he';
@@ -18,7 +18,8 @@ import {
   type AppDataValue,
   type NetworkMode,
 } from './DataContext';
-import { LocalStore, type Clock, type Snapshot } from './localStore';
+import { LocalStore, type Clock, type Snapshot, type SyncAttempt } from './localStore';
+import { SyncScheduler } from './syncScheduler';
 
 export interface LocalDataProviderProps {
   openDatabase: () => Promise<SqlDatabase>;
@@ -37,6 +38,32 @@ type Phase = { kind: 'loading' } | { kind: 'ready'; snapshot: Snapshot } | { kin
 class StoreRuntime {
   private store: LocalStore | null = null;
   private queue: Promise<unknown> = Promise.resolve();
+  /** Latest connectivity and account backend, read by the background backup. */
+  private online = true;
+  private backend: AccountBackend | null = null;
+
+  setOnline(on: boolean) {
+    this.online = on;
+  }
+
+  setBackend(b: AccountBackend | null) {
+    this.backend = b;
+  }
+
+  /** One automatic backup step (skipped offline or signed out). */
+  backUp(onSnapshot: (s: Snapshot) => void, onReadFailed: () => void) {
+    return this.task<SyncAttempt | 'skipped'>(
+      async (s) => {
+        const backend = this.backend;
+        if (!backend || !this.online) return 'skipped';
+        if (!(await backend.currentEmail())) return 'skipped';
+        return s.backUp(backend);
+      },
+      { ok: false, transient: true },
+      onSnapshot,
+      onReadFailed,
+    );
+  }
 
   attach(store: LocalStore) {
     this.store = store;
@@ -52,6 +79,36 @@ class StoreRuntime {
       } catch {
         return fallback;
       }
+    });
+  }
+
+  /**
+   * Runs an operation in the write order and returns its result (the fallback if the store is
+   * not open or the operation throws); a fresh snapshot is reported afterwards.
+   */
+  task<T>(
+    op: (s: LocalStore) => Promise<T>,
+    fallback: T,
+    onSnapshot: (s: Snapshot) => void,
+    onReadFailed: () => void,
+  ): Promise<T> {
+    return new Promise<T>((resolve) => {
+      this.queue = this.queue.then(async () => {
+        const s = this.store;
+        if (!s) return resolve(fallback);
+        let result = fallback;
+        try {
+          result = await op(s);
+        } catch (e) {
+          if (__DEV__) console.warn('AutoKeep: task failed', safeErrorText(e));
+        }
+        try {
+          onSnapshot(await s.snapshot());
+        } catch {
+          onReadFailed();
+        }
+        resolve(result);
+      });
     });
   }
 
@@ -103,14 +160,32 @@ export function LocalDataProvider({
   const [runtime] = useState(() => new StoreRuntime());
   const [attempt, setAttempt] = useState(0);
 
+  const toReady = (next: Snapshot) => setPhase({ kind: 'ready', snapshot: next });
+  const toFailed = () => setPhase({ kind: 'failed' });
+
+  // P2A (Y4): WHEN to back up is decided by one scheduler; every trigger is best effort.
+  const [scheduler] = useState(
+    () =>
+      new SyncScheduler({
+        run: () =>
+          runtime.backUp(
+            (next) => setPhase({ kind: 'ready', snapshot: next }),
+            () => setPhase({ kind: 'failed' }),
+          ),
+      }),
+  );
+  useEffect(() => () => scheduler.dispose(), [scheduler]);
+  useEffect(() => runtime.setBackend(backend), [runtime, backend]);
+
   // T151: real connectivity. The app never blocks on it; it explains, and resumes when back.
-  // T156: when the connection returns, a signed-in, adopted device backs up pending changes.
+  // T156: when the connection returns, pending changes are backed up.
   useEffect(() => {
     if (!monitor) return;
     let cancelled = false;
     let offline = false;
     const apply = (on: boolean) => {
       if (cancelled) return;
+      runtime.setOnline(on);
       setNetwork(on ? 'online' : 'offline');
       if (!on) {
         offline = true;
@@ -118,17 +193,7 @@ export function LocalDataProvider({
       }
       if (!offline) return;
       offline = false;
-      if (!backend) return;
-      runtime.write(
-        async (s) => {
-          if (!(await backend.currentEmail())) return;
-          if ((await s.backupStatus()).adoption !== 'adopted') return;
-          await s.sync(backend).catch(() => undefined);
-        },
-        (next) => setPhase({ kind: 'ready', snapshot: next }),
-        () => undefined,
-        () => setPhase({ kind: 'failed' }),
-      );
+      scheduler.request('now');
     };
     void monitor.isOnline().then(apply);
     const unsubscribe = monitor.subscribe(apply);
@@ -136,7 +201,25 @@ export function LocalDataProvider({
       cancelled = true;
       unsubscribe();
     };
-  }, [monitor, backend, runtime]);
+  }, [monitor, scheduler, runtime]);
+
+  // Foreground: refresh tokens only while active (React Native guidance) and back up.
+  useEffect(() => {
+    if (!backend) return;
+    backend.setActive(AppState.currentState === 'active');
+    const sub = AppState.addEventListener('change', (state) => {
+      const active = state === 'active';
+      backend.setActive(active);
+      if (active) scheduler.request('now');
+    });
+    return () => sub.remove();
+  }, [backend, scheduler]);
+
+  // Session changes made elsewhere (refresh failed, signed out, account deleted) are reflected.
+  useEffect(() => {
+    if (!backend) return;
+    return backend.onSessionChange((e) => setEmail(e));
+  }, [backend]);
 
   // The signed-in account (session persisted securely by the backend).
   useEffect(() => {
@@ -163,6 +246,7 @@ export function LocalDataProvider({
         if (cancelled) return;
         runtime.attach(s);
         setPhase({ kind: 'ready', snapshot });
+        scheduler.request('now');
       } catch (e) {
         if (__DEV__) console.warn('AutoKeep: local data failed to open', safeErrorText(e));
         if (!cancelled) setPhase({ kind: 'failed' });
@@ -171,13 +255,13 @@ export function LocalDataProvider({
     return () => {
       cancelled = true;
     };
-  }, [openDatabase, ids, clock, files, attempt, runtime]);
+  }, [openDatabase, ids, clock, files, attempt, runtime, scheduler]);
 
   const snapshot = phase.kind === 'ready' ? phase.snapshot : null;
 
   const value = useMemo<AppDataValue | null>(() => {
     if (!snapshot) return null;
-    const write = (op: (s: LocalStore) => Promise<unknown>) =>
+    const write = (op: (s: LocalStore) => Promise<unknown>) => {
       runtime.write(
         op,
         (next) => setPhase({ kind: 'ready', snapshot: next }),
@@ -185,6 +269,9 @@ export function LocalDataProvider({
         (e) => setSaveFailed(__DEV__ ? safeErrorText(e) : ''),
         () => setPhase({ kind: 'failed' }),
       );
+      // A local change is backed up after a short quiet period (if signed in and online).
+      if (email) scheduler.request('soon');
+    };
     // Adoption/sync failures are recorded in the backup status, not raised as write failures.
     const quietly = (op: (s: LocalStore) => Promise<unknown>) =>
       write((s) => op(s).catch(() => undefined));
@@ -265,6 +352,7 @@ export function LocalDataProvider({
             pending: snapshot.backup.pending,
             syncError: snapshot.backup.lastError,
             conflicts: snapshot.backup.conflicts,
+            notBackedUp: snapshot.backup.notBackedUp,
           }
         : { ...account, available: false },
       setAccount,
@@ -275,12 +363,22 @@ export function LocalDataProvider({
         const r = await backend.verifyCode(e, code);
         if (r.ok) {
           setEmail((await backend.currentEmail().catch(() => null)) ?? e.trim().toLowerCase());
-          quietly((s) => s.connectAccount(backend));
+          // Adopts this device's data into the account, then backs it up (retried if needed).
+          scheduler.request('now');
         }
         return r;
       },
-      syncNow: () => {
-        if (backend) quietly((s) => s.sync(backend));
+      syncNow: () => scheduler.request('now'),
+      deleteAccount: async () => {
+        if (!backend) return { ok: false, reason: 'server' };
+        const r = await runtime.task(
+          (s) => s.deleteAccount(backend),
+          { ok: false, reason: 'server' } as const,
+          toReady,
+          toFailed,
+        );
+        if (r.ok) setEmail(null);
+        return r;
       },
       acknowledgeConflicts: () => quietly((s) => s.acknowledgeConflicts()),
       signOutAccount: async () => {
@@ -293,7 +391,7 @@ export function LocalDataProvider({
       // Best effort: a selection that is no longer valid simply is not remembered.
       rememberActiveVehicle: (id) => write((s) => s.setActiveVehicle(id).catch(() => undefined)),
     };
-  }, [snapshot, runtime, network, account, clock, backend, email, sources, files, ids]);
+  }, [snapshot, runtime, network, account, clock, backend, email, sources, files, ids, scheduler]);
 
   if (phase.kind === 'failed') {
     return (

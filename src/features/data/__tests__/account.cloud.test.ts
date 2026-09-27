@@ -149,4 +149,48 @@ describe('LocalStore account backup (local Supabase)', () => {
     const { data: moto } = await user.client.from('vehicles').select('id').eq('id', w.moto.id);
     expect(moto).toHaveLength(1);
   });
+
+  it('cross-device: a vehicle deleted on one device disappears from the other, originals included', async () => {
+    const base = Math.floor(Math.random() * 2 ** 40);
+    const w = await populatedWorld(sequentialIds(base), T0);
+    const filesA = new MemoryFileStore();
+    const storeA = await LocalStore.open(w.db, sequentialIds(base + 100_000), clock, filesA);
+    const docId = `00000000-0000-4000-8000-${(base + 555).toString(16).padStart(12, '0')}`;
+    await storeA.addDocument(
+      w.car.id,
+      {
+        documentId: docId,
+        file: {
+          uri: 'file:///cache/m.pdf',
+          mimeType: 'application/pdf',
+          sizeBytes: 9,
+          source: 'file',
+        },
+        title: 'ספר בעלים',
+      },
+      'owners_manual',
+    );
+    const user = await userClient('xdev');
+    const backendA = supabaseAccountBackend(user.client);
+    await storeA.connectAccount(backendA);
+
+    // Device B: same account, restores the rows and (on demand) the original.
+    const dbB = await openTestDatabase();
+    const filesB = new MemoryFileStore();
+    const storeB = await LocalStore.open(dbB, sequentialIds(base + 200_000), clock, filesB);
+    const backendB = supabaseAccountBackend(await user.signInAgain());
+    await storeB.connectAccount(backendB);
+    expect((await storeB.original(w.car.id, docId, backendB))?.integrity).toBe('intact');
+    expect(filesB.files.size).toBe(1);
+
+    await storeA.deleteVehicle(w.car.id);
+    expect(await storeA.sync(backendA)).toEqual({ ok: true });
+    expect(await storeB.sync(backendB)).toEqual({ ok: true });
+
+    expect(await dbB.first('SELECT id FROM vehicles WHERE id = ?', [w.car.id])).toBeNull();
+    expect(await dbB.first('SELECT id FROM documents WHERE vehicle_id = ?', [w.car.id])).toBeNull();
+    expect(filesB.files.size).toBe(0);
+    expect(await dbB.first('SELECT id FROM vehicles WHERE id = ?', [w.moto.id])).not.toBeNull();
+    expect(await objectsUnder(`${user.userId}/${w.car.id}`)).toBe(0);
+  }, 120000);
 });

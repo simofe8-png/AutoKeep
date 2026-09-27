@@ -4,13 +4,16 @@ _Last updated: 2026-09-26_
 
 ## Position
 
-- **AUTOKEEP V1 RC PASS (2026-09-27)**, baseline `35478a2`. It is frozen: do not modify it until approved.
-- **P1, official source verification: research complete; STOPPED at the approval gate.**
-  - Findings: `docs/sources/P1_SOURCE_VERIFICATION.md`.
-  - No code, configuration or allowlist was changed.
-- **P1 decided (2026-09-27):** the 21 domains are approved as authority-only; terms of use are binding for automation; only the SYM verification pilot is approved; the user-supplied-document path is approved; importer outreach stays gated (P1 doc §8).
-- **P2, production backend planning: audit and plan complete; STOPPED at the approval gate.** Plan: `docs/release/P2_PRODUCTION_BACKEND_PLAN.md`. No code, migration, cloud resource or secret was created or changed.
-- **Next action:** the user's decisions on the P2 gates (§I). Implementation step H1 (local code) starts only when explicitly instructed.
+- **AUTOKEEP V1 RC PASS** (`35478a2`). P1 docs `7a1c798`. P2 plan `f6dd6a9`.
+- **P2A local production hardening: PASS (2026-09-27).**
+  - Blocker → fix → evidence: `docs/release/P2_PRODUCTION_BACKEND_PLAN.md` § P2A status.
+  - Hosted settings still to apply: `docs/release/HOSTED_AUTH_SETTINGS.md`.
+- **Verification:**
+  - verify: 49 suites / 340 tests;
+  - local-stack cloud: 42/42;
+  - live: 1/1;
+  - migrations from scratch (`db reset`) and `db lint` clean.
+- **Next action:** STOPPED at the staging gate (P2 plan §I items 2–8). Nothing hosted has been created.
 
 ## Granted policies
 

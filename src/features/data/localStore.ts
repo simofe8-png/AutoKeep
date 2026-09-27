@@ -32,8 +32,9 @@ import { alertCandidates, planAlerts, type AlertCandidate } from '@/engine/alert
 import { computeMaintenance, type EngineResult } from '@/engine/maintenance';
 import { adoptLocalData, readAdoptionState, type AdoptionStatus } from '@/account/adoption';
 import { originalPath, type AccountBackend } from '@/features/account/backend';
+import type { DeleteAccountResult } from '@/cloud/auth';
 import type { VehicleSummary } from '@/features/vehicles/types';
-import { pendingCount, syncOnce } from '@/sync/engine';
+import { parkedCount, pendingCount, syncOnce } from '@/sync/engine';
 import type { OriginalFileStore } from '@/providers/storage/types';
 import {
   ActiveVehicleStore,
@@ -105,7 +106,12 @@ export interface BackupStatus {
   lastError: 'network' | 'server_rejected' | 'different_account' | 'not_signed_in' | null;
   /** Fields changed on two devices at once, reconciled by sync and not yet acknowledged (T158). */
   conflicts: number;
+  /** Local changes the server permanently refused (kept on this device; P2A). */
+  notBackedUp: number;
 }
+
+/** Result of one sync attempt, for the scheduler (retry with backoff on transient failures). */
+export type SyncAttempt = { ok: true } | { ok: false; transient: boolean; retryInMs?: number };
 
 /** Optional identity details captured at onboarding (beyond the display summary). */
 export interface VehicleDetails {
@@ -156,7 +162,12 @@ export class LocalStore {
   ): Promise<LocalStore> {
     await migrate(db, MIGRATIONS, clock.now);
     const profile = await new ProfileRepository(db).getOrCreate(ids, clock.now());
-    return new LocalStore(db, ids, clock, profile, files);
+    const store = new LocalStore(db, ids, clock, profile, files);
+    // An account deletion that succeeded on the server but was interrupted before this device
+    // was wiped is completed now (never left half-done).
+    const pending = await new SettingsRepository(db).get<{ status: string }>('accountDeletion');
+    if (pending?.status === 'local_pending') await store.wipeLocalData();
+    return store;
   }
 
   // ---------- reads ----------
@@ -344,6 +355,7 @@ export class LocalStore {
       adoption.status === 'adopted' ? (await this.originalsToUpload()).length : 0;
     return {
       conflicts,
+      notBackedUp: adoption.status === 'adopted' ? await parkedCount(this.db) : 0,
       adoption: adoption.status,
       pending: adoption.status === 'adopted' ? (await pendingCount(this.db)) + originalsPending : 0,
       lastSyncAt: await settings.get<string>('lastSyncAt'),
@@ -367,6 +379,65 @@ export class LocalStore {
     await this.sync(backend);
   }
 
+  /**
+   * One automatic backup step (P2A, Y4): a signed-in device whose adoption did not complete
+   * (network drop, app killed) retries it; an adopted device syncs.
+   */
+  async backUp(backend: AccountBackend): Promise<SyncAttempt> {
+    if ((await readAdoptionState(this.db)).status !== 'adopted') {
+      const r = await adoptLocalData(this.db, backend.adoption, this.profile.id, this.clock.now);
+      if (!r.ok) {
+        const transient = r.failure === 'network' || r.failure === 'verification_mismatch';
+        return { ok: false, transient };
+      }
+    }
+    return this.sync(backend);
+  }
+
+  /**
+   * P2A: permanently deletes the account and everything it holds.
+   *   1. the server deletes every backed-up original, then the account (rows cascade);
+   *   2. only after the server confirmed, this device is wiped (vehicles, records, originals,
+   *      sync queue and bookkeeping) and signed out.
+   * A failure at step 1 changes nothing on this device and is reported. Step 2 is recorded first,
+   * so an interruption is completed on the next start. Retrying is always safe (idempotent).
+   */
+  async deleteAccount(backend: AccountBackend): Promise<DeleteAccountResult> {
+    const settings = new SettingsRepository(this.db);
+    const r = await backend.deleteAccount();
+    if (!r.ok) {
+      // The server may have removed some originals before failing: make sure the next backup
+      // re-checks every original instead of trusting the "already uploaded" list.
+      await settings.set('uploadedOriginals', [], this.clock.now());
+      return r;
+    }
+    await settings.set('accountDeletion', { status: 'local_pending' }, this.clock.now());
+    await this.wipeLocalData();
+    await backend.signOut().catch(() => undefined);
+    return { ok: true };
+  }
+
+  /** Removes every user record and original from this device (the device profile stays). */
+  async wipeLocalData(): Promise<void> {
+    const docs = await this.allDocuments();
+    await this.db.transaction(async (tx) => {
+      // Local bookkeeping only: nothing of this may be queued for sync.
+      await tx.run('UPDATE sync_control SET applying = 1 WHERE id = 1');
+      await tx.run('DELETE FROM sources');
+      await tx.run('DELETE FROM vehicles'); // every vehicle-scoped table cascades
+      await tx.run('DELETE FROM sync_outbox');
+      await tx.run('DELETE FROM sync_shadow');
+      await tx.run('DELETE FROM sync_conflicts');
+      await tx.run('UPDATE profiles SET account_user_id = NULL');
+      await tx.run("DELETE FROM settings WHERE key <> 'accountDeletion'");
+      await tx.run('UPDATE sync_control SET applying = 0 WHERE id = 1');
+    });
+    if (this.files) {
+      for (const d of docs) await this.files.remove(d.original.storageKey).catch(() => undefined);
+    }
+    await this.db.run("DELETE FROM settings WHERE key = 'accountDeletion'");
+  }
+
   private async allDocuments(): Promise<VehicleDocument[]> {
     const out: VehicleDocument[] = [];
     for (const v of await new VehicleRepository(this.db).list({ includeArchived: true })) {
@@ -385,9 +456,16 @@ export class LocalStore {
     const done = new Set(
       (await new SettingsRepository(this.db).get<string[]>('uploadedOriginals')) ?? [],
     );
+    const refused = new Set(
+      (
+        await this.db.all<{ entity_id: string }>(
+          "SELECT entity_id FROM sync_outbox WHERE entity_table = 'documents' AND parked = 1",
+        )
+      ).map((r) => r.entity_id),
+    );
     const out: VehicleDocument[] = [];
     for (const d of await this.allDocuments()) {
-      if (done.has(d.id)) continue;
+      if (done.has(d.id) || refused.has(d.id)) continue;
       if ((await files.verify(d.original.storageKey, d.original.sha256)) === 'intact') out.push(d);
     }
     return out;
@@ -433,29 +511,42 @@ export class LocalStore {
     await this.db.run('UPDATE sync_conflicts SET resolved = 1 WHERE resolved = 0');
   }
 
-  /** One sync round (push, then pull). Only for adopted data; failures are recorded, not lost. */
-  async sync(backend: AccountBackend): Promise<void> {
+  /**
+   * One sync round (push, then pull). Only for adopted data; failures are recorded, not lost.
+   * Returns whether a retry makes sense (transient failure) and when (backoff).
+   */
+  async sync(backend: AccountBackend): Promise<SyncAttempt> {
     const settings = new SettingsRepository(this.db);
+    const failed = async (retryInMs?: number): Promise<SyncAttempt> => {
+      await settings.set('syncLastError', 'network', this.clock.now());
+      return { ok: false, transient: true, retryInMs };
+    };
     // A permanently deleted vehicle takes its backed-up originals with it. This must happen before
     // the deletion is pushed (storage RLS needs the vehicle row); on failure nothing is pushed.
     try {
       await this.removeDeletedVehicleOriginals(backend);
     } catch {
-      await settings.set('syncLastError', 'network', this.clock.now());
-      return;
+      return failed();
     }
     const r = await syncOnce(this.db, backend.transport, this.clock.now);
-    if (r.ok) {
-      try {
-        await this.uploadOriginals(backend);
-        await settings.set('lastSyncAt', this.clock.now(), this.clock.now());
-        await settings.set('syncLastError', null, this.clock.now());
-      } catch {
-        await settings.set('syncLastError', 'network', this.clock.now());
-      }
-    } else if (r.reason === 'network') {
-      await settings.set('syncLastError', 'network', this.clock.now());
+    if (!r.ok) {
+      if (r.reason === 'network') return failed(r.retryInMs);
+      return { ok: false, transient: false };
     }
+    // Vehicles deleted on another device: their rows are gone, so are the local originals.
+    if (this.files) {
+      for (const key of r.pull.removedOriginals) {
+        await this.files.remove(key).catch(() => undefined);
+      }
+    }
+    try {
+      await this.uploadOriginals(backend);
+    } catch {
+      return failed();
+    }
+    await settings.set('lastSyncAt', this.clock.now(), this.clock.now());
+    await settings.set('syncLastError', null, this.clock.now());
+    return { ok: true };
   }
 
   async setNotificationsEnabled(enabled: boolean): Promise<void> {

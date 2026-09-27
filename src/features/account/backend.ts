@@ -2,7 +2,14 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 
 import type { AdoptionCloud } from '@/account/adoption';
 import { supabaseAdoptionCloud } from '@/account/cloudAdoption';
-import { requestEmailCode, signOut, verifyEmailCode, type AuthResult } from '@/cloud/auth';
+import {
+  deleteAccount,
+  requestEmailCode,
+  signOut,
+  verifyEmailCode,
+  type AuthResult,
+  type DeleteAccountResult,
+} from '@/cloud/auth';
 import type { SyncTransport } from '@/sync/engine';
 import { supabaseSyncTransport } from '@/sync/supabaseTransport';
 
@@ -16,7 +23,17 @@ export interface AccountBackend {
   verifyCode(email: string, code: string): Promise<AuthResult>;
   /** Signed-in account email, or null. */
   currentEmail(): Promise<string | null>;
+  /** Signs out this device only; the account and other devices are unaffected. */
   signOut(): Promise<void>;
+  /**
+   * Permanently deletes the account on the server: every backed-up original first, then the
+   * account itself (all rows cascade). Never reports success unless all of it is gone.
+   */
+  deleteAccount(): Promise<DeleteAccountResult>;
+  /** Session changes (signed out, refresh failed, account deleted). Returns an unsubscribe. */
+  onSessionChange(listener: (email: string | null) => void): () => void;
+  /** Token auto-refresh runs only while the app is in the foreground (React Native guidance). */
+  setActive(active: boolean): void;
   adoption: AdoptionCloud;
   transport: SyncTransport;
   /**
@@ -45,14 +62,30 @@ export function supabaseAccountBackend(sb: SupabaseClient): AccountBackend {
     verifyCode: (email, code) => verifyEmailCode(sb, email, code),
     currentEmail: async () => (await sb.auth.getSession()).data.session?.user.email ?? null,
     signOut: () => signOut(sb),
+    deleteAccount: () => deleteAccount(sb),
+    onSessionChange(listener) {
+      const { data } = sb.auth.onAuthStateChange((_event, session) => {
+        listener(session?.user.email ?? null);
+      });
+      return () => data.subscription.unsubscribe();
+    },
+    setActive(active) {
+      if (active) void sb.auth.startAutoRefresh();
+      else void sb.auth.stopAutoRefresh();
+    },
     adoption: supabaseAdoptionCloud(sb),
     transport: supabaseSyncTransport(sb),
     originals: {
       async upload(path, bytes, mimeType) {
+        // Insert-only (P2A): an original is stored once and never overwritten. A retry after a
+        // lost response finds it already stored, which is success.
         const { error } = await sb.storage
           .from('documents')
-          .upload(path, bytes, { contentType: mimeType, upsert: true });
-        if (error) throw new Error(`upload: ${error.message}`);
+          .upload(path, bytes, { contentType: mimeType, upsert: false });
+        if (!error) return;
+        const status = String((error as { statusCode?: string | number }).statusCode ?? '');
+        if (status === '409' || /already exists|duplicate/i.test(error.message)) return;
+        throw new Error(`upload: ${error.message}`);
       },
       async download(path) {
         const { data, error } = await sb.storage.from('documents').createSignedUrl(path, 60);
