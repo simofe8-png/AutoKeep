@@ -8,7 +8,7 @@ _Last updated: 2026-09-26_
 - **P2B technical cloud staging: PASS (2026-09-27)**, with a documented authentication limitation. Report: `docs/release/P2B_STAGING_REPORT.md`.
   - Staging project `autokeep-staging` (`bqgyaiqfubumkhmrztra`), Free, eu-central-1, $0. Retained; empty after cleanup.
   - Staging secrets live outside the repository in `~/.autokeep/staging.env`.
-- **STOPPED:** P2C (real-user Private Beta) needs approval. Readiness: `docs/release/P2C_PRIVATE_BETA_READINESS.md`. Real-user authentication (custom SMTP without a domain, or an alternative) is the first decision.
+- **P2C pre-gate (zero-domain auth validation): research done, config and harness prepared; WAITING for the dedicated Gmail account and App Password** (owner-only step). See `docs/release/ZERO_DOMAIN_AUTH_VALIDATION.md`. P2C not started.
 
 ## Granted policies
 
