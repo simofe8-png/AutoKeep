@@ -238,3 +238,77 @@ An Expo app needs a native module wrapper (a new dependency) and a native build.
 
 **Not PASS.** The scan still reads nothing (`extractor: null`); nothing was changed, pending the
 decision in §5.2.
+
+## 7. Galaxy A54 acceptance (standalone staging APK, Metro off)
+
+**Builds.** Metro and Expo CLI were off (no listener on 8081/8082), and the bundle secret scan found
+no service-role key or DB password.
+
+| Build            | Commit    | APK SHA-256                                                        | Size (bytes) |
+| ---------------- | --------- | ------------------------------------------------------------------ | ------------ |
+| First            | `2636493` | `6dfaeeb7f98210409d431220b08aa8c86670c8d5f170473e953db177e5b9ccbe` | 49,287,304   |
+| Final (accepted) | `ccfb4e4` | `26e67e98f72ab6b7c35c49af975ca7f4356986c7df8199785e45585846215492` | 49,287,720   |
+
+Play Protect's "send for scanning" prompt was declined both times.
+
+**Checklist** (evidence in `docs/release/evidence/vehicle-identity/`):
+
+| Check                                         | Result                                              | Evidence                                                   |
+| --------------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------- |
+| Manual color entry                            | PASS                                                | 02, 07, F3                                                 |
+| Manual engine-code entry                      | PASS                                                | 02, 07, F3                                                 |
+| Upper-casing ("cggb" → CGGB, "cgpa" → CGPA)   | PASS                                                | 04, 07, F3                                                 |
+| Invalid code: error shown, Continue disabled  | PASS (final build; defect found on the first build) | F2                                                         |
+| Both values on confirmation (with provenance) | PASS                                                | 04, 13, F3, F5                                             |
+| Persistence after force-stop and restart      | PASS                                                | 08, final pass                                             |
+| Hosted sync (rows on staging)                 | PASS                                                | service-role read, see below                               |
+| Edit screen: invalid code blocks Save         | PASS                                                | 16, 17                                                     |
+| Edit screen: edit syncs (version 1 → 2)       | PASS                                                | 18                                                         |
+| Clean-data restore (`pm clear`, then sign in) | PASS                                                | 21, 22-*, F1                                               |
+| Registry-derived color (שחור מטלי)            | PASS                                                | 13, F5                                                     |
+| Registry-derived engine code (CGG)            | PASS                                                | 13, F4, F5                                                 |
+| Displacement not filled from the engine code  | PASS                                                | registry vehicle has no engine row; staging `engine: null` |
+| Neutral generic illustration, labeled         | PASS                                                | 00, 06                                                     |
+| User photo overrides the illustration         | PASS                                                | 10, 11                                                     |
+
+The hosted sync rows, read from staging with the service-role key:
+
+- `SEAT Ibiza 1234567`: `engine 1.4`, `engine_code CGGB`, `color Silver`.
+- `סיאט ספרד IBIZA 7788176`: `engine null`, `engine_code CGG`, `color שחור מטלי`.
+- `documents`: 0 rows, and 0 storage objects. The user photo stayed on the device.
+
+The clean-data restore brought back both vehicles, including the edited values. The user photo is
+not restored: vehicle photos are device-local by design.
+
+**Defects found on the device and fixed in `ccfb4e4`:**
+
+1. **Manual entry dropped a malformed engine code silently.** Continue stayed enabled and the value
+   was lost. Now the field shows "קוד מנוע לא תקין" and Continue is disabled.
+2. **Registry ambiguity.** Plate 7788176 also appears in a supplementary code-only resource (tires
+   and towing). That row was expanded through the WLTP catalog into 4 extra candidates, including
+   **2011** variants, next to the plate's own 2012 record. Now the named record is authoritative,
+   and catalog expansion happens only when no named record exists. On the final build the lookup
+   fills the single correct record directly.
+
+**Known, not changed:**
+
+- The main dataset has no manufacturer country, so the manufacturer reads "סיאט ספרד". This is
+  cosmetic and pre-existing.
+- The registry gives no displacement for this plate. The engine code identifies the engine; nothing
+  was derived.
+
+**Test data.**
+
+- On device, color values were typed in ASCII ("Silver", "White"), because adb cannot type Hebrew.
+  Hebrew color values are covered by the automated tests and by the registry path.
+- Engine-code values edited on the device (CGGA, CGPA) are disposable test values.
+- **Cleanup:**
+  - staging: the disposable account `a54vid` and its invitation were deleted, leaving 0 users,
+    0 vehicles and 0 invitations;
+  - the test image was removed from the phone;
+  - the staging app's data was cleared.
+- **Privacy note:**
+  - The system photo picker showed the owner's personal photos during the photo test. Screenshots
+    that captured the picker were deleted immediately and never committed.
+  - A mis-tap selected one personal photo once. It was de-selected before confirmation, and it was
+    never applied or stored.
