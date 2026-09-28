@@ -103,3 +103,41 @@ Reproduce each reference composition. Apply only the authoritative exceptions:
 Vehicle imagery uses a bundled, self-made neutral illustration in the reference's style (sky,
 landscape, road, white vehicle), and the user's own vehicle photo when they add one. Neither is
 an external image provider.
+
+## Second correction: result (for the owner's decision, NOT self-declared PASS)
+
+**Commit:** `c6d776d`.
+
+**Standalone staging APK:**
+
+- `autokeep-staging-c6d776d.apk`, 49,320,612 bytes;
+- sha256 `f27880414d67cc80d5db504e701b3a23837172b98ec58da33d217c77a4be4d66`;
+- built with Metro/Expo CLI off, installed on the A54, cold-started from the launcher;
+- no development-server dependency;
+- bundle secret scan: only the anon key and the HTTPS URL are present.
+
+**Evidence:** `docs/design/evidence/after/` (APPROVED REFERENCE | CURRENT). Most screens are
+captured from the standalone APK against hosted staging, using a disposable account (since
+deleted).
+
+On a new staging account the plan is honestly unverified: no official source has been verified
+yet. So the plan, service-detail, documents and alerts comparisons also include a capture of the
+same source with the labeled demo data, which contains a verified plan and example alerts.
+
+**Remaining intentional differences** (authoritative decisions, see `README.md` §2 and §4):
+
+- four-tab navigation;
+- a self-made illustration instead of a vehicle photo (or the user's own photo);
+- no manufacturer logo;
+- no AI group, "תקין", test date, usage/location data or VIN method;
+- Alerts keeps a back control, because it is not a tab in the four-tab navigation;
+- Garage Mode offers PDF / WhatsApp / garage note instead of QR / WhatsApp / PDF, since there is
+  no QR dependency;
+- service recording keeps the explicit review/confirmation step and has no invoice-number field;
+- the alert detail shows a one-line target-vehicle identification (UX baseline).
+
+**Private download link** for the owner:
+
+- a signed URL on the private staging bucket `beta-builds`;
+- expires 2026-10-05;
+- the link's SHA-256 was verified equal to the APK.
