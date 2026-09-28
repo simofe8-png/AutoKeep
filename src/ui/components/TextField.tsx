@@ -32,6 +32,8 @@ export interface TextFieldProps {
   /** Identifiers (usernames): no auto-correct, no auto-capitalization. */
   plain?: boolean;
   autoComplete?: TextInputProps['autoComplete'];
+  /** Codes (e.g. engine code): 'characters'. Ignored for secure/plain fields. */
+  autoCapitalize?: TextInputProps['autoCapitalize'];
 }
 
 export function TextField({
@@ -48,6 +50,7 @@ export function TextField({
   editable = true,
   testID,
   maxLength,
+  autoCapitalize,
   secure = false,
   plain = false,
   autoComplete,
@@ -80,8 +83,8 @@ export function TextField({
           editable={editable}
           maxLength={maxLength}
           secureTextEntry={secure}
-          autoCapitalize={secure || plain ? 'none' : undefined}
-          autoCorrect={secure || plain ? false : undefined}
+          autoCapitalize={secure || plain ? 'none' : autoCapitalize}
+          autoCorrect={secure || plain || autoCapitalize === 'characters' ? false : undefined}
           autoComplete={autoComplete}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}

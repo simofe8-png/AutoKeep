@@ -226,6 +226,12 @@ export default function GarageModeScreen() {
           <Stack gap={spacing.xs}>
             <KV label={he.onboarding.fields.model} value={vehicleDisplayName(activeVehicle)} />
             <KV label={he.onboarding.fields.registration} value={activeVehicle.registration} />
+            {activeVehicle.engineCode ? (
+              <KV label={he.onboarding.fields.engineCode} value={activeVehicle.engineCode} />
+            ) : null}
+            {activeVehicle.color ? (
+              <KV label={he.onboarding.fields.color} value={activeVehicle.color} />
+            ) : null}
             <KV
               label={he.home.odometerTitle}
               value={`${formatKm(activeVehicle.odometerKm)} (${formatDate(activeVehicle.odometerMeasuredAt)})`}

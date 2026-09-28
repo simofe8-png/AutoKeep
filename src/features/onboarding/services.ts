@@ -28,7 +28,9 @@ const UI_FIELD: Record<string, DraftField | undefined> = {
   registration: 'registration',
   trim: 'trim',
   engine: 'engine',
+  engineCode: 'engineCode',
   fuel: 'fuel',
+  color: 'color',
   vin: 'vin',
 };
 

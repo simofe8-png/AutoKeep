@@ -27,7 +27,9 @@ export function applyRegistry(draft: IdentificationDraft, v: RegistryVehicle): I
   set('year', v.year);
   set('trim', v.trim);
   set('engine', v.engine);
+  set('engineCode', v.engineCode);
   set('fuel', v.fuel);
+  set('color', v.color);
   set('vin', v.vin);
   return next;
 }

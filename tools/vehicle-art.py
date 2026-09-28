@@ -1,8 +1,9 @@
 """Generates AutoKeep's bundled vehicle illustrations (assets/vehicles/*.png).
 
-Self-made, neutral artwork in the style of the approved references (sky, mountains, road,
-white vehicle). No photograph, brand, badge or manufacturer design is used; the art stands in
-wherever the references show a vehicle photo, until the user adds their own photo.
+Self-made, NEUTRAL placeholder artwork: a colorless two-tone silhouette on a muted scene. It must
+never read as a picture of the user's vehicle (owner correction 2026-09-28: a white sedan was
+taken for the identified SEAT Ibiza). No photograph, brand, badge, body color or manufacturer
+design is used. The app labels it as a generic illustration and prefers the user's own photo.
 
 Run: python tools/vehicle-art.py
 """
@@ -23,25 +24,25 @@ def scene(w, h):
     d = ImageDraw.Draw(img)
     horizon = int(h * 0.62)
     for y in range(horizon):  # sky
-        d.line([(0, y), (w, y)], fill=lerp((126, 176, 232), (226, 238, 250), y / horizon))
+        d.line([(0, y), (w, y)], fill=lerp((206, 216, 228), (238, 242, 247), y / horizon))
     # far mountains
     far = [(0, horizon - h * 0.10)]
     for i, (x, y) in enumerate([(0.12, 0.30), (0.25, 0.40), (0.38, 0.28), (0.52, 0.42),
                                 (0.66, 0.30), (0.80, 0.38), (0.93, 0.27), (1.0, 0.34)]):
         far.append((w * x, horizon - h * y * 0.55))
     far += [(w, horizon), (0, horizon)]
-    d.polygon(far, fill=(158, 184, 212))
+    d.polygon(far, fill=(214, 221, 230))
     near = [(0, horizon - h * 0.05)]
     for x, y in [(0.08, 0.16), (0.2, 0.08), (0.34, 0.2), (0.5, 0.1), (0.62, 0.18),
                  (0.76, 0.07), (0.9, 0.17), (1.0, 0.1)]:
         near.append((w * x, horizon - h * y * 0.7))
     near += [(w, horizon), (0, horizon)]
-    d.polygon(near, fill=(120, 150, 128))
+    d.polygon(near, fill=(200, 208, 218))
     # verge and road
-    d.rectangle([0, horizon, w, h], fill=(150, 160, 150))
+    d.rectangle([0, horizon, w, h], fill=(206, 212, 220))
     road_top = horizon + int(h * 0.05)
     for y in range(road_top, h):
-        d.line([(0, y), (w, y)], fill=lerp((164, 170, 180), (120, 126, 136), (y - road_top) / (h - road_top)))
+        d.line([(0, y), (w, y)], fill=lerp((198, 204, 213), (176, 184, 195), (y - road_top) / (h - road_top)))
     return img, road_top
 
 
@@ -153,9 +154,16 @@ def render(kind, w, h, name):
     ImageDraw.Draw(shadow).ellipse([x0 - L * 0.02, ground - H * 0.03, x0 + L * 1.02, ground + H * 0.04], fill=150)
     shadow = shadow.filter(ImageFilter.GaussianBlur(S * 6))
     img = Image.composite(Image.new('RGB', (W, H), (60, 64, 72)), img, shadow)
-    layer = img.copy()
-    {'car': car, 'motorcycle': motorcycle, 'scooter': scooter}[kind](layer, x0, ground, L)
-    out = layer.resize((w, h), Image.LANCZOS)
+    # Draw the vehicle on black, then reduce it to a two-tone silhouette: no body color, lights
+    # or other detail that could be mistaken for a specific real vehicle.
+    drawn = Image.new('RGB', (W, H), (0, 0, 0))
+    {'car': car, 'motorcycle': motorcycle, 'scooter': scooter}[kind](drawn, x0, ground, L)
+    lum = drawn.convert('L')
+    body = lum.point(lambda v: 255 if v > 0 else 0)
+    dark = lum.point(lambda v: 255 if 0 < v < 110 else 0)
+    img = Image.composite(Image.new('RGB', (W, H), (160, 172, 188)), img, body)
+    img = Image.composite(Image.new('RGB', (W, H), (122, 134, 152)), img, dark)
+    out = img.resize((w, h), Image.LANCZOS)
     os.makedirs(OUT, exist_ok=True)
     out.save(os.path.join(OUT, name), optimize=True)
 

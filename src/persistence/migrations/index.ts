@@ -178,4 +178,14 @@ CREATE TABLE settings (
   },
   V2_SYNC,
   V3_SYNC_PARKED,
+  {
+    // Vehicle identity: color and engine code (owner request 2026-09-28). Both optional — unknown
+    // stays NULL, never inferred. The engine code is distinct from the displacement (`engine`).
+    version: 4,
+    name: 'vehicle_color_engine_code',
+    up: `
+ALTER TABLE vehicles ADD COLUMN color TEXT;
+ALTER TABLE vehicles ADD COLUMN engine_code TEXT;
+`,
+  },
 ];

@@ -17,9 +17,10 @@ import {
 import { vehicleDisplayName, type VehicleKind, type VehicleSummary } from './types';
 
 /**
- * Bundled, self-made neutral illustrations (tools/vehicle-art.py) in the style of the approved
- * references. They stand in for the reference's vehicle photo until the user adds their own —
- * no external image provider, no manufacturer marks (owner decision 2026-09-28).
+ * Bundled, self-made NEUTRAL placeholders (tools/vehicle-art.py): a colorless silhouette per
+ * vehicle kind. AutoKeep has no trustworthy model/generation-specific image source, so no image
+ * is ever presented as the identified vehicle: the placeholder is labeled as a generic
+ * illustration, and the user's own photo replaces it (owner corrections 2026-09-28).
  */
 const ART: Record<VehicleKind, ImageSourcePropType> = {
   car: require('@/assets/vehicles/car.png'),
@@ -63,6 +64,13 @@ export function VehiclePhoto({
         resizeMode="cover"
         accessibilityIgnoresInvertColors
       />
+      {!uri && (variant === 'hero' || variant === 'wide') ? (
+        <View style={styles.artLabel} testID="vehicle-photo-art-label">
+          <AppText variant="caption" color="textSecondary">
+            {he.vehicles.genericIllustration}
+          </AppText>
+        </View>
+      ) : null}
     </View>
   );
 }
@@ -235,9 +243,18 @@ export function RowChevron() {
 }
 
 const styles = StyleSheet.create({
-  photo: { overflow: 'hidden', backgroundColor: '#DCEBFB' },
+  photo: { overflow: 'hidden', backgroundColor: '#E3E8EF' },
   stretch: { alignSelf: 'stretch' },
   image: { width: '100%', height: '100%' },
+  artLabel: {
+    position: 'absolute',
+    top: spacing.sm,
+    start: spacing.sm,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 2,
+    borderRadius: radii.pill,
+    backgroundColor: colors.surface,
+  },
   context: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -89,6 +89,46 @@ async function setup() {
 }
 
 describe('M09 sync against the local Supabase stack', () => {
+  it('color and engine code: account backup, restore on a new device, and later edits sync', async () => {
+    const user = await userClient('identity');
+    const world = await populatedWorld(ids, T0);
+    const repo = new VehicleRepository(world.db);
+    const car = (await repo.get(world.car.id))!;
+    await repo.update({
+      ...car,
+      identity: { ...car.identity, color: 'לבן', engineCode: 'CGGB' },
+      ...touch(car, clock()),
+    });
+    const a: Device = {
+      db: world.db,
+      sb: user.client,
+      transport: supabaseSyncTransport(user.client),
+    };
+    await joinAccount(a); // backup: adoption uploads the local vehicle as it is
+    const b = await emptyDevice(await user.signInAgain());
+    await joinAccount(b);
+    await sync(b); // restore on another device
+    expect((await vehicle(b, world.car.id)).identity).toMatchObject({
+      color: 'לבן',
+      engineCode: 'CGGB',
+    });
+    // Unknown stays unknown on the other vehicle.
+    expect((await vehicle(b, world.moto.id)).identity.engineCode).toBeUndefined();
+
+    const onB = await vehicle(b, world.car.id);
+    await new VehicleRepository(b.db).update({
+      ...onB,
+      identity: { ...onB.identity, color: 'אפור' },
+      ...touch(onB, clock()),
+    });
+    await sync(b);
+    await sync(a);
+    expect((await vehicle(a, world.car.id)).identity).toMatchObject({
+      color: 'אפור',
+      engineCode: 'CGGB',
+    });
+  });
+
   it('a second device restores all account data (inbound sync, T074)', async () => {
     const { a, b, car, moto } = await setup();
     expect(

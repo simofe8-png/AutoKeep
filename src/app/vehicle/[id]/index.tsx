@@ -41,7 +41,9 @@ function detailRows(v: VehicleSummary): [string, string][] {
     [f.trim, v.trim],
     [he.lifecycle.modelCode, v.modelCode],
     [f.engine, v.engine],
+    [f.engineCode, v.engineCode],
     [f.fuel, v.fuel],
+    [f.color, v.color],
     [f.registration, v.registration],
     [f.vin, v.vinMasked],
   ];

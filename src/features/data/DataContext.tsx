@@ -52,7 +52,9 @@ export type AccountResult = AuthResult;
 export interface VehicleDetailsInput {
   trim?: string;
   engine?: string;
+  engineCode?: string;
   fuel?: string;
+  color?: string;
   vin?: string;
 }
 

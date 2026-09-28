@@ -38,6 +38,8 @@ export const VEHICLE_IDENTITY_FIELDS = [
   'engine',
   'fuel',
   'transmission',
+  'color',
+  'engine_code',
   'registration',
   'vin',
 ] as const;

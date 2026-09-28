@@ -20,7 +20,10 @@ export interface VehicleSummary {
   trim?: string;
   modelCode?: string;
   engine?: string;
+  /** Manufacturer engine code (e.g. "CGGB"); absent when unknown. */
+  engineCode?: string;
   fuel?: string;
+  color?: string;
   /** VIN with the final characters masked for display (SPEC: minimise exposure). */
   vinMasked?: string;
 }

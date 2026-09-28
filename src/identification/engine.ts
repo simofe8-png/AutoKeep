@@ -1,4 +1,5 @@
 import {
+  parseEngineCode,
   parseRegistration,
   parseVin,
   type NewVehicleInput,
@@ -79,6 +80,8 @@ function fieldValid(field: DraftField, value: string, currentYear: number): bool
       return parseRegistration(value) !== null;
     case 'vin':
       return parseVin(value) !== null;
+    case 'engineCode':
+      return parseEngineCode(value) !== null;
     case 'year': {
       const y = Number(value);
       return Number.isInteger(y) && y >= 1950 && y <= currentYear + 1;
@@ -131,7 +134,9 @@ export function draftFromExtraction(
 
 /** Only the necessary fields that are still missing — known data is never re-asked. */
 export function missingFields(draft: IdentificationDraft): DraftField[] {
-  return REQUIRED_FIELDS.filter((f) => !draft[f] || draft[f]!.value.trim() === '');
+  const has = (f: DraftField) => Boolean(draft[f] && draft[f]!.value.trim() !== '');
+  // The engine is identified by its displacement or by its engine code (either is a fact).
+  return REQUIRED_FIELDS.filter((f) => !has(f) && !(f === 'engine' && has('engineCode')));
 }
 
 export function uncertainFields(draft: IdentificationDraft): DraftField[] {
@@ -192,7 +197,9 @@ export function toVehicleInput(draft: IdentificationDraft, ownerProfileId: Profi
     trim: val('trim'),
     modelCode: val('modelCode'),
     engine: val('engine'),
+    engineCode: val('engineCode'),
     fuel: val('fuel'),
+    color: val('color'),
   };
   return {
     ready: true,

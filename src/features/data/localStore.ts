@@ -122,7 +122,9 @@ export type SyncAttempt = { ok: true } | { ok: false; transient: boolean; retryI
 export interface VehicleDetails {
   trim?: string;
   engine?: string;
+  engineCode?: string;
   fuel?: string;
+  color?: string;
   vin?: string;
 }
 
@@ -341,7 +343,9 @@ export class LocalStore {
             year: vm.year,
             trim: details.trim?.trim() || undefined,
             engine: details.engine?.trim() || undefined,
+            engineCode: details.engineCode?.trim() || undefined,
             fuel: details.fuel?.trim() || undefined,
+            color: details.color?.trim() || undefined,
           },
           registration: vm.registration,
           vin: details.vin?.trim() || null,

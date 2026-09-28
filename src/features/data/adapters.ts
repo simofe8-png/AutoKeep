@@ -75,7 +75,9 @@ export function toVehicleSummary(v: Vehicle, latest: OdometerReading | null): Ve
     trim: v.identity.trim,
     modelCode: v.identity.modelCode,
     engine: v.identity.engine,
+    engineCode: v.identity.engineCode,
     fuel: v.identity.fuel,
+    color: v.identity.color,
     vinMasked: v.vin ? maskVin(v.vin) : undefined,
   };
 }

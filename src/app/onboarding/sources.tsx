@@ -129,6 +129,11 @@ function toVehicle(
     odometerKm,
     odometerMeasuredAt: today,
     archived: false,
+    trim: draft.trim,
+    engine: draft.engine,
+    engineCode: draft.engineCode,
+    fuel: draft.fuel,
+    color: draft.color,
   };
 }
 
@@ -223,7 +228,14 @@ export default function OnboardingSources() {
       toVehicle(id, draft, odometerKm ?? 0, today()),
       // Prototype placeholders only in demo mode; the real store records nothing it cannot back.
       isDemoData ? buildBundle(id, sourceScenario, origins.registration === 'scan') : undefined,
-      { trim: draft.trim, engine: draft.engine, fuel: draft.fuel, vin: draft.vin },
+      {
+        trim: draft.trim,
+        engine: draft.engine,
+        engineCode: draft.engineCode,
+        fuel: draft.fuel,
+        color: draft.color,
+        vin: draft.vin,
+      },
       plan,
     );
     setActiveVehicleId(id);

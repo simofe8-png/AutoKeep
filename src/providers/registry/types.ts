@@ -12,6 +12,10 @@ export interface RegistryVehicle extends VehicleVariant {
   fuel?: string;
   /** Engine displacement as published (e.g. "1598 סמ״ק"). */
   engine?: string;
+  /** Engine code as published (`degem_manoa`, e.g. "CGG"); never derived from the displacement. */
+  engineCode?: string;
+  /** Body color as published (`tzeva_rechev`). */
+  color?: string;
   /** Dataset the record came from (for provenance). */
   dataset: string;
 }

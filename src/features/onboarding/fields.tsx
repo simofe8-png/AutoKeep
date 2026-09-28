@@ -1,5 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
+import { parseEngineCode } from '@/domain';
 import { maskIdentifier } from '@/features/vehicles/format';
 import type { VehicleKind } from '@/features/vehicles/types';
 import { he } from '@/i18n/he';
@@ -14,7 +15,9 @@ export const DISPLAY_FIELDS: readonly DraftField[] = [
   'year',
   'trim',
   'engine',
+  'engineCode',
   'fuel',
+  'color',
   'registration',
   'vin',
 ];
@@ -111,7 +114,15 @@ export function DraftFieldInput({
       onChangeText={onChange}
       required={required}
       keyboardType={field === 'year' ? 'number-pad' : 'default'}
-      maxLength={field === 'year' ? 4 : 60}
+      autoCapitalize={field === 'engineCode' ? 'characters' : undefined}
+      hint={
+        field === 'engineCode'
+          ? he.onboarding.engineCodeHint
+          : field === 'engine'
+            ? he.onboarding.engineHint
+            : undefined
+      }
+      maxLength={field === 'year' ? 4 : field === 'engineCode' ? 20 : field === 'color' ? 40 : 60}
     />
   );
 }
@@ -124,6 +135,8 @@ export function toDraftValue(field: DraftField, raw: string): VehicleDraft[Draft
     return Number.isInteger(n) && n > 1950 && n < 2100 ? n : undefined;
   }
   if (field === 'kind') return (trimmed || undefined) as VehicleKind | undefined;
+  // Only a well-formed code is kept (upper-cased); anything else stays unknown, never guessed.
+  if (field === 'engineCode') return trimmed ? (parseEngineCode(trimmed) ?? undefined) : undefined;
   return trimmed || undefined;
 }
 

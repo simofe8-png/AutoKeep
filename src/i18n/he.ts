@@ -55,6 +55,7 @@ export const he = {
     activeBadge: 'פעיל',
   },
   vehicles: {
+    genericIllustration: 'איור כללי · לא תמונת הרכב שלך',
     title: 'כלי הרכב שלי',
   },
   vehicleType: {
@@ -161,9 +162,14 @@ export const he = {
       registration: 'מספר רישוי',
       trim: 'גרסה / רמת גימור',
       engine: 'מנוע',
+      engineCode: 'קוד מנוע',
       fuel: 'סוג דלק / הנעה',
+      color: 'צבע',
       vin: 'מספר שלדה (VIN)',
     },
+    engineHint: 'נפח המנוע, לדוגמה 1.4. את קוד המנוע מזינים בשדה ״קוד מנוע״.',
+    engineCodeHint:
+      'לדוגמה CGGB (״דגם מנוע״). אם אינו ידוע — השאירו ריק; לא נשלים אותו מנפח המנוע.',
     scenarios: {
       success: 'זיהוי מלא',
       partial: 'זיהוי חלקי',

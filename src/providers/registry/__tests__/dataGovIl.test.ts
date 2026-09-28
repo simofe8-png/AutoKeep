@@ -83,6 +83,7 @@ const carRow = {
   shnat_yitzur: 2019,
   ramat_gimur: 'SUN',
   degem_manoa: '1ZR',
+  tzeva_rechev: 'לבן שנהב',
   sug_delek_nm: 'בנזין',
   misgeret: 'SB1ZS3JE00E000001',
   baalut: 'פרטי',
@@ -146,7 +147,7 @@ describe('data.gov.il registry provider (ADR-0012)', () => {
     ]);
   });
 
-  it('maps a named car row (commercial name, trim, engine code kept but never read as liters)', async () => {
+  it('maps a named car row (commercial name, trim, color; engine code is not the displacement)', async () => {
     const api = fakeApi({ records: { [RES.carsMain]: [carRow] } });
     const r = await new DataGovIlRegistry({ get: api.get }).lookup(plate('23-456-78'), {
       consent: true,
@@ -156,8 +157,11 @@ describe('data.gov.il registry provider (ADR-0012)', () => {
       model: 'COROLLA',
       year: 2019,
       trim: 'SUN',
-      engine: '1ZR',
+      engineCode: '1ZR',
+      color: 'לבן שנהב',
     });
+    // `degem_manoa` is the engine code: it never fills the displacement field.
+    expect(r.status === 'found' && r.candidates[0].engine).toBeUndefined();
     expect(engineLiters('1ZR')).toBeNull();
   });
 

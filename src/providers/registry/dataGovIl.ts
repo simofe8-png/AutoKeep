@@ -158,8 +158,12 @@ function mapCar(r: Json): RegistryVehicle {
     model: str(r.kinuy_mishari) ?? str(r.degem_nm) ?? '',
     year: num(r.shnat_yitzur) ?? 0,
     trim: str(r.ramat_gimur),
-    engine: str(r.degem_manoa) ? `${str(r.degem_manoa)}` : cc(r.nefah_manoa ?? r.nefach_manoa),
+    // Displacement and engine code are different facts: `degem_manoa` is the engine code (it was
+    // previously shown as the engine displacement), `nefah_manoa` the displacement.
+    engine: cc(r.nefah_manoa ?? r.nefach_manoa),
+    engineCode: str(r.degem_manoa)?.toUpperCase(),
     fuel: str(r.sug_delek_nm) ?? str(r.delek_nm),
+    color: str(r.tzeva_rechev),
     vin: str(r.misgeret),
     dataset: r.from_catalog ? PACKAGES.modelCatalog : PACKAGES.cars,
   };
@@ -183,7 +187,17 @@ function mapTwoWheeler(r: Json): RegistryVehicle {
 function dedupe(list: RegistryVehicle[]): RegistryVehicle[] {
   const seen = new Set<string>();
   return list.filter((v) => {
-    const k = JSON.stringify([v.type, v.manufacturer, v.model, v.year, v.trim, v.engine, v.vin]);
+    const k = JSON.stringify([
+      v.type,
+      v.manufacturer,
+      v.model,
+      v.year,
+      v.trim,
+      v.engine,
+      v.engineCode,
+      v.color,
+      v.vin,
+    ]);
     if (seen.has(k)) return false;
     seen.add(k);
     return true;

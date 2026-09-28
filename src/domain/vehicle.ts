@@ -72,10 +72,26 @@ export interface VehicleIdentity {
   year: number;
   trim?: string;
   modelCode?: string;
+  /** Engine displacement / description as known (e.g. "1.4", "1390 סמ״ק"). */
   engine?: string;
+  /**
+   * Manufacturer engine code (e.g. "CGGB"). A first-class identity attribute: never derived from
+   * the displacement and never guessed — absent when unknown.
+   */
+  engineCode?: string;
   fuel?: string;
   transmission?: string;
+  /** Body color as stated by the user or the registry. Never inferred. */
+  color?: string;
 }
+
+/** Engine code: letters/digits with optional separators, stored upper-case. Null = invalid. */
+export function parseEngineCode(raw: string): string | null {
+  const v = raw.trim().replace(/\s+/g, ' ').toUpperCase();
+  return /^[A-Z0-9](?:[A-Z0-9 ./-]{0,18}[A-Z0-9])?$/.test(v) ? v : null;
+}
+
+export const MAX_COLOR_LENGTH = 40;
 
 export type VehicleLifecycle = 'active' | 'archived';
 
@@ -118,6 +134,11 @@ export function createVehicle(
         issue('vehicle.year', 'Year is out of range', 'year'),
       !registration && issue('vehicle.registration', 'Invalid registration number', 'registration'),
       Boolean(input.vin) && !vin && issue('vehicle.vin', 'Invalid VIN', 'vin'),
+      Boolean(input.identity.engineCode?.trim()) &&
+        !parseEngineCode(input.identity.engineCode!) &&
+        issue('vehicle.engineCode', 'Invalid engine code', 'engineCode'),
+      (input.identity.color?.trim().length ?? 0) > MAX_COLOR_LENGTH &&
+        issue('vehicle.color', 'Color is too long', 'color'),
     ],
     () => ({
       id: ids.next<'Vehicle'>(),
@@ -127,6 +148,10 @@ export function createVehicle(
         ...input.identity,
         manufacturer: input.identity.manufacturer.trim(),
         model: input.identity.model.trim(),
+        engineCode: input.identity.engineCode?.trim()
+          ? (parseEngineCode(input.identity.engineCode) ?? undefined)
+          : undefined,
+        color: input.identity.color?.trim() || undefined,
       },
       registration: registration!,
       vin,
