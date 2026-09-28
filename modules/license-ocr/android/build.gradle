@@ -1,0 +1,26 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'com.autokeep'
+version = '0.1.0'
+
+android {
+  namespace "expo.modules.licenseocr"
+  defaultConfig {
+    versionCode 1
+    versionName "0.1.0"
+  }
+  // The bundled traineddata files are read as-is by Tesseract.
+  androidResources {
+    noCompress += ['traineddata']
+  }
+}
+
+dependencies {
+  // On-device Tesseract 5.5.1 (Apache-2.0). Pinned; resolved from JitPack (app.json →
+  // expo-build-properties extraMavenRepos). No network, telemetry or permissions (POC audit).
+  implementation 'cz.adaptech.tesseract4android:tesseract4android:4.9.0'
+  implementation 'androidx.exifinterface:exifinterface:1.4.1'
+}

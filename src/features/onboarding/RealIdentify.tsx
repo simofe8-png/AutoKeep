@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { vehicleKindIcon } from '@/features/vehicles/ActiveVehicleBar';
@@ -10,14 +10,19 @@ import {
   type IdentificationDraft,
   type VehicleVariant,
 } from '@/identification/engine';
+import { probeText } from '@/identification/ocrProbe';
 import { emptyCatalog, identifyFromAcquisition } from '@/identification/pipeline';
+import { extractPlateCandidates } from '@/identification/plateCandidates';
+import { discardCapturedImage, type LicenseOcr } from '@/providers/ocr/localLicenseOcr';
 import { AppText, Card, ErrorState, ListRow, LoadingState, Screen, Stack } from '@/ui';
 
+import { LicensePlateStep, OCR_POC, type OcrOutcome } from './LicensePlateStep';
 import { useOnboarding } from './OnboardingContext';
 import { toOnboardingDraft, type OnboardingServices } from './services';
 
 type View =
   | { kind: 'running' }
+  | { kind: 'plate'; outcome: OcrOutcome }
   | { kind: 'unavailable' }
   | { kind: 'failed'; message: string }
   | { kind: 'choose'; draft: IdentificationDraft; candidates: VehicleVariant[] };
@@ -29,8 +34,9 @@ type View =
  */
 export function RealIdentify({ services }: { services: OnboardingServices }) {
   const router = useRouter();
-  const { acquired, setIdentified } = useOnboarding();
+  const { acquired, setIdentified, setAcquired } = useOnboarding();
   const [view, setView] = useState<View>({ kind: 'running' });
+  const ocrDone = useRef(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -40,6 +46,20 @@ export function RealIdentify({ services }: { services: OnboardingServices }) {
       router.replace('/onboarding/confirm');
     };
     (async () => {
+      if (ocrDone.current) return; // the plate step is showing; the image was already released
+      if (!services.extractor && services.licenseOcr) {
+        if (!acquired || acquired.status !== 'acquired') {
+          return setView({ kind: 'failed', message: he.onboarding.scanFailedBody });
+        }
+        const outcome = await readPlateOnDevice(services.licenseOcr, acquired.file.uri);
+        // The license image is no longer needed: delete it and forget it.
+        await discardCapturedImage(acquired.file.uri).catch(() => false);
+        if (cancelled) return;
+        ocrDone.current = true;
+        setView({ kind: 'plate', outcome });
+        setAcquired(null);
+        return;
+      }
       if (!services.extractor) return setView({ kind: 'unavailable' });
       if (!acquired) return setView({ kind: 'failed', message: he.onboarding.scanFailedBody });
       const r = await identifyFromAcquisition(
@@ -81,9 +101,19 @@ export function RealIdentify({ services }: { services: OnboardingServices }) {
   if (view.kind === 'running') {
     return (
       <Screen header={header} testID="screen-onboarding-identify" scroll={false}>
-        <LoadingState message={he.onboarding.identifying} />
+        <LoadingState
+          message={services.licenseOcr ? he.onboarding.ocrReading : he.onboarding.identifying}
+        />
+        {services.licenseOcr ? (
+          <AppText variant="small" color="textSecondary" align="center">
+            {he.onboarding.ocrLocalNote}
+          </AppText>
+        ) : null}
       </Screen>
     );
+  }
+  if (view.kind === 'plate') {
+    return <LicensePlateStep services={services} outcome={view.outcome} />;
   }
   if (view.kind === 'unavailable' || view.kind === 'failed') {
     return (
@@ -133,4 +163,27 @@ export function RealIdentify({ services }: { services: OnboardingServices }) {
       </Stack>
     </Screen>
   );
+}
+
+/**
+ * On-device OCR → plate candidates. The recognized lines stay in memory only; outside a POC build
+ * they are dropped here, and only the extracted plate candidates leave this function.
+ */
+async function readPlateOnDevice(ocr: LicenseOcr, uri: string): Promise<OcrOutcome> {
+  try {
+    const r = await ocr.recognize(uri);
+    return {
+      extraction: extractPlateCandidates(r.lines),
+      metrics: {
+        ms: r.ms,
+        rotation: r.rotation,
+        meanConfidence: r.meanConfidence,
+        text: probeText(r.lines),
+      },
+      pocLines: OCR_POC ? r.lines : null,
+    };
+  } catch {
+    // No error detail is kept: it could echo image content.
+    return { extraction: { kind: 'failed' }, metrics: null, pocLines: null };
+  }
 }

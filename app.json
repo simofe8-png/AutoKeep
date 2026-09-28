@@ -48,6 +48,14 @@
     "plugins": [
       "expo-router",
       [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraMavenRepos": ["https://jitpack.io"]
+          }
+        }
+      ],
+      [
         "expo-splash-screen",
         {
           "backgroundColor": "#208AEF",

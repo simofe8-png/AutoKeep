@@ -22,6 +22,7 @@ import { netInfoNetwork } from '@/providers/network/netInfoNetwork';
 import type { NetworkMonitor } from '@/providers/network/types';
 import type { DocumentExporter } from '@/providers/export/types';
 import { DataGovIlRegistry } from '@/providers/registry/dataGovIl';
+import { localLicenseOcr } from '@/providers/ocr/localLicenseOcr';
 import { expoFileStore } from '@/providers/storage/expoFileStore';
 import type { OriginalFileStore } from '@/providers/storage/types';
 
@@ -105,6 +106,8 @@ const production: DataSourceConfig = {
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.
     extractor: null,
     registry: new DataGovIlRegistry(),
+    // License-scan POC (owner decision 2026-09-28): Tesseract on-device, plate candidate only.
+    licenseOcr: localLicenseOcr(),
     // G1: no OCR/AI runtime provider is approved yet — invoices are not read automatically.
     invoiceReader: null,
   },

@@ -2,6 +2,7 @@ import type { RegistrationExtractor } from '@/identification/contract';
 import type { OcrProvider, StructuredExtractor } from '@/intelligence/ports';
 import type { IdentificationDraft } from '@/identification/engine';
 import type { AcquisitionProvider } from '@/providers/acquisition/types';
+import type { LicenseOcr } from '@/providers/ocr/localLicenseOcr';
 import type { VehicleRegistryProvider } from '@/providers/registry/types';
 import type { VehicleKind } from '@/features/vehicles/types';
 
@@ -16,6 +17,11 @@ export interface OnboardingServices {
   acquisition: AcquisitionProvider;
   extractor: RegistrationExtractor | null;
   registry: VehicleRegistryProvider;
+  /**
+   * On-device license OCR (POC): reads a registration-number CANDIDATE that the user confirms
+   * before the registry is consulted. Null where the native module is absent (Expo Go, tests).
+   */
+  licenseOcr?: LicenseOcr | null;
   /** Invoice OCR + structured extraction (M11 ports); null until a provider is approved (G1). */
   invoiceReader: { ocr: OcrProvider; extractor: StructuredExtractor } | null;
 }
