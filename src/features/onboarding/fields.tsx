@@ -84,11 +84,13 @@ export function DraftFieldInput({
   value,
   onChange,
   required,
+  error,
 }: {
   field: DraftField;
   value: string;
   onChange: (value: string) => void;
   required: boolean;
+  error?: string;
 }) {
   if (field === 'kind') {
     return (
@@ -113,6 +115,7 @@ export function DraftFieldInput({
       value={value}
       onChangeText={onChange}
       required={required}
+      error={error}
       keyboardType={field === 'year' ? 'number-pad' : 'default'}
       autoCapitalize={field === 'engineCode' ? 'characters' : undefined}
       hint={

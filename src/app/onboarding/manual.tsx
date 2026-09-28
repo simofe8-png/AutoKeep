@@ -35,7 +35,9 @@ export default function OnboardingManual() {
       ([, v]) => v !== undefined,
     ),
   );
-  const incomplete = missingFields(parsed).length > 0;
+  // A typed engine code that is not well-formed is flagged — never silently dropped or "fixed".
+  const codeInvalid = Boolean(inputs.engineCode?.trim()) && parsed.engineCode === undefined;
+  const incomplete = missingFields(parsed).length > 0 || codeInvalid;
 
   return (
     <Screen
@@ -70,6 +72,7 @@ export default function OnboardingManual() {
             field={f}
             value={inputs[f] ?? ''}
             required={REQUIRED_FIELDS.includes(f)}
+            error={f === 'engineCode' && codeInvalid ? he.lifecycle.invalidEngineCode : undefined}
             onChange={(v) => setInputs((s) => ({ ...s, [f]: v }))}
           />
         ))}

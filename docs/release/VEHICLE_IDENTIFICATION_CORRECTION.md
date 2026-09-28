@@ -153,10 +153,88 @@ Options, smallest first:
   the engine-code mapping.
 - `npm run test:cloud` (local Supabase with the new migration): 7 suites / 53 tests, including
   "color and engine code: account backup, restore on a new device, and later edits sync".
-- **Hosted staging:** the migration is **not applied**. The push was blocked by the permission
-  classifier and is left to the owner (`npx supabase db push --db-url "$AUTOKEEP_STAGING_DB_URL"`).
-  - Until it is applied, staging silently drops the two fields on backup.
-  - An older app version that edits a vehicle after the migration would write NULL over them.
-    This is acceptable while the beta has no users.
-- **Galaxy A54:** not verified. Device access through adb was blocked by the permission classifier
-  in this session. A new APK is needed for the owner's device.
+- **Hosted staging (owner-approved, 2026-09-28):** `20260928000002` applied with
+  `supabase db push` to staging only; `migration list` shows local = remote for all six
+  migrations. The cloud suite against hosted staging: 7 suites / 53 tests, including the
+  color/engine-code backup → restore → edit test. The staging test accounts were deleted afterwards
+  (staging: 0 users, 0 vehicles, 0 invitations).
+  - An older app version that edits a vehicle would write NULL over the two fields. This is
+    acceptable while the beta has no users.
+- **Galaxy A54:** see §7.
+
+## 5. Owner decisions (2026-09-28) and follow-up
+
+### 5.1 Vehicle details → edit (implemented)
+
+- **Audit.** The details card listed identity facts read-only. The only existing edit was the
+  odometer (pencil → `/odometer`).
+- **Implementation.** It follows the same pattern: a pencil on the details card opens
+  `/vehicle/[id]/edit`, with fields for color, engine code and engine. It is not available for
+  archived vehicles.
+  - Empty means unknown, and nothing is derived.
+  - Manufacturer, model, year and registration are **not** editable. They define the vehicle and
+    its source matching, so changing them would be a separate decision.
+  - The **engine is locked** while a verified schedule exists, because that schedule's exact
+    applicability was proven against the current value. This is enforced in the UI and, as a
+    backstop, in the store (`vehicle.engineLocked`).
+  - The engine code and color are not used for applicability today, so they stay editable.
+- **Domain and sync.** `updateVehicleDetails` validates like creation and bumps the version. The
+  change syncs as a normal vehicle update, with field-level merge.
+- **No new architecture or security decision:** the same table and repository, and no new data
+  category.
+
+### 5.2 On-device ML Kit POC: STOPPED before integration (privacy finding)
+
+The owner's instruction: "If ML Kit integration introduces an unexpected privacy … issue, STOP and
+report it before proceeding."
+
+**Capability (current documentation, checked 2026-09-28).**
+
+- Text Recognition v2 supports Latin, Chinese, Devanagari, Japanese and Korean. **Hebrew is not
+  listed** (https://developers.google.com/ml-kit/vision/text-recognition/v2/languages).
+- On-device behaviour was not measured, because nothing was integrated (see below).
+
+**Android dependencies.**
+
+- bundled: `com.google.mlkit:text-recognition:16.0.1`;
+- or unbundled through Google Play services:
+  `com.google.android.gms:play-services-mlkit-text-recognition:19.0.1`.
+
+An Expo app needs a native module wrapper (a new dependency) and a native build.
+
+**Privacy finding.**
+
+- Recognition runs on-device, and the image and the recognized text are not sent.
+- **However,** ML Kit's Android data disclosure
+  (https://developers.google.com/ml-kit/android-data-disclosure) states that the SDK collects, and
+  sends to Google over HTTPS "for diagnostics and usage analytics":
+  - device information and application information;
+  - **device or installation identifiers**;
+  - performance metrics;
+  - API configuration and input/output size;
+  - feature version, event type and error codes.
+- Developers report periodic uploads to `firebaselogging.googleapis.com`, and there is **no
+  documented opt-out**. Google has not answered the related question in googlesamples/mlkit#1076.
+
+**Conclusion.**
+
+- The approved condition "the image stays on-device" would hold.
+- But the integration adds a **new third-party data flow** (identifiers and usage metadata to
+  Google) that the owner has not approved.
+- Even the on-device POC would trigger it on the owner's phone.
+- Nothing was added.
+
+**Options for the owner:**
+
+1. Accept the ML Kit telemetry (disclosed in the privacy notice and the Play data-safety form),
+   then run the POC.
+2. Run the POC with ML Kit while blocking the telemetry transport through an unofficial manifest
+   change. It is unsupported by Google, may break silently, and needs a config plugin.
+3. An open-source on-device engine without telemetry: Tesseract, Apache-2.0, which has Hebrew
+   trained data. Larger app, slower, lower accuracy on photos; it needs a native wrapper, and
+   its choice is a new dependency decision.
+
+## 6. License scan: status
+
+**Not PASS.** The scan still reads nothing (`extractor: null`); nothing was changed, pending the
+decision in §5.2.

@@ -165,6 +165,24 @@ describe('data.gov.il registry provider (ADR-0012)', () => {
     expect(engineLiters('1ZR')).toBeNull();
   });
 
+  it('a named record wins over a supplementary code-only row of the same plate (A54 finding)', async () => {
+    // Same plate in the main resource (named) and the tires/towing resource (codes only):
+    // catalog variants of other years must not be offered.
+    const api = fakeApi({
+      records: {
+        [RES.carsMain]: [carRow],
+        [RES.carsCodes]: [{ ...codesRow, mispar_rechev: carRow.mispar_rechev }],
+        [RES.wltp]: [wltp(2022, 'COMFORT'), wltp(2023, 'COMFORT')],
+      },
+    });
+    const r = await new DataGovIlRegistry({ get: api.get }).lookup(plate('23-456-78'), {
+      consent: true,
+    });
+    expect(r.status === 'found' && r.candidates).toEqual([
+      expect.objectContaining({ model: 'COROLLA', year: 2019, engineCode: '1ZR' }),
+    ]);
+  });
+
   it('code-only rows resolve through the model catalog; several variants → user selects', async () => {
     const api = fakeApi({
       records: {

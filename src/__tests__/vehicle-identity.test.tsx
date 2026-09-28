@@ -279,5 +279,9 @@ describe('manual entry in the app (real local store)', () => {
     await fireEvent.changeText(screen.getByTestId('input-engineCode'), '??');
     // Without a displacement or a valid code the engine is still missing.
     expect(screen.getByTestId('manual-continue')).toBeDisabled();
+    // Even with a displacement, an invalid code blocks and is explained (never silently dropped).
+    await fireEvent.changeText(screen.getByTestId('input-engine'), '1.4');
+    expect(screen.getByTestId('manual-continue')).toBeDisabled();
+    expect(screen.getByText(/קוד מנוע לא תקין/)).toBeOnTheScreen();
   }, 30000);
 });

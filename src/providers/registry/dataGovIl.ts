@@ -120,11 +120,20 @@ export class DataGovIlRegistry implements VehicleRegistryProvider {
           candidates.push(mapTwoWheeler(r));
         }
       }
+      const named: RegistryVehicle[] = [];
+      const codeOnly: Json[] = [];
       for (const rid of await this.resources(PACKAGES.cars)) {
         for (const r of await this.search(rid, { mispar_rechev: plate }, 5)) {
-          if (str(r.degem_nm) || str(r.tozeret_nm)) candidates.push(mapCar(r));
-          else candidates.push(...(await this.resolveCodes(r)));
+          if (str(r.degem_nm) || str(r.tozeret_nm)) named.push(mapCar(r));
+          else codeOnly.push(r);
         }
+      }
+      // The plate's own named record is authoritative. Supplementary code-only rows (e.g. the
+      // tires/towing resource) are expanded through the model catalog only when no named record
+      // exists — otherwise catalog variants of other years/trims would be offered as matches.
+      candidates.push(...named);
+      if (named.length === 0) {
+        for (const r of codeOnly) candidates.push(...(await this.resolveCodes(r)));
       }
       const unique = dedupe(candidates);
       return unique.length
