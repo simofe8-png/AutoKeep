@@ -328,6 +328,7 @@ export function LocalDataProvider({
           await s.setActiveVehicle(id);
         });
       },
+      updateVehicleDetails: (id, patch) => write((s) => s.updateVehicleDetails(id, patch)),
       archiveVehicle: (id) => write((s) => s.archiveVehicle(id)),
       restoreVehicle: (id) => write((s) => s.restoreVehicle(id)),
       deleteVehicle: (id) => write((s) => s.deleteVehicle(id)),

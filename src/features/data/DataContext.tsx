@@ -98,6 +98,11 @@ export interface AppDataValue {
     identity: VehicleIdentityQuery,
     onStep: (step: DiscoveryStep) => void,
   ) => Promise<SourcePlan>;
+  /** Corrects color / engine code / displacement ('' clears a field; absent keys unchanged). */
+  updateVehicleDetails: (
+    vehicleId: string,
+    patch: { color?: string; engineCode?: string; engine?: string },
+  ) => void;
   archiveVehicle: (vehicleId: string) => void;
   restoreVehicle: (vehicleId: string) => void;
   deleteVehicle: (vehicleId: string) => void;

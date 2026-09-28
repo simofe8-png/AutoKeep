@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState, type ReactNode } from 'react';
 
+import { parseEngineCode } from '@/domain';
 import { todayIso } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
 
@@ -63,6 +64,29 @@ export function PrototypeDataProvider({
   const setArchived = useCallback((vehicleId: string, archived: boolean) => {
     setVehicles((prev) => prev.map((v) => (v.id === vehicleId ? { ...v, archived } : v)));
   }, []);
+
+  const updateVehicleDetails = useCallback(
+    (vehicleId: string, patch: { color?: string; engineCode?: string; engine?: string }) => {
+      const set = (s: string | undefined, prev: string | undefined) =>
+        s === undefined ? prev : s.trim() || undefined;
+      setVehicles((prev) =>
+        prev.map((v) =>
+          v.id === vehicleId
+            ? {
+                ...v,
+                color: set(patch.color, v.color),
+                engineCode:
+                  patch.engineCode === undefined
+                    ? v.engineCode
+                    : (parseEngineCode(patch.engineCode) ?? undefined),
+                engine: set(patch.engine, v.engine),
+              }
+            : v,
+        ),
+      );
+    },
+    [],
+  );
 
   const deleteVehicle = useCallback((vehicleId: string) => {
     setVehicles((prev) => prev.filter((v) => v.id !== vehicleId));
@@ -172,6 +196,7 @@ export function PrototypeDataProvider({
       vehicles,
       getBundle,
       addVehicle,
+      updateVehicleDetails,
       archiveVehicle: (id) => setArchived(id, true),
       restoreVehicle: (id) => setArchived(id, false),
       deleteVehicle,
@@ -235,6 +260,7 @@ export function PrototypeDataProvider({
       getBundle,
       addVehicle,
       setArchived,
+      updateVehicleDetails,
       deleteVehicle,
       updateOdometer,
       addServiceEvent,

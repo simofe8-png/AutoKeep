@@ -9,6 +9,8 @@ import {
   createOdometerReading,
   createSchedule,
   createVehicle,
+  updateVehicleDetails,
+  type VehicleDetailsPatch,
   handleAlert,
   reactivateAlert,
   resolveAlert,
@@ -605,6 +607,27 @@ export class LocalStore {
 
   async setActiveVehicle(id: string): Promise<void> {
     await new ActiveVehicleStore(this.db).set(id as VehicleId, this.clock.now());
+  }
+
+  /**
+   * Corrects user-editable identity details. The displacement is locked while a VERIFIED schedule
+   * exists: that schedule's exact applicability was proven against the current value.
+   */
+  async updateVehicleDetails(id: string, patch: VehicleDetailsPatch): Promise<void> {
+    await this.db.transaction(async (tx) => {
+      const repo = new VehicleRepository(tx);
+      const v = await repo.get(id as VehicleId);
+      if (!v) throw new Error(`Vehicle ${id} not found`);
+      if (patch.engine !== undefined && (patch.engine.trim() || undefined) !== v.identity.engine) {
+        const schedule = await new ScheduleRepository(tx).current(v.id);
+        if (schedule?.verification.state === 'verified') {
+          throw new DomainError([
+            { code: 'vehicle.engineLocked', message: 'Verified schedule', field: 'engine' },
+          ]);
+        }
+      }
+      await repo.update(must(updateVehicleDetails(v, patch, this.clock.now())));
+    });
   }
 
   async archiveVehicle(id: string): Promise<void> {

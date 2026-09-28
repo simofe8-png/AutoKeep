@@ -131,9 +131,20 @@ export default function VehicleManageScreen() {
 
       <Card testID="vehicle-details">
         <Stack gap={0}>
-          <AppText variant="heading" accessibilityRole="header">
-            {he.lifecycle.detailsTitle}
-          </AppText>
+          <View style={styles.detailsHeader}>
+            <AppText variant="heading" accessibilityRole="header" style={styles.flex}>
+              {he.lifecycle.detailsTitle}
+            </AppText>
+            {!vehicle.archived ? (
+              <IconButton
+                testID="vehicle-edit-details"
+                icon="pencil-outline"
+                color="primary"
+                accessibilityLabel={he.lifecycle.editDetails}
+                onPress={() => router.push(`/vehicle/${vehicle.id}/edit`)}
+              />
+            ) : null}
+          </View>
           {detailRows(vehicle).map(([label, value]) => (
             <Stack key={label} gap={0}>
               <Divider />
@@ -282,4 +293,6 @@ const styles = StyleSheet.create({
   top: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   topText: { flex: 1, gap: spacing.xs },
   topImage: { alignItems: 'center', gap: spacing.xs },
+  detailsHeader: { flexDirection: 'row', alignItems: 'center' },
+  flex: { flex: 1 },
 });

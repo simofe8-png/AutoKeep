@@ -162,6 +162,45 @@ export function createVehicle(
   );
 }
 
+/**
+ * User-correctable identity details (vehicle details → edit). An empty string clears the field
+ * (unknown); a key that is absent is left unchanged. Nothing is derived from another field.
+ */
+export interface VehicleDetailsPatch {
+  color?: string;
+  engineCode?: string;
+  engine?: string;
+}
+
+export function updateVehicleDetails(
+  v: Vehicle,
+  patch: VehicleDetailsPatch,
+  now: Timestamp,
+): Result<Vehicle> {
+  const clean = (s: string | undefined) => (s === undefined ? undefined : s.trim());
+  const color = clean(patch.color);
+  const code = clean(patch.engineCode);
+  const engine = clean(patch.engine);
+  const parsedCode = code ? parseEngineCode(code) : null;
+  return validate(
+    [
+      Boolean(code) &&
+        !parsedCode &&
+        issue('vehicle.engineCode', 'Invalid engine code', 'engineCode'),
+      (color?.length ?? 0) > MAX_COLOR_LENGTH &&
+        issue('vehicle.color', 'Color is too long', 'color'),
+      (engine?.length ?? 0) > 60 && issue('vehicle.engine', 'Engine is too long', 'engine'),
+    ],
+    () => {
+      const identity = { ...v.identity };
+      if (color !== undefined) identity.color = color || undefined;
+      if (code !== undefined) identity.engineCode = parsedCode ?? undefined;
+      if (engine !== undefined) identity.engine = engine || undefined;
+      return { ...v, identity, ...touch(v, now) };
+    },
+  );
+}
+
 /** Archive is not deletion (invariant 20): data, history and documents are untouched. */
 export function archiveVehicle(v: Vehicle, now: Timestamp): Result<Vehicle> {
   if (v.lifecycle === 'archived')
