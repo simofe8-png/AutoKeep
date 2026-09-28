@@ -53,7 +53,10 @@ export default function TabsLayout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textMuted,
+        tabBarInactiveTintColor: colors.textSecondary,
+        // Reference: the active destination sits on a light-blue rounded background.
+        tabBarActiveBackgroundColor: colors.primarySoft,
+        tabBarItemStyle: { borderRadius: 16, marginHorizontal: 6, marginVertical: 2 },
         tabBarStyle: {
           backgroundColor: colors.surface,
           borderTopColor: colors.border,

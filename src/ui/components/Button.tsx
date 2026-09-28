@@ -5,7 +5,14 @@ import { AppText } from './AppText';
 import { Icon, type IconName } from './Icon';
 
 export type ButtonVariant =
-  'primary' | 'secondary' | 'ghost' | 'danger' | 'dangerOutline' | 'success' | 'attention';
+  | 'primary'
+  | 'secondary'
+  | 'ghost'
+  | 'danger'
+  | 'dangerOutline'
+  | 'success'
+  | 'attention'
+  | 'tonal';
 
 export interface ButtonProps {
   label: string;
@@ -44,6 +51,7 @@ const palette: Record<
   },
   success: { bg: colors.successStrong, bgPressed: colors.success, fg: 'textOnPrimary' },
   attention: { bg: colors.attention, bgPressed: colors.attentionPressed, fg: 'textPrimary' },
+  tonal: { bg: colors.primarySoft, bgPressed: colors.primaryBorder, fg: 'primary' },
 };
 
 export function Button({

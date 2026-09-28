@@ -59,7 +59,7 @@ export default function OnboardingConfirm() {
         <>
           <Button
             testID="confirm-details"
-            label={he.onboarding.confirmAndContinue}
+            label={he.onboarding.continueToConfirm}
             fullWidth
             disabled={stillMissing.length > 0}
             onPress={() => {
@@ -69,7 +69,7 @@ export default function OnboardingConfirm() {
           />
           <Button
             testID="edit-details"
-            label={he.onboarding.notMyDetails}
+            label={he.onboarding.notMyVehicle}
             variant="ghost"
             fullWidth
             onPress={() => router.push('/onboarding/manual')}
@@ -81,10 +81,10 @@ export default function OnboardingConfirm() {
       {draft.manufacturer && draft.model ? (
         <View style={styles.identity} testID="confirm-identity">
           <AppText variant="title" align="center" accessibilityRole="header">
-            {he.onboarding.isThisYours}
+            {he.onboarding.identifiedTitle}
           </AppText>
           <AppText color="textSecondary" align="center">
-            {he.onboarding.confirmBody}
+            {he.onboarding.identifiedBody}
           </AppText>
           <VehiclePhoto vehicle={{ kind: draft.kind ?? 'car' }} variant="hero" />
           <AppText variant="title" align="center">

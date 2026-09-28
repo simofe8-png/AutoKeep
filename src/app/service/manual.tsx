@@ -26,7 +26,7 @@ export default function ManualServiceScreen() {
   return (
     <Screen
       testID="screen-service-manual"
-      header={<ScreenHeader title={he.service.manual} />}
+      header={<ScreenHeader title={he.service.manual} brand />}
       footer={
         <Button
           testID="service-to-review"

@@ -3,17 +3,15 @@ import { Redirect, useRouter } from 'expo-router';
 import { AccountOfferCard } from '@/features/account/AccountOfferCard';
 import { activeAlerts, AlertStatusCard, mostUrgentAlert } from '@/features/alerts/components';
 import { useAppData, useVehicleData } from '@/features/data/DataContext';
-import { nextServiceTile, ScheduleUnavailable } from '@/features/maintenance/components';
+import { nextServiceTile } from '@/features/maintenance/components';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate, formatKm } from '@/features/vehicles/format';
+import { formatNumber } from '@/features/vehicles/format';
 import { VehicleHero, VehicleSelectorCard } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import {
   Button,
-  Card,
   EmptyState,
-  InlineNotice,
   OfflineBanner,
   QuickActionGrid,
   QuickActionTile,
@@ -25,10 +23,11 @@ import {
 } from '@/ui';
 
 /**
- * Home (T016), laid out after the approved Home reference (left variant of
- * docs/design/approved/a_clean_realistic_ui_ux_mockup_image_of_three_sma.png): active vehicle,
- * next service and odometer, the most urgent alert, all alerts, shortcuts. Never claims the
- * vehicle is "healthy"; unverified schedules stay unavailable.
+ * Home (T016), reproducing the approved Home reference — the LEFT screen of
+ * docs/design/approved/a_clean_realistic_ui_ux_mockup_image_of_three_sma.png:
+ * header · vehicle selector · vehicle image · name / spec / plate · next service + odometer
+ * tiles · the most urgent status card · "all alerts" · four shortcuts. Never claims the vehicle
+ * is "healthy"; an unverified schedule is stated as such.
  */
 export default function HomeScreen() {
   const router = useRouter();
@@ -84,8 +83,8 @@ export default function HomeScreen() {
           testID="home-odometer-card"
           icon="road-variant"
           label={he.home.odometerNow}
-          value={formatKm(activeVehicle.odometerKm)}
-          detail={`${he.home.measuredAt}: ${formatDate(activeVehicle.odometerMeasuredAt)}`}
+          value={formatNumber(activeVehicle.odometerKm)}
+          detail={he.common.km}
           onPress={() => router.push('/odometer')}
           accessibilityHint={he.home.updateOdometer}
         />
@@ -97,15 +96,15 @@ export default function HomeScreen() {
           testID="home-alerts"
           onPress={() => router.push(`/alerts/${urgent.id}`)}
         />
-      ) : null}
-
-      {schedule.status !== 'verified' ? (
-        <Card tone={schedule.status === 'pending' ? 'warning' : 'muted'}>
-          <ScheduleUnavailable
-            schedule={schedule}
-            onUploadManual={() => router.push('/documents')}
-          />
-        </Card>
+      ) : schedule.status !== 'verified' ? (
+        <StatusCard
+          testID="schedule-unavailable"
+          tone={schedule.status === 'pending' ? 'warning' : 'neutral'}
+          icon={schedule.status === 'pending' ? 'clock-outline' : 'information-variant'}
+          title={he.home.scheduleUnavailableTitle}
+          subtitle={verificationLabel(schedule.status)}
+          onPress={() => router.push('/maintenance')}
+        />
       ) : !schedule.next ? (
         <StatusCard
           testID="home-no-tasks"
@@ -116,15 +115,13 @@ export default function HomeScreen() {
         />
       ) : null}
 
-      {alerts.length > 0 ? (
-        <Button
-          testID="home-all-alerts"
-          label={he.home.allAlertsCount(alerts.length)}
-          icon="bell-outline"
-          fullWidth
-          onPress={() => router.push('/alerts')}
-        />
-      ) : null}
+      <Button
+        testID="home-all-alerts"
+        label={he.home.allAlertsCount(alerts.length)}
+        icon="bell-outline"
+        fullWidth
+        onPress={() => router.push('/alerts')}
+      />
 
       <QuickActionGrid testID="home-shortcuts">
         <QuickActionTile
@@ -153,21 +150,8 @@ export default function HomeScreen() {
         />
       </QuickActionGrid>
 
-      <Button
-        testID="home-record-service"
-        label={he.home.recordService}
-        icon="plus-circle-outline"
-        variant="secondary"
-        fullWidth
-        onPress={() => router.push('/service/new')}
-      />
-
       {!account.hasAccount && hasValuableData ? (
         <AccountOfferCard onPress={() => router.push('/account')} />
-      ) : null}
-
-      {network === 'offline' && schedule.status !== 'verified' ? (
-        <InlineNotice tone="neutral" message={he.states.offlineMessage} />
       ) : null}
     </Screen>
   );

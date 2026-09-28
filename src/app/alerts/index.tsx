@@ -54,7 +54,7 @@ export default function AlertsScreen() {
 
   return (
     <Screen
-      header={<ScreenHeader title={he.alerts.listTitle} subtitle={he.alerts.listSubtitle} />}
+      header={<ScreenHeader title={he.alerts.listTitle} subtitle={he.alerts.listSubtitle} brand />}
       testID="screen-alerts"
     >
       {activeVehicle ? (
@@ -75,13 +75,14 @@ export default function AlertsScreen() {
       ) : (
         <>
           <FilterChips
+            tone="dark"
             testID="alerts-filter"
             accessibilityLabel={he.alerts.listTitle}
             value={filter}
             onChange={setFilter}
             options={[
               { value: 'all' as const, label: he.alerts.filters.all, count: list.length },
-              ...GROUPS.filter((g) => count(g) > 0).map((g) => ({
+              ...GROUPS.map((g) => ({
                 value: g,
                 label: he.alerts.filters[g],
                 count: count(g),
@@ -185,7 +186,7 @@ function AlertListCard({
           icon={alertStatusIcon[alert.kind]}
           tone={alertStatusTone[alert.kind]}
           size={52}
-          solid={group === 'urgent'}
+          solid={false}
         />
         <View style={styles.flex}>
           <AppText variant="heading" color={group === 'urgent' ? 'danger' : 'textPrimary'}>

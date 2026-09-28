@@ -110,18 +110,17 @@ export function nextServiceTile(next: NextServiceVM): { value: string; detail: s
     : next.dueAtKm != null
       ? formatKm(next.dueAtKm)
       : next.title;
-  const remaining = joinParts([
+  // Reference: the date, then "בעוד N ימים" (distance when there is no date).
+  const remaining =
     next.remainingDays != null
       ? next.remainingDays < 0
         ? he.home.daysLate(-next.remainingDays)
         : he.home.inDays(next.remainingDays)
-      : null,
-    next.remainingKm != null
-      ? next.remainingKm < 0
-        ? he.home.kmLate(formatKm(-next.remainingKm))
-        : he.home.kmLeft(formatKm(next.remainingKm))
-      : null,
-  ]);
+      : next.remainingKm != null
+        ? next.remainingKm < 0
+          ? he.home.kmLate(formatKm(-next.remainingKm))
+          : he.home.kmLeft(formatKm(next.remainingKm))
+        : '';
   return { value, detail: remaining };
 }
 

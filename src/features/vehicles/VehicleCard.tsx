@@ -5,9 +5,9 @@ import { he } from '@/i18n/he';
 import {
   AppText,
   Badge,
-  Button,
   colors,
   Icon,
+  IconButton,
   PlateBadge,
   radii,
   spacing,
@@ -68,7 +68,6 @@ export function VehicleCard({
 }) {
   const next = bundle.schedule.status === 'verified' ? bundle.schedule.next : undefined;
   const status = vehicleStatus(bundle);
-  const alertCount = bundle.alerts.filter((a) => !a.handled).length;
   const selectable = onSelect && !active;
   const nextValue = next?.dueDate
     ? formatDate(next.dueDate)
@@ -85,14 +84,13 @@ export function VehicleCard({
   const main = (
     <View style={styles.main}>
       <View style={styles.text}>
-        <AppText variant="heading">{vehicleDisplayName(vehicle)}</AppText>
+        <AppText variant="heading">{`${vehicle.manufacturer} ${vehicle.model}`}</AppText>
         <AppText variant="small" color="textSecondary">
-          {`${he.vehicleType[vehicle.kind]}  |  ${vehicleSpecLine(vehicle)}`}
+          {vehicleSpecLine(vehicle)}
         </AppText>
         <PlateBadge number={vehicle.registration} size="sm" />
       </View>
-      <VehiclePhoto vehicle={vehicle} variant="thumb" />
-      {selectable ? <Icon name="chevron-left" size={24} color="textPrimary" /> : null}
+      <VehiclePhoto vehicle={vehicle} variant="card" />
     </View>
   );
 
@@ -108,6 +106,14 @@ export function VehicleCard({
           </AppText>
         </View>
       ) : null}
+      <View style={styles.manage}>
+        <IconButton
+          testID={`vehicle-manage-${vehicle.id}`}
+          icon="chevron-right"
+          accessibilityLabel={`${he.myVehicles.manage}: ${vehicleDisplayName(vehicle)}`}
+          onPress={onManage}
+        />
+      </View>
       {selectable ? (
         <Pressable
           testID={`vehicle-select-${vehicle.id}`}
@@ -163,22 +169,7 @@ export function VehicleCard({
           ) : null}
         </View>
       </View>
-      <View style={styles.footer}>
-        {alertCount > 0 ? (
-          <Badge label={`${he.alerts.title}: ${alertCount}`} tone="warning" icon="bell-outline" />
-        ) : null}
-        {vehicle.archived ? <Badge label={he.lifecycle.archivedBadge} tone="neutral" /> : null}
-        <View style={styles.flex} />
-        <Button
-          testID={`vehicle-manage-${vehicle.id}`}
-          label={he.myVehicles.manageDetails}
-          variant="ghost"
-          size="sm"
-          icon="cog-outline"
-          onPress={onManage}
-          accessibilityLabel={`${he.myVehicles.manage}: ${vehicleDisplayName(vehicle)}`}
-        />
-      </View>
+      {vehicle.archived ? <Badge label={he.lifecycle.archivedBadge} tone="neutral" /> : null}
     </View>
   );
 }
@@ -204,7 +195,8 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.xxs,
     borderRadius: radii.pill,
   },
-  main: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  main: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingStart: 36 },
+  manage: { position: 'absolute', start: 2, top: 44, zIndex: 1 },
   text: { flex: 1, gap: spacing.xs },
   stats: {
     flexDirection: 'row',

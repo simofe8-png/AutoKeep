@@ -7,11 +7,23 @@ async function open(url: string, testID: string) {
   await waitFor(() => expect(screen.getByTestId(testID)).toBeOnTheScreen(), LONG);
 }
 
-async function switchTo(vehicleId: string) {
+async function switchTo(id: string) {
+  // The vehicle selector lives on Home (approved Home reference); other tabs return afterwards.
+  const tab = (['history', 'documents', 'maintenance'] as const).find((t) =>
+    screen.queryByTestId(`screen-${t}`),
+  );
+  if (!screen.queryByTestId('active-vehicle-chip')) {
+    await fireEvent.press(screen.getByTestId('tab-home'));
+    await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
+  }
   await fireEvent.press(screen.getByTestId('active-vehicle-chip'));
   await waitFor(() => expect(screen.getByTestId('screen-vehicles')).toBeOnTheScreen());
-  await fireEvent.press(screen.getByTestId(`vehicle-select-${vehicleId}`));
+  await fireEvent.press(screen.getByTestId(`vehicle-select-${id}`));
   await waitFor(() => expect(screen.queryByTestId('screen-vehicles')).toBeNull());
+  if (tab) {
+    await fireEvent.press(screen.getByTestId(`tab-${tab}`));
+    await waitFor(() => expect(screen.getByTestId(`screen-${tab}`)).toBeOnTheScreen());
+  }
 }
 
 describe('Home (T016)', () => {
@@ -21,7 +33,6 @@ describe('Home (T016)', () => {
     // Next service (Home reference): due date, remaining time and distance.
     expect(screen.getByTestId('home-next-service')).toHaveTextContent(/15.12.2026/);
     expect(screen.getByTestId('home-next-service')).toHaveTextContent(/81 ימים/);
-    expect(screen.getByTestId('home-next-service')).toHaveTextContent(/5,750/);
     expect(screen.getByTestId('home-alerts')).toHaveTextContent(/טיפול מתקרב/);
     // The plan shows the service, its due status and the labeled forecast (צפי).
     await fireEvent.press(screen.getByTestId('home-view-service'));
@@ -35,7 +46,8 @@ describe('Home (T016)', () => {
     await open('/', 'screen-home');
     await switchTo('mock-vehicle-motorcycle');
     const home = screen.getByTestId('screen-home');
-    expect(within(home).getByTestId('schedule-unavailable')).toBeOnTheScreen();
+    // The unverified schedule is stated (no next service is invented).
+    expect(within(home).getByTestId('home-next-service')).toHaveTextContent(/ממתין לאימות/);
     expect(within(home).queryByTestId('next-service-summary')).toBeNull();
     expect(home).not.toHaveTextContent(/בריא|תקין לחלוטין|הרכב במצב טוב/);
   });

@@ -35,6 +35,7 @@ import { originalPath, type AccountBackend } from '@/features/account/backend';
 import type { DeleteAccountResult } from '@/cloud/auth';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import { parkedCount, pendingCount, syncOnce } from '@/sync/engine';
+import type { AcquiredFile } from '@/providers/acquisition/types';
 import type { OriginalFileStore } from '@/providers/storage/types';
 import {
   ActiveVehicleStore,
@@ -88,6 +89,8 @@ export const systemClock: Clock = {
   },
 };
 
+const PHOTO_KEY = 'vehiclePhotos';
+
 export interface Snapshot {
   vehicles: VehicleSummary[];
   bundles: Record<string, VehicleDataBundle>;
@@ -96,6 +99,8 @@ export interface Snapshot {
   notificationsEnabled: boolean;
   /** Backup/sync state from the local database (T140). */
   backup: BackupStatus;
+  /** User-provided vehicle photos (device-local, not synced): vehicleId → viewable URI. */
+  vehiclePhotos: Record<string, string>;
 }
 
 export interface BackupStatus {
@@ -275,7 +280,46 @@ export class LocalStore {
       activeVehicleId,
       notificationsEnabled,
       backup: await this.backupStatus(),
+      vehiclePhotos: await this.vehiclePhotoUris(),
     };
+  }
+
+  // ---------- vehicle photos (user-provided, device-local) ----------
+
+  private async photoKeys(): Promise<Record<string, string>> {
+    return (await new SettingsRepository(this.db).get<Record<string, string>>(PHOTO_KEY)) ?? {};
+  }
+
+  private async vehiclePhotoUris(): Promise<Record<string, string>> {
+    if (!this.files) return {};
+    const out: Record<string, string> = {};
+    for (const [id, key] of Object.entries(await this.photoKeys()))
+      out[id] = this.files.uriFor(key);
+    return out;
+  }
+
+  /** Stores the user's own photo of a vehicle (replaces a previous one). */
+  async setVehiclePhoto(vehicleId: string, file: AcquiredFile): Promise<void> {
+    if (!this.files) throw new Error('no file store');
+    const stored = await this.files.importFile(file);
+    const keys = await this.photoKeys();
+    const previous = keys[vehicleId];
+    await new SettingsRepository(this.db).set(
+      PHOTO_KEY,
+      { ...keys, [vehicleId]: stored.storageKey },
+      this.clock.now(),
+    );
+    if (previous) await this.files.remove(previous).catch(() => undefined);
+  }
+
+  private async removeVehiclePhoto(vehicleId: string): Promise<void> {
+    const keys = await this.photoKeys();
+    const key = keys[vehicleId];
+    if (!key) return;
+    const rest = { ...keys };
+    delete rest[vehicleId];
+    await new SettingsRepository(this.db).set(PHOTO_KEY, rest, this.clock.now());
+    if (this.files) await this.files.remove(key).catch(() => undefined);
   }
 
   // ---------- writes ----------
@@ -420,6 +464,7 @@ export class LocalStore {
   /** Removes every user record and original from this device (the device profile stays). */
   async wipeLocalData(): Promise<void> {
     const docs = await this.allDocuments();
+    const photos = Object.values(await this.photoKeys());
     await this.db.transaction(async (tx) => {
       // Local bookkeeping only: nothing of this may be queued for sync.
       await tx.run('UPDATE sync_control SET applying = 1 WHERE id = 1');
@@ -434,6 +479,7 @@ export class LocalStore {
     });
     if (this.files) {
       for (const d of docs) await this.files.remove(d.original.storageKey).catch(() => undefined);
+      for (const key of photos) await this.files.remove(key).catch(() => undefined);
     }
     await this.db.run("DELETE FROM settings WHERE key = 'accountDeletion'");
   }
@@ -576,6 +622,7 @@ export class LocalStore {
    * failure never leaves records pointing at deleted files.
    */
   async deleteVehicle(id: string): Promise<void> {
+    await this.removeVehiclePhoto(id);
     const docs = await new DocumentRepository(this.db).list(id as VehicleId);
     await new VehicleRepository(this.db).deletePermanently(id as VehicleId);
     if (this.files) {

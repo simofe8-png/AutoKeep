@@ -24,7 +24,6 @@ export default function VehiclesScreen() {
         <ScreenHeader
           title={he.vehicles.title}
           subtitle={he.myVehicles.subtitle}
-          closeIcon
           trailing={
             <IconButton
               testID="vehicles-add-header"

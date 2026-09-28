@@ -42,7 +42,7 @@ export default function ReviewServiceScreen() {
   return (
     <Screen
       testID="screen-service-review"
-      header={<ScreenHeader title={he.service.reviewTitle} />}
+      header={<ScreenHeader title={he.service.reviewTitle} brand />}
       footer={
         <Button
           testID="service-confirm"

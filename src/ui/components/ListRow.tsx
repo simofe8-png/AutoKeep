@@ -15,6 +15,10 @@ export interface ListRowProps {
   below?: ReactNode;
   onPress?: () => void;
   showChevron?: boolean;
+  /** Plain icon without the tinted circle (reference settings rows). */
+  plainIcon?: boolean;
+  /** Destructive row (red icon and title). */
+  danger?: boolean;
   accessibilityLabel?: string;
   testID?: string;
 }
@@ -27,18 +31,26 @@ export function ListRow({
   below,
   onPress,
   showChevron = onPress != null,
+  plainIcon = false,
+  danger = false,
   accessibilityLabel,
   testID,
 }: ListRowProps) {
   const body = (
     <>
       {icon ? (
-        <View style={styles.iconWrap}>
-          <Icon name={icon} size={22} color="primary" />
+        <View style={plainIcon ? styles.iconPlain : styles.iconWrap}>
+          <Icon
+            name={icon}
+            size={plainIcon ? 26 : 22}
+            color={danger ? 'danger' : plainIcon ? 'textPrimary' : 'primary'}
+          />
         </View>
       ) : null}
       <View style={styles.text}>
-        <AppText variant="bodyStrong">{title}</AppText>
+        <AppText variant="bodyStrong" color={danger ? 'danger' : 'textPrimary'}>
+          {title}
+        </AppText>
         {subtitle ? (
           <AppText variant="small" color="textMuted">
             {subtitle}
@@ -72,6 +84,7 @@ export function ListRow({
 }
 
 const styles = StyleSheet.create({
+  iconPlain: { width: 36, alignItems: 'center' },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

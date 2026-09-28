@@ -6,10 +6,9 @@ import { newLocalId, useAppData, useVehicleData } from '@/features/data/DataCont
 import { onboardingServices } from '@/features/data/dataSource';
 import type { DocumentKind } from '@/features/data/types';
 import { documentIcon } from '@/features/documents/icons';
-import { AppHeader } from '@/features/shell/AppHeader';
+import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate, joinParts } from '@/features/vehicles/format';
-import { VehicleSelectorCard } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import {
@@ -19,16 +18,14 @@ import {
   Dialog,
   DocumentThumb,
   EmptyState,
-  FilterChips,
   IconCircle,
   InlineNotice,
   ListRow,
-  PageTitle,
   radii,
   Screen,
   spacing,
   Stack,
-  VerificationBadge,
+  UnderlineTabs,
   verificationLabel,
   type StatusTone,
 } from '@/ui';
@@ -56,7 +53,7 @@ const docTone: Record<DocumentKind, StatusTone> = {
 export default function DocumentsScreen() {
   const router = useRouter();
   const { activeVehicle } = useActiveVehicle();
-  const { documents, alerts } = useVehicleData(activeVehicle?.id ?? null);
+  const { documents } = useVehicleData(activeVehicle?.id ?? null);
   const [uploadInfo, setUploadInfo] = useState(false);
   const { isDemoData, addDocument, today } = useAppData();
   const services = isDemoData ? null : onboardingServices();
@@ -90,7 +87,6 @@ export default function DocumentsScreen() {
     );
     setPicked(null);
   };
-  const alertCount = alerts.filter((a) => !a.handled).length;
 
   const [filter, setFilter] = useState<'all' | DocumentKind>('all');
   const kindsPresent = KIND_ORDER.filter((k) => documents.some((d) => d.kind === k));
@@ -98,23 +94,19 @@ export default function DocumentsScreen() {
 
   return (
     <Screen
-      header={<AppHeader alertCount={alertCount} />}
+      header={<ScreenHeader title={he.documents.title} onBack={() => router.navigate('/')} />}
       edges={['top']}
       testID="screen-documents"
       footer={
         <Button
           testID="documents-upload"
           label={he.documents.add}
-          icon="file-upload-outline"
+          icon="camera-outline"
           fullWidth
           onPress={() => void pick()}
         />
       }
     >
-      {activeVehicle ? (
-        <VehicleSelectorCard vehicle={activeVehicle} onPress={() => router.push('/vehicles')} />
-      ) : null}
-      <PageTitle title={he.documents.title} />
       {uploadInfo ? <InlineNotice tone="info" message={he.documents.uploadUnavailable} /> : null}
       {problem ? (
         <InlineNotice testID="documents-upload-problem" tone="warning" message={problem} />
@@ -145,25 +137,20 @@ export default function DocumentsScreen() {
         <EmptyState icon="file-document-multiple-outline" title={he.documents.empty} />
       ) : (
         <>
-          <FilterChips
+          <UnderlineTabs
             testID="documents-filter"
             accessibilityLabel={he.documents.title}
             value={kindsPresent.includes(filter as DocumentKind) ? filter : 'all'}
             onChange={setFilter}
             options={[
-              { value: 'all', label: he.documents.allDocuments, count: documents.length },
-              ...kindsPresent.map((k) => ({
-                value: k,
-                label: he.documents.kindShort[k],
-                count: documents.filter((d) => d.kind === k).length,
-              })),
+              { value: 'all', label: he.documents.allDocuments },
+              ...kindsPresent
+                .slice(0, 3)
+                .map((k) => ({ value: k, label: he.documents.kindShort[k] })),
             ]}
           />
           {kindsShown.map((kind) => (
             <View key={kind} testID={`documents-group-${kind}`} style={styles.group}>
-              <AppText variant="smallStrong" color="textSecondary">
-                {he.documents.kinds[kind]}
-              </AppText>
               {documents
                 .filter((d) => d.kind === kind)
                 .map((d) => (
@@ -176,21 +163,22 @@ export default function DocumentsScreen() {
                     android_ripple={{ color: colors.primarySoft }}
                     style={styles.docRow}
                   >
-                    <IconCircle icon={documentIcon[d.kind]} tone={docTone[d.kind]} size={48} />
+                    <DocumentThumb mimeType={d.mimeType} icon={documentIcon[d.kind]} size={58} />
                     <View style={styles.docText}>
-                      <AppText variant="bodyStrong" numberOfLines={2}>
+                      <AppText variant="heading" numberOfLines={2}>
                         {d.title}
                       </AppText>
-                      <AppText variant="small" color="textMuted">
+                      <AppText variant="small" color="textSecondary">
                         {joinParts([
                           formatDate(d.addedAt),
                           d.pages ? he.documents.pages(d.pages) : null,
-                          he.authority[d.authority],
                         ])}
                       </AppText>
-                      <VerificationBadge state={d.verification} />
+                      <AppText variant="caption" color="textMuted">
+                        {`${he.authority[d.authority]} · ${verificationLabel(d.verification)}`}
+                      </AppText>
                     </View>
-                    <DocumentThumb mimeType={d.mimeType} icon={documentIcon[d.kind]} size={52} />
+                    <IconCircle icon={documentIcon[d.kind]} tone={docTone[d.kind]} size={48} />
                   </Pressable>
                 ))}
             </View>
@@ -207,7 +195,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.md,
-    padding: spacing.md,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.lg,
     borderRadius: radii.lg,
     borderWidth: 1,
     borderColor: colors.border,

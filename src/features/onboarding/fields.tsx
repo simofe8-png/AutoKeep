@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { maskIdentifier } from '@/features/vehicles/format';
 import type { VehicleKind } from '@/features/vehicles/types';
 import { he } from '@/i18n/he';
-import { AppText, Badge, SegmentedControl, spacing, TextField } from '@/ui';
+import { AppText, SegmentedControl, spacing, TextField } from '@/ui';
 
 import type { DraftField, FieldOrigin, VehicleDraft } from './types';
 
@@ -43,26 +43,34 @@ export function FieldRow({
   value: string;
   origin?: FieldOrigin;
 }) {
+  // Reference table (identification screen): label at the reading start, value at the end.
+  // Provenance stays visible (trust model), as a caption under the value.
+  const originText = origin
+    ? origin === 'scan'
+      ? he.onboarding.fromScan
+      : origin === 'registry'
+        ? he.onboarding.fromRegistry
+        : he.onboarding.fromUser
+    : null;
   return (
     <View style={styles.row} testID={`field-${field}`}>
-      <View style={styles.text}>
-        <AppText variant="small" color="textMuted">
-          {he.onboarding.fields[field]}
+      <AppText variant="small" color="textSecondary" style={styles.label}>
+        {he.onboarding.fields[field]}
+      </AppText>
+      <View style={styles.valueCol}>
+        <AppText variant="bodyStrong" align="end">
+          {value}
         </AppText>
-        <AppText variant="bodyStrong">{value}</AppText>
+        {originText ? (
+          <AppText
+            variant="caption"
+            color={origin === 'user' ? 'textMuted' : 'primary'}
+            align="end"
+          >
+            {originText}
+          </AppText>
+        ) : null}
       </View>
-      {origin ? (
-        <Badge
-          label={
-            origin === 'scan'
-              ? he.onboarding.fromScan
-              : origin === 'registry'
-                ? he.onboarding.fromRegistry
-                : he.onboarding.fromUser
-          }
-          tone={origin === 'user' ? 'neutral' : 'info'}
-        />
-      ) : null}
     </View>
   );
 }
@@ -121,6 +129,7 @@ export function toDraftValue(field: DraftField, raw: string): VehicleDraft[Draft
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, paddingVertical: spacing.xs },
-  text: { flex: 1 },
+  label: { width: 120 },
+  valueCol: { flex: 1 },
   kind: { gap: spacing.xs },
 });

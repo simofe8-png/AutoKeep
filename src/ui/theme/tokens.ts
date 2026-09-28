@@ -86,15 +86,16 @@ export const fontFamily = {
 } as const;
 
 export const typography = {
-  display: { fontFamily: fontFamily.bold, fontSize: 28, lineHeight: 36 },
-  title: { fontFamily: fontFamily.bold, fontSize: 22, lineHeight: 30 },
-  heading: { fontFamily: fontFamily.bold, fontSize: 18, lineHeight: 26 },
+  // Type scale of the approved references (docs/design/approved/): compact, bold headings.
+  display: { fontFamily: fontFamily.bold, fontSize: 26, lineHeight: 34 },
+  title: { fontFamily: fontFamily.bold, fontSize: 20, lineHeight: 27 },
+  heading: { fontFamily: fontFamily.bold, fontSize: 17, lineHeight: 24 },
   /** Large figures in data tiles and status cards (km, dates). */
-  metric: { fontFamily: fontFamily.bold, fontSize: 20, lineHeight: 28 },
-  body: { fontFamily: fontFamily.regular, fontSize: 16, lineHeight: 24 },
-  bodyStrong: { fontFamily: fontFamily.medium, fontSize: 16, lineHeight: 24 },
-  small: { fontFamily: fontFamily.regular, fontSize: 14, lineHeight: 20 },
-  smallStrong: { fontFamily: fontFamily.medium, fontSize: 14, lineHeight: 20 },
+  metric: { fontFamily: fontFamily.bold, fontSize: 19, lineHeight: 26 },
+  body: { fontFamily: fontFamily.regular, fontSize: 15, lineHeight: 22 },
+  bodyStrong: { fontFamily: fontFamily.medium, fontSize: 15, lineHeight: 22 },
+  small: { fontFamily: fontFamily.regular, fontSize: 13, lineHeight: 18 },
+  smallStrong: { fontFamily: fontFamily.medium, fontSize: 13, lineHeight: 18 },
   caption: { fontFamily: fontFamily.regular, fontSize: 12, lineHeight: 16 },
 } as const;
 
@@ -102,15 +103,17 @@ export type TypographyVariant = keyof typeof typography;
 
 /** Font scaling is allowed everywhere; very large multipliers are capped per variant to keep layouts usable. */
 export const maxFontScale: Record<TypographyVariant, number> = {
-  display: 1.6,
-  title: 1.8,
-  heading: 2,
-  metric: 1.6,
-  body: 2,
-  bodyStrong: 2,
-  small: 2,
-  smallStrong: 2,
-  caption: 2,
+  // Headings, figures and dense labels of the approved compositions scale less than running
+  // text, so the layouts stay recognisable at larger system font sizes (the test device: 1.3).
+  display: 1.1,
+  title: 1.1,
+  heading: 1.1,
+  metric: 1.1,
+  body: 1.5,
+  bodyStrong: 1.4,
+  small: 1.2,
+  smallStrong: 1.2,
+  caption: 1.15,
 };
 
 export const elevation = {

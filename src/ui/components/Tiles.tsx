@@ -95,7 +95,9 @@ export function StatTile({
   accessibilityHint,
   align = 'start',
   style,
+  iconColor = 'primary',
 }: {
+  iconColor?: ColorToken;
   icon: IconName;
   label: string;
   value: string;
@@ -111,7 +113,7 @@ export function StatTile({
   const text = (
     <View style={[styles.tileText, centered && styles.tileTextCentered]}>
       <View style={[styles.tileTop, centered && styles.tileTopCentered]}>
-        <Icon name={icon} size={centered ? 24 : 26} color="primary" />
+        <Icon name={icon} size={centered ? 24 : 26} color={iconColor} />
         {!centered ? (
           <AppText variant="small" color="textSecondary" style={styles.flex}>
             {label}
@@ -119,21 +121,28 @@ export function StatTile({
         ) : null}
       </View>
       <AppText
-        variant="metric"
+        variant={centered ? 'smallStrong' : 'metric'}
         align={centered ? 'center' : 'start'}
         numberOfLines={1}
         adjustsFontSizeToFit
         minimumFontScale={0.6}
+        style={centered ? styles.compactValue : undefined}
       >
         {value}
       </AppText>
       {centered ? (
-        <AppText variant="caption" color="textMuted" align="center">
+        <AppText variant="caption" color="textSecondary" align="center" numberOfLines={2}>
           {label}
         </AppText>
       ) : null}
       {detail ? (
-        <AppText variant="small" color="textMuted" align={centered ? 'center' : 'start'}>
+        <AppText
+          variant={centered ? 'caption' : 'small'}
+          color="textMuted"
+          align={centered ? 'center' : 'start'}
+          numberOfLines={centered ? 1 : undefined}
+          adjustsFontSizeToFit={centered}
+        >
           {detail}
         </AppText>
       ) : null}
@@ -192,7 +201,10 @@ export function StatusCard({
   children,
   testID,
   accessibilityHint,
+  compact = false,
 }: {
+  /** One-row banner (reference plan: "תוכנית טיפולים רשמית ומאומתת"). */
+  compact?: boolean;
   tone: StatusTone;
   icon: IconName;
   title: string;
@@ -205,13 +217,17 @@ export function StatusCard({
   const t = toneColors[tone];
   const head = (
     <View style={styles.statusRow}>
-      <IconCircle icon={icon} tone={tone} solid size={44} />
+      <IconCircle icon={icon} tone={tone} solid size={compact ? 36 : 44} />
       <View style={styles.flex}>
-        <AppText variant="heading" color={tone === 'neutral' ? 'textPrimary' : t.text}>
+        <AppText
+          variant={compact ? 'smallStrong' : 'heading'}
+          color={tone === 'neutral' ? 'textPrimary' : t.text}
+          style={compact ? styles.compactTitle : undefined}
+        >
           {title}
         </AppText>
         {subtitle ? (
-          <AppText variant="small" color="textSecondary">
+          <AppText variant={compact ? 'caption' : 'small'} color="textSecondary">
             {subtitle}
           </AppText>
         ) : null}
@@ -219,7 +235,11 @@ export function StatusCard({
       {onPress ? <Icon name={directionalIcons.forward} size={24} color="textPrimary" /> : null}
     </View>
   );
-  const style = [styles.status, { backgroundColor: t.soft, borderColor: t.border }];
+  const style = [
+    styles.status,
+    compact && styles.statusCompact,
+    { backgroundColor: t.soft, borderColor: t.border },
+  ];
   const content = (
     <>
       {head}
@@ -306,6 +326,7 @@ const styles = StyleSheet.create({
   },
   tileText: { flex: 1, gap: spacing.xxs },
   tileTextCentered: { alignItems: 'center' },
+  compactValue: { fontSize: 15, lineHeight: 20 },
   tileTop: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   tileTopCentered: { justifyContent: 'center' },
   tileRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
@@ -317,6 +338,8 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   statusRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  statusCompact: { paddingVertical: spacing.sm, borderRadius: radii.lg },
+  compactTitle: { fontSize: 15, lineHeight: 21, fontFamily: fontFamily.bold },
   statusChildren: { gap: spacing.sm },
   quickGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   quick: {

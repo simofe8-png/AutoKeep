@@ -114,10 +114,7 @@ export default function NewServiceScreen() {
   ];
 
   return (
-    <Screen
-      testID="screen-service-new"
-      header={<ScreenHeader title={he.service.newTitle} closeIcon />}
-    >
+    <Screen testID="screen-service-new" header={<ScreenHeader title={he.service.newTitle} brand />}>
       <VehicleTargetBanner vehicle={activeVehicle} />
       {fromAlert ? (
         <FromAlertBanner title={schedule.next?.items.find((i) => i.id === item)?.title} />

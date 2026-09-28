@@ -139,10 +139,29 @@ async function open(url: string, testID: string) {
 }
 
 async function switchTo(id: string) {
+  // The vehicle selector lives on Home (approved Home reference); other tabs return afterwards.
+  const tab = (['history', 'documents', 'maintenance'] as const).find((t) =>
+    screen.queryByTestId(`screen-${t}`),
+  );
+  if (!screen.queryByTestId('active-vehicle-chip')) {
+    await fireEvent.press(screen.getByTestId('tab-home'));
+    await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
+  }
   await fireEvent.press(screen.getByTestId('active-vehicle-chip'));
   await waitFor(() => expect(screen.getByTestId('screen-vehicles')).toBeOnTheScreen());
   await fireEvent.press(screen.getByTestId(`vehicle-select-${id}`));
   await waitFor(() => expect(screen.queryByTestId('screen-vehicles')).toBeNull());
+  if (tab) {
+    await fireEvent.press(screen.getByTestId(`tab-${tab}`));
+    await waitFor(() => expect(screen.getByTestId(`screen-${tab}`)).toBeOnTheScreen());
+  }
+}
+
+/** "Record a service" entry of the approved compositions: History's "+" (and Garage Mode). */
+async function openRecordService() {
+  await fireEvent.press(screen.getByTestId('tab-history'));
+  await waitFor(() => expect(screen.getByTestId('screen-history')).toBeOnTheScreen());
+  await fireEvent.press(screen.getByTestId('history-add'));
 }
 
 const OTHERS: Record<string, RegExp> = {
@@ -195,7 +214,7 @@ describe('car + motorcycle + scooter (T133–T135)', () => {
   it('recording a service targets the active vehicle, and names it before confirming', async () => {
     await open('/', 'screen-home');
     await switchTo(SCOOTER);
-    await fireEvent.press(screen.getByTestId('home-record-service'));
+    await openRecordService();
     await waitFor(() => expect(screen.getByTestId('screen-service-new')).toBeOnTheScreen());
     expect(screen.getByTestId('vehicle-target-banner')).toHaveTextContent(/XMAX 300/);
   }, 40000);

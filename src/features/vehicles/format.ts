@@ -5,6 +5,11 @@ const numberFormat = new Intl.NumberFormat('he-IL');
 /** No-break space keeps a value and its unit on the same line. */
 export const NBSP = String.fromCharCode(0x00a0);
 
+/** A number in Hebrew grouping without a unit (tiles show the unit on its own line). */
+export function formatNumber(n: number): string {
+  return numberFormat.format(n);
+}
+
 export function formatKm(km: number): string {
   return `${numberFormat.format(km)}${NBSP}${he.common.km}`;
 }

@@ -96,8 +96,8 @@ describe('alerts after the approved reference', () => {
     await open('/alerts', 'screen-alerts');
     expect(screen.getByTestId('vehicle-target-banner')).toHaveTextContent(/12-345-67/);
     expect(screen.getByTestId('alerts-group-soon')).toHaveTextContent(/טיפול 90,000/);
-    // Only groups that have alerts are offered as filters.
-    expect(screen.queryByTestId('alerts-filter-urgent')).toBeNull();
+    // Every urgency group is offered with its count (reference), empty ones included.
+    expect(screen.getByTestId('alerts-filter-urgent')).toHaveTextContent(/\(0\)/);
     await fireEvent.press(screen.getByTestId('alerts-filter-soon'));
     expect(screen.getByTestId('alerts-group-soon')).toBeOnTheScreen();
 

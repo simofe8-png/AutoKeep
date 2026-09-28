@@ -112,6 +112,10 @@ export interface AppDataValue {
   getOriginal: (vehicleId: string, documentId: string) => Promise<OriginalView | null>;
   openOriginal: (vehicleId: string, documentId: string) => Promise<boolean>;
   addGarageRecommendation: (rec: GarageRecommendationVM) => void;
+  /** The user's own photo of a vehicle (viewable URI), if they added one. */
+  vehiclePhotos: Record<string, string>;
+  /** Stores a user-provided vehicle photo (device-local). */
+  setVehiclePhoto: (vehicleId: string, file: AcquiredFile) => void;
   network: NetworkMode;
   setNetwork: (mode: NetworkMode) => void;
   account: AccountState;

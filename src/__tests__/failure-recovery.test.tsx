@@ -81,7 +81,8 @@ describe('no network (T151, T156)', () => {
     await open('/', 'screen-home');
     await waitFor(() => expect(screen.getByTestId('offline-banner')).toBeOnTheScreen());
     // Local actions are unaffected.
-    expect(screen.getByTestId('home-record-service')).toBeEnabled();
+    expect(screen.getByTestId('home-all-alerts')).toBeEnabled();
+    expect(screen.getByTestId('home-view-service')).toBeEnabled();
   });
 
   it('the registry lookup is paused offline with the reason; manual entry continues', async () => {

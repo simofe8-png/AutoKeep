@@ -14,7 +14,7 @@ export function BrandMark({ size = 24, testID }: { size?: number; testID?: strin
       accessibilityLabel="AutoKeep"
     >
       <Text
-        maxFontSizeMultiplier={1.3}
+        maxFontSizeMultiplier={1}
         style={[styles.word, { fontSize: size, lineHeight: size * 1.3 }]}
       >
         <Text style={{ color: colors.textPrimary }}>Auto</Text>

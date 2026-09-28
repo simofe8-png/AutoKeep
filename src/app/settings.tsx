@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useAppData } from '@/features/data/DataContext';
 import { notificationScheduler } from '@/features/data/dataSource';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
+import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -22,6 +23,7 @@ import {
  */
 export default function SettingsScreen() {
   const router = useRouter();
+  const { activeVehicle } = useActiveVehicle();
   const {
     account,
     network,
@@ -47,6 +49,7 @@ export default function SettingsScreen() {
     <Screen header={<ScreenHeader title={he.settings.title} />} testID="screen-settings">
       <Card compact>
         <ListRow
+          plainIcon
           testID="settings-account"
           icon="account-circle-outline"
           title={he.settings.profile}
@@ -56,6 +59,7 @@ export default function SettingsScreen() {
       </Card>
       <Card compact>
         <ListRow
+          plainIcon
           testID="settings-backup"
           icon="cloud-sync-outline"
           title={he.settings.backup}
@@ -94,6 +98,7 @@ export default function SettingsScreen() {
 
       <Card compact>
         <ListRow
+          plainIcon
           testID="settings-vehicles"
           icon="car-multiple"
           title={he.settings.vehicles}
@@ -102,6 +107,7 @@ export default function SettingsScreen() {
       </Card>
       <Card compact>
         <ListRow
+          plainIcon
           testID="settings-documents"
           icon="file-document-multiple-outline"
           title={he.settings.documents}
@@ -111,6 +117,7 @@ export default function SettingsScreen() {
 
       <Card compact>
         <ListRow
+          plainIcon
           icon="translate"
           title={he.settings.language}
           trailing={
@@ -122,6 +129,7 @@ export default function SettingsScreen() {
       </Card>
       <Card compact>
         <ListRow
+          plainIcon
           icon="human"
           title={he.settings.accessibility}
           subtitle={he.settings.accessibilityValue}
@@ -129,11 +137,26 @@ export default function SettingsScreen() {
       </Card>
       <Card compact>
         <ListRow
+          plainIcon
           icon="information-outline"
           title={he.settings.about}
           subtitle={he.settings.aboutValue}
         />
       </Card>
+
+      {activeVehicle ? (
+        <Card compact>
+          <ListRow
+            plainIcon
+            danger
+            testID="settings-delete-vehicle"
+            icon="delete-outline"
+            title={he.settings.deleteVehicle}
+            subtitle={he.settings.deleteVehicleHint}
+            onPress={() => router.push(`/vehicle/${activeVehicle.id}`)}
+          />
+        </Card>
+      ) : null}
 
       {isDemoData ? (
         <Stack testID="settings-demo">

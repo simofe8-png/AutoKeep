@@ -63,7 +63,9 @@ describe('T171 garage → service → history', () => {
     // Back to the app, record what the garage did (oil performed = the deferred item).
     await fireEvent.press(screen.getByTestId('screen-header-back'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
-    await fireEvent.press(screen.getByTestId('home-record-service'));
+    await fireEvent.press(screen.getByTestId('tab-history'));
+    await waitFor(() => expect(screen.getByTestId('screen-history')).toBeOnTheScreen());
+    await fireEvent.press(screen.getByTestId('history-add'));
     await waitFor(() => expect(screen.getByTestId('screen-service-new')).toBeOnTheScreen());
     await fireEvent.press(screen.getByTestId('service-method-manual'));
     await waitFor(() => expect(screen.getByTestId('screen-service-manual')).toBeOnTheScreen());

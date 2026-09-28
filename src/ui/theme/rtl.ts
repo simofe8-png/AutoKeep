@@ -53,8 +53,12 @@ export function ensureRtlParagraph(text: string): string {
   return text;
 }
 
-/** Icons that imply direction ("forward", "back") must use these names, not raw chevrons. */
+/**
+ * Icons that imply direction must use these names, not raw chevrons. They follow the approved
+ * visual references (docs/design/approved/): row/card affordances are drawn ">" and the header
+ * back control "<" at the physical left.
+ */
 export const directionalIcons = {
-  forward: 'chevron-left',
-  back: 'chevron-right',
+  forward: 'chevron-right',
+  back: 'chevron-left',
 } as const;

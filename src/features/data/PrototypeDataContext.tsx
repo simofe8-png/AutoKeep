@@ -200,6 +200,9 @@ export function PrototypeDataProvider({
       // Prototype documents have no stored file.
       getOriginal: async () => null,
       openOriginal: async () => false,
+      // Prototype: no stored photos (the illustration is shown).
+      vehiclePhotos: {},
+      setVehiclePhoto: () => undefined,
       network,
       setNetwork,
       account,

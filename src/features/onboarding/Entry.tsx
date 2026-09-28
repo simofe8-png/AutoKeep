@@ -44,8 +44,7 @@ export function WelcomeScreen() {
           <Button
             testID="onboarding-sign-in"
             label={he.onboarding.haveAccount}
-            icon="login"
-            variant="secondary"
+            variant="tonal"
             fullWidth
             onPress={() => router.push({ pathname: '/account', params: { from: 'welcome' } })}
           />
@@ -53,7 +52,7 @@ export function WelcomeScreen() {
       }
     >
       <View style={styles.welcomeTop}>
-        <BrandMark size={34} />
+        <BrandMark size={28} />
         <AppText variant="title" align="center" accessibilityRole="header">
           {he.onboarding.welcomeTitle}
         </AppText>
@@ -70,9 +69,6 @@ export function WelcomeScreen() {
           </View>
         ))}
       </Stack>
-      <AppText variant="small" color="textMuted" align="center">
-        {he.onboarding.welcomeNoAccount}
-      </AppText>
     </Screen>
   );
 }

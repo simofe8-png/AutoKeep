@@ -1,15 +1,19 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import { useAppData, type DeletionPreviewVM } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatKm, SEP } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
-import { VehicleHero } from '@/features/vehicles/VehicleVisuals';
+import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
+import { VehiclePhoto, vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
+import { onboardingServices } from '@/features/data/dataSource';
 import { he } from '@/i18n/he';
 import {
   AppText,
+  Button,
   Card,
   Dialog,
   Divider,
@@ -18,6 +22,7 @@ import {
   EmptyState,
   InlineNotice,
   ListRow,
+  PlateBadge,
   Screen,
   SectionHeader,
   spacing,
@@ -51,7 +56,16 @@ function detailRows(v: VehicleSummary): [string, string][] {
 export default function VehicleManageScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, archiveVehicle, restoreVehicle, deleteVehicle, deletionPreview } = useAppData();
+  const {
+    vehicles,
+    archiveVehicle,
+    restoreVehicle,
+    deleteVehicle,
+    deletionPreview,
+    isDemoData,
+    setVehiclePhoto,
+  } = useAppData();
+  const services = isDemoData ? null : onboardingServices();
   const [preview, setPreview] = useState<DeletionPreviewVM | null>(null);
   const [archiveOpen, setArchiveOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
@@ -81,19 +95,46 @@ export default function VehicleManageScreen() {
   }
 
   const confirmMatches = typed.trim() === vehicle.registration;
+  /** The user's own photo of this vehicle (camera or library), stored on this device only. */
+  const pickPhoto = async () => {
+    if (!services) return;
+    const r = await services.acquisition.pickImage();
+    if (r.status === 'acquired') setVehiclePhoto(vehicle.id, r.file);
+  };
 
   return (
     <Screen testID="screen-vehicle-manage" header={<ScreenHeader title={he.lifecycle.title} />}>
-      <VehicleHero vehicle={vehicle} />
+      <View style={styles.top}>
+        <View style={styles.topText}>
+          <AppText variant="title">{`${vehicle.manufacturer} ${vehicle.model}`}</AppText>
+          <AppText variant="small" color="textSecondary">
+            {vehicleSpecLine(vehicle)}
+          </AppText>
+          <PlateBadge number={vehicle.registration} size="sm" />
+        </View>
+        <View style={styles.topImage}>
+          <VehiclePhoto vehicle={vehicle} variant="card" />
+          {services ? (
+            <Button
+              testID="vehicle-photo"
+              label={he.lifecycle.changePhoto}
+              icon="camera-outline"
+              variant="tonal"
+              size="sm"
+              onPress={() => void pickPhoto()}
+            />
+          ) : null}
+        </View>
+      </View>
 
       <Card testID="vehicle-details">
         <Stack gap={0}>
           <AppText variant="heading" accessibilityRole="header">
             {he.lifecycle.detailsTitle}
           </AppText>
-          {detailRows(vehicle).map(([label, value], i) => (
+          {detailRows(vehicle).map(([label, value]) => (
             <Stack key={label} gap={0}>
-              {i > 0 ? <Divider /> : null}
+              <Divider />
               <InfoRow label={label} value={value} />
             </Stack>
           ))}
@@ -186,42 +227,7 @@ export default function VehicleManageScreen() {
           router.back();
         }}
       >
-        <VehicleHero vehicle={vehicle} />
-
-        <Card testID="vehicle-details">
-          <Stack gap={0}>
-            <AppText variant="heading" accessibilityRole="header">
-              {he.lifecycle.detailsTitle}
-            </AppText>
-            {detailRows(vehicle).map(([label, value], i) => (
-              <Stack key={label} gap={0}>
-                {i > 0 ? <Divider /> : null}
-                <InfoRow label={label} value={value} />
-              </Stack>
-            ))}
-            <Divider />
-            <InfoRow
-              testID="vehicle-odometer-row"
-              label={he.home.odometerNow}
-              value={formatKm(vehicle.odometerKm)}
-              action={
-                !vehicle.archived ? (
-                  <IconButton
-                    testID="vehicle-update-odometer"
-                    icon="pencil-outline"
-                    color="primary"
-                    accessibilityLabel={he.home.updateOdometer}
-                    onPress={() => {
-                      // The odometer screen acts on the active vehicle: make this one active first.
-                      setActiveVehicleId(vehicle.id);
-                      router.push('/odometer');
-                    }}
-                  />
-                ) : undefined
-              }
-            />
-          </Stack>
-        </Card>
+        <VehicleTargetBanner vehicle={vehicle} label={he.alerts.vehicle} />
       </Dialog>
 
       <Dialog
@@ -240,42 +246,7 @@ export default function VehicleManageScreen() {
           deleteVehicle(vehicle.id);
         }}
       >
-        <VehicleHero vehicle={vehicle} />
-
-        <Card testID="vehicle-details">
-          <Stack gap={0}>
-            <AppText variant="heading" accessibilityRole="header">
-              {he.lifecycle.detailsTitle}
-            </AppText>
-            {detailRows(vehicle).map(([label, value], i) => (
-              <Stack key={label} gap={0}>
-                {i > 0 ? <Divider /> : null}
-                <InfoRow label={label} value={value} />
-              </Stack>
-            ))}
-            <Divider />
-            <InfoRow
-              testID="vehicle-odometer-row"
-              label={he.home.odometerNow}
-              value={formatKm(vehicle.odometerKm)}
-              action={
-                !vehicle.archived ? (
-                  <IconButton
-                    testID="vehicle-update-odometer"
-                    icon="pencil-outline"
-                    color="primary"
-                    accessibilityLabel={he.home.updateOdometer}
-                    onPress={() => {
-                      // The odometer screen acts on the active vehicle: make this one active first.
-                      setActiveVehicleId(vehicle.id);
-                      router.push('/odometer');
-                    }}
-                  />
-                ) : undefined
-              }
-            />
-          </Stack>
-        </Card>
+        <VehicleTargetBanner vehicle={vehicle} label={he.alerts.vehicle} />
         <InlineNotice
           tone="danger"
           title={he.lifecycle.previewTitle}
@@ -304,3 +275,9 @@ export default function VehicleManageScreen() {
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  top: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  topText: { flex: 1, gap: spacing.xs },
+  topImage: { alignItems: 'center', gap: spacing.xs },
+});
