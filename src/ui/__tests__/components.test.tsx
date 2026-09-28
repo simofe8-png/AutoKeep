@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { useState } from 'react';
 
@@ -37,7 +38,8 @@ describe('Button', () => {
 
   it('meets the minimum touch target', async () => {
     await render(<Button label="המשך" onPress={() => {}} />);
-    expect(screen.getByRole('button', { name: 'המשך' })).toHaveStyle({ minHeight: touchTarget });
+    const style = StyleSheet.flatten(screen.getByRole('button', { name: 'המשך' }).props.style);
+    expect(style.minHeight).toBeGreaterThanOrEqual(touchTarget);
   });
 });
 

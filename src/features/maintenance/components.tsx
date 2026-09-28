@@ -99,6 +99,32 @@ export function dueAtText(next: NextServiceVM): string {
   ]);
 }
 
+/**
+ * Next-service tile text (Home reference: date, then "בעוד N ימים"). Remaining time and distance
+ * stay separate facts and an overrun is stated as such. The forecast (צפי) and the service title
+ * are shown on the maintenance screen.
+ */
+export function nextServiceTile(next: NextServiceVM): { value: string; detail: string } {
+  const value = next.dueDate
+    ? formatDate(next.dueDate)
+    : next.dueAtKm != null
+      ? formatKm(next.dueAtKm)
+      : next.title;
+  const remaining = joinParts([
+    next.remainingDays != null
+      ? next.remainingDays < 0
+        ? he.home.daysLate(-next.remainingDays)
+        : he.home.inDays(next.remainingDays)
+      : null,
+    next.remainingKm != null
+      ? next.remainingKm < 0
+        ? he.home.kmLate(formatKm(-next.remainingKm))
+        : he.home.kmLeft(formatKm(next.remainingKm))
+      : null,
+  ]);
+  return { value, detail: remaining };
+}
+
 /** Top of Home / next-service screen: interval, remaining distance/time and labeled forecast. */
 export function NextServiceSummary({ next }: { next: NextServiceVM }) {
   return (

@@ -1,9 +1,10 @@
-import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
 
 import { authErrorText } from '@/features/account/authText';
 import { useAppData } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
+import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
@@ -20,6 +21,7 @@ import {
   spacing,
   Stack,
   TextField,
+  StatusCard,
 } from '@/ui';
 
 /**
@@ -30,6 +32,11 @@ import {
  */
 export default function AccountScreen() {
   const router = useRouter();
+  // Existing-user entry from the first-run welcome: after signing in, the restored data leads
+  // straight to Home (no vehicle has to be added first on a new device).
+  const { from } = useLocalSearchParams<{ from?: string }>();
+  const fromWelcome = from === 'welcome';
+  const { vehicles } = useActiveVehicle();
   const {
     account,
     setAccount,
@@ -59,6 +66,11 @@ export default function AccountScreen() {
   const [changeNotice, setChangeNotice] = useState<{ ok: boolean; text: string } | null>(null);
   const differ = newPasswordConfirm !== '' && newPassword !== newPasswordConfirm;
   const unavailable = !isDemoData && account.available === false;
+
+  const restored = fromWelcome && account.hasAccount && vehicles.length > 0;
+  useEffect(() => {
+    if (restored) router.replace('/');
+  }, [restored, router]);
 
   const signIn = async () => {
     setBusy(true);
@@ -223,6 +235,22 @@ export default function AccountScreen() {
         </Stack>
       ) : (
         <Stack>
+          {fromWelcome ? (
+            <StatusCard
+              testID="account-restoring"
+              tone="success"
+              icon="check"
+              title={he.account.signedInTitle}
+              subtitle={he.account.restoringBody}
+            >
+              <Button
+                testID="account-continue"
+                label={he.account.continueToApp}
+                fullWidth
+                onPress={() => router.replace('/')}
+              />
+            </StatusCard>
+          ) : null}
           <Card>
             <AppText variant="small" color="textMuted">
               {he.account.username}

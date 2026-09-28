@@ -16,6 +16,7 @@ import {
   type SourceReference,
   type Vehicle,
   type VehicleDocument,
+  maskVin,
 } from '@/domain';
 import type { AlertCandidate } from '@/engine/alerts';
 import type { EngineResult, ItemDue } from '@/engine/maintenance';
@@ -71,6 +72,11 @@ export function toVehicleSummary(v: Vehicle, latest: OdometerReading | null): Ve
     odometerKm: latest?.valueKm ?? 0,
     odometerMeasuredAt: latest?.measuredAt ?? dateOf(v.createdAt),
     archived: v.lifecycle === 'archived',
+    trim: v.identity.trim,
+    modelCode: v.identity.modelCode,
+    engine: v.identity.engine,
+    fuel: v.identity.fuel,
+    vinMasked: v.vin ? maskVin(v.vin) : undefined,
   };
 }
 

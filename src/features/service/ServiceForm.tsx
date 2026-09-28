@@ -1,8 +1,10 @@
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { newLocalId } from '@/features/data/DataContext';
 import type { ActionType, ServiceActionVM } from '@/features/data/types';
+import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -11,11 +13,14 @@ import {
   Card,
   Checkbox,
   Divider,
+  EmptyState,
   InlineNotice,
   Row,
+  Screen,
   SegmentedControl,
   spacing,
   Stack,
+  StatusCard,
   TextField,
 } from '@/ui';
 
@@ -47,38 +52,57 @@ export function ServiceForm({ draft, onChange, errors, showErrors }: ServiceForm
 
   return (
     <Stack>
-      <TextField
-        testID="service-date"
-        label={he.service.date}
-        value={draft.date}
-        onChangeText={(date) => onChange({ date })}
-        hint={uncertain('date') ? he.service.uncertainField : he.service.dateHint}
-        error={showErrors && errors.date ? he.service.errors.date : undefined}
-        required
-        maxLength={10}
-      />
-      <TextField
-        testID="service-odometer"
-        label={he.service.odometer}
-        value={draft.odometer}
-        onChangeText={(odometer) =>
-          onChange({ odometer, uncertain: draft.uncertain.filter((u) => u !== 'odometer') })
-        }
-        keyboardType="number-pad"
-        suffix={he.common.km}
-        hint={uncertain('odometer') ? he.service.uncertainField : undefined}
-        error={showErrors && errors.odometer ? he.service.errors.odometer : undefined}
-        required
-        maxLength={9}
-      />
-      {uncertain('odometer') ? (
-        <Badge
-          label={he.service.uncertainField}
-          tone="warning"
-          icon="alert-outline"
-          testID="uncertain-odometer"
-        />
-      ) : null}
+      <Card testID="service-details">
+        <Stack gap={spacing.sm}>
+          <AppText variant="heading" accessibilityRole="header">
+            {he.service.detailsTitle}
+          </AppText>
+          <View style={styles.pair}>
+            <View style={styles.half}>
+              <TextField
+                testID="service-date"
+                label={he.service.date}
+                value={draft.date}
+                onChangeText={(date) => onChange({ date })}
+                hint={uncertain('date') ? he.service.uncertainField : he.service.dateHint}
+                error={showErrors && errors.date ? he.service.errors.date : undefined}
+                required
+                maxLength={10}
+              />
+            </View>
+            <View style={styles.half}>
+              <TextField
+                testID="service-odometer"
+                label={he.service.odometer}
+                value={draft.odometer}
+                onChangeText={(odometer) =>
+                  onChange({ odometer, uncertain: draft.uncertain.filter((u) => u !== 'odometer') })
+                }
+                keyboardType="number-pad"
+                suffix={he.common.km}
+                hint={uncertain('odometer') ? he.service.uncertainField : undefined}
+                error={showErrors && errors.odometer ? he.service.errors.odometer : undefined}
+                required
+                maxLength={9}
+              />
+            </View>
+          </View>
+          {uncertain('odometer') ? (
+            <Badge
+              label={he.service.uncertainField}
+              tone="warning"
+              icon="alert-outline"
+              testID="uncertain-odometer"
+            />
+          ) : null}
+          <TextField
+            testID="service-garage"
+            label={he.service.garage}
+            value={draft.garage}
+            onChangeText={(garage) => onChange({ garage })}
+          />
+        </Stack>
+      </Card>
 
       <Card>
         <Stack gap={spacing.sm}>
@@ -105,6 +129,7 @@ export function ServiceForm({ draft, onChange, errors, showErrors }: ServiceForm
               >
                 {a.performed ? (
                   <Stack gap={spacing.xs}>
+                    <Badge label={he.history.performed} tone="success" icon="check" />
                     <SegmentedControl
                       testID={`action-type-${a.id}`}
                       accessibilityLabel={`${he.maintenance.actionType}: ${a.title}`}
@@ -165,12 +190,6 @@ export function ServiceForm({ draft, onChange, errors, showErrors }: ServiceForm
       </Card>
 
       <TextField
-        testID="service-garage"
-        label={he.service.garage}
-        value={draft.garage}
-        onChangeText={(garage) => onChange({ garage })}
-      />
-      <TextField
         testID="service-notes"
         label={he.service.notes}
         value={draft.notes}
@@ -181,7 +200,40 @@ export function ServiceForm({ draft, onChange, errors, showErrors }: ServiceForm
   );
 }
 
+/** Context of a record opened from an alert (approved reference "רישום טיפול מתוך התראה"). */
+export function FromAlertBanner({ title }: { title?: string }) {
+  return (
+    <StatusCard
+      testID="service-from-alert"
+      tone="success"
+      icon="check"
+      title={he.service.fromAlertTitle}
+      subtitle={title}
+    />
+  );
+}
+
+/** Recording screens opened without a draft (e.g. a stale link): explain and offer a way on. */
+export function NoDraft() {
+  const router = useRouter();
+  return (
+    <Screen header={<ScreenHeader title={he.service.newTitle} />} testID="screen-service-no-draft">
+      <EmptyState
+        icon="clipboard-plus-outline"
+        title={he.service.noDraftTitle}
+        action={{
+          label: he.service.newTitle,
+          icon: 'plus',
+          onPress: () => router.replace('/service/new'),
+        }}
+      />
+    </Screen>
+  );
+}
+
 const styles = StyleSheet.create({
+  pair: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  half: { flexGrow: 1, flexBasis: 150 },
   flex: { flex: 1, minWidth: 180 },
   addRow: { flexWrap: 'wrap', alignItems: 'flex-end' },
 });

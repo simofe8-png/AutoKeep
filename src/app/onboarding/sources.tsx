@@ -27,6 +27,7 @@ import {
   Stack,
   VerificationBadge,
   type VerificationState,
+  StepProgress,
 } from '@/ui';
 
 const STEPS = [
@@ -263,9 +264,7 @@ export default function OnboardingSources() {
         />
       }
     >
-      <AppText variant="small" color="textMuted">
-        {he.onboarding.step(4, 4)}
-      </AppText>
+      <StepProgress step={4} total={4} />
       <AppText color="textSecondary">{he.onboarding.sourcesBody}</AppText>
       <Card>
         <Stack gap={spacing.sm}>

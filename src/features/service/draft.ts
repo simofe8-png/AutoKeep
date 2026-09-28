@@ -25,6 +25,8 @@ export interface ServiceDraft {
   attachment?: AttachmentInput;
   /** Why no values were read from the document (no provider / failed / flagged). */
   readingNote?: 'unavailable' | 'failed' | 'flagged';
+  /** Opened from an alert: the maintenance item it is about (shown as context only). */
+  fromAlertItem?: string;
 }
 
 export function actionsFromSchedule(

@@ -16,6 +16,8 @@ export const MOCK_VEHICLES: readonly VehicleSummary[] = [
     odometerKm: 84250,
     odometerMeasuredAt: '2026-09-10',
     archived: false,
+    engine: '1.8',
+    fuel: 'בנזין',
   },
   {
     id: 'mock-vehicle-motorcycle',
@@ -27,6 +29,8 @@ export const MOCK_VEHICLES: readonly VehicleSummary[] = [
     odometerKm: 18420,
     odometerMeasuredAt: '2026-06-02',
     archived: false,
+    engine: '471 סמ״ק',
+    fuel: 'בנזין',
   },
   {
     id: 'mock-vehicle-scooter',
@@ -38,5 +42,7 @@ export const MOCK_VEHICLES: readonly VehicleSummary[] = [
     odometerKm: 9650,
     odometerMeasuredAt: '2026-09-01',
     archived: false,
+    engine: '292 סמ״ק',
+    fuel: 'בנזין',
   },
 ];

@@ -1,23 +1,25 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import { alertTone } from '@/features/alerts/components';
+import { alertStatusIcon, alertStatusTone, recordServiceHref } from '@/features/alerts/components';
 import { useAppData } from '@/features/data/DataContext';
 import type { AlertVM } from '@/features/data/types';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
-import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
+import { VehicleContextCard } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import {
   AppText,
-  Badge,
   Button,
   Card,
+  Divider,
   EmptyState,
+  Icon,
   Screen,
-  SectionHeader,
   spacing,
   Stack,
+  StatusCard,
   type ButtonProps,
 } from '@/ui';
 
@@ -50,32 +52,57 @@ export default function AlertDetailScreen() {
   const actions = alertActions(alert, router);
 
   return (
-    <Screen
-      testID="screen-alert-detail"
-      header={<ScreenHeader title={he.alerts.kinds[alert.kind]} />}
-    >
-      <VehicleTargetBanner vehicle={owner} label={he.alerts.vehicle} />
-      <Card>
+    <Screen testID="screen-alert-detail" header={<ScreenHeader title={he.alerts.detailTitle} />}>
+      <VehicleContextCard
+        vehicle={owner}
+        label={he.alerts.vehicle}
+        testID="vehicle-target-banner"
+      />
+      <StatusCard
+        testID="alert-status"
+        tone={alert.handled ? 'success' : alertStatusTone[alert.kind]}
+        icon={alert.handled ? 'check' : alertStatusIcon[alert.kind]}
+        title={alert.title}
+        subtitle={alert.handled ? he.alerts.handled : he.alerts.kinds[alert.kind]}
+      />
+      <Card testID="alert-basis">
         <Stack gap={spacing.sm}>
-          <Badge
-            label={alert.handled ? he.alerts.handled : he.alerts.kinds[alert.kind]}
-            tone={alert.handled ? 'success' : alertTone[alert.kind]}
+          <AppText variant="heading" accessibilityRole="header">
+            {he.alerts.details}
+          </AppText>
+          <DetailRow label={he.alerts.kindLabel} value={he.alerts.kinds[alert.kind]} />
+          <Divider />
+          <DetailRow label={he.alerts.basis} value={alert.basis} />
+          <Divider />
+          <DetailRow
+            label={he.alerts.status}
+            value={alert.handled ? he.alerts.handled : he.alerts.active}
+            strong
           />
-          <AppText variant="title">{alert.title}</AppText>
         </Stack>
       </Card>
-      <Card testID="alert-why">
-        <SectionHeader title={he.alerts.why} />
-        <AppText>{alert.reason}</AppText>
-      </Card>
-      <Card testID="alert-basis">
-        <SectionHeader title={he.alerts.basis} />
-        <AppText color="textSecondary">{alert.basis}</AppText>
+      <Card tone="tint" testID="alert-why">
+        <View style={styles.why}>
+          <Icon name="information-outline" size={24} color="primary" />
+          <View style={styles.flex}>
+            <AppText variant="bodyStrong">{he.alerts.why}</AppText>
+            <AppText color="textSecondary">{alert.reason}</AppText>
+          </View>
+        </View>
       </Card>
       {alert.lastCompletion ? (
         <Card testID="alert-last-completion">
-          <SectionHeader title={he.alerts.lastCompletion} />
-          <AppText color="textSecondary">{alert.lastCompletion}</AppText>
+          <Stack gap={spacing.xs}>
+            <AppText variant="heading" accessibilityRole="header">
+              {he.alerts.lastCompletion}
+            </AppText>
+            <View style={styles.why}>
+              <Icon name="check-circle" size={22} color="success" />
+              <AppText color="textSecondary" style={styles.flex}>
+                {alert.lastCompletion}
+              </AppText>
+            </View>
+          </Stack>
         </Card>
       ) : null}
       {!alert.handled ? (
@@ -86,8 +113,8 @@ export default function AlertDetailScreen() {
           <Button
             testID="alert-snooze"
             label={he.alerts.snooze}
-            icon="bell-sleep-outline"
-            variant="ghost"
+            icon="calendar-clock"
+            variant="secondary"
             fullWidth
             onPress={() => {
               snoozeAlert(owner.id, alert.id, 7);
@@ -96,7 +123,7 @@ export default function AlertDetailScreen() {
           />
           <Button
             testID="alert-mark-handled"
-            label={he.alerts.markHandled}
+            label={he.alerts.markWithoutRecord}
             variant="ghost"
             fullWidth
             onPress={() => {
@@ -110,27 +137,54 @@ export default function AlertDetailScreen() {
   );
 }
 
+function DetailRow({
+  label,
+  value,
+  strong = false,
+}: {
+  label: string;
+  value: string;
+  strong?: boolean;
+}) {
+  return (
+    <View style={styles.detailRow}>
+      <AppText variant="small" color="textMuted" style={styles.label}>
+        {label}
+      </AppText>
+      <AppText variant={strong ? 'bodyStrong' : 'body'} style={styles.flex}>
+        {value}
+      </AppText>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  flex: { flex: 1 },
+  label: { width: 110 },
+  detailRow: { flexDirection: 'row', gap: spacing.md, alignItems: 'flex-start' },
+  why: { flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
+});
+
 function alertActions(alert: AlertVM, router: ReturnType<typeof useRouter>): ButtonProps[] {
+  // "סמן כטופל" (reference) = record the service with the item preselected.
   const record: ButtonProps = {
     testID: 'alert-record-service',
-    label: he.alerts.recordHandled,
-    icon: 'clipboard-check-outline',
-    onPress: () =>
-      router.push(
-        alert.maintenanceItemId ? `/service/new?item=${alert.maintenanceItemId}` : '/service/new',
-      ),
+    label: he.alerts.markDone,
+    icon: 'check',
+    onPress: () => router.push(recordServiceHref(alert)),
   };
   switch (alert.kind) {
     case 'upcoming':
     case 'overdue':
       return [
+        record,
         {
           testID: 'alert-view-service',
           label: he.alerts.viewService,
           icon: 'format-list-checks',
-          onPress: () => router.push('/maintenance'),
+          variant: 'secondary',
+          onPress: () => router.push('/next-service'),
         },
-        { ...record, variant: 'secondary' },
       ];
     case 'stale_odometer':
       return [

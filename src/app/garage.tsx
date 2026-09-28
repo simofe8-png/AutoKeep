@@ -1,13 +1,14 @@
+import { useRouter } from 'expo-router';
 import { useState, type ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { newLocalId, useAppData, useVehicleData } from '@/features/data/DataContext';
 import { ActionTypeBadge, dueAtText, DueStatusBadge } from '@/features/maintenance/components';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
-import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate, formatKm, joinParts } from '@/features/vehicles/format';
 import { vehicleDisplayName } from '@/features/vehicles/types';
+import { VehiclePhoto, vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -18,7 +19,11 @@ import {
   Dialog,
   Divider,
   Icon,
-  InlineNotice,
+  IconButton,
+  IconCircle,
+  PlateBadge,
+  QuickActionGrid,
+  QuickActionTile,
   radii,
   Row,
   Screen,
@@ -33,12 +38,12 @@ import {
  * a garage recommendation never becomes a manufacturer requirement.
  */
 export default function GarageModeScreen() {
+  const router = useRouter();
   const { activeVehicle } = useActiveVehicle();
   const { addGarageRecommendation, today } = useAppData();
   const data = useVehicleData(activeVehicle?.id ?? null);
   const [noteOpen, setNoteOpen] = useState(false);
   const [note, setNote] = useState('');
-  const [shareInfo, setShareInfo] = useState(false);
 
   if (!activeVehicle) return null;
   const { schedule, history, deferred, garageRecommendations } = data;
@@ -51,20 +56,92 @@ export default function GarageModeScreen() {
         <ScreenHeader
           title={he.garage.title}
           trailing={
-            <Button
+            <IconButton
               testID="garage-share"
-              label={he.garage.share}
-              variant="ghost"
               icon="share-variant-outline"
-              onPress={() => setShareInfo(true)}
+              accessibilityLabel={he.garage.sharePdf}
+              onPress={() => router.push(`/vehicle/${activeVehicle.id}/dossier`)}
             />
           }
         />
       }
+      footer={
+        <Button
+          testID="garage-finish-visit"
+          label={he.garage.finishVisit}
+          icon="check"
+          fullWidth
+          onPress={() => router.push('/service/new')}
+        />
+      }
     >
+      <View style={styles.hero} testID="vehicle-target-banner">
+        <View style={styles.flex}>
+          <AppText variant="heading" color="textOnPrimary">
+            {`${activeVehicle.manufacturer} ${activeVehicle.model}`}
+          </AppText>
+          <AppText variant="small" color="textOnPrimary" style={styles.heroSpec}>
+            {vehicleSpecLine(activeVehicle)}
+          </AppText>
+          <PlateBadge number={activeVehicle.registration} size="sm" />
+        </View>
+        <VehiclePhoto vehicle={activeVehicle} variant="thumb" />
+      </View>
       <AppText color="textSecondary">{he.garage.intro}</AppText>
-      <VehicleTargetBanner vehicle={activeVehicle} label={he.alerts.vehicle} />
-      {shareInfo ? <InlineNotice tone="info" message={he.garage.shareUnavailable} /> : null}
+
+      {schedule.status === 'verified' && schedule.next ? (
+        <Card testID="garage-next">
+          <Stack gap={spacing.sm}>
+            <View style={styles.nextRow}>
+              <IconCircle icon="wrench-outline" tone="success" size={48} />
+              <View style={styles.flex}>
+                <AppText variant="small" color="textMuted">
+                  {he.home.nextService}
+                </AppText>
+                <AppText variant="heading">{schedule.next.title}</AppText>
+                <AppText variant="small" color="textSecondary">
+                  {dueAtText(schedule.next)}
+                </AppText>
+              </View>
+            </View>
+            <Button
+              testID="garage-show-list"
+              label={he.garage.showList}
+              fullWidth
+              onPress={() => router.push('/next-service')}
+            />
+          </Stack>
+        </Card>
+      ) : null}
+
+      <QuickActionGrid testID="garage-actions">
+        <QuickActionTile
+          testID="garage-share-pdf"
+          icon="file-pdf-box"
+          label={he.garage.sharePdf}
+          onPress={() => router.push(`/vehicle/${activeVehicle.id}/dossier`)}
+        />
+        <QuickActionTile
+          testID="garage-add-note-tile"
+          icon="note-plus-outline"
+          label={he.garage.addNote}
+          onPress={() => setNoteOpen(true)}
+        />
+      </QuickActionGrid>
+
+      <Card testID="garage-checklist">
+        <Stack gap={spacing.sm}>
+          <AppText variant="heading" accessibilityRole="header">
+            {he.garage.checklistTitle}
+          </AppText>
+          {he.garage.checklist.map((c) => (
+            <View key={c} style={styles.nextRow}>
+              <Icon name="check-circle" size={22} color="success" />
+              <AppText style={styles.flex}>{c}</AppText>
+            </View>
+          ))}
+        </Stack>
+      </Card>
 
       <Section
         testID="garage-section-manufacturer"
@@ -230,7 +307,7 @@ export default function GarageModeScreen() {
 const sectionTone = {
   primary: { border: colors.primaryBorder, bg: colors.primarySoft, fg: 'primary' },
   neutral: { border: colors.border, bg: colors.surfaceMuted, fg: 'textSecondary' },
-  warning: { border: '#F2D49B', bg: colors.warningSoft, fg: 'warning' },
+  warning: { border: colors.warningBorder, bg: colors.warningSoft, fg: 'warning' },
 } as const;
 
 function Section({
@@ -275,6 +352,16 @@ function KV({ label, value }: { label: string; value: string }) {
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
+  hero: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    padding: spacing.lg,
+    borderRadius: radii.xl,
+    backgroundColor: colors.textPrimary,
+  },
+  heroSpec: { opacity: 0.85 },
+  nextRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   sectionHeader: {
     flexDirection: 'row',
     alignItems: 'center',

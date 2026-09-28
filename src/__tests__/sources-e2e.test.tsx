@@ -172,7 +172,7 @@ describe('official source → verified schedule → maintenance (T170, labeled m
     );
     await fireEvent.press(screen.getByTestId('sources-finish'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
-    await waitFor(() => expect(screen.getByTestId('next-service-summary')).toBeOnTheScreen(), LONG);
+    await waitFor(() => expect(screen.getByTestId('home-next-service')).toBeOnTheScreen(), LONG);
 
     const [vehicle] = await new VehicleRepository(db).list();
     const schedule = await new ScheduleRepository(db).current(vehicle.id);
@@ -185,6 +185,8 @@ describe('official source → verified schedule → maintenance (T170, labeled m
 
     await fireEvent.press(screen.getByTestId('tab-maintenance'));
     await waitFor(() => expect(screen.getByTestId('screen-maintenance')).toBeOnTheScreen());
+    await fireEvent.press(screen.getByTestId('maintenance-next-details'));
+    await waitFor(() => expect(screen.getByTestId('screen-next-service')).toBeOnTheScreen());
     await fireEvent.press(screen.getByRole('button', { name: /שמן מנוע, החלפה/ }));
     expect(screen.getByTestId(`maintenance-item-${item.id}-details`)).toHaveTextContent(
       /עמ׳ 412 · סעיף 6.3 · טבלה 6-1/,

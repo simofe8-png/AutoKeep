@@ -10,6 +10,16 @@ import { ScheduleRepository } from '@/persistence';
 import { openTestDatabase, type TestDatabase } from '@/persistence/testing/sqljsDatabase';
 import type { VehicleRegistryProvider } from '@/providers/registry/types';
 
+/** Onboarding entry: first-run welcome → "add first vehicle" → identification method → continue. */
+async function chooseMethod(method: 'onboarding-start-scan' | 'onboarding-manual') {
+  if (screen.queryByTestId('onboarding-add-first')) {
+    await fireEvent.press(screen.getByTestId('onboarding-add-first'));
+    await waitFor(() => expect(screen.getByTestId('screen-onboarding-method')).toBeOnTheScreen());
+  }
+  await fireEvent.press(screen.getByTestId(method));
+  await fireEvent.press(screen.getByTestId('onboarding-continue'));
+}
+
 /**
  * M13 integration (T108): the approved UI running on the real local store (sql.js SQLite), with
  * the production onboarding path: acquisition → (no OCR provider yet) → registry lookup with
@@ -89,7 +99,7 @@ describe('real local data behind the approved UI', () => {
       () => expect(screen.getByTestId('screen-onboarding-welcome')).toBeOnTheScreen(),
       LONG,
     );
-    await fireEvent.press(screen.getByTestId('onboarding-start-scan'));
+    await chooseMethod('onboarding-start-scan');
     await waitFor(() => expect(screen.getByTestId('screen-onboarding-scan')).toBeOnTheScreen());
     expect(screen.queryByTestId('scan-scenario')).toBeNull();
 
@@ -128,7 +138,7 @@ describe('real local data behind the approved UI', () => {
     await waitFor(() =>
       expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/קורולה/),
     );
-    expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/84,250/);
+    expect(screen.getByTestId('home-odometer-card')).toHaveTextContent(/84,250/);
     expect(screen.getByTestId('schedule-unavailable')).toBeOnTheScreen();
     expect(screen.queryByTestId('next-service-summary')).toBeNull();
     expect(screen.queryByTestId('demo-data-strip')).toBeNull();
@@ -195,12 +205,12 @@ describe('real local data behind the approved UI', () => {
     // A reading 116 days old is flagged, with its reason.
     await waitFor(() => expect(screen.getByTestId('home-alerts')).toBeOnTheScreen());
 
-    await fireEvent.press(screen.getByRole('button', { name: 'עדכון מד אוץ' }));
+    await fireEvent.press(screen.getByTestId('home-odometer-card'));
     await waitFor(() => expect(screen.getByTestId('screen-odometer')).toBeOnTheScreen(), LONG);
     await fireEvent.changeText(screen.getByTestId('odometer-input'), '19,500');
     await fireEvent.press(screen.getByTestId('odometer-save'));
     await waitFor(() =>
-      expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/19,500/),
+      expect(screen.getByTestId('home-odometer-card')).toHaveTextContent(/19,500/),
     );
     expect(screen.queryByTestId('home-alerts')).toBeNull();
   }, 60000);

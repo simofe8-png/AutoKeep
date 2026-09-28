@@ -3,13 +3,18 @@ import { useState } from 'react';
 
 import { useAppData, type DeletionPreviewVM } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
-import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
-import { SEP } from '@/features/vehicles/format';
+import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
+import { formatKm, SEP } from '@/features/vehicles/format';
+import type { VehicleSummary } from '@/features/vehicles/types';
+import { VehicleHero } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import {
   AppText,
   Card,
   Dialog,
+  Divider,
+  IconButton,
+  InfoRow,
   EmptyState,
   InlineNotice,
   ListRow,
@@ -20,8 +25,27 @@ import {
   TextField,
 } from '@/ui';
 
+/** Identity facts that exist (absent facts are not shown, never invented). */
+function detailRows(v: VehicleSummary): [string, string][] {
+  const f = he.onboarding.fields;
+  const rows: [string, string | undefined][] = [
+    [f.kind, he.vehicleType[v.kind]],
+    [f.manufacturer, v.manufacturer],
+    [f.model, v.model],
+    [f.year, String(v.year)],
+    [f.trim, v.trim],
+    [he.lifecycle.modelCode, v.modelCode],
+    [f.engine, v.engine],
+    [f.fuel, v.fuel],
+    [f.registration, v.registration],
+    [f.vin, v.vinMasked],
+  ];
+  return rows.filter((r): r is [string, string] => Boolean(r[1]));
+}
+
 /**
- * Vehicle lifecycle (T028): archive is the default for sold/unused vehicles (nothing is deleted);
+ * Vehicle detail and lifecycle — "הרכב שלי" of the approved reference: image, identity, details,
+ * then the dossier, archive and permanent deletion (T028): archive is the default for sold/unused vehicles (nothing is deleted);
  * restore is possible; permanent deletion is separate: preview → explicit confirmation → result.
  */
 export default function VehicleManageScreen() {
@@ -35,6 +59,7 @@ export default function VehicleManageScreen() {
   const [deleted, setDeleted] = useState(false);
 
   const vehicle = vehicles.find((v) => v.id === id);
+  const { setActiveVehicleId } = useActiveVehicle();
 
   if (deleted) {
     return (
@@ -59,7 +84,42 @@ export default function VehicleManageScreen() {
 
   return (
     <Screen testID="screen-vehicle-manage" header={<ScreenHeader title={he.lifecycle.title} />}>
-      <VehicleTargetBanner vehicle={vehicle} label={he.alerts.vehicle} />
+      <VehicleHero vehicle={vehicle} />
+
+      <Card testID="vehicle-details">
+        <Stack gap={0}>
+          <AppText variant="heading" accessibilityRole="header">
+            {he.lifecycle.detailsTitle}
+          </AppText>
+          {detailRows(vehicle).map(([label, value], i) => (
+            <Stack key={label} gap={0}>
+              {i > 0 ? <Divider /> : null}
+              <InfoRow label={label} value={value} />
+            </Stack>
+          ))}
+          <Divider />
+          <InfoRow
+            testID="vehicle-odometer-row"
+            label={he.home.odometerNow}
+            value={formatKm(vehicle.odometerKm)}
+            action={
+              !vehicle.archived ? (
+                <IconButton
+                  testID="vehicle-update-odometer"
+                  icon="pencil-outline"
+                  color="primary"
+                  accessibilityLabel={he.home.updateOdometer}
+                  onPress={() => {
+                    // The odometer screen acts on the active vehicle: make this one active first.
+                    setActiveVehicleId(vehicle.id);
+                    router.push('/odometer');
+                  }}
+                />
+              ) : undefined
+            }
+          />
+        </Stack>
+      </Card>
 
       <Card compact>
         <ListRow
@@ -126,7 +186,42 @@ export default function VehicleManageScreen() {
           router.back();
         }}
       >
-        <VehicleTargetBanner vehicle={vehicle} label={he.alerts.vehicle} />
+        <VehicleHero vehicle={vehicle} />
+
+        <Card testID="vehicle-details">
+          <Stack gap={0}>
+            <AppText variant="heading" accessibilityRole="header">
+              {he.lifecycle.detailsTitle}
+            </AppText>
+            {detailRows(vehicle).map(([label, value], i) => (
+              <Stack key={label} gap={0}>
+                {i > 0 ? <Divider /> : null}
+                <InfoRow label={label} value={value} />
+              </Stack>
+            ))}
+            <Divider />
+            <InfoRow
+              testID="vehicle-odometer-row"
+              label={he.home.odometerNow}
+              value={formatKm(vehicle.odometerKm)}
+              action={
+                !vehicle.archived ? (
+                  <IconButton
+                    testID="vehicle-update-odometer"
+                    icon="pencil-outline"
+                    color="primary"
+                    accessibilityLabel={he.home.updateOdometer}
+                    onPress={() => {
+                      // The odometer screen acts on the active vehicle: make this one active first.
+                      setActiveVehicleId(vehicle.id);
+                      router.push('/odometer');
+                    }}
+                  />
+                ) : undefined
+              }
+            />
+          </Stack>
+        </Card>
       </Dialog>
 
       <Dialog
@@ -145,7 +240,42 @@ export default function VehicleManageScreen() {
           deleteVehicle(vehicle.id);
         }}
       >
-        <VehicleTargetBanner vehicle={vehicle} label={he.alerts.vehicle} />
+        <VehicleHero vehicle={vehicle} />
+
+        <Card testID="vehicle-details">
+          <Stack gap={0}>
+            <AppText variant="heading" accessibilityRole="header">
+              {he.lifecycle.detailsTitle}
+            </AppText>
+            {detailRows(vehicle).map(([label, value], i) => (
+              <Stack key={label} gap={0}>
+                {i > 0 ? <Divider /> : null}
+                <InfoRow label={label} value={value} />
+              </Stack>
+            ))}
+            <Divider />
+            <InfoRow
+              testID="vehicle-odometer-row"
+              label={he.home.odometerNow}
+              value={formatKm(vehicle.odometerKm)}
+              action={
+                !vehicle.archived ? (
+                  <IconButton
+                    testID="vehicle-update-odometer"
+                    icon="pencil-outline"
+                    color="primary"
+                    accessibilityLabel={he.home.updateOdometer}
+                    onPress={() => {
+                      // The odometer screen acts on the active vehicle: make this one active first.
+                      setActiveVehicleId(vehicle.id);
+                      router.push('/odometer');
+                    }}
+                  />
+                ) : undefined
+              }
+            />
+          </Stack>
+        </Card>
         <InlineNotice
           tone="danger"
           title={he.lifecycle.previewTitle}

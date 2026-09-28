@@ -16,6 +16,13 @@ export interface VehicleSummary {
   /** ISO date of the odometer measurement. */
   odometerMeasuredAt: string;
   archived: boolean;
+  /** Identity details when known (never invented; absent stays absent). */
+  trim?: string;
+  modelCode?: string;
+  engine?: string;
+  fuel?: string;
+  /** VIN with the final characters masked for display (SPEC: minimise exposure). */
+  vinMasked?: string;
 }
 
 export function vehicleDisplayName(v: Pick<VehicleSummary, 'manufacturer' | 'model' | 'year'>) {

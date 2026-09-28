@@ -3,7 +3,8 @@ import { Pressable, StyleSheet, View, type ViewStyle } from 'react-native';
 
 import { colors, elevation, radii, spacing } from '../theme';
 
-export type CardTone = 'default' | 'highlight' | 'muted' | 'warning' | 'danger';
+export type CardTone =
+  'default' | 'highlight' | 'tint' | 'muted' | 'success' | 'warning' | 'danger';
 
 export interface CardProps {
   children: ReactNode;
@@ -22,8 +23,10 @@ const toneStyles: Record<CardTone, ViewStyle> = {
   default: { backgroundColor: colors.surface, borderColor: colors.border },
   highlight: { backgroundColor: colors.primarySoft, borderColor: colors.primaryBorder },
   muted: { backgroundColor: colors.surfaceMuted, borderColor: colors.divider },
-  warning: { backgroundColor: colors.warningSoft, borderColor: '#F2D49B' },
-  danger: { backgroundColor: colors.dangerSoft, borderColor: '#F4C4C0' },
+  tint: { backgroundColor: colors.surfaceTint, borderColor: colors.primaryBorder },
+  success: { backgroundColor: colors.successSoft, borderColor: colors.successBorder },
+  warning: { backgroundColor: colors.warningSoft, borderColor: colors.warningBorder },
+  danger: { backgroundColor: colors.dangerSoft, borderColor: colors.dangerBorder },
 };
 
 /** Rounded container. Pressable when `onPress` is given (then exposed as a button). */
@@ -68,7 +71,7 @@ export function Card({
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: radii.lg,
+    borderRadius: radii.xl,
     borderWidth: 1,
     overflow: 'hidden',
     ...elevation.card,

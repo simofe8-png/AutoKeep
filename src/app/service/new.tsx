@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { newLocalId, useAppData, useVehicleData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
 import { actionsFromSchedule, type DraftOrigin } from '@/features/service/draft';
+import { FromAlertBanner } from '@/features/service/ServiceForm';
 import { useServiceDraft } from '@/features/service/ServiceDraftContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
@@ -19,7 +20,8 @@ import { AppText, Card, InlineNotice, ListRow, Screen, Stack, type IconName } fr
  */
 export default function NewServiceScreen() {
   const router = useRouter();
-  const { item } = useLocalSearchParams<{ item?: string }>();
+  const { item, from } = useLocalSearchParams<{ item?: string; from?: string }>();
+  const fromAlert = from === 'alert';
   const { activeVehicle } = useActiveVehicle();
   const { schedule } = useVehicleData(activeVehicle?.id ?? null);
   const { setDraft } = useServiceDraft();
@@ -44,6 +46,9 @@ export default function NewServiceScreen() {
       notes: '',
       actions: actionsFromSchedule(schedule.next?.items ?? [], item),
       uncertain: [],
+      fromAlertItem: fromAlert
+        ? (schedule.next?.items.find((i) => i.id === item)?.title ?? '')
+        : undefined,
       ...(acquired
         ? {
             attachment: {
@@ -114,6 +119,9 @@ export default function NewServiceScreen() {
       header={<ScreenHeader title={he.service.newTitle} closeIcon />}
     >
       <VehicleTargetBanner vehicle={activeVehicle} />
+      {fromAlert ? (
+        <FromAlertBanner title={schedule.next?.items.find((i) => i.id === item)?.title} />
+      ) : null}
       <AppText variant="heading">{he.service.chooseMethod}</AppText>
       {problem ? (
         <InlineNotice testID="service-capture-problem" tone="warning" message={problem} />

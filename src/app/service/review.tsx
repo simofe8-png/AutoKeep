@@ -3,13 +3,25 @@ import { useState } from 'react';
 
 import { newLocalId, useAppData } from '@/features/data/DataContext';
 import { draftToEvent, hasErrors, validateDraft } from '@/features/service/draft';
-import { ServiceForm } from '@/features/service/ServiceForm';
+import { FromAlertBanner, NoDraft, ServiceForm } from '@/features/service/ServiceForm';
 import { useServiceDraft } from '@/features/service/ServiceDraftContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { he } from '@/i18n/he';
-import { AppText, Button, Card, Dialog, Icon, InlineNotice, Row, Screen, spacing } from '@/ui';
+import { View } from 'react-native';
+
+import {
+  AppText,
+  Button,
+  Card,
+  Dialog,
+  DocumentThumb,
+  InlineNotice,
+  Row,
+  Screen,
+  spacing,
+} from '@/ui';
 
 /**
  * Review & explicit confirmation (T021). Document-derived drafts never auto-commit: the user
@@ -24,7 +36,7 @@ export default function ReviewServiceScreen() {
   const [confirming, setConfirming] = useState(false);
   const vehicle = vehicles.find((v) => v.id === draft?.vehicleId);
 
-  if (!draft || !vehicle) return null;
+  if (!draft || !vehicle) return <NoDraft />;
   const errors = validateDraft(draft, today());
 
   return (
@@ -42,6 +54,9 @@ export default function ReviewServiceScreen() {
       }
     >
       <VehicleTargetBanner vehicle={vehicle} />
+      {draft.fromAlertItem !== undefined ? (
+        <FromAlertBanner title={draft.fromAlertItem || undefined} />
+      ) : null}
       <AppText color="textSecondary">{he.service.reviewBody}</AppText>
       {draft.origin === 'document' ? (
         <>
@@ -68,15 +83,21 @@ export default function ReviewServiceScreen() {
             />
           )}
           {draft.documentTitle ? (
-            <Card tone="muted" testID="review-original-document">
-              <Row gap={spacing.sm}>
-                <Icon name="file-document-outline" size={24} color="primary" />
-                <AppText variant="small" color="textMuted">
-                  {he.service.originalDocument}:
-                </AppText>
-                <AppText variant="smallStrong" numberOfLines={2} style={{ flex: 1 }}>
-                  {draft.documentTitle}
-                </AppText>
+            <Card testID="review-original-document">
+              <Row gap={spacing.md}>
+                <DocumentThumb
+                  mimeType={draft.attachment?.file.mimeType}
+                  icon="receipt"
+                  size={52}
+                />
+                <View style={{ flex: 1 }}>
+                  <AppText variant="small" color="textMuted">
+                    {he.service.originalDocument}
+                  </AppText>
+                  <AppText variant="smallStrong" numberOfLines={2}>
+                    {draft.documentTitle}
+                  </AppText>
+                </View>
               </Row>
             </Card>
           ) : null}

@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { newLocalId, useAppData, useVehicleData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
@@ -8,21 +9,28 @@ import { documentIcon } from '@/features/documents/icons';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate, joinParts } from '@/features/vehicles/format';
+import { VehicleSelectorCard } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import {
+  AppText,
   Button,
-  Card,
+  colors,
   Dialog,
-  Divider,
+  DocumentThumb,
   EmptyState,
+  FilterChips,
+  IconCircle,
   InlineNotice,
   ListRow,
   PageTitle,
+  radii,
   Screen,
-  SectionHeader,
+  spacing,
   Stack,
   VerificationBadge,
+  verificationLabel,
+  type StatusTone,
 } from '@/ui';
 
 const KIND_ORDER: DocumentKind[] = [
@@ -33,7 +41,18 @@ const KIND_ORDER: DocumentKind[] = [
   'other',
 ];
 
-/** Vehicle-scoped document library (T023). */
+const docTone: Record<DocumentKind, StatusTone> = {
+  owners_manual: 'info',
+  maintenance_schedule: 'success',
+  invoice: 'danger',
+  registration: 'info',
+  other: 'neutral',
+};
+
+/**
+ * Vehicle-scoped document library (T023) after the approved "מסמכים" reference: filters by kind,
+ * rows with the document's icon, details and a thumbnail, "add document" at the bottom.
+ */
 export default function DocumentsScreen() {
   const router = useRouter();
   const { activeVehicle } = useActiveVehicle();
@@ -73,23 +92,29 @@ export default function DocumentsScreen() {
   };
   const alertCount = alerts.filter((a) => !a.handled).length;
 
-  const upload = (
-    <Button
-      testID="documents-upload"
-      label={he.documents.upload}
-      icon="file-upload-outline"
-      variant="secondary"
-      onPress={() => void pick()}
-    />
-  );
+  const [filter, setFilter] = useState<'all' | DocumentKind>('all');
+  const kindsPresent = KIND_ORDER.filter((k) => documents.some((d) => d.kind === k));
+  const kindsShown = filter === 'all' ? kindsPresent : kindsPresent.filter((k) => k === filter);
 
   return (
     <Screen
-      header={<AppHeader alertCount={alertCount} compact />}
+      header={<AppHeader alertCount={alertCount} />}
       edges={['top']}
       testID="screen-documents"
+      footer={
+        <Button
+          testID="documents-upload"
+          label={he.documents.add}
+          icon="file-upload-outline"
+          fullWidth
+          onPress={() => void pick()}
+        />
+      }
     >
-      <PageTitle title={he.documents.title} action={upload} />
+      {activeVehicle ? (
+        <VehicleSelectorCard vehicle={activeVehicle} onPress={() => router.push('/vehicles')} />
+      ) : null}
+      <PageTitle title={he.documents.title} />
       {uploadInfo ? <InlineNotice tone="info" message={he.documents.uploadUnavailable} /> : null}
       {problem ? (
         <InlineNotice testID="documents-upload-problem" tone="warning" message={problem} />
@@ -119,35 +144,74 @@ export default function DocumentsScreen() {
       {documents.length === 0 ? (
         <EmptyState icon="file-document-multiple-outline" title={he.documents.empty} />
       ) : (
-        <Stack>
-          {KIND_ORDER.map((kind) => {
-            const docs = documents.filter((d) => d.kind === kind);
-            if (docs.length === 0) return null;
-            return (
-              <Card key={kind} compact testID={`documents-group-${kind}`}>
-                <SectionHeader title={he.documents.kinds[kind]} />
-                {docs.map((d, i) => (
-                  <Stack key={d.id} gap={0}>
-                    {i > 0 ? <Divider /> : null}
-                    <ListRow
-                      testID={`document-${d.id}`}
-                      icon={documentIcon[d.kind]}
-                      title={d.title}
-                      subtitle={joinParts([
-                        formatDate(d.addedAt),
-                        d.pages ? he.documents.pages(d.pages) : null,
-                        he.authority[d.authority],
-                      ])}
-                      below={<VerificationBadge state={d.verification} />}
-                      onPress={() => router.push(`/documents/${d.id}`)}
-                    />
-                  </Stack>
+        <>
+          <FilterChips
+            testID="documents-filter"
+            accessibilityLabel={he.documents.title}
+            value={kindsPresent.includes(filter as DocumentKind) ? filter : 'all'}
+            onChange={setFilter}
+            options={[
+              { value: 'all', label: he.documents.allDocuments, count: documents.length },
+              ...kindsPresent.map((k) => ({
+                value: k,
+                label: he.documents.kindShort[k],
+                count: documents.filter((d) => d.kind === k).length,
+              })),
+            ]}
+          />
+          {kindsShown.map((kind) => (
+            <View key={kind} testID={`documents-group-${kind}`} style={styles.group}>
+              <AppText variant="smallStrong" color="textSecondary">
+                {he.documents.kinds[kind]}
+              </AppText>
+              {documents
+                .filter((d) => d.kind === kind)
+                .map((d) => (
+                  <Pressable
+                    key={d.id}
+                    testID={`document-${d.id}`}
+                    onPress={() => router.push(`/documents/${d.id}`)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`${d.title}, ${verificationLabel(d.verification)}`}
+                    android_ripple={{ color: colors.primarySoft }}
+                    style={styles.docRow}
+                  >
+                    <IconCircle icon={documentIcon[d.kind]} tone={docTone[d.kind]} size={48} />
+                    <View style={styles.docText}>
+                      <AppText variant="bodyStrong" numberOfLines={2}>
+                        {d.title}
+                      </AppText>
+                      <AppText variant="small" color="textMuted">
+                        {joinParts([
+                          formatDate(d.addedAt),
+                          d.pages ? he.documents.pages(d.pages) : null,
+                          he.authority[d.authority],
+                        ])}
+                      </AppText>
+                      <VerificationBadge state={d.verification} />
+                    </View>
+                    <DocumentThumb mimeType={d.mimeType} icon={documentIcon[d.kind]} size={52} />
+                  </Pressable>
                 ))}
-              </Card>
-            );
-          })}
-        </Stack>
+            </View>
+          ))}
+        </>
       )}
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  group: { gap: spacing.sm },
+  docRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    padding: spacing.md,
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+  },
+  docText: { flex: 1, gap: spacing.xxs },
+});

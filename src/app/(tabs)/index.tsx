@@ -1,32 +1,34 @@
 import { Redirect, useRouter } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
 
 import { AccountOfferCard } from '@/features/account/AccountOfferCard';
-import { activeAlerts, AlertCard } from '@/features/alerts/components';
+import { activeAlerts, AlertStatusCard, mostUrgentAlert } from '@/features/alerts/components';
 import { useAppData, useVehicleData } from '@/features/data/DataContext';
-import { NextServiceSummary, ScheduleUnavailable } from '@/features/maintenance/components';
+import { nextServiceTile, ScheduleUnavailable } from '@/features/maintenance/components';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate, formatKm } from '@/features/vehicles/format';
+import { VehicleHero, VehicleSelectorCard } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import {
-  AppText,
   Button,
   Card,
   EmptyState,
-  Icon,
   InlineNotice,
   OfflineBanner,
-  Row,
+  QuickActionGrid,
+  QuickActionTile,
   Screen,
-  SectionHeader,
-  spacing,
-  Stack,
+  StatTile,
+  StatusCard,
+  TileRow,
+  verificationLabel,
 } from '@/ui';
 
 /**
- * Home (T016): which vehicle is active, maintenance status, what is next, when, and whether the
- * user needs to act. Never claims the vehicle is "healthy".
+ * Home (T016), laid out after the approved Home reference (left variant of
+ * docs/design/approved/a_clean_realistic_ui_ux_mockup_image_of_three_sma.png): active vehicle,
+ * next service and odometer, the most urgent alert, all alerts, shortcuts. Never claims the
+ * vehicle is "healthy"; unverified schedules stay unavailable.
  */
 export default function HomeScreen() {
   const router = useRouter();
@@ -56,99 +58,106 @@ export default function HomeScreen() {
   }
 
   const alerts = activeAlerts(data.alerts);
+  const urgent = mostUrgentAlert(alerts);
   const { schedule } = data;
   const hasValuableData = data.history.length > 0 || data.documents.length > 0;
+  const tile =
+    schedule.status === 'verified' && schedule.next ? nextServiceTile(schedule.next) : null;
 
   return (
     <Screen header={<AppHeader alertCount={alerts.length} />} edges={['top']} testID="screen-home">
       {network === 'offline' ? <OfflineBanner /> : null}
 
-      <Card testID="home-status-card">
-        {schedule.status === 'verified' && schedule.next ? (
-          <Stack>
-            <AppText variant="small" color="textMuted">
-              {he.home.nextService}
-            </AppText>
-            <NextServiceSummary next={schedule.next} />
-            <Row gap={spacing.sm} style={styles.wrap}>
-              <Button
-                testID="home-view-service"
-                label={he.home.viewService}
-                icon="format-list-checks"
-                onPress={() => router.push('/maintenance')}
-              />
-              <Button
-                testID="home-garage-mode"
-                label={he.home.garageMode}
-                icon="garage-variant"
-                variant="secondary"
-                onPress={() => router.push('/garage')}
-              />
-            </Row>
-          </Stack>
-        ) : schedule.status === 'verified' ? (
-          <Stack testID="home-no-tasks">
-            <Row>
-              <Icon name="check-circle-outline" size={24} color="success" />
-              <AppText variant="heading" style={styles.flex}>
-                {he.home.noTasks}
-              </AppText>
-            </Row>
-            <AppText variant="small" color="textSecondary">
-              {he.home.noTasksBody}
-            </AppText>
-          </Stack>
-        ) : (
+      <VehicleSelectorCard vehicle={activeVehicle} onPress={() => router.push('/vehicles')} />
+      <VehicleHero vehicle={activeVehicle} />
+
+      <TileRow testID="home-status-card">
+        <StatTile
+          testID="home-next-service"
+          icon="calendar-month-outline"
+          label={he.home.nextService}
+          value={tile ? tile.value : verificationLabel(schedule.status)}
+          detail={tile?.detail}
+          onPress={() => router.push('/maintenance')}
+        />
+        <StatTile
+          testID="home-odometer-card"
+          icon="road-variant"
+          label={he.home.odometerNow}
+          value={formatKm(activeVehicle.odometerKm)}
+          detail={`${he.home.measuredAt}: ${formatDate(activeVehicle.odometerMeasuredAt)}`}
+          onPress={() => router.push('/odometer')}
+          accessibilityHint={he.home.updateOdometer}
+        />
+      </TileRow>
+
+      {urgent ? (
+        <AlertStatusCard
+          alert={urgent}
+          testID="home-alerts"
+          onPress={() => router.push(`/alerts/${urgent.id}`)}
+        />
+      ) : null}
+
+      {schedule.status !== 'verified' ? (
+        <Card tone={schedule.status === 'pending' ? 'warning' : 'muted'}>
           <ScheduleUnavailable
             schedule={schedule}
             onUploadManual={() => router.push('/documents')}
           />
-        )}
-      </Card>
-
-      <Card testID="home-odometer-card">
-        <Row>
-          <Icon name="speedometer" size={24} color="primary" />
-          <View style={styles.flex}>
-            <AppText variant="small" color="textMuted">
-              {he.home.odometerTitle}
-            </AppText>
-            <AppText variant="heading">{formatKm(activeVehicle.odometerKm)}</AppText>
-            <AppText variant="caption" color="textMuted">
-              {he.home.measuredAt}: {formatDate(activeVehicle.odometerMeasuredAt)}
-            </AppText>
-          </View>
-          <Button
-            testID="home-update-odometer"
-            label={he.home.updateOdometer}
-            variant="ghost"
-            onPress={() => router.push('/odometer')}
-          />
-        </Row>
-      </Card>
+        </Card>
+      ) : !schedule.next ? (
+        <StatusCard
+          testID="home-no-tasks"
+          tone="success"
+          icon="check"
+          title={he.home.noTasks}
+          subtitle={he.home.noTasksBody}
+        />
+      ) : null}
 
       {alerts.length > 0 ? (
-        <Stack testID="home-alerts">
-          <SectionHeader
-            title={he.home.alertsTitle}
-            action={
-              <Button
-                label={he.home.allAlerts}
-                variant="ghost"
-                onPress={() => router.push('/alerts')}
-              />
-            }
-          />
-          {alerts.slice(0, 2).map((a) => (
-            <AlertCard key={a.id} alert={a} onPress={() => router.push(`/alerts/${a.id}`)} />
-          ))}
-        </Stack>
+        <Button
+          testID="home-all-alerts"
+          label={he.home.allAlertsCount(alerts.length)}
+          icon="bell-outline"
+          fullWidth
+          onPress={() => router.push('/alerts')}
+        />
       ) : null}
+
+      <QuickActionGrid testID="home-shortcuts">
+        <QuickActionTile
+          testID="home-garage-mode"
+          icon="car-wrench"
+          label={he.home.garageMode}
+          onPress={() => router.push('/garage')}
+        />
+        <QuickActionTile
+          testID="home-history"
+          icon="clock-outline"
+          label={he.history.title}
+          onPress={() => router.push('/history')}
+        />
+        <QuickActionTile
+          testID="home-documents"
+          icon="file-document-outline"
+          label={he.documents.title}
+          onPress={() => router.push('/documents')}
+        />
+        <QuickActionTile
+          testID="home-view-service"
+          icon="wrench-outline"
+          label={he.home.plan}
+          onPress={() => router.push('/maintenance')}
+        />
+      </QuickActionGrid>
 
       <Button
         testID="home-record-service"
         label={he.home.recordService}
         icon="plus-circle-outline"
+        variant="secondary"
         fullWidth
         onPress={() => router.push('/service/new')}
       />
@@ -163,8 +172,3 @@ export default function HomeScreen() {
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  flex: { flex: 1 },
-  wrap: { flexWrap: 'wrap' },
-});

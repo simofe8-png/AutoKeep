@@ -143,8 +143,18 @@ const noticeTones: Record<
     fg: 'primary',
     icon: 'information-outline',
   },
-  warning: { bg: colors.warningSoft, border: '#F2D49B', fg: 'warning', icon: 'alert-outline' },
-  danger: { bg: colors.dangerSoft, border: '#F4C4C0', fg: 'danger', icon: 'alert-circle-outline' },
+  warning: {
+    bg: colors.warningSoft,
+    border: colors.warningBorder,
+    fg: 'warning',
+    icon: 'alert-outline',
+  },
+  danger: {
+    bg: colors.dangerSoft,
+    border: colors.dangerBorder,
+    fg: 'danger',
+    icon: 'alert-circle-outline',
+  },
   success: {
     bg: colors.successSoft,
     border: '#B7E0CB',

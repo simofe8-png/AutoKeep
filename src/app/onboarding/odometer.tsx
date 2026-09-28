@@ -5,7 +5,7 @@ import { useOnboarding } from '@/features/onboarding/OnboardingContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { parseOdometer } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
-import { AppText, Button, Screen, TextField } from '@/ui';
+import { AppText, Button, Screen, TextField, StepProgress } from '@/ui';
 
 export default function OnboardingOdometer() {
   const router = useRouter();
@@ -32,9 +32,7 @@ export default function OnboardingOdometer() {
         />
       }
     >
-      <AppText variant="small" color="textMuted">
-        {he.onboarding.step(3, 4)}
-      </AppText>
+      <StepProgress step={3} total={4} />
       <AppText color="textSecondary">{he.onboarding.odometerBody}</AppText>
       <TextField
         testID="input-odometer"

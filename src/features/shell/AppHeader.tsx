@@ -1,28 +1,26 @@
 import { useRouter } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
-import { ActiveVehicleChip } from '@/features/vehicles/ActiveVehicleBar';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { he } from '@/i18n/he';
-import { AppText, colors, IconButton, spacing } from '@/ui';
+import { AppText, BrandMark, colors, IconButton, spacing } from '@/ui';
 
 export interface AppHeaderProps {
   /** Number of active alerts for the active vehicle (bell badge). */
   alertCount?: number;
-  compact?: boolean;
 }
 
 /**
- * Shared top bar for primary destinations: active vehicle (switcher entry) at the start,
- * alerts bell and settings/profile as secondary entries at the end.
+ * Shared top bar of the primary destinations (approved Home reference): alerts bell at the
+ * reading start, the AutoKeep wordmark centred, the menu (settings and account) at the end. The
+ * active vehicle and its switcher are shown in the page content right below.
  */
-export function AppHeader({ alertCount, compact = false }: AppHeaderProps) {
+export function AppHeader({ alertCount }: AppHeaderProps) {
   const router = useRouter();
   const { isDemoData } = useActiveVehicle();
   return (
     <View style={styles.wrapper}>
       <View style={styles.row}>
-        <ActiveVehicleChip compact={compact} onPress={() => router.push('/vehicles')} />
         <IconButton
           testID="header-alerts"
           icon="bell-outline"
@@ -30,9 +28,12 @@ export function AppHeader({ alertCount, compact = false }: AppHeaderProps) {
           badgeCount={alertCount}
           onPress={() => router.push('/alerts')}
         />
+        <View style={styles.brand}>
+          <BrandMark size={24} />
+        </View>
         <IconButton
           testID="header-settings"
-          icon="account-circle-outline"
+          icon="menu"
           accessibilityLabel={he.header.settings}
           onPress={() => router.push('/settings')}
         />
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.xs,
     gap: spacing.xs,
   },
+  brand: { flex: 1, alignItems: 'center' },
   demo: {
     backgroundColor: colors.warningSoft,
     paddingVertical: spacing.xxs,

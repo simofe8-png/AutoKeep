@@ -5,7 +5,7 @@ import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { VehicleCard } from '@/features/vehicles/VehicleCard';
 import { he } from '@/i18n/he';
-import { Button, Screen, SectionHeader, Stack } from '@/ui';
+import { Button, IconButton, Screen, SectionHeader, Stack } from '@/ui';
 
 /**
  * כלי הרכב שלי (T025): identity, odometer and important status per vehicle; the active one is
@@ -20,13 +20,28 @@ export default function VehiclesScreen() {
 
   return (
     <Screen
-      header={<ScreenHeader title={he.vehicles.title} closeIcon />}
+      header={
+        <ScreenHeader
+          title={he.vehicles.title}
+          subtitle={he.myVehicles.subtitle}
+          closeIcon
+          trailing={
+            <IconButton
+              testID="vehicles-add-header"
+              icon="plus"
+              accessibilityLabel={he.myVehicles.add}
+              onPress={() => router.push('/onboarding')}
+            />
+          }
+        />
+      }
       testID="screen-vehicles"
       footer={
         <Button
           testID="vehicles-add"
           label={he.myVehicles.add}
           icon="plus"
+          variant="secondary"
           fullWidth
           onPress={() => router.push('/onboarding')}
         />

@@ -205,7 +205,7 @@ describe('documents (T122–T125)', () => {
     if (!schedule.ok) throw new Error('fixture');
     await new ScheduleRepository(world.db).add(schedule.value);
 
-    await open('/maintenance', 'screen-maintenance');
+    await open('/next-service', 'screen-next-service');
     await fireEvent.press(screen.getByRole('button', { name: /שרשרת הנעה/ }));
     await fireEvent.press(screen.getByRole('button', { name: 'פתיחת המקור' }));
     await waitFor(() => expect(screen.getByTestId('screen-document-detail')).toBeOnTheScreen());

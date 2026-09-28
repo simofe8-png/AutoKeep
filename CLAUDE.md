@@ -89,6 +89,7 @@ Reversible decisions inside approved scope: internal organization, naming, test 
   - `src/providers/`: provider-independent boundaries (OCR, AI, discovery, storage, auth)
   - `src/sync/`: sync protocol and queue
   - `src/mocks/`: clearly labeled mock data and adapters. Never report a mock as a real integration.
+- **Screen layouts follow the approved visual references** in `docs/design/approved/` as mapped in `docs/design/README.md` (Home = left variant; four-tab navigation; later product/security decisions override old mockup content). Do not invent a layout where a reference exists.
 - Hebrew RTL always. User-facing strings are Hebrew, kept in `src/i18n/he.ts`.
 - The Android device check runs on the user's physical phone through Expo Go: `npm run start:device` (adb reverse + IPv4 Metro), then open `exp://127.0.0.1:8081` (`adb shell am start -a android.intent.action.VIEW -d exp://127.0.0.1:8081 host.exp.exponent`). The project path has non-ASCII characters, so avoid local Gradle builds unless required (see ADR-0005).
 - Commands: `npm run verify`, `npm run typecheck`, `npm run lint`, `npm test`, `npm run format`.

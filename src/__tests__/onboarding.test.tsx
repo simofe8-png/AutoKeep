@@ -1,14 +1,25 @@
 import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
 
+/** Onboarding entry: first-run welcome → "add first vehicle" → identification method → continue. */
+async function chooseMethod(method: 'onboarding-start-scan' | 'onboarding-manual') {
+  if (screen.queryByTestId('onboarding-add-first')) {
+    await fireEvent.press(screen.getByTestId('onboarding-add-first'));
+    await waitFor(() => expect(screen.getByTestId('screen-onboarding-method')).toBeOnTheScreen());
+  }
+  await fireEvent.press(screen.getByTestId(method));
+  await fireEvent.press(screen.getByTestId('onboarding-continue'));
+}
+
 const LONG = { timeout: 8000 };
 
 async function openOnboarding() {
   await renderRouter('./src/app', { initialUrl: '/onboarding' });
-  await waitFor(() => expect(screen.getByTestId('screen-onboarding-welcome')).toBeOnTheScreen());
+  // Vehicles already exist in the demo data: adding one opens the identification method directly.
+  await waitFor(() => expect(screen.getByTestId('screen-onboarding-method')).toBeOnTheScreen());
 }
 
 async function goToScanWithScenario(label: RegExp) {
-  await fireEvent.press(screen.getByTestId('onboarding-start-scan'));
+  await chooseMethod('onboarding-start-scan');
   await waitFor(() => expect(screen.getByTestId('screen-onboarding-scan')).toBeOnTheScreen());
   await fireEvent.press(screen.getByRole('radio', { name: label }));
   await fireEvent.press(screen.getByTestId('scan-capture'));
@@ -43,9 +54,10 @@ describe('onboarding flow (mock scenarios)', () => {
     await fireEvent.press(screen.getByTestId('sources-finish'));
 
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
-    expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/מאזדה 3 2020/);
-    expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/42,300/);
-  }, 30000);
+    expect(screen.getByTestId('vehicle-hero')).toHaveTextContent(/מאזדה 3/);
+    expect(screen.getByTestId('vehicle-hero')).toHaveTextContent(/2020/);
+    expect(screen.getByTestId('home-odometer-card')).toHaveTextContent(/42,300/);
+  }, 60000);
 
   it('failed scan stays in context and offers retry / manual entry', async () => {
     await openOnboarding();

@@ -4,34 +4,52 @@
  * hard-coding values.
  */
 export const colors = {
-  primary: '#1B64D1',
-  primaryPressed: '#1450AB',
-  primarySoft: '#E7F0FD',
-  primaryBorder: '#B9D2F7',
+  // Approved visual reference set (docs/design/approved/): vivid blue accent, navy text, white
+  // cards on a near-white page. Values sampled from the reference images.
+  primary: '#0062FE',
+  primaryPressed: '#004FCC',
+  primarySoft: '#EAF3FF',
+  primaryBorder: '#BCD5FB',
 
-  background: '#F4F7FB',
+  background: '#F8FAFD',
   surface: '#FFFFFF',
-  surfaceMuted: '#F0F4FA',
-  border: '#DCE4EF',
-  divider: '#E8EDF4',
+  surfaceMuted: '#F2F6FC',
+  surfaceTint: '#F0F7FE',
+  border: '#E2E8F1',
+  divider: '#EDF1F6',
 
-  textPrimary: '#102035',
-  textSecondary: '#44546A',
-  textMuted: '#5E6B7D',
+  textPrimary: '#0E1B3D',
+  textSecondary: '#3F4C66',
+  textMuted: '#5D6880',
   textOnPrimary: '#FFFFFF',
   textDisabled: '#8C97A6',
 
-  success: '#177A4B',
-  successSoft: '#E4F4EC',
-  warning: '#9A5B00',
-  warningSoft: '#FFF3DC',
-  danger: '#B42318',
-  dangerPressed: '#8F1C13',
-  dangerSoft: '#FDEBEA',
-  neutral: '#44546A',
-  neutralSoft: '#EEF1F5',
+  // Text-safe status colours (≥4.5:1 on white and on their soft backgrounds).
+  success: '#127A3C',
+  successSoft: '#E7FAED',
+  successBorder: '#BDE8CB',
+  warning: '#8F5400',
+  warningSoft: '#FFF5DB',
+  warningBorder: '#F6DB9A',
+  danger: '#C62419',
+  dangerPressed: '#A51D14',
+  dangerSoft: '#FEEEEE',
+  dangerBorder: '#F9C9C6',
+  neutral: '#3F4C66',
+  neutralSoft: '#EEF1F6',
 
-  overlay: 'rgba(16, 32, 53, 0.45)',
+  // Strong fills/icons of the reference (not for small text on white).
+  successStrong: '#029A45',
+  dangerStrong: '#FD2D26',
+  attention: '#FECF02',
+  attentionPressed: '#E8BC00',
+
+  // Israeli registration plate.
+  plateYellow: '#FEC201',
+  plateBlue: '#0061FE',
+  plateText: '#0B0B0B',
+
+  overlay: 'rgba(14, 27, 61, 0.45)',
 } as const;
 
 export type ColorToken = keyof typeof colors;
@@ -50,8 +68,8 @@ export const spacing = {
 export const radii = {
   sm: 8,
   md: 12,
-  lg: 16,
-  xl: 20,
+  lg: 18,
+  xl: 22,
   pill: 999,
 } as const;
 
@@ -70,7 +88,9 @@ export const fontFamily = {
 export const typography = {
   display: { fontFamily: fontFamily.bold, fontSize: 28, lineHeight: 36 },
   title: { fontFamily: fontFamily.bold, fontSize: 22, lineHeight: 30 },
-  heading: { fontFamily: fontFamily.medium, fontSize: 18, lineHeight: 26 },
+  heading: { fontFamily: fontFamily.bold, fontSize: 18, lineHeight: 26 },
+  /** Large figures in data tiles and status cards (km, dates). */
+  metric: { fontFamily: fontFamily.bold, fontSize: 20, lineHeight: 28 },
   body: { fontFamily: fontFamily.regular, fontSize: 16, lineHeight: 24 },
   bodyStrong: { fontFamily: fontFamily.medium, fontSize: 16, lineHeight: 24 },
   small: { fontFamily: fontFamily.regular, fontSize: 14, lineHeight: 20 },
@@ -85,6 +105,7 @@ export const maxFontScale: Record<TypographyVariant, number> = {
   display: 1.6,
   title: 1.8,
   heading: 2,
+  metric: 1.6,
   body: 2,
   bodyStrong: 2,
   small: 2,
@@ -94,14 +115,14 @@ export const maxFontScale: Record<TypographyVariant, number> = {
 
 export const elevation = {
   card: {
-    shadowColor: '#102035',
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
+    shadowColor: '#0E1B3D',
+    shadowOpacity: 0.07,
+    shadowRadius: 10,
     shadowOffset: { width: 0, height: 2 },
     elevation: 1,
   },
   raised: {
-    shadowColor: '#102035',
+    shadowColor: '#0E1B3D',
     shadowOpacity: 0.12,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 6 },

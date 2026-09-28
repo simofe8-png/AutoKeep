@@ -4,7 +4,8 @@ import { colors, radii, spacing, touchTarget, type ColorToken } from '../theme';
 import { AppText } from './AppText';
 import { Icon, type IconName } from './Icon';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
+export type ButtonVariant =
+  'primary' | 'secondary' | 'ghost' | 'danger' | 'dangerOutline' | 'success' | 'attention';
 
 export interface ButtonProps {
   label: string;
@@ -14,6 +15,8 @@ export interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   fullWidth?: boolean;
+  /** 'sm' for actions inside cards (still ≥ the minimum touch target). */
+  size?: 'md' | 'sm';
   accessibilityLabel?: string;
   accessibilityHint?: string;
   testID?: string;
@@ -32,7 +35,15 @@ const palette: Record<
     border: colors.primaryBorder,
   },
   ghost: { bg: 'transparent', bgPressed: colors.primarySoft, fg: 'primary' },
-  danger: { bg: colors.danger, bgPressed: colors.dangerPressed, fg: 'textOnPrimary' },
+  danger: { bg: colors.dangerStrong, bgPressed: colors.danger, fg: 'textOnPrimary' },
+  dangerOutline: {
+    bg: colors.surface,
+    bgPressed: colors.dangerSoft,
+    fg: 'danger',
+    border: colors.dangerStrong,
+  },
+  success: { bg: colors.successStrong, bgPressed: colors.success, fg: 'textOnPrimary' },
+  attention: { bg: colors.attention, bgPressed: colors.attentionPressed, fg: 'textPrimary' },
 };
 
 export function Button({
@@ -43,6 +54,7 @@ export function Button({
   disabled = false,
   loading = false,
   fullWidth = false,
+  size = 'md',
   accessibilityLabel,
   accessibilityHint,
   testID,
@@ -63,6 +75,7 @@ export function Button({
       android_ripple={inactive ? undefined : { color: colors.primarySoft }}
       style={({ pressed }) => [
         styles.base,
+        size === 'sm' && styles.small,
         {
           backgroundColor:
             inactive && variant !== 'ghost' ? colors.neutralSoft : pressed ? p.bgPressed : p.bg,
@@ -79,7 +92,7 @@ export function Button({
         ) : icon ? (
           <Icon name={icon} size={20} color={fg} />
         ) : null}
-        <AppText variant="bodyStrong" color={fg} align="center">
+        <AppText variant={size === 'sm' ? 'smallStrong' : 'bodyStrong'} color={fg} align="center">
           {label}
         </AppText>
       </View>
@@ -89,15 +102,16 @@ export function Button({
 
 const styles = StyleSheet.create({
   base: {
-    minHeight: touchTarget,
-    paddingHorizontal: spacing.lg,
+    minHeight: touchTarget + 4,
+    paddingHorizontal: spacing.xl,
     paddingVertical: spacing.sm,
-    borderRadius: radii.md,
+    borderRadius: radii.pill,
     borderWidth: 1,
     justifyContent: 'center',
     alignSelf: 'flex-start',
     overflow: 'hidden',
   },
+  small: { minHeight: touchTarget, paddingHorizontal: spacing.lg },
   fullWidth: { alignSelf: 'stretch' },
   content: {
     flexDirection: 'row',

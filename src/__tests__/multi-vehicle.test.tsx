@@ -176,12 +176,12 @@ describe('car + motorcycle + scooter (T133–T135)', () => {
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
     await switchTo(MOTO);
     await waitFor(() =>
-      expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/18,420/),
+      expect(screen.getByTestId('home-odometer-card')).toHaveTextContent(/18,420/),
     );
     expect(screen.getByTestId('home-alerts')).toBeOnTheScreen();
     await switchTo(SCOOTER);
     await waitFor(() =>
-      expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/9,650/),
+      expect(screen.getByTestId('home-odometer-card')).toHaveTextContent(/9,650/),
     );
     expect(screen.queryByTestId('home-alerts')).toBeNull();
   }, 60000);

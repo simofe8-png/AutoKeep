@@ -8,7 +8,6 @@ import { he } from '@/i18n/he';
 import {
   AppText,
   Card,
-  Divider,
   InlineNotice,
   ListRow,
   Screen,
@@ -54,7 +53,8 @@ export default function SettingsScreen() {
           subtitle={account.hasAccount ? account.username : he.account.notBackedUp}
           onPress={() => router.push('/account')}
         />
-        <Divider />
+      </Card>
+      <Card compact>
         <ListRow
           testID="settings-backup"
           icon="cloud-sync-outline"
@@ -99,7 +99,8 @@ export default function SettingsScreen() {
           title={he.settings.vehicles}
           onPress={() => router.push('/vehicles')}
         />
-        <Divider />
+      </Card>
+      <Card compact>
         <ListRow
           testID="settings-documents"
           icon="file-document-multiple-outline"
@@ -112,15 +113,21 @@ export default function SettingsScreen() {
         <ListRow
           icon="translate"
           title={he.settings.language}
-          subtitle={he.settings.languageValue}
+          trailing={
+            <AppText variant="bodyStrong" color="primary">
+              {he.settings.languageValue}
+            </AppText>
+          }
         />
-        <Divider />
+      </Card>
+      <Card compact>
         <ListRow
           icon="human"
           title={he.settings.accessibility}
           subtitle={he.settings.accessibilityValue}
         />
-        <Divider />
+      </Card>
+      <Card compact>
         <ListRow
           icon="information-outline"
           title={he.settings.about}

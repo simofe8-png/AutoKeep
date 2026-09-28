@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import {
   DISPLAY_FIELDS,
@@ -14,8 +15,20 @@ import { useOnboarding } from '@/features/onboarding/OnboardingContext';
 import { RegistryLookup } from '@/features/onboarding/RegistryLookup';
 import { missingFields, type DraftField, type VehicleDraft } from '@/features/onboarding/types';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
+import { VehiclePhoto } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
-import { AppText, Button, Card, Divider, InlineNotice, Screen, spacing, Stack } from '@/ui';
+import {
+  AppText,
+  Button,
+  Card,
+  Divider,
+  InlineNotice,
+  Screen,
+  spacing,
+  Stack,
+  StepProgress,
+  PlateBadge,
+} from '@/ui';
 
 /** Vehicle confirmation + missing-data completion (T014): ask only for what is missing. */
 export default function OnboardingConfirm() {
@@ -46,7 +59,7 @@ export default function OnboardingConfirm() {
         <>
           <Button
             testID="confirm-details"
-            label={he.onboarding.confirmDetails}
+            label={he.onboarding.confirmAndContinue}
             fullWidth
             disabled={stillMissing.length > 0}
             onPress={() => {
@@ -56,7 +69,7 @@ export default function OnboardingConfirm() {
           />
           <Button
             testID="edit-details"
-            label={he.onboarding.editDetails}
+            label={he.onboarding.notMyDetails}
             variant="ghost"
             fullWidth
             onPress={() => router.push('/onboarding/manual')}
@@ -64,10 +77,27 @@ export default function OnboardingConfirm() {
         </>
       }
     >
-      <AppText variant="small" color="textMuted">
-        {he.onboarding.step(2, 4)}
-      </AppText>
-      <AppText color="textSecondary">{he.onboarding.confirmBody}</AppText>
+      <StepProgress step={2} total={4} />
+      {draft.manufacturer && draft.model ? (
+        <View style={styles.identity} testID="confirm-identity">
+          <AppText variant="title" align="center" accessibilityRole="header">
+            {he.onboarding.isThisYours}
+          </AppText>
+          <AppText color="textSecondary" align="center">
+            {he.onboarding.confirmBody}
+          </AppText>
+          <VehiclePhoto vehicle={{ kind: draft.kind ?? 'car' }} variant="hero" />
+          <AppText variant="title" align="center">
+            {`${draft.manufacturer} ${draft.model}`}
+          </AppText>
+          <AppText color="textSecondary" align="center">
+            {[draft.year, draft.engine, draft.fuel].filter(Boolean).join('  |  ')}
+          </AppText>
+          {draft.registration ? <PlateBadge number={String(draft.registration)} size="lg" /> : null}
+        </View>
+      ) : (
+        <AppText color="textSecondary">{he.onboarding.confirmBody}</AppText>
+      )}
       <Card>
         <Stack gap={spacing.xs}>
           {known.map((f, i) => (
@@ -114,3 +144,7 @@ export default function OnboardingConfirm() {
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  identity: { alignItems: 'center', gap: spacing.sm },
+});

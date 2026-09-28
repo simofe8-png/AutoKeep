@@ -18,11 +18,17 @@ describe('Home (T016)', () => {
   it('answers active vehicle, status, next service, remaining and forecast (צפי)', async () => {
     await open('/', 'screen-home');
     expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/קורולה/);
-    expect(screen.getByTestId('next-service-summary')).toHaveTextContent(/טיפול 90,000/);
-    expect(screen.getByTestId('next-service-summary')).toHaveTextContent(/5,750/);
-    expect(screen.getByTestId('next-service-forecast')).toHaveTextContent(/צפי/);
+    // Next service (Home reference): due date, remaining time and distance.
+    expect(screen.getByTestId('home-next-service')).toHaveTextContent(/15.12.2026/);
+    expect(screen.getByTestId('home-next-service')).toHaveTextContent(/81 ימים/);
+    expect(screen.getByTestId('home-next-service')).toHaveTextContent(/5,750/);
+    expect(screen.getByTestId('home-alerts')).toHaveTextContent(/טיפול מתקרב/);
+    // The plan shows the service, its due status and the labeled forecast (צפי).
+    await fireEvent.press(screen.getByTestId('home-view-service'));
+    await waitFor(() => expect(screen.getByTestId('screen-maintenance')).toBeOnTheScreen());
+    expect(screen.getByTestId('plan-item-next')).toHaveTextContent(/טיפול 90,000/);
     expect(screen.getByTestId('due-upcoming')).toBeOnTheScreen();
-    expect(screen.getByTestId('home-alerts')).toBeOnTheScreen();
+    expect(screen.getByTestId('plan-forecast')).toHaveTextContent(/צפי/);
   });
 
   it('never claims the vehicle is healthy; unverified schedule invents nothing', async () => {
@@ -38,6 +44,10 @@ describe('Home (T016)', () => {
 describe('Maintenance (T017/T018)', () => {
   it('items expand in place with manufacturer text, action type and exact source', async () => {
     await open('/maintenance', 'screen-maintenance');
+    await fireEvent.press(screen.getByTestId('maintenance-next-details'));
+    await waitFor(() => expect(screen.getByTestId('screen-next-service')).toBeOnTheScreen());
+    expect(screen.getByTestId('next-service-summary')).toHaveTextContent(/5,750/);
+    expect(screen.getByTestId('next-service-forecast')).toHaveTextContent(/צפי/);
     expect(screen.queryByTestId('maintenance-item-item-car-oil-details')).toBeNull();
     await fireEvent.press(screen.getByRole('button', { name: /שמן מנוע, החלפה/ }));
     const details = screen.getByTestId('maintenance-item-item-car-oil-details');
@@ -50,7 +60,7 @@ describe('Maintenance (T017/T018)', () => {
   });
 
   it('evidence link opens the source document', async () => {
-    await open('/maintenance', 'screen-maintenance');
+    await open('/next-service', 'screen-next-service');
     await fireEvent.press(screen.getByRole('button', { name: /שמן מנוע, החלפה/ }));
     await fireEvent.press(
       within(screen.getByTestId('maintenance-item-item-car-oil-details')).getByRole('button', {
