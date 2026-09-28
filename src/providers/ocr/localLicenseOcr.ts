@@ -11,6 +11,8 @@ import type { OcrTextLine } from '@/identification/plateCandidates';
  */
 export interface LicenseOcrResult {
   lines: OcrTextLine[];
+  /** Second pass restricted to digits and dashes (plate digits on photographed cards). */
+  digitLines: OcrTextLine[];
   /** Tesseract mean word confidence, 0–100. */
   meanConfidence: number;
   /** Rotation that produced the best result (0 / 90 / 270). */

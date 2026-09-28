@@ -24,7 +24,17 @@ export const OCR_POC = process.env.EXPO_PUBLIC_OCR_POC === '1';
 
 export interface OcrOutcome {
   extraction: PlateExtraction | { kind: 'failed' };
-  metrics: { ms: number; rotation: number; meanConfidence: number; text: OcrTextProbe } | null;
+  metrics: {
+    ms: number;
+    rotation: number;
+    meanConfidence: number;
+    text: OcrTextProbe;
+    digitPassLines: number;
+    /** Sanitized structure only (digits → 9, letters → A/א); never values. */
+    shapes: string[];
+    /** The captured image was deleted from the app cache after OCR. */
+    imageDeleted: boolean;
+  } | null;
   /** POC only: the OCR lines, kept in memory until the registry comparison, then dropped. */
   pocLines: OcrTextLine[] | null;
 }
@@ -165,7 +175,8 @@ function pocSummary(o: OcrOutcome, candidates: number): string {
   return [
     `ms=${m.ms} rot=${m.rotation} mean=${m.meanConfidence}`,
     `lines=${t.lines} heb=${t.hebrewLines} latdig=${t.latinOrDigitLines} labels=${t.labelsFound}/${t.labelsTotal}`,
-    `plate=${o.extraction.kind} candidates=${candidates}`,
+    `plate=${o.extraction.kind} candidates=${candidates} digitPass=${m.digitPassLines} imageDeleted=${m.imageDeleted ? 'Y' : 'N'}`,
+    `shapes=${m.shapes.join(' ; ')}`,
   ].join(' | ');
 }
 

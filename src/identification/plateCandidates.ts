@@ -69,12 +69,22 @@ function candidatesInLine(line: string, labelled: boolean): PlateCandidate[] {
   return out;
 }
 
-export function extractPlateCandidates(lines: readonly OcrTextLine[]): PlateExtraction {
+export function extractPlateCandidates(
+  lines: readonly OcrTextLine[],
+  /** Lines of a digits-only pass: no labels there, so only the canonical dashed format is strong. */
+  digitLines: readonly OcrTextLine[] = [],
+): PlateExtraction {
   const found = new Map<string, PlateCandidate>();
-  lines.forEach((line, i) => {
-    const text = line.text;
-    if (PERSONAL_LABEL.test(text)) return;
-    const labelled = PLATE_LABEL.test(text) || PLATE_LABEL.test(lines[i - 1]?.text ?? '');
+  const scanned: [string, boolean][] = [
+    ...lines
+      .filter((l) => !PERSONAL_LABEL.test(l.text))
+      .map((l): [string, boolean] => {
+        const i = lines.indexOf(l);
+        return [l.text, PLATE_LABEL.test(l.text) || PLATE_LABEL.test(lines[i - 1]?.text ?? '')];
+      }),
+    ...digitLines.map((l): [string, boolean] => [l.text, false]),
+  ];
+  scanned.forEach(([text, labelled]) => {
     for (const c of candidatesInLine(text, labelled)) {
       const prev = found.get(c.plate);
       found.set(c.plate, {

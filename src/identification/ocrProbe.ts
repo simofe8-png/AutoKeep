@@ -42,6 +42,23 @@ export function probeText(lines: readonly OcrTextLine[]): OcrTextProbe {
   };
 }
 
+/**
+ * Sanitized structure of digit-bearing lines, for diagnosing plate extraction WITHOUT values:
+ * digits → 9, Latin letters → A, Hebrew letters → א (e.g. "99-999-99", "999999999").
+ */
+export function digitShapes(lines: readonly OcrTextLine[], max = 12): string[] {
+  return lines
+    .filter((l) => /\d/.test(l.text))
+    .slice(0, max)
+    .map((l) =>
+      l.text
+        .replace(/\d/g, '9')
+        .replace(/[A-Za-z]/g, 'A')
+        .replace(/[א-ת]/g, 'א')
+        .slice(0, 40),
+    );
+}
+
 export type ProbeField =
   'manufacturer' | 'model' | 'year' | 'trim' | 'engineCode' | 'color' | 'fuel' | 'vin';
 const FIELDS: readonly ProbeField[] = [

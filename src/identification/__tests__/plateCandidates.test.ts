@@ -1,3 +1,4 @@
+import { digitShapes } from '../ocrProbe';
 import { extractPlateCandidates, type OcrTextLine } from '../plateCandidates';
 
 const L = (...texts: string[]): OcrTextLine[] => texts.map((text) => ({ text, confidence: 0.8 }));
@@ -70,5 +71,25 @@ describe('registration-number candidates from OCR lines', () => {
   it('nothing recognizable → none (manual entry fallback)', () => {
     expect(extractPlateCandidates([])).toEqual({ kind: 'none' });
     expect(extractPlateCandidates(L('רישיון רכב', '---'))).toEqual({ kind: 'none' });
+  });
+
+  it('digits-only pass: a dashed plate is strong, a bare run stays weak (no labels there)', () => {
+    expect(extractPlateCandidates(L('רישיון רכב'), L('77-881-76'))).toMatchObject({
+      kind: 'single',
+      plate: '7788176',
+    });
+    expect(extractPlateCandidates([], L('7788176'))).toMatchObject({ kind: 'ambiguous' });
+    // The same plate from both passes is one candidate seen twice.
+    expect(extractPlateCandidates(L('77-881-76'), L('77-881-76'))).toEqual({
+      kind: 'single',
+      plate: '7788176',
+      candidates: [{ plate: '7788176', strength: 'strong', occurrences: 2 }],
+    });
+  });
+
+  it('diagnostic shapes never contain a digit or a letter value', () => {
+    const shapes = digitShapes(L('ת.ז. 123456782', 'VSSZZZ6JZCR122118', 'ללא ספרות'));
+    expect(shapes).toEqual(['א.א. 999999999', 'AAAAAA9AAAA999999']);
+    expect(shapes.join('')).not.toMatch(/[0-8]|[B-Zb-z]|[ב-ת]/);
   });
 });

@@ -35,7 +35,15 @@ const ocr: LicenseOcr = {
   id: 'fake-local-ocr',
   recognize: async () => {
     if (ocrLines instanceof Error) throw ocrLines;
-    return { lines: ocrLines, meanConfidence: 80, rotation: 0, width: 1000, height: 600, ms: 900 };
+    return {
+      lines: ocrLines,
+      digitLines: [],
+      meanConfidence: 80,
+      rotation: 0,
+      width: 1000,
+      height: 600,
+      ms: 900,
+    };
   },
 };
 

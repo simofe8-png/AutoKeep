@@ -43,8 +43,14 @@ class LicenseOcrModule : Module() {
             if (r.mean > best.mean) best = r
           }
         }
+        // Second pass: digits and dashes only (sparse text) on the best orientation — plate digits
+        // on photographed cards are often read better without the Hebrew/Latin models competing.
+        api.setVariable("tessedit_char_whitelist", "0123456789-")
+        api.setPageSegMode(TessBaseAPI.PageSegMode.PSM_SPARSE_TEXT)
+        val digits = run(api, source, best.rotation)
         mapOf(
           "lines" to best.lines,
+          "digitLines" to digits.lines,
           "meanConfidence" to best.mean,
           "rotation" to best.rotation,
           "width" to source.width,

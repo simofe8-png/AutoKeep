@@ -10,7 +10,7 @@ import {
   type IdentificationDraft,
   type VehicleVariant,
 } from '@/identification/engine';
-import { probeText } from '@/identification/ocrProbe';
+import { digitShapes, probeText } from '@/identification/ocrProbe';
 import { emptyCatalog, identifyFromAcquisition } from '@/identification/pipeline';
 import { extractPlateCandidates } from '@/identification/plateCandidates';
 import { discardCapturedImage, type LicenseOcr } from '@/providers/ocr/localLicenseOcr';
@@ -53,7 +53,8 @@ export function RealIdentify({ services }: { services: OnboardingServices }) {
         }
         const outcome = await readPlateOnDevice(services.licenseOcr, acquired.file.uri);
         // The license image is no longer needed: delete it and forget it.
-        await discardCapturedImage(acquired.file.uri).catch(() => false);
+        const deleted = await discardCapturedImage(acquired.file.uri).catch(() => false);
+        if (outcome.metrics) outcome.metrics.imageDeleted = deleted;
         if (cancelled) return;
         ocrDone.current = true;
         setView({ kind: 'plate', outcome });
@@ -173,12 +174,15 @@ async function readPlateOnDevice(ocr: LicenseOcr, uri: string): Promise<OcrOutco
   try {
     const r = await ocr.recognize(uri);
     return {
-      extraction: extractPlateCandidates(r.lines),
+      extraction: extractPlateCandidates(r.lines, r.digitLines),
       metrics: {
         ms: r.ms,
         rotation: r.rotation,
         meanConfidence: r.meanConfidence,
         text: probeText(r.lines),
+        digitPassLines: r.digitLines.length,
+        shapes: OCR_POC ? digitShapes([...r.lines, ...r.digitLines]) : [],
+        imageDeleted: false,
       },
       pocLines: OCR_POC ? r.lines : null,
     };
