@@ -13,6 +13,8 @@ _Last updated: 2026-09-28_
   - Admin tool: `tools/beta-admin.mjs --target local|staging` (invite create/list/revoke/delete, user list/set-password).
   - Verified: verify 50/365; cloud 52/52 local **and** hosted staging; Galaxy A54 13/13 on hosted staging. Staging empty after cleanup.
   - The Gmail/App Password step is **no longer needed** (the ZERO_DOMAIN doc is historical).
+- **Screen parity with the approved visual references: IMPLEMENTED (2026-09-28), commit `86ec70d`.** Reference set and decisions: `docs/design/README.md` (Home = LEFT variant; four-tab navigation authoritative; product/security decisions override old mockup content). Audit baseline: `docs/design/PARITY_AUDIT.md`. Existing-user login from the welcome screen added. verify 51/372. Galaxy A54 staging acceptance of the corrected UI: **PASS** (standalone release APK, no Metro; fresh install → existing-user login → data restored), `docs/design/README.md` §5.
+- **Backlog (separate, not part of the parity correction):** post-midnight UTC date display; delete-vehicle confirmation requires the dashed plate; P2C; vehicle-manual / maintenance knowledge architecture.
 - **Next action:** stop. P2C (real beta users, beta project) is **not** started and needs explicit owner approval. Before the first real invitation: see "Remaining before the first real Beta invitation" in `PRIVATE_BETA_AUTH.md`/the P2C readiness matrix (beta backend project, privacy notice, distribution/signing, runbook). Minor pre-existing findings from the A54 run: UTC day in "last backed up"/"added" dates near midnight; delete-vehicle confirmation requires the dashed plate.
 
 ## Granted policies

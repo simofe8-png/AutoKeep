@@ -89,7 +89,40 @@ D, E = the 12-screen images, numbered as printed.)
 | Document thumbnails are type-marked page tiles, not rendered previews                                                     | No file decoding for list rows                                                            |
 | Back arrow drawn "<" at the physical left, as in the references                                                           | Parity with the references                                                                |
 
-## 5. Audit trail
+## 5. Physical acceptance (Galaxy A54, hosted staging, 2026-09-28): PASS
+
+Standalone release APK `com.autokeep.app.staging`:
+
+- sha256 `130a8de5…75724d9`;
+- the JS bundle is embedded (Hermes bytecode) and contains the new screens.
+
+Independence from any dev server was verified before acceptance:
+
+- Metro/Expo CLI stopped: no listener on 8081/8082, no expo process;
+- `adb reverse` removed;
+- cold start from the launcher;
+- no "Cannot connect to Expo CLI" at any point.
+
+The earlier "Cannot connect to Expo CLI" message came from **Expo Go** (the dev client used for
+the demo-data screenshots) after its Metro had been stopped. It was not the staging APK.
+
+Bundle secret scan: the anon key and the HTTPS URL are present; the service-role key, DB password
+and DB URL are absent.
+
+| Check                                                                                                                                                                                             | Result |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| Cold start → approved welcome (wordmark, benefits, "הוספת הרכב הראשון", "יש לי חשבון — התחברות")                                                                                                  | PASS   |
+| Invitation link → registration (username + password) → signed in                                                                                                                                  | PASS   |
+| Onboarding: method stepper (C3) → manual → "זה הרכב שלך?" (plate, illustration) → odometer → source search (honest "not found") → Home                                                            | PASS   |
+| Home (C1): selector, hero, plate, tiles, unverified plan stated honestly; vehicle synced to staging                                                                                               | PASS   |
+| All four tabs (בית / תחזוקה / היסטוריה / מסמכים) render and navigate                                                                                                                              | PASS   |
+| Service recording → review → explicit confirm → history timeline                                                                                                                                  | PASS   |
+| **Fresh install (app data cleared) → welcome → "יש לי חשבון — התחברות" → username + password → account data restored (vehicle on Home, the recorded service in History), no vehicle added first** | PASS   |
+| Alerts, Garage Mode, Settings, My vehicles                                                                                                                                                        | PASS   |
+| Second vehicle added (reused onboarding) and active-vehicle switching both ways                                                                                                                   | PASS   |
+| Account deletion from the phone → welcome; staging back to 0 users / invitations / objects / rows                                                                                                 | PASS   |
+
+## 6. Audit trail
 
 - Parity audit: `docs/design/PARITY_AUDIT.md` (before the correction).
 - Correction: see `CURRENT_STATUS.md` / `task-plan.md` ("Screen parity").
