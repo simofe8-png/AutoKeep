@@ -50,8 +50,8 @@ type PhotoSubject = Pick<VehicleSummary, 'kind'> & Partial<VehicleSummary>;
 
 /**
  * The vehicle image. Priority: the user's own photo → the verified model reference image
- * ("תמונת דגם להמחשה", with its license credit) → the illustration. The large variants also show
- * the resolution states: searching, which-front question, no suitable image, cannot search now.
+ * (with its license credit; no visible model-image label, owner decision 2026-09-29) → the
+ * illustration. The large variants also show the resolution states: searching, which-front question, no suitable image, cannot search now.
  */
 export function VehiclePhoto({
   vehicle,
@@ -115,9 +115,6 @@ export function VehiclePhoto({
             </Pressable>
           ))}
         </View>
-        <AppText variant="caption" color="textSecondary" align="center">
-          {he.vehicleImage.referenceLabel}
-        </AppText>
         <Button
           testID="phase-not-sure"
           label={he.vehicleImage.notSure}
@@ -208,19 +205,14 @@ export function VehiclePhoto({
           style={styles.image}
           resizeMode={reference ? 'contain' : 'cover'}
           accessibilityIgnoresInvertColors
-          accessibilityLabel={reference ? he.vehicleImage.referenceLabel : undefined}
+          accessibilityLabel={
+            reference ? [vehicle.manufacturer, vehicle.model].filter(Boolean).join(' ') : undefined
+          }
         />
         {reference && large ? (
-          <>
-            <View style={styles.artLabel} testID="vehicle-reference-label">
-              <AppText variant="caption" color="textSecondary">
-                {he.vehicleImage.referenceLabel}
-              </AppText>
-            </View>
-            <View style={styles.creditOverlay}>
-              <ReferenceCredit record={state.record} />
-            </View>
-          </>
+          <View style={styles.creditOverlay}>
+            <ReferenceCredit record={state.record} />
+          </View>
         ) : null}
       </View>
     );

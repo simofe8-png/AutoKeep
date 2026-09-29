@@ -57,7 +57,6 @@ export const he = {
   vehicleImage: {
     searching: 'מחפש תמונה מתאימה לכלי הרכב שלך...',
     searchingHint: 'זה עשוי להימשך מספר שניות',
-    referenceLabel: 'תמונת דגם להמחשה',
     sourceHint: 'הקישו לפרטי המקור והרישיון',
     choosePhase: 'איזו מהן דומה לרכב שלך?',
     phaseLabels: {
@@ -425,6 +424,8 @@ export const he = {
     original: 'המסמך המקורי',
     originalHint: 'הקובץ המקורי נשמר ללא שינוי.',
     openOriginal: 'פתיחת המקור',
+    details: 'פרטי המסמך',
+    openHint: 'פותח את המסמך. לחיצה ארוכה: פרטי המסמך',
     derived: 'מידע שחולץ (נפרד מהמקור)',
     extraction: {
       none: 'לא חולץ מידע',

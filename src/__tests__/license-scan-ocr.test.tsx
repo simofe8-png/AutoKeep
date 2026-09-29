@@ -6,7 +6,7 @@ import { configureDataSource } from '@/features/data/dataSource';
 import type { OnboardingServices } from '@/features/onboarding/services';
 import type { OcrTextLine } from '@/identification/plateCandidates';
 import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
-import type { LicenseOcr } from '@/providers/ocr/localLicenseOcr';
+import { localLicenseOcr, type LicenseOcr } from '@/providers/ocr/localLicenseOcr';
 import type { VehicleRegistryProvider } from '@/providers/registry/types';
 import { MemoryFileStore } from '@/providers/storage/types';
 
@@ -202,4 +202,39 @@ describe('license scan → plate → registry (on-device OCR POC)', () => {
     );
     expectNoOwnerDataAnywhere();
   }, 40000);
+});
+
+describe('license OCR DEFERRED (owner decision 2026-09-29)', () => {
+  it('a normal build has no reader, so the license scan is not offered', () => {
+    expect(localLicenseOcr()).toBeNull();
+    expect(localLicenseOcr(true)).toBeNull(); // no native module in tests either
+  });
+
+  it('without a reader, onboarding offers manual entry only: plate → registry → confirm', async () => {
+    configureDataSource({
+      kind: 'local',
+      openDatabase: openTestDatabase,
+      ids: sequentialIds(1),
+      clock,
+      files: new MemoryFileStore(),
+      services: { ...services(), licenseOcr: null },
+    });
+    await renderRouter('./src/app', { initialUrl: '/onboarding/method' });
+    await waitFor(
+      () => expect(screen.getByTestId('screen-onboarding-method')).toBeOnTheScreen(),
+      LONG,
+    );
+    expect(screen.queryByTestId('onboarding-start-scan')).toBeNull();
+    expect(screen.getByTestId('onboarding-manual')).toBeOnTheScreen();
+    await fireEvent.press(screen.getByTestId('onboarding-continue'));
+    await waitFor(
+      () => expect(screen.getByTestId('screen-onboarding-manual')).toBeOnTheScreen(),
+      LONG,
+    );
+    await fireEvent.changeText(screen.getByTestId('input-registration'), '12-345-67');
+    await fireEvent.press(screen.getByTestId('registry-lookup-button'));
+    await waitFor(() => expect(screen.getByTestId('registry-result')).toBeOnTheScreen(), LONG);
+    expect(lookups).toEqual(['1234567']);
+    expect(screen.queryByTestId('ocr-poc-metrics')).toBeNull();
+  }, 60000);
 });

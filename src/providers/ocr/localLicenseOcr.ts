@@ -4,7 +4,7 @@ import * as LegacyFileSystem from 'expo-file-system/legacy';
 import type { OcrTextLine } from '@/identification/plateCandidates';
 
 /**
- * On-device license OCR (POC, owner decision 2026-09-28): Tesseract 5 in the local native module
+ * On-device license OCR (POC, owner decision 2026-09-28; DEFERRED 2026-09-29): Tesseract 5 in the local native module
  * `modules/license-ocr`. The image and the recognized text never leave the device; nothing here
  * logs, stores or uploads them. Unavailable (null) in Expo Go and tests, where no native module
  * exists — the flow then falls back to manual plate entry.
@@ -32,7 +32,16 @@ interface NativeLicenseOcr {
   recognize(uri: string, languages: string): Promise<LicenseOcrResult>;
 }
 
-export function localLicenseOcr(): LicenseOcr | null {
+/**
+ * License OCR is DEFERRED (owner decision 2026-09-29): the real-license test on the Galaxy A54 did
+ * not give acceptable recognition. The native module and the research stay for a future
+ * investigation, but the reader is enabled only in a measurement build made with
+ * EXPO_PUBLIC_OCR_POC=1. Normal builds get null, so the license scan is not offered.
+ */
+export const LICENSE_OCR_POC_BUILD = process.env.EXPO_PUBLIC_OCR_POC === '1';
+
+export function localLicenseOcr(enabled = LICENSE_OCR_POC_BUILD): LicenseOcr | null {
+  if (!enabled) return null;
   const native = requireOptionalNativeModule<NativeLicenseOcr>('LicenseOcr');
   if (!native) return null;
   return {

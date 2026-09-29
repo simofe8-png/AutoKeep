@@ -11,9 +11,11 @@ export interface AppHeaderProps {
 }
 
 /**
- * Shared top bar of the primary destinations (approved Home reference): alerts bell at the
- * reading start, the AutoKeep wordmark centred, the menu (settings and account) at the end. The
- * active vehicle and its switcher are shown in the page content right below.
+ * Shared top bar of the primary destinations: the menu (settings and account) at the reading
+ * start — the physical right in Hebrew RTL (owner decision 2026-09-29, overrides the reference) —
+ * the AutoKeep wordmark centred, and the alerts bell at the end. The row follows the layout
+ * direction, so the order of the children is the only positioning. The active vehicle and its
+ * switcher are shown in the page content right below.
  */
 export function AppHeader({ alertCount }: AppHeaderProps) {
   const router = useRouter();
@@ -22,20 +24,20 @@ export function AppHeader({ alertCount }: AppHeaderProps) {
     <View style={styles.wrapper}>
       <View style={styles.row}>
         <IconButton
-          testID="header-alerts"
-          icon="bell-outline"
-          accessibilityLabel={he.header.alerts}
-          badgeCount={alertCount}
-          onPress={() => router.push('/alerts')}
+          testID="header-settings"
+          icon="menu"
+          accessibilityLabel={he.header.settings}
+          onPress={() => router.push('/settings')}
         />
         <View style={styles.brand}>
           <BrandMark size={24} />
         </View>
         <IconButton
-          testID="header-settings"
-          icon="menu"
-          accessibilityLabel={he.header.settings}
-          onPress={() => router.push('/settings')}
+          testID="header-alerts"
+          icon="bell-outline"
+          accessibilityLabel={he.header.alerts}
+          badgeCount={alertCount}
+          onPress={() => router.push('/alerts')}
         />
       </View>
       {isDemoData ? <DemoDataStrip /> : null}

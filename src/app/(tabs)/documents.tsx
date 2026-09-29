@@ -6,6 +6,7 @@ import { newLocalId, useAppData, useVehicleData } from '@/features/data/DataCont
 import { onboardingServices } from '@/features/data/dataSource';
 import type { DocumentKind } from '@/features/data/types';
 import { documentIcon } from '@/features/documents/icons';
+import { useOpenDocument } from '@/features/documents/useOpenDocument';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate, joinParts } from '@/features/vehicles/format';
@@ -48,7 +49,8 @@ const docTone: Record<DocumentKind, StatusTone> = {
 
 /**
  * Vehicle-scoped document library (T023) after the approved "מסמכים" reference: filters by kind,
- * rows with the document's icon, details and a thumbnail, "add document" at the bottom.
+ * rows with the document's icon, details and a thumbnail, "add document" at the bottom. Tapping a
+ * row opens the document itself; a long press opens its details (source, integrity, extraction).
  */
 export default function DocumentsScreen() {
   const router = useRouter();
@@ -59,6 +61,7 @@ export default function DocumentsScreen() {
   const services = isDemoData ? null : onboardingServices();
   const [picked, setPicked] = useState<AcquiredFile | null>(null);
   const [problem, setProblem] = useState<string | null>(null);
+  const { open, problem: openProblem } = useOpenDocument();
 
   /** Real mode: pick the file first, then say what it is (the original is kept as-is). */
   const pick = async () => {
@@ -111,6 +114,9 @@ export default function DocumentsScreen() {
       {problem ? (
         <InlineNotice testID="documents-upload-problem" tone="warning" message={problem} />
       ) : null}
+      {openProblem ? (
+        <InlineNotice testID="documents-open-problem" tone="warning" message={openProblem} />
+      ) : null}
       <Dialog
         visible={picked !== null}
         testID="documents-kind-dialog"
@@ -157,9 +163,13 @@ export default function DocumentsScreen() {
                   <Pressable
                     key={d.id}
                     testID={`document-${d.id}`}
-                    onPress={() => router.push(`/documents/${d.id}`)}
+                    onPress={() => void open(d)}
+                    onLongPress={() => router.push(`/documents/${d.id}`)}
                     accessibilityRole="button"
                     accessibilityLabel={`${d.title}, ${verificationLabel(d.verification)}`}
+                    accessibilityHint={he.documents.openHint}
+                    accessibilityActions={[{ name: 'longpress', label: he.documents.details }]}
+                    onAccessibilityAction={() => router.push(`/documents/${d.id}`)}
                     android_ripple={{ color: colors.primarySoft }}
                     style={styles.docRow}
                   >

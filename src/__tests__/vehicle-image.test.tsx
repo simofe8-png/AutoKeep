@@ -184,7 +184,9 @@ describe('vehicle image: search states', () => {
       expect(screen.getAllByTestId('vehicle-photo-reference').length).toBeGreaterThan(0),
     );
     expect(screen.queryByTestId('vehicle-image-searching')).toBeNull();
-    expect(screen.getByTestId('vehicle-reference-label')).toHaveTextContent('תמונת דגם להמחשה');
+    // Owner decision 2026-09-29: no visible model-image label; the credit stays.
+    expect(screen.queryByTestId('vehicle-reference-label')).toBeNull();
+    expect(screen.queryByText('תמונת דגם להמחשה')).toBeNull();
     expect(screen.getAllByTestId('vehicle-reference-credit')[0]).toHaveTextContent(
       /Makizox.*CC BY-SA 4\.0/,
     );

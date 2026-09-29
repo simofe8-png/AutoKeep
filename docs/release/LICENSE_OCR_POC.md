@@ -1,8 +1,25 @@
 # License-scan OCR proof of concept: on-device Tesseract (2026-09-29)
 
-**Status: POC, NOT PASS.** The synthetic evaluation on the Galaxy A54 is complete. The quality gate
-requires a **real Israeli vehicle license**, which only the owner can photograph; that test is
-pending (§6). Tesseract is **not** promoted to production architecture.
+**Status: DEFERRED — future investigation required** (owner decision 2026-09-29).
+
+- **Why:** the real-license experiment on the Galaxy A54 did not give acceptable recognition.
+  Tesseract is **not** promoted to production architecture, and no other OCR provider is
+  investigated, purchased or integrated now.
+- **In the app:** normal builds offer no license scan and no measurement card.
+  - `localLicenseOcr()` returns null unless the build is made with `EXPO_PUBLIC_OCR_POC=1`.
+  - The method screen then shows manual entry only.
+  - Vehicle identification is the working path: plate → data.gov.il → vehicle identification →
+    confirmation.
+- **Preserved for a future investigation:**
+  - the native module `modules/license-ocr`;
+  - the plate-candidate extractor and its tests;
+  - the measurement card (POC builds only);
+  - this report and `docs/release/evidence/license-ocr-poc/`.
+- **Known cost:** the native module stays autolinked, so normal APKs still carry about 10 MB of
+  dormant Tesseract code and data (§3). Excluding it from normal builds is a follow-up that needs a
+  full native rebuild.
+
+The sections below are the original POC record.
 
 ## 1. Pre-integration inspection
 

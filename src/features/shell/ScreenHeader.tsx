@@ -18,7 +18,10 @@ export interface ScreenHeaderProps {
   backLabel?: string;
   /** AutoKeep wordmark at the reading start (reference headers of plan, alerts, recording). */
   brand?: boolean;
-  /** Menu (≡) instead of back: opens settings (reference: alerts). */
+  /**
+   * Menu (≡) instead of back: opens settings. It sits at the reading start (physical right in
+   * RTL, like the app header); an action or the wordmark then moves to the end.
+   */
   menu?: boolean;
 }
 
@@ -41,14 +44,15 @@ export function ScreenHeader({
   const back = onBack ?? (() => (router.canGoBack() ? router.back() : router.replace('/')));
   const wide = brand || backLabel != null;
   const start = trailing ?? (brand ? <BrandMark size={18} /> : null);
-  const leading = menu ? (
+  const menuButton = menu ? (
     <IconButton
       testID="screen-header-menu"
       icon="menu"
       accessibilityLabel={he.header.settings}
       onPress={() => router.push('/settings')}
     />
-  ) : backLabel ? (
+  ) : null;
+  const leading = backLabel ? (
     <Pressable
       testID="screen-header-back"
       onPress={back}
@@ -72,7 +76,7 @@ export function ScreenHeader({
   );
   return (
     <View style={styles.row}>
-      <View style={[styles.side, wide && styles.sideWide]}>{start}</View>
+      <View style={[styles.side, wide && styles.sideWide]}>{menuButton ?? start}</View>
       <View style={styles.titles}>
         <AppText
           variant="heading"
@@ -90,7 +94,9 @@ export function ScreenHeader({
           </AppText>
         ) : null}
       </View>
-      <View style={[styles.side, wide && styles.sideWide, styles.end]}>{leading}</View>
+      <View style={[styles.side, wide && styles.sideWide, styles.end]}>
+        {menuButton ? start : leading}
+      </View>
     </View>
   );
 }

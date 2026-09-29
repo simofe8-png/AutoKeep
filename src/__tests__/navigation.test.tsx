@@ -25,6 +25,12 @@ describe('navigation shell', () => {
 
   it('opens alerts and settings as secondary entries and returns back', async () => {
     await renderApp();
+    // RTL: the menu is the first child of the header row, i.e. the reading start (physical right).
+    const order = screen
+      .getAllByRole('button')
+      .map((b) => b.props.testID)
+      .filter((t) => t === 'header-settings' || t === 'header-alerts');
+    expect(order).toEqual(['header-settings', 'header-alerts']);
     await fireEvent.press(screen.getByTestId('header-alerts'));
     await waitFor(() => expect(screen.getByTestId('screen-alerts')).toBeOnTheScreen());
     await fireEvent.press(screen.getByTestId('screen-header-back'));

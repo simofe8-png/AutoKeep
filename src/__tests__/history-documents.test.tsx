@@ -27,14 +27,14 @@ const clock = {
   today: () => isoDate('2026-09-26') as IsoDate,
 };
 const ids = sequentialIds(20000);
+let nextUpload = { uri: 'file:///cache/manual.pdf', mimeType: 'application/pdf' };
 const acquisition: AcquisitionProvider = {
   captureWithCamera: async () => ({ status: 'cancelled' }),
   pickImage: async () => ({ status: 'cancelled' }),
   pickDocument: async () => ({
     status: 'acquired',
     file: {
-      uri: 'file:///cache/manual.pdf',
-      mimeType: 'application/pdf',
+      ...nextUpload,
       sizeBytes: 900_000,
       source: 'file',
     },
@@ -45,6 +45,7 @@ let world: PopulatedWorld;
 let files: MemoryFileStore;
 
 beforeEach(async () => {
+  nextUpload = { uri: 'file:///cache/manual.pdf', mimeType: 'application/pdf' };
   world = await populatedWorld(sequentialIds(1), T0);
   files = new MemoryFileStore();
   configureDataSource({
@@ -158,6 +159,39 @@ describe('documents (T122–T125)', () => {
       expect(screen.getByTestId('document-integrity-modified')).toBeOnTheScreen(),
     );
   }, 30000);
+
+  it('tapping a PDF opens it directly in the device viewer — no detour, no copy, no change', async () => {
+    const doc = await uploadManual();
+    const before = await new DocumentRepository(world.db).list(world.car.id);
+    await fireEvent.press(screen.getByTestId(`document-${doc.id}`));
+    await waitFor(() => expect(files.opened).toEqual([doc.original.storageKey]));
+    expect(screen.getByTestId('screen-documents')).toBeOnTheScreen();
+    expect(screen.queryByTestId('screen-document-detail')).toBeNull();
+    expect(await new DocumentRepository(world.db).list(world.car.id)).toEqual(before);
+  }, 30000);
+
+  it('tapping an image opens the full-screen viewer, read-only', async () => {
+    nextUpload = { uri: 'file:///cache/photo.jpg', mimeType: 'image/jpeg' };
+    const doc = await uploadManual();
+    const before = await new DocumentRepository(world.db).list(world.car.id);
+    await fireEvent.press(screen.getByTestId(`document-${doc.id}`));
+    await waitFor(
+      () => expect(screen.getByTestId('document-viewer-image')).toBeOnTheScreen(),
+      LONG,
+    );
+    expect(screen.getByTestId('document-viewer-image').props.source).toEqual({
+      uri: files.uriFor(doc.original.storageKey),
+    });
+    expect(files.opened).toEqual([]);
+    expect(await new DocumentRepository(world.db).list(world.car.id)).toEqual(before);
+  }, 60000);
+
+  it('a long press on a document opens its details', async () => {
+    const doc = await uploadManual();
+    await fireEvent(screen.getByTestId(`document-${doc.id}`), 'longPress');
+    await waitFor(() => expect(screen.getByTestId('screen-document-detail')).toBeOnTheScreen());
+    expect(files.opened).toEqual([]);
+  }, 60000);
 
   it('a document whose file is not on the device says so and cannot be opened', async () => {
     const invoice = (await new DocumentRepository(world.db).list(world.car.id))[0];

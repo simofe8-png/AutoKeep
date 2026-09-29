@@ -6,8 +6,9 @@ Research and rights evidence: `VEHICLE_IMAGE_RESOLVER_RESEARCH.md` (§4).
 ## 1. Display priority
 
 1. The user's own vehicle photo. It is device-local, keyed by `vehicle_id`, and always wins.
-2. A verified model reference photo for the vehicle's identity class, labelled
-   **"תמונת דגם להמחשה"**, with its license credit (tap → source and license).
+2. A verified model reference photo for the vehicle's identity class, with its license credit
+   (tap → source and license). **No visible "תמונת דגם להמחשה" label** (owner decision
+   2026-09-29); the catalog records keep `display.label` as provenance.
 3. An illustration using the known vehicle color. None is approved yet (the preview was rejected),
    so this level is skipped.
 4. The neutral illustration ("איור כללי · לא תמונת הרכב שלך").
@@ -17,7 +18,7 @@ Research and rights evidence: `VEHICLE_IMAGE_RESOLVER_RESEARCH.md` (§4).
 | State                          | When                                                                                    | UI (Hebrew as specified by the owner)                                                                                                                                                         |
 | ------------------------------ | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Searching                      | The catalog lookup or image download is pending                                         | Spinner + "מחפש תמונה מתאימה לכלי הרכב שלך..." + "זה עשוי להימשך מספר שניות". Non-blocking. **15 s timeout** → can't search now.                                                              |
-| Found                          | An approved record exists for the exact class                                           | The image + "תמונת דגם להמחשה" + credit (author · license · Wikimedia Commons · "הרקע הוסר על ידי AutoKeep")                                                                                  |
+| Found                          | An approved record exists for the exact class                                           | The image + credit (author · license · Wikimedia Commons · "הרקע הוסר על ידי AutoKeep")                                                                                                       |
 | Ambiguous identity             | Exterior phase unknown (no high-confidence registry rule)                               | "איזו מהן דומה לרכב שלך?" with both approved fronts, plus "לא בטוח". The answer is stored as `exterior_phase` (source `user`) and synced. "לא בטוח" shows the illustration and is remembered. |
 | No suitable image              | Nothing approved for the class, or the vehicle is out of scope                          | "לא מצאנו תמונת דגם מתאימה" / "צלם את כלי הרכב שלך או בחר תמונה מהגלריה, ואנחנו נשתמש בה כתמונת כלי הרכב." with "צלם עכשיו", "בחר מהגלריה" and the non-blocking "לא עכשיו" (remembered)       |
 | Connectivity / service failure | Lookup failed, download failed, hash mismatch, or timeout (and no cached approved copy) | "לא ניתן לחפש תמונה כרגע" + "נסה שוב", plus "צלם עכשיו" / "בחר מהגלריה". It **never** says no image exists.                                                                                   |

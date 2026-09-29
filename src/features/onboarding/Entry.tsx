@@ -2,6 +2,8 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { useAppData } from '@/features/data/DataContext';
+import { onboardingServices } from '@/features/data/dataSource';
 import { useOnboarding } from '@/features/onboarding/OnboardingContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehiclePhoto } from '@/features/vehicles/VehicleVisuals';
@@ -92,11 +94,26 @@ const methods: { value: Method; testID: string; icon: IconName; title: string; b
   },
 ];
 
+/**
+ * Whether the license scan can read anything. Real mode: only with an approved extractor or the
+ * on-device reader — license OCR is DEFERRED (2026-09-29), so normal builds offer manual entry
+ * (plate → data.gov.il) only. The labelled demo keeps its mock scan scenarios.
+ */
+function useLicenseScanAvailable(): boolean {
+  const { isDemoData } = useAppData();
+  if (isDemoData) return true;
+  const services = onboardingServices();
+  return Boolean(services?.extractor || services?.licenseOcr);
+}
+
 /** "הוספת רכב חדש" (approved reference): stepper, identification method, continue. */
 export function MethodScreen() {
   const router = useRouter();
   const { reset } = useOnboarding();
-  const [method, setMethod] = useState<Method>('scan');
+  const scanAvailable = useLicenseScanAvailable();
+  const [chosen, setMethod] = useState<Method>(scanAvailable ? 'scan' : 'manual');
+  const method: Method = scanAvailable ? chosen : 'manual';
+  const shown = scanAvailable ? methods : methods.filter((m) => m.value !== 'scan');
   return (
     <Screen
       testID="screen-onboarding-method"
@@ -124,7 +141,7 @@ export function MethodScreen() {
         {he.onboarding.chooseMethod}
       </AppText>
       <View accessibilityRole="radiogroup" style={styles.methods}>
-        {methods.map((m) => {
+        {shown.map((m) => {
           const selected = method === m.value;
           return (
             <Pressable

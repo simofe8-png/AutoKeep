@@ -99,14 +99,11 @@ describe('real local data behind the approved UI', () => {
       () => expect(screen.getByTestId('screen-onboarding-welcome')).toBeOnTheScreen(),
       LONG,
     );
-    await chooseMethod('onboarding-start-scan');
-    await waitFor(() => expect(screen.getByTestId('screen-onboarding-scan')).toBeOnTheScreen());
-    expect(screen.queryByTestId('scan-scenario')).toBeNull();
-
-    // A real capture, but no approved OCR provider: say so, offer the registry/manual path.
-    await fireEvent.press(screen.getByTestId('scan-capture'));
-    await waitFor(() => expect(screen.getByTestId('identify-unavailable')).toBeOnTheScreen(), LONG);
-    await fireEvent.press(screen.getByRole('button', { name: 'הזנה ידנית' }));
+    // License OCR is DEFERRED: without a reader the scan is not offered; manual entry only.
+    await fireEvent.press(screen.getByTestId('onboarding-add-first'));
+    await waitFor(() => expect(screen.getByTestId('onboarding-manual')).toBeOnTheScreen());
+    expect(screen.queryByTestId('onboarding-start-scan')).toBeNull();
+    await chooseMethod('onboarding-manual');
     await waitFor(() => expect(screen.getByTestId('screen-onboarding-manual')).toBeOnTheScreen());
 
     await fireEvent.changeText(screen.getByTestId('input-registration'), '12-345-67');

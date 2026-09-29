@@ -21,7 +21,7 @@ import type { VehicleSummary } from './types';
 /**
  * Vehicle image state (owner decisions 2026-09-29). Display priority:
  *   1. the user's own photo;
- *   2. the verified model reference image ("תמונת דגם להמחשה");
+ *   2. the verified model reference image (credited, no visible label);
  *   3/4. the illustration.
  * While a reference is being resolved the image area says so (never a generic car presented as
  * the result); "no suitable image", "cannot search now" and "which front?" are distinct states.

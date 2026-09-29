@@ -1,6 +1,6 @@
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
 
 import { useAppData, type OriginalView } from '@/features/data/DataContext';
 import { documentIcon } from '@/features/documents/icons';
@@ -32,6 +32,7 @@ import {
  */
 export default function DocumentDetailScreen() {
   const { id, locator } = useLocalSearchParams<{ id: string; locator?: string }>();
+  const router = useRouter();
   const { vehicles, getBundle, getOriginal, openOriginal } = useAppData();
   const [openInfo, setOpenInfo] = useState<string | null>(null);
   const [original, setOriginal] = useState<OriginalView | null | undefined>(undefined);
@@ -77,12 +78,20 @@ export default function DocumentDetailScreen() {
         <SectionHeader title={he.documents.original} />
         <View style={styles.preview} accessible accessibilityLabel={doc.title}>
           {original && original.integrity === 'intact' && original.mimeType.startsWith('image/') ? (
-            <Image
-              testID="document-original-image"
-              source={{ uri: original.uri }}
-              style={styles.image}
-              resizeMode="contain"
-            />
+            <Pressable
+              testID="document-original-image-open"
+              accessibilityRole="imagebutton"
+              accessibilityLabel={he.documents.openOriginal}
+              onPress={() => router.push(`/documents/view/${doc.id}`)}
+              style={styles.imageBox}
+            >
+              <Image
+                testID="document-original-image"
+                source={{ uri: original.uri }}
+                style={styles.image}
+                resizeMode="contain"
+              />
+            </Pressable>
           ) : (
             <Icon name={documentIcon[doc.kind]} size={48} color="primary" />
           )}
@@ -126,6 +135,9 @@ export default function DocumentDetailScreen() {
             disabled={original?.integrity === 'missing'}
             onPress={async () => {
               if (!original) return setOpenInfo(he.documents.noFile);
+              if (original.integrity === 'intact' && original.mimeType.startsWith('image/')) {
+                return router.push(`/documents/view/${doc.id}`);
+              }
               const ok = await openOriginal(owner.id, doc.id);
               setOpenInfo(ok ? null : he.documents.openFailed);
             }}
@@ -153,6 +165,7 @@ export default function DocumentDetailScreen() {
 
 const styles = StyleSheet.create({
   wrap: { flexWrap: 'wrap' },
+  imageBox: { width: '100%' },
   image: { width: '100%', height: 220 },
   preview: {
     alignItems: 'center',

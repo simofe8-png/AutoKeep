@@ -11,6 +11,7 @@ import {
   type OcrTextProbe,
   type ProbeField,
 } from '@/identification/ocrProbe';
+import { LICENSE_OCR_POC_BUILD } from '@/providers/ocr/localLicenseOcr';
 import type { OcrTextLine, PlateExtraction } from '@/identification/plateCandidates';
 import { AppText, Button, Card, InlineNotice, Screen, spacing, Stack, TextField } from '@/ui';
 
@@ -20,7 +21,7 @@ import type { OnboardingServices } from './services';
 import type { DraftField, FieldOrigin, VehicleDraft } from './types';
 
 /** POC measurements are shown only in a build made with EXPO_PUBLIC_OCR_POC=1 (never text). */
-export const OCR_POC = process.env.EXPO_PUBLIC_OCR_POC === '1';
+export const OCR_POC = LICENSE_OCR_POC_BUILD;
 
 export interface OcrOutcome {
   extraction: PlateExtraction | { kind: 'failed' };

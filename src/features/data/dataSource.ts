@@ -116,7 +116,8 @@ const production: DataSourceConfig = {
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.
     extractor: null,
     registry: new DataGovIlRegistry(),
-    // License-scan POC (owner decision 2026-09-28): Tesseract on-device, plate candidate only.
+    // License OCR is DEFERRED (2026-09-29): null outside an EXPO_PUBLIC_OCR_POC=1 measurement
+    // build, so the license scan is not offered and onboarding uses the plate → data.gov.il path.
     licenseOcr: localLicenseOcr(),
     // G1: no OCR/AI runtime provider is approved yet — invoices are not read automatically.
     invoiceReader: null,
