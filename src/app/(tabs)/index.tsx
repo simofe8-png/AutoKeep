@@ -8,7 +8,7 @@ import { useAppData, useVehicleData } from '@/features/data/DataContext';
 import { nextServiceTile } from '@/features/maintenance/components';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatNumber } from '@/features/vehicles/format';
+import { formatDate, formatKm, formatNumber } from '@/features/vehicles/format';
 import { VehiclePager } from '@/features/vehicles/VehiclePager';
 import { VehicleHero } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
@@ -68,6 +68,19 @@ export default function HomeScreen() {
   const hasValuableData = data.history.length > 0 || data.documents.length > 0;
   const tile =
     schedule.status === 'verified' && schedule.next ? nextServiceTile(schedule.next) : null;
+  // Without a curated schedule, the evidence-based plan decides (never an invented interval).
+  const plan = schedule.status !== 'verified' ? data.plan : undefined;
+  const planNext = plan?.next[0];
+  const planTile = planNext
+    ? {
+        value: plan!.next.map((n) => n.title).join(', '),
+        detail: planNext.nextDate
+          ? formatDate(planNext.nextDate)
+          : planNext.nextKm != null
+            ? formatKm(planNext.nextKm)
+            : undefined,
+      }
+    : null;
 
   return (
     <Screen header={<AppHeader alertCount={alerts.length} />} edges={['top']} testID="screen-home">
@@ -94,8 +107,16 @@ export default function HomeScreen() {
             testID="home-next-service"
             icon="calendar-month-outline"
             label={he.home.nextService}
-            value={tile ? tile.value : verificationLabel(schedule.status)}
-            detail={tile?.detail}
+            value={
+              tile
+                ? tile.value
+                : planTile
+                  ? planTile.value
+                  : plan
+                    ? he.home.needInfoShort
+                    : verificationLabel(schedule.status)
+            }
+            detail={tile?.detail ?? planTile?.detail}
             onPress={() => router.push('/maintenance')}
           />
           <StatTile
@@ -115,7 +136,20 @@ export default function HomeScreen() {
             testID="home-alerts"
             onPress={() => router.push(`/alerts/${urgent.id}`)}
           />
-        ) : schedule.status !== 'verified' ? (
+        ) : plan && plan.items.length === 0 ? (
+          <StatusCard
+            testID="home-plan-needs-information"
+            tone="warning"
+            icon="clipboard-alert-outline"
+            title={he.maintenancePlan.needInfoTitle}
+            subtitle={
+              plan.requests.some((r) => r.kind === 'upload_booklet')
+                ? he.maintenancePlan.uploadBooklet
+                : undefined
+            }
+            onPress={() => router.push('/maintenance')}
+          />
+        ) : plan ? null : schedule.status !== 'verified' ? (
           <StatusCard
             testID="schedule-unavailable"
             tone={schedule.status === 'pending' ? 'warning' : 'neutral'}

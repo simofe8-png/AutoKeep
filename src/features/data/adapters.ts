@@ -25,6 +25,7 @@ import type { AlertCandidate } from '@/engine/alerts';
 import { knownRequirements } from '@/features/maintenance/knowledge/knownSources';
 import { buildMaintenancePlan } from '@/features/maintenance/knowledge/plan';
 import { toPlanVM } from '@/features/maintenance/knowledge/planVM';
+import { syntheticDemoRequirements } from '@/features/maintenance/knowledge/syntheticDemo';
 import type { MaintenanceProfile, StoredKnowledgeDocument } from '@/persistence';
 import type { EngineResult, ItemDue } from '@/engine/maintenance';
 import { formatDate, formatKm } from '@/features/vehicles/format';
@@ -417,7 +418,7 @@ export function vehicleRequirements(rec: VehicleRecords): MaintenanceRequirement
     const doc = docs.get(c.documentId);
     return doc ? [requirementFromClaim(c, doc)] : [];
   });
-  return [...knownRequirements(), ...own];
+  return [...knownRequirements(), ...syntheticDemoRequirements(), ...own];
 }
 
 export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {

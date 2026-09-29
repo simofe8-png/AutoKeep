@@ -1,6 +1,7 @@
 import type {
   ActionType,
   MaintenanceItemVM,
+  PlanItemVM,
   ServiceActionVM,
   ServiceEventVM,
 } from '@/features/data/types';
@@ -40,6 +41,26 @@ export function actionsFromSchedule(
     performed: item.id === preselectItemId,
     maintenanceItemId: item.id,
     unlisted: false,
+  }));
+}
+
+/**
+ * Actions offered from the vehicle's evidence-based plan: every applicable task, NOT performed by
+ * default — only what the user checks is recorded, and only a checked task receives the
+ * completion (its per-vehicle completion id). Unrelated tasks are never marked done.
+ */
+export function actionsFromPlan(
+  items: readonly PlanItemVM[],
+  preselectTask?: string,
+): ServiceActionVM[] {
+  return items.map((item) => ({
+    id: `draft-plan-${item.task}`,
+    title: item.title,
+    actionType: item.actionType,
+    performed: item.task === preselectTask,
+    maintenanceItemId: item.completionId,
+    unlisted: false,
+    fromPlan: true,
   }));
 }
 

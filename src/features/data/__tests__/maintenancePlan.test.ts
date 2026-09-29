@@ -143,3 +143,113 @@ describe('maintenance knowledge persistence (migration v6)', () => {
     expect(await repo.profile(FIESTA as never)).toBeNull();
   });
 });
+
+// ---------- Task 10: journal ↔ requirement linkage (SYNTHETIC verified requirements) ----------
+
+async function withVerifiedBooklet(db: Awaited<ReturnType<typeof openTestDatabase>>) {
+  // A curator-verified edition matched by fingerprint (as the operator tool would record it).
+  const repo = new MaintenanceKnowledgeRepository(db);
+  const now = '2026-09-29T09:00:00.000Z' as Timestamp;
+  await repo.addDocument(
+    {
+      id: '00000000-0000-4000-8000-00000000e001',
+      vehicleId: FIESTA,
+      origin: 'user_upload',
+      title: 'SYNTHETIC verified booklet',
+      authority: 'manufacturer',
+      markets: ['IL'],
+      sha256: 'b'.repeat(64),
+      authenticity: 'matched_official_edition',
+      rights: 'none',
+      excerptPolicy: 'none',
+      coverage: { makes: ['ford'] },
+    },
+    null,
+    now,
+  );
+  const claim = (task: 'periodic_service' | 'brake_fluid', interval: object) =>
+    repo.saveClaim(
+      {
+        id: `00000000-0000-4000-8000-0000000c${task === 'periodic_service' ? '0001' : '0002'}`,
+        documentId: '00000000-0000-4000-8000-00000000e001',
+        vehicleId: FIESTA,
+        task,
+        action: task === 'brake_fluid' ? 'replacement' : 'other',
+        interval: interval as never,
+        applicability: {},
+        locator: { page: 3, table: 'SYNTHETIC' },
+        extraction: { method: 'synthetic_test', by: 'test', at: isoDate('2026-09-29') as IsoDate },
+        status: 'accepted',
+        review: {
+          by: 'curator',
+          role: 'curator',
+          at: isoDate('2026-09-29') as IsoDate,
+          decision: 'accepted',
+        },
+      },
+      now,
+    );
+  await claim('periodic_service', {
+    every: { value: 11111, unit: 'km' },
+    everyMonths: 12,
+    rule: 'whichever_first',
+    repeats: true,
+  });
+  await claim('brake_fluid', { everyMonths: 24, rule: 'time_only', repeats: true });
+}
+
+describe('service journal ↔ maintenance requirement (Task 10)', () => {
+  it('a recorded service updates ONLY the task it performed; next due recalculates', async () => {
+    const { db, store } = await setup();
+    await withVerifiedBooklet(db);
+    let plan = (await store.snapshot()).bundles[FIESTA].plan!;
+    expect(plan.status).toBe('ready');
+    const service = plan.items.find((i) => i.task === 'periodic_service')!;
+    const brake = plan.items.find((i) => i.task === 'brake_fluid')!;
+    // From new (no recorded completion): first registration 2015-06 → next point after today.
+    expect(service).toMatchObject({ fromNew: true, nextKm: 99999 });
+    const brakeBefore = brake.nextDate;
+
+    await store.addServiceEvent({
+      id: '00000000-0000-4000-8000-0000000ee001',
+      vehicleId: FIESTA,
+      date: '2026-09-20',
+      odometerKm: 89500,
+      origin: 'manual',
+      verification: 'pending',
+      sourceAuthority: 'user_report',
+      actions: [
+        {
+          id: 'a1',
+          title: service.title,
+          actionType: 'other',
+          performed: true,
+          maintenanceItemId: service.completionId,
+          unlisted: false,
+        },
+      ],
+      documentIds: [],
+    });
+
+    const snap = await store.snapshot();
+    plan = snap.bundles[FIESTA].plan!;
+    const after = plan.items.find((i) => i.task === 'periodic_service')!;
+    expect(after).toMatchObject({
+      fromNew: false,
+      lastDone: { date: '2026-09-20', km: 89500 },
+      nextKm: 89500 + 11111,
+      nextDate: '2027-09-20',
+    });
+    // Unrelated task untouched.
+    expect(plan.items.find((i) => i.task === 'brake_fluid')).toMatchObject({
+      fromNew: true,
+      nextDate: brakeBefore,
+    });
+    // History shows the event; the other vehicle is unaffected.
+    expect(snap.bundles[FIESTA].history.map((h) => h.id)).toContain(
+      '00000000-0000-4000-8000-0000000ee001',
+    );
+    expect(snap.bundles[IBIZA].history).toEqual([]);
+    expect(snap.bundles[IBIZA].plan).toMatchObject({ items: [], status: 'needs_information' });
+  });
+});

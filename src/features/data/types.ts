@@ -70,6 +70,8 @@ export interface ServiceActionVM {
   unlisted: boolean;
   /** A manufacturer item consciously NOT performed now, to be done later (T129). */
   deferred?: boolean;
+  /** A task of the evidence-based plan (links by its per-vehicle completion id). */
+  fromPlan?: boolean;
 }
 
 export type ServiceOrigin = 'manual' | 'document';

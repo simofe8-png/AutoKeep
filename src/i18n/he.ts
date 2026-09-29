@@ -223,6 +223,7 @@ export const he = {
     },
   },
   home: {
+    needInfoShort: 'נדרש מידע',
     nextService: 'הטיפול הבא',
     dueAt: 'מועד',
     kmRemaining: 'נותרו (ק״מ)',

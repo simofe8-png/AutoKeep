@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { useVehicleData } from '@/features/data/DataContext';
 import { ScheduleUnavailable } from '@/features/maintenance/components';
+import { PlanSection, planItemWhen } from '@/features/maintenance/PlanSection';
 import type { DueStatus } from '@/features/data/types';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
@@ -55,9 +56,13 @@ interface Entry {
 export default function MaintenanceScreen() {
   const router = useRouter();
   const { activeVehicle } = useActiveVehicle();
-  const { schedule, history } = useVehicleData(activeVehicle?.id ?? null);
+  const { schedule, history, plan } = useVehicleData(activeVehicle?.id ?? null);
   const [filter, setFilter] = useState<Filter>('all');
   const next = schedule.status === 'verified' ? schedule.next : undefined;
+  // Without a legacy curated schedule, the evidence-based plan (requirement engine) is shown.
+  const evidencePlan = schedule.status !== 'verified' ? plan : undefined;
+  const planNext = evidencePlan?.next ?? [];
+  const planLead = planNext[0];
 
   const done: Entry[] = [...history]
     .sort((a, b) => a.date.localeCompare(b.date))
@@ -126,7 +131,32 @@ export default function MaintenanceScreen() {
         }))
       : [];
 
-  const all = [...done, ...current, ...future];
+  const planEntries: Entry[] = (evidencePlan?.items ?? []).map((it) => {
+    const isNext = planNext.some((n) => n.task === it.task);
+    return {
+      key: `plan-${it.task}`,
+      status: isNext ? 'current' : 'upcoming',
+      filter: isNext ? 'next' : 'future',
+      title: it.title,
+      chip: isNext ? <Badge label={he.maintenance.nextBadge} tone="info" /> : undefined,
+      lines: [
+        <AppText key="a" variant="caption" color="textSecondary">
+          {`${it.actionLabel} · ${planItemWhen(it).join(' · ')}`}
+        </AppText>,
+        it.forecastDate ? (
+          <AppText key="f" variant="caption" color="primary">
+            {`${he.forecast.label}: ${formatDate(it.forecastDate)}`}
+          </AppText>
+        ) : null,
+      ],
+      point: [
+        it.nextKm != null ? formatKm(it.nextKm) : '',
+        it.nextDate ? formatDate(it.nextDate) : '',
+      ].filter(Boolean),
+    };
+  });
+
+  const all = [...done, ...current, ...future, ...planEntries];
   const shown = filter === 'all' ? all : all.filter((e) => e.filter === filter);
 
   const openTab = (tab: Tab) => {
@@ -183,6 +213,8 @@ export default function MaintenanceScreen() {
           }
           accessibilityHint={he.maintenance.openSource}
         />
+      ) : evidencePlan && activeVehicle ? (
+        <PlanSection plan={evidencePlan} vehicleId={activeVehicle.id} />
       ) : (
         <Card tone={schedule.status === 'pending' ? 'warning' : 'muted'}>
           <ScheduleUnavailable
@@ -234,6 +266,53 @@ export default function MaintenanceScreen() {
                   : next.title
             }
             detail={next.dueAtKm != null && next.dueDate ? formatDate(next.dueDate) : undefined}
+            style={styles.tile}
+          />
+        </TileRow>
+      ) : planLead ? (
+        <TileRow testID="plan-figures">
+          <StatTile
+            align="center"
+            icon="calendar-month-outline"
+            label={he.maintenance.odometerTotal}
+            value={formatKm(activeVehicle?.odometerKm ?? 0)}
+            style={styles.tile}
+          />
+          {planLead.remainingKm != null ? (
+            <StatTile
+              align="center"
+              icon="road-variant"
+              iconColor="textPrimary"
+              label={planLead.remainingKm < 0 ? he.home.kmOverdue : he.maintenance.kmToService}
+              value={formatKm(Math.abs(planLead.remainingKm))}
+              style={styles.tile}
+            />
+          ) : null}
+          {planLead.remainingDays != null ? (
+            <StatTile
+              align="center"
+              icon="clock-outline"
+              iconColor="warning"
+              label={
+                planLead.remainingDays < 0 ? he.home.daysOverdue : he.maintenance.daysToService
+              }
+              value={`${formatNumber(Math.abs(planLead.remainingDays))} ${he.home.days}`}
+              style={styles.tile}
+            />
+          ) : null}
+          <StatTile
+            align="center"
+            icon="wrench-outline"
+            iconColor="success"
+            label={he.home.nextService}
+            value={planNext.map((n) => n.title).join(', ')}
+            detail={
+              planLead.nextDate
+                ? formatDate(planLead.nextDate)
+                : planLead.nextKm != null
+                  ? formatKm(planLead.nextKm)
+                  : undefined
+            }
             style={styles.tile}
           />
         </TileRow>

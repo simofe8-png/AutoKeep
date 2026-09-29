@@ -147,7 +147,7 @@ export function ServiceForm({ draft, onChange, errors, showErrors }: ServiceForm
                   </Stack>
                 ) : null}
               </Checkbox>
-              {!a.performed && a.maintenanceItemId && !a.unlisted ? (
+              {!a.performed && a.maintenanceItemId && !a.unlisted && !a.fromPlan ? (
                 <Button
                   testID={`action-defer-${a.id}`}
                   label={a.deferred ? he.service.deferredOn : he.service.defer}

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { newLocalId, useAppData, useVehicleData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
-import { actionsFromSchedule, type DraftOrigin } from '@/features/service/draft';
+import { actionsFromPlan, actionsFromSchedule, type DraftOrigin } from '@/features/service/draft';
 import { FromAlertBanner } from '@/features/service/ServiceForm';
 import { useServiceDraft } from '@/features/service/ServiceDraftContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
@@ -23,7 +23,9 @@ export default function NewServiceScreen() {
   const { item, from } = useLocalSearchParams<{ item?: string; from?: string }>();
   const fromAlert = from === 'alert';
   const { activeVehicle } = useActiveVehicle();
-  const { schedule } = useVehicleData(activeVehicle?.id ?? null);
+  const { schedule, plan } = useVehicleData(activeVehicle?.id ?? null);
+  // Curated schedule items when verified; otherwise the evidence-based plan's tasks.
+  const planItems = schedule.status !== 'verified' ? (plan?.items ?? []) : [];
   const { setDraft } = useServiceDraft();
   const { isDemoData, today: todayOf } = useAppData();
   const services = isDemoData ? null : onboardingServices();
@@ -44,7 +46,9 @@ export default function NewServiceScreen() {
       odometer: String(activeVehicle.odometerKm),
       garage: '',
       notes: '',
-      actions: actionsFromSchedule(schedule.next?.items ?? [], item),
+      actions: planItems.length
+        ? actionsFromPlan(planItems, item)
+        : actionsFromSchedule(schedule.next?.items ?? [], item),
       uncertain: [],
       fromAlertItem: fromAlert
         ? (schedule.next?.items.find((i) => i.id === item)?.title ?? '')
