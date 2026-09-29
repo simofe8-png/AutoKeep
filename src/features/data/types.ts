@@ -161,7 +161,14 @@ export interface OdometerReadingVM {
 
 /** One maintenance task of the vehicle's evidence-based plan (requirement engine). */
 export interface PlanItemVM {
+  /** Unique per obligation: the task, or task-action for inspection/adjustment obligations. */
+  key: string;
   task: string;
+  /**
+   * Evidence level (owner decision 2026-09-29): A = official source for the Israeli market;
+   * B = the manufacturer's document for this model, Israeli-market applicability not verified.
+   */
+  level: 'A' | 'B';
   title: string;
   actionType: ActionType;
   actionLabel: string;
@@ -191,7 +198,8 @@ export type PlanRequestVM =
   | { kind: 'engine_code' }
   | { kind: 'in_service_date' }
   | { kind: 'odometer' }
-  | { kind: 'awaiting_verification'; sources: { title: string; publishedOn?: string }[] };
+  | { kind: 'awaiting_verification'; sources: { title: string; publishedOn?: string }[] }
+  | { kind: 'official_source'; links: { url: string; host: string }[] };
 
 export interface MaintenancePlanVM {
   status: 'ready' | 'partial' | 'needs_information';

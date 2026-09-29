@@ -10,7 +10,9 @@ import {
   type RequirementApplicabilityResult,
   type IsoDate,
   type MaintenanceRequirement,
+  type RequirementAction,
   type RequirementAuthority,
+  type EvidenceLevel,
   type TaskCode,
   type VehicleFacts,
 } from '@/domain';
@@ -89,28 +91,31 @@ export function evaluateApplicability(
   const pick = (c: Check) => checks.filter(([, v]) => v === c).map(([d]) => d);
   const mismatched = pick('mismatch');
   const missing = pick('unknown');
-  return {
+  // The source's own coverage is unknown on these dimensions: never assumed to match.
+  const coverageUnknown = (a.coverageUnknown ?? []).filter((d) => !mismatched.includes(d));
+  const result: RequirementApplicabilityResult = {
     verdict:
       mismatched.length > 0
         ? 'does_not_apply'
-        : missing.length > 0
+        : missing.length > 0 || coverageUnknown.length > 0
           ? 'insufficient_information'
           : 'applies',
     missing,
     mismatched,
-    matched: pick('match'),
+    matched: pick('match').filter((d) => !coverageUnknown.includes(d)),
   };
+  if (coverageUnknown.length) result.coverageUnknown = coverageUnknown;
+  return result;
 }
 
-// ---------- precedence ----------
+// ---------- evidence level & precedence ----------
 
 /**
- * Explicit, deterministic precedence (lower wins):
- *  1. a source that names the vehicle's market beats one that only covers it as 'GLOBAL';
+ * Explicit, deterministic precedence (lower wins), per atomic task:
+ *  1. evidence level: A (the source names the vehicle's market) beats B (official, exact vehicle,
+ *     market not proven) — the Israeli override is therefore per task, never per schedule;
  *  2. then authority: importer (its market's official schedule) > manufacturer / the vehicle's
  *     own official booklet > official publication.
- * The Israeli override is therefore per task: an applicable verified IL importer requirement
- * wins for THAT task only; every other task resolves on its own evidence.
  */
 const AUTHORITY_RANK: Record<RequirementAuthority, number> = {
   importer: 0,
@@ -121,14 +126,75 @@ const AUTHORITY_RANK: Record<RequirementAuthority, number> = {
   secondary: 9,
 };
 
-export function precedence(r: MaintenanceRequirement, f: VehicleFacts): [number, number] {
-  const named =
+const NON_EVIDENCE: readonly RequirementAuthority[] = ['user_report', 'secondary'];
+
+/** The source names the vehicle's own market (not only 'GLOBAL' or another market). */
+export function namesVehicleMarket(r: MaintenanceRequirement, f: VehicleFacts): boolean {
+  return (
     f.market != null &&
-    (r.applicability.markets ?? []).some((m) => normCode(m) === normCode(f.market!));
-  return [named ? 0 : 1, AUTHORITY_RANK[r.authority]];
+    (r.applicability.markets ?? []).some((m) => normCode(m) === normCode(f.market!))
+  );
 }
 
-const cmpPrecedence = (a: [number, number], b: [number, number]) => a[0] - b[0] || a[1] - b[1];
+export interface EvidenceAssessment {
+  /** null = the requirement does not apply to this vehicle at all. */
+  level: EvidenceLevel | null;
+  /** Applicability on the vehicle dimensions; the market is expressed by the level instead. */
+  applicability: RequirementApplicabilityResult;
+  marketNamed: boolean;
+}
+
+/**
+ * Evidence level of one requirement for one vehicle (see EvidenceLevel). A market that is not
+ * proven (or differs) never excludes official evidence for the exact vehicle — it caps it at B,
+ * and the UI must say so. Vehicle dimensions (engine, generation, years…) still exclude.
+ */
+export function assessEvidence(r: MaintenanceRequirement, f: VehicleFacts): EvidenceAssessment {
+  const vehicleDims: RequirementApplicability = { ...r.applicability, markets: undefined };
+  const applicability = evaluateApplicability(vehicleDims, f);
+  const marketNamed = namesVehicleMarket(r, f);
+  const level: EvidenceLevel | null =
+    applicability.verdict === 'does_not_apply'
+      ? null
+      : NON_EVIDENCE.includes(r.authority)
+        ? 'D'
+        : !isVerifiedRequirement(r)
+          ? 'E'
+          : applicability.verdict === 'insufficient_information'
+            ? 'C'
+            : marketNamed
+              ? 'A'
+              : 'B';
+  return { level, applicability, marketNamed };
+}
+
+/** The source is specific to other markets only (not the vehicle's, not 'GLOBAL'). */
+function foreignMarketOnly(r: MaintenanceRequirement, f: VehicleFacts): boolean {
+  const ms = r.applicability.markets ?? [];
+  return (
+    f.market != null &&
+    ms.length > 0 &&
+    ms.every((m) => normCode(m) !== 'GLOBAL' && normCode(m) !== normCode(f.market!))
+  );
+}
+
+/**
+ * [tier, foreign, authority]: tier 0 = the source names the vehicle's market (level A);
+ * within level B a source stated for other markets only ranks below a global/unspecified one;
+ * a foreign importer has no importer privilege outside its market.
+ */
+export function precedence(r: MaintenanceRequirement, f: VehicleFacts): [number, number, number] {
+  const named = namesVehicleMarket(r, f);
+  const foreign = foreignMarketOnly(r, f);
+  const authority =
+    r.authority === 'importer' && !named
+      ? AUTHORITY_RANK.manufacturer
+      : AUTHORITY_RANK[r.authority];
+  return [named ? 0 : 1, foreign ? 1 : 0, authority];
+}
+
+type Rank = [number, number, number];
+const cmpPrecedence = (a: Rank, b: Rank) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2];
 
 /** Two requirements state the same obligation (same action and interval). */
 export function sameObligation(a: MaintenanceRequirement, b: MaintenanceRequirement): boolean {
@@ -141,7 +207,8 @@ export function sameObligation(a: MaintenanceRequirement, b: MaintenanceRequirem
     distanceKm(x.every) === distanceKm(y.every) &&
     (x.everyMonths ?? null) === (y.everyMonths ?? null) &&
     distanceKm(x.first) === distanceKm(y.first) &&
-    (x.firstMonths ?? null) === (y.firstMonths ?? null)
+    (x.firstMonths ?? null) === (y.firstMonths ?? null) &&
+    (x.anchor ?? null) === (y.anchor ?? null)
   );
 }
 
@@ -150,15 +217,16 @@ export function sameObligation(a: MaintenanceRequirement, b: MaintenanceRequirem
 export type ConsideredRole =
   | 'effective'
   | 'supporting' // same obligation, same precedence as the effective one
-  | 'overridden' // applicable but lower precedence (e.g. generic vs IL importer)
+  | 'overridden' // applicable but lower precedence (e.g. level B vs an IL importer's level A)
   | 'conflicting'
   | 'insufficient_information'
   | 'not_applicable'
-  | 'unverified';
+  | 'unverified'; // levels D and E: never scheduled
 
 export interface Considered {
   requirement: MaintenanceRequirement;
   applicability: RequirementApplicabilityResult;
+  level: EvidenceLevel | null;
   role: ConsideredRole;
 }
 
@@ -176,8 +244,12 @@ export type ResolutionReason =
 
 export interface TaskResolution {
   task: TaskCode;
+  /** Inspection, replacement, adjustment and other obligations of one task resolve independently. */
+  action: RequirementAction;
   status: ResolutionStatus;
   effective: MaintenanceRequirement | null;
+  /** Evidence level of the effective requirement (A or B); null when unresolved. */
+  level: EvidenceLevel | null;
   reason: ResolutionReason;
   /** Vehicle facts that would let this task resolve (asked of the user, never assumed). */
   missing: ApplicabilityDimension[];
@@ -185,52 +257,53 @@ export interface TaskResolution {
 }
 
 /**
- * Resolves each task independently. Only verified requirements can become effective; an
- * insufficient-information requirement that could outrank (or tie with) the best applicable one
- * with a different obligation blocks resolution — choosing would be a guess.
+ * Resolves each task independently. Only level A/B requirements can become effective; a level C
+ * requirement (verified, but applicability not yet decidable) that could outrank or tie with the
+ * best applicable one with a different obligation blocks resolution — choosing would be a guess.
  */
 export function resolveRequirements(
   requirements: readonly MaintenanceRequirement[],
   facts: VehicleFacts,
 ): TaskResolution[] {
-  const byTask = new Map<TaskCode, MaintenanceRequirement[]>();
-  for (const r of requirements) byTask.set(r.task, [...(byTask.get(r.task) ?? []), r]);
-  return [...byTask.keys()].sort().map((task) => resolveTask(task, byTask.get(task)!, facts));
+  const byKey = new Map<string, MaintenanceRequirement[]>();
+  for (const r of requirements) {
+    const key = `${r.task}:${r.action}`;
+    byKey.set(key, [...(byKey.get(key) ?? []), r]);
+  }
+  return [...byKey.keys()].sort().map((key) => {
+    const reqs = byKey.get(key)!;
+    return resolveTask(reqs[0].task, reqs[0].action, reqs, facts);
+  });
 }
 
 function resolveTask(
   task: TaskCode,
+  action: RequirementAction,
   reqs: MaintenanceRequirement[],
   facts: VehicleFacts,
 ): TaskResolution {
   const evaluated = [...reqs]
     .sort((a, b) => a.id.localeCompare(b.id))
-    .map((requirement) => ({
-      requirement,
-      applicability: evaluateApplicability(requirement.applicability, facts),
-      verified: isVerifiedRequirement(requirement),
-    }));
+    .map((requirement) => ({ requirement, ...assessEvidence(requirement, facts) }));
   const considered: Considered[] = [];
   const role = (r: MaintenanceRequirement, rl: ConsideredRole) => {
     const e = evaluated.find((x) => x.requirement === r)!;
-    considered.push({ requirement: r, applicability: e.applicability, role: rl });
+    considered.push({ requirement: r, applicability: e.applicability, level: e.level, role: rl });
   };
 
-  const verified = evaluated.filter((e) => e.verified);
-  const applicable = verified.filter((e) => e.applicability.verdict === 'applies');
-  const insufficient = verified.filter(
-    (e) => e.applicability.verdict === 'insufficient_information',
-  );
+  const applicable = evaluated.filter((e) => e.level === 'A' || e.level === 'B');
+  const insufficient = evaluated.filter((e) => e.level === 'C');
   for (const e of evaluated) {
-    if (!e.verified) role(e.requirement, 'unverified');
-    else if (e.applicability.verdict === 'does_not_apply') role(e.requirement, 'not_applicable');
+    if (e.level === null) role(e.requirement, 'not_applicable');
+    else if (e.level === 'D' || e.level === 'E') role(e.requirement, 'unverified');
   }
   const out = (
     status: ResolutionStatus,
     reason: ResolutionReason,
     effective: MaintenanceRequirement | null = null,
     missing: ApplicabilityDimension[] = [],
-  ): TaskResolution => ({ task, status, reason, effective, missing, considered });
+    level: EvidenceLevel | null = null,
+  ): TaskResolution => ({ task, action, status, reason, effective, level, missing, considered });
 
   if (applicable.length === 0) {
     if (insufficient.length > 0) {
@@ -242,7 +315,7 @@ function resolveTask(
         missingOf(insufficient),
       );
     }
-    if (evaluated.some((e) => !e.verified && e.applicability.verdict !== 'does_not_apply')) {
+    if (evaluated.some((e) => e.level === 'D' || e.level === 'E')) {
       return out('unverified_only', 'only_unverified_evidence');
     }
     return out('not_applicable', 'no_applicable_requirement');
@@ -273,15 +346,17 @@ function resolveTask(
     lower.forEach((e) => role(e.requirement, 'overridden'));
     return out('conflicting', 'conflict_same_precedence');
   }
-  const effective = top[0].requirement;
-  role(effective, 'effective');
+  const effective = top[0];
+  role(effective.requirement, 'effective');
   top.slice(1).forEach((e) => role(e.requirement, 'supporting'));
   lower.forEach((e) => role(e.requirement, 'overridden'));
-  const overrides = lower.some((e) => !sameObligation(e.requirement, effective));
+  const overrides = lower.some((e) => !sameObligation(e.requirement, effective.requirement));
   return out(
     'resolved',
     overrides ? 'market_override' : top.length > 1 ? 'agreeing_sources' : 'single_source',
-    effective,
+    effective.requirement,
+    [],
+    effective.level,
   );
 }
 
@@ -365,7 +440,9 @@ export function computeRequirementDue(input: DueInput): RequirementDue {
       nextKm =
         current.km < first || !iv.repeats
           ? first
-          : first + nextMultipleAbove(current.km - first, everyKm!);
+          : iv.anchor === 'zero'
+            ? nextMultipleAbove(current.km, everyKm!)
+            : first + nextMultipleAbove(current.km - first, everyKm!);
     }
   }
   // Time.
@@ -375,6 +452,9 @@ export function computeRequirementDue(input: DueInput): RequirementDue {
     else if (input.inServiceDate) {
       let d = addMonths(input.inServiceDate, iv.firstMonths ?? iv.everyMonths!);
       // From new with no recorded completion: the next scheduled point not yet passed.
+      if (iv.repeats && iv.anchor === 'zero' && compareDates(d, today) <= 0) {
+        d = addMonths(input.inServiceDate, iv.everyMonths!);
+      }
       while (iv.repeats && compareDates(d, today) <= 0) d = addMonths(d, iv.everyMonths!);
       nextDate = d;
     }

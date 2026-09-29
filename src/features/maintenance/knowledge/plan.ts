@@ -1,3 +1,5 @@
+import { SOURCE_REGISTRY } from '@/discovery/maintenance/sourceRegistry';
+import { fillTemplate } from '@/discovery/maintenance/sources';
 import { MANUFACTURER_ALIASES } from '@/discovery/registry';
 import { normalizeManufacturer } from '@/discovery/authority';
 import {
@@ -5,6 +7,7 @@ import {
   type IsoDate,
   type MaintenanceRequirement,
   type Powertrain,
+  type RequirementAction,
   type TaskCode,
   type VehicleFacts,
   type VehicleType,
@@ -50,6 +53,8 @@ export interface PlanItem {
   task: TaskCode;
   requirement: MaintenanceRequirement;
   resolution: TaskResolution;
+  /** A = the vehicle's market (Israel) is named by the source; B = manufacturer, market unproven. */
+  level: 'A' | 'B';
   due: RequirementDue;
   /** Id that links a recorded service action to this task on this vehicle (completion). */
   completionId: string;
@@ -65,7 +70,9 @@ export type EvidenceRequest =
   | { kind: 'engine_code' }
   | { kind: 'in_service_date' }
   | { kind: 'odometer' }
-  | { kind: 'awaiting_verification'; sources: { title: string; publishedOn?: IsoDate }[] };
+  | { kind: 'awaiting_verification'; sources: { title: string; publishedOn?: IsoDate }[] }
+  /** Approved official pages the USER can open (AutoKeep may not fetch them automatically). */
+  | { kind: 'official_source'; links: { url: string; host: string }[] };
 
 export interface MaintenancePlan {
   facts: VehicleFacts;
@@ -136,8 +143,18 @@ function fnv1a(s: string, seed: number): number {
  * synced service_actions.maintenance_item_id, so a recorded completion links to exactly one
  * task of exactly one vehicle.
  */
-export function taskCompletionId(vehicleId: string, task: TaskCode): string {
-  const key = `autokeep:maintenance-task:${vehicleId}:${task}`;
+/**
+ * Completion link of one obligation on one vehicle. Inspection and adjustment obligations get
+ * their own id; replacement / other keep the task-level id (stable for completions recorded
+ * before per-action resolution, 2026-09-29).
+ */
+export function taskCompletionId(
+  vehicleId: string,
+  task: TaskCode,
+  action?: RequirementAction,
+): string {
+  const suffix = action === 'inspection' || action === 'adjustment' ? `:${action}` : '';
+  const key = `autokeep:maintenance-task:${vehicleId}:${task}${suffix}`;
   const hex = [0x811c9dc5, 0x01234567, 0x89abcdef, 0x13579bdf]
     .map((seed) => fnv1a(key, seed).toString(16).padStart(8, '0'))
     .join('');
@@ -161,6 +178,40 @@ function lastCompletionOf(
     }
   }
   return best;
+}
+
+// ---------- official links (registry data; nothing is fetched) ----------
+
+/**
+ * Official pages for this vehicle's make that the owner approved as authorities and that list
+ * manuals / maintenance plans — offered to the user to open themselves (personal use).
+ */
+export function officialLinks(
+  facts: VehicleFacts,
+  v: PlanVehicle,
+): { url: string; host: string }[] {
+  if (!facts.make) return [];
+  const identity = {
+    kind: facts.kind ?? 'car',
+    make: facts.make,
+    model: v.model,
+    modelYear: facts.modelYear ?? 0,
+  } as const;
+  const out: { url: string; host: string }[] = [];
+  for (const e of SOURCE_REGISTRY) {
+    if (e.status !== 'approved' || !e.manufacturers.includes(facts.make)) continue;
+    for (const ep of e.entryPoints ?? []) {
+      if (ep.kind === 'sitemap') continue;
+      const url = fillTemplate(
+        ep.url,
+        identity,
+        ep.kind === 'template' ? ep.locales?.[0] : undefined,
+      );
+      if (/\.xml(\?|$)/i.test(url) || out.some((o) => o.url === url)) continue;
+      out.push({ url, host: e.host });
+    }
+  }
+  return out;
 }
 
 // ---------- the plan ----------
@@ -192,12 +243,13 @@ export function buildMaintenancePlan(input: {
       unresolved.push(r);
       continue;
     }
-    const completionId = taskCompletionId(input.vehicle.id, r.task);
+    const completionId = taskCompletionId(input.vehicle.id, r.task, r.action);
     const lastCompletion = lastCompletionOf(completionId, input.history);
     items.push({
       task: r.task,
       requirement: r.effective,
       resolution: r,
+      level: r.level === 'A' ? 'A' : 'B',
       completionId,
       lastCompletion,
       due: computeRequirementDue({
@@ -216,7 +268,11 @@ export function buildMaintenancePlan(input: {
   const add = (r: EvidenceRequest) => {
     if (!requests.some((x) => JSON.stringify(x) === JSON.stringify(r))) requests.push(r);
   };
-  if (items.length === 0) add({ kind: 'upload_booklet', hint });
+  if (items.length === 0) {
+    const links = officialLinks(facts, input.vehicle);
+    if (links.length) add({ kind: 'official_source', links });
+    add({ kind: 'upload_booklet', hint });
+  }
   for (const r of unresolved) {
     for (const d of r.missing) {
       if (d === 'serviceRegime') add({ kind: 'service_regime', hint });

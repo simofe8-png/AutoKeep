@@ -132,9 +132,9 @@ export default function MaintenanceScreen() {
       : [];
 
   const planEntries: Entry[] = (evidencePlan?.items ?? []).map((it) => {
-    const isNext = planNext.some((n) => n.task === it.task);
+    const isNext = planNext.some((n) => n.key === it.key);
     return {
-      key: `plan-${it.task}`,
+      key: `plan-${it.key}`,
       status: isNext ? 'current' : 'upcoming',
       filter: isNext ? 'next' : 'future',
       title: it.title,

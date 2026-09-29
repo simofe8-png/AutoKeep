@@ -37,7 +37,9 @@ function itemVM(item: PlanItem): PlanItemVM | null {
   const e = item.requirement.evidence[0];
   const action = item.requirement.action;
   return {
+    key: action === 'inspection' || action === 'adjustment' ? `${item.task}-${action}` : item.task,
     task: item.task,
+    level: item.level,
     title: he.maintenancePlan.tasks[item.task],
     actionType: action === 'adjustment' ? 'other' : action,
     actionLabel: he.maintenancePlan.actions[action],

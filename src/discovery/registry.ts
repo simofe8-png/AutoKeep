@@ -35,4 +35,8 @@ export const MANUFACTURER_ALIASES: ManufacturerAliases = {
   // Acceptance vehicles of the maintenance run (registry spellings, e.g. "סיאט ספרד").
   סיאט: 'seat',
   פורד: 'ford',
+  // Blind maintenance-coverage matrix brands (spellings only).
+  טסלה: 'tesla',
+  "פיג'ו": 'peugeot',
+  "אם ג'י": 'mg',
 };

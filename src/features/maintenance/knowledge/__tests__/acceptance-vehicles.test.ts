@@ -1,7 +1,13 @@
 import { isoDate, isVerifiedRequirement, type IsoDate } from '@/domain';
 
 import { KNOWN_SOURCES, knownRequirements } from '../knownSources';
-import { buildMaintenancePlan, factsOf, taskCompletionId, type PlanVehicle } from '../plan';
+import {
+  buildMaintenancePlan,
+  factsOf,
+  officialLinks,
+  taskCompletionId,
+  type PlanVehicle,
+} from '../plan';
 
 /**
  * Task 7: the two REAL acceptance vehicles against the REAL sources found (knownSources.ts).
@@ -63,14 +69,46 @@ describe('Case A — SEAT Ibiza 2012 / CGG', () => {
     });
   });
 
-  it('the UK owner’s manual does not cover an Israeli vehicle: no schedule, exact booklet request', () => {
+  it('the unreviewed UK-manual candidate schedules nothing: booklet request + awaiting verification', () => {
     const p = plan(ibiza);
     expect(p.items).toEqual([]);
     expect(p.status).toBe('needs_information');
-    expect(p.requests).toEqual([{ kind: 'upload_booklet', hint: 'seat_maintenance_programme' }]);
-    // The UK claim was considered and excluded on the market, not silently applied.
+    expect(p.requests).toEqual([
+      { kind: 'upload_booklet', hint: 'seat_maintenance_programme' },
+      {
+        kind: 'awaiting_verification',
+        sources: [{ title: "SEAT Ibiza owner's manual (UK English)", publishedOn: undefined }],
+      },
+    ]);
+    // Level E (unreviewed extraction): considered, never applied.
     const ps = p.unresolved.find((r) => r.task === 'periodic_service');
-    expect(ps).toBeUndefined();
+    expect(ps).toMatchObject({ status: 'unverified_only' });
+  });
+
+  it('once reviewed, the UK rule is level B (market not proven) and still needs the regime code', () => {
+    const reviewed = knownRequirements().map((r) =>
+      r.id.startsWith('seat-ibiza-my12-uk')
+        ? {
+            ...r,
+            verification: 'verified' as const,
+            extraction: { ...r.extraction, reviewedBy: 'test-curator' },
+          }
+        : r,
+    );
+    const input = { profile: null, requirements: reviewed, history: [], readings: [], today };
+    const unknown = buildMaintenancePlan({ vehicle: ibiza, ...input });
+    expect(unknown.items).toEqual([]);
+    expect(unknown.requests).toContainEqual({
+      kind: 'service_regime',
+      hint: 'seat_maintenance_programme',
+    });
+    const qg0 = buildMaintenancePlan({
+      vehicle: ibiza,
+      ...input,
+      profile: { inServiceDate: null, serviceRegime: 'QG0', usage: null },
+    });
+    const ps = qg0.items.find((i) => i.task === 'periodic_service');
+    expect(ps).toMatchObject({ level: 'B' });
   });
 
   it('even an Israeli-market copy of the same rule would still ask for the regime code', () => {
@@ -119,5 +157,32 @@ describe('Case B — Ford Fiesta 2015 / 1.25 / SNJB', () => {
     expect(a).toBe(taskCompletionId('veh-fiesta', 'periodic_service'));
     expect(a).not.toBe(taskCompletionId('veh-ibiza', 'periodic_service'));
     expect(a).not.toBe(taskCompletionId('veh-fiesta', 'engine_oil'));
+  });
+});
+
+describe('official links (registry data, nothing fetched)', () => {
+  it('offers the approved official page of the make, never an unapproved host', () => {
+    const hyundai = {
+      ...ibiza,
+      id: 'veh-h',
+      manufacturer: 'יונדאי קוריאה',
+      model: 'i20',
+      year: 2016,
+    };
+    const links = officialLinks(factsOf(hyundai, null), hyundai);
+    expect(links).toEqual([
+      { url: 'https://www.hyundaimotors.co.il/maintenance/', host: 'hyundaimotors.co.il' },
+    ]);
+    // ownersmanual.hyundai.com is only PROPOSED: never offered.
+    expect(links.some((l) => l.host === 'ownersmanual.hyundai.com')).toBe(false);
+    const p = buildMaintenancePlan({
+      vehicle: hyundai,
+      profile: null,
+      requirements: [],
+      history: [],
+      readings: [],
+      today,
+    });
+    expect(p.requests[0]).toEqual({ kind: 'official_source', links });
   });
 });

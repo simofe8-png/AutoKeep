@@ -1,6 +1,6 @@
 # AutoKeep — Current Status (resume pointer)
 
-_Last updated: 2026-09-28_
+_Last updated: 2026-09-30_
 
 ## Position
 
@@ -20,7 +20,8 @@ _Last updated: 2026-09-28_
 - **Backlog (separate, not part of the parity correction):** post-midnight UTC date display; delete-vehicle confirmation requires the dashed plate; P2C; vehicle-manual / maintenance knowledge architecture.
 - **Owner fix run 2026-09-29 (Tasks 1–5):** see `docs/release/UI_FIX_RUN_2026-09-29.md` and `docs/release/MAINTENANCE_ARCHITECTURE_DISCOVERY.md`.
 - **UX fixes + maintenance core run 2026-09-29 (Tasks 1–11):** `docs/release/MAINTENANCE_M1.md`. Zoomable document viewer, one swipeable Home vehicle card, "כלי הרכב שלי" in the menu, requirement model + deterministic resolution/due engine, knowledge pipeline, real evidence for the acceptance vehicles (none verified → exact evidence requests), local SQLite v6, evidence-based Maintenance UI and journal linkage. Verify 66/485; local cloud 60/60; A54 A–H (pinch pending owner).
-- **Next action:** stop for owner review. Pending owner decisions: (1) apply cloud migration `20260930000001_maintenance_knowledge` to staging; (2) whether the Ford importer rule (ford.co.il, 15,000 km / 1 yr) may be curator-approved as verified; (3) curator role/tool for booklet claims. P2C is **not** started.
+- **Universal maintenance discovery (owner instruction 2026-09-29, maintenance-only priority): engine IMPLEMENTED, blind PASS criterion NOT MET.** `docs/release/MAINTENANCE_DISCOVERY.md`. Evidence levels A–E (market caps at B instead of excluding; per task+action precedence), data-driven source registry with the P1 access policy (robots AND terms), deterministic document understanding + table/sentence extraction with grounding, reusable knowledge catalog (domain, local SQLite v7, cloud migration `20260930000002` prepared, local Docker only), level labels + official links in the UI. Blind matrix (committed first, `5b19311`): 0/12 usable plans. Access restriction 11/12, no source 1/12. Capability probe on the one permitted host (SYM): 15 + 14 grounded requirements, level C (model years not stated).
+- **Next action:** stop for owner review. Pending owner decisions: (1) the automation/legal policy for official manuals (dominant blocker); (2) approve the 16 proposed registry hosts; (3) curator for uploaded manuals; (4) model-year coverage rule; (5) staging: cloud migrations `20260930000001` and `20260930000002` and an edge deployment of the pipeline; (6) earlier: the Ford importer rule, the curator role/tool. P2C is **not** started.
 
 ## Granted policies
 

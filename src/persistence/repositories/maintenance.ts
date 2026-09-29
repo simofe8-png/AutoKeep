@@ -1,5 +1,6 @@
 import type {
   CandidateClaim,
+  KnowledgeEntry,
   IsoDate,
   KnowledgeDocument,
   Timestamp,
@@ -270,5 +271,70 @@ export class MaintenanceKnowledgeRepository {
       status: r.status,
       review: r.review_json ? fromJson(r.review_json) : undefined,
     }));
+  }
+}
+
+// ---------- reusable knowledge catalog (migration v7) ----------
+
+interface CatalogRow {
+  id: string;
+  scope_key: string;
+  requirement_json: string;
+  source_json: string;
+  verified_at: string;
+  superseded_by: string | null;
+  conflicts_json: string;
+}
+
+/**
+ * Reusable maintenance knowledge, keyed by vehicle-class scope only (no vehicle, user or plate
+ * column). Writes go through `admitToCatalog` (domain) so only verified requirements are stored,
+ * new editions supersede old ones and conflicts are recorded — never overwritten.
+ */
+export class KnowledgeCatalogRepository {
+  constructor(private readonly db: Executor) {}
+
+  async all(): Promise<KnowledgeEntry[]> {
+    const rows = await this.db.all<CatalogRow>(
+      `SELECT id, scope_key, requirement_json, source_json, verified_at, superseded_by, conflicts_json
+       FROM knowledge_catalog ORDER BY id`,
+    );
+    return rows.map((r) => ({
+      id: r.id,
+      scopeKey: r.scope_key,
+      requirement: fromJson(r.requirement_json),
+      source: fromJson(r.source_json),
+      verifiedAt: r.verified_at as IsoDate,
+      supersededBy: r.superseded_by,
+      conflictsWith: fromJson<string[]>(r.conflicts_json) ?? [],
+    }));
+  }
+
+  /** Persists the result of `admitToCatalog` (upsert by id; history is kept, never deleted). */
+  async save(entries: readonly KnowledgeEntry[], now: Timestamp): Promise<void> {
+    for (const e of entries) {
+      await this.db.run(
+        `INSERT INTO knowledge_catalog (id, scope_key, task, action, requirement_json, source_url,
+           source_host, source_sha256, source_json, verified_at, superseded_by, conflicts_json, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         ON CONFLICT(id) DO UPDATE SET superseded_by = excluded.superseded_by,
+           conflicts_json = excluded.conflicts_json, updated_at = excluded.updated_at`,
+        [
+          e.id,
+          e.scopeKey,
+          e.requirement.task,
+          e.requirement.action,
+          toJson(e.requirement),
+          e.source.url,
+          e.source.host,
+          e.source.sha256,
+          toJson(e.source),
+          e.verifiedAt,
+          e.supersededBy,
+          toJson(e.conflictsWith),
+          now,
+        ],
+      );
+    }
   }
 }

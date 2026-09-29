@@ -51,8 +51,9 @@ async function setup() {
 }
 
 describe('maintenance knowledge persistence (migration v6)', () => {
-  it('the migration is the latest local schema version', () => {
-    expect(MIGRATIONS.at(-1)).toMatchObject({ version: 6, name: 'maintenance_knowledge' });
+  it('the migration is in the local schema chain (v7, the knowledge catalog, follows it)', () => {
+    expect(MIGRATIONS[5]).toMatchObject({ version: 6, name: 'maintenance_knowledge' });
+    expect(MIGRATIONS.at(-1)).toMatchObject({ version: 7, name: 'knowledge_catalog' });
   });
 
   it('keeps the registry first-registration month (day unknown) for time-based maintenance', async () => {
@@ -81,7 +82,10 @@ describe('maintenance knowledge persistence (migration v6)', () => {
     expect(snap.bundles[IBIZA].plan).toMatchObject({
       status: 'needs_information',
       items: [],
-      requests: [{ kind: 'upload_booklet', hint: 'seat_maintenance_programme' }],
+      requests: [
+        { kind: 'upload_booklet', hint: 'seat_maintenance_programme' },
+        { kind: 'awaiting_verification' },
+      ],
     });
   });
 

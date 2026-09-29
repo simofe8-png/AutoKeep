@@ -1,0 +1,4155 @@
+{
+  "ranAt": "2026-09-29T21:37:15.423Z",
+  "registryEntries": 31,
+  "approved": {
+    "catalogEntries": 0,
+    "reuse": [],
+    "vehicles": [
+      {
+        "id": "B1",
+        "cls": "older ICE, Japanese",
+        "identity": {
+          "kind": "car",
+          "make": "Mazda",
+          "model": "3",
+          "modelYear": 2011,
+          "powertrain": "petrol",
+          "displacementCc": 1598,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.mazda.co.il/service-plans",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "owners-manual.mazda.com: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.mazda.co.il/service-plans",
+            "host": "mazda.co.il",
+            "title": "mazda.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.mazda.co.il: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B2",
+        "cls": "recent ICE, Korean",
+        "identity": {
+          "kind": "car",
+          "make": "Kia",
+          "model": "Sportage",
+          "modelYear": 2023,
+          "powertrain": "petrol",
+          "displacementCc": 1598,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.kia-israel.co.il/",
+                "reason": "terms_prohibit_automation"
+              },
+              {
+                "url": "https://ownersmanual.kia.com/",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": []
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.kia-israel.co.il/",
+            "host": "kia-israel.co.il",
+            "title": "kia-israel.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.kia-israel.co.il: terms_prohibit_automation"
+          },
+          {
+            "class": "access_restriction",
+            "detail": "ownersmanual.kia.com: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "B3",
+        "cls": "hybrid, Japanese",
+        "identity": {
+          "kind": "car",
+          "make": "Toyota",
+          "model": "C-HR",
+          "modelYear": 2019,
+          "powertrain": "hybrid",
+          "displacementCc": 1798,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.toyota.co.il/owners",
+                "reason": "terms_unknown"
+              },
+              {
+                "url": "https://www.toyota-europe.com/customer/manuals",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": []
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.toyota.co.il/owners",
+            "host": "toyota.co.il",
+            "title": "toyota.co.il (importer)",
+            "reason": "terms_unknown"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.toyota.co.il: terms_unknown"
+          },
+          {
+            "class": "access_restriction",
+            "detail": "www.toyota-europe.com: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "B4",
+        "cls": "EV, US",
+        "identity": {
+          "kind": "car",
+          "make": "Tesla",
+          "model": "Model 3",
+          "modelYear": 2022,
+          "powertrain": "electric",
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.tesla.com/ownersmanual/model3/en_il/",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": []
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.tesla.com: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "B5",
+        "cls": "European, multiple engine variants",
+        "identity": {
+          "kind": "car",
+          "make": "Skoda",
+          "model": "Octavia",
+          "modelYear": 2018,
+          "powertrain": "petrol",
+          "displacementCc": 1395,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.skoda-auto.com/apps/manuals",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": [
+              "skoda.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.skoda-auto.com: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "B6",
+        "cls": "older ICE, Korean",
+        "identity": {
+          "kind": "car",
+          "make": "Hyundai",
+          "model": "i20",
+          "modelYear": 2016,
+          "powertrain": "petrol",
+          "displacementCc": 1396,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.hyundaimotors.co.il/maintenance/",
+                "reason": "terms_prohibit_automation"
+              },
+              {
+                "url": "https://ownersmanual.hyundai.com/",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": [
+              "colmobil.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.hyundaimotors.co.il/maintenance/",
+            "host": "hyundaimotors.co.il",
+            "title": "hyundaimotors.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.hyundaimotors.co.il: terms_prohibit_automation"
+          },
+          {
+            "class": "access_restriction",
+            "detail": "ownersmanual.hyundai.com: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "B7",
+        "cls": "motorcycle",
+        "identity": {
+          "kind": "motorcycle",
+          "make": "Yamaha",
+          "model": "MT-07",
+          "modelYear": 2020,
+          "powertrain": "petrol",
+          "displacementCc": 689,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://library.ymcapps.net/library/om/app/",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": [
+              "yamaha-motor.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "library.ymcapps.net: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "B8",
+        "cls": "scooter, Japanese",
+        "identity": {
+          "kind": "motorcycle",
+          "make": "Honda",
+          "model": "PCX 125",
+          "modelYear": 2019,
+          "powertrain": "petrol",
+          "displacementCc": 125,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.hondamotopub.com/model/MCT/",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": [
+              "honda.co.il: authority only (no document library entry point)",
+              "hondabike.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.hondamotopub.com: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "B9",
+        "cls": "scooter, Taiwanese",
+        "identity": {
+          "kind": "motorcycle",
+          "make": "SYM",
+          "model": "Jet 14 125",
+          "modelYear": 2021,
+          "powertrain": "petrol",
+          "displacementCc": 125,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "sanyang.co.il: authority only (no document library entry point)",
+              "near miss (different model name?): https://www.sym-global.com/jet14evo"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "no_source",
+            "detail": "no candidate document found"
+          }
+        ]
+      },
+      {
+        "id": "B10",
+        "cls": "EV, Chinese",
+        "identity": {
+          "kind": "car",
+          "make": "MG",
+          "model": "ZS EV",
+          "modelYear": 2021,
+          "powertrain": "electric",
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.mg-israel.co.il/guide-books/",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": [
+              "mgmotor.eu: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.mg-israel.co.il: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "B11",
+        "cls": "recent ICE, Japanese",
+        "identity": {
+          "kind": "car",
+          "make": "Suzuki",
+          "model": "Swift",
+          "modelYear": 2019,
+          "powertrain": "petrol",
+          "displacementCc": 1242,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://suzuki.co.il/content/ספרי-נהג-סוזוקי",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "globalsuzuki.com: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://suzuki.co.il/content/ספרי-נהג-סוזוקי",
+            "host": "suzuki.co.il",
+            "title": "suzuki.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "suzuki.co.il: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B12",
+        "cls": "European, French",
+        "identity": {
+          "kind": "car",
+          "make": "Peugeot",
+          "model": "208",
+          "modelYear": 2021,
+          "powertrain": "petrol",
+          "displacementCc": 1199,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://online.peugeot.co.il/guide-books/",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": [
+              "public.servicebox.peugeot.com: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "online.peugeot.co.il: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "R1",
+        "cls": "regression",
+        "identity": {
+          "kind": "car",
+          "make": "SEAT",
+          "model": "Ibiza",
+          "modelYear": 2012,
+          "powertrain": "petrol",
+          "displacementCc": 1390,
+          "engineCode": "CGG",
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.seat.com/owners/manuals",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": [
+              "championmotors.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.seat.com: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "cls": "regression",
+        "identity": {
+          "kind": "car",
+          "make": "Ford",
+          "model": "Fiesta",
+          "modelYear": 2015,
+          "powertrain": "petrol",
+          "displacementCc": 1242,
+          "engineCode": "SNJB",
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.ford.co.il/",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": [
+              "fordservicecontent.com: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.ford.co.il: registry_not_approved"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "cls": "regression",
+        "identity": {
+          "kind": "car",
+          "make": "Hyundai",
+          "model": "IONIQ Hybrid",
+          "modelYear": 2021,
+          "powertrain": "hybrid",
+          "displacementCc": 1580,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.hyundaimotors.co.il/maintenance/",
+                "reason": "terms_prohibit_automation"
+              },
+              {
+                "url": "https://ownersmanual.hyundai.com/",
+                "reason": "registry_not_approved"
+              }
+            ],
+            "notes": [
+              "colmobil.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.hyundaimotors.co.il/maintenance/",
+            "host": "hyundaimotors.co.il",
+            "title": "hyundaimotors.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.hyundaimotors.co.il: terms_prohibit_automation"
+          },
+          {
+            "class": "access_restriction",
+            "detail": "ownersmanual.hyundai.com: registry_not_approved"
+          }
+        ]
+      }
+    ]
+  },
+  "proposed": {
+    "catalogEntries": 0,
+    "reuse": [],
+    "vehicles": [
+      {
+        "id": "B1",
+        "cls": "older ICE, Japanese",
+        "identity": {
+          "kind": "car",
+          "make": "Mazda",
+          "model": "3",
+          "modelYear": 2011,
+          "powertrain": "petrol",
+          "displacementCc": 1598,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.mazda.co.il/service-plans",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "owners-manual.mazda.com: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.mazda.co.il/service-plans",
+            "host": "mazda.co.il",
+            "title": "mazda.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.mazda.co.il: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B2",
+        "cls": "recent ICE, Korean",
+        "identity": {
+          "kind": "car",
+          "make": "Kia",
+          "model": "Sportage",
+          "modelYear": 2023,
+          "powertrain": "petrol",
+          "displacementCc": 1598,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.kia-israel.co.il/",
+                "reason": "terms_prohibit_automation"
+              },
+              {
+                "url": "https://ownersmanual.kia.com/",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": []
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.kia-israel.co.il/",
+            "host": "kia-israel.co.il",
+            "title": "kia-israel.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          },
+          {
+            "url": "https://ownersmanual.kia.com/",
+            "host": "ownersmanual.kia.com",
+            "title": "ownersmanual.kia.com (manual_library)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.kia-israel.co.il: terms_prohibit_automation"
+          },
+          {
+            "class": "access_restriction",
+            "detail": "ownersmanual.kia.com: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B3",
+        "cls": "hybrid, Japanese",
+        "identity": {
+          "kind": "car",
+          "make": "Toyota",
+          "model": "C-HR",
+          "modelYear": 2019,
+          "powertrain": "hybrid",
+          "displacementCc": 1798,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.toyota.co.il/owners",
+                "reason": "terms_unknown"
+              },
+              {
+                "url": "https://www.toyota-europe.com/customer/manuals",
+                "reason": "terms_unknown"
+              }
+            ],
+            "notes": []
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.toyota.co.il/owners",
+            "host": "toyota.co.il",
+            "title": "toyota.co.il (importer)",
+            "reason": "terms_unknown"
+          },
+          {
+            "url": "https://www.toyota-europe.com/customer/manuals",
+            "host": "toyota-europe.com",
+            "title": "toyota-europe.com (manufacturer)",
+            "reason": "terms_unknown"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.toyota.co.il: terms_unknown"
+          },
+          {
+            "class": "access_restriction",
+            "detail": "www.toyota-europe.com: terms_unknown"
+          }
+        ]
+      },
+      {
+        "id": "B4",
+        "cls": "EV, US",
+        "identity": {
+          "kind": "car",
+          "make": "Tesla",
+          "model": "Model 3",
+          "modelYear": 2022,
+          "powertrain": "electric",
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.tesla.com/ownersmanual/model3/en_il/",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": []
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.tesla.com/ownersmanual/model3/en_il/",
+            "host": "tesla.com",
+            "title": "tesla.com (manufacturer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.tesla.com: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B5",
+        "cls": "European, multiple engine variants",
+        "identity": {
+          "kind": "car",
+          "make": "Skoda",
+          "model": "Octavia",
+          "modelYear": 2018,
+          "powertrain": "petrol",
+          "displacementCc": 1395,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.skoda-auto.com/apps/manuals",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "skoda.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.skoda-auto.com/apps/manuals",
+            "host": "skoda-auto.com",
+            "title": "skoda-auto.com (manufacturer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.skoda-auto.com: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B6",
+        "cls": "older ICE, Korean",
+        "identity": {
+          "kind": "car",
+          "make": "Hyundai",
+          "model": "i20",
+          "modelYear": 2016,
+          "powertrain": "petrol",
+          "displacementCc": 1396,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.hyundaimotors.co.il/maintenance/",
+                "reason": "terms_prohibit_automation"
+              },
+              {
+                "url": "https://ownersmanual.hyundai.com/",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "colmobil.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.hyundaimotors.co.il/maintenance/",
+            "host": "hyundaimotors.co.il",
+            "title": "hyundaimotors.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          },
+          {
+            "url": "https://ownersmanual.hyundai.com/",
+            "host": "ownersmanual.hyundai.com",
+            "title": "ownersmanual.hyundai.com (manual_library)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.hyundaimotors.co.il: terms_prohibit_automation"
+          },
+          {
+            "class": "access_restriction",
+            "detail": "ownersmanual.hyundai.com: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B7",
+        "cls": "motorcycle",
+        "identity": {
+          "kind": "motorcycle",
+          "make": "Yamaha",
+          "model": "MT-07",
+          "modelYear": 2020,
+          "powertrain": "petrol",
+          "displacementCc": 689,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://library.ymcapps.net/library/om/app/",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "yamaha-motor.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://library.ymcapps.net/library/om/app/",
+            "host": "library.ymcapps.net",
+            "title": "library.ymcapps.net (manual_library)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "library.ymcapps.net: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B8",
+        "cls": "scooter, Japanese",
+        "identity": {
+          "kind": "motorcycle",
+          "make": "Honda",
+          "model": "PCX 125",
+          "modelYear": 2019,
+          "powertrain": "petrol",
+          "displacementCc": 125,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.hondamotopub.com/model/MCT/",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "honda.co.il: authority only (no document library entry point)",
+              "hondabike.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.hondamotopub.com/model/MCT/",
+            "host": "hondamotopub.com",
+            "title": "hondamotopub.com (manual_library)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.hondamotopub.com: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B9",
+        "cls": "scooter, Taiwanese",
+        "identity": {
+          "kind": "motorcycle",
+          "make": "SYM",
+          "model": "Jet 14 125",
+          "modelYear": 2021,
+          "powertrain": "petrol",
+          "displacementCc": 125,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "sanyang.co.il: authority only (no document library entry point)",
+              "near miss (different model name?): https://www.sym-global.com/jet14evo"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "no_source",
+            "detail": "no candidate document found"
+          }
+        ]
+      },
+      {
+        "id": "B10",
+        "cls": "EV, Chinese",
+        "identity": {
+          "kind": "car",
+          "make": "MG",
+          "model": "ZS EV",
+          "modelYear": 2021,
+          "powertrain": "electric",
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.mg-israel.co.il/guide-books/",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "mgmotor.eu: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.mg-israel.co.il/guide-books/",
+            "host": "mg-israel.co.il",
+            "title": "mg-israel.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.mg-israel.co.il: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B11",
+        "cls": "recent ICE, Japanese",
+        "identity": {
+          "kind": "car",
+          "make": "Suzuki",
+          "model": "Swift",
+          "modelYear": 2019,
+          "powertrain": "petrol",
+          "displacementCc": 1242,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://suzuki.co.il/content/ספרי-נהג-סוזוקי",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "globalsuzuki.com: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://suzuki.co.il/content/ספרי-נהג-סוזוקי",
+            "host": "suzuki.co.il",
+            "title": "suzuki.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "suzuki.co.il: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "B12",
+        "cls": "European, French",
+        "identity": {
+          "kind": "car",
+          "make": "Peugeot",
+          "model": "208",
+          "modelYear": 2021,
+          "powertrain": "petrol",
+          "displacementCc": 1199,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://online.peugeot.co.il/guide-books/",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "public.servicebox.peugeot.com: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://online.peugeot.co.il/guide-books/",
+            "host": "online.peugeot.co.il",
+            "title": "online.peugeot.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "online.peugeot.co.il: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "R1",
+        "cls": "regression",
+        "identity": {
+          "kind": "car",
+          "make": "SEAT",
+          "model": "Ibiza",
+          "modelYear": 2012,
+          "powertrain": "petrol",
+          "displacementCc": 1390,
+          "engineCode": "CGG",
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.seat.com/owners/manuals",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "championmotors.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.seat.com/owners/manuals",
+            "host": "seat.com",
+            "title": "seat.com (manufacturer)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.seat.com: terms_prohibit_automation"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "cls": "regression",
+        "identity": {
+          "kind": "car",
+          "make": "Ford",
+          "model": "Fiesta",
+          "modelYear": 2015,
+          "powertrain": "petrol",
+          "displacementCc": 1242,
+          "engineCode": "SNJB",
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.ford.co.il/",
+                "reason": "terms_unknown"
+              }
+            ],
+            "notes": [
+              "fordservicecontent.com: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.ford.co.il/",
+            "host": "ford.co.il",
+            "title": "ford.co.il (importer)",
+            "reason": "terms_unknown"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.ford.co.il: terms_unknown"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "cls": "regression",
+        "identity": {
+          "kind": "car",
+          "make": "Hyundai",
+          "model": "IONIQ Hybrid",
+          "modelYear": 2021,
+          "powertrain": "hybrid",
+          "displacementCc": 1580,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [
+              {
+                "url": "https://www.hyundaimotors.co.il/maintenance/",
+                "reason": "terms_prohibit_automation"
+              },
+              {
+                "url": "https://ownersmanual.hyundai.com/",
+                "reason": "terms_prohibit_automation"
+              }
+            ],
+            "notes": [
+              "colmobil.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [
+          {
+            "url": "https://www.hyundaimotors.co.il/maintenance/",
+            "host": "hyundaimotors.co.il",
+            "title": "hyundaimotors.co.il (importer)",
+            "reason": "terms_prohibit_automation"
+          },
+          {
+            "url": "https://ownersmanual.hyundai.com/",
+            "host": "ownersmanual.hyundai.com",
+            "title": "ownersmanual.hyundai.com (manual_library)",
+            "reason": "terms_prohibit_automation"
+          }
+        ],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "access_restriction",
+            "detail": "www.hyundaimotors.co.il: terms_prohibit_automation"
+          },
+          {
+            "class": "access_restriction",
+            "detail": "ownersmanual.hyundai.com: terms_prohibit_automation"
+          }
+        ]
+      }
+    ]
+  },
+  "probe": {
+    "catalogEntries": 29,
+    "reuse": [
+      {
+        "id": "P2",
+        "catalogHits": 0,
+        "catalogKnown": 15,
+        "documentsFetched": 0
+      },
+      {
+        "id": "P3",
+        "catalogHits": 0,
+        "catalogKnown": 14,
+        "documentsFetched": 0
+      }
+    ],
+    "vehicles": [
+      {
+        "id": "P1",
+        "cls": "probe",
+        "identity": {
+          "kind": "motorcycle",
+          "make": "SYM",
+          "model": "Jet 14 EVO",
+          "modelYear": 2024,
+          "powertrain": "petrol",
+          "displacementCc": 125,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "sanyang.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [],
+        "requirements": [],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [],
+        "failures": [
+          {
+            "class": "no_source",
+            "detail": "no candidate document found"
+          }
+        ]
+      },
+      {
+        "id": "P2",
+        "cls": "probe",
+        "identity": {
+          "kind": "motorcycle",
+          "make": "SYM",
+          "model": "JET X",
+          "modelYear": 2023,
+          "powertrain": "petrol",
+          "displacementCc": 125,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [
+              {
+                "url": "https://www.sym-global.com/storage/architecture/product~126/product~134/product~166/product~182/JETX_MANUAL.pdf",
+                "title": "(https://www.sym-global.com/jetx) Manual",
+                "via": "official_listing"
+              }
+            ],
+            "blocked": [],
+            "notes": [
+              "sanyang.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [
+          {
+            "url": "https://www.sym-global.com/storage/architecture/product~126/product~134/product~166/product~182/JETX_MANUAL.pdf",
+            "sha256": "508b0e7f1141d25afe807e403b633d800c7937e03ff9b13166d699c36b78d7e4",
+            "format": "pdf",
+            "host": "www.sym-global.com",
+            "authority": "manufacturer",
+            "registryStatus": "approved",
+            "profile": {
+              "type": "maintenance_schedule",
+              "authority": "manufacturer",
+              "manufacturer": "sym",
+              "models": [
+                "JET X"
+              ],
+              "modelVariants": [],
+              "engines": [
+                "0.5"
+              ],
+              "displacementsCc": [],
+              "powertrains": [],
+              "markets": [],
+              "marketBasis": "unknown",
+              "units": "km",
+              "regimes": [],
+              "hasSevereSchedule": false,
+              "language": "en"
+            },
+            "vehicleMatch": "unresolved",
+            "unresolved": [
+              "modelYear"
+            ],
+            "sections": [
+              {
+                "page": 30,
+                "heading": "15. PERIODICAL MAINTENANCE SCHEDULE",
+                "score": 13
+              }
+            ],
+            "extracted": 15,
+            "grounded": 15
+          }
+        ],
+        "requirements": [
+          {
+            "id": "508b0e7f1141-p30-air_filter-inspection-0",
+            "task": "air_filter",
+            "taskText": "Air cleaner element (Remark)",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 300,
+                "unit": "km"
+              },
+              "first": {
+                "value": 300,
+                "unit": "km"
+              },
+              "rule": "distance_only",
+              "repeats": false
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Air cleaner element (Remark)\", I at 300KM (one time)",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-air_filter-other-1",
+            "task": "air_filter",
+            "taskText": "Air cleaner element (Remark)",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 1000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 1,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Air cleaner element (Remark)\", C under \"every 1000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-oil_filter-other-2",
+            "task": "oil_filter",
+            "taskText": "Oil filter (Screen)",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 6000,
+                "unit": "km"
+              },
+              "first": {
+                "value": 300,
+                "unit": "km"
+              },
+              "everyMonths": 6,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true,
+              "anchor": "zero"
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Oil filter (Screen)\", C under \"every 6000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-engine_oil-inspection-3",
+            "task": "engine_oil",
+            "taskText": "Engine oil",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 1000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 1,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Engine oil\", I under \"every 1000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-engine_oil-replacement-4",
+            "task": "engine_oil",
+            "taskText": "Engine oil",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 3000,
+                "unit": "km"
+              },
+              "first": {
+                "value": 300,
+                "unit": "km"
+              },
+              "rule": "distance_only",
+              "repeats": true,
+              "anchor": "zero"
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Engine oil\", note \"Replacement for every 3000KM\"; first: R at 300KM (one time)",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-fuel_filter-inspection-5",
+            "task": "fuel_filter",
+            "taskText": "Fuel pump filter",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 300,
+                "unit": "km"
+              },
+              "first": {
+                "value": 300,
+                "unit": "km"
+              },
+              "rule": "distance_only",
+              "repeats": false
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Fuel pump filter\", I at 300KM (one time)",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-fuel_filter-replacement-6",
+            "task": "fuel_filter",
+            "taskText": "Fuel pump filter",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 10000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Fuel pump filter\", note \"Replacement for every 10000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-spark_plugs-inspection-7",
+            "task": "spark_plugs",
+            "taskText": "Spark plug",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 3000,
+                "unit": "km"
+              },
+              "first": {
+                "value": 300,
+                "unit": "km"
+              },
+              "everyMonths": 3,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true,
+              "anchor": "zero"
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Spark plug\", I under \"every 3000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-spark_plugs-replacement-8",
+            "task": "spark_plugs",
+            "taskText": "Spark plug",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 12000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 12,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Spark plug\", R under \"every 12000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-transmission_fluid-replacement-9",
+            "task": "transmission_fluid",
+            "taskText": "Transmission oil",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 5000,
+                "unit": "km"
+              },
+              "everyMonths": 5,
+              "first": {
+                "value": 300,
+                "unit": "km"
+              },
+              "rule": "whichever_first",
+              "repeats": true,
+              "anchor": "zero"
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Transmission oil\", note \"Replacement for every 5000KM(5 Months)\"; first: R at 300KM (one time)",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-drive_belt-inspection-10",
+            "task": "drive_belt",
+            "taskText": "Drive belt/roller",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 6000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 6,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Drive belt/roller\", I under \"every 6000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-drive_belt-replacement-11",
+            "task": "drive_belt",
+            "taskText": "Drive belt/roller",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 12000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 12,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Drive belt/roller\", R under \"every 12000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-valve_clearance-inspection-12",
+            "task": "valve_clearance",
+            "taskText": "Valve clearance",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 6000,
+                "unit": "km"
+              },
+              "first": {
+                "value": 300,
+                "unit": "km"
+              },
+              "everyMonths": 6,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true,
+              "anchor": "zero"
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Valve clearance\", I under \"every 6000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-brake_system-inspection-13",
+            "task": "brake_system",
+            "taskText": "Brake mechanism/brake lining (pad)",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 1000,
+                "unit": "km"
+              },
+              "first": {
+                "value": 300,
+                "unit": "km"
+              },
+              "everyMonths": 1,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true,
+              "anchor": "zero"
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Brake mechanism/brake lining (pad)\", I under \"every 1000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "508b0e7f1141-p30-coolant-replacement-14",
+            "task": "coolant",
+            "taskText": "Coolant",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 12000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 12,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 30,
+            "locator": "table row \"Coolant\", R under \"every 12000KM\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "JET X"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          }
+        ],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 15,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [
+          {
+            "task": "air_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-air_filter-inspection-0",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "air_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-air_filter-other-1",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "brake_system",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-brake_system-inspection-13",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "coolant",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-coolant-replacement-14",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "drive_belt",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-drive_belt-inspection-10",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "drive_belt",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-drive_belt-replacement-11",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "engine_oil",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-engine_oil-inspection-3",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "engine_oil",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-engine_oil-replacement-4",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "fuel_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-fuel_filter-inspection-5",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "fuel_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-fuel_filter-replacement-6",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "oil_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-oil_filter-other-2",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "spark_plugs",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-spark_plugs-inspection-7",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "spark_plugs",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-spark_plugs-replacement-8",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "transmission_fluid",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-transmission_fluid-replacement-9",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "valve_clearance",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "508b0e7f1141-p30-valve_clearance-inspection-12",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          }
+        ],
+        "failures": [
+          {
+            "class": "vehicle_identity_insufficient",
+            "detail": "document coverage unstated: modelYear"
+          }
+        ]
+      },
+      {
+        "id": "P3",
+        "cls": "probe",
+        "identity": {
+          "kind": "motorcycle",
+          "make": "SYM",
+          "model": "Joyride S",
+          "modelYear": 2023,
+          "powertrain": "petrol",
+          "displacementCc": 200,
+          "market": "IL"
+        },
+        "discovery": [
+          {
+            "adapter": "official-registry",
+            "leads": [
+              {
+                "url": "https://www.sym-global.com/storage/architecture/product~126/product~134/product~166/product~185/JoyrideE5MANUAL.pdf",
+                "title": "(https://www.sym-global.com/joyride-s) Manual",
+                "via": "official_listing"
+              }
+            ],
+            "blocked": [],
+            "notes": [
+              "sanyang.co.il: authority only (no document library entry point)"
+            ]
+          },
+          {
+            "adapter": "user-upload",
+            "leads": [],
+            "blocked": [],
+            "notes": []
+          },
+          {
+            "adapter": "web-search",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no web search provider is approved"
+            ]
+          },
+          {
+            "adapter": "secondary",
+            "leads": [],
+            "blocked": [],
+            "notes": [
+              "provider_not_configured: no secondary-source provider is approved"
+            ]
+          }
+        ],
+        "userActions": [],
+        "documents": [
+          {
+            "url": "https://www.sym-global.com/storage/architecture/product~126/product~134/product~166/product~185/JoyrideE5MANUAL.pdf",
+            "sha256": "23fbc7b652105f2181466a34381e03ad4ffa69b70814b1c18bc076d76210ed04",
+            "format": "pdf",
+            "host": "www.sym-global.com",
+            "authority": "manufacturer",
+            "registryStatus": "approved",
+            "profile": {
+              "type": "maintenance_schedule",
+              "authority": "manufacturer",
+              "manufacturer": "sym",
+              "models": [
+                "Joyride S"
+              ],
+              "modelVariants": [],
+              "engines": [],
+              "displacementsCc": [],
+              "powertrains": [],
+              "markets": [],
+              "marketBasis": "unknown",
+              "units": "km",
+              "regimes": [],
+              "hasSevereSchedule": false,
+              "language": "en"
+            },
+            "vehicleMatch": "unresolved",
+            "unresolved": [
+              "modelYear"
+            ],
+            "sections": [
+              {
+                "page": 28,
+                "heading": "16.Periodical Maintenance Schedule",
+                "score": 18
+              }
+            ],
+            "extracted": 14,
+            "grounded": 14
+          }
+        ],
+        "requirements": [
+          {
+            "id": "23fbc7b65210-p28-air_filter-inspection-0",
+            "task": "air_filter",
+            "taskText": "Air cleaner element*",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 1000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 1,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Air cleaner element*\", I under \"every 1,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-air_filter-other-1",
+            "task": "air_filter",
+            "taskText": "Air cleaner element*",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 5000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 3,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Air cleaner element*\", C under \"every 5,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-air_filter-replacement-2",
+            "task": "air_filter",
+            "taskText": "Air cleaner element*",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 10000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 6,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Air cleaner element*\", R under \"every 10,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-oil_filter-inspection-3",
+            "task": "oil_filter",
+            "taskText": "Oil filter (mesh filter)",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 1000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 1,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Oil filter (mesh filter)\", I under \"every 1,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-oil_filter-other-4",
+            "task": "oil_filter",
+            "taskText": "Oil filter (mesh filter)",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 10000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Oil filter (mesh filter)\", note \"Cleaning every 10,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-engine_oil-replacement-5",
+            "task": "engine_oil",
+            "taskText": "Engine oil",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 5000,
+                "unit": "km"
+              },
+              "first": {
+                "value": 1000,
+                "unit": "km"
+              },
+              "rule": "distance_only",
+              "repeats": true,
+              "anchor": "zero"
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Engine oil\", note \"replace every 5,000km thereafter)\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-spark_plugs-replacement-6",
+            "task": "spark_plugs",
+            "taskText": "Spark plug",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 12,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Spark plug\", R under \"every 15,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-transmission_fluid-replacement-7",
+            "task": "transmission_fluid",
+            "taskText": "Transmission Oil",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 10000,
+                "unit": "km"
+              },
+              "first": {
+                "value": 1000,
+                "unit": "km"
+              },
+              "rule": "distance_only",
+              "repeats": true,
+              "anchor": "zero"
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Transmission Oil\", note \"replace every 10,000km thereafter)\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-brake_fluid-inspection-8",
+            "task": "brake_fluid",
+            "taskText": "Brake Fluid",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 1000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 1,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Brake Fluid\", I under \"every 1,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-brake_fluid-replacement-9",
+            "task": "brake_fluid",
+            "taskText": "Replace brake fluid every 2 years / 30,000km.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "everyMonths": 24,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Replace brake fluid every 2 years / 30,000km.\", note \"Replace brake fluid every 2 years / 30,000km.\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-drive_belt-other-10",
+            "task": "drive_belt",
+            "taskText": "Drive Belt/roller/Drive Pulley",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 10000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 6,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Drive Belt/roller/Drive Pulley\", C under \"every 10,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-drive_belt-replacement-11",
+            "task": "drive_belt",
+            "taskText": "Drive Belt/roller/Drive Pulley",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 12,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Drive Belt/roller/Drive Pulley\", R under \"every 15,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-coolant-replacement-12",
+            "task": "coolant",
+            "taskText": "Coolant",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "everyMonths": 12,
+              "firstMonths": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Coolant\", R under \"every 15,000km\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          },
+          {
+            "id": "23fbc7b65210-p28-brake_system-replacement-13",
+            "task": "brake_system",
+            "taskText": "Replace brake hose every 4 years / 60,000km.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "everyMonths": 48,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "verification": "verified",
+            "grounded": true,
+            "page": 28,
+            "locator": "table row \"Replace brake hose every 4 years / 60,000km.\", note \"Replace brake hose every 4 years / 60,000km.\"",
+            "applicability": {
+              "kinds": [
+                "motorcycle"
+              ],
+              "makes": [
+                "sym"
+              ],
+              "models": [
+                "Joyride S"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            }
+          }
+        ],
+        "levels": {
+          "A": 0,
+          "B": 0,
+          "C": 14,
+          "D": 0,
+          "E": 0
+        },
+        "resolutions": [
+          {
+            "task": "air_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-air_filter-inspection-0",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "air_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-air_filter-other-1",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "air_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-air_filter-replacement-2",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "brake_fluid",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-brake_fluid-inspection-8",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "brake_fluid",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-brake_fluid-replacement-9",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "brake_system",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-brake_system-replacement-13",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "coolant",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-coolant-replacement-12",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "drive_belt",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-drive_belt-other-10",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "drive_belt",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-drive_belt-replacement-11",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "engine_oil",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-engine_oil-replacement-5",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "oil_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-oil_filter-inspection-3",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "oil_filter",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-oil_filter-other-4",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "spark_plugs",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-spark_plugs-replacement-6",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          },
+          {
+            "task": "transmission_fluid",
+            "status": "insufficient_information",
+            "level": null,
+            "reason": "missing_vehicle_facts",
+            "missing": [],
+            "effective": null,
+            "considered": [
+              {
+                "id": "23fbc7b65210-p28-transmission_fluid-replacement-7",
+                "level": "C",
+                "role": "insufficient_information",
+                "verdict": "insufficient_information",
+                "missing": [],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              }
+            ]
+          }
+        ],
+        "failures": [
+          {
+            "class": "vehicle_identity_insufficient",
+            "detail": "document coverage unstated: modelYear"
+          }
+        ]
+      }
+    ]
+  }
+}

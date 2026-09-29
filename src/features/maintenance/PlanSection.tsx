@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Linking, StyleSheet, View } from 'react-native';
 
 import { newLocalId, useAppData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
@@ -50,7 +50,7 @@ export function planItemWhen(item: PlanItemVM): string[] {
 export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: string }) {
   const p = he.maintenancePlan;
   return (
-    <Card testID={testID ?? `plan-item-${item.task}`} compact>
+    <Card testID={testID ?? `plan-item-${item.key}`} compact>
       <View style={styles.itemHead}>
         <View style={styles.flex}>
           <AppText variant="bodyStrong">{item.title}</AppText>
@@ -87,13 +87,23 @@ export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: stri
           ? p.lastDone(formatDate(item.lastDone.date), formatNumber(item.lastDone.km))
           : p.fromNew}
       </AppText>
-      <View style={styles.source} testID={`plan-item-${item.task}-source`}>
+      <View style={styles.source} testID={`plan-item-${item.key}-source`}>
         <Icon name="file-document-check-outline" size={18} color="textSecondary" />
-        <AppText variant="caption" color="textSecondary" style={styles.flex}>
-          {[item.source.sourceTitle, he.authority[item.source.authority], item.source.locator]
-            .filter(Boolean)
-            .join(' · ')}
-        </AppText>
+        <View style={styles.flex}>
+          {/* Never presents the manufacturer's document as an Israeli requirement (level B). */}
+          <AppText
+            variant="smallStrong"
+            color={item.level === 'A' ? 'success' : 'warning'}
+            testID={`plan-item-${item.key}-evidence`}
+          >
+            {item.level === 'A' ? p.levelA : `${p.levelB} · ${p.levelBNote}`}
+          </AppText>
+          <AppText variant="caption" color="textSecondary">
+            {[item.source.sourceTitle, he.authority[item.source.authority], item.source.locator]
+              .filter(Boolean)
+              .join(' · ')}
+          </AppText>
+        </View>
       </View>
     </Card>
   );
@@ -231,6 +241,23 @@ function Request({
           }}
         />
       );
+    case 'official_source':
+      return (
+        <Stack gap={spacing.xs} testID="plan-request-official-source">
+          <InlineNotice tone="info" title={p.officialSourceTitle} message={p.officialSourceBody} />
+          {request.links.map((l) => (
+            <Button
+              key={l.url}
+              testID={`plan-official-link-${l.host}`}
+              label={p.openOfficialSource(l.host)}
+              icon="open-in-new"
+              variant="secondary"
+              fullWidth
+              onPress={() => void Linking.openURL(l.url)}
+            />
+          ))}
+        </Stack>
+      );
     case 'awaiting_verification':
       return (
         <InlineNotice
@@ -291,7 +318,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
             {p.scheduleTitle}
           </AppText>
           {plan.items.map((item) => (
-            <PlanItemCard key={item.task} item={item} />
+            <PlanItemCard key={item.key} item={item} />
           ))}
         </Stack>
       ) : null}

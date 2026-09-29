@@ -23,7 +23,7 @@ const FIESTA = '00000000-0000-4000-8000-00000000f001';
 const IBIZA = '00000000-0000-4000-8000-00000000f002';
 let db: Awaited<ReturnType<typeof openTestDatabase>>;
 
-async function seed(verified: boolean) {
+async function seed(verified: boolean, markets: string[] = ['IL']) {
   db = await openTestDatabase();
   const store = await LocalStore.open(db, sequentialIds(1), clock, new MemoryFileStore());
   for (const [id, manufacturer, model, year, reg, km, first] of [
@@ -55,7 +55,7 @@ async function seed(verified: boolean) {
         origin: 'user_upload',
         title: 'SYNTHETIC verified booklet',
         authority: 'manufacturer',
-        markets: ['IL'],
+        markets,
         sha256: 'b'.repeat(64),
         authenticity: 'matched_official_edition',
         rights: 'none',
@@ -155,6 +155,21 @@ describe('Maintenance tab (Task 9)', () => {
     expect(screen.getByTestId('plan-item-brake_fluid')).toHaveTextContent(/נוזל בלמים/);
     expect(screen.getByTestId('plan-item-brake_fluid')).toHaveTextContent(/החלפה/);
     expect(screen.getByTestId('plan-figures')).toBeOnTheScreen();
+    // Level A: the source names the Israeli market.
+    expect(screen.getByTestId('plan-item-periodic_service-evidence')).toHaveTextContent(
+      'לפי מקור רשמי לשוק הישראלי',
+    );
+  }, 60000);
+
+  it('a manufacturer document for another market is labelled level B — never as Israeli', async () => {
+    await seed(true, ['UK']);
+    await open('/maintenance', 'screen-maintenance');
+    await waitFor(() => expect(screen.getByTestId('plan-items')).toBeOnTheScreen(), LONG);
+    const label = screen.getByTestId('plan-item-periodic_service-evidence');
+    expect(label).toHaveTextContent(
+      'על פי ספר היצרן לדגם זה · טרם אומתה התאמה ספציפית לשוק הישראלי',
+    );
+    expect(screen.queryByText('לפי מקור רשמי לשוק הישראלי')).toBeNull();
   }, 60000);
 });
 

@@ -82,14 +82,22 @@ export interface RequirementApplicability {
   markets?: MarketCode[];
   serviceRegimes?: string[];
   usage?: UsageCondition;
+  /**
+   * Dimensions on which the SOURCE's own coverage could not be established (e.g. an owner's
+   * manual that never states which model years it covers). Never assumed to match: they keep the
+   * requirement at "insufficient information" (evidence level C) whatever the vehicle facts are.
+   */
+  coverageUnknown?: ApplicabilityDimension[];
 }
 
 export type ApplicabilityVerdict = 'applies' | 'does_not_apply' | 'insufficient_information';
 
 export interface RequirementApplicabilityResult {
   verdict: ApplicabilityVerdict;
-  /** Constrained dimensions whose vehicle fact is unknown. */
+  /** Constrained dimensions whose vehicle fact is unknown (answerable by the user). */
   missing: ApplicabilityDimension[];
+  /** Dimensions on which the source's own coverage is unknown (needs better evidence, not a fact). */
+  coverageUnknown?: ApplicabilityDimension[];
   /** Dimensions whose known fact contradicts the requirement. */
   mismatched: ApplicabilityDimension[];
   matched: ApplicabilityDimension[];
@@ -119,7 +127,11 @@ export type TaskCode =
   | 'general_inspection'
   | 'ev_battery_coolant'
   | 'ev_high_voltage_inspection'
-  | 'reduction_gear_oil';
+  | 'reduction_gear_oil'
+  /** Scooter CVT drive belt (not the engine auxiliary belt). */
+  | 'drive_belt'
+  | 'brake_system'
+  | 'tire_rotation';
 
 export type RequirementAction = 'inspection' | 'replacement' | 'adjustment' | 'other';
 export type DistanceUnit = 'km' | 'mi';
@@ -133,6 +145,13 @@ export interface RequirementInterval {
   first?: { value: number; unit: DistanceUnit } | null;
   firstMonths?: number | null;
   rule: 'whichever_first' | 'distance_only' | 'time_only';
+  /**
+   * How the repeats are laid out from new, when a first occurrence differs from the interval:
+   *  - undefined: first, first + every, first + 2·every … (e.g. 20, 60, 100);
+   *  - 'zero': first, then the multiples of every (e.g. 1,000 → 5,000 → 10,000), as stated by the
+   *    source's own layout ("second at 5,000 km, then every 5,000 km"; milestone columns).
+   */
+  anchor?: 'zero';
   /** false = a one-time obligation (e.g. the first service only). */
   repeats: boolean;
 }
@@ -157,7 +176,13 @@ export const VERIFIABLE_AUTHORITIES: readonly RequirementAuthority[] = [
   'vehicle_document',
 ];
 
-export type ExtractionMethod = 'curated' | 'user_entered' | 'ai_candidate' | 'synthetic_test';
+export type ExtractionMethod =
+  | 'curated'
+  | 'user_entered'
+  | 'ai_candidate'
+  /** Deterministic code read the requirement from the document's text/table structure. */
+  | 'deterministic_parser'
+  | 'synthetic_test';
 
 export interface ExtractionProvenance {
   method: ExtractionMethod;
@@ -166,6 +191,11 @@ export interface ExtractionProvenance {
   /** Human review of the extracted fact against the page (required for AI candidates). */
   reviewedBy?: string;
   reviewedAt?: IsoDate;
+  /**
+   * Deterministic grounding: every value of the requirement (task label and interval numbers) was
+   * found again on the cited page of the pinned document edition. Required for parser output.
+   */
+  grounded?: boolean;
 }
 
 /** Where a requirement is written: an exact location in an identified document edition. */
@@ -227,8 +257,29 @@ export function isVerifiedRequirement(r: MaintenanceRequirement): boolean {
   );
   if (!located) return false;
   if (r.extraction.method === 'ai_candidate' && !r.extraction.reviewedBy) return false;
+  if (
+    r.extraction.method === 'deterministic_parser' &&
+    !(r.extraction.grounded && r.evidence.some((e) => Boolean(e.documentSha256)))
+  ) {
+    return false;
+  }
   return true;
 }
+
+/**
+ * Evidence levels (owner decision 2026-09-29). Per requirement and per vehicle:
+ *  - A: verified, applicable, from an authoritative source that names the vehicle's market (IL);
+ *  - B: verified official evidence that applies to the exact vehicle, but whose market is not
+ *       proven to be the vehicle's (e.g. a UK or US owner's manual) — shown only with that label;
+ *  - C: verified official evidence whose applicability to this vehicle has unresolved dimensions
+ *       (engine, regime, usage, …) — technically relevant, never scheduled until resolved;
+ *  - D: secondary / supporting evidence (press, forums, dealers, user reports) — never scheduled;
+ *  - E: an unverified candidate (AI or unreviewed extraction) — never scheduled.
+ * Only A and B drive a maintenance plan; A outranks B per atomic task, never per schedule.
+ */
+export type EvidenceLevel = 'A' | 'B' | 'C' | 'D' | 'E';
+
+export const PLAN_DRIVING_LEVELS: readonly EvidenceLevel[] = ['A', 'B'];
 
 /** Structural checks on a requirement (the interval must be computable and consistent). */
 export function requirementIssues(r: MaintenanceRequirement): string[] {

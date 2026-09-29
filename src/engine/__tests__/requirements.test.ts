@@ -160,11 +160,27 @@ describe('2. Ford Fiesta 2015 / 1.25 — Israeli override for ONE item (SYNTHETI
     expect(task(rs, 'engine_oil').effective?.id).toBe(genericOil.id);
   });
 
-  it('a US-only document never applies to an IL vehicle', () => {
+  it('a US-market document for the exact vehicle is level B (market not proven), never level A', () => {
+    // Owner decision 2026-09-29: another market caps official evidence at B (labelled), it no
+    // longer excludes it; an Israeli (level A) requirement still wins for that one task.
     const us = synth('timing_belt', { km: 55555 }, { ...FIESTA, markets: ['US'] });
     const r = task(resolveRequirements([us], facts), 'timing_belt');
+    expect(r).toMatchObject({ status: 'resolved', level: 'B' });
+    const il = synth('timing_belt', { km: 44444 }, { ...FIESTA, markets: ['IL'] });
+    const both = task(resolveRequirements([us, il], facts), 'timing_belt');
+    expect(both).toMatchObject({ status: 'resolved', level: 'A', reason: 'market_override' });
+    expect(both.effective?.id).toBe(il.id);
+  });
+
+  it('a US schedule for an engine the vehicle does not have never applies', () => {
+    const us = synth(
+      'timing_belt',
+      { km: 55555 },
+      { ...FIESTA, engineCodes: ['XYZ9'], markets: ['US'] },
+    );
+    const r = task(resolveRequirements([us], facts), 'timing_belt');
     expect(r.status).toBe('not_applicable');
-    expect(r.effective).toBeNull();
+    expect(r.considered[0].level).toBeNull();
   });
 });
 

@@ -259,4 +259,30 @@ CREATE TABLE maintenance_claims (
 CREATE INDEX idx_maintenance_claims_vehicle ON maintenance_claims(vehicle_id);
 `,
   },
+  {
+    // Reusable maintenance knowledge (owner instruction 2026-09-29): verified atomic requirements
+    // stored ONCE at their vehicle-class scope — deliberately NOT vehicle-, user- or plate-scoped
+    // (no vehicle_id column), so an identical vehicle reuses them before any new research. Local
+    // cache of the (future) shared catalog; the cloud table is a prepared, unapplied migration.
+    version: 7,
+    name: 'knowledge_catalog',
+    up: `
+CREATE TABLE knowledge_catalog (
+  id TEXT PRIMARY KEY,
+  scope_key TEXT NOT NULL,
+  task TEXT NOT NULL,
+  action TEXT NOT NULL CHECK (action IN ('inspection','replacement','adjustment','other')),
+  requirement_json TEXT NOT NULL,
+  source_url TEXT NOT NULL,
+  source_host TEXT NOT NULL,
+  source_sha256 TEXT NOT NULL CHECK (length(source_sha256) = 64),
+  source_json TEXT NOT NULL,
+  verified_at TEXT NOT NULL,
+  superseded_by TEXT,
+  conflicts_json TEXT NOT NULL DEFAULT '[]',
+  updated_at TEXT NOT NULL
+);
+CREATE INDEX idx_knowledge_catalog_scope ON knowledge_catalog(scope_key, task, action);
+`,
+  },
 ];
