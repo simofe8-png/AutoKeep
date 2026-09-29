@@ -41,16 +41,34 @@ describe('navigation shell', () => {
 });
 
 describe('active vehicle context', () => {
-  it('shows the active vehicle and switches context via the switcher', async () => {
+  it('Home shows ONE active-vehicle card; swiping the card switches the whole Home', async () => {
     await renderApp();
-    expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/קורולה/);
+    expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/קורולה/);
+    expect(screen.queryByTestId('vehicle-selector')).toBeNull();
+    expect(screen.getAllByTestId('vehicle-pager')).toHaveLength(1);
+    expect(screen.getByTestId('vehicle-pager-dots')).toBeOnTheScreen();
     expect(screen.getByTestId('demo-data-strip')).toBeTruthy();
+    const before = screen.getByTestId('home-odometer-card').props.accessibilityLabel;
 
-    await fireEvent.press(screen.getByTestId('active-vehicle-chip'));
+    // The swipe gesture's accessible equivalent (the pan itself is covered by pager.test.ts).
+    await fireEvent(screen.getByTestId('vehicle-pager'), 'accessibilityAction', {
+      nativeEvent: { actionName: 'increment' },
+    });
+    await waitFor(() =>
+      expect(screen.getByTestId('home-active-vehicle')).not.toHaveTextContent(/קורולה/),
+    );
+    expect(screen.getByTestId('home-odometer-card').props.accessibilityLabel).not.toEqual(before);
+  });
+
+  it('"my vehicles" is in the menu; choosing a vehicle there lands on its Home', async () => {
+    await renderApp();
+    await fireEvent.press(screen.getByTestId('header-settings'));
+    await waitFor(() => expect(screen.getByTestId('screen-settings')).toBeOnTheScreen());
+    expect(screen.getByTestId('settings-vehicles')).toHaveTextContent(/כלי הרכב שלי/);
+    await fireEvent.press(screen.getByTestId('settings-vehicles'));
     await waitFor(() => expect(screen.getByTestId('screen-vehicles')).toBeOnTheScreen());
     await fireEvent.press(screen.getByTestId('vehicle-select-mock-vehicle-motorcycle'));
-
-    await waitFor(() => expect(screen.queryByTestId('screen-vehicles')).toBeNull());
-    expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/CB500F/);
+    await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
+    expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/CB500F/);
   });
 });

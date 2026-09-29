@@ -1,4 +1,6 @@
 import { Redirect, useRouter } from 'expo-router';
+import { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import { AccountOfferCard } from '@/features/account/AccountOfferCard';
 import { activeAlerts, AlertStatusCard, mostUrgentAlert } from '@/features/alerts/components';
@@ -7,7 +9,8 @@ import { nextServiceTile } from '@/features/maintenance/components';
 import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatNumber } from '@/features/vehicles/format';
-import { VehicleHero, VehicleSelectorCard } from '@/features/vehicles/VehicleVisuals';
+import { VehiclePager } from '@/features/vehicles/VehiclePager';
+import { VehicleHero } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import {
   Button,
@@ -16,6 +19,7 @@ import {
   QuickActionGrid,
   QuickActionTile,
   Screen,
+  spacing,
   StatTile,
   StatusCard,
   TileRow,
@@ -25,13 +29,15 @@ import {
 /**
  * Home (T016), reproducing the approved Home reference — the LEFT screen of
  * docs/design/approved/a_clean_realistic_ui_ux_mockup_image_of_three_sma.png:
- * header · vehicle selector · vehicle image · name / spec / plate · next service + odometer
+ * header · ONE active-vehicle card (image, name / spec / plate), swiped horizontally to switch
+ * vehicles (owner decision 2026-09-29; "my vehicles" moved to the menu) · next service + odometer
  * tiles · the most urgent status card · "all alerts" · four shortcuts. Never claims the vehicle
  * is "healthy"; an unverified schedule is stated as such.
  */
 export default function HomeScreen() {
   const router = useRouter();
-  const { activeVehicle, vehicles } = useActiveVehicle();
+  const { activeVehicle, vehicles, setActiveVehicleId } = useActiveVehicle();
+  const [switching, setSwitching] = useState(false);
   const { network, account } = useAppData();
   const data = useVehicleData(activeVehicle?.id ?? null);
 
@@ -67,92 +73,111 @@ export default function HomeScreen() {
     <Screen header={<AppHeader alertCount={alerts.length} />} edges={['top']} testID="screen-home">
       {network === 'offline' ? <OfflineBanner /> : null}
 
-      <VehicleSelectorCard vehicle={activeVehicle} onPress={() => router.push('/vehicles')} />
-      <VehicleHero vehicle={activeVehicle} />
-
-      <TileRow testID="home-status-card">
-        <StatTile
-          testID="home-next-service"
-          icon="calendar-month-outline"
-          label={he.home.nextService}
-          value={tile ? tile.value : verificationLabel(schedule.status)}
-          detail={tile?.detail}
-          onPress={() => router.push('/maintenance')}
-        />
-        <StatTile
-          testID="home-odometer-card"
-          icon="road-variant"
-          label={he.home.odometerNow}
-          value={formatNumber(activeVehicle.odometerKm)}
-          detail={he.common.km}
-          onPress={() => router.push('/odometer')}
-          accessibilityHint={he.home.updateOdometer}
-        />
-      </TileRow>
-
-      {urgent ? (
-        <AlertStatusCard
-          alert={urgent}
-          testID="home-alerts"
-          onPress={() => router.push(`/alerts/${urgent.id}`)}
-        />
-      ) : schedule.status !== 'verified' ? (
-        <StatusCard
-          testID="schedule-unavailable"
-          tone={schedule.status === 'pending' ? 'warning' : 'neutral'}
-          icon={schedule.status === 'pending' ? 'clock-outline' : 'information-variant'}
-          title={he.home.scheduleUnavailableTitle}
-          subtitle={verificationLabel(schedule.status)}
-          onPress={() => router.push('/maintenance')}
-        />
-      ) : !schedule.next ? (
-        <StatusCard
-          testID="home-no-tasks"
-          tone="success"
-          icon="check"
-          title={he.home.noTasks}
-          subtitle={he.home.noTasksBody}
-        />
-      ) : null}
-
-      <Button
-        testID="home-all-alerts"
-        label={he.home.allAlertsCount(alerts.length)}
-        icon="bell-outline"
-        fullWidth
-        onPress={() => router.push('/alerts')}
+      <VehiclePager
+        vehicles={vehicles.filter((v) => !v.archived)}
+        activeId={activeVehicle.id}
+        onSelect={setActiveVehicleId}
+        onMovingChange={setSwitching}
+        renderCard={(v) => <VehicleHero vehicle={v} />}
       />
 
-      <QuickActionGrid testID="home-shortcuts">
-        <QuickActionTile
-          testID="home-garage-mode"
-          icon="car-wrench"
-          label={he.home.garageMode}
-          onPress={() => router.push('/garage')}
-        />
-        <QuickActionTile
-          testID="home-history"
-          icon="clock-outline"
-          label={he.history.title}
-          onPress={() => router.push('/history')}
-        />
-        <QuickActionTile
-          testID="home-documents"
-          icon="file-document-outline"
-          label={he.documents.title}
-          onPress={() => router.push('/documents')}
-        />
-        <QuickActionTile
-          testID="home-view-service"
-          icon="wrench-outline"
-          label={he.home.plan}
-          onPress={() => router.push('/maintenance')}
-        />
-      </QuickActionGrid>
+      {/* Vehicle-scoped data: hidden while a card is being swiped, so one vehicle's card is never
+          shown with another vehicle's data; keyed so it re-renders for the new vehicle at once. */}
+      <View
+        key={activeVehicle.id}
+        testID="home-vehicle-data"
+        style={[styles.body, switching && styles.hidden]}
+        importantForAccessibility={switching ? 'no-hide-descendants' : 'auto'}
+      >
+        <TileRow testID="home-status-card">
+          <StatTile
+            testID="home-next-service"
+            icon="calendar-month-outline"
+            label={he.home.nextService}
+            value={tile ? tile.value : verificationLabel(schedule.status)}
+            detail={tile?.detail}
+            onPress={() => router.push('/maintenance')}
+          />
+          <StatTile
+            testID="home-odometer-card"
+            icon="road-variant"
+            label={he.home.odometerNow}
+            value={formatNumber(activeVehicle.odometerKm)}
+            detail={he.common.km}
+            onPress={() => router.push('/odometer')}
+            accessibilityHint={he.home.updateOdometer}
+          />
+        </TileRow>
 
-      {!account.hasAccount && hasValuableData ? (
-        <AccountOfferCard onPress={() => router.push('/account')} />
-      ) : null}
+        {urgent ? (
+          <AlertStatusCard
+            alert={urgent}
+            testID="home-alerts"
+            onPress={() => router.push(`/alerts/${urgent.id}`)}
+          />
+        ) : schedule.status !== 'verified' ? (
+          <StatusCard
+            testID="schedule-unavailable"
+            tone={schedule.status === 'pending' ? 'warning' : 'neutral'}
+            icon={schedule.status === 'pending' ? 'clock-outline' : 'information-variant'}
+            title={he.home.scheduleUnavailableTitle}
+            subtitle={verificationLabel(schedule.status)}
+            onPress={() => router.push('/maintenance')}
+          />
+        ) : !schedule.next ? (
+          <StatusCard
+            testID="home-no-tasks"
+            tone="success"
+            icon="check"
+            title={he.home.noTasks}
+            subtitle={he.home.noTasksBody}
+          />
+        ) : null}
+
+        <Button
+          testID="home-all-alerts"
+          label={he.home.allAlertsCount(alerts.length)}
+          icon="bell-outline"
+          fullWidth
+          onPress={() => router.push('/alerts')}
+        />
+
+        <QuickActionGrid testID="home-shortcuts">
+          <QuickActionTile
+            testID="home-garage-mode"
+            icon="car-wrench"
+            label={he.home.garageMode}
+            onPress={() => router.push('/garage')}
+          />
+          <QuickActionTile
+            testID="home-history"
+            icon="clock-outline"
+            label={he.history.title}
+            onPress={() => router.push('/history')}
+          />
+          <QuickActionTile
+            testID="home-documents"
+            icon="file-document-outline"
+            label={he.documents.title}
+            onPress={() => router.push('/documents')}
+          />
+          <QuickActionTile
+            testID="home-view-service"
+            icon="wrench-outline"
+            label={he.home.plan}
+            onPress={() => router.push('/maintenance')}
+          />
+        </QuickActionGrid>
+
+        {!account.hasAccount && hasValuableData ? (
+          <AccountOfferCard onPress={() => router.push('/account')} />
+        ) : null}
+      </View>
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  body: { gap: spacing.md },
+  hidden: { opacity: 0 },
+});

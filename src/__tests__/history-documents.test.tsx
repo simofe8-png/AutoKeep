@@ -179,9 +179,10 @@ describe('documents (T122–T125)', () => {
       () => expect(screen.getByTestId('document-viewer-image')).toBeOnTheScreen(),
       LONG,
     );
-    expect(screen.getByTestId('document-viewer-image').props.source).toEqual({
-      uri: files.uriFor(doc.original.storageKey),
-    });
+    // The stored original itself, rendered by the zoomable viewer.
+    expect(
+      JSON.stringify(screen.getByTestId('document-viewer-image-source').props.source),
+    ).toContain(files.uriFor(doc.original.storageKey));
     expect(files.opened).toEqual([]);
     expect(await new DocumentRepository(world.db).list(world.car.id)).toEqual(before);
   }, 60000);

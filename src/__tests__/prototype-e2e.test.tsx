@@ -8,15 +8,18 @@ async function open(url: string, testID: string) {
 }
 
 async function switchTo(id: string) {
-  // The vehicle selector lives on Home (approved Home reference); other tabs return afterwards.
+  // Switch through the menu's "my vehicles"; other tabs return afterwards.
   const tab = (['history', 'documents', 'maintenance'] as const).find((t) =>
     screen.queryByTestId(`screen-${t}`),
   );
-  if (!screen.queryByTestId('active-vehicle-chip')) {
+  if (!screen.queryByTestId('home-active-vehicle')) {
     await fireEvent.press(screen.getByTestId('tab-home'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
   }
-  await fireEvent.press(screen.getByTestId('active-vehicle-chip'));
+  // "My vehicles" lives in the menu; Home switches by swiping the vehicle card.
+  await fireEvent.press(screen.getByTestId('header-settings'));
+  await waitFor(() => expect(screen.getByTestId('screen-settings')).toBeOnTheScreen());
+  await fireEvent.press(screen.getByTestId('settings-vehicles'));
   await waitFor(() => expect(screen.getByTestId('screen-vehicles')).toBeOnTheScreen());
   await fireEvent.press(screen.getByTestId(`vehicle-select-${id}`));
   await waitFor(() => expect(screen.queryByTestId('screen-vehicles')).toBeNull());
@@ -29,7 +32,7 @@ async function switchTo(id: string) {
 describe('Home (T016)', () => {
   it('answers active vehicle, status, next service, remaining and forecast (צפי)', async () => {
     await open('/', 'screen-home');
-    expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/קורולה/);
+    expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/קורולה/);
     // Next service (Home reference): due date, remaining time and distance.
     expect(screen.getByTestId('home-next-service')).toHaveTextContent(/15.12.2026/);
     expect(screen.getByTestId('home-next-service')).toHaveTextContent(/81 ימים/);

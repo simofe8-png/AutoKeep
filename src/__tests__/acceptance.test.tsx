@@ -116,7 +116,7 @@ describe('T175 scooter', () => {
     await fireEvent.press(screen.getByTestId('sources-finish'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
     await waitFor(() =>
-      expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/XMAX 300/),
+      expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/XMAX 300/),
     );
     const [v] = await new VehicleRepository(db).list();
     expect(v).toMatchObject({ type: 'scooter', identity: { engine: '292 סמ״ק' } });

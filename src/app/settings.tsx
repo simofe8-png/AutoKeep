@@ -47,6 +47,18 @@ export default function SettingsScreen() {
 
   return (
     <Screen header={<ScreenHeader title={he.settings.title} />} testID="screen-settings">
+      {/* "My vehicles" lives in the menu (owner decision 2026-09-29): the management surface
+          for all vehicles; daily switching is the Home card swipe. */}
+      <Card compact>
+        <ListRow
+          plainIcon
+          testID="settings-vehicles"
+          icon="car-multiple"
+          title={he.vehicles.title}
+          subtitle={he.myVehicles.subtitle}
+          onPress={() => router.push('/vehicles')}
+        />
+      </Card>
       <Card compact>
         <ListRow
           plainIcon
@@ -96,15 +108,6 @@ export default function SettingsScreen() {
         ) : null}
       </Card>
 
-      <Card compact>
-        <ListRow
-          plainIcon
-          testID="settings-vehicles"
-          icon="car-multiple"
-          title={he.settings.vehicles}
-          onPress={() => router.push('/vehicles')}
-        />
-      </Card>
       <Card compact>
         <ListRow
           plainIcon

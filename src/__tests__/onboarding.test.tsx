@@ -54,8 +54,8 @@ describe('onboarding flow (mock scenarios)', () => {
     await fireEvent.press(screen.getByTestId('sources-finish'));
 
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
-    expect(screen.getByTestId('vehicle-hero')).toHaveTextContent(/מאזדה 3/);
-    expect(screen.getByTestId('vehicle-hero')).toHaveTextContent(/2020/);
+    expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/מאזדה 3/);
+    expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/2020/);
     expect(screen.getByTestId('home-odometer-card')).toHaveTextContent(/42,300/);
   }, 60000);
 

@@ -1,15 +1,16 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import { useAppData, type OriginalView } from '@/features/data/DataContext';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { he } from '@/i18n/he';
-import { Button, colors, EmptyState, IconButton, Screen, spacing } from '@/ui';
+import { Button, colors, EmptyState, IconButton, Screen, spacing, ZoomableImage } from '@/ui';
 
 /**
  * Full-screen viewer of an image document: the stored original, re-verified against its import
- * hash, shown as-is. Read-only — back returns to where it was opened from.
+ * hash, shown as-is with pinch / drag / double-tap zoom. Read-only — back returns to where it was
+ * opened from.
  */
 export default function DocumentImageViewer() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -63,12 +64,9 @@ export default function DocumentImageViewer() {
           <ActivityIndicator color={colors.surface} />
         </View>
       ) : intact ? (
-        <Image
+        <ZoomableImage
           testID="document-viewer-image"
-          source={{ uri: original.uri }}
-          style={styles.image}
-          resizeMode="contain"
-          accessible
+          uri={original.uri}
           accessibilityLabel={doc?.title}
         />
       ) : (
@@ -100,7 +98,6 @@ export default function DocumentImageViewer() {
 const styles = StyleSheet.create({
   content: { padding: 0, backgroundColor: '#000000' },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  image: { flex: 1, width: '100%' },
   problem: {
     flex: 1,
     justifyContent: 'center',

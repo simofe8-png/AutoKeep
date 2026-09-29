@@ -53,6 +53,9 @@ export const he = {
     noVehicle: 'לא נבחר כלי רכב',
     odometer: 'מד אוץ',
     activeBadge: 'פעיל',
+    pagerLabel: (n: number, of: number) => `כלי רכב ${n} מתוך ${of}. החליקו להחלפת רכב`,
+    nextVehicle: 'הרכב הבא',
+    previousVehicle: 'הרכב הקודם',
   },
   vehicleImage: {
     searching: 'מחפש תמונה מתאימה לכלי הרכב שלך...',
@@ -496,7 +499,7 @@ export const he = {
     lowerThanPrevious: 'הקריאה נמוכה מהקריאה הקודמת — נא לבדוק',
   },
   myVehicles: {
-    subtitle: 'ניהול כלי הרכב והחלפת הרכב הפעיל',
+    subtitle: 'צפייה, הוספה ועריכה של כלי הרכב',
     activeRibbon: 'רכב פעיל',
     status: 'מצב',
     noTasksShort: 'אין משימות שזוהו',
@@ -603,7 +606,6 @@ export const he = {
       'תזכורות על טיפולים מתקרבים, פעולות שנדחו ומד אוץ לא עדכני. מתוזמנות במכשיר בלבד.',
     notificationsUnavailable: 'התראות במכשיר אינן זמינות בגרסת התצוגה המקדימה (Expo Go).',
     notificationsDenied: 'לא ניתנה הרשאה להתראות. ניתן לאפשר אותה בהגדרות המכשיר ולנסות שוב.',
-    vehicles: 'ניהול כלי רכב',
     backup: 'גיבוי וסנכרון',
     documents: 'ניהול מסמכים',
     language: 'שפה ותצוגה',

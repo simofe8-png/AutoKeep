@@ -55,7 +55,8 @@ export default function VehiclesScreen() {
             active={v.id === activeVehicleId}
             onSelect={() => {
               setActiveVehicleId(v.id);
-              router.back();
+              // Reached from the menu: choosing a vehicle lands on its Home.
+              router.dismissTo('/');
             }}
             onManage={() => router.push(`/vehicle/${v.id}`)}
           />

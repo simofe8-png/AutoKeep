@@ -21,3 +21,4 @@ export * from './components/Timeline';
 export * from './components/FilterChips';
 export * from './components/Brand';
 export * from './components/Thumbnail';
+export * from './components/ZoomableImage';

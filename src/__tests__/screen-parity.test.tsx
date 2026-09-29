@@ -87,7 +87,7 @@ describe('existing Private Beta user on a new device', () => {
     await fireEvent.changeText(screen.getByTestId('account-password'), TEST_PASSWORD);
     await fireEvent.press(screen.getByTestId('account-sign-in'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
-    expect(screen.getByTestId('vehicle-hero')).toHaveTextContent(/קורולה/);
+    expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/קורולה/);
   }, 40000);
 });
 

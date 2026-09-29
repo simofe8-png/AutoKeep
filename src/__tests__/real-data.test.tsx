@@ -133,7 +133,7 @@ describe('real local data behind the approved UI', () => {
 
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
     await waitFor(() =>
-      expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/קורולה/),
+      expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/קורולה/),
     );
     expect(screen.getByTestId('home-odometer-card')).toHaveTextContent(/84,250/);
     expect(screen.getByTestId('schedule-unavailable')).toBeOnTheScreen();
@@ -147,7 +147,7 @@ describe('real local data behind the approved UI', () => {
     useLocal(reopened);
     await renderRouter('./src/app', { initialUrl: '/' });
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
-    expect(screen.getByTestId('active-vehicle-chip')).toHaveTextContent(/קורולה/);
+    expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/קורולה/);
   }, 60000);
 
   it('odometer update is saved through the domain and reflected on Home', async () => {
