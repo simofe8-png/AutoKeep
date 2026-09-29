@@ -1,5 +1,12 @@
 # Universal maintenance discovery (owner instruction 2026-09-29)
 
+> **Superseded in part by M-SOURCE (2026-09-30):** the one-dimensional host registry
+> (`automation` / `reuse`) was replaced by the Israeli Maintenance Source Registry, which has
+> source systems, six independent policy dimensions and standard failure codes. See
+> `docs/maintenance/ISRAEL_SOURCE_REGISTRY.md`, `SOURCE_ADAPTER_SPEC.md`,
+> `ISRAEL_COVERAGE_MATRIX.md` and `COVERAGE_GAPS.md`. The evidence levels, extraction and catalog
+> described below are unchanged.
+
 "MAINTENANCE IS NOW THE ONLY PRODUCT PRIORITY": AutoKeep must take an arbitrary supported
 vehicle that nobody prepared in advance and automatically try to build its maintenance schedule.
 

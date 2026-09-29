@@ -1,0 +1,3678 @@
+{
+  "ranAt": "2026-09-29T23:42:55.277Z",
+  "sourceSystems": 59,
+  "adapters": [
+    {
+      "system": "il-champion-service-routine",
+      "type": "A_DIRECT_MAINTENANCE_SCHEDULE",
+      "adapter": "listing",
+      "result": {
+        "status": "failed",
+        "failure": "PERMISSION_REQUIRED",
+        "detail": "permission_required (discoveryAllowed): https://www.championmotors.co.il/service-routine/",
+        "userAction": {
+          "url": "https://www.championmotors.co.il/service-routine/",
+          "host": "www.championmotors.co.il",
+          "title": "il-champion-service-routine",
+          "reason": "permission_required"
+        }
+      },
+      "requests": []
+    },
+    {
+      "system": "global-sym-global",
+      "type": "B_DIGITAL_MANUAL",
+      "adapter": "listing",
+      "result": {
+        "status": "documents",
+        "documents": [
+          {
+            "url": "https://www.sym-global.com/storage/architecture/product~126/product~134/product~166/product~182/JETX_MANUAL.pdf",
+            "modelMatch": "exact"
+          }
+        ]
+      },
+      "requests": [
+        "https://www.sym-global.com/robots.txt",
+        "https://www.sym-global.com/sitemap.xml",
+        "https://www.sym-global.com/jetx"
+      ]
+    },
+    {
+      "system": "il-union-motors-toyota",
+      "type": "A_DIRECT_MAINTENANCE_SCHEDULE",
+      "adapter": "listing",
+      "result": {
+        "status": "failed",
+        "failure": "POLICY_UNKNOWN",
+        "detail": "policy_unknown (discoveryAllowed): https://www.toyota.co.il/owners/parts-and-accessories/owners-manuals",
+        "userAction": {
+          "url": "https://www.toyota.co.il/owners/parts-and-accessories/owners-manuals",
+          "host": "www.toyota.co.il",
+          "title": "il-union-motors-toyota",
+          "reason": "policy_unknown"
+        }
+      },
+      "requests": []
+    },
+    {
+      "system": "global-kia-ownersmanual",
+      "type": "C_STRUCTURED_WEB_MANUAL",
+      "adapter": "restricted",
+      "result": {
+        "status": "failed",
+        "failure": "PERMISSION_REQUIRED",
+        "detail": "registry_not_approved: https://ownersmanual.kia.com/"
+      },
+      "requests": []
+    },
+    {
+      "system": "il-delek-mazda",
+      "type": "D_RESTRICTED_OR_UNAVAILABLE",
+      "adapter": "restricted",
+      "result": {
+        "status": "failed",
+        "failure": "AUTH_REQUIRED",
+        "detail": "il-delek-mazda: login; Service-plan PDFs sit behind Delek SharePoint / Microsoft sign-in; The index is public but the documents are not; No login or credential flow was attempted",
+        "userAction": {
+          "url": "https://www.mazda.co.il/service-plans",
+          "host": "www.mazda.co.il",
+          "title": "il-delek-mazda",
+          "reason": "login_or_bot_wall"
+        }
+      },
+      "requests": []
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "B1",
+      "label": "older ICE, Japanese",
+      "identity": {
+        "kind": "car",
+        "make": "Mazda",
+        "model": "3",
+        "modelYear": 2011,
+        "powertrain": "petrol",
+        "displacementCc": 1598,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "mazda"
+      },
+      "candidates": [
+        {
+          "id": "il-delek-mazda",
+          "priority": 8,
+          "status": "approved",
+          "type": "D_RESTRICTED_OR_UNAVAILABLE"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-delek-mazda",
+          "decision": "AUTH_REQUIRED",
+          "detail": "il-delek-mazda: login; Service-plan PDFs sit behind Delek SharePoint / Microsoft sign-in; The index is public but the documents are not; No login or credential flow was attempted"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-delek-mazda",
+          "reason": "manual_access_required",
+          "url": "https://www.mazda.co.il/service-plans"
+        }
+      ],
+      "failureCodes": [
+        "AUTH_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "AUTH_REQUIRED",
+          "detail": "il-delek-mazda: il-delek-mazda: login; Service-plan PDFs sit behind Delek SharePoint / Microsoft sign-in; The index is public but the documents are not; No login or credential flow was attempted"
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "label": "recent ICE, Korean",
+      "identity": {
+        "kind": "car",
+        "make": "Kia",
+        "model": "Sportage",
+        "modelYear": 2023,
+        "powertrain": "petrol",
+        "displacementCc": 1598,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "kia"
+      },
+      "candidates": [
+        {
+          "id": "il-talcar-kia",
+          "priority": 3,
+          "status": "approved",
+          "type": "B_DIGITAL_MANUAL"
+        },
+        {
+          "id": "global-kia-ownersmanual",
+          "priority": 5,
+          "status": "proposed",
+          "type": "C_STRUCTURED_WEB_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-talcar-kia",
+          "decision": "TERMS_OR_RIGHTS_BLOCK",
+          "detail": "policy_not_allowed (discoveryAllowed): https://kia-israel.co.il/קבל-ספר-רכב-למייל"
+        },
+        {
+          "id": "global-kia-ownersmanual",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://ownersmanual.kia.com/"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-talcar-kia",
+          "reason": "permission_required",
+          "url": "https://kia-israel.co.il/קבל-ספר-רכב-למייל"
+        }
+      ],
+      "failureCodes": [
+        "TERMS_OR_RIGHTS_BLOCK",
+        "PERMISSION_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "TERMS_OR_RIGHTS_BLOCK",
+          "detail": "il-talcar-kia: policy_not_allowed (discoveryAllowed): https://kia-israel.co.il/קבל-ספר-רכב-למייל"
+        },
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "global-kia-ownersmanual: registry_not_approved: https://ownersmanual.kia.com/"
+        }
+      ]
+    },
+    {
+      "id": "B3",
+      "label": "hybrid, Japanese",
+      "identity": {
+        "kind": "car",
+        "make": "Toyota",
+        "model": "C-HR",
+        "modelYear": 2019,
+        "powertrain": "hybrid",
+        "displacementCc": 1798,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "toyota"
+      },
+      "candidates": [
+        {
+          "id": "il-union-motors-toyota",
+          "priority": 2,
+          "status": "approved",
+          "type": "A_DIRECT_MAINTENANCE_SCHEDULE"
+        },
+        {
+          "id": "global-toyota-europe-owners-manuals",
+          "priority": 5,
+          "status": "proposed",
+          "type": "B_DIGITAL_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-union-motors-toyota",
+          "decision": "POLICY_UNKNOWN",
+          "detail": "policy_unknown (discoveryAllowed): https://www.toyota.co.il/owners/parts-and-accessories/owners-manuals"
+        },
+        {
+          "id": "global-toyota-europe-owners-manuals",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://toyota-europe.com/"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-union-motors-toyota",
+          "reason": "access_policy_unresolved",
+          "url": "https://www.toyota.co.il/owners/parts-and-accessories/owners-manuals"
+        }
+      ],
+      "failureCodes": [
+        "POLICY_UNKNOWN",
+        "PERMISSION_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "POLICY_UNKNOWN",
+          "detail": "il-union-motors-toyota: policy_unknown (discoveryAllowed): https://www.toyota.co.il/owners/parts-and-accessories/owners-manuals"
+        },
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "global-toyota-europe-owners-manuals: registry_not_approved: https://toyota-europe.com/"
+        }
+      ]
+    },
+    {
+      "id": "B4",
+      "label": "EV, US",
+      "identity": {
+        "kind": "car",
+        "make": "Tesla",
+        "model": "Model 3",
+        "modelYear": 2022,
+        "powertrain": "electric",
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "tesla"
+      },
+      "candidates": [
+        {
+          "id": "il-tesla",
+          "priority": 4,
+          "status": "proposed",
+          "type": "C_STRUCTURED_WEB_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-tesla",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://www.tesla.com/ownersmanual/modely/he_il/"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [],
+      "failureCodes": [
+        "PERMISSION_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "il-tesla: registry_not_approved: https://www.tesla.com/ownersmanual/modely/he_il/"
+        }
+      ]
+    },
+    {
+      "id": "B5",
+      "label": "European, multiple engine variants",
+      "identity": {
+        "kind": "car",
+        "make": "Skoda",
+        "model": "Octavia",
+        "modelYear": 2018,
+        "powertrain": "petrol",
+        "displacementCc": 1395,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "skoda"
+      },
+      "candidates": [
+        {
+          "id": "il-champion-service-routine",
+          "priority": 2,
+          "status": "approved",
+          "type": "A_DIRECT_MAINTENANCE_SCHEDULE"
+        },
+        {
+          "id": "il-champion-books",
+          "priority": 4,
+          "status": "proposed",
+          "type": "B_DIGITAL_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-champion-service-routine",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "permission_required (discoveryAllowed): https://www.championmotors.co.il/service-routine/"
+        },
+        {
+          "id": "il-champion-books",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://books.championmotors.co.il/"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-champion-service-routine",
+          "reason": "permission_required",
+          "url": "https://www.championmotors.co.il/service-routine/"
+        }
+      ],
+      "failureCodes": [
+        "PERMISSION_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "il-champion-service-routine: permission_required (discoveryAllowed): https://www.championmotors.co.il/service-routine/"
+        },
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "il-champion-books: registry_not_approved: https://books.championmotors.co.il/"
+        }
+      ]
+    },
+    {
+      "id": "B6",
+      "label": "older ICE, Korean",
+      "identity": {
+        "kind": "car",
+        "make": "Hyundai",
+        "model": "i20",
+        "modelYear": 2016,
+        "powertrain": "petrol",
+        "displacementCc": 1396,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "hyundai"
+      },
+      "candidates": [
+        {
+          "id": "il-colmobil-hyundai",
+          "priority": 3,
+          "status": "approved",
+          "type": "B_DIGITAL_MANUAL"
+        },
+        {
+          "id": "global-hyundai-ownersmanual",
+          "priority": 5,
+          "status": "proposed",
+          "type": "C_STRUCTURED_WEB_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-colmobil-hyundai",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "permission_required (discoveryAllowed): https://www.hyundaimotors.co.il/maintenance/"
+        },
+        {
+          "id": "global-hyundai-ownersmanual",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://ownersmanual.hyundai.com/"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-colmobil-hyundai",
+          "reason": "permission_required",
+          "url": "https://www.hyundaimotors.co.il/maintenance/"
+        }
+      ],
+      "failureCodes": [
+        "PERMISSION_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "il-colmobil-hyundai: permission_required (discoveryAllowed): https://www.hyundaimotors.co.il/maintenance/"
+        },
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "global-hyundai-ownersmanual: registry_not_approved: https://ownersmanual.hyundai.com/"
+        }
+      ]
+    },
+    {
+      "id": "B7",
+      "label": "motorcycle",
+      "identity": {
+        "kind": "motorcycle",
+        "make": "Yamaha",
+        "model": "MT-07",
+        "modelYear": 2020,
+        "powertrain": "petrol",
+        "displacementCc": 689,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "yamaha"
+      },
+      "candidates": [
+        {
+          "id": "global-yamaha-owner-manual-library",
+          "priority": 5,
+          "status": "proposed",
+          "type": "B_DIGITAL_MANUAL"
+        },
+        {
+          "id": "il-metro-motor",
+          "priority": 8,
+          "status": "approved",
+          "type": "D_RESTRICTED_OR_UNAVAILABLE"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "global-yamaha-owner-manual-library",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://library.ymcapps.net/library/om/app/"
+        },
+        {
+          "id": "il-metro-motor",
+          "decision": "NO_DIGITAL_SOURCE",
+          "detail": "il-metro-motor: none; Publishes no maintenance documents, so there is nothing to ingest. metro.co.il group terms (200) grant 'רישיון … לעשות שימוש אישי (לא מסחרי)' and forbid copying/distribution/commercial exploitation 'ללא אישור מראש ובכתב'."
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-metro-motor",
+          "reason": "no_digital_source",
+          "url": null
+        }
+      ],
+      "failureCodes": [
+        "PERMISSION_REQUIRED",
+        "NO_DIGITAL_SOURCE"
+      ],
+      "failureDetails": [
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "global-yamaha-owner-manual-library: registry_not_approved: https://library.ymcapps.net/library/om/app/"
+        },
+        {
+          "class": "NO_DIGITAL_SOURCE",
+          "detail": "il-metro-motor: il-metro-motor: none; Publishes no maintenance documents, so there is nothing to ingest. metro.co.il group terms (200) grant 'רישיון … לעשות שימוש אישי (לא מסחרי)' and forbid copying/distribution/commercial exploitation 'ללא אישור מראש ובכתב'."
+        }
+      ]
+    },
+    {
+      "id": "B8",
+      "label": "scooter, Japanese",
+      "identity": {
+        "kind": "motorcycle",
+        "make": "Honda",
+        "model": "PCX 125",
+        "modelYear": 2019,
+        "powertrain": "petrol",
+        "displacementCc": 125,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "honda"
+      },
+      "candidates": [
+        {
+          "id": "global-honda-motopub",
+          "priority": 5,
+          "status": "proposed",
+          "type": "B_DIGITAL_MANUAL"
+        },
+        {
+          "id": "il-mayer-honda-motorcycles",
+          "priority": 8,
+          "status": "approved",
+          "type": "D_RESTRICTED_OR_UNAVAILABLE"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "global-honda-motopub",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://www.hondamotopub.com/MCT"
+        },
+        {
+          "id": "il-mayer-honda-motorcycles",
+          "decision": "NO_DIGITAL_SOURCE",
+          "detail": "il-mayer-honda-motorcycles: none; No maintenance documents. /takanon/ returned HTTP 500 but had body text (purchase terms)."
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-mayer-honda-motorcycles",
+          "reason": "no_digital_source",
+          "url": null
+        }
+      ],
+      "failureCodes": [
+        "PERMISSION_REQUIRED",
+        "NO_DIGITAL_SOURCE"
+      ],
+      "failureDetails": [
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "global-honda-motopub: registry_not_approved: https://www.hondamotopub.com/MCT"
+        },
+        {
+          "class": "NO_DIGITAL_SOURCE",
+          "detail": "il-mayer-honda-motorcycles: il-mayer-honda-motorcycles: none; No maintenance documents. /takanon/ returned HTTP 500 but had body text (purchase terms)."
+        }
+      ]
+    },
+    {
+      "id": "B9",
+      "label": "scooter, Taiwanese",
+      "identity": {
+        "kind": "motorcycle",
+        "make": "SYM",
+        "model": "Jet 14 125",
+        "modelYear": 2021,
+        "powertrain": "petrol",
+        "displacementCc": 125,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "sym"
+      },
+      "candidates": [
+        {
+          "id": "global-sym-global",
+          "priority": 5,
+          "status": "approved",
+          "type": "B_DIGITAL_MANUAL"
+        },
+        {
+          "id": "il-metro-motor",
+          "priority": 8,
+          "status": "approved",
+          "type": "D_RESTRICTED_OR_UNAVAILABLE"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "global-sym-global",
+          "decision": "MODEL_YEAR_NOT_LISTED",
+          "detail": "only a differently named model is listed: https://www.sym-global.com/jet14evo"
+        },
+        {
+          "id": "il-metro-motor",
+          "decision": "NO_DIGITAL_SOURCE",
+          "detail": "il-metro-motor: none; Publishes no maintenance documents, so there is nothing to ingest. metro.co.il group terms (200) grant 'רישיון … לעשות שימוש אישי (לא מסחרי)' and forbid copying/distribution/commercial exploitation 'ללא אישור מראש ובכתב'."
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "global-sym-global",
+          "reason": "automatic",
+          "url": null
+        },
+        {
+          "system": "il-metro-motor",
+          "reason": "no_digital_source",
+          "url": null
+        }
+      ],
+      "failureCodes": [
+        "MODEL_YEAR_NOT_LISTED",
+        "NO_DIGITAL_SOURCE"
+      ],
+      "failureDetails": [
+        {
+          "class": "MODEL_YEAR_NOT_LISTED",
+          "detail": "global-sym-global: only a differently named model is listed: https://www.sym-global.com/jet14evo"
+        },
+        {
+          "class": "NO_DIGITAL_SOURCE",
+          "detail": "il-metro-motor: il-metro-motor: none; Publishes no maintenance documents, so there is nothing to ingest. metro.co.il group terms (200) grant 'רישיון … לעשות שימוש אישי (לא מסחרי)' and forbid copying/distribution/commercial exploitation 'ללא אישור מראש ובכתב'."
+        }
+      ]
+    },
+    {
+      "id": "B10",
+      "label": "EV, Chinese",
+      "identity": {
+        "kind": "car",
+        "make": "MG",
+        "model": "ZS EV",
+        "modelYear": 2021,
+        "powertrain": "electric",
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "mg"
+      },
+      "candidates": [
+        {
+          "id": "il-car-east-mg",
+          "priority": 3,
+          "status": "proposed",
+          "type": "B_DIGITAL_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-car-east-mg",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://mg-israel.co.il/guide-books/"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [],
+      "failureCodes": [
+        "PERMISSION_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "il-car-east-mg: registry_not_approved: https://mg-israel.co.il/guide-books/"
+        }
+      ]
+    },
+    {
+      "id": "B11",
+      "label": "recent ICE, Japanese",
+      "identity": {
+        "kind": "car",
+        "make": "Suzuki",
+        "model": "Swift",
+        "modelYear": 2019,
+        "powertrain": "petrol",
+        "displacementCc": 1242,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "suzuki"
+      },
+      "candidates": [
+        {
+          "id": "il-mt-suzuki",
+          "priority": 4,
+          "status": "approved",
+          "type": "B_DIGITAL_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-mt-suzuki",
+          "decision": "TERMS_OR_RIGHTS_BLOCK",
+          "detail": "policy_not_allowed (discoveryAllowed): https://suzuki.co.il/content/ספרי-נהג-סוזוקי"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-mt-suzuki",
+          "reason": "permission_required",
+          "url": "https://suzuki.co.il/content/ספרי-נהג-סוזוקי"
+        }
+      ],
+      "failureCodes": [
+        "TERMS_OR_RIGHTS_BLOCK"
+      ],
+      "failureDetails": [
+        {
+          "class": "TERMS_OR_RIGHTS_BLOCK",
+          "detail": "il-mt-suzuki: policy_not_allowed (discoveryAllowed): https://suzuki.co.il/content/ספרי-נהג-סוזוקי"
+        }
+      ]
+    },
+    {
+      "id": "B12",
+      "label": "European, French",
+      "identity": {
+        "kind": "car",
+        "make": "Peugeot",
+        "model": "208",
+        "modelYear": 2021,
+        "powertrain": "petrol",
+        "displacementCc": 1199,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "peugeot"
+      },
+      "candidates": [
+        {
+          "id": "il-lubinski-online-guidebooks",
+          "priority": 3,
+          "status": "proposed",
+          "type": "B_DIGITAL_MANUAL"
+        },
+        {
+          "id": "global-stellantis-servicebox-handbooks",
+          "priority": 5,
+          "status": "proposed",
+          "type": "B_DIGITAL_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-lubinski-online-guidebooks",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://online.peugeot.co.il/guide-books/"
+        },
+        {
+          "id": "global-stellantis-servicebox-handbooks",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://public.servicebox.peugeot.com/APddb/index.html"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [],
+      "failureCodes": [
+        "PERMISSION_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "il-lubinski-online-guidebooks: registry_not_approved: https://online.peugeot.co.il/guide-books/"
+        },
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "global-stellantis-servicebox-handbooks: registry_not_approved: https://public.servicebox.peugeot.com/APddb/index.html"
+        }
+      ]
+    },
+    {
+      "id": "R1",
+      "label": "SEAT Ibiza 2012 CGG",
+      "identity": {
+        "kind": "car",
+        "make": "SEAT",
+        "model": "Ibiza",
+        "modelYear": 2012,
+        "powertrain": "petrol",
+        "displacementCc": 1390,
+        "engineCode": "CGG",
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "seat"
+      },
+      "candidates": [
+        {
+          "id": "il-champion-service-routine",
+          "priority": 2,
+          "status": "approved",
+          "type": "A_DIRECT_MAINTENANCE_SCHEDULE"
+        },
+        {
+          "id": "il-champion-books",
+          "priority": 4,
+          "status": "proposed",
+          "type": "B_DIGITAL_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-champion-service-routine",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "permission_required (discoveryAllowed): https://www.championmotors.co.il/service-routine/"
+        },
+        {
+          "id": "il-champion-books",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://books.championmotors.co.il/"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-champion-service-routine",
+          "reason": "permission_required",
+          "url": "https://www.championmotors.co.il/service-routine/"
+        }
+      ],
+      "failureCodes": [
+        "PERMISSION_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "il-champion-service-routine: permission_required (discoveryAllowed): https://www.championmotors.co.il/service-routine/"
+        },
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "il-champion-books: registry_not_approved: https://books.championmotors.co.il/"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "label": "Ford Fiesta 2015 1.25 SNJB",
+      "identity": {
+        "kind": "car",
+        "make": "Ford",
+        "model": "Fiesta",
+        "modelYear": 2015,
+        "powertrain": "petrol",
+        "displacementCc": 1242,
+        "engineCode": "SNJB",
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "ford"
+      },
+      "candidates": [
+        {
+          "id": "il-delek-ford",
+          "priority": 8,
+          "status": "proposed",
+          "type": "D_RESTRICTED_OR_UNAVAILABLE"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-delek-ford",
+          "decision": "AUTH_REQUIRED",
+          "detail": "il-delek-ford: login; Service-plan PDFs sit behind Delek SharePoint / Microsoft sign-in; The index is public but the documents are not; No login or credential flow was attempted"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [],
+      "failureCodes": [
+        "AUTH_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "AUTH_REQUIRED",
+          "detail": "il-delek-ford: il-delek-ford: login; Service-plan PDFs sit behind Delek SharePoint / Microsoft sign-in; The index is public but the documents are not; No login or credential flow was attempted"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "label": "Hyundai IONIQ 2021 Premium FL Hybrid 1.6",
+      "identity": {
+        "kind": "car",
+        "make": "Hyundai",
+        "model": "IONIQ Hybrid",
+        "modelYear": 2021,
+        "powertrain": "hybrid",
+        "displacementCc": 1580,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "hyundai"
+      },
+      "candidates": [
+        {
+          "id": "il-colmobil-hyundai",
+          "priority": 3,
+          "status": "approved",
+          "type": "B_DIGITAL_MANUAL"
+        },
+        {
+          "id": "global-hyundai-ownersmanual",
+          "priority": 5,
+          "status": "proposed",
+          "type": "C_STRUCTURED_WEB_MANUAL"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "il-colmobil-hyundai",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "permission_required (discoveryAllowed): https://www.hyundaimotors.co.il/maintenance/"
+        },
+        {
+          "id": "global-hyundai-ownersmanual",
+          "decision": "PERMISSION_REQUIRED",
+          "detail": "registry_not_approved: https://ownersmanual.hyundai.com/"
+        }
+      ],
+      "discoveredOfficialSource": null,
+      "documents": [],
+      "exactApplicability": false,
+      "extracted": 0,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "il-colmobil-hyundai",
+          "reason": "permission_required",
+          "url": "https://www.hyundaimotors.co.il/maintenance/"
+        }
+      ],
+      "failureCodes": [
+        "PERMISSION_REQUIRED"
+      ],
+      "failureDetails": [
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "il-colmobil-hyundai: permission_required (discoveryAllowed): https://www.hyundaimotors.co.il/maintenance/"
+        },
+        {
+          "class": "PERMISSION_REQUIRED",
+          "detail": "global-hyundai-ownersmanual: registry_not_approved: https://ownersmanual.hyundai.com/"
+        }
+      ]
+    }
+  ],
+  "probe": [
+    {
+      "id": "P1",
+      "label": "probe",
+      "identity": {
+        "kind": "motorcycle",
+        "make": "SYM",
+        "model": "JET X",
+        "modelYear": 2023,
+        "powertrain": "petrol",
+        "displacementCc": 125,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "sym"
+      },
+      "candidates": [
+        {
+          "id": "global-sym-global",
+          "priority": 5,
+          "status": "approved",
+          "type": "B_DIGITAL_MANUAL"
+        },
+        {
+          "id": "il-metro-motor",
+          "priority": 8,
+          "status": "approved",
+          "type": "D_RESTRICTED_OR_UNAVAILABLE"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "global-sym-global",
+          "decision": "DOCUMENTS_FOUND"
+        },
+        {
+          "id": "il-metro-motor",
+          "decision": "NO_DIGITAL_SOURCE",
+          "detail": "il-metro-motor: none; Publishes no maintenance documents, so there is nothing to ingest. metro.co.il group terms (200) grant 'רישיון … לעשות שימוש אישי (לא מסחרי)' and forbid copying/distribution/commercial exploitation 'ללא אישור מראש ובכתב'."
+        }
+      ],
+      "discoveredOfficialSource": {
+        "url": "https://www.sym-global.com/storage/architecture/product~126/product~134/product~166/product~182/JETX_MANUAL.pdf",
+        "system": "global-sym-global"
+      },
+      "documents": [
+        {
+          "url": "https://www.sym-global.com/storage/architecture/product~126/product~134/product~166/product~182/JETX_MANUAL.pdf",
+          "sha256": "508b0e7f1141d25afe807e403b633d800c7937e03ff9b13166d699c36b78d7e4",
+          "system": "global-sym-global",
+          "version": 1,
+          "versionStatus": "first",
+          "match": "unresolved",
+          "unresolved": [
+            "modelYear"
+          ],
+          "sections": 1,
+          "extracted": 15,
+          "grounded": 15
+        }
+      ],
+      "exactApplicability": false,
+      "extracted": 15,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 15,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "global-sym-global",
+          "reason": "automatic",
+          "url": null
+        },
+        {
+          "system": "il-metro-motor",
+          "reason": "no_digital_source",
+          "url": null
+        }
+      ],
+      "failureCodes": [
+        "NO_DIGITAL_SOURCE",
+        "MODEL_YEAR_NOT_LISTED"
+      ],
+      "failureDetails": [
+        {
+          "class": "NO_DIGITAL_SOURCE",
+          "detail": "il-metro-motor: il-metro-motor: none; Publishes no maintenance documents, so there is nothing to ingest. metro.co.il group terms (200) grant 'רישיון … לעשות שימוש אישי (לא מסחרי)' and forbid copying/distribution/commercial exploitation 'ללא אישור מראש ובכתב'."
+        },
+        {
+          "class": "MODEL_YEAR_NOT_LISTED",
+          "detail": "the document does not state its model years"
+        }
+      ],
+      "requirements": [
+        {
+          "task": "air_filter",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 300,
+              "unit": "km"
+            },
+            "first": {
+              "value": 300,
+              "unit": "km"
+            },
+            "rule": "distance_only",
+            "repeats": false
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Air cleaner element (Remark)\", I at 300KM (one time)",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "air_filter",
+          "action": "other",
+          "interval": {
+            "every": {
+              "value": 1000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 1,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Air cleaner element (Remark)\", C under \"every 1000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "oil_filter",
+          "action": "other",
+          "interval": {
+            "every": {
+              "value": 6000,
+              "unit": "km"
+            },
+            "first": {
+              "value": 300,
+              "unit": "km"
+            },
+            "everyMonths": 6,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true,
+            "anchor": "zero"
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Oil filter (Screen)\", C under \"every 6000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "engine_oil",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 1000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 1,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Engine oil\", I under \"every 1000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "engine_oil",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 3000,
+              "unit": "km"
+            },
+            "first": {
+              "value": 300,
+              "unit": "km"
+            },
+            "rule": "distance_only",
+            "repeats": true,
+            "anchor": "zero"
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Engine oil\", note \"Replacement for every 3000KM\"; first: R at 300KM (one time)",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "fuel_filter",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 300,
+              "unit": "km"
+            },
+            "first": {
+              "value": 300,
+              "unit": "km"
+            },
+            "rule": "distance_only",
+            "repeats": false
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Fuel pump filter\", I at 300KM (one time)",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "fuel_filter",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 10000,
+              "unit": "km"
+            },
+            "first": null,
+            "rule": "distance_only",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Fuel pump filter\", note \"Replacement for every 10000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "spark_plugs",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 3000,
+              "unit": "km"
+            },
+            "first": {
+              "value": 300,
+              "unit": "km"
+            },
+            "everyMonths": 3,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true,
+            "anchor": "zero"
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Spark plug\", I under \"every 3000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "spark_plugs",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 12000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 12,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Spark plug\", R under \"every 12000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "transmission_fluid",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 5000,
+              "unit": "km"
+            },
+            "everyMonths": 5,
+            "first": {
+              "value": 300,
+              "unit": "km"
+            },
+            "rule": "whichever_first",
+            "repeats": true,
+            "anchor": "zero"
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Transmission oil\", note \"Replacement for every 5000KM(5 Months)\"; first: R at 300KM (one time)",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "drive_belt",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 6000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 6,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Drive belt/roller\", I under \"every 6000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "drive_belt",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 12000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 12,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Drive belt/roller\", R under \"every 12000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "valve_clearance",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 6000,
+              "unit": "km"
+            },
+            "first": {
+              "value": 300,
+              "unit": "km"
+            },
+            "everyMonths": 6,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true,
+            "anchor": "zero"
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Valve clearance\", I under \"every 6000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "brake_system",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 1000,
+              "unit": "km"
+            },
+            "first": {
+              "value": 300,
+              "unit": "km"
+            },
+            "everyMonths": 1,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true,
+            "anchor": "zero"
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Brake mechanism/brake lining (pad)\", I under \"every 1000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "coolant",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 12000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 12,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 30,
+          "locator": "table row \"Coolant\", R under \"every 12000KM\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "label": "probe",
+      "identity": {
+        "kind": "motorcycle",
+        "make": "SYM",
+        "model": "Joyride S",
+        "modelYear": 2023,
+        "powertrain": "petrol",
+        "displacementCc": 200,
+        "market": "IL"
+      },
+      "identityResolution": {
+        "manufacturerKey": "sym"
+      },
+      "candidates": [
+        {
+          "id": "global-sym-global",
+          "priority": 5,
+          "status": "approved",
+          "type": "B_DIGITAL_MANUAL"
+        },
+        {
+          "id": "il-metro-motor",
+          "priority": 8,
+          "status": "approved",
+          "type": "D_RESTRICTED_OR_UNAVAILABLE"
+        }
+      ],
+      "accessDecisions": [
+        {
+          "id": "global-sym-global",
+          "decision": "DOCUMENTS_FOUND"
+        },
+        {
+          "id": "il-metro-motor",
+          "decision": "NO_DIGITAL_SOURCE",
+          "detail": "il-metro-motor: none; Publishes no maintenance documents, so there is nothing to ingest. metro.co.il group terms (200) grant 'רישיון … לעשות שימוש אישי (לא מסחרי)' and forbid copying/distribution/commercial exploitation 'ללא אישור מראש ובכתב'."
+        }
+      ],
+      "discoveredOfficialSource": {
+        "url": "https://www.sym-global.com/storage/architecture/product~126/product~134/product~166/product~185/JoyrideE5MANUAL.pdf",
+        "system": "global-sym-global"
+      },
+      "documents": [
+        {
+          "url": "https://www.sym-global.com/storage/architecture/product~126/product~134/product~166/product~185/JoyrideE5MANUAL.pdf",
+          "sha256": "23fbc7b652105f2181466a34381e03ad4ffa69b70814b1c18bc076d76210ed04",
+          "system": "global-sym-global",
+          "version": 1,
+          "versionStatus": "first",
+          "match": "unresolved",
+          "unresolved": [
+            "modelYear"
+          ],
+          "sections": 1,
+          "extracted": 14,
+          "grounded": 14
+        }
+      ],
+      "exactApplicability": false,
+      "extracted": 14,
+      "levelsConsidered": {
+        "A": 0,
+        "B": 0,
+        "C": 14,
+        "D": 0,
+        "E": 0
+      },
+      "usableSchedule": false,
+      "scheduledItems": [],
+      "israeliAuthority": false,
+      "userIntervention": true,
+      "userFallback": [
+        {
+          "system": "global-sym-global",
+          "reason": "automatic",
+          "url": null
+        },
+        {
+          "system": "il-metro-motor",
+          "reason": "no_digital_source",
+          "url": null
+        }
+      ],
+      "failureCodes": [
+        "NO_DIGITAL_SOURCE",
+        "MODEL_YEAR_NOT_LISTED"
+      ],
+      "failureDetails": [
+        {
+          "class": "NO_DIGITAL_SOURCE",
+          "detail": "il-metro-motor: il-metro-motor: none; Publishes no maintenance documents, so there is nothing to ingest. metro.co.il group terms (200) grant 'רישיון … לעשות שימוש אישי (לא מסחרי)' and forbid copying/distribution/commercial exploitation 'ללא אישור מראש ובכתב'."
+        },
+        {
+          "class": "MODEL_YEAR_NOT_LISTED",
+          "detail": "the document does not state its model years"
+        }
+      ],
+      "requirements": [
+        {
+          "task": "air_filter",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 1000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 1,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Air cleaner element*\", I under \"every 1,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "air_filter",
+          "action": "other",
+          "interval": {
+            "every": {
+              "value": 5000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 3,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Air cleaner element*\", C under \"every 5,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "air_filter",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 10000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 6,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Air cleaner element*\", R under \"every 10,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "oil_filter",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 1000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 1,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Oil filter (mesh filter)\", I under \"every 1,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "oil_filter",
+          "action": "other",
+          "interval": {
+            "every": {
+              "value": 10000,
+              "unit": "km"
+            },
+            "first": null,
+            "rule": "distance_only",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Oil filter (mesh filter)\", note \"Cleaning every 10,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "engine_oil",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 5000,
+              "unit": "km"
+            },
+            "first": {
+              "value": 1000,
+              "unit": "km"
+            },
+            "rule": "distance_only",
+            "repeats": true,
+            "anchor": "zero"
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Engine oil\", note \"replace every 5,000km thereafter)\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "spark_plugs",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 15000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 12,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Spark plug\", R under \"every 15,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "transmission_fluid",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 10000,
+              "unit": "km"
+            },
+            "first": {
+              "value": 1000,
+              "unit": "km"
+            },
+            "rule": "distance_only",
+            "repeats": true,
+            "anchor": "zero"
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Transmission Oil\", note \"replace every 10,000km thereafter)\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "brake_fluid",
+          "action": "inspection",
+          "interval": {
+            "every": {
+              "value": 1000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 1,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Brake Fluid\", I under \"every 1,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "brake_fluid",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 30000,
+              "unit": "km"
+            },
+            "everyMonths": 24,
+            "first": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Replace brake fluid every 2 years / 30,000km.\", note \"Replace brake fluid every 2 years / 30,000km.\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "drive_belt",
+          "action": "other",
+          "interval": {
+            "every": {
+              "value": 10000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 6,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Drive Belt/roller/Drive Pulley\", C under \"every 10,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "drive_belt",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 15000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 12,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Drive Belt/roller/Drive Pulley\", R under \"every 15,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "coolant",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 15000,
+              "unit": "km"
+            },
+            "first": null,
+            "everyMonths": 12,
+            "firstMonths": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Coolant\", R under \"every 15,000km\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        },
+        {
+          "task": "brake_system",
+          "action": "replacement",
+          "interval": {
+            "every": {
+              "value": 60000,
+              "unit": "km"
+            },
+            "everyMonths": 48,
+            "first": null,
+            "rule": "whichever_first",
+            "repeats": true
+          },
+          "verification": "verified",
+          "grounded": true,
+          "page": 28,
+          "locator": "table row \"Replace brake hose every 4 years / 60,000km.\", note \"Replace brake hose every 4 years / 60,000km.\"",
+          "coverageUnknown": [
+            "modelYear"
+          ]
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "fleet": {
+      "denominator": {
+        "vehicles": 4373456,
+        "cars": 4181719,
+        "motorcycles": 191737,
+        "source": [
+          {
+            "resource": "053cea08-09bc-40ec-8f7a-156f0677aff3",
+            "retrievedAt": "2026-09-29T22:21:53.436Z",
+            "category": "car",
+            "dataset": "private-and-commercial-vehicles (active vehicles)"
+          },
+          {
+            "resource": "bf9df4e2-d90d-4c0a-a400-19e15af8e95f",
+            "retrievedAt": "2026-09-29T22:25:47.735Z",
+            "category": "motorcycle",
+            "dataset": "motorcycle (two-wheelers)"
+          }
+        ]
+      },
+      "documentCeiling": {
+        "numerator": 33870,
+        "denominator": 4373456
+      },
+      "scheduleCeiling": {
+        "numerator": 33870,
+        "denominator": 4373456
+      },
+      "exactApplicabilityCeiling": null,
+      "israelAuthorityCeiling": {
+        "numerator": 0,
+        "denominator": 4373456
+      },
+      "israeliSourceBlockedByPolicy": {
+        "numerator": 2427354,
+        "denominator": 4373456
+      },
+      "unmappedVehicles": {
+        "numerator": 90460,
+        "denominator": 4373456
+      },
+      "noSourceSystem": {
+        "numerator": 213912,
+        "denominator": 4373456
+      },
+      "byFailure": {
+        "POLICY_UNKNOWN": 817048,
+        "PERMISSION_REQUIRED": 1453547,
+        "TERMS_OR_RIGHTS_BLOCK": 932033,
+        "AUTH_REQUIRED": 355208,
+        "NO_DIGITAL_SOURCE": 633656,
+        "SOURCE_UNAVAILABLE": 148094
+      },
+      "manufacturers": [
+        {
+          "manufacturer": "toyota",
+          "category": "car",
+          "vehicles": 579293,
+          "ministryMakes": [
+            "טויוטה יפן",
+            "טויוטה טורקיה",
+            "טויוטה צרפת",
+            "טויוטה אנגליה",
+            "טויוטה תאילנד",
+            "טויוטה צ'כיה",
+            "טויוטה ארהב\"",
+            "טויוטה ספרד",
+            "טויוטה ד. אפרי",
+            "טויוטה בלגיה",
+            "טויוטה קנדה",
+            "טויוטה מקסיקו",
+            "טויוטה אוסטריה",
+            "טויוטה ב מ וו"
+          ],
+          "systems": [
+            {
+              "id": "il-union-motors-toyota",
+              "israeli": true,
+              "type": "A_DIRECT_MAINTENANCE_SCHEDULE",
+              "status": "approved",
+              "blocker": "POLICY_UNKNOWN"
+            },
+            {
+              "id": "global-toyota-europe-owners-manuals",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "POLICY_UNKNOWN"
+        },
+        {
+          "manufacturer": "hyundai",
+          "category": "car",
+          "vehicles": 563974,
+          "ministryMakes": [
+            "יונדאי קוריאה",
+            "יונדאי טורקיה",
+            "יונדאי צ'כיה",
+            "יונדאי הודו",
+            "יונדאי ארהב\"",
+            "יונדאי סלובקיה"
+          ],
+          "systems": [
+            {
+              "id": "il-colmobil-hyundai",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "approved",
+              "blocker": "PERMISSION_REQUIRED"
+            },
+            {
+              "id": "global-hyundai-ownersmanual",
+              "israeli": false,
+              "type": "C_STRUCTURED_WEB_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "kia",
+          "category": "car",
+          "vehicles": 432117,
+          "ministryMakes": [
+            "קיה ד. קוריאה",
+            "קיה סלובקיה",
+            "קיה מקסיקו",
+            "קיה ארהב\""
+          ],
+          "systems": [
+            {
+              "id": "il-talcar-kia",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "approved",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            },
+            {
+              "id": "global-kia-ownersmanual",
+              "israeli": false,
+              "type": "C_STRUCTURED_WEB_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "mazda",
+          "category": "car",
+          "vehicles": 279517,
+          "ministryMakes": [
+            "מזדה יפן",
+            "מזדה תאילנד",
+            "מזדה צרפת",
+            "מזדה ארהב\"",
+            "מזדה מקסיקו"
+          ],
+          "systems": [
+            {
+              "id": "il-delek-mazda",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "approved",
+              "blocker": "AUTH_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "AUTH_REQUIRED"
+        },
+        {
+          "manufacturer": "skoda",
+          "category": "car",
+          "vehicles": 246783,
+          "ministryMakes": [
+            "סקודה צ'כיה",
+            "סקודה סלובקיה"
+          ],
+          "systems": [
+            {
+              "id": "il-champion-service-routine",
+              "israeli": true,
+              "type": "A_DIRECT_MAINTENANCE_SCHEDULE",
+              "status": "approved",
+              "blocker": "PERMISSION_REQUIRED"
+            },
+            {
+              "id": "il-champion-books",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "suzuki",
+          "category": "car",
+          "vehicles": 181420,
+          "ministryMakes": [
+            "סוזוקי הונגריה",
+            "סוזוקי יפן",
+            "מרוטי סוזוקי",
+            "סוזוקי תאילנד",
+            "סוזוקי הודו",
+            "סוזוקי אנגליה",
+            "סוזוקי-מרוטי"
+          ],
+          "systems": [
+            {
+              "id": "il-mt-suzuki",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "approved",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "mitsubishi",
+          "category": "car",
+          "vehicles": 176288,
+          "ministryMakes": [
+            "מיצובישי יפן",
+            "מיצובישי תאילנ",
+            "מיצובישי הולנד",
+            "מיצובישי פורט'"
+          ],
+          "systems": [
+            {
+              "id": "il-colmobil-mitsubishi",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            },
+            {
+              "id": "global-mitsubishi-motors-europe-ownersmanual",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "nissan",
+          "category": "car",
+          "vehicles": 143521,
+          "ministryMakes": [
+            "ניסאן אנגליה",
+            "ניסאן הודו",
+            "ניסאן יפן",
+            "ניסאן מקסיקו",
+            "ניסאן ספרד",
+            "ניסאן ארהב\"",
+            "ניסאן צרפת"
+          ],
+          "systems": [
+            {
+              "id": "il-carasso-nissan",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "seat",
+          "category": "car",
+          "vehicles": 113036,
+          "ministryMakes": [
+            "סיאט ספרד",
+            "סיאט צ'כיה",
+            "סיאט סלובקיה",
+            "סיאט פורטוגל",
+            "סיאט גרמניה",
+            "סיאט בלגיה"
+          ],
+          "systems": [
+            {
+              "id": "il-champion-service-routine",
+              "israeli": true,
+              "type": "A_DIRECT_MAINTENANCE_SCHEDULE",
+              "status": "approved",
+              "blocker": "PERMISSION_REQUIRED"
+            },
+            {
+              "id": "il-champion-books",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "volkswagen",
+          "category": "car",
+          "vehicles": 107006,
+          "ministryMakes": [
+            "פולקסווגן גרמנ",
+            "פולקסווגן-ספרד",
+            "פולקסווגן מקסי",
+            "פולקסווגן פולי",
+            "פולקסווגן פורט",
+            "פולקסווגן סלוב",
+            "פולקסווגן ד.אפ",
+            "פולקסווגן ארהב",
+            "פולקסווגן סין",
+            "פולקסווגן בלגי",
+            "פולקסווגן טורק",
+            "פולקסווגן ארגנ"
+          ],
+          "systems": [
+            {
+              "id": "il-champion-service-routine",
+              "israeli": true,
+              "type": "A_DIRECT_MAINTENANCE_SCHEDULE",
+              "status": "approved",
+              "blocker": "PERMISSION_REQUIRED"
+            },
+            {
+              "id": "il-champion-books",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "renault",
+          "category": "car",
+          "vehicles": 92684,
+          "ministryMakes": [
+            "רנו טורקיה",
+            "רנו ספרד",
+            "רנו צרפת",
+            "רנו ד.קוריאה",
+            "רנו סלובניה",
+            "רנו רומניה",
+            "רנו אנגליה",
+            "רנו בלגיה",
+            "רנו מרוקו"
+          ],
+          "systems": [
+            {
+              "id": "global-renault-dacia-eguide",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            },
+            {
+              "id": "il-carasso-renault",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "honda",
+          "category": "car",
+          "vehicles": 92320,
+          "ministryMakes": [
+            "הונדה יפן",
+            "הונדה אנגליה",
+            "הונדה טורקיה",
+            "הונדה מקסיקו",
+            "הונדה ארהב\"",
+            "הונדה הודו",
+            "הונדה סין",
+            "הונדה קנדה",
+            "הונדה תאילנד"
+          ],
+          "systems": [
+            {
+              "id": "il-mayer-honda",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "approved",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "chevrolet",
+          "category": "car",
+          "vehicles": 85160,
+          "ministryMakes": [
+            "שברולט ד.קוריא",
+            "שברולט ארהב\"",
+            "שברולט מקסיקו",
+            "שברולט קנדה"
+          ],
+          "systems": [
+            {
+              "id": "il-umi-chevrolet",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "SOURCE_UNAVAILABLE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "SOURCE_UNAVAILABLE"
+        },
+        {
+          "manufacturer": "subaru",
+          "category": "car",
+          "vehicles": 81729,
+          "ministryMakes": [
+            "סובארו יפן",
+            "סובארו ארהב\""
+          ],
+          "systems": [
+            {
+              "id": "il-japanauto-subaru",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            },
+            {
+              "id": "il-samelet-carbooks",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "POLICY_UNKNOWN"
+        },
+        {
+          "manufacturer": "citroen",
+          "category": "car",
+          "vehicles": 81384,
+          "ministryMakes": [
+            "סיטרואן ספרד",
+            "סיטרואן צרפת",
+            "סיטרואן פורטוג",
+            "סיטרואן סלובק",
+            "סיטרואן צ'כיה",
+            "סיטרואן טורקיה",
+            "סיטרואן אנגליה",
+            "סיטרואן יפן"
+          ],
+          "systems": [
+            {
+              "id": "il-lubinski-online-guidebooks",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            },
+            {
+              "id": "global-stellantis-servicebox-handbooks",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "chery",
+          "category": "car",
+          "vehicles": 76553,
+          "ministryMakes": [
+            "צ'רי סין"
+          ],
+          "systems": [
+            {
+              "id": "il-carasso-chery",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "peugeot",
+          "category": "car",
+          "vehicles": 71869,
+          "ministryMakes": [
+            "פיג'ו צרפת",
+            "פיג'ו ספרד",
+            "פיג'ו סלובקיה",
+            "פיג'ו צ'כיה",
+            "פיג'ו טורקיה",
+            "פיג'ו איטליה",
+            "פיג'ו אוסטריה",
+            "פיג'ו פורטוגל",
+            "פיג'ו פולין",
+            "פיג'ו אנגליה",
+            "פיג'ו יפן"
+          ],
+          "systems": [
+            {
+              "id": "il-lubinski-online-guidebooks",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            },
+            {
+              "id": "global-stellantis-servicebox-handbooks",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "ford",
+          "category": "car",
+          "vehicles": 69592,
+          "ministryMakes": [
+            "פורד גרמניה",
+            "פורד ספרד",
+            "פורד ארהב\"",
+            "פורד תורכיה",
+            "פורד בלגיה",
+            "פורד קנדה",
+            "פורד רומניה",
+            "פורד ד אפריקה",
+            "פורד מקסיקו",
+            "פורד אנגליה",
+            "פורד תאילנד",
+            "פורד איטליה"
+          ],
+          "systems": [
+            {
+              "id": "il-delek-ford",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "AUTH_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "AUTH_REQUIRED"
+        },
+        {
+          "manufacturer": "byd",
+          "category": "car",
+          "vehicles": 64561,
+          "ministryMakes": [
+            "בי ווי די סין"
+          ],
+          "systems": [
+            {
+              "id": "il-shlomo-motors-byd",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            },
+            {
+              "id": "global-byd-eu-support",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "mercedes-benz",
+          "category": "car",
+          "vehicles": 59083,
+          "ministryMakes": [
+            "מרצדס בנץ גרמנ",
+            "מרצדס בנץ ארהב",
+            "מרצדס בנץ הונג",
+            "מרצדס בנץ ספרד",
+            "מרצדס בנץ אוסט",
+            "מרצדס בנץ ד.אפ",
+            "מרצדס בנץ מקסי",
+            "מרצדס בנץ צרפת",
+            "מרצדס בנץ פינל"
+          ],
+          "systems": [
+            {
+              "id": "global-mercedes-benz-owners-manual",
+              "israeli": false,
+              "type": "C_STRUCTURED_WEB_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            },
+            {
+              "id": "il-colmobil-mercedes-benz",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "SOURCE_UNAVAILABLE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "SOURCE_UNAVAILABLE"
+        },
+        {
+          "manufacturer": "bmw",
+          "category": "car",
+          "vehicles": 52092,
+          "ministryMakes": [
+            "ב מ וו גרמניה",
+            "ב מ וו ארהב\"",
+            "ב מ וו אנגליה",
+            "ב מ וו הולנד",
+            "ב מ וו סין",
+            "ב מ וו אוסטריה",
+            "ב מ וו מקסיקו",
+            "ב מ וו הונגריה",
+            "ב מ וו ד. אפר"
+          ],
+          "systems": [
+            {
+              "id": "il-delek-bmw",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            },
+            {
+              "id": "global-bmw-mini-digital-owners-manual",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "SOURCE_UNAVAILABLE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "POLICY_UNKNOWN"
+        },
+        {
+          "manufacturer": "audi",
+          "category": "car",
+          "vehicles": 46353,
+          "ministryMakes": [
+            "אאודי גרמניה",
+            "אאודי הונגריה",
+            "אאודי ספרד",
+            "אאודי בלגיה",
+            "אודי מקסיקו",
+            "אאודי סלובקיה"
+          ],
+          "systems": [
+            {
+              "id": "il-champion-service-routine",
+              "israeli": true,
+              "type": "A_DIRECT_MAINTENANCE_SCHEDULE",
+              "status": "approved",
+              "blocker": "PERMISSION_REQUIRED"
+            },
+            {
+              "id": "il-champion-books",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "jaecoo",
+          "category": "car",
+          "vehicles": 45243,
+          "ministryMakes": [
+            "ג'אקו סין"
+          ],
+          "systems": [
+            {
+              "id": "il-colmobil-jaecoo-omoda",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "mg",
+          "category": "car",
+          "vehicles": 43142,
+          "ministryMakes": [
+            "מ.ג סין"
+          ],
+          "systems": [
+            {
+              "id": "il-car-east-mg",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "POLICY_UNKNOWN"
+        },
+        {
+          "manufacturer": "tesla",
+          "category": "car",
+          "vehicles": 37266,
+          "ministryMakes": [
+            "טסלה סין",
+            "טסלה גרמניה",
+            "טסלה ארה''ב"
+          ],
+          "systems": [
+            {
+              "id": "il-tesla",
+              "israeli": true,
+              "type": "C_STRUCTURED_WEB_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "POLICY_UNKNOWN"
+        },
+        {
+          "manufacturer": "sym",
+          "category": "motorcycle",
+          "vehicles": 33870,
+          "ministryMakes": [
+            "סאן יאנג טאיוו",
+            "סאן יאנג סין"
+          ],
+          "systems": [
+            {
+              "id": "global-sym-global",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "approved",
+              "blocker": null
+            },
+            {
+              "id": "il-metro-motor",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "approved",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": true,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": null
+        },
+        {
+          "manufacturer": "opel",
+          "category": "car",
+          "vehicles": 33605,
+          "ministryMakes": [
+            "אופל ספרד",
+            "אופל פולין",
+            "אופל גרמניה",
+            "אופל צרפת",
+            "אופל ד. קוריאה",
+            "אופל אנגליה",
+            "אופל סלובקיה",
+            "אופל בלגיה",
+            "אופל פורטוגל"
+          ],
+          "systems": [
+            {
+              "id": "il-lubinski-online-guidebooks",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            },
+            {
+              "id": "global-stellantis-servicebox-handbooks",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "yamaha",
+          "category": "motorcycle",
+          "vehicles": 31844,
+          "ministryMakes": [
+            "ימאהה צרפת",
+            "ימהה יפן",
+            "ימאהה תאילנד",
+            "ימאהה אינדונזי",
+            "ימהה הודו",
+            "ימאהה ספרד",
+            "ימאהה ויאטנם",
+            "ימאהה איטליה",
+            "ימאהה ברזיל"
+          ],
+          "systems": [
+            {
+              "id": "global-yamaha-owner-manual-library",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            },
+            {
+              "id": "il-metro-motor",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "approved",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "honda",
+          "category": "motorcycle",
+          "vehicles": 30752,
+          "ministryMakes": [
+            "הונדה יפן",
+            "הונדה איטליה",
+            "הונדה תאילנד",
+            "הונדה ויאטנם",
+            "הונדה ארהב\"",
+            "הונדה ספרד",
+            "הונדה סין",
+            "הונדה ברזיל",
+            "הונדה הודו"
+          ],
+          "systems": [
+            {
+              "id": "global-honda-motopub",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            },
+            {
+              "id": "il-mayer-honda-motorcycles",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "approved",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "isuzu",
+          "category": "car",
+          "vehicles": 28293,
+          "ministryMakes": [
+            "איסוזו תאילנד",
+            "איסוזו יפן",
+            "איסוזו ארהב\""
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "dacia",
+          "category": "car",
+          "vehicles": 27629,
+          "ministryMakes": [
+            "דאצ'יה רומניה",
+            "דאציה מרוקו",
+            "דאציה סין",
+            "דאציה סין"
+          ],
+          "systems": [
+            {
+              "id": "global-renault-dacia-eguide",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            },
+            {
+              "id": "il-carasso-dacia",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "geely",
+          "category": "car",
+          "vehicles": 26899,
+          "ministryMakes": [
+            "גילי סין"
+          ],
+          "systems": [
+            {
+              "id": "il-geo-mobility-geely",
+              "israeli": true,
+              "type": "A_DIRECT_MAINTENANCE_SCHEDULE",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            },
+            {
+              "id": "global-geely-rmi-eu",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "volvo",
+          "category": "car",
+          "vehicles": 23520,
+          "ministryMakes": [
+            "וולבו בלגיה",
+            "וולבו שבדיה",
+            "וולבו סין",
+            "וולבו ארהב\"",
+            "וולבו הולנד"
+          ],
+          "systems": [
+            {
+              "id": "il-mayer-volvo",
+              "israeli": true,
+              "type": "C_STRUCTURED_WEB_MANUAL",
+              "status": "approved",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "POLICY_UNKNOWN"
+        },
+        {
+          "manufacturer": "fiat",
+          "category": "car",
+          "vehicles": 22859,
+          "ministryMakes": [
+            "פיאט פולין",
+            "פיאט טורקיה",
+            "פיאט איטליה",
+            "פיאט פורטוגל",
+            "פיאט ספרד",
+            "פיאט קרייזלר",
+            "פיאט צרפת",
+            "פיאט תאילנד",
+            "פיאט סרביה",
+            "פיאט יפן",
+            "פיאט אנגליה"
+          ],
+          "systems": [
+            {
+              "id": "il-samelet-carbooks",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "lexus",
+          "category": "car",
+          "vehicles": 22772,
+          "ministryMakes": [
+            "לקסוס יפן",
+            "לקסוס קנדה",
+            "לקסוס ארהב"
+          ],
+          "systems": [
+            {
+              "id": "il-union-motors-lexus",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "daihatsu",
+          "category": "car",
+          "vehicles": 21811,
+          "ministryMakes": [
+            "דייהטסו יפן"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "kymco",
+          "category": "motorcycle",
+          "vehicles": 21151,
+          "ministryMakes": [
+            "קואנג יאנג טאי",
+            "קימקו טאיוון",
+            "קואנג יאנג סין",
+            "קימקו סין"
+          ],
+          "systems": [
+            {
+              "id": "il-ofer-avnir",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "approved",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            },
+            {
+              "id": "global-kymco-global",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "xpeng",
+          "category": "car",
+          "vehicles": 15351,
+          "ministryMakes": [
+            "אקספנג סין"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "chrysler",
+          "category": "car",
+          "vehicles": 14600,
+          "ministryMakes": [
+            "קרייזלר ארהב\"",
+            "קרייזלר קנדה",
+            "קרייזלר מקסיקו",
+            "קרייזלר אוסטרי"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "jeep",
+          "category": "car",
+          "vehicles": 9868,
+          "ministryMakes": [
+            "ג'יפ ארהב\"",
+            "ג'יפ איטליה",
+            "ג'יפ פולין",
+            "ג'יפ מקסיקו"
+          ],
+          "systems": [
+            {
+              "id": "il-samelet-carbooks",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "piaggio",
+          "category": "motorcycle",
+          "vehicles": 8769,
+          "ministryMakes": [
+            "פיאג'ו איטליה",
+            "פיאג'ו ויאטנם",
+            "פיאג'ו סין"
+          ],
+          "systems": [
+            {
+              "id": "il-ofer-avnir",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "approved",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            },
+            {
+              "id": "global-piaggio-group",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "kawasaki",
+          "category": "motorcycle",
+          "vehicles": 8226,
+          "ministryMakes": [
+            "קוואסאקי תאילנ",
+            "קוואסאקי יפן",
+            "קוואסאקי אינדו",
+            "קוואסאקי טאי",
+            "קוואסאקי ארהב\""
+          ],
+          "systems": [
+            {
+              "id": "global-kawasaki-pws",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            },
+            {
+              "id": "il-metro-motor",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "approved",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "ktm",
+          "category": "motorcycle",
+          "vehicles": 7336,
+          "ministryMakes": [
+            "קי.טי.אמ אוסטר",
+            "קי.טי.אם הודו"
+          ],
+          "systems": [
+            {
+              "id": "global-ktm-manuals",
+              "israeli": false,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            },
+            {
+              "id": "il-offroad-ktm",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "lynk-co",
+          "category": "car",
+          "vehicles": 6974,
+          "ministryMakes": [
+            "לינק אנד קו"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "zeekr",
+          "category": "car",
+          "vehicles": 6154,
+          "ministryMakes": [
+            "זיקר"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "cadillac",
+          "category": "car",
+          "vehicles": 5956,
+          "ministryMakes": [
+            "קאדילאק ארהב\"",
+            "קאדילאק מקסיקו"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "bmw",
+          "category": "motorcycle",
+          "vehicles": 5729,
+          "ministryMakes": [
+            "ב מ וו גרמניה",
+            "ב מ וו סין",
+            "ב מ וו הודו",
+            "ב מ וו איטליה",
+            "ב מ וו ארהב\""
+          ],
+          "systems": [
+            {
+              "id": "global-bmw-motorrad-rider-manual",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            },
+            {
+              "id": "il-delek-motors-bmw-motorrad",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "AUTH_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "AUTH_REQUIRED"
+        },
+        {
+          "manufacturer": "suzuki",
+          "category": "motorcycle",
+          "vehicles": 5404,
+          "ministryMakes": [
+            "סוזוקי יפן",
+            "סוזוקי סין",
+            "סוזוקי הודו",
+            "סוזוקי אינדונז",
+            "סוזוקי ספרד",
+            "סוזוקי אנגליה"
+          ],
+          "systems": [
+            {
+              "id": "il-ofer-avnir",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "approved",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            },
+            {
+              "id": "global-suzuki-motorcycles",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "omoda",
+          "category": "car",
+          "vehicles": 4213,
+          "ministryMakes": [
+            "אומודה סין"
+          ],
+          "systems": [
+            {
+              "id": "il-colmobil-jaecoo-omoda",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "PERMISSION_REQUIRED"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "ora",
+          "category": "car",
+          "vehicles": 4083,
+          "ministryMakes": [
+            "אורה סין"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "land-rover",
+          "category": "car",
+          "vehicles": 3827,
+          "ministryMakes": [
+            "לנדרובר אנגליה",
+            "לנדרובר סלובקי"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "leapmotor",
+          "category": "car",
+          "vehicles": 3389,
+          "ministryMakes": [
+            "ליפמוטור סין"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "maxus",
+          "category": "car",
+          "vehicles": 3369,
+          "ministryMakes": [
+            "מקסוס סין"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "smart",
+          "category": "car",
+          "vehicles": 3293,
+          "ministryMakes": [
+            "סמארט סין",
+            "סמארט צרפת",
+            "סמארט סלובניה",
+            "סמארט ג'.מ.ב.ה"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "cupra",
+          "category": "car",
+          "vehicles": 3276,
+          "ministryMakes": [
+            "קופרה ספרד",
+            "קופרה סין",
+            "קופרה הונגריה",
+            "קופרה צ'כיה"
+          ],
+          "systems": [
+            {
+              "id": "il-champion-service-routine",
+              "israeli": true,
+              "type": "A_DIRECT_MAINTENANCE_SCHEDULE",
+              "status": "approved",
+              "blocker": "PERMISSION_REQUIRED"
+            },
+            {
+              "id": "il-champion-books",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "proposed",
+              "blocker": "POLICY_UNKNOWN"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "PERMISSION_REQUIRED"
+        },
+        {
+          "manufacturer": "porsche",
+          "category": "car",
+          "vehicles": 3010,
+          "ministryMakes": [
+            "פורשה גרמניה",
+            "פורשה סלובקיה"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "dongfeng",
+          "category": "car",
+          "vehicles": 2922,
+          "ministryMakes": [
+            "דונגפנג סין"
+          ],
+          "systems": [],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "NO_DIGITAL_SOURCE"
+        },
+        {
+          "manufacturer": "harley-davidson",
+          "category": "motorcycle",
+          "vehicles": 2286,
+          "ministryMakes": [
+            "הארלי דיוידסון"
+          ],
+          "systems": [
+            {
+              "id": "global-harley-davidson-sip",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "SOURCE_UNAVAILABLE"
+            },
+            {
+              "id": "il-albar-harley-davidson",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "SOURCE_UNAVAILABLE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "SOURCE_UNAVAILABLE"
+        },
+        {
+          "manufacturer": "husqvarna",
+          "category": "motorcycle",
+          "vehicles": 2253,
+          "ministryMakes": [
+            "הסקוורנה אוסטר",
+            "הסקוורנה הודו"
+          ],
+          "systems": [
+            {
+              "id": "il-ofer-avnir",
+              "israeli": true,
+              "type": "B_DIGITAL_MANUAL",
+              "status": "approved",
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
+            },
+            {
+              "id": "il-offroad-ktm",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": true,
+          "failure": "TERMS_OR_RIGHTS_BLOCK"
+        },
+        {
+          "manufacturer": "zontes",
+          "category": "motorcycle",
+          "vehicles": 1565,
+          "ministryMakes": [
+            "זונטס סין"
+          ],
+          "systems": [
+            {
+              "id": "global-zontes",
+              "israeli": false,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "NO_DIGITAL_SOURCE"
+            },
+            {
+              "id": "il-eurodrive-zontes",
+              "israeli": true,
+              "type": "D_RESTRICTED_OR_UNAVAILABLE",
+              "status": "proposed",
+              "blocker": "SOURCE_UNAVAILABLE"
+            }
+          ],
+          "documentCeiling": false,
+          "israelAuthorityCeiling": false,
+          "israeliBlockedByPolicy": false,
+          "failure": "SOURCE_UNAVAILABLE"
+        }
+      ]
+    },
+    "sample": {
+      "document": {
+        "numerator": 0,
+        "denominator": 12
+      },
+      "schedule": {
+        "numerator": 0,
+        "denominator": 12
+      },
+      "exactApplicability": {
+        "numerator": 0,
+        "denominator": 12
+      },
+      "israelAuthority": {
+        "numerator": 0,
+        "denominator": 12
+      },
+      "byFailure": {
+        "AUTH_REQUIRED": 1,
+        "TERMS_OR_RIGHTS_BLOCK": 2,
+        "PERMISSION_REQUIRED": 9,
+        "POLICY_UNKNOWN": 1,
+        "NO_DIGITAL_SOURCE": 3,
+        "MODEL_YEAR_NOT_LISTED": 1
+      }
+    }
+  }
+}

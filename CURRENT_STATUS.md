@@ -21,7 +21,21 @@ _Last updated: 2026-09-30_
 - **Owner fix run 2026-09-29 (Tasks 1–5):** see `docs/release/UI_FIX_RUN_2026-09-29.md` and `docs/release/MAINTENANCE_ARCHITECTURE_DISCOVERY.md`.
 - **UX fixes + maintenance core run 2026-09-29 (Tasks 1–11):** `docs/release/MAINTENANCE_M1.md`. Zoomable document viewer, one swipeable Home vehicle card, "כלי הרכב שלי" in the menu, requirement model + deterministic resolution/due engine, knowledge pipeline, real evidence for the acceptance vehicles (none verified → exact evidence requests), local SQLite v6, evidence-based Maintenance UI and journal linkage. Verify 66/485; local cloud 60/60; A54 A–H (pinch pending owner).
 - **Universal maintenance discovery (owner instruction 2026-09-29, maintenance-only priority): engine IMPLEMENTED, blind PASS criterion NOT MET.** `docs/release/MAINTENANCE_DISCOVERY.md`. Evidence levels A–E (market caps at B instead of excluding; per task+action precedence), data-driven source registry with the P1 access policy (robots AND terms), deterministic document understanding + table/sentence extraction with grounding, reusable knowledge catalog (domain, local SQLite v7, cloud migration `20260930000002` prepared, local Docker only), level labels + official links in the UI. Blind matrix (committed first, `5b19311`): 0/12 usable plans. Access restriction 11/12, no source 1/12. Capability probe on the one permitted host (SYM): 15 + 14 grounded requirements, level C (model years not stated).
-- **Next action:** stop for owner review. Pending owner decisions: (1) the automation/legal policy for official manuals (dominant blocker); (2) approve the 16 proposed registry hosts; (3) curator for uploaded manuals; (4) model-year coverage rule; (5) staging: cloud migrations `20260930000001` and `20260930000002` and an edge deployment of the pipeline; (6) earlier: the Ford importer rule, the curator role/tool. P2C is **not** started.
+- **M-SOURCE: Israeli Maintenance Source Registry + coverage engine (2026-09-30): PARTIAL PASS.** Engineering steps 1–19 pass; the product objective is not met. `docs/maintenance/ISRAEL_SOURCE_REGISTRY.md`.
+  - 59 source systems (37 Israeli), each with a six-dimension, evidence-backed, versioned access policy. ALLOWED appears only for SYM, by owner decision.
+  - Generic adapters (listing, URL template, JSON API, restricted) sit behind a policy gate, with standard failure codes.
+  - Also built: the Ministry fleet universe → source-system mapping, document versions, the private-upload hash path, a requirement reviewer, the coverage engine, and precise fallback reasons in the UI.
+  - Fleet ceiling: official documents obtainable automatically for 0.77% of 4,373,456 vehicles, and Israeli authority for 0%. Blind set: 0/12. The dominant blocker is access policy (REQUIRES_PERMISSION / UNKNOWN / NOT_ALLOWED).
+  - Migrations: `20260930000001` was fixed (owner-scoped claim FK); `20260930000003` is new. Both are local Docker only.
+- **Next action:** stop for owner review. Pending owner decisions:
+  1. permission requests to importers (Union Motors, Champion, Colmobil, Talcar, Samelet, Geo Mobility), or a legal position on automated reading of official manuals;
+  2. re-confirm SYM's owner-decision permissions under M-SOURCE;
+  3. approve the proposed source systems as authorities;
+  4. curator for uploaded manuals and the reviewer tool;
+  5. the model-year coverage rule;
+  6. staging: cloud migrations `20260930000001`–`03` and an edge deployment of the pipeline.
+
+  P2C is **not** started.
 
 ## Granted policies
 

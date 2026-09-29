@@ -1,0 +1,785 @@
+{
+  "reviewDate": "2026-09-30",
+  "scope": "Israeli importer source systems for Toyota, Lexus (Union group), Hyundai, Mitsubishi, Mercedes-Benz (Colmobil), Kia (Talcar); global manufacturer libraries briefly.",
+  "colmobilBrandsVerified": {
+    "evidence": "https://www.colmobil.co.il/ (200) /brands/ links",
+    "brands": [
+      "Hyundai",
+      "Genesis",
+      "Mitsubishi",
+      "Mercedes-Benz",
+      "smart",
+      "JAECOO",
+      "OMODA",
+      "ORA"
+    ],
+    "brandSites": {
+      "hyundai": "hyundaimotors.co.il",
+      "mitsubishi": "mitsubishi-israel.co.il",
+      "mercedes": "mercedes-benz.co.il",
+      "jaecoo": "jaecoo.co.il (brand page 404)",
+      "omoda": "omoda.co.il",
+      "ora": "ora-israel.co.il"
+    },
+    "note": "Genesis, smart, JAECOO, OMODA and ORA are out of this task's scope and were not researched."
+  },
+  "sourceSystems": [
+    {
+      "sourceSystemId": "il-union-motors-toyota",
+      "importerLegalName": "יוניון מוטורס בע\"מ (Union Motors Ltd.)",
+      "brandsCovered": [
+        "Toyota"
+      ],
+      "market": "IL",
+      "officialDomains": [
+        "https://www.toyota.co.il",
+        "https://books.union-motors.co.il/app",
+        "https://union-motors.toyota.co.il",
+        "https://media.union-motors.co.il"
+      ],
+      "ownershipEvidence": [
+        "https://www.toyota.co.il/discover-toyota/toyota-in-israel (200): \"חברת יוניון מוטורס הינה המשווקת הרשמית של רכבי TOYOTA בישראל\"",
+        "https://www.toyota.co.il/owners/parts-and-accessories/owners-manuals (200) embeds <iframe id=\"manuals\" src=\"https://books.union-motors.co.il/app\">",
+        "Prior research (docs/sources/P1_SOURCE_VERIFICATION.md): Ministry of Transport importer list and WHOIS 'Union Motors Ltd.' (not re-verified today)"
+      ],
+      "sourceType": "A_DIRECT_MAINTENANCE_SCHEDULE",
+      "documentCategories": [
+        "maintenance schedule (fileType=maintenance_schedule, 'לוחות אחזקה')",
+        "owner/car book (car_book)",
+        "quick guide (quick_guide)",
+        "multimedia book (multimedia_book)",
+        "warranty booklet (linked 'חוברת אחריות', not inspected)",
+        "foreign-language owner manuals via Toyota Europe component at /customer/manuals"
+      ],
+      "discovery": {
+        "mechanism": "public JSON endpoint (behind a React iframe app; Incapsula-fronted host)",
+        "entryPoints": [
+          "https://www.toyota.co.il/owners/parts-and-accessories/owners-manuals (200)",
+          "https://books.union-motors.co.il/app (200)",
+          "https://www.toyota.co.il/sitemap.xml (200)"
+        ],
+        "endpointShape": {
+          "GET /app/api/texts?brand=toyota": "200 {title, subtitle, modelLabel, yearLabel, searchButton, downloadButton}",
+          "GET /app/api/models?brand=toyota": "200 [{id:int, name:str}] (36 models today)",
+          "GET /app/api/models/{id}/years": "200 [int years] e.g. model 39 -> [2026..2022]",
+          "GET /app/api/search?modelId={id}&year={yyyy}": "200 [{connectionId, fileId, title, isDownloadable, fileTypeLabel, fileType in {car_book, quick_guide, multimedia_book, maintenance_schedule}}]",
+          "GET /app/api/files/{connectionId}/download": "200 application/pdf, content-disposition inline with original filename (checked headers only; body discarded, not stored)"
+        },
+        "deterministicModelYearSelection": true,
+        "sampled": "Corolla Cross 2024 (car_book x2, quick_guide, maintenance_schedule), Rav4 2025 (maintenance_schedule), Camry 2019 (car_book, maintenance_schedule), bZ4X 2025 (all four types)"
+      },
+      "robots": {
+        "www.toyota.co.il/robots.txt": "200; User-agent * ; /owners not disallowed; Sitemap declared",
+        "books.union-motors.co.il/robots.txt": "404 (nginx + Incapsula)"
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "Terms linked from toyota.co.il footer (https://union-motors.toyota.co.il/files/terms-of-use) returned 200 but only a 212-byte Incapsula JS challenge (meta robots noindex,nofollow); text unreadable. No evidence."
+        },
+        "automatedFetchAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "Same: terms unreadable. books.union-motors.co.il robots.txt 404 (no technical rule)."
+        },
+        "automatedExtractionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "no evidence (terms unreadable)"
+        },
+        "documentCachingAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "no evidence (terms unreadable)"
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "no evidence (terms unreadable)"
+        },
+        "documentRedistributionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "no evidence (terms unreadable)"
+        }
+      },
+      "policyEvidenceUrls": [
+        "https://union-motors.toyota.co.il/files/terms-of-use (200, Incapsula challenge only)",
+        "https://www.toyota.co.il/robots.txt (200)",
+        "https://books.union-motors.co.il/robots.txt (404)"
+      ],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Terms of use not readable without executing the Incapsula challenge; do not treat as permissive.",
+        "Sister-company Lexus site (same group, same books backend) requires prior written permission for crawlers/copying/storing; Toyota-affiliated sites (toyota-select.co.il, Union industrial vehicles) show similar clauses per search snippets. Not applied here (no inference), but likely similar.",
+        "Host is Incapsula-protected; automated access may be blocked at any time.",
+        "Maintenance schedule titles sometimes cover a year range or a powertrain (e.g. 'Corolla Cross HV'); engine/powertrain is not a structured field."
+      ],
+      "applicabilityResolution": "model id + model year are structured API parameters; fileType distinguishes maintenance_schedule; engine/powertrain only in free-text title or model name (e.g. 'Camry Hybrid'). Partially automatic.",
+      "notes": "Resolves the prior open question: the Toyota 'לוחות אחזקה' are separate per-model/per-year PDFs (fileType maintenance_schedule). Previously researched as 'pubhub JS selector'; the current page uses Union's own books.union-motors.co.il app instead."
+    },
+    {
+      "sourceSystemId": "il-union-motors-lexus",
+      "importerLegalName": "לקס מוטורס בע\"מ (Lex Motors Ltd.), site operator; about-page names יוניון מוטורס בע\"מ as official Lexus importer",
+      "brandsCovered": [
+        "Lexus"
+      ],
+      "market": "IL",
+      "officialDomains": [
+        "https://www.lexus.co.il",
+        "https://books.union-motors.co.il/LexusApp"
+      ],
+      "ownershipEvidence": [
+        "https://www.lexus.co.il/legal (200): \"האתר מנוהל ומופעל על-ידי לקס מוטורס בע\"מ, יבואנית מכוניות ואביזרים מתוצרת LEXUS לישראל\"",
+        "https://www.lexus.co.il/discover-lexus/about-lexus (200): \"חברת יוניון מוטורס בע\"מ היא היבואן הרשמי של מותג לקסוס בישראל\"",
+        "he.wikipedia.org/wiki/לקסוס (200, secondary): Lexus imported by לקס מוטורס of קבוצת יוניון",
+        "https://www.lexus.co.il/owners/maintenance/owner-books (200) embeds iframe src=https://books.union-motors.co.il/LexusApp"
+      ],
+      "sourceType": "B_DIGITAL_MANUAL",
+      "documentCategories": [
+        "car book (car_book)",
+        "multimedia book (multimedia_book)",
+        "quick guide (quick_guide)"
+      ],
+      "discovery": {
+        "mechanism": "public JSON endpoint (same backend as Toyota, base /LexusApp/)",
+        "entryPoints": [
+          "https://www.lexus.co.il/owners/maintenance/owner-books (200)",
+          "https://books.union-motors.co.il/LexusApp (200)"
+        ],
+        "endpointShape": {
+          "GET /LexusApp/api/models?brand=lexus": "200 [{id,name}] (12 models)",
+          "GET /LexusApp/api/models/{id}/years": "200 [int]",
+          "GET /LexusApp/api/search?modelId&year": "200 [{connectionId, fileId, title, isDownloadable, fileTypeLabel, fileType}]"
+        },
+        "deterministicModelYearSelection": true,
+        "sampled": "NX 2024, RX 2020, UX 2025, LBX 2025: no maintenance_schedule fileType observed (UNVERIFIED for other models/years)"
+      },
+      "robots": {
+        "www.lexus.co.il/robots.txt": "200; disallows spare-parts DAM paths; owners pages not disallowed",
+        "books.union-motors.co.il/robots.txt": "404"
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.lexus.co.il/legal 2.1: \"ללא מתן הרשאה מהחברה, מראש ובכתב, המשתמש אינו רשאי\" ... 2.1.3 \"להפעיל ... תוכנות מסוגCrawlers, Robots וכדומה, לשם חיפוש, סריקה, העתקה או אחזור אוטומטי של תוכן האתר\""
+        },
+        "automatedFetchAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.lexus.co.il/legal 2.1.3 (automatic copying/retrieval) under 2.1 prior-written-permission prefix"
+        },
+        "automatedExtractionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.lexus.co.il/legal 2.1.2 \"להעתיק, לשחזר, לשנות, לעבד ...\" and 2.1.3 automated scanning, under 2.1 prefix"
+        },
+        "documentCachingAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.lexus.co.il/legal 2.1.2 \"... לשכפל, לפרסם ולאחסן את תוכן האתר, כולו או חלקו\""
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.lexus.co.il/legal 2.1.2 \"לאחסן את תוכן האתר, כולו או חלקו\" (interpretive: facts not separately addressed)"
+        },
+        "documentRedistributionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.lexus.co.il/legal 2.1.2 \"להפיץ\" under 2.1 prefix"
+        }
+      },
+      "policyEvidenceUrls": [
+        "https://www.lexus.co.il/legal (200)",
+        "https://www.lexus.co.il/robots.txt (200)"
+      ],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Whether lexus.co.il terms formally govern the books.union-motors.co.il host is UNVERIFIED (host has no own terms found).",
+        "No maintenance schedule document type seen in samples; schedules may live in the car book (UNVERIFIED)."
+      ],
+      "applicabilityResolution": "model + model year structured; engine/powertrain not structured.",
+      "notes": "Same Union backend as Toyota; brand path segment selects Lexus."
+    },
+    {
+      "sourceSystemId": "il-colmobil-hyundai",
+      "importerLegalName": "כלמוביל (Colmobil Ltd.), site says \"יונדאי ישראל, מקבוצת חברות כלמוביל\"",
+      "brandsCovered": [
+        "Hyundai"
+      ],
+      "market": "IL",
+      "officialDomains": [
+        "https://www.hyundaimotors.co.il",
+        "https://res.cloudinary.com/colmobil (Colmobil's Cloudinary account, document host)",
+        "https://prodmedia.colmobil.co.il"
+      ],
+      "ownershipEvidence": [
+        "https://www.colmobil.co.il/brands/hyundai/ (200) links to www.hyundaimotors.co.il",
+        "https://www.hyundaimotors.co.il/terms/ (200): \"ברוך הבא לאתר הבית של חברת יונדאי ישראל, מקבוצת חברות כלמוביל\"",
+        "Prior research: hyundai.com Global Distributors 'Israel – Colmobil Ltd.' (not re-verified today)"
+      ],
+      "sourceType": "B_DIGITAL_MANUAL",
+      "documentCategories": [
+        "owner manuals ('ספר רכב', 63 PDF links, per model and year)",
+        "service and warranty booklet ('ספר שירות וכתב אחריות', PDF, 200 application/pdf 1.86 MB, content not inspected)",
+        "tyre classification document",
+        "price list (models; spare parts price list linked)"
+      ],
+      "discovery": {
+        "mechanism": "static HTML (Next.js page with embedded flight JSON)",
+        "entryPoints": [
+          "https://www.hyundaimotors.co.il/maintenance/ (200)",
+          "https://www.hyundaimotors.co.il/sitemap.xml (declared)"
+        ],
+        "endpointShape": "embedded JSON per model: {title, modelId, modelFields:{carbooks:[{year:int, file:{node:{mediaItemUrl, mediaItemId}}}], fileReponsability:{node:{src}}}}",
+        "deterministicModelYearSelection": true
+      },
+      "robots": {
+        "www.hyundaimotors.co.il/robots.txt": "200; disallows /compare, /indication_lights/*, /purchase///*; /maintenance not disallowed",
+        "res.cloudinary.com/robots.txt": "200 (content not reviewed)"
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.hyundaimotors.co.il/terms/: \"ללא מתן הרשאה כתובה מראש על-ידי החברה, אינך רשאי לבצע את הפעולות ו/או המעשים הבאים\" ... \"להפעיל ... תוכנות מסוג Crawlers, Robots וכדומה, לשם חיפוש, סריקה, העתקה או אחזור אוטומטי של תוכן האתר\""
+        },
+        "automatedFetchAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.hyundaimotors.co.il/terms/: same clause (Crawlers/Robots for \"העתקה או אחזור אוטומטי\") under the prior-written-permission prefix"
+        },
+        "automatedExtractionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.hyundaimotors.co.il/terms/: \"להעתיק, לשחזר, לשנות, לעבד ... את תוכן האתר, כולו או חלקו\" and automated \"סריקה\", both under the prior-written-permission prefix"
+        },
+        "documentCachingAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.hyundaimotors.co.il/terms/: \"... לשכפל, לפרסם ולאחסן את תוכן האתר, כולו או חלקו\" under the prior-written-permission prefix"
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.hyundaimotors.co.il/terms/: \"לאחסן את תוכן האתר, כולו או חלקו\" (storing part of the content) under the prior-written-permission prefix. Interpretive: the terms do not separately address extracted facts."
+        },
+        "documentRedistributionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.hyundaimotors.co.il/terms/: \"להפיץ ... לפרסם\" under the prior-written-permission prefix; IP section: \"אין להשתמש, להעתיק, לשכפל ... להפיץ ... ללא הסכמה מפורשת מראש ובכתב\""
+        }
+      },
+      "policyEvidenceUrls": [
+        "https://www.hyundaimotors.co.il/terms/ (200)",
+        "https://www.hyundaimotors.co.il/robots.txt (200)"
+      ],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Per prior research the maintenance table is inside the owner manuals (not re-verified today; no PDF opened).",
+        "Whether the service/warranty booklet contains a schedule: UNVERIFIED.",
+        "Year in carbooks is a single int, while filenames show ranges (e.g. 2018-2020); the int's meaning (first year vs exact) is UNVERIFIED.",
+        "Hebrew PDFs; text extraction quality unknown."
+      ],
+      "applicabilityResolution": "model (title incl. Hybrid/EV/N variants) + year structured in embedded JSON; engine not structured beyond model title.",
+      "notes": "Prior research described the terms as a flat ban; the actual wording is 'prohibited without prior written permission' -> REQUIRES_PERMISSION."
+    },
+    {
+      "sourceSystemId": "il-colmobil-mitsubishi",
+      "importerLegalName": "כלמוביל (Colmobil), site says \"מיצובישי ישראל, מקבוצת חברות כלמוביל\"",
+      "brandsCovered": [
+        "Mitsubishi"
+      ],
+      "market": "IL",
+      "officialDomains": [
+        "https://www.mitsubishi-israel.co.il",
+        "https://res.cloudinary.com/colmobil"
+      ],
+      "ownershipEvidence": [
+        "https://www.colmobil.co.il/brands/mitsubishi/ (200) links to www.mitsubishi-israel.co.il",
+        "https://www.mitsubishi-israel.co.il/terms/ (200): \"ברוך הבא לאתר הבית של חברת מיצובישי ישראל, מקבוצת חברות כלמוביל\"",
+        "www.mitsubishi-motors.co.il did not resolve (curl 000)"
+      ],
+      "sourceType": "B_DIGITAL_MANUAL",
+      "documentCategories": [
+        "owner manuals ('ספרי רכב', per model and year range; ~51 data-pdf entries incl. English and multimedia)",
+        "tyre label document",
+        "warranty-extension notice (docx)",
+        "spare-parts price list (on colmobil.co.il)"
+      ],
+      "discovery": {
+        "mechanism": "static HTML listing + form (PDF is delivered by e-mail through POST /wp-json/colhub/v2/action; form not submitted)",
+        "entryPoints": [
+          "https://www.mitsubishi-israel.co.il/car_books/ (200)",
+          "https://www.mitsubishi-israel.co.il/sitemap_index.xml (declared)"
+        ],
+        "endpointShape": "HTML: per model block, options labelled with year ranges ('2021-2024', '2013 דיזל', 'English') carrying data-pdf=<WordPress media id>. Technically GET /wp-json/wp/v2/media/{id} returns 200 {id, title, source_url (Cloudinary PDF), mime_type}; this bypasses the site's intended e-mail flow and should not be relied on.",
+        "deterministicModelYearSelection": false
+      },
+      "robots": {
+        "www.mitsubishi-israel.co.il/robots.txt": "200; Yoast; User-agent * Disallow: (empty)"
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mitsubishi-israel.co.il/terms/: \"ללא מתן הרשאה כתובה מראש על-ידי החברה, אינך רשאי לבצע את הפעולות ו/או המעשים הבאים\" ... \"להפעיל ... תוכנות מסוג Crawlers, Robots וכדומה, לשם חיפוש, סריקה, העתקה או אחזור אוטומטי של תוכן האתר\""
+        },
+        "automatedFetchAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mitsubishi-israel.co.il/terms/: same clause (Crawlers/Robots for \"העתקה או אחזור אוטומטי\") under the prior-written-permission prefix"
+        },
+        "automatedExtractionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mitsubishi-israel.co.il/terms/: \"להעתיק, לשחזר, לשנות, לעבד ... את תוכן האתר, כולו או חלקו\" and automated \"סריקה\", both under the prior-written-permission prefix"
+        },
+        "documentCachingAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mitsubishi-israel.co.il/terms/: \"... לשכפל, לפרסם ולאחסן את תוכן האתר, כולו או חלקו\" under the prior-written-permission prefix"
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mitsubishi-israel.co.il/terms/: \"לאחסן את תוכן האתר, כולו או חלקו\" (storing part of the content) under the prior-written-permission prefix. Interpretive: the terms do not separately address extracted facts."
+        },
+        "documentRedistributionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mitsubishi-israel.co.il/terms/: \"להפיץ ... לפרסם\" under the prior-written-permission prefix; IP section: \"אין להשתמש, להעתיק, לשכפל ... להפיץ ... ללא הסכמה מפורשת מראש ובכתב\""
+        }
+      },
+      "policyEvidenceUrls": [
+        "https://www.mitsubishi-israel.co.il/terms/ (200)",
+        "https://www.mitsubishi-israel.co.il/robots.txt (200)"
+      ],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Intended delivery requires submitting an e-mail form (personal data) - out of bounds for automation.",
+        "Year labels are free-text ranges; mapping to model year needs parsing.",
+        "Whether manuals contain a maintenance schedule: UNVERIFIED."
+      ],
+      "applicabilityResolution": "model + year range as free-text labels; some labels carry fuel ('דיזל'); not reliably automatic.",
+      "notes": ""
+    },
+    {
+      "sourceSystemId": "il-colmobil-mercedes-benz",
+      "importerLegalName": "כלמוביל (Colmobil), site says \"מרצדס-בנץ ישראל, מקבוצת חברות כלמוביל\"",
+      "brandsCovered": [
+        "Mercedes-Benz (cars; vans section under /vans/)"
+      ],
+      "market": "IL",
+      "officialDomains": [
+        "https://www.mercedes-benz.co.il"
+      ],
+      "ownershipEvidence": [
+        "https://www.colmobil.co.il/brands/mercedes/ (200) links to www.mercedes-benz.co.il",
+        "https://www.mercedes-benz.co.il/site/terms_use/ (200): \"ברוך הבא לאתר הבית של חברת מרצדס-בנץ ישראל, מקבוצת חברות כלמוביל\"",
+        "footer: \"© כל הזכויות שמורות לקבוצת כלמוביל\""
+      ],
+      "sourceType": "D_RESTRICTED_OR_UNAVAILABLE",
+      "documentCategories": [
+        "digital owner's manual via embedded Mercedes-Benz AG web component (content not observable statically)",
+        "tyre label data PDF, settlement notices, parts price list link (not maintenance)"
+      ],
+      "discovery": {
+        "mechanism": "JS app: /services/manuals/ ('ספר רכב דיגיטלי') contains only <css-css-oom-generic environment=prod language=he country=IL base-path=/services/manuals> loaded from assets.oneweb.mercedes-benz.com; no static document links; data endpoint not identified (UNVERIFIED)",
+        "entryPoints": [
+          "https://www.mercedes-benz.co.il/services/manuals/ (200)",
+          "https://www.mercedes-benz.co.il/sitemap.xml.gz (200)"
+        ],
+        "deterministicModelYearSelection": false
+      },
+      "robots": {
+        "www.mercedes-benz.co.il/robots.txt": "200 (Keyloop); disallows */site/*, */api/*, */ajax/*, */search/*; /services/manuals not disallowed"
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mercedes-benz.co.il/site/terms_use/: \"ללא מתן הרשאה כתובה מראש על-ידי החברה, אינך רשאי לבצע את הפעולות ו/או המעשים הבאים\" ... \"להפעיל ... תוכנות מסוג Crawlers, Robots וכדומה, לשם חיפוש, סריקה, העתקה או אחזור אוטומטי של תוכן האתר\""
+        },
+        "automatedFetchAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mercedes-benz.co.il/site/terms_use/: same clause (Crawlers/Robots for \"העתקה או אחזור אוטומטי\") under the prior-written-permission prefix"
+        },
+        "automatedExtractionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mercedes-benz.co.il/site/terms_use/: \"להעתיק, לשחזר, לשנות, לעבד ... את תוכן האתר, כולו או חלקו\" and automated \"סריקה\", both under the prior-written-permission prefix"
+        },
+        "documentCachingAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mercedes-benz.co.il/site/terms_use/: \"... לשכפל, לפרסם ולאחסן את תוכן האתר, כולו או חלקו\" under the prior-written-permission prefix"
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mercedes-benz.co.il/site/terms_use/: \"לאחסן את תוכן האתר, כולו או חלקו\" (storing part of the content) under the prior-written-permission prefix. Interpretive: the terms do not separately address extracted facts."
+        },
+        "documentRedistributionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://www.mercedes-benz.co.il/site/terms_use/: \"להפיץ ... לפרסם\" under the prior-written-permission prefix; IP section: \"אין להשתמש, להעתיק, לשכפל ... להפיץ ... ללא הסכמה מפורשת מראש ובכתב\""
+        }
+      },
+      "policyEvidenceUrls": [
+        "https://www.mercedes-benz.co.il/site/terms_use/ (200)",
+        "https://www.mercedes-benz.co.il/robots.txt (200)"
+      ],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Importer publishes no documents itself; the manual content is Mercedes-Benz AG's global component (see global-mercedes-benz-owners-manual).",
+        "Terms pages sit under robots-disallowed */site/*; read once manually for policy review."
+      ],
+      "applicabilityResolution": "not resolvable from static metadata.",
+      "notes": "Type D chosen because nothing is published as a static or public-endpoint document by the importer; the embedded manufacturer widget may be a C-type source (UNVERIFIED)."
+    },
+    {
+      "sourceSystemId": "il-talcar-kia",
+      "importerLegalName": "טלקאר / טל-קאר (Talcar); exact registered legal name UNVERIFIED",
+      "brandsCovered": [
+        "Kia"
+      ],
+      "market": "IL",
+      "officialDomains": [
+        "https://kia-israel.co.il",
+        "https://cdnmedia.kia-israel.co.il",
+        "https://pages.kia-israel.co.il"
+      ],
+      "ownershipEvidence": [
+        "https://kia-israel.co.il/ (200) schema.org WebSite description: \"טלקאר יבואנית קיה בישראל\"",
+        "https://kia-israel.co.il/תקנון-אתר/ (200): \"ברוך הבא לאתר הבית של קיה ישראל (\"טלקאר\")\"; IP owned by \"טלקאר\"",
+        "Prior research: worldwide.kia.com links Israel -> kia-israel.co.il; MoT importer list 'טל - קאר' (not re-verified today)",
+        "Note: kia.co.il is NOT Kia; it is איגוד התעשייה הקיבוצית (200)"
+      ],
+      "sourceType": "B_DIGITAL_MANUAL",
+      "documentCategories": [
+        "owner manuals ('ספר רכב', ~35 PDFs on cdnmedia.kia-israel.co.il/www/cars-book/)",
+        "warranty booklets ('חוברת אחריות' incl. 7-year booklet, July-2025 booklet)",
+        "manufacturer service campaign page ('הוראת יצרן')",
+        "spare-parts price list page"
+      ],
+      "discovery": {
+        "mechanism": "static HTML: <select onchange=set_book_link> with <option value=PDF URL> labelled by year/variant (e.g. 'שנת 2026', 'חשמלי 2023', 'שנת 2022 +')",
+        "entryPoints": [
+          "https://kia-israel.co.il/קבל-ספר-רכב-למייל (200; 19 option PDF links + more)",
+          "https://kia-israel.co.il/אחריות-רכבי-קיה (200)",
+          "https://kia-israel.co.il/הוראות-יצרן (200)"
+        ],
+        "deterministicModelYearSelection": false
+      },
+      "robots": {
+        "kia-israel.co.il/robots.txt": "200; only /wp-admin/ disallowed",
+        "cdnmedia.kia-israel.co.il/robots.txt": "404 (S3 NoSuchKey)"
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "NOT_ALLOWED",
+          "evidence": "https://kia-israel.co.il/תקנון-אתר/ 'הגבלת שימוש': \"הנך מסכים בזאת שלא: ... (ד) לעשות שימוש ברובוט, עכביש, סורק או באמצעים אוטומטיים אחרים כדי לגשת או להכין מפתח (אינדקס) אל התוכן הדיגיטלי\" (unconditional). A separate clause also lists automated search/scan under prior written permission from Talcar."
+        },
+        "automatedFetchAllowed": {
+          "value": "NOT_ALLOWED",
+          "evidence": "Same clause (ד): robots/automated means \"לגשת\" to the digital content; plus (ג) \"אחזור אוטומטי\" under prior-written-permission"
+        },
+        "automatedExtractionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "https://kia-israel.co.il/תקנון-אתר/: \"אינך רשאי ... אלא לאחר קבלת הרשאה כתובה מראש על-ידי טלקאר\": (ב) \"להעתיק, לשחזר, לשנות, לעבד ...\", (ג) automated \"סריקה\""
+        },
+        "documentCachingAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "same section (ב): \"... לשכפל, לפרסם ולאחסן את תוכן האתר, כולו או חלקו\""
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "same section (ב) \"לאחסן ... כולו או חלקו\" (interpretive: facts not separately addressed)"
+        },
+        "documentRedistributionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "same section (ב) \"להפיץ\"; IP section: use \"אסור ללא קבלת רשות מפורשת מראש ובכתב מטלקאר\""
+        }
+      },
+      "policyEvidenceUrls": [
+        "https://kia-israel.co.il/%D7%AA%D7%A7%D7%A0%D7%95%D7%9F-%D7%90%D7%AA%D7%A8/ (200)",
+        "https://kia-israel.co.il/robots.txt (200)"
+      ],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "The 'הגבלת שימוש' clause mentions accompanying software and 'התוכן הדיגיטלי'; its scope may be app-oriented, but it is unconditional as written.",
+        "Option labels are free text; model grouping only by page layout.",
+        "Per prior research the manuals contain a maintenance table (not re-verified today)."
+      ],
+      "applicabilityResolution": "model by layout block + free-text year/variant labels; not reliably automatic.",
+      "notes": "Importer evidence is now direct on the site (schema.org description), stronger than the prior 'indirect' finding."
+    },
+    {
+      "sourceSystemId": "global-toyota-europe-owners-manuals",
+      "importerLegalName": "Toyota Motor Europe (manufacturer region, not importer)",
+      "brandsCovered": [
+        "Toyota"
+      ],
+      "market": "EU/global; embedded on toyota.co.il/customer/manuals for foreign-language manuals",
+      "officialDomains": [
+        "https://www.toyota-europe.com/customer/manuals",
+        "https://myportalcontent.toyota-europe.com"
+      ],
+      "ownershipEvidence": [
+        "https://www.toyota.co.il/customer/manuals (200) contains id=ownersManualContainer loading cp-common.toyota-europe.com cp-owners-manual/core.js",
+        "Prior research: TME footer"
+      ],
+      "sourceType": "B_DIGITAL_MANUAL",
+      "documentCategories": [
+        "owner manuals (per prior research the schedule is in a separate, not publicly hosted service booklet)"
+      ],
+      "discovery": {
+        "mechanism": "JS app (customer-portal APIs)",
+        "deterministicModelYearSelection": false
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "TME ToU JS-rendered, UNVERIFIED (prior research 2026-09-29, not re-verified)"
+        },
+        "automatedFetchAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "TME ToU JS-rendered, UNVERIFIED (prior research 2026-09-29, not re-verified)"
+        },
+        "automatedExtractionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "TME ToU JS-rendered, UNVERIFIED (prior research 2026-09-29, not re-verified)"
+        },
+        "documentCachingAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "TME ToU JS-rendered, UNVERIFIED (prior research 2026-09-29, not re-verified)"
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "TME ToU JS-rendered, UNVERIFIED (prior research 2026-09-29, not re-verified)"
+        },
+        "documentRedistributionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "TME ToU JS-rendered, UNVERIFIED (prior research 2026-09-29, not re-verified)"
+        }
+      },
+      "policyEvidenceUrls": [
+        "https://www.toyota-europe.com/ToU.html (prior: 200, JS-rendered)"
+      ],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Not Israeli-market specific"
+      ],
+      "applicabilityResolution": "UNVERIFIED",
+      "notes": "Brief; see MAINTENANCE_SOURCE_RESEARCH_2026-09-29.md section 2a."
+    },
+    {
+      "sourceSystemId": "global-kia-ownersmanual",
+      "importerLegalName": "Kia Corporation (manufacturer)",
+      "brandsCovered": [
+        "Kia"
+      ],
+      "market": "global, includes IL (country D06, he_IL)",
+      "officialDomains": [
+        "https://ownersmanual.kia.com"
+      ],
+      "ownershipEvidence": [
+        "Prior research (Kia branding, official app)"
+      ],
+      "sourceType": "C_STRUCTURED_WEB_MANUAL",
+      "documentCategories": [
+        "owner manual webhelp (HTML), sometimes PDF",
+        "quick reference guide",
+        "warranty"
+      ],
+      "discovery": {
+        "mechanism": "public JSON endpoint",
+        "endpointShape": "GET /api/v2/kia/models?countryCode=D06&langCode=he_IL&year= -> 200 {CARS:[{modelId, projCode, langModelName, ...}]} (re-checked today)",
+        "deterministicModelYearSelection": true
+      },
+      "robots": {
+        "ownersmanual.kia.com/robots.txt": "200 User-agent * Allow: / (today)"
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "robots allows technically; no terms on host (prior)"
+        },
+        "automatedFetchAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "same"
+        },
+        "automatedExtractionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "no evidence"
+        },
+        "documentCachingAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "Kia Corp T&C https://worldwide.kia.com/en/terms-and-conditions (prior): \"Users may not reproduce, distribute ... without the Company's prior written consent\""
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "not addressed"
+        },
+        "documentRedistributionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "same Kia Corp clause (\"distribute\")"
+        }
+      },
+      "policyEvidenceUrls": [
+        "https://worldwide.kia.com/en/terms-and-conditions (prior research)"
+      ],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Applicability of Kia Corp T&C to this host is inferred by prior research"
+      ],
+      "applicabilityResolution": "projCode + year + country + language structured",
+      "notes": "Brief."
+    },
+    {
+      "sourceSystemId": "global-hyundai-ownersmanual",
+      "importerLegalName": "Hyundai Motor Company (manufacturer)",
+      "brandsCovered": [
+        "Hyundai"
+      ],
+      "market": "global; IL coverage sparse",
+      "officialDomains": [
+        "https://ownersmanual.hyundai.com"
+      ],
+      "ownershipEvidence": [
+        "Prior research"
+      ],
+      "sourceType": "C_STRUCTURED_WEB_MANUAL",
+      "documentCategories": [
+        "owner manual webhelp"
+      ],
+      "discovery": {
+        "mechanism": "public JSON endpoint",
+        "endpointShape": "GET /api/v2/hmc/models?countryCode=D06&langCode=he_IL&year= -> 200 {} today (no IL models)",
+        "deterministicModelYearSelection": true
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "no host terms; ownersmanual.hyundai.com robots 404 (prior)"
+        },
+        "automatedFetchAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "same"
+        },
+        "automatedExtractionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "no evidence"
+        },
+        "documentCachingAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "HMC legal (prior): \"You may not copy, reproduce ... without the written permission of HMC\""
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "not addressed"
+        },
+        "documentRedistributionAllowed": {
+          "value": "REQUIRES_PERMISSION",
+          "evidence": "same HMC clause (\"distribute, republish\")"
+        }
+      },
+      "policyEvidenceUrls": [
+        "https://www.hyundai.com/worldwide/en/footer/contact-legal/legal (prior research)"
+      ],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Returns no Israeli models today"
+      ],
+      "applicabilityResolution": "structured where present",
+      "notes": "Brief."
+    },
+    {
+      "sourceSystemId": "global-mitsubishi-motors-europe-ownersmanual",
+      "importerLegalName": "Mitsubishi Motors Europe B.V. (manufacturer region)",
+      "brandsCovered": [
+        "Mitsubishi"
+      ],
+      "market": "EU (no IL locale verified)",
+      "officialDomains": [
+        "https://www.ownersmanual.mitsubishi-motors-europe.com"
+      ],
+      "ownershipEvidence": [
+        "Search result title 'Mitsubishi Motors Europe B.V.'; site 200 today; ownership not otherwise verified"
+      ],
+      "sourceType": "B_DIGITAL_MANUAL",
+      "documentCategories": [
+        "owner manuals, multimedia manuals (per search snippet; UNVERIFIED)"
+      ],
+      "discovery": {
+        "mechanism": "UNVERIFIED (WordPress; robots 200 disallows only /wp-admin/, wp-sitemap.xml declared)",
+        "deterministicModelYearSelection": false
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "automatedFetchAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "automatedExtractionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "documentCachingAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "documentRedistributionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        }
+      },
+      "policyEvidenceUrls": [],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Not reviewed in depth"
+      ],
+      "applicabilityResolution": "UNVERIFIED",
+      "notes": "Brief."
+    },
+    {
+      "sourceSystemId": "global-mercedes-benz-owners-manual",
+      "importerLegalName": "Mercedes-Benz AG (manufacturer)",
+      "brandsCovered": [
+        "Mercedes-Benz"
+      ],
+      "market": "global; IL/he instance embedded on mercedes-benz.co.il",
+      "officialDomains": [
+        "https://assets.oneweb.mercedes-benz.com (component)",
+        "https://www.mercedes-benz.co.uk/passengercars/services/manuals.html (not reachable from here today, curl 000)"
+      ],
+      "ownershipEvidence": [
+        "Component script host oneweb.mercedes-benz.com"
+      ],
+      "sourceType": "C_STRUCTURED_WEB_MANUAL",
+      "documentCategories": [
+        "online owner's manual (UNVERIFIED structure)"
+      ],
+      "discovery": {
+        "mechanism": "JS app; endpoint UNVERIFIED",
+        "deterministicModelYearSelection": false
+      },
+      "accessPolicy": {
+        "discoveryAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "automatedFetchAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "automatedExtractionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "documentCachingAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "structuredFactsStorageAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        },
+        "documentRedistributionAllowed": {
+          "value": "UNKNOWN",
+          "evidence": "terms not reviewed"
+        }
+      },
+      "policyEvidenceUrls": [],
+      "reviewDate": "2026-09-30",
+      "limitations": [
+        "Not reviewed in depth"
+      ],
+      "applicabilityResolution": "UNVERIFIED",
+      "notes": "Brief."
+    }
+  ],
+  "notes": "Only headers of one Toyota document and one Hyundai/Kia document were requested (no PDF saved). No forms submitted, no plates, no logins. books.union-motors.co.il and union-motors.toyota.co.il are Incapsula-protected. All Colmobil brand sites share one terms template: crawlers/copying/storing/distribution prohibited without prior written permission. Kia's terms add an unconditional robots clause. Toyota terms could not be read."
+}
