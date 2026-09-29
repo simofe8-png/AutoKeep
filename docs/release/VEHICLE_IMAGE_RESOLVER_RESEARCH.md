@@ -192,3 +192,146 @@ approved vision provider.
    generation-level image or one user question.
 5. For this case: candidate **A** (pre-facelift, likely for `cd 26`) and **C** (facelift), both
    CC BY-SA 4.0, with background removal as the only modification.
+
+## 4. Owner decisions (2026-09-29) and closing the facelift question
+
+The owner approved:
+
+- the rights policy;
+- CC BY-SA with compliance;
+- human approval as a V1 quality gate only (not a hand-maintained table);
+- AutoKeep-controlled storage (never bundled in the APK), with provenance stored separately from
+  the binary.
+
+The facelift rule was **not** approved. `degem_cd 26 = pre-facelift` was not to be assumed.
+
+### 4.1 Evidence examined for SEAT Ibiza 2012 / 6J52E4 / CGG / degem_cd 26
+
+| Source                                                                            | Finding                                                                                                                                                                                                                                                                        | Distinguishes facelift?                                                                                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| WLTP catalog (`degem-rechev-wltp`): full records for cd 26 / 45 / 58              | cd 26 "IE REFERENCE" exists for production years **2011 and 2012**. cd 45 / 58 "REFERENCE" exist for 2012 only. The records differ only in equipment: power windows 2 vs 4, alloy wheels, tyre-pressure sensors, gross weight.                                                 | No exterior field                                                                                                                                                                                                                                                                                                          |
+| Israeli press, primary source: Wheel, 22 May 2012 ("סיאט איביזה 2012 החדשה בארץ") | Champion Motors "will start marketing the refreshed SEAT Ibiza next week". The Reference trim has "4 power windows … cruise control".                                                                                                                                          | The Israeli facelift launch is at the **end of May 2012**. The facelift Reference = **4** power windows, matching cd 45 / 58, **not** cd 26 (2 windows).                                                                                                                                                                   |
+| Registry: first registrations by code                                             | cd 45 first appears **May 2012** (matching the launch); cd 58 appears November 2012 (VIN model year D). cd 26 continues from December 2011 to **October 2012**.                                                                                                                | cd 45 / 58 support facelift. The cd 26 run-out overlaps the facelift period.                                                                                                                                                                                                                                               |
+| Registry VINs (`misgeret`), 3,161 records                                         | All cd 26 VINs: model year **C** (MY2012), Martorell. **Two batches:** serial 75–80k (registered Dec 2011–Jan 2012; 143 with production year 2011), and serial 105–126k (registered Feb–Oct 2012). The cd 45 facelift VINs (serial 110–125k) are **interleaved** with batch 2. | Batch 1: built before facelift production → **pre-facelift, high confidence.** Batch 2: cd 26 cars registered in March 2012, before the facelift was sold in Israel, already have serials of 108–117k, overlapping the facelift cd 45 range. So serials are not strictly chronological, and this proves **neither** state. |
+| Web search for an Ibiza 6J facelift VIN / serial changeover                       | Not publicly documented                                                                                                                                                                                                                                                        | No                                                                                                                                                                                                                                                                                                                         |
+
+### 4.2 Conclusion
+
+| Sub-population                                                                                         | Facelift state | Confidence                                |
+| ------------------------------------------------------------------------------------------------------ | -------------- | ----------------------------------------- |
+| cd 26 with production year 2011, or first registration ≤ 2012-01 (VIN serial batch 75–80k)             | Pre-facelift   | High                                      |
+| cd 26 first registered 2012-02 … 2012-10 (batch 105–126k), e.g. plate 7788176 (2012-08, serial 122118) | **Ambiguous**  | Cannot be established from available data |
+| cd 58 (VIN model year D)                                                                               | Facelift       | High                                      |
+| cd 45 (4-window Reference, first seen at the Israeli facelift launch)                                  | Facelift       | Medium-high                               |
+
+**For the case as specified (2012, cd 26), the answer is "ambiguous"** unless the car belongs to the
+first batch. The owner's own plate has not been checked.
+
+### 4.3 Handling the ambiguous case
+
+Show **no** front until one visual question is answered:
+
+- "איזו חזית דומה לרכב שלך?"
+- Two options: the pre-facelift reference (A) and the facelift reference (C), both labelled
+  "תמונת דגם להמחשה".
+- A third option: "לא בטוח".
+
+The answer is stored on the vehicle as a **user-confirmed** attribute (`exteriorPhase`, synced like
+the other identity fields). "לא בטוח" keeps the color illustration or the neutral one, never a
+possibly wrong front.
+
+### 4.4 Final images
+
+| Phase        | Image                                                                                                                 | Rights record                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------------ | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pre-facelift | [File:2009 SEAT Ibiza Sport 84 1.4.jpg](https://commons.wikimedia.org/wiki/File:2009_SEAT_Ibiza_Sport_84_1.4.jpg)     | Author (as stated on the file page): **Makizox**. The account was renamed: `User:Makizox` redirects to `User:Vauxford`. Credit: "Own work". **CC BY-SA 4.0** (https://creativecommons.org/licenses/by-sa/4.0), AttributionRequired true, no restrictions. 4255×2221, 5,772,051 bytes, sha256 `f9ec9e67e0e0b935aa494113b0e01059bba36d28b0327e710b51cf25e2df9bc8` (Commons sha1 `0418839dc18332d6c75ac60c3148f286a1abf780` verified). Photographed 2017-09-07; uploaded 2017-09-08. Plate blanked by the uploader. |
+| Facelift     | [File:2014 SEAT Ibiza Toca 1.4 Front.jpg](https://commons.wikimedia.org/wiki/File:2014_SEAT_Ibiza_Toca_1.4_Front.jpg) | Author **Vauxford**, "Own work". **CC BY-SA 4.0**, AttributionRequired true, no restrictions. 4364×2446, 4,702,008 bytes, sha256 `5e3743538eba32eb580d9f8c7882c2c5e93d775196b5e27abb40e0d380a39348` (Commons sha1 `fc72f93d50375342ae64a74ecca4b3a26a04f5eb` verified). Photographed 2018-06-07. Plate blanked.                                                                                                                                                                                                  |
+
+Both are black. No recoloring is needed. The only planned adaptation is background removal, which
+CC BY-SA 4.0 permits; the derivative stays CC BY-SA 4.0, with a modification notice.
+
+### 4.5 Proposed stored metadata (one record per approved reference; separate from the binary)
+
+```json
+{
+  "id": "ref_seat_ibiza_6j_prefl_hatch5d_black_01",
+  "classKey": "v1/seat/ibiza/6j/pre-fl/hatchback-5d/black",
+  "applicability": {
+    "make": "SEAT",
+    "model": "Ibiza",
+    "generation": "6J",
+    "phase": "pre-fl",
+    "body": "hatchback",
+    "doors": 5,
+    "colorFamily": "black",
+    "colorFinishInImage": "unknown",
+    "excludes": ["ST", "SC", "FR/Cupra-specific bodywork"]
+  },
+  "source": {
+    "provider": "wikimedia-commons",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:2009_SEAT_Ibiza_Sport_84_1.4.jpg",
+    "fileTitle": "File:2009 SEAT Ibiza Sport 84 1.4.jpg",
+    "originalSha256": "f9ec9e67e0e0b935aa494113b0e01059bba36d28b0327e710b51cf25e2df9bc8",
+    "originalBytes": 5772051,
+    "width": 4255,
+    "height": 2221,
+    "retrievedAt": "2026-09-29T04:42:10Z",
+    "metadataSnapshotSha256": "<hash of the stored extmetadata JSON>"
+  },
+  "rights": {
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "author": "Makizox (account now Vauxford)",
+    "attributionRequired": true,
+    "commercialUseAllowed": true,
+    "adaptationsAllowed": true,
+    "shareAlike": true,
+    "verifiedAt": "<date>",
+    "verifiedBy": "<operator>",
+    "evidence": ["extmetadata snapshot", "file page URL", "license URL"]
+  },
+  "derivative": {
+    "operations": ["background-removal"],
+    "tool": "<name@version, model>",
+    "resultSha256": "<hash>",
+    "license": "CC BY-SA 4.0",
+    "notice": "הרקע הוסר על ידי AutoKeep"
+  },
+  "review": {
+    "status": "approved",
+    "confidence": "high",
+    "reviewer": "<name>",
+    "reviewedAt": "<date>"
+  },
+  "display": {
+    "label": "תמונת דגם להמחשה",
+    "credit": "צילום: Makizox · CC BY-SA 4.0 · Wikimedia Commons · הרקע הוסר על ידי AutoKeep"
+  }
+}
+```
+
+### 4.6 Proposed automated identity key (mapping reuse)
+
+`v1/{make}/{model}/{generation}/{phase}/{body}/{colorFamily}`, derived **only from class
+attributes**. It contains no plate, VIN or user identity.
+
+- **make / model:** normalized registry names (e.g. `tozeret_nm` "סיאט ספרד" → `seat`;
+  `kinuy_mishari` "IBIZA" → `ibiza`).
+- **generation:** model code + years (e.g. `6J52E4`, 2008–2017 → `6j`).
+- **phase:**
+  - `pre-fl`, `fl1`, … from the evidence rules (high confidence only), **or** from the
+    user-confirmed `exteriorPhase`;
+  - otherwise `unresolved`, which is **never shared or reused**.
+- **body:** from the WLTP catalog (`mispar_dlatot` + `merkav`), e.g. `hatchback-5d`.
+- **colorFamily:** from a normalization vocabulary of registry colors (e.g. "שחור מטלי" → `black`,
+  "שנהב לבן" → `white`, "כסף מטלי" → `silver`, "אפור מטל" → `grey`).
+
+**Lookup order:**
+
+1. The exact key.
+2. The same key without color. Recolor only if the record's license allows adaptations and no
+   exact-color record exists. Otherwise use the original color.
+3. Otherwise the illustration.
+
+**Reuse:** once a key has an approved record, every vehicle resolving to the same key reuses it
+without new research. Only vehicles whose phase is known reach a phase-specific key.
