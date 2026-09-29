@@ -5,3 +5,5 @@ export * from './documents';
 export * from './maintenance';
 export * from './service';
 export * from './garage';
+export * from './requirements';
+export * from './knowledge';
