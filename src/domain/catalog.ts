@@ -49,6 +49,8 @@ export function scopeKeyOf(a: RequirementApplicability): string {
     makes: low(a.makes),
     models: low(a.models),
     generations: low(a.generations),
+    phases: low(a.phases),
+    production: a.productionPeriod ?? null,
     years: a.modelYears ?? null,
     engineFamilies: low(a.engineFamilies),
     engineCodes: low(a.engineCodes),

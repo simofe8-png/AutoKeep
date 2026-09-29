@@ -75,6 +75,7 @@ describe('maintenance knowledge persistence (migration v6)', () => {
       status: 'needs_information',
       items: [],
       requests: [
+        { kind: 'official_source_pending' },
         { kind: 'upload_booklet', hint: 'ford_service_plan' },
         { kind: 'awaiting_verification' },
       ],
@@ -83,6 +84,7 @@ describe('maintenance knowledge persistence (migration v6)', () => {
       status: 'needs_information',
       items: [],
       requests: [
+        { kind: 'official_source', sources: [{ sourceSystemId: 'il-champion-service-routine' }] },
         { kind: 'upload_booklet', hint: 'seat_maintenance_programme' },
         { kind: 'awaiting_verification' },
       ],

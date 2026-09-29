@@ -11,18 +11,14 @@ import {
 import { computeRequirementDue } from '@/engine/requirements';
 
 import { accessDecision } from '../access';
+import type { SourceSystem } from '../registry/sourceSystem';
+import { fixtureIsraeliSystem, fixtureSystem } from '../registry/testing';
 import { findMaintenanceSections, profileDocument } from '../classify';
 import { extractRequirements, ground, intervalFromColumns, sentenceInterval } from '../extract';
 import { htmlTextReader, htmlToPages } from '../htmlText';
 import { classifyFailures, runMaintenancePipeline } from '../pipeline';
 import { linkNamesVehicle, namesModel, RegistryDiscovery, WebSearchDiscovery } from '../sources';
-import type {
-  DiscoveryContext,
-  Http,
-  HttpResponse,
-  SourceRegistryEntry,
-  VehicleIdentity,
-} from '../types';
+import type { DiscoveryContext, Http, HttpResponse, VehicleIdentity } from '../types';
 
 /**
  * Universal maintenance pipeline — SYNTHETIC fixtures only (fictional make "Synthmoto" on the
@@ -51,25 +47,9 @@ function fakeHttp(pages: Record<string, { body: string; type?: string; status?: 
   return { http, calls };
 }
 
-const entry = (over: Partial<SourceRegistryEntry> = {}): SourceRegistryEntry => ({
-  manufacturers: ['synthmoto'],
-  host: 'synthetic.example',
-  role: 'manufacturer',
-  status: 'approved',
-  automation: 'permitted',
-  reuse: 'permitted',
-  entryPoints: [
-    { kind: 'listing', url: 'https://synthetic.example/manuals', documents: '\.(pdf|html)$' },
-  ],
-  evidence: 'synthetic test fixture',
-  ...over,
-});
+const entry = fixtureSystem;
 
-const ctx = (
-  http: Http,
-  registry: SourceRegistryEntry[],
-  extra: Partial<DiscoveryContext> = {},
-) => ({
+const ctx = (http: Http, registry: SourceSystem[], extra: Partial<DiscoveryContext> = {}) => ({
   http,
   registry,
   aliases: {},
@@ -107,7 +87,7 @@ const LISTING = `<html><body>
 <a href="/docs/sx250.html">SX 250 owner's manual</a>
 </body></html>`;
 
-describe('access policy (P1 §8.4): robots AND terms, else no automation', () => {
+describe('access policy: the activity’s own dimension AND robots.txt, else no automation', () => {
   it('never fetches an unregistered, unapproved or terms-restricted host', async () => {
     const { http, calls } = fakeHttp({});
     const url = 'https://synthetic.example/manuals';
@@ -116,10 +96,12 @@ describe('access policy (P1 §8.4): robots AND terms, else no automation', () =>
     );
     for (const [over, reason] of [
       [{ status: 'proposed' as const }, 'registry_not_approved'],
-      [{ automation: 'prohibited' as const }, 'terms_prohibit_automation'],
-      [{ automation: 'unknown' as const }, 'terms_unknown'],
+      ['NOT_ALLOWED' as const, 'policy_not_allowed'],
+      ['UNKNOWN' as const, 'policy_unknown'],
+      ['REQUIRES_PERMISSION' as const, 'permission_required'],
     ] as const) {
-      const d = await accessDecision(url, ctx(http, [entry(over)]));
+      const system = typeof over === 'string' ? entry({}, over) : entry(over);
+      const d = await accessDecision(url, ctx(http, [system]));
       expect(d).toMatchObject({ ok: false, blocked: { reason } });
     }
     expect(calls).toEqual([]); // not even robots.txt
@@ -148,13 +130,13 @@ describe('access policy (P1 §8.4): robots AND terms, else no automation', () =>
     const { http, calls } = fakeHttp({});
     const out = await new RegistryDiscovery().discover(
       vehicle,
-      ctx(http, [entry({ automation: 'prohibited' })]),
+      ctx(http, [entry({}, 'NOT_ALLOWED')]),
     );
     expect(out.leads).toEqual([]);
     expect(out.userActions).toEqual([
       expect.objectContaining({
         url: 'https://synthetic.example/manuals',
-        reason: 'terms_prohibit_automation',
+        reason: 'policy_not_allowed',
       }),
     ]);
     expect(calls).toEqual([]);
@@ -191,7 +173,7 @@ describe('deterministic extraction (tables + sentences)', () => {
     sha256: 'a'.repeat(64),
     format: 'html' as const,
     bytes: enc(SCHEDULE),
-    registryEntry: entry(),
+    system: entry(),
   };
   const profile = {
     type: 'owners_manual' as const,
@@ -331,7 +313,7 @@ describe('interval-column tables ("Every N km / M months"), notes and footnotes'
     sha256: 'b'.repeat(64),
     format: 'html' as const,
     bytes: enc(EVERY_TABLE),
-    registryEntry: entry(),
+    system: entry(),
   };
   const run = () => {
     const profile = profileDocument(doc, pages, vehicle);
@@ -454,18 +436,7 @@ describe('end-to-end pipeline (synthetic host)', () => {
       },
       'https://il.synthetic.example/sx125-2020-2022.html': { body: IL_DOC },
     });
-    const registry = [
-      entry(),
-      entry({
-        host: 'il.synthetic.example',
-        role: 'importer',
-        markets: ['IL'],
-        defaultDocumentMarkets: ['IL'],
-        entryPoints: [
-          { kind: 'listing', url: 'https://il.synthetic.example/list', documents: '\.(pdf|html)$' },
-        ],
-      }),
-    ];
+    const registry = [entry(), fixtureIsraeliSystem()];
     const r = await runMaintenancePipeline(vehicle, deps(http, [], registry));
     const oil = r.resolutions.find((x) => x.task === 'engine_oil' && x.action === 'replacement')!;
     expect(oil).toMatchObject({ status: 'resolved', level: 'A', reason: 'market_override' });
@@ -476,6 +447,27 @@ describe('end-to-end pipeline (synthetic host)', () => {
     )!;
     expect(plugs.level).toBe('A');
     expect(plugs.effective?.interval.every).toEqual({ value: 40000, unit: 'km' });
+  });
+
+  it('an Israeli direct maintenance schedule is used first; the global manual is then not read', async () => {
+    const IL_DOC = SCHEDULE.replace('For Europe.', 'For Israel.');
+    const { http, calls } = fakeHttp({
+      ...site,
+      'https://il.synthetic.example/robots.txt': { body: '', type: 'text/plain' },
+      'https://il.synthetic.example/list': {
+        body: '<a href="/sx125-2020-2022.html">SX 125 2020-2022</a>',
+      },
+      'https://il.synthetic.example/sx125-2020-2022.html': { body: IL_DOC },
+    });
+    const direct = fixtureIsraeliSystem({
+      sourceType: 'A_DIRECT_MAINTENANCE_SCHEDULE',
+      documentCategories: ['maintenance_schedule'],
+    });
+    const r = await runMaintenancePipeline(vehicle, deps(http, [], [entry(), direct]));
+    expect(r.trace.documents.map((d) => d.sourceSystemId)).toEqual(['il-synthmoto']);
+    expect(calls).not.toContain('https://synthetic.example/docs/sx125-2020-2022.html');
+    const oil = r.resolutions.find((x) => x.task === 'engine_oil' && x.action === 'replacement')!;
+    expect(oil).toMatchObject({ status: 'resolved', level: 'A' });
   });
 
   it('a document that never states its model years stays level C (coverage unknown)', async () => {
@@ -492,20 +484,20 @@ describe('end-to-end pipeline (synthetic host)', () => {
     expect(oil.status).toBe('insufficient_information');
     expect(oil.considered[0]).toMatchObject({ level: 'C' });
     expect(r.trace.failures).toContainEqual({
-      class: 'vehicle_identity_insufficient',
-      detail: 'document coverage unstated: modelYear',
+      class: 'MODEL_YEAR_NOT_LISTED',
+      detail: 'the document does not state its model years',
     });
   });
 
   it('classifies failures: unsupported manufacturer and access restriction', async () => {
     const { http } = fakeHttp({});
     const none = await runMaintenancePipeline({ ...vehicle, make: 'Nobody' }, deps(http, []));
-    expect(none.trace.failures.map((f) => f.class)).toContain('unsupported_manufacturer');
+    expect(none.trace.failures.map((f) => f.class)).toContain('NO_DIGITAL_SOURCE');
     const restricted = await runMaintenancePipeline(
       vehicle,
-      deps(http, [], [entry({ automation: 'prohibited' })]),
+      deps(http, [], [entry({}, 'NOT_ALLOWED')]),
     );
-    expect(restricted.trace.failures.map((f) => f.class)).toContain('access_restriction');
+    expect(restricted.trace.failures.map((f) => f.class)).toContain('TERMS_OR_RIGHTS_BLOCK');
     expect(restricted.trace.userActions).toHaveLength(1);
     expect(classifyFailures(restricted.trace, restricted.resolutions)).toEqual(
       restricted.trace.failures,

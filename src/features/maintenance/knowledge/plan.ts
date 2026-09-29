@@ -1,5 +1,5 @@
-import { SOURCE_REGISTRY } from '@/discovery/maintenance/sourceRegistry';
-import { fillTemplate } from '@/discovery/maintenance/sources';
+import { officialSourcesFor, type OfficialSourceStatus } from '@/discovery/maintenance/fallback';
+import { SOURCE_SYSTEMS } from '@/discovery/maintenance/registry/israelSources';
 import { MANUFACTURER_ALIASES } from '@/discovery/registry';
 import { normalizeManufacturer } from '@/discovery/authority';
 import {
@@ -72,7 +72,14 @@ export type EvidenceRequest =
   | { kind: 'odometer' }
   | { kind: 'awaiting_verification'; sources: { title: string; publishedOn?: IsoDate }[] }
   /** Approved official pages the USER can open (AutoKeep may not fetch them automatically). */
-  | { kind: 'official_source'; links: { url: string; host: string }[] };
+  /** Approved official sources of the make with the precise reason AutoKeep cannot read them. */
+  | { kind: 'official_source'; sources: OfficialSourceStatus[] }
+  /** No official source system is known for the make. */
+  | { kind: 'no_official_source' }
+  /** An official source was identified but is not yet approved as a trusted source. */
+  | { kind: 'official_source_pending' }
+  /** The document found does not state the vehicle's model years. */
+  | { kind: 'model_year_unproven' };
 
 export interface MaintenancePlan {
   facts: VehicleFacts;
@@ -180,38 +187,18 @@ function lastCompletionOf(
   return best;
 }
 
-// ---------- official links (registry data; nothing is fetched) ----------
+// ---------- official sources (registry data; nothing is fetched) ----------
 
-/**
- * Official pages for this vehicle's make that the owner approved as authorities and that list
- * manuals / maintenance plans — offered to the user to open themselves (personal use).
- */
-export function officialLinks(
-  facts: VehicleFacts,
-  v: PlanVehicle,
-): { url: string; host: string }[] {
+/** The approved official sources of the vehicle's make, each with the precise fallback reason. */
+function identifiedSystems(make: string): number {
+  const key = normalizeManufacturer(make, MANUFACTURER_ALIASES);
+  return SOURCE_SYSTEMS.filter((x) => x.status === 'proposed' && x.manufacturers.includes(key))
+    .length;
+}
+
+export function officialSources(facts: VehicleFacts): OfficialSourceStatus[] {
   if (!facts.make) return [];
-  const identity = {
-    kind: facts.kind ?? 'car',
-    make: facts.make,
-    model: v.model,
-    modelYear: facts.modelYear ?? 0,
-  } as const;
-  const out: { url: string; host: string }[] = [];
-  for (const e of SOURCE_REGISTRY) {
-    if (e.status !== 'approved' || !e.manufacturers.includes(facts.make)) continue;
-    for (const ep of e.entryPoints ?? []) {
-      if (ep.kind === 'sitemap') continue;
-      const url = fillTemplate(
-        ep.url,
-        identity,
-        ep.kind === 'template' ? ep.locales?.[0] : undefined,
-      );
-      if (/\.xml(\?|$)/i.test(url) || out.some((o) => o.url === url)) continue;
-      out.push({ url, host: e.host });
-    }
-  }
-  return out;
+  return officialSourcesFor(facts.make, SOURCE_SYSTEMS, MANUFACTURER_ALIASES, facts.kind);
 }
 
 // ---------- the plan ----------
@@ -269,8 +256,17 @@ export function buildMaintenancePlan(input: {
     if (!requests.some((x) => JSON.stringify(x) === JSON.stringify(r))) requests.push(r);
   };
   if (items.length === 0) {
-    const links = officialLinks(facts, input.vehicle);
-    if (links.length) add({ kind: 'official_source', links });
+    // Sources the pipeline may read automatically are not a user action; the rest are, with why.
+    const sources = officialSources(facts).filter((x) => x.reason !== 'automatic');
+    if (sources.length) add({ kind: 'official_source', sources });
+    else if (!officialSources(facts).length) {
+      // Never "not found" when a source is known: an identified, not-yet-approved source says so.
+      add(
+        facts.make && identifiedSystems(facts.make)
+          ? { kind: 'official_source_pending' }
+          : { kind: 'no_official_source' },
+      );
+    }
     add({ kind: 'upload_booklet', hint });
   }
   for (const r of unresolved) {
@@ -278,6 +274,9 @@ export function buildMaintenancePlan(input: {
       if (d === 'serviceRegime') add({ kind: 'service_regime', hint });
       else if (d === 'usage') add({ kind: 'usage' });
       else if (d === 'engineCode') add({ kind: 'engine_code' });
+    }
+    if (r.considered.some((c) => c.applicability.coverageUnknown?.includes('modelYear'))) {
+      add({ kind: 'model_year_unproven' });
     }
   }
   const awaiting = unresolved

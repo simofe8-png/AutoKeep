@@ -8,8 +8,12 @@ import {
 } from '@/domain';
 import { assessEvidence, resolveRequirements, type TaskResolution } from '@/engine/requirements';
 
-import { acquire } from './access';
+import { acquire, hostOf, policyBlock } from './access';
+import { failureOfBlock } from './adapters';
+import { permits } from './registry/policy';
+import { policyOf, systemForHost } from './registry/sourceSystem';
 import { findMaintenanceSections, profileDocument } from './classify';
+import { recordDocumentVersion, type DocumentVersion } from './documentVersions';
 import { extractRequirements, ground } from './extract';
 import type {
   DiscoveryContext,
@@ -37,6 +41,8 @@ export interface PipelineDeps extends DiscoveryContext {
   catalog: readonly KnowledgeEntry[];
   today: IsoDate;
   maxDocuments?: number;
+  /** Known document versions (identity + sha256), append-only. */
+  versions?: readonly DocumentVersion[];
 }
 
 export interface PipelineResult {
@@ -44,6 +50,8 @@ export interface PipelineResult {
   resolutions: TaskResolution[];
   /** Verified requirements whose source allows reuse — candidates for the knowledge catalog. */
   catalogCandidates: { requirement: MaintenanceRequirement; source: KnowledgeSource }[];
+  /** The document-version store after this run (new versions appended). */
+  versions: DocumentVersion[];
 }
 
 const DRIVING: EvidenceLevel[] = ['A', 'B'];
@@ -77,6 +85,9 @@ export async function runMaintenancePipeline(
   trace.catalogHits = knownResolved.length;
   trace.catalogKnown = known.length;
   const requirements: MaintenanceRequirement[] = [...known];
+  // Documents whose exact bytes already produced verified knowledge: never extracted again.
+  const knownShas = new Set(known.flatMap((r) => r.evidence.map((e) => e.documentSha256)));
+  let versions: DocumentVersion[] = [...(deps.versions ?? [])];
 
   if (knownResolved.length === 0) {
     // 2. Discovery.
@@ -96,7 +107,28 @@ export async function runMaintenancePipeline(
     }
 
     // 3. Acquisition → understanding → extraction.
-    for (const lead of leads.slice(0, deps.maxDocuments ?? 6)) {
+    // Runtime source priority: a direct Israeli schedule is read before a 500-page manual, and a
+    // lower-priority source is not read once a higher one produced grounded requirements.
+    const ordered = [...leads].sort((a, b) => (a.priority ?? 6) - (b.priority ?? 6));
+    let satisfiedAt: number | null = null;
+    for (const lead of ordered.slice(0, deps.maxDocuments ?? 6)) {
+      if (satisfiedAt != null && (lead.priority ?? 6) > satisfiedAt) break;
+      // Never download what may not be machine-read: extraction has its own policy dimension.
+      const leadSystem = lead.upload ? null : systemForHost(hostOf(lead.url) ?? '', deps.registry);
+      if (leadSystem) {
+        const reason = policyBlock(
+          policyOf(leadSystem).dimensions.automatedExtractionAllowed.value,
+        );
+        if (reason) {
+          trace.discovery.push({
+            adapter: 'policy',
+            leads: [],
+            blocked: [{ url: lead.url, reason, detail: 'automatedExtractionAllowed' }],
+            notes: [],
+          });
+          continue;
+        }
+      }
       const got = await acquire(lead, deps);
       if (!got.ok) {
         trace.discovery.push({
@@ -107,19 +139,34 @@ export async function runMaintenancePipeline(
         });
         continue;
       }
-      const doc = got.doc;
-      const entry = doc.registryEntry;
+      // A private upload whose bytes equal a known official document version inherits that
+      // document's source system (authority); otherwise it stays an unverified user document.
+      const matched = got.doc.lead.upload
+        ? versions.find((x) => x.sha256 === got.doc.sha256 && x.sourceSystemId)
+        : undefined;
+      const doc = matched
+        ? {
+            ...got.doc,
+            system: deps.registry.find((x) => x.sourceSystemId === matched.sourceSystemId) ?? null,
+          }
+        : got.doc;
+      const system = doc.system;
       const authoritative =
-        !!entry &&
-        (entry.status === 'approved' ||
-          (entry.status === 'proposed' && !!deps.assumeProposedApproved));
+        !!system &&
+        (system.status === 'approved' ||
+          (system.status === 'proposed' && !!deps.assumeProposedApproved));
       const record: VehicleRunTrace['documents'][number] = {
         url: doc.finalUrl,
         sha256: doc.sha256,
         format: doc.format,
         host: doc.host,
-        authority: entry ? entry.role : 'unregistered',
-        registryStatus: entry ? entry.status : 'unregistered',
+        authority: system
+          ? system.authorityClass
+          : doc.lead.upload
+            ? 'user_upload'
+            : 'unregistered',
+        sourceSystemId: system?.sourceSystemId ?? null,
+        registryStatus: system ? system.status : 'unregistered',
         profile: null,
         vehicleMatch: 'unresolved',
         unresolved: [],
@@ -128,16 +175,34 @@ export async function runMaintenancePipeline(
         grounded: 0,
       };
       trace.documents.push(record);
+      if (matched) record.officialMatch = matched.documentKey;
+      // Versioning (official documents only; private uploads never enter the version store).
+      if (!doc.lead.upload) {
+        const rec = recordDocumentVersion(versions, {
+          sourceSystemId: system?.sourceSystemId ?? null,
+          url: doc.finalUrl,
+          sha256: doc.sha256,
+          at: deps.today,
+        });
+        versions = rec.store;
+        record.version = rec.current.version;
+        record.versionStatus = rec.status;
+      }
+      if (knownShas.has(doc.sha256)) {
+        // Unchanged bytes of a document already turned into verified knowledge: reuse, no re-read.
+        record.reused = true;
+        continue;
+      }
       let pages;
       try {
         pages = await (doc.format === 'pdf' ? deps.readers.pdf : deps.readers.html).read(doc);
       } catch (e) {
-        record.failure = 'document_parsing_failure';
+        record.failure = 'PDF_PARSE_FAILURE';
         record.failureDetail = `text extraction failed: ${String(e).slice(0, 120)}`;
         continue;
       }
       if (!pages.some((p) => p.text.trim())) {
-        record.failure = 'document_parsing_failure';
+        record.failure = 'PDF_PARSE_FAILURE';
         record.failureDetail = 'no text layer';
         continue;
       }
@@ -156,7 +221,7 @@ export async function runMaintenancePipeline(
         v.modelYear > (profile.yearTo ?? profile.yearFrom)
       ) {
         record.vehicleMatch = 'mismatch';
-        record.failure = 'vehicle_identity_insufficient';
+        record.failure = 'MODEL_YEAR_NOT_LISTED';
         record.failureDetail = `document covers ${profile.yearFrom}–${profile.yearTo}`;
         continue;
       }
@@ -164,7 +229,7 @@ export async function runMaintenancePipeline(
       const sections = findMaintenanceSections(pages);
       record.sections = sections;
       if (!sections.length) {
-        record.failure = 'document_parsing_failure';
+        record.failure = 'MAINTENANCE_TABLE_NOT_FOUND';
         record.failureDetail = 'no maintenance schedule section found';
         continue;
       }
@@ -181,7 +246,14 @@ export async function runMaintenancePipeline(
       for (const e of extracted) {
         if (ground(e, pages)) record.grounded += 1;
         requirements.push(e.requirement);
-        if (e.requirement.verification === 'verified' && entry?.reuse === 'permitted') {
+        // Shared knowledge only from official retrievals whose source allows storing structured
+        // facts — never from a private upload (even one matching an official version).
+        if (
+          e.requirement.verification === 'verified' &&
+          !doc.lead.upload &&
+          system &&
+          permits(policyOf(system), 'structuredFactsStorageAllowed')
+        ) {
           catalogCandidates.push({
             requirement: e.requirement,
             source: {
@@ -196,8 +268,16 @@ export async function runMaintenancePipeline(
           });
         }
       }
+      // An Israeli DIRECT maintenance schedule (priority 2) that resolves makes the long manuals
+      // unnecessary; lower priorities still fill items per task (per-item override).
+      if (
+        lead.priority === 2 &&
+        resolveRequirements(requirements, facts).some((r) => r.status === 'resolved')
+      ) {
+        satisfiedAt ??= 2;
+      }
       if (!extracted.length) {
-        record.failure = 'document_parsing_failure';
+        record.failure = 'MAINTENANCE_TABLE_NOT_FOUND';
         record.failureDetail = 'maintenance section found but no atomic requirement could be read';
       }
     }
@@ -210,21 +290,13 @@ export async function runMaintenancePipeline(
     for (const c of r.considered) if (c.level) trace.levels[c.level] += 1;
   }
   trace.failures = classifyFailures(trace, resolutions);
-  return { trace, resolutions, catalogCandidates };
+  return { trace, resolutions, catalogCandidates, versions };
 }
 
-const ACCESS: string[] = ['terms_prohibit_automation', 'terms_unknown', 'registry_not_approved'];
-const BLOCKED: string[] = [
-  'robots_disallow',
-  'login_or_bot_wall',
-  'http_error',
-  'network_error',
-  'not_a_document',
-  'too_large',
-  'not_https',
-];
-
-/** Why a vehicle did not get a usable plan — engine-level failure classes, never per model. */
+/**
+ * Why a vehicle did not get a usable plan, in the standard M-SOURCE failure codes — engine-level
+ * reasons, never per model. Each entry names what failed (system, host or task).
+ */
 export function classifyFailures(
   trace: VehicleRunTrace,
   resolutions: TaskResolution[],
@@ -233,48 +305,48 @@ export function classifyFailures(
   const add = (c: FailureClass, detail: string) => {
     if (!out.some((o) => o.class === c && o.detail === detail)) out.push({ class: c, detail });
   };
-  const resolved = resolutions.filter((r) => r.status === 'resolved');
-  if (resolved.length > 0 && trace.documents.length === 0 && trace.catalogHits > 0) return out;
+  const usable = resolutions.some((r) => r.status === 'resolved');
+  if (usable && trace.documents.length === 0 && trace.catalogHits > 0) return out;
 
   const notes = trace.discovery.flatMap((d) => d.notes);
   if (notes.some((n) => n.startsWith('unsupported_manufacturer'))) {
-    add('unsupported_manufacturer', 'no registered official host for this manufacturer');
+    add('NO_DIGITAL_SOURCE', 'no registered source system for this manufacturer');
   }
-  const blocked = trace.discovery.flatMap((d) => d.blocked);
-  for (const b of blocked) {
-    if (ACCESS.includes(b.reason)) add('access_restriction', `${new URL(b.url).host}: ${b.reason}`);
-    else if (BLOCKED.includes(b.reason))
-      add('blocked_source', `${safeHost(b.url)}: ${b.reason}${b.detail ? ` (${b.detail})` : ''}`);
+  for (const f of trace.discovery.flatMap((d) => d.failures ?? [])) {
+    add(f.code, `${f.sourceSystemId}: ${f.detail}`);
+  }
+  for (const b of trace.discovery.flatMap((d) => d.blocked)) {
+    add(
+      failureOfBlock(b.reason),
+      `${safeHost(b.url)}: ${b.reason}${b.detail ? ` (${b.detail})` : ''}`,
+    );
   }
   for (const d of trace.documents)
     if (d.failure) add(d.failure, `${d.host}: ${d.failureDetail ?? ''}`);
   const leads = trace.discovery.flatMap((d) => d.leads);
-  if (!leads.length && !blocked.length && !out.length)
-    add('no_source', 'no candidate document found');
-  if (leads.length && !trace.documents.length && !blocked.length)
-    add('no_source', 'leads found but none retrieved');
+  if (!leads.length && !out.length) add('NO_DIGITAL_SOURCE', 'no candidate document found');
 
   for (const r of resolutions) {
-    if (r.status === 'conflicting') add('conflicting_evidence', r.task);
-    if (r.status === 'insufficient_information') {
-      for (const m of r.missing) {
-        if (
-          m === 'engineCode' ||
-          m === 'engineFamily' ||
-          m === 'displacementCc' ||
-          m === 'powertrain'
-        ) {
-          add('engine_ambiguity', `${r.task}: ${m}`);
-        } else if (m === 'serviceRegime') add('service_regime_ambiguity', r.task);
-        else if (m === 'market') add('market_ambiguity', r.task);
-      }
-      const cov = r.considered.flatMap((c) => c.applicability.coverageUnknown ?? []);
-      if (cov.length)
-        add(
-          'vehicle_identity_insufficient',
-          `document coverage unstated: ${[...new Set(cov)].join(', ')}`,
-        );
+    if (r.status === 'conflicting') add('OTHER', `conflicting evidence: ${r.task}/${r.action}`);
+    if (r.status !== 'insufficient_information') continue;
+    for (const m of r.missing) {
+      if (
+        m === 'engineCode' ||
+        m === 'engineFamily' ||
+        m === 'displacementCc' ||
+        m === 'powertrain'
+      ) {
+        add('ENGINE_AMBIGUOUS', `${r.task}: ${m}`);
+      } else if (m === 'market') add('MARKET_AMBIGUOUS', r.task);
+      else if (m === 'generation' || m === 'model' || m === 'transmission') {
+        add('VARIANT_AMBIGUOUS', `${r.task}: ${m}`);
+      } else add('OTHER', `${r.task}: ${m} unknown`);
     }
+    const cov = [...new Set(r.considered.flatMap((c) => c.applicability.coverageUnknown ?? []))];
+    if (cov.includes('modelYear'))
+      add('MODEL_YEAR_NOT_LISTED', 'the document does not state its model years');
+    if (cov.includes('model'))
+      add('VARIANT_AMBIGUOUS', 'the document does not name this exact model');
   }
   return out;
 }

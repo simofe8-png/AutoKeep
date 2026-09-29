@@ -59,6 +59,19 @@ export function evaluateApplicability(
   if (a.makes) checks.push(['make', inList(f.make, a.makes)]);
   if (a.models) checks.push(['model', inList(f.model, a.models)]);
   if (a.generations) checks.push(['generation', inList(f.generation, a.generations, true)]);
+  if (a.phases) checks.push(['phase', inList(f.phase, a.phases, true)]);
+  if (a.productionPeriod) {
+    const d = f.productionDate;
+    const p = a.productionPeriod;
+    checks.push([
+      'productionDate',
+      !d
+        ? 'unknown'
+        : (p.from && compareDates(d, p.from) < 0) || (p.to && compareDates(d, p.to) > 0)
+          ? 'mismatch'
+          : 'match',
+    ]);
+  }
   if (a.modelYears) {
     checks.push(['modelYear', inRange(f.modelYear, a.modelYears.from, a.modelYears.to)]);
   }

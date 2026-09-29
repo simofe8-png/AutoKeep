@@ -8,3 +8,5 @@ package-lock.json
 AutoKeep_Bootstrap_Package
 # Machine-generated evidence (written by the opt-in live tests)
 docs/release/evidence/maintenance-discovery/results.json
+docs/release/evidence/maintenance-discovery/msource_results.json
+docs/maintenance/data/**/*.json

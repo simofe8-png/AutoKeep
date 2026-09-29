@@ -32,7 +32,11 @@ export interface VehicleFacts {
   make?: string;
   model?: string;
   generation?: string;
+  /** Facelift / phase of the generation as the manufacturer names it (e.g. "FL", "phase 2"). */
+  phase?: string;
   modelYear?: number;
+  /** Production date when known (registry / VIN decoding is NOT used to invent it). */
+  productionDate?: IsoDate;
   engineFamily?: string;
   engineCode?: string;
   displacementCc?: number;
@@ -53,7 +57,9 @@ export type ApplicabilityDimension =
   | 'make'
   | 'model'
   | 'generation'
+  | 'phase'
   | 'modelYear'
+  | 'productionDate'
   | 'engineFamily'
   | 'engineCode'
   | 'displacementCc'
@@ -72,7 +78,10 @@ export interface RequirementApplicability {
   makes?: string[];
   models?: string[];
   generations?: string[];
+  phases?: string[];
   modelYears?: { from?: number; to?: number };
+  /** Production period stated by the source (ISO dates, inclusive). */
+  productionPeriod?: { from?: IsoDate; to?: IsoDate };
   engineFamilies?: string[];
   engineCodes?: string[];
   displacementCc?: { min?: number; max?: number };

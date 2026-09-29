@@ -23,7 +23,7 @@ const FIESTA = '00000000-0000-4000-8000-00000000f001';
 const IBIZA = '00000000-0000-4000-8000-00000000f002';
 let db: Awaited<ReturnType<typeof openTestDatabase>>;
 
-async function seed(verified: boolean, markets: string[] = ['IL']) {
+async function seed(verified: boolean, markets: string[] = ['IL'], active = FIESTA) {
   db = await openTestDatabase();
   const store = await LocalStore.open(db, sequentialIds(1), clock, new MemoryFileStore());
   for (const [id, manufacturer, model, year, reg, km, first] of [
@@ -45,7 +45,7 @@ async function seed(verified: boolean, markets: string[] = ['IL']) {
       { engine: '1242 סמ״ק', fuel: 'בנזין', firstRegistration: first },
     );
   }
-  await store.setActiveVehicle(FIESTA);
+  await store.setActiveVehicle(active);
   if (verified) {
     const repo = new MaintenanceKnowledgeRepository(db);
     await repo.addDocument(
@@ -139,6 +139,10 @@ describe('Maintenance tab (Task 9)', () => {
     // No interval anywhere, and no architecture terms.
     expect(screen.queryByTestId('plan-items')).toBeNull();
     expect(screen.getByTestId('screen-maintenance')).not.toHaveTextContent(/15,000|claim|resolver/);
+    // The precise reason, never a generic "not found": Delek's Ford source is identified but not
+    // yet approved as a trusted source.
+    expect(screen.getByTestId('plan-request-official-pending')).toHaveTextContent(/עדיין בבדיקה/);
+    expect(screen.queryByTestId('plan-request-no-official-source')).toBeNull();
   }, 60000);
 
   it('verified evidence: each task with action, when, remaining and its source', async () => {
@@ -170,6 +174,24 @@ describe('Maintenance tab (Task 9)', () => {
       'על פי ספר היצרן לדגם זה · טרם אומתה התאמה ספציפית לשוק הישראלי',
     );
     expect(screen.queryByText('לפי מקור רשמי לשוק הישראלי')).toBeNull();
+  }, 60000);
+});
+
+describe('fallback reasons (M-SOURCE Step 15)', () => {
+  it('SEAT: the Israeli importer schedule needs written permission — the reason and its official page', async () => {
+    await seed(false, ['IL'], IBIZA);
+    await open('/maintenance', 'screen-maintenance');
+    await waitFor(
+      () => expect(screen.getByTestId('plan-request-official-source')).toBeOnTheScreen(),
+      LONG,
+    );
+    const src = screen.getByTestId('plan-official-source-il-champion-service-routine');
+    expect(src).toHaveTextContent(/היבואן הרשמי בישראל/);
+    expect(src).toHaveTextContent(/דורשים אישור בכתב לקריאה אוטומטית/);
+    expect(screen.getByTestId('plan-official-link-www.championmotors.co.il')).toHaveTextContent(
+      /פתח את www\.championmotors\.co\.il/,
+    );
+    expect(screen.getByTestId('screen-maintenance')).not.toHaveTextContent(/לא מצאנו|לא נמצא/);
   }, 60000);
 });
 

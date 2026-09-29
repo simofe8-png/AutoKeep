@@ -8,3 +8,4 @@ export * from './garage';
 export * from './requirements';
 export * from './knowledge';
 export * from './catalog';
+export * from './review';

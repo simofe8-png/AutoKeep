@@ -1,18 +1,16 @@
 import { robotsAllows } from '../officialSiteDiscovery';
 
-import type {
-  AcquiredDocument,
-  BlockedAccess,
-  DiscoveryContext,
-  SourceLead,
-  SourceRegistryEntry,
-} from './types';
+import type { PolicyDimension } from './registry/policy';
+import { policyOf, systemForHost, type SourceSystem } from './registry/sourceSystem';
+import type { AcquiredDocument, BlockedAccess, DiscoveryContext, SourceLead } from './types';
 
 /**
- * Access policy + acquisition (owner decision P1 §8.4, 2026-09-27): automated retrieval only when
- * BOTH robots.txt/access controls allow it AND the host's terms are known not to prohibit the
- * automation. Unregistered hosts, unapproved registry entries and unknown terms are NOT fetched.
- * Every decision is returned as data so failures can be classified, never silently skipped.
+ * Access decisions (M-SOURCE): every automated activity is checked against ITS OWN policy
+ * dimension of the host's source system — discovery pages against `discoveryAllowed`, document
+ * downloads against `automatedFetchAllowed` — and only an explicit ALLOWED permits it. robots.txt
+ * is checked in addition (a technical control, never a legal permission). Unregistered hosts and
+ * systems the owner has not approved are never accessed. Every decision is returned as data so
+ * failures can be classified, never silently skipped.
  */
 
 export function hostOf(url: string): string | null {
@@ -25,18 +23,16 @@ export function hostOf(url: string): string | null {
   }
 }
 
-/** The most specific registry entry for a host (exact host, else the longest parent domain). */
-export function registryEntryFor(
-  host: string,
-  registry: readonly SourceRegistryEntry[],
-): SourceRegistryEntry | null {
-  const matches = registry.filter((e) => host === e.host || host.endsWith(`.${e.host}`));
-  return matches.sort((a, b) => b.host.length - a.host.length)[0] ?? null;
-}
+export type Activity = 'discovery' | 'fetch';
+
+export const ACTIVITY_DIMENSION: Record<Activity, PolicyDimension> = {
+  discovery: 'discoveryAllowed',
+  fetch: 'automatedFetchAllowed',
+};
 
 export type AccessDecision =
-  | { ok: true; entry: SourceRegistryEntry }
-  | { ok: false; blocked: BlockedAccess; entry: SourceRegistryEntry | null };
+  | { ok: true; system: SourceSystem }
+  | { ok: false; blocked: BlockedAccess; system: SourceSystem | null };
 
 async function robotsFor(host: string, ctx: DiscoveryContext): Promise<string | null> {
   if (ctx.robots.has(host)) return ctx.robots.get(host)!;
@@ -53,26 +49,36 @@ async function robotsFor(host: string, ctx: DiscoveryContext): Promise<string | 
   return text;
 }
 
-export async function accessDecision(url: string, ctx: DiscoveryContext): Promise<AccessDecision> {
+/** The blocking reason of a policy value, or null when the value permits the activity. */
+export function policyBlock(value: string): BlockedAccess['reason'] | null {
+  if (value === 'ALLOWED') return null;
+  if (value === 'NOT_ALLOWED') return 'policy_not_allowed';
+  if (value === 'REQUIRES_PERMISSION') return 'permission_required';
+  return 'policy_unknown';
+}
+
+export async function accessDecision(
+  url: string,
+  ctx: DiscoveryContext,
+  activity: Activity = 'fetch',
+): Promise<AccessDecision> {
   const host = hostOf(url);
-  const block = (
-    reason: BlockedAccess['reason'],
-    entry: SourceRegistryEntry | null,
-    detail?: string,
-  ) => ({ ok: false, blocked: { url, reason, detail }, entry }) as const;
+  const block = (reason: BlockedAccess['reason'], system: SourceSystem | null, detail?: string) =>
+    ({ ok: false, blocked: { url, reason, detail }, system }) as const;
   if (!host) return block('not_https', null);
-  const entry = registryEntryFor(host, ctx.registry);
-  if (!entry || entry.status === 'rejected') return block('not_registered', entry);
-  if (entry.status === 'proposed' && !ctx.assumeProposedApproved) {
-    return block('registry_not_approved', entry);
+  const system = systemForHost(host, ctx.registry);
+  if (!system || system.status === 'rejected') return block('not_registered', system);
+  if (system.status === 'proposed' && !ctx.assumeProposedApproved) {
+    return block('registry_not_approved', system);
   }
-  if (entry.automation === 'prohibited') return block('terms_prohibit_automation', entry);
-  if (entry.automation === 'unknown') return block('terms_unknown', entry);
+  const dimension = ACTIVITY_DIMENSION[activity];
+  const reason = policyBlock(policyOf(system).dimensions[dimension].value);
+  if (reason) return block(reason, system, dimension);
   const robots = await robotsFor(host, ctx);
-  if (robots === null) return block('robots_disallow', entry, 'robots.txt unreadable');
+  if (robots === null) return block('robots_disallow', system, 'robots.txt unreadable');
   const u = new URL(url);
-  if (!robotsAllows(robots, u.pathname + u.search)) return block('robots_disallow', entry);
-  return { ok: true, entry };
+  if (!robotsAllows(robots, u.pathname + u.search)) return block('robots_disallow', system);
+  return { ok: true, system };
 }
 
 const BOT_WALL =
@@ -116,11 +122,11 @@ export async function acquire(
         sha256: await ctx.sha256(lead.upload.bytes),
         format,
         bytes: lead.upload.bytes,
-        registryEntry: null,
+        system: null,
       },
     };
   }
-  const decision = await accessDecision(lead.url, ctx);
+  const decision = await accessDecision(lead.url, ctx, 'fetch');
   if (!decision.ok) return { ok: false, blocked: decision.blocked };
   let res;
   try {
@@ -133,7 +139,7 @@ export async function acquire(
     return { ok: false, blocked: { url: lead.url, reason, detail: `HTTP ${res.status}` } };
   }
   if (res.url !== lead.url) {
-    const again = await accessDecision(res.url, ctx);
+    const again = await accessDecision(res.url, ctx, 'fetch');
     if (!again.ok)
       return { ok: false, blocked: { ...again.blocked, detail: `redirected from ${lead.url}` } };
   }
@@ -159,7 +165,7 @@ export async function acquire(
       sha256: await ctx.sha256(res.bytes),
       format,
       bytes: res.bytes,
-      registryEntry: registryEntryFor(hostOf(res.url) ?? '', ctx.registry),
+      system: systemForHost(hostOf(res.url) ?? '', ctx.registry),
     },
   };
 }

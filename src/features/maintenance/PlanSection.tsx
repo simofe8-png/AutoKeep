@@ -244,19 +244,56 @@ function Request({
     case 'official_source':
       return (
         <Stack gap={spacing.xs} testID="plan-request-official-source">
-          <InlineNotice tone="info" title={p.officialSourceTitle} message={p.officialSourceBody} />
-          {request.links.map((l) => (
-            <Button
-              key={l.url}
-              testID={`plan-official-link-${l.host}`}
-              label={p.openOfficialSource(l.host)}
-              icon="open-in-new"
-              variant="secondary"
-              fullWidth
-              onPress={() => void Linking.openURL(l.url)}
-            />
+          {request.sources.map((src) => (
+            <Stack key={src.sourceSystemId} gap={spacing.xs}>
+              <InlineNotice
+                testID={`plan-official-source-${src.sourceSystemId}`}
+                tone="info"
+                title={`${p.officialSourceTitle} · ${src.israeli ? p.officialSourceIsraeli : p.officialSourceGlobal}`}
+                message={`${p.officialSourceReason[src.reason]}${
+                  src.url && src.reason !== 'no_digital_source'
+                    ? `
+${p.officialSourceUserStep}`
+                    : ''
+                }`}
+              />
+              {src.url && src.reason !== 'no_digital_source' ? (
+                <Button
+                  testID={`plan-official-link-${src.host}`}
+                  label={p.openOfficialSource(src.host)}
+                  icon="open-in-new"
+                  variant="secondary"
+                  fullWidth
+                  onPress={() => void Linking.openURL(src.url!)}
+                />
+              ) : null}
+            </Stack>
           ))}
         </Stack>
+      );
+    case 'no_official_source':
+      return (
+        <InlineNotice
+          testID="plan-request-no-official-source"
+          tone="neutral"
+          message={p.noOfficialSource}
+        />
+      );
+    case 'official_source_pending':
+      return (
+        <InlineNotice
+          testID="plan-request-official-pending"
+          tone="neutral"
+          message={p.officialSourcePending}
+        />
+      );
+    case 'model_year_unproven':
+      return (
+        <InlineNotice
+          testID="plan-request-model-year"
+          tone="neutral"
+          message={p.modelYearUnproven}
+        />
       );
     case 'awaiting_verification':
       return (

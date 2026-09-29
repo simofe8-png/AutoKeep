@@ -4,7 +4,7 @@ import { KNOWN_SOURCES, knownRequirements } from '../knownSources';
 import {
   buildMaintenancePlan,
   factsOf,
-  officialLinks,
+  officialSources,
   taskCompletionId,
   type PlanVehicle,
 } from '../plan';
@@ -74,6 +74,17 @@ describe('Case A — SEAT Ibiza 2012 / CGG', () => {
     expect(p.items).toEqual([]);
     expect(p.status).toBe('needs_information');
     expect(p.requests).toEqual([
+      {
+        kind: 'official_source',
+        sources: [
+          expect.objectContaining({
+            sourceSystemId: 'il-champion-service-routine',
+            reason: 'permission_required',
+            israeli: true,
+            publishesSchedule: true,
+          }),
+        ],
+      },
       { kind: 'upload_booklet', hint: 'seat_maintenance_programme' },
       {
         kind: 'awaiting_verification',
@@ -143,6 +154,8 @@ describe('Case B — Ford Fiesta 2015 / 1.25 / SNJB', () => {
     const p = plan(fiesta);
     expect(p.items).toEqual([]);
     expect(p.requests).toEqual([
+      // Delek's Ford system is identified but not yet approved as an authority: said precisely.
+      { kind: 'official_source_pending' },
       { kind: 'upload_booklet', hint: 'ford_service_plan' },
       {
         kind: 'awaiting_verification',
@@ -160,29 +173,110 @@ describe('Case B — Ford Fiesta 2015 / 1.25 / SNJB', () => {
   });
 });
 
-describe('official links (registry data, nothing fetched)', () => {
-  it('offers the approved official page of the make, never an unapproved host', () => {
-    const hyundai = {
-      ...ibiza,
-      id: 'veh-h',
-      manufacturer: 'יונדאי קוריאה',
-      model: 'i20',
-      year: 2016,
-    };
-    const links = officialLinks(factsOf(hyundai, null), hyundai);
-    expect(links).toEqual([
-      { url: 'https://www.hyundaimotors.co.il/maintenance/', host: 'hyundaimotors.co.il' },
+describe('fallback: the precise reason per official source (registry data, nothing fetched)', () => {
+  const vehicle = (manufacturer: string, model: string, year: number): PlanVehicle => ({
+    ...ibiza,
+    id: `veh-${model}`,
+    manufacturer,
+    model,
+    year,
+    engineCode: undefined,
+  });
+  const reasons = (v: PlanVehicle) =>
+    officialSources(factsOf(v, null)).map((x) => [x.sourceSystemId, x.reason, x.url]);
+
+  it('Hyundai: the Israeli importer requires written permission; its official page is offered', () => {
+    const h = vehicle('יונדאי קוריאה', 'i20', 2016);
+    expect(reasons(h)).toEqual([
+      [
+        'il-colmobil-hyundai',
+        'permission_required',
+        'https://www.hyundaimotors.co.il/maintenance/',
+      ],
     ]);
-    // ownersmanual.hyundai.com is only PROPOSED: never offered.
-    expect(links.some((l) => l.host === 'ownersmanual.hyundai.com')).toBe(false);
     const p = buildMaintenancePlan({
-      vehicle: hyundai,
+      vehicle: h,
       profile: null,
       requirements: [],
       history: [],
       readings: [],
       today,
     });
-    expect(p.requests[0]).toEqual({ kind: 'official_source', links });
+    expect(p.requests[0]).toMatchObject({
+      kind: 'official_source',
+      sources: [{ reason: 'permission_required' }],
+    });
+  });
+
+  it('Toyota: an Israeli direct schedule whose access policy is unresolved', () => {
+    expect(reasons(vehicle('טויוטה טורקיה', 'C-HR', 2019))[0]).toEqual([
+      'il-union-motors-toyota',
+      'access_policy_unresolved',
+      expect.stringMatching(/^https:\/\/(www\.)?toyota\.co\.il\//),
+    ]);
+  });
+
+  it('Mazda: the importer plans sit behind a login — manual access required', () => {
+    expect(reasons(vehicle('מזדה יפן', '3', 2011))[0].slice(0, 2)).toEqual([
+      'il-delek-mazda',
+      'manual_access_required',
+    ]);
+  });
+
+  it('proposed (unapproved) systems are never offered; an unknown make says so', () => {
+    const tesla = officialSources(factsOf(vehicle('טסלה סין', 'MODEL 3', 2022), null));
+    expect(tesla.every((x) => x.sourceSystemId.length > 0)).toBe(true);
+    expect(tesla).toEqual([]);
+    const p = buildMaintenancePlan({
+      vehicle: vehicle('טסלה סין', 'MODEL 3', 2022),
+      profile: null,
+      requirements: [],
+      history: [],
+      readings: [],
+      today,
+    });
+    // Tesla's system is identified but not approved: "pending", never "not found".
+    expect(p.requests).toContainEqual({ kind: 'official_source_pending' });
+    const unknown = buildMaintenancePlan({
+      vehicle: vehicle('יצרן לא מוכר', 'X', 2020),
+      profile: null,
+      requirements: [],
+      history: [],
+      readings: [],
+      today,
+    });
+    expect(unknown.requests).toContainEqual({ kind: 'no_official_source' });
+  });
+});
+
+describe('engine code is first-class (M-SOURCE Step 9)', () => {
+  it('the engine code comes from the registry only — never derived from the displacement', () => {
+    const facts = factsOf(
+      {
+        id: 'v',
+        kind: 'car',
+        manufacturer: "סקודה צ'כיה",
+        model: 'OCTAVIA',
+        year: 2018,
+        engine: '1395 סמ״ק',
+        fuel: 'בנזין',
+      },
+      null,
+    );
+    expect(facts.displacementCc).toBe(1395);
+    expect(facts.engineCode).toBeUndefined();
+    const withCode = factsOf(
+      {
+        id: 'v',
+        kind: 'car',
+        manufacturer: "סקודה צ'כיה",
+        model: 'OCTAVIA',
+        year: 2018,
+        engine: '1395 סמ״ק',
+        engineCode: 'CZDA',
+      },
+      null,
+    );
+    expect(withCode.engineCode).toBe('CZDA');
   });
 });

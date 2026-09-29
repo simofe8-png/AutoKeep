@@ -199,7 +199,25 @@ export type PlanRequestVM =
   | { kind: 'in_service_date' }
   | { kind: 'odometer' }
   | { kind: 'awaiting_verification'; sources: { title: string; publishedOn?: string }[] }
-  | { kind: 'official_source'; links: { url: string; host: string }[] };
+  | {
+      kind: 'official_source';
+      sources: {
+        sourceSystemId: string;
+        host: string;
+        url: string | null;
+        reason:
+          | 'manual_access_required'
+          | 'access_policy_unresolved'
+          | 'permission_required'
+          | 'no_digital_source'
+          | 'automatic';
+        israeli: boolean;
+        publishesSchedule: boolean;
+      }[];
+    }
+  | { kind: 'no_official_source' }
+  | { kind: 'official_source_pending' }
+  | { kind: 'model_year_unproven' };
 
 export interface MaintenancePlanVM {
   status: 'ready' | 'partial' | 'needs_information';

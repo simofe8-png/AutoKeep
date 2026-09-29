@@ -1,3 +1,5 @@
+import type { AdapterFailureCode } from './adapters/types';
+import type { SourceStatus, SourceSystem } from './registry/sourceSystem';
 import type {
   EvidenceLevel,
   MaintenanceRequirement,
@@ -27,47 +29,9 @@ export interface VehicleIdentity extends VehicleFacts {
   modelYear: number;
 }
 
-// ---------- source registry (data) ----------
-
-export type HostRole = 'manufacturer' | 'importer' | 'manual_library';
-/** Owner approval of the host as an authority (P1 decision 2026-09-27: a person approves). */
-export type RegistryStatus = 'approved' | 'proposed' | 'rejected';
-/**
- * Automated retrieval policy (P1 decision §8.4): allowed only when robots AND terms permit it;
- * 'unknown' (terms unreadable / not found with certainty) means no automation.
- */
-export type AutomationPolicy = 'permitted' | 'prohibited' | 'unknown';
-/** May requirements derived from this host be stored as reusable knowledge (§8.5)? */
-export type ReusePolicy = 'permitted' | 'prohibited' | 'unknown';
-
-/**
- * How an adapter finds documents on a host — data, never per-model code.
- *  - listing: fetch an index page (URL may use {model}/{year}/{locale} placeholders), follow
- *    links matching `follow` up to `depth`, propose documents whose link text/URL names the model;
- *  - template: a document URL pattern with placeholders (e.g. …/{modelSlug}/{locale}/manual.pdf);
- *  - sitemap: the host's robots.txt sitemaps.
- */
-export type EntryPoint =
-  | { kind: 'listing'; url: string; follow?: string; depth?: number; documents?: string }
-  | { kind: 'template'; url: string; locales?: string[] }
-  | { kind: 'sitemap' };
-
-export interface SourceRegistryEntry {
-  /** Normalized manufacturer key(s) the host speaks for. */
-  manufacturers: string[];
-  host: string;
-  role: HostRole;
-  /** Market the host is official for; undefined = the manufacturer's global/regional site. */
-  markets?: MarketCode[];
-  /** Markets a document from this host covers when the document itself does not say. */
-  defaultDocumentMarkets?: MarketCode[];
-  status: RegistryStatus;
-  automation: AutomationPolicy;
-  reuse: ReusePolicy;
-  entryPoints?: EntryPoint[];
-  /** Evidence for ownership and policy (who/when/how). */
-  evidence: string;
-}
+// ---------- source registry ----------
+// Source SYSTEMS (importer / manufacturer document systems) with a six-dimension access policy:
+// see ./registry/sourceSystem.ts and ./registry/policy.ts.
 
 // ---------- discovery ----------
 
@@ -86,31 +50,27 @@ export interface SourceLead {
   title?: string;
   via: LeadVia;
   adapter: string;
+  /** The source system that published it and its runtime priority (lower = preferred). */
+  sourceSystemId?: string;
+  priority?: number;
   /** Local bytes for uploads (no URL fetch). */
   upload?: { name: string; bytes: Uint8Array };
 }
 
-export type FailureClass =
-  | 'no_source'
-  | 'blocked_source'
-  | 'access_restriction'
-  | 'vehicle_identity_insufficient'
-  | 'market_ambiguity'
-  | 'engine_ambiguity'
-  | 'service_regime_ambiguity'
-  | 'document_parsing_failure'
-  | 'conflicting_evidence'
-  | 'unsupported_manufacturer'
-  | 'provider_not_configured'
-  | 'other';
+/** Failure classes are the standard M-SOURCE adapter failure codes (one vocabulary everywhere). */
+export type FailureClass = AdapterFailureCode;
 
 export interface BlockedAccess {
   url: string;
   reason:
     | 'not_registered'
     | 'registry_not_approved'
-    | 'terms_prohibit_automation'
-    | 'terms_unknown'
+    /** The policy dimension for the activity is NOT_ALLOWED (detail names the dimension). */
+    | 'policy_not_allowed'
+    /** The policy dimension is UNKNOWN: no automation until evidence decides it. */
+    | 'policy_unknown'
+    /** The policy dimension requires the rights holder's permission. */
+    | 'permission_required'
     | 'robots_disallow'
     | 'not_https'
     | 'http_error'
@@ -137,6 +97,14 @@ export interface DiscoveryOutcome {
   leads: SourceLead[];
   blocked: BlockedAccess[];
   userActions?: UserSourceAction[];
+  /** Per source system: why it produced no document (standard adapter failure codes). */
+  failures?: {
+    sourceSystemId: string;
+    adapter: string;
+    priority: number;
+    code: AdapterFailureCode;
+    detail: string;
+  }[];
   /** e.g. "web search provider not configured". */
   notes: string[];
 }
@@ -160,7 +128,7 @@ export type Http = (url: string, opts?: { maxBytes?: number }) => Promise<HttpRe
 
 export interface DiscoveryContext {
   http: Http;
-  registry: readonly SourceRegistryEntry[];
+  registry: readonly SourceSystem[];
   aliases: Record<string, string>;
   /** Treat 'proposed' registry entries as approved (evaluation only — never in the app). */
   assumeProposedApproved?: boolean;
@@ -198,7 +166,8 @@ export interface AcquiredDocument {
   sha256: string;
   format: 'pdf' | 'html';
   bytes: Uint8Array;
-  registryEntry: SourceRegistryEntry | null;
+  /** The source system of the final host (null for user uploads). */
+  system: SourceSystem | null;
 }
 
 /** Text port: PDF (pdfjs, server/tooling side) and HTML readers produce positioned lines. */
@@ -266,13 +235,21 @@ export interface VehicleRunTrace {
     format: string;
     host: string;
     authority: string;
-    registryStatus: RegistryStatus | 'unregistered';
+    sourceSystemId: string | null;
+    registryStatus: SourceStatus | 'unregistered';
     profile: DocumentProfile | null;
     vehicleMatch: 'exact' | 'unresolved' | 'mismatch';
     unresolved: string[];
     sections: MaintenanceSection[];
     extracted: number;
     grounded: number;
+    /** Document version at this URL (1 = first seen) and whether its bytes changed. */
+    version?: number;
+    versionStatus?: 'first' | 'unchanged' | 'new_version';
+    /** Unchanged document already turned into verified knowledge: not extracted again. */
+    reused?: boolean;
+    /** A private upload identical to this known official document version. */
+    officialMatch?: string;
     failure?: FailureClass;
     failureDetail?: string;
   }[];

@@ -151,11 +151,12 @@ export function profileDocument(
     .map((p) => p.text)
     .join('\n');
   const title = doc.lead.title ?? '';
-  const entry = doc.registryEntry;
+  const system = doc.system;
 
-  // Markets: stated by the document's front matter, else the publishing host's default.
+  // Markets: stated by the document's front matter, else the Israeli system's own market (an
+  // importer publishes for Israel). A global system's document has no default market.
   const stated = MARKET_PATTERNS.filter(([, re]) => re.test(head)).map(([m]) => m);
-  const markets = stated.length ? stated : (entry?.defaultDocumentMarkets ?? []);
+  const markets = stated.length ? stated : system?.origin === 'israeli' ? ['IL'] : [];
   const marketBasis = stated.length ? 'document_text' : markets.length ? 'host_default' : 'unknown';
 
   const km = (all.match(/\bkm\b|\bkilomet(er|re)s?\b|ק"מ/gi) ?? []).length;
@@ -203,12 +204,12 @@ export function profileDocument(
 
   return {
     type: documentType(pages, title),
-    authority: !entry
+    authority: !system
       ? 'vehicle_document'
-      : entry.role === 'importer'
+      : system.authorityClass === 'importer'
         ? 'importer'
         : 'manufacturer',
-    manufacturer: entry?.manufacturers.length === 1 ? entry.manufacturers[0] : undefined,
+    manufacturer: system?.manufacturers.length === 1 ? system.manufacturers[0] : undefined,
     models: named ? [v.model] : [],
     modelVariants: mention.variants,
     yearFrom,

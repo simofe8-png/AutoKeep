@@ -46,7 +46,9 @@ create table public.knowledge_documents (
   updated_at timestamptz not null,
   server_updated_at timestamptz not null default now(),
   foreign key (vehicle_id, owner_id) references public.vehicles(id, owner_id) on delete cascade,
-  foreign key (document_id, owner_id) references public.documents(id, owner_id) on delete cascade
+  foreign key (document_id, owner_id) references public.documents(id, owner_id) on delete cascade,
+  -- Target of the owner-scoped claim FK below (M-SOURCE review 2026-09-30).
+  unique (id, owner_id)
 );
 create index knowledge_documents_vehicle on public.knowledge_documents(vehicle_id);
 
@@ -54,7 +56,7 @@ create table public.maintenance_claims (
   id uuid primary key,
   owner_id uuid not null default auth.uid(),
   vehicle_id uuid not null,
-  knowledge_document_id uuid not null references public.knowledge_documents(id) on delete cascade,
+  knowledge_document_id uuid not null,
   task text not null,
   task_text text,
   action text not null check (action in ('inspection','replacement','adjustment','other')),
@@ -69,9 +71,14 @@ create table public.maintenance_claims (
   created_at timestamptz not null,
   updated_at timestamptz not null,
   server_updated_at timestamptz not null default now(),
-  foreign key (vehicle_id, owner_id) references public.vehicles(id, owner_id) on delete cascade
+  foreign key (vehicle_id, owner_id) references public.vehicles(id, owner_id) on delete cascade,
+  -- Owner-scoped: a claim can only cite the SAME owner's document (M-SOURCE review 2026-09-30;
+  -- the earlier single-column FK let a user link another owner's document id).
+  foreign key (knowledge_document_id, owner_id)
+    references public.knowledge_documents(id, owner_id) on delete cascade
 );
 create index maintenance_claims_vehicle on public.maintenance_claims(vehicle_id);
+create index maintenance_claims_document on public.maintenance_claims(knowledge_document_id);
 
 do $$
 declare t text;
