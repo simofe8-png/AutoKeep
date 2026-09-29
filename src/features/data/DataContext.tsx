@@ -60,6 +60,8 @@ export interface VehicleDetailsInput {
   modelCode?: string;
   /** Set only from a high-confidence registry rule at onboarding. */
   exteriorPhase?: ExteriorPhase;
+  /** Registry first-registration month ("YYYY-MM"). */
+  firstRegistration?: string;
 }
 
 /** The original document a service record rests on (stored together with the record). */
@@ -136,6 +138,13 @@ export interface AppDataValue {
   /** Vehicles whose image prompt was answered "not now" / "not sure" on this device. */
   imagePromptDismissed: Record<string, boolean>;
   setImagePromptDismissed: (vehicleId: string, dismissed: boolean) => void;
+  /** Owner answers that resolve maintenance applicability (null = "I don't know"). */
+  setMaintenanceAnswers: (
+    vehicleId: string,
+    answers: { serviceRegime?: string | null; usage?: 'normal' | 'severe' | null },
+  ) => void;
+  /** Marks a stored document as this vehicle's maintenance booklet (owner-confirmed, unverified). */
+  registerMaintenanceBooklet: (vehicleId: string, documentId: string) => void;
   /** Stores a user-provided vehicle photo (device-local). */
   setVehiclePhoto: (vehicleId: string, file: AcquiredFile) => void;
   network: NetworkMode;

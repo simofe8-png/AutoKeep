@@ -245,6 +245,9 @@ export function PrototypeDataProvider({
       imagePromptDismissed: {},
       setImagePromptDismissed: () => undefined,
       setVehiclePhoto: () => undefined,
+      // Prototype: the evidence-based plan is not simulated.
+      setMaintenanceAnswers: () => undefined,
+      registerMaintenanceBooklet: () => undefined,
       network,
       setNetwork,
       account,

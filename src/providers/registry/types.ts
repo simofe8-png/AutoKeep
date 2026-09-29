@@ -20,6 +20,8 @@ export interface RegistryVehicle extends VehicleVariant {
   modelCode?: string;
   /** Exterior phase, only when a HIGH-confidence registry rule establishes it. */
   exteriorPhase?: ExteriorPhase;
+  /** First registration on the road (`moed_aliya_lakvish`), month precision: "YYYY-MM". */
+  firstRegistration?: string;
   /** Dataset the record came from (for provenance). */
   dataset: string;
 }

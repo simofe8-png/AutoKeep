@@ -17,8 +17,15 @@ import {
   type Vehicle,
   type VehicleDocument,
   maskVin,
+  type CandidateClaim,
+  type MaintenanceRequirement,
+  requirementFromClaim,
 } from '@/domain';
 import type { AlertCandidate } from '@/engine/alerts';
+import { knownRequirements } from '@/features/maintenance/knowledge/knownSources';
+import { buildMaintenancePlan } from '@/features/maintenance/knowledge/plan';
+import { toPlanVM } from '@/features/maintenance/knowledge/planVM';
+import type { MaintenanceProfile, StoredKnowledgeDocument } from '@/persistence';
 import type { EngineResult, ItemDue } from '@/engine/maintenance';
 import { formatDate, formatKm } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
@@ -57,6 +64,10 @@ export interface VehicleRecords {
   alerts: Alert[];
   garageRecommendations: GarageRecommendation[];
   deferred: DeferredItem[];
+  /** Maintenance knowledge (local-only, migration v6). */
+  maintenanceProfile?: MaintenanceProfile | null;
+  knowledgeDocuments?: StoredKnowledgeDocument[];
+  claims?: CandidateClaim[];
 }
 
 // ---------- T103: vehicle / home ----------
@@ -394,6 +405,54 @@ export function matchAlerts(
   });
 }
 
+// ---------- evidence-based maintenance plan (requirement engine) ----------
+
+/**
+ * Requirements for this vehicle: the known sources' claims plus the vehicle's own document claims
+ * (converted by the deterministic trust rules — an unreviewed claim never verifies).
+ */
+export function vehicleRequirements(rec: VehicleRecords): MaintenanceRequirement[] {
+  const docs = new Map((rec.knowledgeDocuments ?? []).map((d) => [d.id, d]));
+  const own = (rec.claims ?? []).flatMap((c) => {
+    const doc = docs.get(c.documentId);
+    return doc ? [requirementFromClaim(c, doc)] : [];
+  });
+  return [...knownRequirements(), ...own];
+}
+
+export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
+  const v = rec.vehicle;
+  const p = rec.maintenanceProfile ?? null;
+  const plan = buildMaintenancePlan({
+    vehicle: {
+      id: v.id,
+      kind: v.type,
+      manufacturer: v.identity.manufacturer,
+      model: v.identity.model,
+      year: v.identity.year,
+      engine: v.identity.engine,
+      engineCode: v.identity.engineCode,
+      fuel: v.identity.fuel,
+    },
+    profile: p
+      ? { inServiceDate: p.inService?.date ?? null, serviceRegime: p.serviceRegime, usage: p.usage }
+      : null,
+    requirements: vehicleRequirements(rec),
+    history: rec.history.map((e) => ({
+      id: e.id,
+      date: e.date,
+      odometerKm: e.odometerKm,
+      actions: e.actions.map((a) => ({
+        performed: a.performed,
+        maintenanceItemId: a.maintenanceItemId,
+      })),
+    })),
+    readings: rec.readings.map((r) => ({ date: r.measuredAt, km: r.valueKm })),
+    today,
+  });
+  return toPlanVM(plan, (rec.knowledgeDocuments ?? []).length > 0);
+}
+
 // ---------- the full bundle ----------
 
 export function toBundle(
@@ -413,6 +472,7 @@ export function toBundle(
       .map(({ alert, candidate }) => toAlertVM(alert, candidate, ctx)),
     garageRecommendations: rec.garageRecommendations.map(toGarageRecommendationVM),
     deferred: rec.deferred.map((d) => toDeferredVM(d, rec.schedule)),
+    plan: maintenancePlanVM(rec, today),
     readings: rec.readings.map((r) => ({
       id: r.id,
       date: r.measuredAt,

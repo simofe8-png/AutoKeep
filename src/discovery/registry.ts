@@ -32,4 +32,7 @@ export const MANUFACTURER_ALIASES: ManufacturerAliases = {
   סקודה: 'skoda',
   פולקסווגן: 'volkswagen',
   'סאן יאנג': 'sym',
+  // Acceptance vehicles of the maintenance run (registry spellings, e.g. "סיאט ספרד").
+  סיאט: 'seat',
+  פורד: 'ford',
 };

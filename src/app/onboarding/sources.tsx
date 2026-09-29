@@ -240,6 +240,7 @@ export default function OnboardingSources() {
         vin: draft.vin,
         modelCode: draft.modelCode,
         exteriorPhase: draft.exteriorPhase,
+        firstRegistration: draft.firstRegistration,
       },
       plan,
     );

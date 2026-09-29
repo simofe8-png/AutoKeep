@@ -40,6 +40,7 @@ const UI_FIELD: Record<string, DraftField | undefined> = {
   color: 'color',
   modelCode: 'modelCode',
   exteriorPhase: 'exteriorPhase',
+  firstRegistration: 'firstRegistration',
   vin: 'vin',
 };
 
@@ -60,6 +61,10 @@ export function toOnboardingDraft(d: IdentificationDraft): {
       draft.year = n;
     } else if (f === 'kind') {
       draft.kind = v.value as VehicleKind;
+    } else if (f === 'firstRegistration') {
+      // A registry fact only (month precision); never typed by hand here.
+      if (v.origin !== 'registry') continue;
+      draft.firstRegistration = v.value;
     } else if (f === 'exteriorPhase') {
       // Only a registry fact (high-confidence rule) may set the exterior phase at onboarding.
       if (v.origin !== 'registry') continue;

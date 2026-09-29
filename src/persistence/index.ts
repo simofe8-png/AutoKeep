@@ -5,3 +5,4 @@ export * from './repositories/base';
 export * from './repositories/vehicles';
 export * from './repositories/records';
 export * as lifecycle from './lifecycle';
+export * from './repositories/maintenance';

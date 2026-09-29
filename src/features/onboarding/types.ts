@@ -18,10 +18,12 @@ export interface VehicleDraft {
   modelCode?: string;
   /** Exterior phase from a high-confidence registry rule only (never entered by hand here). */
   exteriorPhase?: ExteriorPhase;
+  /** First registration month from the registry ("YYYY-MM"); drives time-based maintenance. */
+  firstRegistration?: string;
 }
 
 /** Registry facts that are not form fields but must travel with the draft. */
-export const HIDDEN_REGISTRY_FIELDS = ['modelCode', 'exteriorPhase'] as const;
+export const HIDDEN_REGISTRY_FIELDS = ['modelCode', 'exteriorPhase', 'firstRegistration'] as const;
 
 export type DraftField = keyof VehicleDraft;
 

@@ -354,6 +354,9 @@ export function LocalDataProvider({
       setImagePromptDismissed: (vid, dismissed) =>
         write((s) => s.setImagePromptDismissed(vid, dismissed)),
       setVehiclePhoto: (vid, file) => write((s) => s.setVehiclePhoto(vid, file)),
+      setMaintenanceAnswers: (vid, answers) => write((s) => s.setMaintenanceAnswers(vid, answers)),
+      registerMaintenanceBooklet: (vid, did) =>
+        write((s) => s.registerMaintenanceBooklet(vid, did)),
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
       // Reads of the original go straight to the store (no snapshot change).
       getOriginal: (vid, did) =>

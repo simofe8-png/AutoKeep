@@ -161,6 +161,14 @@ export class DataGovIlRegistry implements VehicleRegistryProvider {
   }
 }
 
+/** "2012-1" / "2012-01" → "2012-01"; anything else → undefined (never guessed). */
+function registrationMonthIso(v: string | undefined): string | undefined {
+  const m = v?.trim().match(/^(\d{4})-(\d{1,2})$/);
+  if (!m) return undefined;
+  const month = Number(m[2]);
+  return month >= 1 && month <= 12 ? `${m[1]}-${String(month).padStart(2, '0')}` : undefined;
+}
+
 function mapCar(r: Json): RegistryVehicle {
   const manufacturer = str(r.tozar) ?? manufacturerName(r.tozeret_nm, r.tozeret_eretz_nm) ?? '';
   const modelCode = str(r.degem_nm)?.toUpperCase();
@@ -187,6 +195,7 @@ function mapCar(r: Json): RegistryVehicle {
     fuel: str(r.sug_delek_nm) ?? str(r.delek_nm),
     color: str(r.tzeva_rechev),
     vin: str(r.misgeret),
+    firstRegistration: registrationMonthIso(str(r.moed_aliya_lakvish)),
     dataset: r.from_catalog ? PACKAGES.modelCatalog : PACKAGES.cars,
   };
 }

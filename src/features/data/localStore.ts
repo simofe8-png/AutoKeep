@@ -30,6 +30,9 @@ import {
   type Vehicle,
   type VehicleDocument,
   type VehicleId,
+  confirmOwnership,
+  documentFromUpload,
+  type UsageCondition,
 } from '@/domain';
 import { alertCandidates, planAlerts, type AlertCandidate } from '@/engine/alerts';
 import { computeMaintenance, type EngineResult } from '@/engine/maintenance';
@@ -58,6 +61,7 @@ import {
   SourceRepository,
   VehicleRepository,
   type SqlDatabase,
+  MaintenanceKnowledgeRepository,
 } from '@/persistence';
 
 import type { SourcePlan } from '@/features/sources/sourceService';
@@ -135,6 +139,8 @@ export interface VehicleDetails {
   modelCode?: string;
   /** Set only from a high-confidence registry rule at onboarding. */
   exteriorPhase?: ExteriorPhase;
+  /** Registry first-registration month ("YYYY-MM"), kept in the vehicle's maintenance profile. */
+  firstRegistration?: string;
 }
 
 export class DomainError extends Error {
@@ -209,6 +215,9 @@ export class LocalStore {
       alerts: await new AlertRepository(this.db).list(id),
       garageRecommendations: await new GarageRecommendationRepository(this.db).list(id),
       deferred: await new DeferredItemRepository(this.db).listOpen(id),
+      maintenanceProfile: await new MaintenanceKnowledgeRepository(this.db).profile(id),
+      knowledgeDocuments: await new MaintenanceKnowledgeRepository(this.db).documents(id),
+      claims: await new MaintenanceKnowledgeRepository(this.db).claims(id),
     };
   }
 
@@ -397,6 +406,21 @@ export class LocalStore {
           ),
         );
         await new OdometerRepository(tx).add(reading);
+      }
+      // The registry's first-registration month drives time-based maintenance (day unknown).
+      const firstReg = details.firstRegistration?.match(/^(\d{4})-(\d{2})$/);
+      if (firstReg) {
+        await new MaintenanceKnowledgeRepository(tx).saveProfile(
+          vehicle.id,
+          {
+            inService: {
+              date: `${firstReg[1]}-${firstReg[2]}-01` as IsoDate,
+              precision: 'month',
+              source: 'registry',
+            },
+          },
+          now,
+        );
       }
       // T170: the official source found during onboarding — retrieved original, its provenance,
       // and the schedule (verification DECIDED by the domain from the evidence, never assumed).
@@ -888,6 +912,53 @@ export class LocalStore {
       }
     }
     return { uri: this.files.uriFor(key), mimeType: doc.original.mimeType, integrity };
+  }
+
+  // ---------- maintenance knowledge (owner run 2026-09-29) ----------
+
+  /** The owner's answers that resolve a requirement's applicability (unknown = null). */
+  async setMaintenanceAnswers(
+    vehicleId: string,
+    answers: { serviceRegime?: string | null; usage?: UsageCondition | null },
+  ): Promise<void> {
+    const vehicle = await new VehicleRepository(this.db).get(vehicleId as VehicleId);
+    if (!vehicle) throw new Error('Vehicle not found');
+    const regime = answers.serviceRegime?.trim().toUpperCase();
+    await new MaintenanceKnowledgeRepository(this.db).saveProfile(
+      vehicle.id,
+      {
+        ...(answers.serviceRegime !== undefined ? { serviceRegime: regime || null } : {}),
+        ...(answers.usage !== undefined ? { usage: answers.usage } : {}),
+      },
+      this.clock.now(),
+    );
+  }
+
+  /**
+   * The owner marks a stored document as this vehicle's maintenance booklet. It becomes a
+   * vehicle-scoped knowledge document — confirmed by the owner, NOT verified: its content only
+   * counts after a professional review of the edition (docs/release/MAINTENANCE_M1.md).
+   */
+  async registerMaintenanceBooklet(vehicleId: string, documentId: string): Promise<void> {
+    const doc = await new DocumentRepository(this.db).get(
+      vehicleId as VehicleId,
+      documentId as VehicleDocument['id'],
+    );
+    if (!doc) throw new Error('Document not found for this vehicle');
+    const repo = new MaintenanceKnowledgeRepository(this.db);
+    if ((await repo.documents(doc.vehicleId)).some((d) => d.documentId === doc.id)) return;
+    const k = confirmOwnership(
+      documentFromUpload({
+        id: this.ids.next(),
+        vehicleId: doc.vehicleId,
+        title: doc.title,
+        sha256: doc.original.sha256,
+        pageCount: doc.original.pageCount,
+        claimedAuthority: 'vehicle_document',
+      }),
+      this.clock.today(),
+    );
+    await repo.addDocument({ ...k, vehicleId: doc.vehicleId }, doc.id, this.clock.now());
   }
 
   async openOriginal(vehicleId: string, documentId: string): Promise<boolean> {

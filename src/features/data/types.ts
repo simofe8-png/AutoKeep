@@ -157,7 +157,52 @@ export interface OdometerReadingVM {
   source: 'user' | 'onboarding' | 'service_event' | 'document';
 }
 
+/** One maintenance task of the vehicle's evidence-based plan (requirement engine). */
+export interface PlanItemVM {
+  task: string;
+  title: string;
+  actionType: ActionType;
+  actionLabel: string;
+  intervalText: string;
+  nextKm?: number;
+  nextDate?: string;
+  remainingKm?: number;
+  remainingDays?: number;
+  /** Driving-rate forecast date — always rendered as צפי. */
+  forecastDate?: string;
+  state: 'ok' | 'upcoming' | 'due' | 'overdue';
+  /** Missing history is shown as such, never as a skipped service. */
+  fromNew: boolean;
+  lastDone?: { date: string; km: number };
+  source: SourceRefVM;
+  /** Links a recorded service action to this task on this vehicle. */
+  completionId: string;
+}
+
+export type PlanRequestVM =
+  | { kind: 'upload_booklet'; hint: 'seat_maintenance_programme' | 'ford_service_plan' | 'generic' }
+  | {
+      kind: 'service_regime';
+      hint: 'seat_maintenance_programme' | 'ford_service_plan' | 'generic';
+    }
+  | { kind: 'usage' }
+  | { kind: 'engine_code' }
+  | { kind: 'in_service_date' }
+  | { kind: 'odometer' }
+  | { kind: 'awaiting_verification'; sources: { title: string; publishedOn?: string }[] };
+
+export interface MaintenancePlanVM {
+  status: 'ready' | 'partial' | 'needs_information';
+  items: PlanItemVM[];
+  next: PlanItemVM[];
+  requests: PlanRequestVM[];
+  /** A maintenance booklet was uploaded for this vehicle (awaiting professional review). */
+  bookletUploaded: boolean;
+}
+
 export interface VehicleDataBundle {
+  /** Evidence-based plan from the requirement engine (absent in prototype bundles). */
+  plan?: MaintenancePlanVM;
   schedule: ScheduleVM;
   history: ServiceEventVM[];
   documents: DocumentVM[];

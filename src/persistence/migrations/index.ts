@@ -198,4 +198,65 @@ ALTER TABLE vehicles ADD COLUMN exterior_phase TEXT;
 ALTER TABLE vehicles ADD COLUMN exterior_phase_source TEXT;
 `,
   },
+  {
+    // Maintenance knowledge (owner run 2026-09-29, docs/release/MAINTENANCE_M1.md). LOCAL-ONLY
+    // tables: they are not in SYNC_TABLES, so nothing reaches the cloud until the prepared cloud
+    // migration is approved and applied. Completions link to requirements through the existing,
+    // synced service_actions.maintenance_item_id (a deterministic id per vehicle + task).
+    version: 6,
+    name: 'maintenance_knowledge',
+    up: `
+CREATE TABLE maintenance_profiles (
+  vehicle_id TEXT PRIMARY KEY REFERENCES vehicles(id) ON DELETE CASCADE,
+  in_service_date TEXT,
+  in_service_precision TEXT CHECK (in_service_precision IN ('day','month')),
+  in_service_source TEXT CHECK (in_service_source IN ('registry','user')),
+  service_regime TEXT,
+  usage TEXT CHECK (usage IN ('normal','severe')),
+  updated_at TEXT NOT NULL
+);
+
+CREATE TABLE knowledge_documents (
+  id TEXT PRIMARY KEY,
+  vehicle_id TEXT NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
+  document_id TEXT REFERENCES documents(id) ON DELETE CASCADE,
+  origin TEXT NOT NULL CHECK (origin IN ('user_upload','official_download','catalog_edition')),
+  title TEXT NOT NULL,
+  authority TEXT NOT NULL,
+  markets_json TEXT NOT NULL,
+  edition TEXT,
+  published_on TEXT,
+  sha256 TEXT NOT NULL,
+  page_count INTEGER,
+  authenticity TEXT NOT NULL
+    CHECK (authenticity IN ('unconfirmed','owner_confirmed','matched_official_edition','curator_verified')),
+  owner_confirmed_at TEXT,
+  rights TEXT NOT NULL CHECK (rights IN ('none','structured_facts_only','redistributable')),
+  excerpt_policy TEXT NOT NULL CHECK (excerpt_policy IN ('none','short_allowed')),
+  coverage_json TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+CREATE INDEX idx_knowledge_documents_vehicle ON knowledge_documents(vehicle_id);
+
+CREATE TABLE maintenance_claims (
+  id TEXT PRIMARY KEY,
+  vehicle_id TEXT NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
+  knowledge_document_id TEXT NOT NULL REFERENCES knowledge_documents(id) ON DELETE CASCADE,
+  task TEXT NOT NULL,
+  task_text TEXT,
+  action TEXT NOT NULL CHECK (action IN ('inspection','replacement','adjustment','other')),
+  interval_json TEXT NOT NULL,
+  applicability_json TEXT NOT NULL,
+  locator_json TEXT NOT NULL,
+  excerpt TEXT,
+  extraction_json TEXT NOT NULL,
+  status TEXT NOT NULL CHECK (status IN ('candidate','accepted','rejected')),
+  review_json TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+CREATE INDEX idx_maintenance_claims_vehicle ON maintenance_claims(vehicle_id);
+`,
+  },
 ];

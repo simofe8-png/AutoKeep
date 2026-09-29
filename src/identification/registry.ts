@@ -32,6 +32,7 @@ export function applyRegistry(draft: IdentificationDraft, v: RegistryVehicle): I
   set('color', v.color);
   set('modelCode', v.modelCode);
   set('exteriorPhase', v.exteriorPhase);
+  set('firstRegistration', v.firstRegistration);
   set('vin', v.vin);
   return next;
 }
