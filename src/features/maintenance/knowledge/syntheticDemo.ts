@@ -6,7 +6,12 @@ import { isoDate, type MaintenanceRequirement, type TaskCode } from '@/domain';
  * hand-entered make "SYNTHETIC TEST". The numbers are invented and labelled on screen as test
  * data; they are not manufacturer requirements and never apply to a real vehicle.
  */
-export const SYNTHETIC_MAINTENANCE = process.env.EXPO_PUBLIC_SYNTHETIC_MAINTENANCE === '1';
+let enabled = false;
+
+/** Switched on only by the data source when EXPO_PUBLIC_SYNTHETIC_MAINTENANCE=1 (dev bundles). */
+export function enableSyntheticMaintenance(on: boolean): void {
+  enabled = on;
+}
 
 const TITLE = 'נתוני בדיקה סינתטיים — לא דרישת יצרן';
 
@@ -39,7 +44,7 @@ function rule(
 }
 
 export function syntheticDemoRequirements(): MaintenanceRequirement[] {
-  if (!SYNTHETIC_MAINTENANCE) return [];
+  if (!enabled) return [];
   return [
     rule('periodic_service', 'other', {
       every: { value: 11111, unit: 'km' },

@@ -138,7 +138,7 @@ export default function HomeScreen() {
           />
         ) : plan && plan.items.length === 0 ? (
           <StatusCard
-            testID="home-plan-needs-information"
+            testID="schedule-unavailable"
             tone="warning"
             icon="clipboard-alert-outline"
             title={he.maintenancePlan.needInfoTitle}

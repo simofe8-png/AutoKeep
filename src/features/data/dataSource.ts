@@ -22,6 +22,7 @@ import { netInfoNetwork } from '@/providers/network/netInfoNetwork';
 import type { NetworkMonitor } from '@/providers/network/types';
 import type { DocumentExporter } from '@/providers/export/types';
 import { DataGovIlRegistry } from '@/providers/registry/dataGovIl';
+import { enableSyntheticMaintenance } from '@/features/maintenance/knowledge/syntheticDemo';
 import { localLicenseOcr } from '@/providers/ocr/localLicenseOcr';
 import { SupabaseReferenceCatalog } from '@/providers/referenceImages/supabaseCatalog';
 import type { ReferenceImageCatalog } from '@/providers/referenceImages/types';
@@ -123,6 +124,9 @@ const production: DataSourceConfig = {
     invoiceReader: null,
   },
 };
+
+// Device-acceptance test data only (dev bundle flag); never set in normal builds.
+enableSyntheticMaintenance(process.env.EXPO_PUBLIC_SYNTHETIC_MAINTENANCE === '1');
 
 let override: DataSourceConfig | null = null;
 
