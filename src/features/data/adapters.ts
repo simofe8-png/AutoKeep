@@ -78,6 +78,8 @@ export function toVehicleSummary(v: Vehicle, latest: OdometerReading | null): Ve
     engineCode: v.identity.engineCode,
     fuel: v.identity.fuel,
     color: v.identity.color,
+    exteriorPhase: v.identity.exteriorPhase,
+    exteriorPhaseSource: v.identity.exteriorPhaseSource,
     vinMasked: v.vin ? maskVin(v.vin) : undefined,
   };
 }

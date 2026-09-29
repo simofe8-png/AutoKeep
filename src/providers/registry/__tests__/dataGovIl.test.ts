@@ -165,6 +165,36 @@ describe('data.gov.il registry provider (ADR-0012)', () => {
     expect(engineLiters('1ZR')).toBeNull();
   });
 
+  it('model code and a high-confidence exterior phase come with the record (never guessed)', async () => {
+    const row = (extra: Record<string, unknown>) => ({
+      ...carRow,
+      tozeret_nm: 'סיאט ספרד',
+      kinuy_mishari: 'IBIZA',
+      degem_nm: '6J52E4',
+      shnat_yitzur: 2012,
+      degem_cd: 26,
+      ...extra,
+    });
+    const lookup = async (r: Record<string, unknown>) => {
+      const api = fakeApi({ records: { [RES.carsMain]: [r] } });
+      const res = await new DataGovIlRegistry({ get: api.get }).lookup(plate('23-456-78'), {
+        consent: true,
+      });
+      return res.status === 'found' ? res.candidates[0] : null;
+    };
+    // First batch (registered Jan 2012) → pre-facelift.
+    expect(await lookup(row({ moed_aliya_lakvish: '2012-1' }))).toMatchObject({
+      modelCode: '6J52E4',
+      exteriorPhase: 'pre-fl',
+    });
+    // Registered Aug 2012 → ambiguous: no phase.
+    const ambiguous = await lookup(
+      row({ moed_aliya_lakvish: '2012-8', misgeret: 'VSSZZZ6JZCR122118' }),
+    );
+    expect(ambiguous?.modelCode).toBe('6J52E4');
+    expect(ambiguous?.exteriorPhase).toBeUndefined();
+  });
+
   it('a named record wins over a supplementary code-only row of the same plate (A54 finding)', async () => {
     // Same plate in the main resource (named) and the tires/towing resource (codes only):
     // catalog variants of other years must not be offered.

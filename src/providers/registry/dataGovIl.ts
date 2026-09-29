@@ -1,5 +1,6 @@
 import type { RegistrationNumber, VehicleType } from '@/domain';
 import { recognizeType } from '@/identification/engine';
+import { exteriorPhaseFromRegistry } from '@/identification/vehicleClass';
 
 import type { RegistryLookup, RegistryVehicle, VehicleRegistryProvider } from './types';
 
@@ -161,9 +162,21 @@ export class DataGovIlRegistry implements VehicleRegistryProvider {
 }
 
 function mapCar(r: Json): RegistryVehicle {
+  const manufacturer = str(r.tozar) ?? manufacturerName(r.tozeret_nm, r.tozeret_eretz_nm) ?? '';
+  const modelCode = str(r.degem_nm)?.toUpperCase();
   return {
     type: 'car',
-    manufacturer: str(r.tozar) ?? manufacturerName(r.tozeret_nm, r.tozeret_eretz_nm) ?? '',
+    manufacturer,
+    modelCode,
+    exteriorPhase:
+      exteriorPhaseFromRegistry({
+        manufacturer,
+        modelCode,
+        homologationCode: num(r.degem_cd),
+        productionYear: num(r.shnat_yitzur),
+        firstRegistration: str(r.moed_aliya_lakvish),
+        vin: str(r.misgeret),
+      }) ?? undefined,
     model: str(r.kinuy_mishari) ?? str(r.degem_nm) ?? '',
     year: num(r.shnat_yitzur) ?? 0,
     trim: str(r.ramat_gimur),

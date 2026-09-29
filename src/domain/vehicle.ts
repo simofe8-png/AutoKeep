@@ -83,7 +83,16 @@ export interface VehicleIdentity {
   transmission?: string;
   /** Body color as stated by the user or the registry. Never inferred. */
   color?: string;
+  /**
+   * Which exterior of the generation the vehicle has (pre-facelift / facelift). Set only by a
+   * high-confidence registry rule or by the user's visual confirmation; absent = unknown.
+   */
+  exteriorPhase?: ExteriorPhase;
+  exteriorPhaseSource?: 'registry' | 'user';
 }
+
+export type ExteriorPhase = 'pre-fl' | 'fl1' | 'fl2';
+export const EXTERIOR_PHASES: readonly ExteriorPhase[] = ['pre-fl', 'fl1', 'fl2'];
 
 /** Engine code: letters/digits with optional separators, stored upper-case. Null = invalid. */
 export function parseEngineCode(raw: string): string | null {
@@ -170,6 +179,8 @@ export interface VehicleDetailsPatch {
   color?: string;
   engineCode?: string;
   engine?: string;
+  /** The user's visual confirmation of the exterior; null = "not sure" (clears it). */
+  exteriorPhase?: ExteriorPhase | null;
 }
 
 export function updateVehicleDetails(
@@ -190,12 +201,19 @@ export function updateVehicleDetails(
       (color?.length ?? 0) > MAX_COLOR_LENGTH &&
         issue('vehicle.color', 'Color is too long', 'color'),
       (engine?.length ?? 0) > 60 && issue('vehicle.engine', 'Engine is too long', 'engine'),
+      patch.exteriorPhase != null &&
+        !EXTERIOR_PHASES.includes(patch.exteriorPhase) &&
+        issue('vehicle.exteriorPhase', 'Unknown exterior phase', 'exteriorPhase'),
     ],
     () => {
       const identity = { ...v.identity };
       if (color !== undefined) identity.color = color || undefined;
       if (code !== undefined) identity.engineCode = parsedCode ?? undefined;
       if (engine !== undefined) identity.engine = engine || undefined;
+      if (patch.exteriorPhase !== undefined) {
+        identity.exteriorPhase = patch.exteriorPhase ?? undefined;
+        identity.exteriorPhaseSource = patch.exteriorPhase ? 'user' : undefined;
+      }
       return { ...v, identity, ...touch(v, now) };
     },
   );

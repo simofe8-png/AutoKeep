@@ -1,4 +1,4 @@
-import type { RegistrationNumber } from '@/domain';
+import type { ExteriorPhase, RegistrationNumber } from '@/domain';
 import type { VehicleVariant } from '@/identification/engine';
 
 /**
@@ -16,6 +16,10 @@ export interface RegistryVehicle extends VehicleVariant {
   engineCode?: string;
   /** Body color as published (`tzeva_rechev`). */
   color?: string;
+  /** Registry model code (`degem_nm`, e.g. "6J52E4"): identifies generation and body. */
+  modelCode?: string;
+  /** Exterior phase, only when a HIGH-confidence registry rule establishes it. */
+  exteriorPhase?: ExteriorPhase;
   /** Dataset the record came from (for provenance). */
   dataset: string;
 }

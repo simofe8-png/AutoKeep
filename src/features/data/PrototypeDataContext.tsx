@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState, type ReactNode } from 'react';
 
-import { parseEngineCode } from '@/domain';
+import { parseEngineCode, type ExteriorPhase } from '@/domain';
 import { todayIso } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
 
@@ -66,7 +66,15 @@ export function PrototypeDataProvider({
   }, []);
 
   const updateVehicleDetails = useCallback(
-    (vehicleId: string, patch: { color?: string; engineCode?: string; engine?: string }) => {
+    (
+      vehicleId: string,
+      patch: {
+        color?: string;
+        engineCode?: string;
+        engine?: string;
+        exteriorPhase?: ExteriorPhase | null;
+      },
+    ) => {
       const set = (s: string | undefined, prev: string | undefined) =>
         s === undefined ? prev : s.trim() || undefined;
       setVehicles((prev) =>
@@ -80,6 +88,12 @@ export function PrototypeDataProvider({
                     ? v.engineCode
                     : (parseEngineCode(patch.engineCode) ?? undefined),
                 engine: set(patch.engine, v.engine),
+                ...(patch.exteriorPhase === undefined
+                  ? {}
+                  : {
+                      exteriorPhase: patch.exteriorPhase ?? undefined,
+                      exteriorPhaseSource: patch.exteriorPhase ? ('user' as const) : undefined,
+                    }),
               }
             : v,
         ),
@@ -227,6 +241,9 @@ export function PrototypeDataProvider({
       openOriginal: async () => false,
       // Prototype: no stored photos (the illustration is shown).
       vehiclePhotos: {},
+      removeVehiclePhoto: () => undefined,
+      imagePromptDismissed: {},
+      setImagePromptDismissed: () => undefined,
       setVehiclePhoto: () => undefined,
       network,
       setNetwork,

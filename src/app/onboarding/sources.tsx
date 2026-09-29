@@ -134,6 +134,9 @@ function toVehicle(
     engineCode: draft.engineCode,
     fuel: draft.fuel,
     color: draft.color,
+    modelCode: draft.modelCode,
+    exteriorPhase: draft.exteriorPhase,
+    exteriorPhaseSource: draft.exteriorPhase ? 'registry' : undefined,
   };
 }
 
@@ -235,6 +238,8 @@ export default function OnboardingSources() {
         fuel: draft.fuel,
         color: draft.color,
         vin: draft.vin,
+        modelCode: draft.modelCode,
+        exteriorPhase: draft.exteriorPhase,
       },
       plan,
     );

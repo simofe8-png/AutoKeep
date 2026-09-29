@@ -1,3 +1,4 @@
+import type { ExteriorPhase } from '@/domain';
 import type { RegistrationExtractor } from '@/identification/contract';
 import type { OcrProvider, StructuredExtractor } from '@/intelligence/ports';
 import type { IdentificationDraft } from '@/identification/engine';
@@ -37,6 +38,8 @@ const UI_FIELD: Record<string, DraftField | undefined> = {
   engineCode: 'engineCode',
   fuel: 'fuel',
   color: 'color',
+  modelCode: 'modelCode',
+  exteriorPhase: 'exteriorPhase',
   vin: 'vin',
 };
 
@@ -57,6 +60,10 @@ export function toOnboardingDraft(d: IdentificationDraft): {
       draft.year = n;
     } else if (f === 'kind') {
       draft.kind = v.value as VehicleKind;
+    } else if (f === 'exteriorPhase') {
+      // Only a registry fact (high-confidence rule) may set the exterior phase at onboarding.
+      if (v.origin !== 'registry') continue;
+      draft.exteriorPhase = v.value as ExteriorPhase;
     } else {
       draft[f] = v.value;
     }

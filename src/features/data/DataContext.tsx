@@ -1,3 +1,4 @@
+import type { ExteriorPhase } from '@/domain';
 import * as Crypto from 'expo-crypto';
 import { createContext, useContext } from 'react';
 
@@ -56,6 +57,9 @@ export interface VehicleDetailsInput {
   fuel?: string;
   color?: string;
   vin?: string;
+  modelCode?: string;
+  /** Set only from a high-confidence registry rule at onboarding. */
+  exteriorPhase?: ExteriorPhase;
 }
 
 /** The original document a service record rests on (stored together with the record). */
@@ -101,7 +105,13 @@ export interface AppDataValue {
   /** Corrects color / engine code / displacement ('' clears a field; absent keys unchanged). */
   updateVehicleDetails: (
     vehicleId: string,
-    patch: { color?: string; engineCode?: string; engine?: string },
+    patch: {
+      color?: string;
+      engineCode?: string;
+      engine?: string;
+      /** The user's visual confirmation of the exterior; null clears it. */
+      exteriorPhase?: ExteriorPhase | null;
+    },
   ) => void;
   archiveVehicle: (vehicleId: string) => void;
   restoreVehicle: (vehicleId: string) => void;
@@ -121,6 +131,11 @@ export interface AppDataValue {
   addGarageRecommendation: (rec: GarageRecommendationVM) => void;
   /** The user's own photo of a vehicle (viewable URI), if they added one. */
   vehiclePhotos: Record<string, string>;
+  /** Removes the user's own vehicle photo (the model reference image returns). */
+  removeVehiclePhoto: (vehicleId: string) => void;
+  /** Vehicles whose image prompt was answered "not now" / "not sure" on this device. */
+  imagePromptDismissed: Record<string, boolean>;
+  setImagePromptDismissed: (vehicleId: string, dismissed: boolean) => void;
   /** Stores a user-provided vehicle photo (device-local). */
   setVehiclePhoto: (vehicleId: string, file: AcquiredFile) => void;
   network: NetworkMode;

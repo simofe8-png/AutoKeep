@@ -174,6 +174,49 @@ describe('sync, backup and restore on another device', () => {
     });
   });
 
+  it('the exterior phase and its source travel together through sync and restore', async () => {
+    const a = await populatedWorld(sequentialIds(1), T0);
+    await a.db.run(
+      "UPDATE vehicles SET exterior_phase = 'pre-fl', exterior_phase_source = 'user', version = version + 1 WHERE id = ?",
+      [a.car.id],
+    );
+    const server = new MemoryServer();
+    await pushPending(a.db, server.transport(), now);
+    const b = await emptyDevice();
+    await pullChanges(b, server.transport(), now);
+    expect((await new VehicleRepository(b).get(a.car.id))?.identity).toMatchObject({
+      exteriorPhase: 'pre-fl',
+      exteriorPhaseSource: 'user',
+    });
+    // Merge keeps a phase with its own provenance (never one device's value + another's source).
+    const base = {
+      id: 'v',
+      exterior_phase: null,
+      exterior_phase_source: null,
+      updated_at: '1',
+      version: 1,
+    };
+    const r = mergeRows(
+      'vehicles',
+      base,
+      {
+        ...base,
+        exterior_phase: 'fl1',
+        exterior_phase_source: 'user',
+        updated_at: '3',
+        version: 2,
+      },
+      {
+        ...base,
+        exterior_phase: 'pre-fl',
+        exterior_phase_source: 'registry',
+        updated_at: '2',
+        version: 2,
+      },
+    );
+    expect([r.row.exterior_phase, r.row.exterior_phase_source]).toEqual(['fl1', 'user']);
+  });
+
   it('color set on one device and engine code on another are both kept', () => {
     const base = { id: 'v', color: null, engine_code: null, updated_at: '1', version: 1 };
     const r = mergeRows(

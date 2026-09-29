@@ -1,3 +1,4 @@
+import type { ExteriorPhase } from '@/domain';
 import type { VehicleKind } from '@/features/vehicles/types';
 
 export interface VehicleDraft {
@@ -13,7 +14,14 @@ export interface VehicleDraft {
   fuel?: string;
   color?: string;
   vin?: string;
+  /** Registry model code (e.g. "6J52E4"); not shown in the form, kept with registry origin. */
+  modelCode?: string;
+  /** Exterior phase from a high-confidence registry rule only (never entered by hand here). */
+  exteriorPhase?: ExteriorPhase;
 }
+
+/** Registry facts that are not form fields but must travel with the draft. */
+export const HIDDEN_REGISTRY_FIELDS = ['modelCode', 'exteriorPhase'] as const;
 
 export type DraftField = keyof VehicleDraft;
 

@@ -30,6 +30,8 @@ export function applyRegistry(draft: IdentificationDraft, v: RegistryVehicle): I
   set('engineCode', v.engineCode);
   set('fuel', v.fuel);
   set('color', v.color);
+  set('modelCode', v.modelCode);
+  set('exteriorPhase', v.exteriorPhase);
   set('vin', v.vin);
   return next;
 }

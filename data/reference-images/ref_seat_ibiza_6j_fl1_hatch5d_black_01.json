@@ -1,0 +1,84 @@
+{
+  "id": "ref_seat_ibiza_6j_fl1_hatch5d_black_01",
+  "classKey": "v1/seat/ibiza/6j/fl1/hatchback-5d/black",
+  "applicability": {
+    "make": "SEAT",
+    "model": "Ibiza",
+    "generation": "6J",
+    "phase": "fl1",
+    "body": "hatchback",
+    "doors": 5,
+    "years": [2012, 2017],
+    "colorFamily": "black",
+    "colorFinishInImage": "unknown",
+    "excludes": ["ST (estate)", "SC (3-door)", "Cupra/FR-specific bodywork"]
+  },
+  "source": {
+    "provider": "wikimedia-commons",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:2014_SEAT_Ibiza_Toca_1.4_Front.jpg",
+    "fileTitle": "File:2014 SEAT Ibiza Toca 1.4 Front.jpg",
+    "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f3/2014_SEAT_Ibiza_Toca_1.4_Front.jpg",
+    "originalSha256": "5e3743538eba32eb580d9f8c7882c2c5e93d775196b5e27abb40e0d380a39348",
+    "originalBytes": 4702008,
+    "width": 4364,
+    "height": 2446,
+    "retrievedAt": "2026-09-29T04:42:12Z",
+    "metadataSnapshot": {
+      "title": "File:2014 SEAT Ibiza Toca 1.4 Front.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:2014_SEAT_Ibiza_Toca_1.4_Front.jpg",
+      "author": "Vauxford",
+      "credit": "Own work",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attributionRequired": "true",
+      "copyrighted": "True",
+      "restrictions": "",
+      "usageTerms": "Creative Commons Attribution-Share Alike 4.0",
+      "dateOriginal": "2018-06-07 11:31:47",
+      "description": "2014 SEAT Ibiza Toca 1.4 Front Taken in Leamington Spa",
+      "uploader": "Vauxford",
+      "uploadedAt": "2018-06-08T17:10:48Z",
+      "commonsSha1": "fc72f93d50375342ae64a74ecca4b3a26a04f5eb"
+    },
+    "metadataSnapshotSha256": "af6ec82171d33759df12b15c63fcf016a3674b1fb4fc3010b00aeb400af87768"
+  },
+  "rights": {
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "author": "Vauxford",
+    "attributionRequired": true,
+    "commercialUseAllowed": true,
+    "adaptationsAllowed": true,
+    "shareAlike": true,
+    "noAdditionalRestrictions": true,
+    "trademarkNote": "CC licenses grant no trademark rights; the SEAT badge is shown unaltered (nominative depiction).",
+    "verifiedAt": "2026-09-29",
+    "verifiedBy": "AutoKeep operator (Claude, owner-directed)",
+    "evidence": [
+      "source.metadataSnapshot (Commons extmetadata)",
+      "source.pageUrl",
+      "rights.licenseUrl",
+      "original sha1 matched Commons"
+    ]
+  },
+  "derivative": {
+    "operations": ["background-removal", "crop", "resize (max 1400 px)"],
+    "tool": "rembg 2.0.69, model isnet-general-use, alpha matting, largest component",
+    "resultSha256": "d7b07d95d6eb0934cc6aff68ae70304a1b495df22cfa2da3dd5a61d0aeed66dc",
+    "resultBytes": 957982,
+    "format": "image/png",
+    "license": "CC BY-SA 4.0",
+    "notice": "הרקע הוסר על ידי AutoKeep",
+    "noticeEnglish": "Background removed, cropped and resized by AutoKeep; otherwise unmodified."
+  },
+  "review": {
+    "status": "approved",
+    "confidence": "high",
+    "reviewer": "AutoKeep operator; owner decision 2026-09-29",
+    "reviewedAt": "2026-09-29"
+  },
+  "display": {
+    "label": "תמונת דגם להמחשה",
+    "credit": "צילום: Vauxford · CC BY-SA 4.0 · Wikimedia Commons · הרקע הוסר על ידי AutoKeep"
+  }
+}

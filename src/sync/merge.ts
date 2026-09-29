@@ -40,6 +40,8 @@ export const VEHICLE_IDENTITY_FIELDS = [
   'transmission',
   'color',
   'engine_code',
+  'exterior_phase',
+  'exterior_phase_source',
   'registration',
   'vin',
 ] as const;
@@ -134,7 +136,11 @@ export function mergeRows(
     }
     case 'vehicles': {
       // Lifecycle state and its timestamp move together; archive never deletes data either way.
-      return threeWay(base, local, remote, [['lifecycle', 'archived_at']]);
+      return threeWay(base, local, remote, [
+        ['lifecycle', 'archived_at'],
+        // A phase and its provenance are one fact: never mix one device's value with another's source.
+        ['exterior_phase', 'exterior_phase_source'],
+      ]);
     }
     case 'profiles':
       return threeWay(base, local, remote);

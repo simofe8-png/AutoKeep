@@ -7,6 +7,7 @@ import { DISPLAY_FIELDS, DraftFieldInput, toDraftValue } from '@/features/onboar
 import { useOnboarding } from '@/features/onboarding/OnboardingContext';
 import { RegistryLookup } from '@/features/onboarding/RegistryLookup';
 import {
+  HIDDEN_REGISTRY_FIELDS,
   missingFields,
   REQUIRED_FIELDS,
   type DraftField,
@@ -58,6 +59,10 @@ export default function OnboardingManual() {
             const changed = Object.fromEntries(
               entries.filter(([k, v]) => draft[k] !== v && registry[k] === undefined),
             ) as Partial<VehicleDraft>;
+            // Hidden registry facts (model code, exterior phase) travel with the registry values.
+            for (const f of HIDDEN_REGISTRY_FIELDS) {
+              if (fromRegistry[f] !== undefined) Object.assign(registry, { [f]: fromRegistry[f] });
+            }
             if (Object.keys(registry).length > 0) setFields(registry, 'registry');
             setUserFields(changed);
             router.replace('/onboarding/confirm');

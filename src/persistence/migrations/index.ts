@@ -188,4 +188,14 @@ ALTER TABLE vehicles ADD COLUMN color TEXT;
 ALTER TABLE vehicles ADD COLUMN engine_code TEXT;
 `,
   },
+  {
+    // Exterior phase of the generation (pre-facelift / facelift), from a high-confidence registry
+    // rule or the user's own visual confirmation; NULL = unknown (owner decision 2026-09-29).
+    version: 5,
+    name: 'vehicle_exterior_phase',
+    up: `
+ALTER TABLE vehicles ADD COLUMN exterior_phase TEXT;
+ALTER TABLE vehicles ADD COLUMN exterior_phase_source TEXT;
+`,
+  },
 ];

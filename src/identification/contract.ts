@@ -19,6 +19,7 @@ export const REGISTRATION_FIELDS = [
   'engineCode',
   'fuel',
   'color',
+  'exteriorPhase',
   'vin',
   'vehicleCategory',
 ] as const;

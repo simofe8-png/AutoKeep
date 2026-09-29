@@ -6,6 +6,7 @@ import { currentDataSource } from '@/features/data/dataSource';
 import { LocalDataProvider } from '@/features/data/LocalDataProvider';
 import { PrototypeDataProvider } from '@/features/data/PrototypeDataContext';
 import { ActiveVehicleProvider } from '@/features/vehicles/ActiveVehicleContext';
+import { VehicleImageProvider } from '@/features/vehicles/vehicleImage';
 import { MOCK_VEHICLE_DATA } from '@/mocks/vehicleData';
 import { MOCK_VEHICLES } from '@/mocks/vehicles';
 
@@ -18,7 +19,7 @@ function ActiveVehicleBridge({ children }: { children: ReactNode }) {
       initialActiveId={initialActiveVehicleId}
       onActiveChange={rememberActiveVehicle}
     >
-      {children}
+      <VehicleImageProvider>{children}</VehicleImageProvider>
       <NotificationsBridge />
     </ActiveVehicleProvider>
   );

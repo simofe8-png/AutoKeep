@@ -349,6 +349,10 @@ export function LocalDataProvider({
       setNotificationsEnabled: (enabled) => write((s) => s.setNotificationsEnabled(enabled)),
       addGarageRecommendation: (r) => write((s) => s.addGarageRecommendation(r)),
       vehiclePhotos: snapshot.vehiclePhotos,
+      removeVehiclePhoto: (vid) => write((s) => s.removeVehiclePhoto(vid)),
+      imagePromptDismissed: snapshot.imagePromptDismissed,
+      setImagePromptDismissed: (vid, dismissed) =>
+        write((s) => s.setImagePromptDismissed(vid, dismissed)),
       setVehiclePhoto: (vid, file) => write((s) => s.setVehiclePhoto(vid, file)),
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
       // Reads of the original go straight to the store (no snapshot change).

@@ -9,6 +9,7 @@ import {
   type Vehicle,
   type VehicleId,
   type Vin,
+  type ExteriorPhase,
 } from '@/domain';
 
 import { atomic, ConcurrencyError, fromJson, toJson, type Executor } from './base';
@@ -72,6 +73,8 @@ interface VehicleRow {
   transmission: string | null;
   color: string | null;
   engine_code: string | null;
+  exterior_phase: ExteriorPhase | null;
+  exterior_phase_source: 'registry' | 'user' | null;
   registration: string;
   vin: string | null;
   lifecycle: Vehicle['lifecycle'];
@@ -81,7 +84,7 @@ interface VehicleRow {
   version: number;
 }
 
-const opt = (s: string | null) => s ?? undefined;
+const opt = <T extends string>(s: T | null): T | undefined => s ?? undefined;
 
 function toVehicle(r: VehicleRow): Vehicle {
   return {
@@ -99,6 +102,8 @@ function toVehicle(r: VehicleRow): Vehicle {
       transmission: opt(r.transmission),
       color: opt(r.color),
       engineCode: opt(r.engine_code),
+      exteriorPhase: opt(r.exterior_phase),
+      exteriorPhaseSource: opt(r.exterior_phase_source),
     },
     registration: r.registration as RegistrationNumber,
     vin: r.vin as Vin | null,
@@ -125,6 +130,8 @@ function vehicleParams(v: Vehicle) {
     i.transmission ?? null,
     i.color ?? null,
     i.engineCode ?? null,
+    i.exteriorPhase ?? null,
+    i.exteriorPhase ? (i.exteriorPhaseSource ?? null) : null,
     v.registration,
     v.vin,
     v.lifecycle,
@@ -147,9 +154,9 @@ export class VehicleRepository {
   async insert(v: Vehicle): Promise<void> {
     await this.db.run(
       `INSERT INTO vehicles (owner_profile_id, type, manufacturer, model, year, trim, model_code, engine,
-         fuel, transmission, color, engine_code, registration, vin, lifecycle, archived_at, id, created_at,
-         updated_at, version)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         fuel, transmission, color, engine_code, exterior_phase, exterior_phase_source, registration, vin,
+         lifecycle, archived_at, id, created_at, updated_at, version)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [...vehicleParams(v), v.id, v.createdAt, v.updatedAt, v.version],
     );
   }
@@ -159,7 +166,7 @@ export class VehicleRepository {
     const r = await this.db.run(
       `UPDATE vehicles SET owner_profile_id = ?, type = ?, manufacturer = ?, model = ?, year = ?, trim = ?,
          model_code = ?, engine = ?, fuel = ?, transmission = ?, color = ?, engine_code = ?,
-         registration = ?, vin = ?, lifecycle = ?,
+         exterior_phase = ?, exterior_phase_source = ?, registration = ?, vin = ?, lifecycle = ?,
          archived_at = ?, updated_at = ?, version = ?
        WHERE id = ? AND version = ?`,
       [...vehicleParams(v), v.updatedAt, v.version, v.id, v.version - 1],

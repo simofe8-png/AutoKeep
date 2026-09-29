@@ -23,6 +23,8 @@ import type { NetworkMonitor } from '@/providers/network/types';
 import type { DocumentExporter } from '@/providers/export/types';
 import { DataGovIlRegistry } from '@/providers/registry/dataGovIl';
 import { localLicenseOcr } from '@/providers/ocr/localLicenseOcr';
+import { SupabaseReferenceCatalog } from '@/providers/referenceImages/supabaseCatalog';
+import type { ReferenceImageCatalog } from '@/providers/referenceImages/types';
 import { expoFileStore } from '@/providers/storage/expoFileStore';
 import type { OriginalFileStore } from '@/providers/storage/types';
 
@@ -51,6 +53,8 @@ export type DataSourceConfig =
       network?: NetworkMonitor | null;
       /** Official-source discovery + schedule reading (absent: none configured). */
       sources?: Omit<SourceServices, 'uriFor'> | null;
+      /** Approved vehicle model reference images (absent/null: no image search in this build). */
+      referenceImages?: ReferenceImageCatalog | null;
     };
 
 const openDefault = () => openExpoDatabase();
@@ -69,6 +73,11 @@ async function boundedText(url: string): Promise<{ ok: boolean; text: string }> 
   } finally {
     clearTimeout(timer);
   }
+}
+
+function referenceCatalog(): ReferenceImageCatalog | null {
+  const sb = getSupabase();
+  return sb ? new SupabaseReferenceCatalog(sb) : null;
 }
 
 function accountBackend(): AccountBackend | null {
@@ -101,6 +110,7 @@ const production: DataSourceConfig = {
     reader: null,
     curated: KNOWN_OFFICIAL_SOURCES,
   },
+  referenceImages: referenceCatalog(),
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.
@@ -136,6 +146,12 @@ export function notificationScheduler(): NotificationScheduler | null {
 export function dataClock(): Clock {
   const s = currentDataSource();
   return s.kind === 'local' ? s.clock : systemClock;
+}
+
+/** The approved reference-image catalog, or null (demo mode / no backend in this build). */
+export function referenceImageCatalog(): ReferenceImageCatalog | null {
+  const s = currentDataSource();
+  return s.kind === 'local' ? (s.referenceImages ?? null) : null;
 }
 
 /** Onboarding runtime services, or null in demo mode (which uses scripted scenarios). */

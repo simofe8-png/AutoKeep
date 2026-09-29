@@ -10,6 +10,7 @@ import {
   createSchedule,
   createVehicle,
   updateVehicleDetails,
+  type ExteriorPhase,
   type VehicleDetailsPatch,
   handleAlert,
   reactivateAlert,
@@ -92,6 +93,8 @@ export const systemClock: Clock = {
 };
 
 const PHOTO_KEY = 'vehiclePhotos';
+/** Vehicles whose image prompt the user answered with "לא עכשיו" / "לא בטוח" (device-local UX). */
+const IMAGE_PROMPT_KEY = 'vehicleImagePromptDismissed';
 
 export interface Snapshot {
   vehicles: VehicleSummary[];
@@ -103,6 +106,7 @@ export interface Snapshot {
   backup: BackupStatus;
   /** User-provided vehicle photos (device-local, not synced): vehicleId → viewable URI. */
   vehiclePhotos: Record<string, string>;
+  imagePromptDismissed: Record<string, boolean>;
 }
 
 export interface BackupStatus {
@@ -128,6 +132,9 @@ export interface VehicleDetails {
   fuel?: string;
   color?: string;
   vin?: string;
+  modelCode?: string;
+  /** Set only from a high-confidence registry rule at onboarding. */
+  exteriorPhase?: ExteriorPhase;
 }
 
 export class DomainError extends Error {
@@ -285,6 +292,9 @@ export class LocalStore {
       notificationsEnabled,
       backup: await this.backupStatus(),
       vehiclePhotos: await this.vehiclePhotoUris(),
+      imagePromptDismissed:
+        (await new SettingsRepository(this.db).get<Record<string, boolean>>(IMAGE_PROMPT_KEY)) ??
+        {},
     };
   }
 
@@ -316,7 +326,17 @@ export class LocalStore {
     if (previous) await this.files.remove(previous).catch(() => undefined);
   }
 
-  private async removeVehiclePhoto(vehicleId: string): Promise<void> {
+  async setImagePromptDismissed(vehicleId: string, dismissed: boolean): Promise<void> {
+    const settings = new SettingsRepository(this.db);
+    const current = (await settings.get<Record<string, boolean>>(IMAGE_PROMPT_KEY)) ?? {};
+    const next = { ...current };
+    if (dismissed) next[vehicleId] = true;
+    else delete next[vehicleId];
+    await settings.set(IMAGE_PROMPT_KEY, next, this.clock.now());
+  }
+
+  /** Removes the user's own photo; the approved model reference (if any) shows again. */
+  async removeVehiclePhoto(vehicleId: string): Promise<void> {
     const keys = await this.photoKeys();
     const key = keys[vehicleId];
     if (!key) return;
@@ -348,6 +368,9 @@ export class LocalStore {
             engineCode: details.engineCode?.trim() || undefined,
             fuel: details.fuel?.trim() || undefined,
             color: details.color?.trim() || undefined,
+            modelCode: details.modelCode?.trim() || undefined,
+            exteriorPhase: details.exteriorPhase,
+            exteriorPhaseSource: details.exteriorPhase ? 'registry' : undefined,
           },
           registration: vm.registration,
           vin: details.vin?.trim() || null,
@@ -650,6 +673,7 @@ export class LocalStore {
    */
   async deleteVehicle(id: string): Promise<void> {
     await this.removeVehiclePhoto(id);
+    await this.setImagePromptDismissed(id, false);
     const docs = await new DocumentRepository(this.db).list(id as VehicleId);
     await new VehicleRepository(this.db).deletePermanently(id as VehicleId);
     if (this.files) {

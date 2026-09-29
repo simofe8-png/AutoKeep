@@ -9,6 +9,7 @@ import { formatKm, SEP } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { VehiclePhoto, vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
+import { vehicleClass } from '@/identification/vehicleClass';
 import { onboardingServices } from '@/features/data/dataSource';
 import { he } from '@/i18n/he';
 import {
@@ -66,6 +67,10 @@ export default function VehicleManageScreen() {
     deletionPreview,
     isDemoData,
     setVehiclePhoto,
+    vehiclePhotos,
+    removeVehiclePhoto,
+    updateVehicleDetails,
+    setImagePromptDismissed,
   } = useAppData();
   const services = isDemoData ? null : onboardingServices();
   const [preview, setPreview] = useState<DeletionPreviewVM | null>(null);
@@ -98,11 +103,16 @@ export default function VehicleManageScreen() {
 
   const confirmMatches = typed.trim() === vehicle.registration;
   /** The user's own photo of this vehicle (camera or library), stored on this device only. */
-  const pickPhoto = async () => {
+  const acquirePhoto = async (from: 'camera' | 'library') => {
     if (!services) return;
-    const r = await services.acquisition.pickImage();
+    const a = services.acquisition;
+    const r = from === 'camera' ? await a.captureWithCamera() : await a.pickImage();
     if (r.status === 'acquired') setVehiclePhoto(vehicle.id, r.file);
   };
+  const hasOwnPhoto = Boolean(vehiclePhotos[vehicle.id]);
+  // The front can be (re)chosen when it is not an established registry fact.
+  const phaseChangeable =
+    vehicleClass(vehicle).kind !== 'unsupported' && vehicle.exteriorPhaseSource !== 'registry';
 
   return (
     <Screen testID="screen-vehicle-manage" header={<ScreenHeader title={he.lifecycle.title} />}>
@@ -116,18 +126,52 @@ export default function VehicleManageScreen() {
         </View>
         <View style={styles.topImage}>
           <VehiclePhoto vehicle={vehicle} variant="card" />
-          {services ? (
+        </View>
+      </View>
+      {services ? (
+        <View style={styles.photoActions}>
+          <Button
+            testID="vehicle-photo-camera"
+            label={he.vehicleImage.takePhoto}
+            icon="camera-outline"
+            variant="tonal"
+            size="sm"
+            onPress={() => void acquirePhoto('camera')}
+          />
+          <Button
+            testID="vehicle-photo"
+            label={he.vehicleImage.pickFromGallery}
+            icon="image-outline"
+            variant="tonal"
+            size="sm"
+            onPress={() => void acquirePhoto('library')}
+          />
+          {hasOwnPhoto ? (
             <Button
-              testID="vehicle-photo"
-              label={he.lifecycle.changePhoto}
-              icon="camera-outline"
-              variant="tonal"
+              testID="vehicle-photo-remove"
+              label={he.vehicleImage.removeMyPhoto}
+              icon="image-remove"
+              variant="ghost"
               size="sm"
-              onPress={() => void pickPhoto()}
+              onPress={() => removeVehiclePhoto(vehicle.id)}
+            />
+          ) : null}
+          {phaseChangeable && !vehicle.archived ? (
+            <Button
+              testID="vehicle-phase-change"
+              label={he.vehicleImage.changePhase}
+              icon="swap-horizontal"
+              variant="ghost"
+              size="sm"
+              onPress={() => {
+                // Back to the visual question on the vehicle image.
+                updateVehicleDetails(vehicle.id, { exteriorPhase: null });
+                setImagePromptDismissed(vehicle.id, false);
+              }}
             />
           ) : null}
         </View>
-      </View>
+      ) : null}
 
       <Card testID="vehicle-details">
         <Stack gap={0}>
@@ -293,6 +337,7 @@ const styles = StyleSheet.create({
   top: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   topText: { flex: 1, gap: spacing.xs },
   topImage: { alignItems: 'center', gap: spacing.xs },
+  photoActions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   detailsHeader: { flexDirection: 'row', alignItems: 'center' },
   flex: { flex: 1 },
 });

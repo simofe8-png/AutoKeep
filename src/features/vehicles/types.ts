@@ -2,6 +2,8 @@
  * UI view-model for a vehicle as displayed by the shell. The authoritative domain model is
  * introduced in M04 (src/domain); adapters map domain → this view-model in M13.
  */
+import type { ExteriorPhase } from '@/domain';
+
 export type VehicleKind = 'car' | 'motorcycle' | 'scooter';
 
 export interface VehicleSummary {
@@ -24,6 +26,9 @@ export interface VehicleSummary {
   engineCode?: string;
   fuel?: string;
   color?: string;
+  /** Exterior phase of the generation, when established (registry rule or the user). */
+  exteriorPhase?: ExteriorPhase;
+  exteriorPhaseSource?: 'registry' | 'user';
   /** VIN with the final characters masked for display (SPEC: minimise exposure). */
   vinMasked?: string;
 }
