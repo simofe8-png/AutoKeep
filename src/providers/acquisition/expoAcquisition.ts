@@ -11,6 +11,7 @@ import {
   screenAcquiredFile,
   type AcquisitionProvider,
   type AcquisitionResult,
+  type CaptureOptions,
 } from './types';
 
 function fromImageResult(
@@ -41,6 +42,10 @@ const IMAGE_OPTIONS: ImagePicker.ImagePickerOptions = {
   allowsEditing: false,
 };
 
+/** Free-aspect crop when requested (the system cropper; the uncropped image is not kept). */
+const imageOptions = (o?: CaptureOptions): ImagePicker.ImagePickerOptions =>
+  o?.crop ? { ...IMAGE_OPTIONS, allowsEditing: true } : IMAGE_OPTIONS;
+
 /** Copies an acquired file into the app's private cache and returns the new file URI. */
 async function toPrivateCache(uri: string): Promise<string> {
   const dir = new Directory(Paths.cache, 'acquired');
@@ -52,20 +57,23 @@ async function toPrivateCache(uri: string): Promise<string> {
 
 /** expo-image-picker / expo-document-picker implementation (bundled in Expo Go). */
 export const expoAcquisition: AcquisitionProvider = {
-  async captureWithCamera() {
+  async captureWithCamera(options?: CaptureOptions) {
     try {
       const perm = await ImagePicker.requestCameraPermissionsAsync();
       if (!perm.granted) return { status: 'permission_denied' };
-      return fromImageResult(await ImagePicker.launchCameraAsync(IMAGE_OPTIONS), 'camera');
+      return fromImageResult(await ImagePicker.launchCameraAsync(imageOptions(options)), 'camera');
     } catch (e) {
       return { status: 'error', message: safeErrorText(e) };
     }
   },
 
-  async pickImage() {
+  async pickImage(options?: CaptureOptions) {
     try {
       // The system photo picker needs no broad media permission on modern Android.
-      return fromImageResult(await ImagePicker.launchImageLibraryAsync(IMAGE_OPTIONS), 'library');
+      return fromImageResult(
+        await ImagePicker.launchImageLibraryAsync(imageOptions(options)),
+        'library',
+      );
     } catch (e) {
       return { status: 'error', message: safeErrorText(e) };
     }

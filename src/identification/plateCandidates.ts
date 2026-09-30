@@ -2,12 +2,13 @@ import { parseRegistration, type RegistrationNumber } from '@/domain';
 
 /**
  * Deterministic registration-number candidates from OCR lines of an Israeli vehicle license
- * (license-scan POC). OCR is evidence, never authority: the user always confirms or corrects the
+ * (license scan). OCR is evidence, never authority: the user always confirms or corrects the
  * plate, and only then is the official registry consulted.
  *
  * Rules:
  * - a candidate has exactly 7 digits (2-3-2) or 8 digits (3-2-3);
- * - STRONG = printed in the canonical dashed grouping, or on/next to a plate label;
+ * - STRONG = printed in the canonical dashed grouping, on/next to a plate label, or read
+ *   identically by ≥ 2 independent digits-only passes (voting);
  * - WEAK = a bare 7/8-digit run, or a run that needed a letter→digit correction;
  * - rejected: longer digit runs (e.g. a 9-digit ID number), dates, runs inside alphanumeric
  *   tokens (e.g. a VIN), and lines labelled as owner / ID / address data.
@@ -47,8 +48,10 @@ const RUN = new RegExp(
 
 const FIX: Record<string, string> = { O: '0', o: '0', I: '1', l: '1', '|': '1' };
 
-function candidatesInLine(line: string, labelled: boolean): PlateCandidate[] {
-  const out: PlateCandidate[] = [];
+type LineCandidate = PlateCandidate & { corrected: boolean };
+
+function candidatesInLine(line: string, labelled: boolean): LineCandidate[] {
+  const out: LineCandidate[] = [];
   for (const m of line.matchAll(RUN)) {
     const raw = m[0].replace(/\s+$/, '');
     const letters = raw.replace(/[^OoIl|]/g, '').length;
@@ -64,36 +67,61 @@ function candidatesInLine(line: string, labelled: boolean): PlateCandidate[] {
     const compact = fixed.replace(/\s*([-.־])\s*/g, '$1');
     const canonical = DASH_CANON.test(compact) && /[-־]/.test(compact);
     const strong = letters === 0 && (canonical || labelled);
-    out.push({ plate, strength: strong ? 'strong' : 'weak', occurrences: 1 });
+    out.push({
+      plate,
+      strength: strong ? 'strong' : 'weak',
+      occurrences: 1,
+      corrected: letters > 0,
+    });
   }
   return out;
 }
 
+/** One independent digits-only reading (a preprocessing × segmentation pass). */
+export interface DigitPass {
+  pass: string;
+  lines: readonly OcrTextLine[];
+}
+
+/** Independent passes that must agree before a bare digit run counts as strong. */
+export const AGREEING_PASSES = 2;
+
 export function extractPlateCandidates(
   lines: readonly OcrTextLine[],
-  /** Lines of a digits-only pass: no labels there, so only the canonical dashed format is strong. */
-  digitLines: readonly OcrTextLine[] = [],
+  /**
+   * Digits-only readings of independently preprocessed versions of the image. There are no labels
+   * there, so a candidate is strong only in the canonical dashed format, or when at least
+   * AGREEING_PASSES different passes read exactly the same number (voting).
+   */
+  digitPasses: readonly DigitPass[] = [],
 ): PlateExtraction {
   const found = new Map<string, PlateCandidate>();
-  const scanned: [string, boolean][] = [
-    ...lines
-      .filter((l) => !PERSONAL_LABEL.test(l.text))
-      .map((l): [string, boolean] => {
-        const i = lines.indexOf(l);
-        return [l.text, PLATE_LABEL.test(l.text) || PLATE_LABEL.test(lines[i - 1]?.text ?? '')];
-      }),
-    ...digitLines.map((l): [string, boolean] => [l.text, false]),
-  ];
-  scanned.forEach(([text, labelled]) => {
-    for (const c of candidatesInLine(text, labelled)) {
-      const prev = found.get(c.plate);
-      found.set(c.plate, {
-        plate: c.plate,
-        strength: prev?.strength === 'strong' || c.strength === 'strong' ? 'strong' : 'weak',
-        occurrences: (prev?.occurrences ?? 0) + 1,
-      });
+  const passesOf = new Map<string, Set<string>>();
+  const add = (c: LineCandidate, pass: string | null) => {
+    const prev = found.get(c.plate);
+    found.set(c.plate, {
+      plate: c.plate,
+      strength: prev?.strength === 'strong' || c.strength === 'strong' ? 'strong' : 'weak',
+      occurrences: (prev?.occurrences ?? 0) + 1,
+    });
+    // Only an uncorrected reading votes (a letter→digit fix is a guess).
+    if (pass && !c.corrected) {
+      passesOf.set(c.plate, (passesOf.get(c.plate) ?? new Set()).add(pass));
     }
+  };
+  lines.forEach((l, i) => {
+    if (PERSONAL_LABEL.test(l.text)) return;
+    const labelled = PLATE_LABEL.test(l.text) || PLATE_LABEL.test(lines[i - 1]?.text ?? '');
+    for (const c of candidatesInLine(l.text, labelled)) add(c, null);
   });
+  for (const p of digitPasses) {
+    for (const l of p.lines) for (const c of candidatesInLine(l.text, false)) add(c, p.pass);
+  }
+  // Voting: the same number from independent readings.
+  for (const [plate, passes] of passesOf) {
+    const c = found.get(plate)!;
+    if (passes.size >= AGREEING_PASSES) found.set(plate, { ...c, strength: 'strong' });
+  }
   const all = [...found.values()].sort(
     (a, b) =>
       (a.strength === b.strength ? 0 : a.strength === 'strong' ? -1 : 1) ||

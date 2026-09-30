@@ -20,9 +20,14 @@ export type AcquisitionResult =
   | { status: 'rejected'; reason: 'unsupported_type' | 'too_large' | 'empty' }
   | { status: 'error'; message: string };
 
+export interface CaptureOptions {
+  /** Let the user crop the image (system cropper) — e.g. to the plate-number line of a license. */
+  crop?: boolean;
+}
+
 export interface AcquisitionProvider {
-  captureWithCamera(): Promise<AcquisitionResult>;
-  pickImage(): Promise<AcquisitionResult>;
+  captureWithCamera(options?: CaptureOptions): Promise<AcquisitionResult>;
+  pickImage(options?: CaptureOptions): Promise<AcquisitionResult>;
   pickDocument(): Promise<AcquisitionResult>;
 }
 

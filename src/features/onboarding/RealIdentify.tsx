@@ -10,13 +10,12 @@ import {
   type IdentificationDraft,
   type VehicleVariant,
 } from '@/identification/engine';
-import { digitShapes, probeText } from '@/identification/ocrProbe';
 import { emptyCatalog, identifyFromAcquisition } from '@/identification/pipeline';
 import { extractPlateCandidates } from '@/identification/plateCandidates';
 import { discardCapturedImage, type LicenseOcr } from '@/providers/ocr/localLicenseOcr';
 import { AppText, Card, ErrorState, ListRow, LoadingState, Screen, Stack } from '@/ui';
 
-import { LicensePlateStep, OCR_POC, type OcrOutcome } from './LicensePlateStep';
+import { LicensePlateStep, type OcrOutcome } from './LicensePlateStep';
 import { useOnboarding } from './OnboardingContext';
 import { toOnboardingDraft, type OnboardingServices } from './services';
 
@@ -53,8 +52,7 @@ export function RealIdentify({ services }: { services: OnboardingServices }) {
         }
         const outcome = await readPlateOnDevice(services.licenseOcr, acquired.file.uri);
         // The license image is no longer needed: delete it and forget it.
-        const deleted = await discardCapturedImage(acquired.file.uri).catch(() => false);
-        if (outcome.metrics) outcome.metrics.imageDeleted = deleted;
+        await discardCapturedImage(acquired.file.uri).catch(() => false);
         if (cancelled) return;
         ocrDone.current = true;
         setView({ kind: 'plate', outcome });
@@ -167,27 +165,15 @@ export function RealIdentify({ services }: { services: OnboardingServices }) {
 }
 
 /**
- * On-device OCR → plate candidates. The recognized lines stay in memory only; outside a POC build
- * they are dropped here, and only the extracted plate candidates leave this function.
+ * On-device OCR → plate candidates. The recognized lines stay in memory only and are dropped here:
+ * only the extracted plate candidates leave this function.
  */
 async function readPlateOnDevice(ocr: LicenseOcr, uri: string): Promise<OcrOutcome> {
   try {
     const r = await ocr.recognize(uri);
-    return {
-      extraction: extractPlateCandidates(r.lines, r.digitLines),
-      metrics: {
-        ms: r.ms,
-        rotation: r.rotation,
-        meanConfidence: r.meanConfidence,
-        text: probeText(r.lines),
-        digitPassLines: r.digitLines.length,
-        shapes: OCR_POC ? digitShapes([...r.lines, ...r.digitLines]) : [],
-        imageDeleted: false,
-      },
-      pocLines: OCR_POC ? r.lines : null,
-    };
+    return { extraction: extractPlateCandidates(r.lines, r.digitPasses) };
   } catch {
     // No error detail is kept: it could echo image content.
-    return { extraction: { kind: 'failed' }, metrics: null, pocLines: null };
+    return { extraction: { kind: 'failed' } };
   }
 }

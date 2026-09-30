@@ -114,6 +114,8 @@ export const he = {
     addVehicleTitle: 'הוספת כלי רכב',
     scanTitle: 'סריקת רישיון הרכב',
     scanHint: 'מקמו את רישיון הרכב בתוך המסגרת, באור טוב וללא השתקפויות.',
+    scanCropHint:
+      'צלמו את רישיון הרכב באור טוב, ואז סמנו במסגרת החיתוך את מספר הרכב בלבד. רק המספר נקרא, והכול נשאר במכשיר.',
     capture: 'צילום',
     uploadImage: 'העלאת תמונה',
     cameraPlaceholder: 'תצוגת מצלמה',
@@ -153,7 +155,6 @@ export const he = {
     plateCandidates: 'מספרים שזוהו:',
     plateNotAuthority: 'הפרטים עצמם יילקחו מהמאגר הרשמי לאחר האישור — לא מהסריקה.',
     plateManual: 'המשך בהזנה ידנית',
-    ocrPocTitle: 'מדידות POC (ללא טקסט)',
     permissionDenied: 'אין הרשאה לשימוש במצלמה. אפשר להעלות תמונה או להזין ידנית.',
     fileRejected: 'סוג הקובץ או גודלו אינם נתמכים. נסו תמונה אחרת.',
     confirmDetails: 'הפרטים נכונים',

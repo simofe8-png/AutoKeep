@@ -42,7 +42,9 @@ export default function OnboardingScan() {
     if (services) {
       const a = services.acquisition;
       setProblem(null);
-      const result = from === 'camera' ? await a.captureWithCamera() : await a.pickImage();
+      // With the on-device reader, the user crops to the plate number: a tight crop reads reliably.
+      const crop = { crop: Boolean(services.licenseOcr) };
+      const result = from === 'camera' ? await a.captureWithCamera(crop) : await a.pickImage(crop);
       // Only an acquired image moves on; anything else is explained here, in context.
       if (result.status === 'cancelled') return;
       if (result.status !== 'acquired') {
@@ -79,8 +81,8 @@ export default function OnboardingScan() {
       </View>
       <ScrollView contentContainerStyle={styles.content}>
         <StepProgressDark step={1} total={4} />
-        <AppText color="textOnPrimary" align="center">
-          {he.onboarding.scanHint}
+        <AppText color="textOnPrimary" align="center" testID="scan-hint">
+          {services?.licenseOcr ? he.onboarding.scanCropHint : he.onboarding.scanHint}
         </AppText>
         <View
           style={styles.viewfinder}

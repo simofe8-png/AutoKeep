@@ -11,7 +11,7 @@ import type { VehicleRegistryProvider } from '@/providers/registry/types';
 import { MemoryFileStore } from '@/providers/storage/types';
 
 /**
- * License-scan POC flow (owner decision 2026-09-28): camera → on-device OCR (FAKE here; the real
+ * License-scan flow: camera (+ crop) → on-device OCR (FAKE here; the real
  * module is Tesseract, device-verified separately) → plate candidate → user confirms/corrects →
  * registry lookup with consent → confirm screen. OCR is never authoritative; owner data seen by
  * OCR is never shown, stored or logged. All data below is SYNTHETIC.
@@ -29,7 +29,9 @@ const OWNER_ID = '123456782';
 const ADDRESS = 'רחוב הדוגמה 5 תל אביב';
 
 let ocrLines: OcrTextLine[] | Error = [];
+let digitPasses: { pass: string; lines: OcrTextLine[] }[] = [];
 let lookups: string[] = [];
+let captureOptions: unknown[] = [];
 
 const ocr: LicenseOcr = {
   id: 'fake-local-ocr',
@@ -37,11 +39,9 @@ const ocr: LicenseOcr = {
     if (ocrLines instanceof Error) throw ocrLines;
     return {
       lines: ocrLines,
-      digitLines: [],
+      digitPasses,
       meanConfidence: 80,
       rotation: 0,
-      width: 1000,
-      height: 600,
       ms: 900,
     };
   },
@@ -72,15 +72,18 @@ const registry: VehicleRegistryProvider = {
 function services(): OnboardingServices {
   return {
     acquisition: {
-      captureWithCamera: async () => ({
-        status: 'acquired',
-        file: {
-          uri: 'file:///cache/ImagePicker/x.jpg',
-          mimeType: 'image/jpeg',
-          sizeBytes: 9,
-          source: 'camera',
-        },
-      }),
+      captureWithCamera: async (o) => {
+        captureOptions.push(o);
+        return {
+          status: 'acquired',
+          file: {
+            uri: 'file:///cache/ImagePicker/x.jpg',
+            mimeType: 'image/jpeg',
+            sizeBytes: 9,
+            source: 'camera',
+          },
+        };
+      },
       pickImage: async () => ({ status: 'cancelled' }),
       pickDocument: async () => ({ status: 'cancelled' }),
     },
@@ -98,6 +101,8 @@ const LICENSE = (plateLine: string) =>
 let logSpy: jest.SpyInstance[];
 beforeEach(async () => {
   lookups = [];
+  digitPasses = [];
+  captureOptions = [];
   const db = await openTestDatabase();
   configureDataSource({
     kind: 'local',
@@ -123,6 +128,31 @@ async function scan() {
     LONG,
   );
 }
+
+describe('cropped plate + voting across digit passes', () => {
+  it('the camera asks for a crop; two agreeing passes pre-fill the plate, nothing else is read', async () => {
+    ocrLines = lines('77 881 76'); // labelled pass: plate-shaped but not in canonical form
+    digitPasses = [
+      { pass: 'gray:line', lines: lines('7788176') },
+      { pass: 'otsu:line', lines: lines('7788176') },
+    ];
+    await scan();
+    expect(captureOptions).toEqual([{ crop: true }]);
+    expect(screen.getByTestId('plate-input').props.value).toBe('77-881-76');
+    expect(lookups).toEqual([]); // the registry is consulted only after the user confirms
+  }, 40000);
+
+  it('disagreeing passes → nothing pre-filled, both readings offered as choices', async () => {
+    ocrLines = lines('רישיון רכב');
+    digitPasses = [
+      { pass: 'gray:line', lines: lines('7788176') },
+      { pass: 'otsu:line', lines: lines('7788178') },
+    ];
+    await scan();
+    expect(screen.getByTestId('plate-input').props.value).toBe('');
+    expect(screen.getByTestId('plate-candidates')).toBeOnTheScreen();
+  }, 40000);
+});
 
 function expectNoOwnerDataAnywhere() {
   const tree = JSON.stringify(screen.toJSON());
@@ -204,10 +234,9 @@ describe('license scan → plate → registry (on-device OCR POC)', () => {
   }, 40000);
 });
 
-describe('license OCR DEFERRED (owner decision 2026-09-29)', () => {
-  it('a normal build has no reader, so the license scan is not offered', () => {
+describe('no on-device reader (Expo Go / tests): manual plate entry only', () => {
+  it('without the native module there is no reader, so the license scan is not offered', () => {
     expect(localLicenseOcr()).toBeNull();
-    expect(localLicenseOcr(true)).toBeNull(); // no native module in tests either
   });
 
   it('without a reader, onboarding offers manual entry only: plate → registry → confirm', async () => {
@@ -235,6 +264,5 @@ describe('license OCR DEFERRED (owner decision 2026-09-29)', () => {
     await fireEvent.press(screen.getByTestId('registry-lookup-button'));
     await waitFor(() => expect(screen.getByTestId('registry-result')).toBeOnTheScreen(), LONG);
     expect(lookups).toEqual(['1234567']);
-    expect(screen.queryByTestId('ocr-poc-metrics')).toBeNull();
   }, 60000);
 });

@@ -1,4 +1,3 @@
-import { digitShapes } from '../ocrProbe';
 import { extractPlateCandidates, type OcrTextLine } from '../plateCandidates';
 
 const L = (...texts: string[]): OcrTextLine[] => texts.map((text) => ({ text, confidence: 0.8 }));
@@ -73,23 +72,44 @@ describe('registration-number candidates from OCR lines', () => {
     expect(extractPlateCandidates(L('רישיון רכב', '---'))).toEqual({ kind: 'none' });
   });
 
-  it('digits-only pass: a dashed plate is strong, a bare run stays weak (no labels there)', () => {
-    expect(extractPlateCandidates(L('רישיון רכב'), L('77-881-76'))).toMatchObject({
+  const P = (pass: string, ...texts: string[]) => ({ pass, lines: L(...texts) });
+
+  it('digits-only pass: a dashed plate is strong, a bare run from ONE pass stays weak', () => {
+    expect(extractPlateCandidates(L('רישיון רכב'), [P('gray:sparse', '77-881-76')])).toMatchObject({
       kind: 'single',
       plate: '7788176',
     });
-    expect(extractPlateCandidates([], L('7788176'))).toMatchObject({ kind: 'ambiguous' });
-    // The same plate from both passes is one candidate seen twice.
-    expect(extractPlateCandidates(L('77-881-76'), L('77-881-76'))).toEqual({
+    expect(extractPlateCandidates([], [P('gray:sparse', '7788176')])).toMatchObject({
+      kind: 'ambiguous',
+    });
+    // The same plate from the labelled reading and a digit pass is one candidate seen twice.
+    expect(extractPlateCandidates(L('77-881-76'), [P('gray:sparse', '77-881-76')])).toEqual({
       kind: 'single',
       plate: '7788176',
       candidates: [{ plate: '7788176', strength: 'strong', occurrences: 2 }],
     });
   });
 
-  it('diagnostic shapes never contain a digit or a letter value', () => {
-    const shapes = digitShapes(L('ת.ז. 123456782', 'VSSZZZ6JZCR122118', 'ללא ספרות'));
-    expect(shapes).toEqual(['א.א. 999999999', 'AAAAAA9AAAA999999']);
-    expect(shapes.join('')).not.toMatch(/[0-8]|[B-Zb-z]|[ב-ת]/);
+  it('voting: the same bare number from two independent passes is strong', () => {
+    expect(
+      extractPlateCandidates([], [P('gray:line', '7788176'), P('otsu:line', '7788176')]),
+    ).toMatchObject({ kind: 'single', plate: '7788176' });
+    // Two readings of the SAME pass do not count as agreement.
+    expect(
+      extractPlateCandidates([], [P('gray:line', '7788176'), P('gray:line', '7788176')]),
+    ).toMatchObject({ kind: 'ambiguous' });
+  });
+
+  it('voting: a letter-corrected reading never votes; disagreeing passes stay ambiguous', () => {
+    expect(
+      extractPlateCandidates([], [P('gray:line', '778817O'), P('otsu:line', '778817O')]),
+    ).toMatchObject({ kind: 'ambiguous' });
+    const r = extractPlateCandidates(
+      [],
+      [P('gray:line', '7788176'), P('otsu:line', '7788176'), P('otsu2x:line', '7788178')],
+    );
+    // The agreeing reading is proposed; the odd one is still offered as a choice.
+    expect(r).toMatchObject({ kind: 'single', plate: '7788176' });
+    expect(r.kind === 'single' && r.candidates.map((c) => c.plate)).toEqual(['7788176', '7788178']);
   });
 });
