@@ -72,6 +72,7 @@ export function toPlanVM(plan: MaintenancePlan, bookletUploaded: boolean): Maint
   const next = plan.next.map(itemVM).filter((x): x is PlanItemVM => x !== null);
   return {
     status: plan.status,
+    fallback: plan.fallback,
     items,
     next,
     requests: plan.requests,

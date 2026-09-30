@@ -81,9 +81,36 @@ export type EvidenceRequest =
   /** The document found does not state the vehicle's model years. */
   | { kind: 'model_year_unproven' };
 
+/**
+ * Why no schedule could be built (§24 fallback). Recorded so the same search failure can be
+ * improved later — the record carries the vehicle CLASS only, never a vehicle, plate or VIN.
+ */
+export type DiscoveryMissReason =
+  | Exclude<OfficialSourceStatus['reason'], 'automatic'>
+  | 'no_official_source'
+  | 'official_source_pending'
+  | 'unknown_make'
+  | 'model_year_unproven'
+  | 'awaiting_verification'
+  | 'missing_vehicle_fact'
+  | 'no_applicable_requirement';
+
+export interface PlanFallback {
+  /** Sorted, de-duplicated reasons. */
+  reasons: DiscoveryMissReason[];
+  /** Vehicle-class key: kind|make|model|year|engine code — nothing that identifies a vehicle. */
+  classKey: string;
+}
+
 export interface MaintenancePlan {
   facts: VehicleFacts;
+  /**
+   * ready = every applicable requirement resolved; partial = a useful but INCOMPLETE schedule
+   * (must be labelled partial); needs_information = no reliable schedule → `fallback`.
+   */
   status: 'ready' | 'partial' | 'needs_information';
+  /** Set exactly when no item could be scheduled: the explicit user fallback (§24). */
+  fallback: PlanFallback | null;
   items: PlanItem[];
   unresolved: TaskResolution[];
   requests: EvidenceRequest[];
@@ -199,6 +226,46 @@ function identifiedSystems(make: string): number {
 export function officialSources(facts: VehicleFacts): OfficialSourceStatus[] {
   if (!facts.make) return [];
   return officialSourcesFor(facts.make, SOURCE_SYSTEMS, MANUFACTURER_ALIASES, facts.kind);
+}
+
+// ---------- §24 fallback ----------
+
+/** Vehicle-class key of a discovery miss (no vehicle id, plate, VIN or user). */
+export function vehicleClassKey(f: VehicleFacts): string {
+  return [
+    f.kind,
+    f.make ?? '?',
+    (f.model ?? '?').toLowerCase(),
+    f.modelYear ?? '?',
+    f.engineCode ?? '',
+  ]
+    .join('|')
+    .replace(/\|$/, '');
+}
+
+function missReasons(
+  facts: VehicleFacts,
+  requests: readonly EvidenceRequest[],
+  unresolved: readonly TaskResolution[],
+): DiscoveryMissReason[] {
+  const out = new Set<DiscoveryMissReason>();
+  if (!facts.make) out.add('unknown_make');
+  for (const r of requests) {
+    if (r.kind === 'official_source') {
+      for (const s of r.sources) if (s.reason !== 'automatic') out.add(s.reason);
+    } else if (
+      r.kind === 'no_official_source' ||
+      r.kind === 'official_source_pending' ||
+      r.kind === 'model_year_unproven' ||
+      r.kind === 'awaiting_verification'
+    ) {
+      out.add(r.kind);
+    } else if (r.kind === 'service_regime' || r.kind === 'usage' || r.kind === 'engine_code') {
+      out.add('missing_vehicle_fact');
+    }
+  }
+  if (!unresolved.length && !out.size) out.add('no_applicable_requirement');
+  return [...out].sort();
 }
 
 // ---------- the plan ----------
@@ -331,6 +398,10 @@ export function buildMaintenancePlan(input: {
   return {
     facts,
     status: items.length === 0 ? 'needs_information' : unresolved.length ? 'partial' : 'ready',
+    fallback:
+      items.length === 0
+        ? { reasons: missReasons(facts, requests, unresolved), classKey: vehicleClassKey(facts) }
+        : null,
     items,
     unresolved,
     requests,

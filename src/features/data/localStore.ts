@@ -61,6 +61,7 @@ import {
   SourceRepository,
   VehicleRepository,
   type SqlDatabase,
+  DiscoveryMissRepository,
   MaintenanceKnowledgeRepository,
 } from '@/persistence';
 
@@ -290,6 +291,15 @@ export class LocalStore {
       }
       summaries.push(toVehicleSummary(v, latestReading(rec.readings)));
       bundles[v.id] = toBundle(rec, result, candidates, this.clock.today());
+      const miss = bundles[v.id].plan?.fallback;
+      if (miss) {
+        // §24: record why no reliable schedule was found (vehicle class only).
+        await new DiscoveryMissRepository(this.db).record(
+          miss.classKey,
+          miss.reasons,
+          this.clock.now(),
+        );
+      }
     }
     const activeVehicleId = await new ActiveVehicleStore(this.db).get();
     const notificationsEnabled =
@@ -526,6 +536,7 @@ export class LocalStore {
       await tx.run('DELETE FROM sync_outbox');
       await tx.run('DELETE FROM sync_shadow');
       await tx.run('DELETE FROM sync_conflicts');
+      await tx.run('DELETE FROM discovery_misses');
       await tx.run('UPDATE profiles SET account_user_id = NULL');
       await tx.run("DELETE FROM settings WHERE key <> 'accountDeletion'");
       await tx.run('UPDATE sync_control SET applying = 0 WHERE id = 1');

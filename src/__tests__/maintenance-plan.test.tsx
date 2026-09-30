@@ -5,7 +5,7 @@ import { sequentialIds } from '@/domain/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
-import { MaintenanceKnowledgeRepository } from '@/persistence';
+import { DiscoveryMissRepository, MaintenanceKnowledgeRepository } from '@/persistence';
 import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { MemoryFileStore } from '@/providers/storage/types';
 
@@ -125,15 +125,33 @@ describe('Maintenance tab (Task 9)', () => {
   it('insufficient evidence: no interval, the exact next action (Ford: booklet or importer plan)', async () => {
     await seed(false);
     await open('/maintenance', 'screen-maintenance');
-    await waitFor(
-      () => expect(screen.getByTestId('plan-needs-information')).toBeOnTheScreen(),
-      LONG,
+    await waitFor(() => expect(screen.getByTestId('plan-fallback')).toBeOnTheScreen(), LONG);
+    // §24: the owner-approved fallback message, verbatim, with a direct private upload action.
+    expect(screen.getByTestId('plan-fallback-message-0')).toHaveTextContent(
+      'חיפשתי לוח טיפולים מתאים לרכב שלך, אך לא מצאתי מידע מספיק מדויק כדי לבנות לוח טיפולים אמין.',
     );
-    const card = screen.getByTestId('plan-needs-information');
-    expect(card).toHaveTextContent(/נדרש מידע נוסף כדי לבנות את לוח הטיפולים/);
-    expect(screen.getByTestId('plan-upload-booklet')).toHaveTextContent(
-      /העלה את חוברת הטיפולים של הרכב/,
+    expect(screen.getByTestId('plan-fallback-message-1')).toHaveTextContent(
+      'כדי שאוכל לבנות עבורך לוח טיפולים מדויק, פנה לסוכנות או ליבואן הרכב ובקש את לוח הטיפולים המתאים לרכב שלך.',
     );
+    expect(screen.getByTestId('plan-fallback-message-2')).toHaveTextContent(
+      'לאחר שתקבל אותו, העלה אותו כאן ל־AutoKeep ואני אחלץ ממנו את הטיפולים ואבנה עבורך את לוח התחזוקה.',
+    );
+    expect(screen.getByTestId('plan-fallback-upload')).toHaveTextContent(/העלה את לוח הטיפולים/);
+    expect(screen.getByTestId('plan-fallback-privacy')).toHaveTextContent(/פרטי.*PDF/);
+    expect(screen.queryByTestId('plan-needs-information')).toBeNull();
+    // The failure reason is recorded per vehicle CLASS — no vehicle id, plate or VIN.
+    const misses = await new DiscoveryMissRepository(db).all();
+    expect(misses).toEqual([
+      expect.objectContaining({
+        classKey: 'car|ford|fiesta|2015',
+        reasons: expect.arrayContaining(['awaiting_verification', 'official_source_pending']),
+      }),
+      expect.objectContaining({
+        classKey: 'car|seat|ibiza|2012',
+        reasons: expect.arrayContaining(['permission_required']),
+      }),
+    ]);
+    expect(JSON.stringify(misses)).not.toMatch(new RegExp(`${FIESTA}|12-345-67|1234567`));
     expect(screen.getByTestId('plan-booklet-hint')).toHaveTextContent(/תוכנית טיפול/);
     expect(screen.getByTestId('plan-request-awaiting')).toHaveTextContent(/ford\.co\.il/);
     // No interval anywhere, and no architecture terms.
@@ -163,6 +181,33 @@ describe('Maintenance tab (Task 9)', () => {
     expect(screen.getByTestId('plan-item-periodic_service-evidence')).toHaveTextContent(
       'לפי מקור רשמי לשוק הישראלי',
     );
+  }, 60000);
+
+  it('§24 partial: some tasks verified, another unresolved → labelled PARTIAL, never as complete', async () => {
+    await seed(true);
+    await new MaintenanceKnowledgeRepository(db).saveClaim(
+      {
+        id: '00000000-0000-4000-8000-0000000c0009',
+        documentId: '00000000-0000-4000-8000-00000000e001',
+        vehicleId: FIESTA,
+        task: 'spark_plugs',
+        action: 'replacement',
+        interval: { every: { value: 60000, unit: 'km' }, rule: 'distance_only', repeats: true },
+        // The vehicle's engine code is unknown: this obligation cannot be resolved yet.
+        applicability: { engineCodes: ['SYNTH9'] },
+        locator: { page: 4, table: 'SYNTHETIC' },
+        extraction: { method: 'synthetic_test', by: 'test', at: clock.today() },
+        status: 'accepted',
+        review: { by: 'curator', role: 'curator', at: clock.today(), decision: 'accepted' },
+      },
+      clock.now(),
+    );
+    await open('/maintenance', 'screen-maintenance');
+    await waitFor(() => expect(screen.getByTestId('plan-items')).toBeOnTheScreen(), LONG);
+    expect(screen.getByTestId('plan-items')).toHaveTextContent(/לוח טיפולים חלקי/);
+    expect(screen.getByTestId('plan-partial')).toHaveTextContent(/זה אינו לוח טיפולים מלא/);
+    expect(screen.queryByTestId('plan-fallback')).toBeNull();
+    expect(screen.queryByTestId('plan-item-spark_plugs')).toBeNull();
   }, 60000);
 
   it('a manufacturer document for another market is labelled level B — never as Israeli', async () => {

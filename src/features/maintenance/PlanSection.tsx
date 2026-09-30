@@ -314,6 +314,68 @@ ${p.officialSourceUserStep}`
 export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehicleId: string }) {
   const { upload, problem } = useBookletUpload(vehicleId);
   const p = he.maintenancePlan;
+  if (plan.fallback) {
+    // §24: no reliable schedule — say so plainly, ask for the importer's schedule, offer upload.
+    const others = plan.requests.filter((r) => r.kind !== 'upload_booklet');
+    const booklet = plan.requests.find((r) => r.kind === 'upload_booklet');
+    return (
+      <Stack testID="maintenance-plan">
+        <Card tone="warning" testID="plan-fallback">
+          <Stack gap={spacing.sm}>
+            <View style={styles.needHead}>
+              <Icon name="clipboard-alert-outline" size={24} color="warning" />
+              <AppText variant="heading" style={styles.flex} accessibilityRole="header">
+                {p.fallbackTitle}
+              </AppText>
+            </View>
+            {p.fallbackMessage.map((line, i) => (
+              <AppText key={i} variant="body" testID={`plan-fallback-message-${i}`}>
+                {line}
+              </AppText>
+            ))}
+            {plan.bookletUploaded ? (
+              <InlineNotice
+                testID="plan-booklet-received"
+                tone="success"
+                message={p.bookletReceived}
+              />
+            ) : null}
+            {problem ? <InlineNotice tone="warning" message={problem} /> : null}
+            <Button
+              testID="plan-fallback-upload"
+              label={p.fallbackUpload}
+              icon="file-upload-outline"
+              fullWidth
+              onPress={() => void upload()}
+            />
+            {booklet?.kind === 'upload_booklet' ? (
+              <AppText variant="caption" color="textSecondary" testID="plan-booklet-hint">
+                {p.bookletHints[booklet.hint]}
+              </AppText>
+            ) : null}
+            <AppText variant="caption" color="textSecondary" testID="plan-fallback-privacy">
+              {p.fallbackPrivacy}
+            </AppText>
+          </Stack>
+        </Card>
+        {others.length > 0 ? (
+          <Card testID="plan-fallback-details">
+            <Stack gap={spacing.sm}>
+              <AppText variant="bodyStrong">{p.fallbackDetailsTitle}</AppText>
+              {others.map((r, i) => (
+                <Request
+                  key={`${r.kind}-${i}`}
+                  request={r}
+                  vehicleId={vehicleId}
+                  onUpload={() => void upload()}
+                />
+              ))}
+            </Stack>
+          </Card>
+        ) : null}
+      </Stack>
+    );
+  }
   return (
     <Stack testID="maintenance-plan">
       {plan.requests.length > 0 ? (
@@ -352,8 +414,11 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
       {plan.items.length > 0 ? (
         <Stack gap={spacing.sm} testID="plan-items">
           <AppText variant="heading" accessibilityRole="header">
-            {p.scheduleTitle}
+            {plan.status === 'partial' ? p.partialTitle : p.scheduleTitle}
           </AppText>
+          {plan.status === 'partial' ? (
+            <InlineNotice testID="plan-partial" tone="warning" message={p.partialBody} />
+          ) : null}
           {plan.items.map((item) => (
             <PlanItemCard key={item.key} item={item} />
           ))}

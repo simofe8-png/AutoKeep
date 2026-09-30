@@ -220,7 +220,10 @@ export type PlanRequestVM =
   | { kind: 'model_year_unproven' };
 
 export interface MaintenancePlanVM {
+  /** partial = useful but incomplete: always labelled as partial, never shown as complete. */
   status: 'ready' | 'partial' | 'needs_information';
+  /** No reliable schedule: explicit fallback (message + private upload), reasons recorded. */
+  fallback: { reasons: string[]; classKey: string } | null;
   items: PlanItemVM[];
   next: PlanItemVM[];
   requests: PlanRequestVM[];

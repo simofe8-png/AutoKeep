@@ -8,7 +8,7 @@
 //    ai.txt or "no clause found" become UNKNOWN (the evidence text is preserved in the note);
 //  - NOT_ALLOWED / REQUIRES_PERMISSION keep their evidence (terms / robots / access control);
 //  - authority status: 'approved' only for hosts the owner approved in P1 (2026-09-27), else 'proposed'.
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const R = process.argv[2];
@@ -389,6 +389,32 @@ for (const f of [
     : j.sourceSystems || j.systems || Object.values(j).find(Array.isArray);
   for (const s of a) convert(s, sink, f);
 }
+// Access re-reviews (append-only): each revision becomes a NEW policy version; the previous
+// version is kept for audit. A revision lists only the dimensions it changes or re-confirms.
+for (const f of readdirSync(R)
+  .filter((x) => /^R\d+_access_rereview.*\.json$/.test(x))
+  .sort()) {
+  const j = JSON.parse(readFileSync(join(R, f), 'utf8'));
+  for (const rev of j.revisions) {
+    const s = sink.find((x) => x.sourceSystemId === rev.sourceSystemId);
+    if (!s) throw new Error(`${f}: unknown system ${rev.sourceSystemId}`);
+    const prev = s.policy.versions.at(-1);
+    const ids = new Set(prev.evidence.map((e) => e.id));
+    const evidence = [
+      ...prev.evidence,
+      ...rev.evidence.map((e) => ({ ...e, reviewedAt: j.reviewDate, reviewedBy: j.reviewedBy })),
+    ];
+    for (const e of rev.evidence) {
+      if (ids.has(e.id)) throw new Error(`${f}: duplicate evidence id ${e.id}`);
+    }
+    s.policy.versions.push({
+      version: prev.version + 1,
+      reviewedAt: j.reviewDate,
+      dimensions: { ...prev.dimensions, ...rev.dimensions },
+      evidence,
+    });
+  }
+}
 // Entry points: the SYM manufacturer library is walked from its sitemap (the one system whose
 // policy permits automation); every other publishing system gets its first official listing page
 // as a listing entry point — the policy gate blocks it before any request and offers it to the
@@ -435,7 +461,7 @@ writeFileSync(OUT, body);
 // Human-readable table of the same data (docs/maintenance/ISRAEL_SOURCE_REGISTRY_TABLE.md).
 const ab = { ALLOWED: 'ALLOWED', NOT_ALLOWED: 'NOT', UNKNOWN: 'unk', REQUIRES_PERMISSION: 'PERM' };
 const rows = sink.map((x) => {
-  const dm = x.policy.versions[0].dimensions;
+  const dm = x.policy.versions.at(-1).dimensions;
   return `| ${x.sourceSystemId} | ${x.origin === 'israeli' ? 'IL' : 'global'} | ${x.vehicleKinds.join(',')} | ${x.manufacturers.join(', ')} | ${x.importer ?? '—'} | ${x.domains.map((d) => d.host).join('<br>')} | ${x.sourceType.slice(0, 1)} | ${x.discovery.mechanism} | ${x.status} | ${DIMS.map((d) => ab[dm[d].value]).join(' / ')} |`;
 });
 writeFileSync(

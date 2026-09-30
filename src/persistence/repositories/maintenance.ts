@@ -338,3 +338,45 @@ export class KnowledgeCatalogRepository {
     }
   }
 }
+
+export interface DiscoveryMiss {
+  classKey: string;
+  reasons: string[];
+  firstSeenAt: Timestamp;
+  lastSeenAt: Timestamp;
+}
+
+/**
+ * Discovery misses (§24): why AutoKeep could not build a reliable schedule, per vehicle class.
+ * Idempotent: the same class + reasons keeps one row (first / last seen).
+ */
+export class DiscoveryMissRepository {
+  constructor(private readonly db: Executor) {}
+
+  async record(classKey: string, reasons: readonly string[], now: Timestamp): Promise<void> {
+    await this.db.run(
+      `INSERT INTO discovery_misses (class_key, reasons, first_seen_at, last_seen_at)
+       VALUES (?, ?, ?, ?)
+       ON CONFLICT(class_key, reasons) DO UPDATE SET last_seen_at = excluded.last_seen_at`,
+      [classKey, [...reasons].sort().join(','), now, now],
+    );
+  }
+
+  async all(): Promise<DiscoveryMiss[]> {
+    const rows = await this.db.all<{
+      class_key: string;
+      reasons: string;
+      first_seen_at: string;
+      last_seen_at: string;
+    }>(
+      `SELECT class_key, reasons, first_seen_at, last_seen_at FROM discovery_misses
+       ORDER BY class_key, reasons`,
+    );
+    return rows.map((r) => ({
+      classKey: r.class_key,
+      reasons: r.reasons ? r.reasons.split(',') : [],
+      firstSeenAt: r.first_seen_at as Timestamp,
+      lastSeenAt: r.last_seen_at as Timestamp,
+    }));
+  }
+}

@@ -285,4 +285,19 @@ CREATE TABLE knowledge_catalog (
 CREATE INDEX idx_knowledge_catalog_scope ON knowledge_catalog(scope_key, task, action);
 `,
   },
+  {
+    version: 8,
+    name: 'discovery_misses',
+    // §24: why no reliable schedule was found, per vehicle CLASS (no vehicle, plate, VIN or user
+    // column), so the same search failure can be improved later. Local only; not synced.
+    up: `
+CREATE TABLE discovery_misses (
+  class_key TEXT NOT NULL,
+  reasons TEXT NOT NULL,
+  first_seen_at TEXT NOT NULL,
+  last_seen_at TEXT NOT NULL,
+  PRIMARY KEY (class_key, reasons)
+);
+`,
+  },
 ];

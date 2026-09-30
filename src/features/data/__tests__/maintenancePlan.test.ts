@@ -51,9 +51,10 @@ async function setup() {
 }
 
 describe('maintenance knowledge persistence (migration v6)', () => {
-  it('the migration is in the local schema chain (v7, the knowledge catalog, follows it)', () => {
+  it('the migration is in the local schema chain (v7 catalog and v8 discovery misses follow it)', () => {
     expect(MIGRATIONS[5]).toMatchObject({ version: 6, name: 'maintenance_knowledge' });
-    expect(MIGRATIONS.at(-1)).toMatchObject({ version: 7, name: 'knowledge_catalog' });
+    expect(MIGRATIONS[6]).toMatchObject({ version: 7, name: 'knowledge_catalog' });
+    expect(MIGRATIONS.at(-1)).toMatchObject({ version: 8, name: 'discovery_misses' });
   });
 
   it('keeps the registry first-registration month (day unknown) for time-based maintenance', async () => {
