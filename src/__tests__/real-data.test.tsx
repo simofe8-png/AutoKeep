@@ -10,16 +10,6 @@ import { ScheduleRepository } from '@/persistence';
 import { openTestDatabase, type TestDatabase } from '@/persistence/testing/sqljsDatabase';
 import type { VehicleRegistryProvider } from '@/providers/registry/types';
 
-/** Onboarding entry: first-run welcome → "add first vehicle" → identification method → continue. */
-async function chooseMethod(method: 'onboarding-start-scan' | 'onboarding-manual') {
-  if (screen.queryByTestId('onboarding-add-first')) {
-    await fireEvent.press(screen.getByTestId('onboarding-add-first'));
-    await waitFor(() => expect(screen.getByTestId('screen-onboarding-method')).toBeOnTheScreen());
-  }
-  await fireEvent.press(screen.getByTestId(method));
-  await fireEvent.press(screen.getByTestId('onboarding-continue'));
-}
-
 /**
  * M13 integration (T108): the approved UI running on the real local store (sql.js SQLite), with
  * the production onboarding path: acquisition → (no OCR provider yet) → registry lookup with
@@ -99,26 +89,18 @@ describe('real local data behind the approved UI', () => {
       () => expect(screen.getByTestId('screen-onboarding-welcome')).toBeOnTheScreen(),
       LONG,
     );
-    // License OCR is DEFERRED: without a reader the scan is not offered; manual entry only.
+    // Add Vehicle = plate search against the Ministry data (no scan offered).
     await fireEvent.press(screen.getByTestId('onboarding-add-first'));
-    await waitFor(() => expect(screen.getByTestId('onboarding-manual')).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByTestId('screen-vehicle-search')).toBeOnTheScreen());
     expect(screen.queryByTestId('onboarding-start-scan')).toBeNull();
-    await chooseMethod('onboarding-manual');
-    await waitFor(() => expect(screen.getByTestId('screen-onboarding-manual')).toBeOnTheScreen());
-
-    await fireEvent.changeText(screen.getByTestId('input-registration'), '12-345-67');
-    await fireEvent.press(screen.getByTestId('registry-lookup-button'));
-    await waitFor(() => expect(screen.getByTestId('registry-result')).toBeOnTheScreen());
-    // Only the plate was sent, with the user's explicit consent.
+    await fireEvent.changeText(screen.getByTestId('vehicle-search-plate'), '1234567');
+    await fireEvent.press(screen.getByTestId('vehicle-search-find'));
+    await waitFor(() => expect(screen.getByTestId('screen-vehicle-details')).toBeOnTheScreen());
+    // Only the plate was sent, on the user's explicit request.
     expect(lookups).toEqual([{ plate: '1234567', consent: true }]);
-    expect(screen.getByTestId('input-manufacturer').props.value).toBe('טויוטה');
+    expect(screen.getByTestId('screen-vehicle-details')).toHaveTextContent(/טויוטה קורולה 2019/);
 
-    await fireEvent.press(screen.getByTestId('manual-continue'));
-    await waitFor(() => expect(screen.getByTestId('screen-onboarding-confirm')).toBeOnTheScreen());
-    expect(screen.getByTestId('field-manufacturer')).toHaveTextContent(/ממאגר משרד התחבורה/);
-    expect(screen.getByTestId('field-registration')).toHaveTextContent(/הוזן ידנית/);
-
-    await fireEvent.press(screen.getByTestId('confirm-details'));
+    await fireEvent.press(screen.getByTestId('vehicle-details-add'));
     await waitFor(() => expect(screen.getByTestId('screen-onboarding-odometer')).toBeOnTheScreen());
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '84,250');
     await fireEvent.press(screen.getByTestId('odometer-continue'));

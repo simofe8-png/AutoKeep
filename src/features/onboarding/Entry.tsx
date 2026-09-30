@@ -1,28 +1,9 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import { useAppData } from '@/features/data/DataContext';
-import { onboardingServices } from '@/features/data/dataSource';
-import { useOnboarding } from '@/features/onboarding/OnboardingContext';
-import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehiclePhoto } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
-import {
-  AppText,
-  BrandMark,
-  Button,
-  colors,
-  Icon,
-  IconCircle,
-  InlineNotice,
-  radii,
-  Screen,
-  spacing,
-  Stack,
-  Stepper,
-  type IconName,
-} from '@/ui';
+import { AppText, BrandMark, Button, Icon, Screen, spacing, Stack } from '@/ui';
 
 /**
  * First-run welcome (approved reference "מסך פתיחה"): wordmark, promise, three benefits, add the
@@ -75,129 +56,8 @@ export function WelcomeScreen() {
   );
 }
 
-type Method = 'scan' | 'manual';
-
-const methods: { value: Method; testID: string; icon: IconName; title: string; body: string }[] = [
-  {
-    value: 'scan',
-    testID: 'onboarding-start-scan',
-    icon: 'camera-outline',
-    title: he.onboarding.startScan,
-    body: he.onboarding.scanMethodBody,
-  },
-  {
-    value: 'manual',
-    testID: 'onboarding-manual',
-    icon: 'keyboard-outline',
-    title: he.onboarding.manualEntry,
-    body: he.onboarding.manualMethodBody,
-  },
-];
-
-/**
- * Whether the license scan can read anything. Real mode: only with an approved extractor or the
- * on-device reader — license OCR is DEFERRED (2026-09-29), so normal builds offer manual entry
- * (plate → data.gov.il) only. The labelled demo keeps its mock scan scenarios.
- */
-function useLicenseScanAvailable(): boolean {
-  const { isDemoData } = useAppData();
-  if (isDemoData) return true;
-  const services = onboardingServices();
-  return Boolean(services?.extractor || services?.licenseOcr);
-}
-
-/** "הוספת רכב חדש" (approved reference): stepper, identification method, continue. */
-export function MethodScreen() {
-  const router = useRouter();
-  const { reset } = useOnboarding();
-  const scanAvailable = useLicenseScanAvailable();
-  const [chosen, setMethod] = useState<Method>(scanAvailable ? 'scan' : 'manual');
-  const method: Method = scanAvailable ? chosen : 'manual';
-  const shown = scanAvailable ? methods : methods.filter((m) => m.value !== 'scan');
-  return (
-    <Screen
-      testID="screen-onboarding-method"
-      header={
-        <ScreenHeader
-          title={he.onboarding.addVehicleTitle}
-          subtitle={he.onboarding.addVehicleSubtitle}
-          closeIcon
-        />
-      }
-      footer={
-        <Button
-          testID="onboarding-continue"
-          label={he.common.continue}
-          fullWidth
-          onPress={() => {
-            reset();
-            router.push(method === 'scan' ? '/onboarding/scan' : '/onboarding/manual');
-          }}
-        />
-      }
-    >
-      <Stepper steps={he.onboarding.stepNames} current={1} />
-      <AppText variant="heading" accessibilityRole="header">
-        {he.onboarding.chooseMethod}
-      </AppText>
-      <View accessibilityRole="radiogroup" style={styles.methods}>
-        {shown.map((m) => {
-          const selected = method === m.value;
-          return (
-            <Pressable
-              key={m.value}
-              testID={m.testID}
-              onPress={() => setMethod(m.value)}
-              accessibilityRole="radio"
-              accessibilityState={{ selected, checked: selected }}
-              accessibilityLabel={`${m.title}. ${m.body}`}
-              android_ripple={{ color: colors.primarySoft }}
-              style={[styles.method, selected && styles.methodSelected]}
-            >
-              <View style={[styles.radio, selected && styles.radioOn]}>
-                {selected ? <View style={styles.radioDot} /> : null}
-              </View>
-              <View style={styles.flex}>
-                <AppText variant="bodyStrong">{m.title}</AppText>
-                <AppText variant="small" color="textMuted">
-                  {m.body}
-                </AppText>
-              </View>
-              <IconCircle icon={m.icon} tone="info" size={56} />
-            </Pressable>
-          );
-        })}
-      </View>
-      <InlineNotice tone="info" message={he.onboarding.methodInfo} />
-    </Screen>
-  );
-}
-
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   welcomeTop: { alignItems: 'center', gap: spacing.sm, paddingTop: spacing.lg },
   benefit: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  methods: { gap: spacing.md },
-  method: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    padding: spacing.lg,
-    borderRadius: radii.xl,
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-  },
-  methodSelected: { borderColor: colors.primary, backgroundColor: colors.surfaceTint },
-  radio: {
-    width: 26,
-    height: 26,
-    borderRadius: 13,
-    borderWidth: 2,
-    borderColor: '#AEB7C6',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  radioOn: { borderColor: colors.primary },
-  radioDot: { width: 14, height: 14, borderRadius: 7, backgroundColor: colors.primary },
 });

@@ -15,7 +15,6 @@ import { useOnboarding } from '@/features/onboarding/OnboardingContext';
 import { RegistryLookup } from '@/features/onboarding/RegistryLookup';
 import { missingFields, type DraftField, type VehicleDraft } from '@/features/onboarding/types';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
-import { VehiclePhoto } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -86,7 +85,6 @@ export default function OnboardingConfirm() {
           <AppText color="textSecondary" align="center">
             {he.onboarding.identifiedBody}
           </AppText>
-          <VehiclePhoto vehicle={{ kind: draft.kind ?? 'car' }} variant="hero" />
           <AppText variant="title" align="center">
             {`${draft.manufacturer} ${draft.model}`}
           </AppText>

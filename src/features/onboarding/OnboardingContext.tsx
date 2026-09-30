@@ -2,6 +2,7 @@ import { createContext, useContext, useMemo, useState, type ReactNode } from 're
 
 import type { ScanScenario, SourceScenario } from '@/mocks/onboarding';
 import type { AcquisitionResult } from '@/providers/acquisition/types';
+import type { RegistryVehicle } from '@/providers/registry/types';
 
 import type { DraftField, FieldOrigin, VehicleDraft } from './types';
 
@@ -13,6 +14,8 @@ export interface OnboardingState {
   sourceScenario: SourceScenario;
   /** The captured/picked registration image (real mode). */
   acquired: AcquisitionResult | null;
+  /** Several Ministry records for one plate: the user chooses on the details step. */
+  candidates: RegistryVehicle[];
 }
 
 export interface OnboardingValue extends OnboardingState {
@@ -24,6 +27,7 @@ export interface OnboardingValue extends OnboardingState {
   /** Merge fields from a given origin (user entry or official registry). */
   setFields: (fields: Partial<VehicleDraft>, origin: FieldOrigin) => void;
   setAcquired: (a: AcquisitionResult | null) => void;
+  setCandidates: (c: RegistryVehicle[]) => void;
   /** Set fields entered by the user (marked as user-entered). */
   setUserFields: (fields: Partial<VehicleDraft>) => void;
   setOdometer: (km: number) => void;
@@ -38,6 +42,7 @@ const initial: OnboardingState = {
   scanScenario: 'success',
   sourceScenario: 'verified',
   acquired: null,
+  candidates: [],
 };
 
 const Ctx = createContext<OnboardingValue | null>(null);
@@ -77,6 +82,7 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
       setFields: (fields, origin) => setState((s) => merge(s, fields, origin)),
       setUserFields: (fields) => setState((s) => merge(s, fields, 'user')),
       setAcquired: (acquired) => setState((s) => ({ ...s, acquired })),
+      setCandidates: (candidates) => setState((s) => ({ ...s, candidates })),
       setOdometer: (km) => setState((s) => ({ ...s, odometerKm: km })),
       setScanScenario: (scanScenario) => setState((s) => ({ ...s, scanScenario })),
       setSourceScenario: (sourceScenario) => setState((s) => ({ ...s, sourceScenario })),

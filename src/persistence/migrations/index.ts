@@ -300,4 +300,18 @@ CREATE TABLE discovery_misses (
 );
 `,
   },
+  {
+    version: 9,
+    name: 'vehicle_registry_records',
+    // Add Vehicle by plate: every valid Ministry of Transport fact for the vehicle, as normalized
+    // at lookup (no statistics; safety features positive only). Vehicle-scoped, local only.
+    up: `
+CREATE TABLE vehicle_registry_records (
+  vehicle_id TEXT PRIMARY KEY REFERENCES vehicles(id) ON DELETE CASCADE,
+  record_json TEXT NOT NULL,
+  retrieved_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+`,
+  },
 ];

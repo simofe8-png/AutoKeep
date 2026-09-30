@@ -239,7 +239,7 @@ describe('no on-device reader (Expo Go / tests): manual plate entry only', () =>
     expect(localLicenseOcr()).toBeNull();
   });
 
-  it('without a reader, onboarding offers manual entry only: plate → registry → confirm', async () => {
+  it('Add Vehicle offers no scan: plate → Ministry registry → details', async () => {
     configureDataSource({
       kind: 'local',
       openDatabase: openTestDatabase,
@@ -249,20 +249,18 @@ describe('no on-device reader (Expo Go / tests): manual plate entry only', () =>
       services: { ...services(), licenseOcr: null },
     });
     await renderRouter('./src/app', { initialUrl: '/onboarding/method' });
+    // Add Vehicle is the plate search: no license scan is offered there.
     await waitFor(
-      () => expect(screen.getByTestId('screen-onboarding-method')).toBeOnTheScreen(),
+      () => expect(screen.getByTestId('screen-vehicle-search')).toBeOnTheScreen(),
       LONG,
     );
     expect(screen.queryByTestId('onboarding-start-scan')).toBeNull();
-    expect(screen.getByTestId('onboarding-manual')).toBeOnTheScreen();
-    await fireEvent.press(screen.getByTestId('onboarding-continue'));
+    await fireEvent.changeText(screen.getByTestId('vehicle-search-plate'), '1234567');
+    await fireEvent.press(screen.getByTestId('vehicle-search-find'));
     await waitFor(
-      () => expect(screen.getByTestId('screen-onboarding-manual')).toBeOnTheScreen(),
+      () => expect(screen.getByTestId('screen-vehicle-details')).toBeOnTheScreen(),
       LONG,
     );
-    await fireEvent.changeText(screen.getByTestId('input-registration'), '12-345-67');
-    await fireEvent.press(screen.getByTestId('registry-lookup-button'));
-    await waitFor(() => expect(screen.getByTestId('registry-result')).toBeOnTheScreen(), LONG);
     expect(lookups).toEqual(['1234567']);
   }, 60000);
 });

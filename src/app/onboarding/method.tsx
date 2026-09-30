@@ -1,3 +1,3 @@
-import { MethodScreen } from '@/features/onboarding/Entry';
+import { VehicleSearchScreen } from '@/features/onboarding/VehicleSearch';
 
-export default MethodScreen;
+export default VehicleSearchScreen;

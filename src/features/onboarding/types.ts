@@ -1,5 +1,6 @@
 import type { ExteriorPhase } from '@/domain';
 import type { VehicleKind } from '@/features/vehicles/types';
+import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 
 export interface VehicleDraft {
   kind?: VehicleKind;
@@ -20,12 +21,20 @@ export interface VehicleDraft {
   exteriorPhase?: ExteriorPhase;
   /** First registration month from the registry ("YYYY-MM"); drives time-based maintenance. */
   firstRegistration?: string;
+  /** Every valid fact the Ministry datasets returned for the plate (stored with the vehicle). */
+  registryRecord?: VehicleRegistryRecord;
 }
 
 /** Registry facts that are not form fields but must travel with the draft. */
-export const HIDDEN_REGISTRY_FIELDS = ['modelCode', 'exteriorPhase', 'firstRegistration'] as const;
+export const HIDDEN_REGISTRY_FIELDS: readonly (keyof VehicleDraft)[] = [
+  'modelCode',
+  'exteriorPhase',
+  'firstRegistration',
+  'registryRecord',
+];
 
-export type DraftField = keyof VehicleDraft;
+/** Form / provenance fields (the Ministry record travels with the draft but is not a field). */
+export type DraftField = Exclude<keyof VehicleDraft, 'registryRecord'>;
 
 /** Fields required to identify the vehicle and to match an exact official source. */
 export const REQUIRED_FIELDS: readonly DraftField[] = [

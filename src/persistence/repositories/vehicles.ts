@@ -12,6 +12,8 @@ import {
   type ExteriorPhase,
 } from '@/domain';
 
+import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
+
 import { atomic, ConcurrencyError, fromJson, toJson, type Executor } from './base';
 
 // ---------- Profiles ----------
@@ -331,5 +333,31 @@ export class ActiveVehicleStore {
     if (!v || v.lifecycle !== 'active')
       throw new Error('Only an existing active vehicle can be selected');
     await this.settings.set('activeVehicleId', id, now);
+  }
+}
+
+/**
+ * The Ministry of Transport record of a vehicle (Add Vehicle by plate), kept as normalized facts.
+ * Vehicle-scoped: every query filters by vehicle_id; deleting the vehicle deletes the record.
+ */
+export class VehicleRegistryRecordRepository {
+  constructor(private readonly db: Executor) {}
+
+  async save(vehicleId: VehicleId, record: VehicleRegistryRecord, now: Timestamp): Promise<void> {
+    await this.db.run(
+      `INSERT INTO vehicle_registry_records (vehicle_id, record_json, retrieved_at, updated_at)
+       VALUES (?, ?, ?, ?)
+       ON CONFLICT(vehicle_id) DO UPDATE SET record_json = excluded.record_json,
+         retrieved_at = excluded.retrieved_at, updated_at = excluded.updated_at`,
+      [vehicleId, JSON.stringify(record), record.retrievedAt, now],
+    );
+  }
+
+  async get(vehicleId: VehicleId): Promise<VehicleRegistryRecord | null> {
+    const row = await this.db.first<{ record_json: string }>(
+      'SELECT record_json FROM vehicle_registry_records WHERE vehicle_id = ?',
+      [vehicleId],
+    );
+    return row ? (JSON.parse(row.record_json) as VehicleRegistryRecord) : null;
   }
 }

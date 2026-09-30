@@ -241,6 +241,7 @@ export default function OnboardingSources() {
         modelCode: draft.modelCode,
         exteriorPhase: draft.exteriorPhase,
         firstRegistration: draft.firstRegistration,
+        registryRecord: draft.registryRecord,
       },
       plan,
     );

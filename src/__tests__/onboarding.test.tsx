@@ -1,25 +1,16 @@
 import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
 
-/** Onboarding entry: first-run welcome → "add first vehicle" → identification method → continue. */
-async function chooseMethod(method: 'onboarding-start-scan' | 'onboarding-manual') {
-  if (screen.queryByTestId('onboarding-add-first')) {
-    await fireEvent.press(screen.getByTestId('onboarding-add-first'));
-    await waitFor(() => expect(screen.getByTestId('screen-onboarding-method')).toBeOnTheScreen());
-  }
-  await fireEvent.press(screen.getByTestId(method));
-  await fireEvent.press(screen.getByTestId('onboarding-continue'));
-}
-
 const LONG = { timeout: 8000 };
 
+/**
+ * The labelled demo scan scenarios exercise the scan → identify → confirm steps, which remain
+ * routes of their own; Add Vehicle itself is the plate search (vehicle-search.test.tsx).
+ */
 async function openOnboarding() {
-  await renderRouter('./src/app', { initialUrl: '/onboarding' });
-  // Vehicles already exist in the demo data: adding one opens the identification method directly.
-  await waitFor(() => expect(screen.getByTestId('screen-onboarding-method')).toBeOnTheScreen());
+  await renderRouter('./src/app', { initialUrl: '/onboarding/scan' });
 }
 
 async function goToScanWithScenario(label: RegExp) {
-  await chooseMethod('onboarding-start-scan');
   await waitFor(() => expect(screen.getByTestId('screen-onboarding-scan')).toBeOnTheScreen());
   await fireEvent.press(screen.getByRole('radio', { name: label }));
   await fireEvent.press(screen.getByTestId('scan-capture'));

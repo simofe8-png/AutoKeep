@@ -1,6 +1,8 @@
 import type { ExteriorPhase, RegistrationNumber } from '@/domain';
 import type { VehicleVariant } from '@/identification/engine';
 
+import type { VehicleRegistryRecord } from './vehicleRecord';
+
 /**
  * Official vehicle registry port (ADR-0012). The implementation for Israel is data.gov.il.
  * Lookups send ONLY the registration number and require explicit user consent.
@@ -24,6 +26,8 @@ export interface RegistryVehicle extends VehicleVariant {
   firstRegistration?: string;
   /** Dataset the record came from (for provenance). */
   dataset: string;
+  /** Every valid fact the Ministry datasets return for this plate (normalized; no statistics). */
+  record?: VehicleRegistryRecord;
 }
 
 export type RegistryLookup =

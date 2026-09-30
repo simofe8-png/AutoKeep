@@ -1,5 +1,6 @@
 import type { ExteriorPhase } from '@/domain';
 import * as Crypto from 'expo-crypto';
+import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import { createContext, useContext } from 'react';
 
 import type { AuthResult } from '@/cloud/auth';
@@ -62,6 +63,8 @@ export interface VehicleDetailsInput {
   exteriorPhase?: ExteriorPhase;
   /** Registry first-registration month ("YYYY-MM"). */
   firstRegistration?: string;
+  /** Every valid Ministry fact for the vehicle (Add Vehicle by plate). */
+  registryRecord?: VehicleRegistryRecord;
 }
 
 /** The original document a service record rests on (stored together with the record). */

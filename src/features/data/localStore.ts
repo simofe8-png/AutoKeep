@@ -63,9 +63,11 @@ import {
   type SqlDatabase,
   DiscoveryMissRepository,
   MaintenanceKnowledgeRepository,
+  VehicleRegistryRecordRepository,
 } from '@/persistence';
 
 import type { SourcePlan } from '@/features/sources/sourceService';
+import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 
 import { toBundle, toVehicleSummary, type VehicleRecords } from './adapters';
 import type { AttachmentInput, OriginalView } from './DataContext';
@@ -142,6 +144,8 @@ export interface VehicleDetails {
   exteriorPhase?: ExteriorPhase;
   /** Registry first-registration month ("YYYY-MM"), kept in the vehicle's maintenance profile. */
   firstRegistration?: string;
+  /** Every valid Ministry fact for the vehicle (Add Vehicle by plate). */
+  registryRecord?: VehicleRegistryRecord;
 }
 
 export class DomainError extends Error {
@@ -416,6 +420,9 @@ export class LocalStore {
           ),
         );
         await new OdometerRepository(tx).add(reading);
+      }
+      if (details.registryRecord) {
+        await new VehicleRegistryRecordRepository(tx).save(vehicle.id, details.registryRecord, now);
       }
       // The registry's first-registration month drives time-based maintenance (day unknown).
       const firstReg = details.firstRegistration?.match(/^(\d{4})-(\d{2})$/);
