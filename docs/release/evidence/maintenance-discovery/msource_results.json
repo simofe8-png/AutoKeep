@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-09-29T23:42:55.277Z",
+  "ranAt": "2026-09-30T04:15:36.760Z",
   "sourceSystems": 59,
   "adapters": [
     {
@@ -2223,7 +2223,7 @@
               "israeli": true,
               "type": "B_DIGITAL_MANUAL",
               "status": "proposed",
-              "blocker": "POLICY_UNKNOWN"
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
             }
           ],
           "documentCeiling": false,
@@ -2281,7 +2281,7 @@
               "israeli": false,
               "type": "B_DIGITAL_MANUAL",
               "status": "proposed",
-              "blocker": "POLICY_UNKNOWN"
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
             }
           ],
           "documentCeiling": false,
@@ -2341,7 +2341,7 @@
               "israeli": true,
               "type": "B_DIGITAL_MANUAL",
               "status": "proposed",
-              "blocker": "POLICY_UNKNOWN"
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
             }
           ],
           "documentCeiling": false,
@@ -2380,7 +2380,7 @@
               "israeli": true,
               "type": "B_DIGITAL_MANUAL",
               "status": "proposed",
-              "blocker": "POLICY_UNKNOWN"
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
             }
           ],
           "documentCeiling": false,
@@ -2757,7 +2757,7 @@
               "israeli": true,
               "type": "B_DIGITAL_MANUAL",
               "status": "proposed",
-              "blocker": "POLICY_UNKNOWN"
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
             }
           ],
           "documentCeiling": false,
@@ -2952,7 +2952,7 @@
               "israeli": false,
               "type": "B_DIGITAL_MANUAL",
               "status": "proposed",
-              "blocker": "POLICY_UNKNOWN"
+              "blocker": "PERMISSION_REQUIRED"
             },
             {
               "id": "il-mayer-honda-motorcycles",
@@ -3264,7 +3264,7 @@
               "israeli": false,
               "type": "B_DIGITAL_MANUAL",
               "status": "proposed",
-              "blocker": "POLICY_UNKNOWN"
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
             },
             {
               "id": "il-metro-motor",
@@ -3526,7 +3526,7 @@
               "israeli": true,
               "type": "B_DIGITAL_MANUAL",
               "status": "proposed",
-              "blocker": "POLICY_UNKNOWN"
+              "blocker": "TERMS_OR_RIGHTS_BLOCK"
             }
           ],
           "documentCeiling": false,

@@ -43,6 +43,27 @@ describe('Step 4 — the Israeli source registry', () => {
     expect(allowed).toEqual(['global-sym-global']);
   });
 
+  it('access re-review (2026-09-30) is append-only: v1 kept, only UNKNOWN tightened, nothing loosened', () => {
+    const rank = { ALLOWED: 0, UNKNOWN: 1, REQUIRES_PERMISSION: 2, NOT_ALLOWED: 3 } as const;
+    const revised = SOURCE_SYSTEMS.filter((s) => s.policy.versions.length > 1);
+    expect(revised.length).toBe(13);
+    for (const s of revised) {
+      const [v1, v2] = s.policy.versions;
+      expect([v1.version, v2.version]).toEqual([1, 2]);
+      expect(v2.evidence.slice(0, v1.evidence.length)).toEqual(v1.evidence);
+      for (const d of POLICY_DIMENSIONS) {
+        const a = v1.dimensions[d].value;
+        const b = v2.dimensions[d].value;
+        expect(rank[b]).toBeGreaterThanOrEqual(rank[a]);
+        if (a !== b) {
+          expect(a).toBe('UNKNOWN');
+          const ev = v2.evidence.filter((e) => v2.dimensions[d].basis.includes(e.id));
+          expect(ev.every((e) => e.url && e.quote)).toBe(true);
+        }
+      }
+    }
+  });
+
   it('Israeli systems are importers of market IL; approval only for owner-approved domains', () => {
     const P1 = [
       'toyota.co.il',

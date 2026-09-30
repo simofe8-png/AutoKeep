@@ -27,6 +27,10 @@ _Last updated: 2026-09-30_
   - Also built: the Ministry fleet universe → source-system mapping, document versions, the private-upload hash path, a requirement reviewer, the coverage engine, and precise fallback reasons in the UI.
   - Fleet ceiling: official documents obtainable automatically for 0.77% of 4,373,456 vehicles, and Israeli authority for 0%. Blind set: 0/12. The dominant blocker is access policy (REQUIRES_PERMISSION / UNKNOWN / NOT_ALLOWED).
   - Migrations: `20260930000001` was fixed (owner-scoped claim FK); `20260930000003` is new. Both are local Docker only.
+- **Maintenance access expansion + §24 user fallback (2026-09-30): no new automatic coverage.** `docs/maintenance/ACCESS_EXPANSION_2026-09-30.md`.
+  - All 59 systems re-reviewed under the affirmative-evidence standard: **no new ALLOWED** anywhere. 36 dimensions on 13 systems tightened UNKNOWN → NOT_ALLOWED / REQUIRES_PERMISSION (policy v2, append-only).
+  - Coverage unchanged: 0.77% document ceiling (SYM, owner decision only), 0% Israeli authority, 0/12 blind.
+  - §24 fallback: owner-approved Hebrew message + direct private upload when no reliable schedule; partial schedules labelled; discovery misses recorded per vehicle class (local SQLite v8 `discovery_misses`, not synced). B1–B12: all fallback + upload, no full or partial schedule.
 - **Next action:** stop for owner review. Pending owner decisions:
   1. permission requests to importers (Union Motors, Champion, Colmobil, Talcar, Samelet, Geo Mobility), or a legal position on automated reading of official manuals;
   2. re-confirm SYM's owner-decision permissions under M-SOURCE;

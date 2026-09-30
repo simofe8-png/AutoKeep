@@ -827,6 +827,71 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
           },
           evidence: [],
         },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'TME ToU JS-rendered, UNVERIFIED (prior research 2026-09-29, not re-verified)',
+            },
+            automatedFetchAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'TME ToU JS-rendered, UNVERIFIED (prior research 2026-09-29, not re-verified)',
+            },
+            automatedExtractionAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'TME ToU JS-rendered, UNVERIFIED (prior research 2026-09-29, not re-verified)',
+            },
+            documentCachingAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-documentCaching'],
+              note: 're-review 2026-09-30: Quote obtained from search-engine index of the ToU page; the page body is JS-rendered and the text could not be read directly (termsReadable=false). Verify manually.',
+            },
+            structuredFactsStorageAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-structuredFactsStorage'],
+              note: 're-review 2026-09-30: Quote obtained from search-engine index of the ToU page; the page body is JS-rendered and the text could not be read directly (termsReadable=false). Verify manually. Reproduction/publication of extracted text requires consent.',
+            },
+            documentRedistributionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-documentRedistribution'],
+              note: 're-review 2026-09-30: Quote obtained from search-engine index of the ToU page; the page body is JS-rendered and the text could not be read directly (termsReadable=false). Verify manually.',
+            },
+          },
+          evidence: [
+            {
+              id: 'r5-documentCaching',
+              kind: 'terms',
+              url: 'https://www.toyota-europe.com/ToU.html',
+              quote:
+                'You may only use the information, text, pictures, code or graphics contained in the site for personal, non-commercial use and may not reproduce, modify, transmit, license or publish it without …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://www.toyota-europe.com/ToU.html',
+              quote:
+                'You may only use the information, text, pictures, code or graphics contained in the site for personal, non-commercial use and may not reproduce, modify, transmit, license or publish it without …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.toyota-europe.com/ToU.html',
+              quote:
+                'You may only use the information, text, pictures, code or graphics contained in the site for personal, non-commercial use and may not reproduce, modify, transmit, license or publish it without …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
+        },
       ],
     },
     status: 'proposed',
@@ -1061,6 +1126,71 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
           },
           evidence: [],
         },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'terms not reviewed',
+            },
+            automatedFetchAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'terms not reviewed',
+            },
+            automatedExtractionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-automatedExtraction'],
+              note: 're-review 2026-09-30: Use beyond legally permitted scope (e.g. private use) prohibited.',
+            },
+            documentCachingAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-documentCaching'],
+              note: 're-review 2026-09-30: Duplication beyond private use prohibited.',
+            },
+            structuredFactsStorageAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'terms not reviewed',
+            },
+            documentRedistributionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-documentRedistribution'],
+              note: 're-review 2026-09-30:',
+            },
+          },
+          evidence: [
+            {
+              id: 'r5-automatedExtraction',
+              kind: 'terms',
+              url: 'https://www.ownersmanual.mitsubishi-motors-europe.com/terms-of-use/',
+              quote:
+                'You are strictly prohibited to use (including, without limitation, duplicate, divert, change, or modify) any contents of this Website and e-mails associated with this Website beyond the legally permitted scope …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentCaching',
+              kind: 'terms',
+              url: 'https://www.ownersmanual.mitsubishi-motors-europe.com/terms-of-use/',
+              quote:
+                'You are strictly prohibited to use (including, without limitation, duplicate, divert, change, or modify) any contents of this Website and e-mails associated with this Website beyond the legally permitted scope …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.ownersmanual.mitsubishi-motors-europe.com/terms-of-use/',
+              quote:
+                'You are strictly prohibited to use (including, without limitation, duplicate, divert, change, or modify) any contents of this Website and e-mails associated with this Website beyond the legally permitted scope …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
+        },
       ],
     },
     status: 'proposed',
@@ -1128,6 +1258,62 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
             },
           },
           evidence: [],
+        },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'terms not reviewed',
+            },
+            automatedFetchAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'terms not reviewed',
+            },
+            automatedExtractionAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'terms not reviewed',
+            },
+            documentCachingAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-documentCaching'],
+              note: 're-review 2026-09-30: Quote from search index; page 403 to fetcher.',
+            },
+            structuredFactsStorageAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'terms not reviewed',
+            },
+            documentRedistributionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-documentRedistribution'],
+              note: 're-review 2026-09-30: Quote from search index; page 403.',
+            },
+          },
+          evidence: [
+            {
+              id: 'r5-documentCaching',
+              kind: 'terms',
+              url: 'https://www.mercedes-benz.com/en/legal-notice/',
+              quote:
+                'Text, images, graphics ... may not be copied for commercial use or distribution, nor may they be modified or reposted to other web sites or digital content.',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.mercedes-benz.com/en/legal-notice/',
+              quote:
+                'Text, images, graphics ... may not be copied for commercial use or distribution, nor may they be modified or reposted to other web sites or digital content.',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
         },
       ],
     },
@@ -1657,6 +1843,97 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
           },
           evidence: [],
         },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-discovery'],
+              note: 're-review 2026-09-30: Crawlers/robots for search/scanning require prior written permission.',
+            },
+            automatedFetchAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-automatedFetch'],
+              note: 're-review 2026-09-30: robots.txt explicitly disallows PDF paths for all user-agents (machine-access prohibition for PDF documents). ToS additionally requires prior written permission for automated retrieval: "ללא מתן הרשאה כתובה מראש על-ידי החברה, אינך רשאי לבצע את הפעולות ו/או המעשים הבאים בעת …',
+            },
+            automatedExtractionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-automatedExtraction'],
+              note: 're-review 2026-09-30: Copying/processing ("לעבד") of content requires prior written permission; no machine-reading licence.',
+            },
+            documentCachingAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-documentCaching'],
+              note: 're-review 2026-09-30: Storing ("לאחסן") content, in whole or part, requires prior written permission.',
+            },
+            structuredFactsStorageAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-structuredFactsStorage'],
+              note: 're-review 2026-09-30: Commercial use and storing part of content require prior written permission. Whether bare facts (intervals) are "content" is a legal question the text does not answer.',
+            },
+            documentRedistributionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-documentRedistribution'],
+              note: 're-review 2026-09-30: Distribution/publication requires prior written consent.',
+            },
+          },
+          evidence: [
+            {
+              id: 'r5-discovery',
+              kind: 'terms',
+              url: 'https://www.championmotors.co.il/terms-of-use/',
+              quote:
+                'ללא מתן הרשאה כתובה מראש על-ידי החברה, אינך רשאי לבצע את הפעולות ו/או המעשים הבאים בעת שימושך באתר ובתוכן האתר: ... להפעיל או לאפשר הפעלת כל יישום מחשב או כל …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-automatedFetch',
+              kind: 'robots',
+              url: 'https://www.championmotors.co.il/robots.txt',
+              quote: 'User-agent: * / Disallow: /*.pdf$',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-automatedExtraction',
+              kind: 'terms',
+              url: 'https://www.championmotors.co.il/terms-of-use/',
+              quote:
+                'ללא מתן הרשאה כתובה מראש על-ידי החברה, אינך רשאי לבצע את הפעולות ו/או המעשים הבאים בעת שימושך באתר ובתוכן האתר: ... להעתיק, לשחזר, לשנות, לעבד, לתרגם, לבצע הנדסה חוזרת, להפיץ, …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentCaching',
+              kind: 'terms',
+              url: 'https://www.championmotors.co.il/terms-of-use/',
+              quote:
+                'ללא מתן הרשאה כתובה מראש על-ידי החברה, אינך רשאי לבצע את הפעולות ו/או המעשים הבאים בעת שימושך באתר ובתוכן האתר: ... להעתיק, לשחזר, לשנות, לעבד, לתרגם, לבצע הנדסה חוזרת, להפיץ, …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://www.championmotors.co.il/terms-of-use/',
+              quote:
+                'ללא מתן הרשאה כתובה מראש על-ידי החברה, אינך רשאי לבצע את הפעולות ו/או המעשים הבאים בעת שימושך באתר ובתוכן האתר: ... לעשות שימוש מסחרי באתר ו/או בתוכן האתר. ... להעתיק, …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.championmotors.co.il/terms-of-use/',
+              quote:
+                'ללא מתן הרשאה כתובה מראש על-ידי החברה, אינך רשאי לבצע את הפעולות ו/או המעשים הבאים בעת שימושך באתר ובתוכן האתר: ... להעתיק, לשחזר, לשנות, לעבד, לתרגם, לבצע הנדסה חוזרת, להפיץ, …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
+        },
       ],
     },
     status: 'proposed',
@@ -1887,6 +2164,69 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
                 "§4.2 'אין לפרסם, להעתיק, להפיץ, לשכפל ...'; §10.1 'אין ... להפיץ, למכור או להעביר ... ללא אישור מראש ובכתב'.",
               reviewedAt: d('2026-09-30'),
               reviewedBy: 'research agent (M-SOURCE)',
+            },
+          ],
+        },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: "not explicit permission (robots.txt [200]: 'User-agent: * Allow: /', with explicit Allow for GPTBot, OAI-SearchBot and ChatGPT-User. ai.txt: 'Content from this website may be used for informational summaries and user assistance.' The terms …)",
+            },
+            automatedFetchAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'robots.txt allows it, but the manuals are reachable only through an AJAX POST (not called), and there is no explicit permission for automated document download.',
+            },
+            automatedExtractionAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: "Conflicting evidence: ai.txt permits AI use 'for informational summaries and user assistance'; terms §4.2 say 'אין לפרסם, להעתיק, להפיץ, לשכפל או להשתמש בכל דרך אחרת בתכני האתר'.",
+            },
+            documentCachingAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['documentCaching'],
+            },
+            structuredFactsStorageAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-structuredFactsStorage'],
+              note: 're-review 2026-09-30: ai.txt permits summaries, not storage.',
+            },
+            documentRedistributionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['documentRedistribution'],
+            },
+          },
+          evidence: [
+            {
+              id: 'documentCaching',
+              kind: 'terms',
+              url: 'https://mg-israel.co.il/robots.txt [200]',
+              quote:
+                "§4.2 'אין להעתיק את תכני האתר'. §10.1 allows download/print/copy only 'לשימושך האישי והלא מסחרי' (otherwise 'ללא אישור מראש ובכתב מהחברה').",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentRedistribution',
+              kind: 'terms',
+              url: 'https://mg-israel.co.il/robots.txt [200]',
+              quote:
+                "§4.2 'אין לפרסם, להעתיק, להפיץ, לשכפל ...'; §10.1 'אין ... להפיץ, למכור או להעביר ... ללא אישור מראש ובכתב'.",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'r5-structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://mg-israel.co.il/site-regulations/',
+              quote:
+                'אין להעתיק, לשנות, להתאים, לפרסם, לשדר, להפיץ, למכור או להעביר חומר כל שהוא באתר זה או את קוד התוכנה, בחלקו או בשלמותו, ללא אישור מראש ובכתב מהחברה. על אף האמור …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
             },
           ],
         },
@@ -2502,6 +2842,94 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
             },
           ],
         },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-discovery'],
+              note: "re-review 2026-09-30: Only a personal non-commercial licence is granted, and any use not expressly permitted is prohibited. There is no crawler-specific clause. Renault's page uses the same Carasso template; all quoted sentences were verified present on renault.co.il/terms.html.",
+            },
+            automatedFetchAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-automatedFetch'],
+              note: 're-review 2026-09-30: Same clause.',
+            },
+            automatedExtractionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['automatedExtraction'],
+            },
+            documentCachingAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['documentCaching'],
+            },
+            structuredFactsStorageAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['structuredFactsStorage'],
+            },
+            documentRedistributionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['documentRedistribution'],
+            },
+          },
+          evidence: [
+            {
+              id: 'automatedExtraction',
+              kind: 'terms',
+              url: 'https://www.renault.co.il/terms.html',
+              quote:
+                '"למעט שליפה לצורך שימושו האישי של המשתמש כאמור, אין המשתמש רשאי לבצע כל העתקה, הפצה, שידור, העברה, פרסום או ניצול מסחרי אחר של המידע ... ללא אישור מראש ובכתב מאת קרסו מוטורס" (https://www.renault.co.il/terms.html)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentCaching',
+              kind: 'terms',
+              url: 'https://www.renault.co.il/terms.html',
+              quote:
+                '"המשתמש אינו רשאי: ... לאסוף או לאגור כל מידע בקשר למשתמשים אחרים ו/או המידע באתר" - storing/accumulating site information, no permission route stated (https://www.renault.co.il/terms.html)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://www.renault.co.il/terms.html',
+              quote:
+                '"המשתמש אינו רשאי: ... לאסוף או לאגור כל מידע בקשר למשתמשים אחרים ו/או המידע באתר" (https://www.renault.co.il/terms.html)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.renault.co.il/terms.html',
+              quote:
+                '"למעט שליפה לצורך שימושו האישי של המשתמש כאמור, אין המשתמש רשאי לבצע כל העתקה, הפצה, שידור, העברה, פרסום או ניצול מסחרי אחר של המידע ... ללא אישור מראש ובכתב מאת קרסו מוטורס" (https://www.renault.co.il/terms.html)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'r5-discovery',
+              kind: 'terms',
+              url: 'https://www.renault.co.il/terms.html',
+              quote:
+                'מבלי לגרוע מכל האמור בתנאי שימוש אלו המשתמש אינו רשאי: א. להשתמש באתר ו/או במידע הכלול בו באופן שלא הורשה במפורש בתנאי השימוש',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-automatedFetch',
+              kind: 'terms',
+              url: 'https://www.renault.co.il/terms.html',
+              quote:
+                'מבלי לגרוע מכל האמור בתנאי שימוש אלו המשתמש אינו רשאי: א. להשתמש באתר ו/או במידע הכלול בו באופן שלא הורשה במפורש בתנאי השימוש',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
+        },
       ],
     },
     status: 'proposed',
@@ -2676,6 +3104,94 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
             },
           ],
         },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-discovery'],
+              note: 're-review 2026-09-30: Only a personal non-commercial licence is granted, and any use not expressly permitted is prohibited. There is no crawler-specific clause.',
+            },
+            automatedFetchAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-automatedFetch'],
+              note: 're-review 2026-09-30: Same clause.',
+            },
+            automatedExtractionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['automatedExtraction'],
+            },
+            documentCachingAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['documentCaching'],
+            },
+            structuredFactsStorageAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['structuredFactsStorage'],
+            },
+            documentRedistributionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['documentRedistribution'],
+            },
+          },
+          evidence: [
+            {
+              id: 'automatedExtraction',
+              kind: 'terms',
+              url: 'https://www.nissan.co.il/legal/terms.html',
+              quote:
+                '"למעט שליפה לצורך שימושו האישי של המשתמש כאמור, אין המשתמש רשאי לבצע כל העתקה, הפצה, שידור, העברה, פרסום או ניצול מסחרי אחר של המידע ... ללא אישור מראש ובכתב מאת קרסו מוטורס" (https://www.nissan.co.il/legal/terms.html)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentCaching',
+              kind: 'terms',
+              url: 'https://www.nissan.co.il/legal/terms.html',
+              quote:
+                '"המשתמש אינו רשאי: ... לאסוף או לאגור כל מידע בקשר למשתמשים אחרים ו/או המידע באתר" - storing/accumulating site information, no permission route stated (https://www.nissan.co.il/legal/terms.html)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://www.nissan.co.il/legal/terms.html',
+              quote:
+                '"המשתמש אינו רשאי: ... לאסוף או לאגור כל מידע בקשר למשתמשים אחרים ו/או המידע באתר" (https://www.nissan.co.il/legal/terms.html)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.nissan.co.il/legal/terms.html',
+              quote:
+                '"למעט שליפה לצורך שימושו האישי של המשתמש כאמור, אין המשתמש רשאי לבצע כל העתקה, הפצה, שידור, העברה, פרסום או ניצול מסחרי אחר של המידע ... ללא אישור מראש ובכתב מאת קרסו מוטורס" (https://www.nissan.co.il/legal/terms.html)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'r5-discovery',
+              kind: 'terms',
+              url: 'https://www.nissan.co.il/legal/terms.html',
+              quote:
+                'מבלי לגרוע מכל האמור בתנאי שימוש אלו המשתמש אינו רשאי: א. להשתמש באתר ו/או במידע הכלול בו באופן שלא הורשה במפורש בתנאי השימוש',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-automatedFetch',
+              kind: 'terms',
+              url: 'https://www.nissan.co.il/legal/terms.html',
+              quote:
+                'מבלי לגרוע מכל האמור בתנאי שימוש אלו המשתמש אינו רשאי: א. להשתמש באתר ו/או במידע הכלול בו באופן שלא הורשה במפורש בתנאי השימוש',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
+        },
       ],
     },
     status: 'proposed',
@@ -2747,6 +3263,87 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
             },
           },
           evidence: [],
+        },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'Host unreachable / 401; no terms read.',
+            },
+            automatedFetchAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-automatedFetch'],
+              note: 're-review 2026-09-30: User undertakes not to use such software/processes.',
+            },
+            automatedExtractionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-automatedExtraction'],
+              note: 're-review 2026-09-30:',
+            },
+            documentCachingAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-documentCaching'],
+              note: 're-review 2026-09-30:',
+            },
+            structuredFactsStorageAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-structuredFactsStorage'],
+              note: 're-review 2026-09-30: "use ... by any process" requires prior authorization.',
+            },
+            documentRedistributionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-documentRedistribution'],
+              note: 're-review 2026-09-30:',
+            },
+          },
+          evidence: [
+            {
+              id: 'r5-automatedFetch',
+              kind: 'terms',
+              url: 'https://www.user-manual.renault.com/en/content/general-terms-use',
+              quote: 'use software or processes designed to reproduce and/or copy the Content',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-automatedExtraction',
+              kind: 'terms',
+              url: 'https://www.user-manual.renault.com/en/content/general-terms-use',
+              quote: 'use software or processes designed to reproduce and/or copy the Content',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentCaching',
+              kind: 'terms',
+              url: 'https://www.user-manual.renault.com/en/content/general-terms-use',
+              quote:
+                'Any reproduction, representation, use, adaptation or modification, by any process whatsoever and on any medium whatsoever, of all or part of the Website and/or the Content...without having obtained the prior …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://www.user-manual.renault.com/en/content/general-terms-use',
+              quote:
+                'Any reproduction, representation, use, adaptation or modification, by any process whatsoever and on any medium whatsoever, of all or part of the Website and/or the Content...without having obtained the prior …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.user-manual.renault.com/en/content/general-terms-use',
+              quote:
+                'Any reproduction, representation, use, adaptation or modification, by any process whatsoever and on any medium whatsoever, of all or part of the Website and/or the Content...without having obtained the prior …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
         },
       ],
     },
@@ -3295,6 +3892,82 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
             },
           ],
         },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-discovery'],
+              note: 're-review 2026-09-30: Even hyperlinking requires prior written authorisation.',
+            },
+            automatedFetchAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'As above.',
+            },
+            automatedExtractionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['automatedExtraction'],
+            },
+            documentCachingAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['documentCaching'],
+            },
+            structuredFactsStorageAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['structuredFactsStorage'],
+            },
+            documentRedistributionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['documentRedistribution'],
+            },
+          },
+          evidence: [
+            {
+              id: 'automatedExtraction',
+              kind: 'terms',
+              url: 'https://public.servicebox.peugeot.com/contenu/AC/contenu_en.pdf',
+              quote:
+                '"any reproduction, use, representation, adaptation, modification, incorporation, translation, marketing ... of any element of the Website is prohibited without the prior written authorisation" (contenu_en.pdf)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentCaching',
+              kind: 'terms',
+              url: 'https://public.servicebox.peugeot.com/contenu/AC/contenu_en.pdf',
+              quote: 'Same clause (reproduction).',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://public.servicebox.peugeot.com/contenu/AC/contenu_en.pdf',
+              quote: 'Same clause (use/adaptation/incorporation).',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentRedistribution',
+              kind: 'terms',
+              url: 'https://public.servicebox.peugeot.com/contenu/AC/contenu_en.pdf',
+              quote: 'Same clause (representation/marketing).',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'r5-discovery',
+              kind: 'terms',
+              url: 'https://public.servicebox.peugeot.com/mentions_legales/mentions_legales_ES.htm',
+              quote:
+                'El establecimiento de un hipervinculo hacia http://public.servicebox.peugeot.com requiere una autorización previa y escrita por parte de PEUGEOT',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
+        },
       ],
     },
     status: 'proposed',
@@ -3395,6 +4068,91 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
               quote: '6.2 "אינו רשאי לשנות, לפרסם, לשדר או להעביר"',
               reviewedAt: d('2026-09-30'),
               reviewedBy: 'research agent (M-SOURCE)',
+            },
+          ],
+        },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-discovery'],
+              note: 're-review 2026-09-30: robots.txt disallows the maintenance path ("טיפולים") for all crawlers, an explicit machine-access prohibition. /tipulim/ was not fetched.',
+            },
+            automatedFetchAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['automatedFetch'],
+            },
+            automatedExtractionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['automatedExtraction'],
+            },
+            documentCachingAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-documentCaching'],
+              note: 're-review 2026-09-30:',
+            },
+            structuredFactsStorageAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['structuredFactsStorage'],
+            },
+            documentRedistributionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['documentRedistribution'],
+            },
+          },
+          evidence: [
+            {
+              id: 'automatedFetch',
+              kind: 'robots',
+              url: 'https://www.chevrolet.co.il/robots.txt',
+              quote: "robots.txt 'Disallow: *.pdf' (documents) and 'Disallow: /tipulim/'.",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'automatedExtraction',
+              kind: 'terms',
+              url: 'https://www.chevrolet.co.il/שירות-שברולט/הסכם-שימוש/',
+              quote:
+                '6.2 "המשתמש אינו רשאי ... להשתמש באתר ... לשם יצירת יצירה נגזרת או לנצל את האתר, ו/או את תוכנו ... למטרות כלשהן, זולת אלו המפורטות בהסכם זה" (https://www.chevrolet.co.il/שירות-שברולט/הסכם-שימוש/)',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://www.chevrolet.co.il/שירות-שברולט/הסכם-שימוש/',
+              quote:
+                '6.2 (derivative work / exploiting content for any purpose not in the agreement).',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.chevrolet.co.il/שירות-שברולט/הסכם-שימוש/',
+              quote: '6.2 "אינו רשאי לשנות, לפרסם, לשדר או להעביר"',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'r5-discovery',
+              kind: 'robots',
+              url: 'https://www.chevrolet.co.il/robots.txt',
+              quote: 'User-Agent: * / Disallow: /tipulim/',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentCaching',
+              kind: 'terms',
+              url: 'https://www.chevrolet.co.il/%D7%A9%D7%99%D7%A8%D7%95%D7%AA-%D7%A9%D7%91%D7%A8%D7%95%D7%9C%D7%98/%D7%94%D7%A1%D7%9B%D7%9D-%D7%A9%D7%99%D7%9E%D7%95%D7%A9/',
+              quote:
+                '6.2 המשתמש אינו רשאי לשנות, לפרסם, לשדר או להעביר, לקחת חלק בהעברה או מכירה, להשתמש באתר או בכל חלק ממנו לשם יצירת יצירה נגזרת או לנצל את האתר, ו/או את …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
             },
           ],
         },
@@ -4920,6 +5678,77 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
             },
           ],
         },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'no robots.txt; no clause on discovery',
+            },
+            automatedFetchAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: "Licence acceptance is required to use content: 'על מנת להשתמש בתוכן ידיעון השירות המקוון, יש צורך שתסכים ופעל בהתאם לתנאים' — https://www.hondamotopub.com/license/MCT. There is no explicit automation clause, and the …",
+            },
+            automatedExtractionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-automatedExtraction'],
+              note: 're-review 2026-09-30:',
+            },
+            documentCachingAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['documentCaching'],
+            },
+            structuredFactsStorageAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['r5-structuredFactsStorage'],
+              note: 're-review 2026-09-30: Reproduction of parts requires permission.',
+            },
+            documentRedistributionAllowed: {
+              value: 'REQUIRES_PERMISSION',
+              basis: ['documentRedistribution'],
+            },
+          },
+          evidence: [
+            {
+              id: 'documentCaching',
+              kind: 'licence',
+              url: 'https://www.hondamotopub.com/license/HMEE',
+              quote:
+                "'Online service publications or parts of online owner's manuals cannot be copied, reproduced, altered, or distributed without Honda's permission.' — https://www.hondamotopub.com/license/HMEE (200); Hebrew equivalent on /license/MCT (200)",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.hondamotopub.com/license/HMEE',
+              quote: 'same clause',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'r5-automatedExtraction',
+              kind: 'terms',
+              url: 'https://www.hondamotopub.com/license/BWH',
+              quote:
+                "Online service publications or parts of online owner's manuals cannot be copied, reproduced, altered, or distributed without Honda's permission.",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://www.hondamotopub.com/license/BWH',
+              quote:
+                "Online service publications or parts of online owner's manuals cannot be copied, reproduced, altered, or distributed without Honda's permission.",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
+        },
       ],
     },
     status: 'proposed',
@@ -4994,6 +5823,89 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
             },
           },
           evidence: [],
+        },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'UNKNOWN',
+              basis: [],
+              note: 'not explicit permission (robots.txt empty Disallow)',
+            },
+            automatedFetchAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-automatedFetch'],
+              note: 're-review 2026-09-30: "You may not" list: downloading/storing on disk prohibited beyond one personal printout.',
+            },
+            automatedExtractionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-automatedExtraction'],
+              note: 're-review 2026-09-30:',
+            },
+            documentCachingAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-documentCaching'],
+              note: 're-review 2026-09-30:',
+            },
+            structuredFactsStorageAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-structuredFactsStorage'],
+              note: 're-review 2026-09-30: "otherwise use any material"',
+            },
+            documentRedistributionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-documentRedistribution'],
+              note: 're-review 2026-09-30:',
+            },
+          },
+          evidence: [
+            {
+              id: 'r5-automatedFetch',
+              kind: 'terms',
+              url: 'https://www.kawasaki.eu/en/service/Legal/Legal_notice.html',
+              quote:
+                'copy (whether by printing off onto paper, storing on disk, downloading or in any other way), distribute (including distributing copies), broadcast, alter or tamper with in any way or otherwise …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-automatedExtraction',
+              kind: 'terms',
+              url: 'https://www.kawasaki.eu/en/service/Legal/Legal_notice.html',
+              quote:
+                'copy (whether by printing off onto paper, storing on disk, downloading or in any other way), distribute (including distributing copies), broadcast, alter or tamper with in any way or otherwise …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentCaching',
+              kind: 'terms',
+              url: 'https://www.kawasaki.eu/en/service/Legal/Legal_notice.html',
+              quote:
+                'copy (whether by printing off onto paper, storing on disk, downloading or in any other way), distribute (including distributing copies), broadcast, alter or tamper with in any way or otherwise …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://www.kawasaki.eu/en/service/Legal/Legal_notice.html',
+              quote:
+                'copy (whether by printing off onto paper, storing on disk, downloading or in any other way), distribute (including distributing copies), broadcast, alter or tamper with in any way or otherwise …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.kawasaki.eu/en/service/Legal/Legal_notice.html',
+              quote:
+                'copy (whether by printing off onto paper, storing on disk, downloading or in any other way), distribute (including distributing copies), broadcast, alter or tamper with in any way or otherwise …',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+          ],
         },
       ],
     },
@@ -5099,6 +6011,91 @@ export const SOURCE_SYSTEMS: readonly SourceSystem[] = [
               quote: "same clause ('disseminated and/or made available to third parties')",
               reviewedAt: d('2026-09-30'),
               reviewedBy: 'research agent (M-SOURCE)',
+            },
+          ],
+        },
+        {
+          version: 2,
+          reviewedAt: d('2026-09-30'),
+          dimensions: {
+            discoveryAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-discovery'],
+              note: 're-review 2026-09-30: Also /content/dam/ (asset store) disallowed in robots.txt.',
+            },
+            automatedFetchAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['r5-automatedFetch'],
+              note: 're-review 2026-09-30:',
+            },
+            automatedExtractionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['automatedExtraction'],
+            },
+            documentCachingAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['documentCaching'],
+            },
+            structuredFactsStorageAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['structuredFactsStorage'],
+            },
+            documentRedistributionAllowed: {
+              value: 'NOT_ALLOWED',
+              basis: ['documentRedistribution'],
+            },
+          },
+          evidence: [
+            {
+              id: 'automatedExtraction',
+              kind: 'terms',
+              url: 'https://www.ktm.com/en-int/legal-notices-and-terms-of-use.html',
+              quote:
+                "'No usage rights in and to the Content are granted to you … The Content is not permitted to be published, used, changed, duplicated, handed out, disseminated and/or made available to third parties for commercial purposes.' — https://www.ktm.com/en-int/legal-notices-and-terms-of-use.html …",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentCaching',
+              kind: 'terms',
+              url: 'https://www.ktm.com/en-int/legal-notices-and-terms-of-use.html',
+              quote: "same clause ('duplicated … for commercial purposes')",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'structuredFactsStorage',
+              kind: 'terms',
+              url: 'https://www.ktm.com/en-int/legal-notices-and-terms-of-use.html',
+              quote: "same clause ('used … for commercial purposes')",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'documentRedistribution',
+              kind: 'terms',
+              url: 'https://www.ktm.com/en-int/legal-notices-and-terms-of-use.html',
+              quote: "same clause ('disseminated and/or made available to third parties')",
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'research agent (M-SOURCE)',
+            },
+            {
+              id: 'r5-discovery',
+              kind: 'terms',
+              url: 'https://www.ktm.com/en-int/legal-notices-and-terms-of-use.html',
+              quote:
+                'Not use any automated systems or means to access, acquire, copy or monitor any part of any Service or Feature, except the means provided by Provider and Apple/Google.',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
+            },
+            {
+              id: 'r5-automatedFetch',
+              kind: 'terms',
+              url: 'https://www.ktm.com/en-int/legal-notices-and-terms-of-use.html',
+              quote:
+                'Not use any automated systems or means to access, acquire, copy or monitor any part of any Service or Feature, except the means provided by Provider and Apple/Google.',
+              reviewedAt: d('2026-09-30'),
+              reviewedBy: 'AutoKeep access re-review (research agents, verbatim terms)',
             },
           ],
         },
