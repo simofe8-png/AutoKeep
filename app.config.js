@@ -16,7 +16,7 @@ module.exports = ({ config }) => {
     return {
       ...config,
       name: 'AutoKeep Staging',
-      android: { ...(config.android ?? {}), package: 'com.autokeep.app.staging' },
+      android: { ...(config.android ?? {}), package: 'com.moshenahum.autokeep.staging' },
       ios: { ...(config.ios ?? {}), bundleIdentifier: 'com.autokeep.app.staging' },
       extra: { ...(config.extra ?? {}), variant: 'staging' },
     };
