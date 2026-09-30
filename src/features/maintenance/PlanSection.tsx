@@ -96,7 +96,15 @@ export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: stri
             color={item.level === 'A' ? 'success' : 'warning'}
             testID={`plan-item-${item.key}-evidence`}
           >
-            {item.level === 'A' ? p.levelA : `${p.levelB} · ${p.levelBNote}`}
+            {item.level === 'A'
+              ? p.levelA
+              : item.level === 'T'
+                ? [
+                    p.levelT,
+                    p.levelTNote(item.corroboratingSources ?? 0),
+                    p.confidence[item.confidence],
+                  ].join(' · ')
+                : `${p.levelB} · ${p.levelBNote}`}
           </AppText>
           <AppText variant="caption" color="textSecondary">
             {[item.source.sourceTitle, he.authority[item.source.authority], item.source.locator]
@@ -358,6 +366,17 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
             </AppText>
           </Stack>
         </Card>
+        {plan.items.length > 0 ? (
+          <Stack gap={spacing.sm} testID="plan-items">
+            <AppText variant="heading" accessibilityRole="header">
+              {p.partialTitle}
+            </AppText>
+            <InlineNotice testID="plan-partial" tone="warning" message={p.partialBody} />
+            {plan.items.map((item) => (
+              <PlanItemCard key={item.key} item={item} />
+            ))}
+          </Stack>
+        ) : null}
         {others.length > 0 ? (
           <Card testID="plan-fallback-details">
             <Stack gap={spacing.sm}>

@@ -31,6 +31,7 @@ _Last updated: 2026-09-30_
   - All 59 systems re-reviewed under the affirmative-evidence standard: **no new ALLOWED** anywhere. 36 dimensions on 13 systems tightened UNKNOWN → NOT_ALLOWED / REQUIRES_PERMISSION (policy v2, append-only).
   - Coverage unchanged: 0.77% document ceiling (SYM, owner decision only), 0% Israeli authority, 0/12 blind.
   - §24 fallback: owner-approved Hebrew message + direct private upload when no reliable schedule; partial schedules labelled; discovery misses recorded per vehicle class (local SQLite v8 `discovery_misses`, not synced). B1–B12: all fallback + upload, no full or partial schedule.
+- **Source-agnostic maintenance discovery (2026-09-30): 7/12 blind vehicles get a usable schedule (3 COMPLETE, 4 PARTIAL); 5 fallback.** `docs/maintenance/SOURCE_AGNOSTIC_RESULTS_2026-09-30.md`. Research of any credible source → deterministic grounding (quote + interval values re-found on the page) → triangulation (evidence level T, confidence high/medium) → engine (market, model years, conflicts) → plan with core-item completeness; no service interval → §24 fallback.
 - **Next action:** stop for owner review. Pending owner decisions:
   1. permission requests to importers (Union Motors, Champion, Colmobil, Talcar, Samelet, Geo Mobility), or a legal position on automated reading of official manuals;
   2. re-confirm SYM's owner-decision permissions under M-SOURCE;

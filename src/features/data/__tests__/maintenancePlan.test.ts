@@ -210,7 +210,8 @@ describe('service journal ↔ maintenance requirement (Task 10)', () => {
     const { db, store } = await setup();
     await withVerifiedBooklet(db);
     let plan = (await store.snapshot()).bundles[FIESTA].plan!;
-    expect(plan.status).toBe('ready');
+    // Two verified tasks of a petrol car are a PARTIAL schedule (air filter, plugs, coolant missing).
+    expect(plan.status).toBe('partial');
     const service = plan.items.find((i) => i.task === 'periodic_service')!;
     const brake = plan.items.find((i) => i.task === 'brake_fluid')!;
     // From new (no recorded completion): first registration 2015-06 → next point after today.

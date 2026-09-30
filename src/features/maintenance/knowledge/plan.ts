@@ -14,6 +14,7 @@ import {
 } from '@/domain';
 import {
   computeRequirementDue,
+  namesVehicleMarket,
   resolveRequirements,
   type Completion,
   type RequirementDue,
@@ -53,8 +54,12 @@ export interface PlanItem {
   task: TaskCode;
   requirement: MaintenanceRequirement;
   resolution: TaskResolution;
-  /** A = the vehicle's market (Israel) is named by the source; B = manufacturer, market unproven. */
-  level: 'A' | 'B';
+  /**
+   * A = the vehicle's market (Israel) is named by the source; B = manufacturer, market unproven;
+   * T = triangulated from independent sources (confidence high / medium).
+   */
+  level: 'A' | 'B' | 'T';
+  confidence: 'high' | 'medium';
   due: RequirementDue;
   /** Id that links a recorded service action to this task on this vehicle (completion). */
   completionId: string;
@@ -93,7 +98,9 @@ export type DiscoveryMissReason =
   | 'model_year_unproven'
   | 'awaiting_verification'
   | 'missing_vehicle_fact'
-  | 'no_applicable_requirement';
+  | 'no_applicable_requirement'
+  /** Some items are established, but not the service / oil interval. */
+  | 'no_service_interval';
 
 export interface PlanFallback {
   /** Sorted, de-duplicated reasons. */
@@ -228,6 +235,56 @@ export function officialSources(facts: VehicleFacts): OfficialSourceStatus[] {
   return officialSourcesFor(facts.make, SOURCE_SYSTEMS, MANUFACTURER_ALIASES, facts.kind);
 }
 
+// ---------- market across the service family ----------
+
+const SERVICE_FAMILY: readonly TaskCode[] = ['periodic_service', 'engine_oil', 'oil_filter'];
+
+function foreignOnly(r: MaintenanceRequirement, f: VehicleFacts): boolean {
+  const ms = (r.applicability.markets ?? []).map((m) => m.toUpperCase());
+  return ms.length > 0 && f.market != null && !ms.includes(f.market) && !ms.includes('GLOBAL');
+}
+
+// ---------- completeness ----------
+
+/**
+ * The core periodic items a schedule must cover before it may be called complete (one entry =
+ * any of its tasks). Anything less is PARTIAL, whatever the individual items' evidence.
+ */
+export function coreTasks(f: VehicleFacts): TaskCode[][] {
+  const service: TaskCode[] = ['engine_oil', 'periodic_service'];
+  if (f.kind === 'motorcycle') return [service, ['spark_plugs'], ['air_filter']];
+  if (f.powertrain === 'electric') return [['brake_fluid'], ['cabin_filter']];
+  if (f.powertrain === 'diesel') return [service, ['brake_fluid'], ['air_filter'], ['coolant']];
+  if (f.powertrain === 'petrol' || f.powertrain === 'hybrid') {
+    return [service, ['brake_fluid'], ['air_filter'], ['spark_plugs'], ['coolant']];
+  }
+  return [service, ['brake_fluid']];
+}
+
+/**
+ * A core item is covered by an item that DOES the work (an oil inspection is not an oil change);
+ * the periodic service itself and every item of an electric vehicle count as they are stated.
+ */
+/** The plan states when to service the vehicle (an EV: any established item). */
+export function hasServiceInterval(
+  f: VehicleFacts,
+  items: readonly { task: TaskCode; requirement: { action: RequirementAction } }[],
+): boolean {
+  if (f.powertrain === 'electric') return items.length > 0;
+  return !missingCoreTasks(f, items).some((any) => any.includes('periodic_service'));
+}
+
+export function missingCoreTasks(
+  f: VehicleFacts,
+  items: readonly { task: TaskCode; requirement: { action: RequirementAction } }[],
+) {
+  const does = (i: (typeof items)[number]) =>
+    f.powertrain === 'electric' ||
+    i.task === 'periodic_service' ||
+    i.requirement.action !== 'inspection';
+  return coreTasks(f).filter((any) => !items.some((i) => any.includes(i.task) && does(i)));
+}
+
 // ---------- §24 fallback ----------
 
 /** Vehicle-class key of a discovery miss (no vehicle id, plate, VIN or user). */
@@ -303,7 +360,14 @@ export function buildMaintenancePlan(input: {
       task: r.task,
       requirement: r.effective,
       resolution: r,
-      level: r.level === 'A' ? 'A' : 'B',
+      level: r.level === 'A' ? 'A' : r.level === 'T' ? 'T' : 'B',
+      // Individually verified official evidence is high confidence; T carries its own.
+      confidence:
+        r.level === 'T'
+          ? r.effective.corroboration?.confidence === 'high'
+            ? 'high'
+            : 'medium'
+          : 'high',
       completionId,
       lastCompletion,
       due: computeRequirementDue({
@@ -316,13 +380,27 @@ export function buildMaintenancePlan(input: {
     });
   }
 
+  // Market first, across the service family: when the vehicle's own market states the service /
+  // oil interval, another market's service or oil interval is not shown beside it (e.g. a UK
+  // 10,000-mile oil change next to the Israeli 15,000 km service).
+  const localService = items.some(
+    (i) => SERVICE_FAMILY.includes(i.task) && namesVehicleMarket(i.requirement, facts),
+  );
+  if (localService) {
+    for (let k = items.length - 1; k >= 0; k -= 1) {
+      const i = items[k];
+      if (SERVICE_FAMILY.includes(i.task) && foreignOnly(i.requirement, facts)) items.splice(k, 1);
+    }
+  }
+
   // What is missing — the exact next actions, never an invented interval.
   const hint = bookletHint(facts.make);
   const requests: EvidenceRequest[] = [];
   const add = (r: EvidenceRequest) => {
     if (!requests.some((x) => JSON.stringify(x) === JSON.stringify(r))) requests.push(r);
   };
-  if (items.length === 0) {
+  const needsFallback = items.length === 0 || !hasServiceInterval(facts, items);
+  if (needsFallback) {
     // Sources the pipeline may read automatically are not a user action; the rest are, with why.
     const sources = officialSources(facts).filter((x) => x.reason !== 'automatic');
     if (sources.length) add({ kind: 'official_source', sources });
@@ -397,11 +475,23 @@ export function buildMaintenancePlan(input: {
 
   return {
     facts,
-    status: items.length === 0 ? 'needs_information' : unresolved.length ? 'partial' : 'ready',
-    fallback:
+    status:
       items.length === 0
-        ? { reasons: missReasons(facts, requests, unresolved), classKey: vehicleClassKey(facts) }
-        : null,
+        ? 'needs_information'
+        : unresolved.length || missingCoreTasks(facts, items).length
+          ? 'partial'
+          : 'ready',
+    // §24: no schedule, or no established service interval (the item a plan is most used for) →
+    // the dealer / upload fallback; established items are still shown, labelled PARTIAL.
+    fallback: needsFallback
+      ? {
+          reasons: [
+            ...missReasons(facts, requests, unresolved),
+            ...(items.length ? (['no_service_interval'] as const) : []),
+          ].sort(),
+          classKey: vehicleClassKey(facts),
+        }
+      : null,
     items,
     unresolved,
     requests,

@@ -1,0 +1,1954 @@
+{
+ "id": "B12",
+ "vehicle": "Peugeot 208 MY2021, 1199 cc petrol 1.2 PureTech EB2 (second-generation 208, P21), 75/100/130 hp, Israel (Lubinski)",
+ "searchedAt": "2026-09-30",
+ "queries": [
+  "Peugeot 208 1.2 PureTech timing belt interval revised 100,000 km 6 years Stellantis 2023",
+  "PureTech courroie distribution intervalle 100 000 km 6 ans 175 000 km 10 ans véhicules concernés date fabrication Stellantis",
+  "Peugeot guide d'entretien 208 2020 OR 2021 pdf PureTech courroie de distribution contrôle plan d'entretien sévérisé",
+  "forum-peugeot.com wp-content uploads planentretien 208 P21 puretech 75 OR 130 pdf",
+  "Peugeot 208 II 2020 2021 maintenance plan PureTech 25,000 km / 20,000 km every year severe",
+  "Peugeot 208 2019-2023 1.2 PureTech 100 service schedule UK 16,000 miles / 12,500 miles",
+  "Stellantis PureTech timing belt new interval 2024 OR 2025 inspection every service",
+  "PureTech courroie nouvelle génération après juin 2022 intervalle remplacement 2025",
+  "פיג'ו 208 2021 טיפולים כל ק\"מ רצועת טיימינג PureTech לובינסקי",
+  "לובינסקי מפרט טיפולים פיג'ו 208 רצועה 10 שנים 160 אלף ק\"מ",
+  "פיג'ו 208 החדשה 2020 טיפול כל 20,000 ק\"מ או שנה"
+ ],
+ "sourcesConsulted": [
+  {
+   "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+   "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+   "sourceType": "archived_official_copy",
+   "useful": true,
+   "note": "208 (P21E) 1.2 PureTech 100 S&S BVM6 plan; FR market; pre-2021 revision state."
+  },
+  {
+   "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+   "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+   "sourceType": "archived_official_copy",
+   "useful": true,
+   "note": "208 (P21E) 1.2 PureTech 100 S&S EAT8 — identical intervals."
+  },
+  {
+   "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+   "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+   "sourceType": "archived_official_copy",
+   "useful": true,
+   "note": "208 (P21E) 1.2 PureTech 75 S&S BVM5 — identical plus rear-drum removal row."
+  },
+  {
+   "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+   "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+   "sourceType": "archived_official_copy",
+   "useful": true,
+   "note": "208 (P21E) 1.2 PureTech 130 S&S EAT8 — identical."
+  },
+  {
+   "url": "https://www.largus.fr/actualite-automobile/moteur-12-puretech-psa-quand-remplacer-la-courroie-de-distribution-10590390.html",
+   "publisher": "L'argus",
+   "sourceType": "press",
+   "useful": true,
+   "note": "History of the belt-interval revisions (2020 recall, Feb 2021 v5 note, Dec 2022 note 4006/V2)."
+  },
+  {
+   "url": "https://www.largus.fr/actualite-automobile/stellantis-1-2-puretech-une-extension-de-garantie-etendue-pour-le-probleme-de-la-courroie-30032881.html",
+   "publisher": "L'argus",
+   "sourceType": "press",
+   "useful": true,
+   "note": "24/03/2024: production-date split (≤Mar 2017: 10y/175k; ≥Apr 2017: 6y/100k); warranty extension 10y/175k from 19 Mar 2024 for engines built Apr 2014–20 Jun 2022; new belt reference from 20 Jun 2022."
+  },
+  {
+   "url": "https://www.ntn-snr.com/sites/default/files/2023-04/TECHinfo%201.2%20PureTech%20Turbo_EN_rev_0.pdf",
+   "publisher": "NTN-SNR",
+   "sourceType": "other",
+   "useful": true,
+   "note": "Aftermarket technical bulletin 06-2022 (turbo)."
+  },
+  {
+   "url": "https://www.ntn-snr.com/sites/default/files/2023-03/TECHinfo%201.2%20PureTech%20Atmo_en_rev.pdf",
+   "publisher": "NTN-SNR",
+   "sourceType": "other",
+   "useful": true,
+   "note": "Aftermarket technical bulletin 06-2022 (atmo)."
+  },
+  {
+   "url": "https://www.auto.co.il/article/134024-local-news-peugeot-208",
+   "publisher": "auto.co.il",
+   "sourceType": "press",
+   "useful": true,
+   "note": "Israel: petrol 208 service every 15,000 km or a year (Lubinski data, 20.10.2020)."
+  },
+  {
+   "url": "https://cars.walla.co.il/item/3563623",
+   "publisher": "Walla! Cars",
+   "sourceType": "press",
+   "useful": true,
+   "note": "IL recall 6.3.2023: 3,502 Peugeot 308/208/2008 delivered Apr 2017–Jan 2020; original 10y/165k."
+  },
+  {
+   "url": "https://cars.walla.co.il/item/3809063",
+   "publisher": "Walla! Cars",
+   "sourceType": "press",
+   "useful": true,
+   "note": "Updated 14.1.2026: Israeli PureTech warranty extension 'ל-10 שנים או 180 אלף ק\"מ' (warranty, not a maintenance interval; recorded in notes only)."
+  },
+  {
+   "url": "https://carsforum.co.il/topic/681763-%D7%A4%D7%99%D7%92%D7%95-208-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95%D7%98%D7%A4%D7%99%D7%9D-%D7%94%D7%9E%D7%9C%D7%A6%D7%95%D7%AA-%D7%A6%D7%9E%D7%99%D7%92%D7%99%D7%9D-%D7%95%D7%9E%D7%95%D7%A1%D7%9B%D7%99%D7%9D-%D7%A2%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA-%D7%9E%D7%95%D7%9C%D7%98%D7%99%D7%9E%D7%93%D7%99%D7%94/",
+   "publisher": "Carsforum.co.il",
+   "sourceType": "forum",
+   "useful": true,
+   "note": "208 I atmo; Lubinski belt interval 10y/160k per poster (Sep 2020)."
+  },
+  {
+   "url": "https://www.auto-abc.eu/Peugeot-208/v20445-2019/service",
+   "publisher": "auto-abc.eu",
+   "sourceType": "maintenance_database",
+   "useful": true,
+   "note": "208 2019-2023 1.2 petrol 130 hp; values differ from Peugeot plan (belt 180,000 km; coolant 120,000 km/5 yrs; oil 10,000 km/1 yr)."
+  },
+  {
+   "url": "https://getgaragehub.com/learn/vehicles/peugeot-maintenance-schedule/",
+   "publisher": "GarageHub",
+   "sourceType": "other",
+   "useful": true,
+   "note": "Secondary explainer; not a primary source."
+  },
+  {
+   "url": "https://www.odopass.fr/blog/programme-entretien-peugeot-208-carnet-programme-guide-complet",
+   "publisher": "Odopass (FR blog)",
+   "sourceType": "other",
+   "useful": false,
+   "note": "Internally inconsistent: table '1.2 PureTech 100 ch Courroie 15 000 km / 1 an … 180 000 km / 6 ans', and text 'Vidange … tous les 20 000 km ou 1 an', 'Bougies tous les 60 000 km', 'Courroie … 100 000 à 120 000 km ou 6 ans'. Generation not stated; not used."
+  },
+  {
+   "url": "https://www.forum-peugeot.com/Forum/threads/plan-dentretien-courroie-de-distribution-208-1-2-puretech-82cv.126304/",
+   "publisher": "forum-peugeot.com",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "208 I 82 hp; conflicting owner reports (10 ans/175000 vs 6 ans/100000); not 208 II."
+  },
+  {
+   "url": "https://www.queenoftheroad.co.il/%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A4%D7%99%D7%92%D7%95-208-%D7%A2%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%9B%D7%9C%D7%9C%D7%99%D7%9D-%D7%9C%D7%A9%D7%9E/",
+   "publisher": "Malkat HaKvish",
+   "sourceType": "press",
+   "useful": false,
+   "note": "208 I 2012-2016 only."
+  },
+  {
+   "url": "https://www.orencars.co.il/208/",
+   "publisher": "Oren Cars (IL garage)",
+   "sourceType": "garage_publication",
+   "useful": false,
+   "note": "No intervals."
+  },
+  {
+   "url": "https://cars.walla.co.il/item/3394221",
+   "publisher": "Walla! Cars",
+   "sourceType": "press",
+   "useful": false,
+   "note": "Road test 23.10.2020; no intervals."
+  },
+  {
+   "url": "https://www.media.stellantis.com/uk-en/peugeot/press/stellantis-extends-compensation-policy-for-european-consumers-claims-on-previous-generations-of-puretech-1-0-and-1-2-engines",
+   "publisher": "Stellantis media",
+   "sourceType": "manufacturer_site",
+   "useful": false,
+   "note": "403, not read."
+  },
+  {
+   "url": "https://www.honestjohn.co.uk/askhj/answer/175621/when-should-the-timing-belt-be-changed-on-a-peugeot-208-",
+   "publisher": "Honest John",
+   "sourceType": "press",
+   "useful": false,
+   "note": "403, not read."
+  },
+  {
+   "url": "https://www.peugeotforums.com/threads/latest-peugeot-service-schedule.381724/",
+   "publisher": "peugeotforums.com",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "Redirects to paid bot gateway (tollbit); not accessed."
+  }
+ ],
+ "items": [
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Révisions : opérations systématiques Tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Révisions : opérations systématiques', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Révisions : opérations systématiques Tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Révisions : opérations systématiques', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Révisions : opérations systématiques Tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Révisions : opérations systématiques', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Révisions : opérations systématiques Tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Révisions : opérations systématiques', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Révisions : opérations systématiques Tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Révisions : opérations systématiques', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Révisions : opérations systématiques Tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Révisions : opérations systématiques', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Révisions : opérations systématiques Tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Révisions : opérations systématiques', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Révisions : opérations systématiques Tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Révisions : opérations systématiques', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2021,
+     "to": 2021
+    },
+    "generation": "208 II (new 208 launched in Israel Oct 2020)",
+    "engine": "1.2 petrol (130 hp referenced in article)",
+    "market": "Israel (Lubinski)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.auto.co.il/article/134024-local-news-peugeot-208",
+     "publisher": "auto.co.il (Israeli automotive press), reporting Lubinski launch data",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "בגרסת הבנזין, הדורשת טיפול כל 15,000 ק\"מ או שנה, הכניס היבואן לרשימה גם טיפול 60,000",
+     "locator": "Article 'פיג'ו 208 2021 החדשה', dated 20.10.2020. Same article: electric version 'טיפול כל 25,000 ק\"מ או שנה'."
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 10000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2023
+    },
+    "generation": "208 II",
+    "engine": "1.2 petrol PureTech 130 hp",
+    "market": null,
+    "transmission": "automatic"
+   },
+   "sources": [
+    {
+     "url": "https://www.auto-abc.eu/Peugeot-208/v20445-2019/service",
+     "publisher": "auto-abc.eu",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Oil change interval is 10,000 km or one year , whichever comes first.",
+     "locator": "Page 'Peugeot 208 2019 1.2 petrol (2019 - 2023) service information', section Engine oil (130 HP, automatic)."
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "Peugeot petrol (PureTech) generic",
+    "market": null,
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://getgaragehub.com/learn/vehicles/peugeot-maintenance-schedule/",
+     "publisher": "GarageHub (US/EU learn article)",
+     "sourceType": "other",
+     "derivedFrom": null,
+     "quote": "Oil service (B71 2010 0W-30) 12 months / 15,000 km",
+     "locator": "Cost table; the same page says the official long-life schedule is up to 25,000 km and recommends 10,000-15,000 km for PureTech."
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre d'habitacle Tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du filtre d'habitacle', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre d'habitacle Tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du filtre d'habitacle', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre d'habitacle Tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du filtre d'habitacle', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre d'habitacle Tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du filtre d'habitacle', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre d'habitacle Tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du filtre d'habitacle', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre d'habitacle Tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du filtre d'habitacle', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre d'habitacle Tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du filtre d'habitacle', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre d'habitacle Tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du filtre d'habitacle', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de frein Tous les 2 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du liquide de frein (identical in normal and severe columns)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de frein Tous les 2 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du liquide de frein (identical in normal and severe columns)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de frein Tous les 2 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du liquide de frein (identical in normal and severe columns)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de frein Tous les 2 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du liquide de frein (identical in normal and severe columns)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://getgaragehub.com/learn/vehicles/peugeot-maintenance-schedule/",
+     "publisher": "GarageHub",
+     "sourceType": "other",
+     "derivedFrom": null,
+     "quote": "Brake fluid: every 2 years, regardless of mileage.",
+     "locator": "Section on Peugeot service basics (generic Peugeot)."
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": null,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre à air Tous les 40000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du filtre à air', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre à air Tous les 40000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du filtre à air', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre à air Tous les 40000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du filtre à air', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre à air Tous les 40000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du filtre à air', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": null,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre à air Tous les 30000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du filtre à air', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre à air Tous les 30000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du filtre à air', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre à air Tous les 30000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du filtre à air', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du filtre à air Tous les 30000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du filtre à air', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": null,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement des bougies d'allumage Tous les 40000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement des bougies d'allumage', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement des bougies d'allumage Tous les 40000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement des bougies d'allumage', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement des bougies d'allumage Tous les 40000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement des bougies d'allumage', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement des bougies d'allumage Tous les 40000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement des bougies d'allumage', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": null,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement des bougies d'allumage Tous les 30000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement des bougies d'allumage', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement des bougies d'allumage Tous les 30000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement des bougies d'allumage', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement des bougies d'allumage Tous les 30000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement des bougies d'allumage', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement des bougies d'allumage Tous les 30000 Km / 4 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement des bougies d'allumage', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2023
+    },
+    "generation": "208 II",
+    "engine": "1.2 petrol PureTech 130 hp",
+    "market": null,
+    "transmission": "automatic"
+   },
+   "sources": [
+    {
+     "url": "https://www.auto-abc.eu/Peugeot-208/v20445-2019/service",
+     "publisher": "auto-abc.eu",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Recommended spark plugs change interval is 40,000 km .",
+     "locator": "Section Spark plugs."
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 180000,
+    "miles": null,
+    "months": 120,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de refroidissement Tous les 180000 Km / 10 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du liquide de refroidissement', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de refroidissement Tous les 180000 Km / 10 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du liquide de refroidissement', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de refroidissement Tous les 180000 Km / 10 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du liquide de refroidissement', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de refroidissement Tous les 180000 Km / 10 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du liquide de refroidissement', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 165000,
+    "miles": null,
+    "months": 120,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de refroidissement Tous les 165000 Km / 10 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du liquide de refroidissement', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de refroidissement Tous les 165000 Km / 10 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du liquide de refroidissement', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de refroidissement Tous les 165000 Km / 10 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du liquide de refroidissement', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du liquide de refroidissement Tous les 165000 Km / 10 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du liquide de refroidissement', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 120000,
+    "miles": null,
+    "months": 60,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2023
+    },
+    "generation": "208 II",
+    "engine": "1.2 petrol PureTech 130 hp",
+    "market": null,
+    "transmission": "automatic"
+   },
+   "sources": [
+    {
+     "url": "https://www.auto-abc.eu/Peugeot-208/v20445-2019/service",
+     "publisher": "auto-abc.eu",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2 petrol is 120,000 km or 5 years , whichever comes first.",
+     "locator": "Section Engine coolant."
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "inspection",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 120000,
+    "firstMonths": 48,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du PH de liquide refroidissement 120000 Km / 4 an(s) Puis tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Contrôle du PH de liquide refroidissement', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du PH de liquide refroidissement 120000 Km / 4 an(s) Puis tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Contrôle du PH de liquide refroidissement', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du PH de liquide refroidissement 120000 Km / 4 an(s) Puis tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Contrôle du PH de liquide refroidissement', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du PH de liquide refroidissement 120000 Km / 4 an(s) Puis tous les 20000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Contrôle du PH de liquide refroidissement', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 120000,
+    "firstMonths": 48,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du PH de liquide refroidissement 120000 Km / 4 an(s) Puis tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Contrôle du PH de liquide refroidissement', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du PH de liquide refroidissement 120000 Km / 4 an(s) Puis tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Contrôle du PH de liquide refroidissement', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du PH de liquide refroidissement 120000 Km / 4 an(s) Puis tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Contrôle du PH de liquide refroidissement', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du PH de liquide refroidissement 120000 Km / 4 an(s) Puis tous les 15000 Km / 1 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Contrôle du PH de liquide refroidissement', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "general_inspection",
+   "action": "inspection",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": 48,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du réglage des projecteurs 4 an(s) Puis tous les 2 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Contrôle du réglage des projecteurs (headlamp aim; identical both columns)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du réglage des projecteurs 4 an(s) Puis tous les 2 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Contrôle du réglage des projecteurs (headlamp aim; identical both columns)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du réglage des projecteurs 4 an(s) Puis tous les 2 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Contrôle du réglage des projecteurs (headlamp aim; identical both columns)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Contrôle du réglage des projecteurs 4 an(s) Puis tous les 2 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Contrôle du réglage des projecteurs (headlamp aim; identical both columns)', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "inspection",
+   "interval": {
+    "km": 80000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S",
+    "market": "France",
+    "transmission": "BVM5"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Dépose-repose des tambours de frein arrière (roues déposées) Tous les 80000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Dépose-repose des tambours de frein arrière', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "inspection",
+   "interval": {
+    "km": 75000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S",
+    "market": "France",
+    "transmission": "BVM5"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Dépose-repose des tambours de frein arrière (roues déposées) Tous les 75000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Dépose-repose des tambours de frein arrière', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 200000,
+    "miles": null,
+    "months": 144,
+    "rule": "whichever_first",
+    "firstKm": 100000,
+    "firstMonths": 72,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie d'entraînement des accessoires 100000 Km / 6 an(s) Puis tous les 200000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement de la courroie d'entraînement des accessoires', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie d'entraînement des accessoires 100000 Km / 6 an(s) Puis tous les 200000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement de la courroie d'entraînement des accessoires', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie d'entraînement des accessoires 100000 Km / 6 an(s) Puis tous les 200000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement de la courroie d'entraînement des accessoires', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie d'entraînement des accessoires 100000 Km / 6 an(s) Puis tous les 200000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement de la courroie d'entraînement des accessoires', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 210000,
+    "miles": null,
+    "months": 144,
+    "rule": "whichever_first",
+    "firstKm": 105000,
+    "firstMonths": 72,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie d'entraînement des accessoires 105000 Km / 6 an(s) Puis tous les 210000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement de la courroie d'entraînement des accessoires', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie d'entraînement des accessoires 105000 Km / 6 an(s) Puis tous les 210000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement de la courroie d'entraînement des accessoires', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie d'entraînement des accessoires 105000 Km / 6 an(s) Puis tous les 210000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement de la courroie d'entraînement des accessoires', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie d'entraînement des accessoires 105000 Km / 6 an(s) Puis tous les 210000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement de la courroie d'entraînement des accessoires', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 200000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 200000,
+    "firstMonths": 144,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de courroie d'entrainement des accessoires 200000 Km / 12 an(s) Puis tous les 200000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du kit de courroie d'entrainement des accessoires (KIT: belt + tensioner/rollers)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de courroie d'entrainement des accessoires 200000 Km / 12 an(s) Puis tous les 200000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du kit de courroie d'entrainement des accessoires (KIT: belt + tensioner/rollers)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de courroie d'entrainement des accessoires 200000 Km / 12 an(s) Puis tous les 200000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du kit de courroie d'entrainement des accessoires (KIT: belt + tensioner/rollers)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de courroie d'entrainement des accessoires 200000 Km / 12 an(s) Puis tous les 200000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du kit de courroie d'entrainement des accessoires (KIT: belt + tensioner/rollers)', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 210000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 210000,
+    "firstMonths": 144,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de courroie d'entrainement des accessoires 210000 Km / 12 an(s) Puis tous les 210000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du kit de courroie d'entrainement des accessoires (KIT)', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de courroie d'entrainement des accessoires 210000 Km / 12 an(s) Puis tous les 210000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du kit de courroie d'entrainement des accessoires (KIT)', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de courroie d'entrainement des accessoires 210000 Km / 12 an(s) Puis tous les 210000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du kit de courroie d'entrainement des accessoires (KIT)', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de courroie d'entrainement des accessoires 210000 Km / 12 an(s) Puis tous les 210000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du kit de courroie d'entrainement des accessoires (KIT)', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 200000,
+    "miles": null,
+    "months": 144,
+    "rule": "whichever_first",
+    "firstKm": 100000,
+    "firstMonths": 72,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie de distribution 100000 Km / 6 an(s) Puis tous les 200000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement de la courroie de distribution', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie de distribution 100000 Km / 6 an(s) Puis tous les 200000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement de la courroie de distribution', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie de distribution 100000 Km / 6 an(s) Puis tous les 200000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement de la courroie de distribution', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie de distribution 100000 Km / 6 an(s) Puis tous les 200000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement de la courroie de distribution', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 210000,
+    "miles": null,
+    "months": 144,
+    "rule": "whichever_first",
+    "firstKm": 105000,
+    "firstMonths": 72,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie de distribution 105000 Km / 6 an(s) Puis tous les 210000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement de la courroie de distribution', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie de distribution 105000 Km / 6 an(s) Puis tous les 210000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement de la courroie de distribution', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie de distribution 105000 Km / 6 an(s) Puis tous les 210000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement de la courroie de distribution', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement de la courroie de distribution 105000 Km / 6 an(s) Puis tous les 210000 Km / 12 an(s)",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement de la courroie de distribution', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 200000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 200000,
+    "firstMonths": 144,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de distribution 200000 Km / 12 an(s) Puis tous les 200000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du kit de distribution (full timing kit)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de distribution 200000 Km / 12 an(s) Puis tous les 200000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du kit de distribution (full timing kit)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de distribution 200000 Km / 12 an(s) Puis tous les 200000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du kit de distribution (full timing kit)', column 'Conditions d'utilisation normales'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de distribution 200000 Km / 12 an(s) Puis tous les 200000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du kit de distribution (full timing kit)', column 'Conditions d'utilisation normales'"
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 210000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 210000,
+    "firstMonths": 144,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 II (P21E)",
+    "engine": "1.2 PureTech 75 S&S / 100 S&S / 130 S&S (EB2 family)",
+    "market": "France (plan d'entretien, pre-revision ~2020)",
+    "transmission": "BVM5 (75), BVM6 & EAT8 (100), EAT8 (130)"
+   },
+   "sources": [
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de distribution 210000 Km / 12 an(s) Puis tous les 210000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 75 S&S BVM5. Table row 'Remplacement du kit de distribution (full timing kit)', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de distribution 210000 Km / 12 an(s) Puis tous les 210000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S BVM6. Table row 'Remplacement du kit de distribution (full timing kit)', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de distribution 210000 Km / 12 an(s) Puis tous les 210000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 100 S&S EAT8. Table row 'Remplacement du kit de distribution (full timing kit)', column 'Conditions d'utilisation sévères'"
+    },
+    {
+     "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+     "publisher": "Automobiles Peugeot — « PLAN D'ENTRETIEN » customer sheet (copy hosted by forum-peugeot.com, uploaded 2020-05)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Peugeot plan d'entretien (MyPeugeot / dealer-issued sheet); the four PDFs are one publisher's per-engine sheets, not independent of each other",
+     "quote": "Remplacement du kit de distribution 210000 Km / 12 an(s) Puis tous les 210000 Km",
+     "locator": "208 (P21E) – INJECTION 1.2 PURETECH 130 S&S EAT8. Table row 'Remplacement du kit de distribution (full timing kit)', column 'Conditions d'utilisation sévères'"
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 100000,
+    "miles": null,
+    "months": 72,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2017,
+     "to": null
+    },
+    "generation": "vehicles produced from April 2017 (includes 208 II P21 from 2019)",
+    "engine": "1.2 PureTech EB2 (wet belt)",
+    "market": "Europe (FR press citing Stellantis)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.largus.fr/actualite-automobile/stellantis-1-2-puretech-une-extension-de-garantie-etendue-pour-le-probleme-de-la-courroie-30032881.html",
+     "publisher": "L'argus (FR automotive press), citing Stellantis internal documents",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "Pour tous les modèles Citroën, DS, Opel et Peugeot produits à partir d’avril 2017 => remplacement tous les 6 ans ou 100 000 km.",
+     "locator": "Article published 24/03/2024, section 'Quand changer la courroie de distribution ?'"
+    },
+    {
+     "url": "https://www.largus.fr/actualite-automobile/moteur-12-puretech-psa-quand-remplacer-la-courroie-de-distribution-10590390.html",
+     "publisher": "L'argus",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "Néanmoins, le groupe Stellantis a une nouvelle fois revu sa copie. Dans la note de rappel 4006/V2, datée de décembre 2022, les recommandations ci-dessus ont disparu. L'intervalle de remplacement de la courroie est de 6 ans ou 100 000 km.",
+     "locator": "Article first published 24/04/2021, updated 05/04/2024. Dates the current rule to recall note 4006/V2 (December 2022)."
+    },
+    {
+     "url": "https://www.ntn-snr.com/sites/default/files/2023-04/TECHinfo%201.2%20PureTech%20Turbo_EN_rev_0.pdf",
+     "publisher": "NTN-SNR (aftermarket timing-kit manufacturer) TECHinfo #22, KD459.70 /06-2022",
+     "sourceType": "other",
+     "derivedFrom": null,
+     "quote": "NOTE: The replacement interval for the timing belt is now 100,000 km or 6 years.",
+     "locator": "1.2 PureTech Turbo bulletin; vehicle list includes '208 II EB2 ADTD 1.2 L THP 130 hp' and EB2 DTS 110/130 hp."
+    },
+    {
+     "url": "https://www.ntn-snr.com/sites/default/files/2023-03/TECHinfo%201.2%20PureTech%20Atmo_en_rev.pdf",
+     "publisher": "NTN-SNR TECHinfo #22 (1.2 PureTech naturally aspirated), KD459.70 /06-2022",
+     "sourceType": "other",
+     "derivedFrom": "Same NTN-SNR bulletin series as the Turbo edition (not independent)",
+     "quote": "NOTE: The replacement interval for the timing belt is now 100,000 km or 6 years.",
+     "locator": "Atmo bulletin; vehicle list includes '208 II EB2 FB (HMP)' (PureTech 75/83 class)."
+    },
+    {
+     "url": "https://getgaragehub.com/learn/vehicles/peugeot-maintenance-schedule/",
+     "publisher": "GarageHub",
+     "sourceType": "other",
+     "derivedFrom": null,
+     "quote": "Revised official interval: 6 years / 100,000 km (62,000 miles), whichever comes first.",
+     "locator": "Section on PureTech wet belt."
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 175000,
+    "miles": null,
+    "months": 120,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": null,
+     "to": 2017
+    },
+    "generation": "vehicles produced up to March 2017 (NOT 208 II)",
+    "engine": "1.2 PureTech EB2",
+    "market": "Europe (FR press citing Stellantis)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.largus.fr/actualite-automobile/stellantis-1-2-puretech-une-extension-de-garantie-etendue-pour-le-probleme-de-la-courroie-30032881.html",
+     "publisher": "L'argus",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "Pour tous les modèles Citroën, DS et Peugeot produits jusqu’en mars 2017 => remplacement tous les 10 ans ou 175 000 km.",
+     "locator": "Article 24/03/2024. Original interval before the 2020 recall change: 'passé de 10 ans ou 175 000 km à 6 ans ou 100 000 km' (L'argus 2021/2024 article)."
+    },
+    {
+     "url": "https://getgaragehub.com/learn/vehicles/peugeot-maintenance-schedule/",
+     "publisher": "GarageHub",
+     "sourceType": "other",
+     "derivedFrom": null,
+     "quote": "Original interval: 10 years / 175,000 km (109,000 miles).",
+     "locator": "PureTech wet belt section (labelled the original interval)."
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 175000,
+    "miles": null,
+    "months": 120,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "recall-campaign vehicles whose belt had NOT been replaced (interim rule Feb 2021 – Dec 2022)",
+    "engine": "1.2 PureTech EB2",
+    "market": "France/Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.largus.fr/actualite-automobile/moteur-12-puretech-psa-quand-remplacer-la-courroie-de-distribution-10590390.html",
+     "publisher": "L'argus",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "comme le stipule la version 5 de la note de rappel adressée aux concessionnaires. En résumé, si la courroie n’est pas remplacée, l’intervalle reste à 175 000 km ou 10 ans.",
+     "locator": "Article 24/04/2021 (upd. 05/04/2024); sentence begins 'Depuis le mois de février 2021, les constructeurs ont revu leur copie'. Same passage: once replaced, 'il passe à 100 000 km ou 6 ans'. Superseded by note 4006/V2 (Dec 2022)."
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 165000,
+    "miles": null,
+    "months": 120,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "1.2 PureTech turbo (1,200 cc turbo-petrol)",
+    "market": "Israel (press, recall of 208/308/2008 delivered Apr 2017 – Jan 2020)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cars.walla.co.il/item/3563623",
+     "publisher": "Walla! Cars (IL press)",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "רצועת התזמון, שהייתה אמורה להחזיק 10 שנים או 165 אלף ק\"מ, נוטה להתפורר הרבה קודם",
+     "locator": "Article updated 6.3.2023 on Lubinski recall; describes the originally intended belt life (past tense)."
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 180000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2023
+    },
+    "generation": "208 II",
+    "engine": "1.2 petrol PureTech 130 hp",
+    "market": null,
+    "transmission": "automatic"
+   },
+   "sources": [
+    {
+     "url": "https://www.auto-abc.eu/Peugeot-208/v20445-2019/service",
+     "publisher": "auto-abc.eu",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 petrol is 180,000 km .",
+     "locator": "Section Timing belt."
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 160000,
+    "miles": null,
+    "months": 120,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "208 I (earlier generation, naturally aspirated)",
+    "engine": "1.2 PureTech atmo",
+    "market": "Israel (Lubinski, per forum poster)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://carsforum.co.il/topic/681763-%D7%A4%D7%99%D7%92%D7%95-208-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95%D7%98%D7%A4%D7%99%D7%9D-%D7%94%D7%9E%D7%9C%D7%A6%D7%95%D7%AA-%D7%A6%D7%9E%D7%99%D7%92%D7%99%D7%9D-%D7%95%D7%9E%D7%95%D7%A1%D7%9B%D7%99%D7%9D-%D7%A2%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA-%D7%9E%D7%95%D7%9C%D7%98%D7%99%D7%9E%D7%93%D7%99%D7%94/",
+     "publisher": "Carsforum.co.il (IL owner forum)",
+     "sourceType": "forum",
+     "derivedFrom": null,
+     "quote": "לפי מפרט הטיפולים העדכני של לובינסקי, ברכבך שהוא בעל מנוע אטמוספרי יש להחליף את הרצועה כל 10 שנים או 160k ק\"מ.",
+     "locator": "Reply posted 11 September 2020 in thread about a 208 (4 years old, atmo). Not 208 II."
+    }
+   ]
+  },
+  {
+   "task": "timing_belt",
+   "action": "inspection",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 12,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "all 1.2 PureTech (EB2, atmo & turbo, gen 1 & 2); 208 II included",
+    "engine": "1.2 PureTech EB2 (wet belt)",
+    "market": "Europe (Stellantis brands)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.largus.fr/actualite-automobile/stellantis-1-2-puretech-une-extension-de-garantie-etendue-pour-le-probleme-de-la-courroie-30032881.html",
+     "publisher": "L'argus",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "Courroie : contrôle systématique à chaque entretien tous les ans.",
+     "locator": "Article 24/03/2024, section 'Quelles sont les règles d’entretien à respecter ?' (next line: 'Entretien : tous les 20 000/25 000 km ou 1 an')."
+    },
+    {
+     "url": "https://www.largus.fr/actualite-automobile/moteur-12-puretech-psa-quand-remplacer-la-courroie-de-distribution-10590390.html",
+     "publisher": "L'argus, quoting the brands' FAQ to dealers",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "Pour tous nos clients, nous réalisons maintenant un contrôle de la courroie de distribution à chaque pas d'entretien",
+     "locator": "Article 24/04/2021 (upd. 05/04/2024), quoted brand FAQ (recall note v5, Feb 2021)."
+    },
+    {
+     "url": "https://www.ntn-snr.com/sites/default/files/2023-04/TECHinfo%201.2%20PureTech%20Turbo_EN_rev_0.pdf",
+     "publisher": "NTN-SNR TECHinfo #22 (06-2022)",
+     "sourceType": "other",
+     "derivedFrom": null,
+     "quote": "the manufacturer recommends verifying the condition of the belt via the oil fill port during every routine maintenance.",
+     "locator": "Belt width checked with gauge OE (G-0109-6) at three crankshaft positions."
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "positions": [
+    "20,000 km / 1 year (Peugeot FR plan, normal)",
+    "15,000 km / 1 year (Peugeot FR plan, severe; Israel per Lubinski-sourced press 2020)",
+    "10,000 km / 1 year oil (auto-abc)",
+    "L'argus 2024: 'tous les 20 000/25 000 km ou 1 an'"
+   ],
+   "explainedBy": "normal vs severe; market (Israel uses the 15,000 km/1 year figure); database figure unexplained",
+   "note": "The IL figure equals the FR severe-conditions plan."
+  },
+  {
+   "task": "timing_belt",
+   "action": "replacement",
+   "positions": [
+    "plan 2020: belt 100,000 km/6 yrs then every 200,000 km/12 yrs; kit 200,000 km/12 yrs (normal) / 105,000-210,000 (severe)",
+    "6 yrs/100,000 km — produced from April 2017 (L'argus 2024, NTN-SNR 06-2022, note 4006/V2 Dec 2022)",
+    "10 yrs/175,000 km — produced up to March 2017; also Feb 2021 interim rule for unreplaced belts",
+    "10 yrs/165,000 km (IL press, original intent)",
+    "180,000 km (auto-abc)",
+    "10 yrs/160,000 km (IL forum, 208 I atmo, per Lubinski)"
+   ],
+   "explainedBy": "production date / revision date (Stellantis revisions: original 10y/175k → recall 2020 → Feb 2021 interim → Dec 2022 note 4006/V2 = 6y/100k); 165k/180k/160k unexplained or other generation",
+   "note": "For a 2021 208 II (produced after April 2017) all current official-derived sources converge on 6 years / 100,000 km first replacement plus belt inspection at every service. What happens after the first replacement differs: the 2020 plan says every 200,000 km/12 years, and no post-2022 source gives a repeat interval."
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "positions": [
+    "180,000 km/10 yrs normal, 165,000 km/10 yrs severe (Peugeot plan)",
+    "120,000 km/5 years (auto-abc)"
+   ],
+   "explainedBy": "unexplained (database vs manufacturer plan)",
+   "note": ""
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "positions": [
+    "40,000 km/4 yrs normal, 30,000 km/4 yrs severe (Peugeot plan)",
+    "40,000 km distance-only (auto-abc)"
+   ],
+   "explainedBy": "time limit omitted by database",
+   "note": "Consistent on distance."
+  }
+ ],
+ "notes": "Official plan sheets (Peugeot 'PLAN D'ENTRETIEN', FR, 208 P21E, PureTech 75 BVM5 / 100 BVM6 / 100 EAT8 / 130 EAT8, hosted by forum-peugeot.com, uploaded 2020-05) give identical intervals across 75/100/130 hp. The only difference is a rear-drum removal row on the 75 hp. These are four sheets from one publisher, so they are not independent corroboration of each other. Timing-belt revision timeline, as documented by press and aftermarket sources: (1) original 10 years/175,000 km; (2) from the late-2020 recall, 6 years/100,000 km; (3) Feb 2021 (recall note v5): the belt is checked at every service and stays at 175,000 km/10 years if not replaced; (4) Dec 2022 (recall note 4006/V2): back to 6 years/100,000 km; L'argus (24/03/2024) splits this by production date: up to March 2017 = 10 years/175,000 km, from April 2017 = 6 years/100,000 km. A MY2021 208 II falls in the April-2017+ group. (5) A new belt part reference has been fitted since 20 June 2022, and no source found gives a different interval for it. (6) Warranty (not maintenance): Europe extended to 10 years/175,000 km from 19 March 2024 for engines built April 2014 to 20 June 2022; Israel extended to 10 years/180,000 km (Walla, 14.1.2026). Israel: Lubinski-sourced press (auto.co.il, 20.10.2020) gives 15,000 km or 1 year for the petrol 208, which equals the FR severe plan. No Lubinski-published service booklet for the 208 II was found online. Oil spec per the plan: 0W20 B71 2010 (C5) or 0W30 B71 2312. The 2023+ third-generation EB2 (mild hybrid) uses a timing chain and is not applicable to a MY2021 car."
+}

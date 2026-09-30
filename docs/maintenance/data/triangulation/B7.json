@@ -1,0 +1,1009 @@
+{
+ "id": "B7",
+ "vehicle": "Yamaha MT-07, MY2020, 689 cc CP2, motorcycle (market IL)",
+ "searchedAt": "2026-09-30",
+ "queries": [
+  "Yamaha MT-07 2020 owner's manual periodic maintenance chart engine oil 10000 km valve clearance 40000",
+  "Yamaha MT-07 2020 owner's manual PDF \"B4C\" OR \"BU2\" periodic maintenance 10000 km",
+  "\"MTN690\" MT-07 2018 owner's manual pdf \"BAT-28199\"",
+  "MT-07 valve clearance check interval 40000 km 26600 miles forum",
+  "ימאהה MT-07 טיפול 10,000 ק\"מ",
+  "direct probing of Yamaha EU CDN: PB4C28199E0E/E1E/E2E.PDF, PBAT28199E0E/E1E.PDF"
+ ],
+ "sourcesConsulted": [
+  {
+   "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+   "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+   "sourceType": "official_manual",
+   "useful": true,
+   "note": "EU owner's manual MTN690-A/-U, B4C-28199-E2, 1st edition July 2019 (2018-2020 generation; applies to MY2020). Charts read from rendered pages because the check marks are glyphs."
+  },
+  {
+   "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E1E.PDF",
+   "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+   "sourceType": "official_manual",
+   "useful": true,
+   "note": "B4C-28199-E1 (July 2018). Chart text identical to E2 (same document lineage, so not independent)."
+  },
+  {
+   "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E0E.PDF",
+   "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+   "sourceType": "official_manual",
+   "useful": true,
+   "note": "B4C-28199-E0 (Nov 2017). Same chart (same rows, 166 check marks)."
+  },
+  {
+   "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PBAT28199E0E.PDF",
+   "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+   "sourceType": "official_manual",
+   "useful": false,
+   "note": "2021+ EU MT-07 (BAT-28199-E0, Oct 2020). Next generation. Chart identical except for the sidestand grease type. Context only."
+  },
+  {
+   "url": "https://maintenanceschedule.com/wp-content/uploads/2023/01/2021-Yamaha-MT-07-manual-US-new-design.pdf",
+   "publisher": "Yamaha Motor Corp USA (copy)",
+   "sourceType": "archived_official_copy",
+   "useful": true,
+   "note": "2021 US MT-07 manual. US schedule is 600 mi / 4000 mi (7000 km) / 6 months; valve check at 26600 mi (42000 km). Different generation and market."
+  },
+  {
+   "url": "https://www.yamahacity.com.au/pub/4a02c700/editor-uploaded-file/BAT-28199-22%20MT07.pdf",
+   "publisher": "Yamaha City (AU dealer)",
+   "sourceType": "archived_official_copy",
+   "useful": false,
+   "note": "MTN660P/MTN690P (MT-07, 2025+ generation). Not applicable to MY2020."
+  },
+  {
+   "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+   "publisher": "MaintenanceSchedule.com",
+   "sourceType": "maintenance_database",
+   "useful": true,
+   "note": "Derived from Yamaha manuals, with EU and US tables. Internal inconsistency on the oil filter."
+  },
+  {
+   "url": "https://motovault.app/blog/mt-07-service-intervals",
+   "publisher": "MotoVault",
+   "sourceType": "other",
+   "useful": true,
+   "note": "App blog (July 2026) derived from Yamaha manual B7S, a Yamaha US checklist and MaintenanceSchedule.com. Not independent of the manual."
+  },
+  {
+   "url": "https://specs.motorcycles/yamaha-mt-07-maintenance-schedule-chart/",
+   "publisher": "specs.motorcycles",
+   "sourceType": "maintenance_database",
+   "useful": false,
+   "note": "US-style chart (600 mi/4000 mi) with no cited source. Read only through a summarizer, so not used for quotes."
+  },
+  {
+   "url": "https://fullgaz.co.il/forums/showthread.php/20894-MT-07-%C3%A8%C3%A9%C3%B4%C3%A5%C3%AC-10-000",
+   "publisher": "FullGaz forum (IL)",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "Hebrew thread (Dec 2019) on the MT-07 10,000 km service. The raw page could not be retrieved for verbatim quoting, so it was not used."
+  },
+  {
+   "url": "https://www.manualslib.com/manual/837941/Yamaha-Mt-07.html",
+   "publisher": "ManualsLib",
+   "sourceType": "archived_official_copy",
+   "useful": false,
+   "note": "403/Cloudflare; not read."
+  }
+ ],
+ "items": [
+  {
+   "task": "periodic_service",
+   "action": "inspection",
+   "interval": {
+    "km": 10000,
+    "miles": 6000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "From 50000 km (30000 mi), repeat the maintenance intervals starting from 10000 km (6000 mi). The annual checks must be performed every year, except if a distance-based maintenance is performed instead.",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-3 'Periodic maintenance charts' TIP; chart columns 1000 km (600 mi), 10000, 20000, 30000, 40000 km, ANNUAL CHECK"
+    },
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "Europe / Australia / Asia Pacific: Every 10000 km / 6000 miles or 12 months",
+     "locator": "'Yamaha MT-07 / FZ-07 Service Intervals' section"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Europe / Australia / NZ / Asia Every 10,000 km (6,000 mi) or 12 months",
+     "locator": "'The one thing to know: US and EU intervals differ' table"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "inspection",
+   "interval": {
+    "km": null,
+    "miles": 4000,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": 1,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2015,
+     "to": null
+    },
+    "generation": "all (page claims one schedule 2015+)",
+    "engine": "689 cc CP2",
+    "market": "US",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "US: Every 4000 miles / 6000 km or 6 months",
+     "locator": "'Yamaha MT-07 / FZ-07 Service Intervals' section"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "US / Canada (FZ-07 & MT-07) Every 4,000 mi (~6,400 km) or 6 months",
+     "locator": "'The one thing to know: US and EU intervals differ' table"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 10000,
+    "miles": 6000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "25 Engine oil • Change (warm engine before draining). • Check oil level and vehicle for oil leakage.",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-7 General maintenance and lubrication chart row 25; check marks in 1000, 10000, 20000, 30000, 40000 km and ANNUAL CHECK columns"
+    },
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "NOTICE: After 1000 km (600 mi) of operation, the engine oil must be changed and the oil filter cartridge or element replaced.",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.5-4 Engine break-in, 0-1000 km"
+    },
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "Change engine oil ( Yamalube 10W-40 or Yamalube 10W-50 ) while engine is warm. ✓ ✓ ✓ ✓ ✓ Year",
+     "locator": "Europe (km) table; columns '000 km 1 10 20 30 40 Every"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Engine oil change 10,000 km / 6,000 mi or 12 mo 4,000 mi (~6,400 km) or 6 mo First change at 1,000 km / 600 mi",
+     "locator": "Service schedule at a glance table"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 4000,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": 1,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2015,
+     "to": null
+    },
+    "generation": "all (page claims one schedule 2015+)",
+    "engine": "689 cc CP2",
+    "market": "US",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "‘000 miles (US) 0.6 4 8 12 16 20 Months 1 6 12 18 24 30 ... Change engine oil ( Yamalube 10W-40 ) while engine is warm. ✓ ✓ ✓ ✓ ✓ ✓",
+     "locator": "US (miles) table"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Engine oil change 10,000 km / 6,000 mi or 12 mo 4,000 mi (~6,400 km) or 6 mo First change at 1,000 km / 600 mi",
+     "locator": "Service schedule at a glance table, US column"
+    }
+   ],
+   "note": "First service 600 mi / 1 month per US table header."
+  },
+  {
+   "task": "oil_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 20000,
+    "miles": 12000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "26 Engine oil filter cartridge • Replace.",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-7 chart row 26; check marks in 1000 km, 20000 km and 40000 km columns only; no ANNUAL CHECK mark"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Oil filter cartridge Every other oil change (20,000 km) Every other oil change (8,000 mi) Replaced with the oil at alternate services",
+     "locator": "Service schedule at a glance table"
+    }
+   ]
+  },
+  {
+   "task": "oil_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 10000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2015,
+     "to": null
+    },
+    "generation": "all (page claims one schedule 2015+)",
+    "engine": "689 cc CP2",
+    "market": "Europe/Australia/NZ/Asia",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "Oil filter Needs to be changed every time you change the oil.",
+     "locator": "'What you need to service the Yamaha MT-07 - Consumables and Special Tools' table"
+    }
+   ],
+   "note": "Interval implied as 'every oil change' (EU oil = 10000 km per same page); the number 10000 is not in this quote. The same page's EU table shows only 3 ticks on the filter row. Recommendation, not verbatim manufacturer requirement."
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": 24000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "2 * Air filter element • Replace. Every 40000 km (24000 mi)",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-5 General maintenance and lubrication chart row 2"
+    },
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "Replace air filter (K&N YA-6814) ✓ 40000 km, or more often if riding in dusty conditions",
+     "locator": "Yamaha MT-07 Maintenance Schedule (Europe, Australia, NZ, Asia - Kilometers) section"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Air filter element 40,000 km / 24,000 mi 24,000 mi Paper element",
+     "locator": "Service schedule at a glance table"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 20000,
+    "miles": 12000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "2 * Spark plugs • Check condition. • Adjust gap and clean. • Replace.",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-3 emission chart row 2; 'Replace' marked at 20000 km and 40000 km; 'Check condition/Adjust gap and clean' marked at 10000 km and 30000 km"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Spark plugs — replace 20,000 km / 12,000 mi 8,000 mi See plug spec below",
+     "locator": "Service schedule at a glance table"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "inspection",
+   "interval": {
+    "km": 20000,
+    "miles": 12000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 10000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "2 * Spark plugs • Check condition. • Adjust gap and clean.",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-3 emission chart row 2; marked at 10000 km and 30000 km (between replacements)"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Spark plugs — check 10,000 km / 6,000 mi 4,000 mi Gap and clean",
+     "locator": "Service schedule at a glance table"
+    }
+   ],
+   "note": "Official chart marks the check at 10000 and 30000 km only (replacement at 20000/40000). MotoVault's 'check 10,000 km' is consistent if read as every service without replacement."
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "interval": {
+    "km": 40000,
+    "miles": 24000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "3 * Valve clearance • Check and adjust. Every 40000 km (24000 mi)",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-3 Periodic maintenance chart for the emission control system row 3"
+    },
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "The major service (valve clearance inspection) is every 26600 miles / 42000 km (US) or 40000 km / 24000 mi (Europe).",
+     "locator": "'Service Intervals' section"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Valve clearance — check/adjust 40,000 km / 24,000 mi ~26,600 mi Engine cold; dealer job for most",
+     "locator": "Service schedule at a glance table"
+    }
+   ],
+   "note": "Official job text is 'Check and adjust'."
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "interval": {
+    "km": 42000,
+    "miles": 26600,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2021,
+     "to": null
+    },
+    "generation": "2021+ (MT07M/MT07MC)",
+    "engine": "689 cc CP2",
+    "market": "US",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://maintenanceschedule.com/wp-content/uploads/2023/01/2021-Yamaha-MT-07-manual-US-new-design.pdf",
+     "publisher": "Yamaha Motor Corporation USA (copy hosted by MaintenanceSchedule.com)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": "Yamaha owner's manual LIT-11626-34-63 (BAT-28199-10)",
+     "quote": "3 * Valve clearance • Check and adjust valve clearance when engine is cold. Every 26600 mi (42000 km)",
+     "locator": "p.7-3 Periodic maintenance chart for the emission control system row 3"
+    }
+   ]
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "interval": {
+    "km": 42000,
+    "miles": 26600,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2015,
+     "to": null
+    },
+    "generation": "all (page claims one schedule 2015+)",
+    "engine": "689 cc CP2",
+    "market": "US",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "The major service (valve clearance inspection) is every 26600 miles / 42000 km (US) or 40000 km / 24000 mi (Europe).",
+     "locator": "'Service Intervals' section"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Valve clearance — check/adjust 40,000 km / 24,000 mi ~26,600 mi Engine cold; dealer job for most",
+     "locator": "Service schedule at a glance table, US column"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "8 * Brake fluid • Change. Every 2 years",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-5 chart row 8; also p.6-8 TIP: 'Every two years replace the internal components of the brake master cylinders and calipers, and change the brake fluid.'"
+    },
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "Change brake fluid ( Castrol DOT 4 ) and rubber parts of brake master cylinders and calipers. 2 years",
+     "locator": "Yamaha MT-07 Maintenance Schedule (Europe, Australia, NZ, Asia - Kilometers) section"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Brake fluid (DOT 4) every 2 years and brake hoses every 4 years, regardless of mileage",
+     "locator": "'Spark plugs, air filter and fluids' section"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "inspection",
+   "interval": {
+    "km": 10000,
+    "miles": 6000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "5 * Front brake • Check operation, fluid level, and for fluid leakage. • Replace brake pads if necessary.",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-5 chart rows 5-6 (front/rear brake); marked at 1000, 10000, 20000, 30000, 40000 km and ANNUAL CHECK"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 48,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "7 * Brake hoses • Check for cracks or damage. • Replace. Every 4 years",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-5 chart row 7; p.6-8 TIP: 'Replace the brake hoses every four years and if cracked or damaged.'"
+    },
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "Replace brake hoses 4 years",
+     "locator": "Yamaha MT-07 Maintenance Schedule (Europe, Australia, NZ, Asia - Kilometers) section"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Brake fluid (DOT 4) every 2 years and brake hoses every 4 years, regardless of mileage",
+     "locator": "'Spark plugs, air filter and fluids' section"
+    }
+   ],
+   "note": "Component is brake hoses (not the whole brake system)."
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 36,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "27 * Cooling system • Check coolant level and vehicle for coolant leakage. • Change. Every 3 years",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-7 chart row 27"
+    },
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "Change coolant (ethylene glycol pre-mix) 3 years",
+     "locator": "Yamaha MT-07 Maintenance Schedule (Europe, Australia, NZ, Asia - Kilometers) section"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "Yamalube coolant or any 50/50 ethylene-glycol pre-mix, changed every 3 years.",
+     "locator": "'Spark plugs, air filter and fluids' section, Coolant"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "inspection",
+   "interval": {
+    "km": 10000,
+    "miles": 6000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "27 * Cooling system • Check coolant level and vehicle for coolant leakage.",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-7 chart row 27; marked at 10000, 20000, 30000, 40000 km and ANNUAL CHECK (not at 1000 km)"
+    }
+   ]
+  },
+  {
+   "task": "drive_chain",
+   "action": "adjustment",
+   "interval": {
+    "km": 1000,
+    "miles": 600,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "13 Drive chain • Check chain slack, alignment and condition. • Adjust and lubricate chain with a special O-ring chain lubricant thoroughly. Every 1000 km (600 mi) and after washing the motorcycle, riding in the rain or riding in wet areas",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-6 chart row 13"
+    },
+    {
+     "url": "https://maintenanceschedule.com/yamaha-mt-07-fz-07-maintenance/",
+     "publisher": "MaintenanceSchedule.com (Dana Hooshmand)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "Yamaha MT-07 owner's manuals (US and Europe; 2015-2021 editions per the page)",
+     "quote": "Yamaha recommends you follow the following chain maintenance schedule every 500 mi (USA) or 1000 km (Europe) and after washing the motorcycle, riding in the rain, or riding in wet areas.",
+     "locator": "'Maintaining the Chain of the Yamaha MT-07' section"
+    },
+    {
+     "url": "https://motovault.app/blog/mt-07-service-intervals",
+     "publisher": "MotoVault (Andrej Kanuch)",
+     "sourceType": "other",
+     "derivedFrom": "Yamaha MT-07 owner's manual (model B7S), Yamaha US FZ-07 dealer checklist and MaintenanceSchedule.com (per its Sources list)",
+     "quote": "the chain should be cleaned, lubricated and checked every 1,000 km / 500 mi and after any ride in the rain or any wash",
+     "locator": "'Chain, tyres and key torques' section"
+    }
+   ],
+   "note": "Also event-triggered (washing, rain, wet riding). Action covers check + adjust + lubricate."
+  },
+  {
+   "task": "general_inspection",
+   "action": "other",
+   "interval": {
+    "km": 50000,
+    "miles": 30000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Swingarm pivot bearings • Check operation and for excessive play. • Lubricate with lithium-soap-based grease. Every 50000 km (30000 mi)",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-6 chart row 12"
+    }
+   ],
+   "note": "Swingarm pivot bearing lubrication; no dedicated task code."
+  },
+  {
+   "task": "general_inspection",
+   "action": "other",
+   "interval": {
+    "km": 20000,
+    "miles": 12000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2020
+    },
+    "generation": "2018-2020 (B4C, MTN690-A/-U)",
+    "engine": "689 cc CP2",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Motorcycles/PB4C28199E2E.PDF",
+     "publisher": "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "14 * Steering bearings • Check bearing assemblies for looseness. • Moderately repack with lithium-soap-based grease.",
+     "locator": "Owner's manual MTN690-A/MTN690-U, B4C-28199-E2 (1st edition July 2019), p.6-6 chart row 14; repack marked at 20000 and 40000 km; looseness check at 1000, 10000, 30000 km"
+    }
+   ],
+   "note": "Steering bearing repack; no dedicated task code."
+  }
+ ],
+ "conflicts": [
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "positions": [
+    "Europe (official B4C-28199-E2; MaintenanceSchedule.com; MotoVault): every 10000 km or 12 months, first at 1000 km",
+    "US (MaintenanceSchedule.com; MotoVault, citing US manual): every 4000 mi or 6 months"
+   ],
+   "explainedBy": "market",
+   "note": "Israeli bikes are assumed EU-spec; no Israeli importer schedule found."
+  },
+  {
+   "task": "periodic_service",
+   "action": "inspection",
+   "positions": [
+    "Europe: 10000 km / 12 months",
+    "US: 4000 mi / 6 months (MaintenanceSchedule.com converts to 6000 km, MotoVault to ~6,400 km; the 2021 US official manual header reads 4000 mi (7000 km))"
+   ],
+   "explainedBy": "market",
+   "note": "US km conversions disagree between secondary sources; use miles."
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "positions": [
+    "Europe official: every 40000 km (24000 mi)",
+    "US (official 2021+ US manual; secondary for 2015+): every 26600 mi (42000 km)"
+   ],
+   "explainedBy": "market",
+   "note": ""
+  },
+  {
+   "task": "oil_filter",
+   "action": "replacement",
+   "positions": [
+    "Official EU chart: 1000 km then at 20000/40000 km (every other oil change); MotoVault agrees",
+    "MaintenanceSchedule.com consumables table: 'Needs to be changed every time you change the oil'"
+   ],
+   "explainedBy": "unexplained",
+   "note": "The prose on MaintenanceSchedule.com conflicts with its own EU table (3 ticks) and with the official chart. Treat it as a recommendation, not a manufacturer requirement."
+  }
+ ],
+ "notes": "The primary evidence is the official Yamaha EU owner's manual for the 2018-2020 MT-07 (B4C-28199-E2), which is the MY2020 generation. Israeli-market bikes are assumed EU-spec; no Israeli importer schedule was found. The secondary sources (MaintenanceSchedule.com, MotoVault) are derived from Yamaha manuals and are NOT independent evidence. The official chart is a tick-mark table: intervals for engine oil, oil filter, spark plugs, brake inspection and coolant inspection were read from tick positions on rendered pages, and the locators give the ticked columns. Annual-check rule per the TIP: annual checks every year unless a distance-based maintenance is performed instead, which is the basis for engine oil at 10000 km or 12 months. A severe-use note has no number: the air filter 'needs to be replaced more frequently when riding in unusually wet or dusty areas' (p.6-8). No fuel filter or timing chain interval was found."
+}

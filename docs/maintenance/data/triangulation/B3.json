@@ -1,0 +1,1208 @@
+{
+ "id": "B3",
+ "vehicle": "Toyota C-HR Hybrid, MY2019, 1.8 hybrid (1798 cc, 2ZR-FXE), Israel, Union Motors",
+ "searchedAt": "2026-09-30",
+ "queries": [
+  "Toyota C-HR hybrid 2019 maintenance schedule 15,000 km 12 months service booklet Europe",
+  "טויוטה C-HR היברידי טיפול כל 15,000 ק\"מ",
+  "C-HR hybrid 1.8 2ZR-FXE service schedule spark plugs coolant brake fluid km interval maintenance table",
+  "toyota.co.il ספרות רכב ספר רכב C-HR PDF",
+  "\"C-HR\" hybrid maintenance schedule \"Every 15,000 km or 12 months\" Toyota Australia capped price service",
+  "Toyota C-HR hybrid service schedule table replace spark plugs engine coolant brake fluid km months PDF warranty maintenance booklet",
+  "טויוטה C-HR היברידית טבלת טיפולים החלפת מצתים נוזל בלמים נוזל קירור מסנן אוויר ק\"מ",
+  "יוניון מוטורס טויוטה טיפול תקופתי 15,000 ק\"מ היברידי מה כולל החלפת מצתים",
+  "\"C-HR\" hybrid spark plugs change interval km Europe owners forum",
+  "Toyota C-HR hybrid service 60,000km/90,000km/120,000km spark plugs logbook Australia/NZ/Europe",
+  "2ZR-FXE Toyota Auris Hybrid OR C-HR Hybrid Europe service schedule every 15,000 km spark plugs coolant"
+ ],
+ "sourcesConsulted": [
+  {
+   "url": "http://web.archive.org/web/20251121004322/https://automax.co.il/wp-content/uploads/2017/02/chr_manual.pdf",
+   "publisher": "Global Automax",
+   "sourceType": "importer",
+   "useful": true,
+   "note": "Hebrew C-HR short driver's guide with warranty terms (2017). The live URL did not respond, so the Wayback copy was used. Automax is a parallel/direct importer, not Union Motors"
+  },
+  {
+   "url": "https://www.toyota.co.il/company/news/service-and-maintenance",
+   "publisher": "Toyota Israel (Union Motors)",
+   "sourceType": "importer",
+   "useful": true,
+   "note": "generic article: 15,000 km or annual for cars under 10 years old"
+  },
+  {
+   "url": "https://toyota.co.il/service-and-accessories/service-and-maintenance/hybrid-service",
+   "publisher": "Toyota Israel",
+   "sourceType": "importer",
+   "useful": false,
+   "note": "hybrid battery warranty 5 y / 100,000 km; no service interval"
+  },
+  {
+   "url": "https://mag.toyota.co.uk/toyota-c-hr-service-all-you-need-to-know/",
+   "publisher": "Toyota GB",
+   "sourceType": "manufacturer_site",
+   "useful": true,
+   "note": "UK: 12 months / 10,000 miles"
+  },
+  {
+   "url": "https://servicereset.net/maintenance/toyota-c-hr-2016-2023-service-indicator-reset/",
+   "publisher": "servicereset.net",
+   "sourceType": "maintenance_database",
+   "useful": true,
+   "note": "claims the EU schedule; secondary, uncited"
+  },
+  {
+   "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+   "publisher": "Toyota New Zealand",
+   "sourceType": "manufacturer_site",
+   "useful": true,
+   "note": "only itemized Toyota-official hybrid schedule found; generic for petrol hybrids, NZ market, Sept 2023 version"
+  },
+  {
+   "url": "https://www.midrag.co.il/Content/Tip/9552",
+   "publisher": "Midrag",
+   "sourceType": "garage_publication",
+   "useful": true,
+   "note": "Israeli brake fluid article naming the C-HR"
+  },
+  {
+   "url": "http://web.archive.org/web/20230322201335/https://www.toyotachrforum.com/threads/service-intervals.1657/",
+   "publisher": "Toyota C-HR Forum",
+   "sourceType": "forum",
+   "useful": true,
+   "note": "AU 12 months / 15,000 km (2017)"
+  },
+  {
+   "url": "https://www.kbb.com/toyota/c-hr/2019/maintenance-schedules/",
+   "publisher": "Kelley Blue Book",
+   "sourceType": "maintenance_database",
+   "useful": true,
+   "note": "US 2019 C-HR; different market/engine"
+  },
+  {
+   "url": "https://repairpal.com/estimator/toyota/c-hr/maintenance-schedule",
+   "publisher": "RepairPal",
+   "sourceType": "maintenance_database",
+   "useful": false,
+   "note": "HTTP 403"
+  },
+  {
+   "url": "https://club.autodoc.co.uk/manuals/maintenance/toyota/c-hr",
+   "publisher": "Autodoc Club",
+   "sourceType": "parts_platform",
+   "useful": false,
+   "note": "interval chart not in the text extraction; curl blocked"
+  },
+  {
+   "url": "https://www.autoguru.com.au/car-service/toyota/c-hr/120000-kms-96-months",
+   "publisher": "AutoGuru",
+   "sourceType": "parts_platform",
+   "useful": false,
+   "note": "pricing only, no item list"
+  },
+  {
+   "url": "https://assets.sia.toyota.com/publications/en/omms-s/T-MMS-20CHR/pdf/T-MMS-20CHR.pdf",
+   "publisher": "Toyota Motor Sales USA",
+   "sourceType": "official_booklet",
+   "useful": false,
+   "note": "HTTP 403 (US gasoline C-HR anyway)"
+  },
+  {
+   "url": "https://www.chrforums.uk/threads/service-intervals.4603/",
+   "publisher": "CHR Forums UK",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "tollbit paywall redirect; not bypassed"
+  },
+  {
+   "url": "https://www.toyotaownersclub.com/forums/topic/177374-maintenance-schedule-spark-plugs-and-gearbox-oil/",
+   "publisher": "Toyota Owners Club UK",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "HTTP 403 / DNS; no archive"
+  },
+  {
+   "url": "https://www.speakev.com/threads/toyota-auris-2015-hybrid-service-schedule.175165/",
+   "publisher": "SpeakEV",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "tollbit paywall redirect; not bypassed"
+  },
+  {
+   "url": "https://priuschat.com/threads/spark-plug-change-interval.203281/",
+   "publisher": "PriusChat",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "HTTP 403"
+  },
+  {
+   "url": "https://carsforum.co.il/topic/707486",
+   "publisher": "carsforum.co.il",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "HTTP 403"
+  },
+  {
+   "url": "https://www.auto-abc.eu/service/Toyota-C-HR",
+   "publisher": "Auto ABC",
+   "sourceType": "maintenance_database",
+   "useful": false,
+   "note": "no C-HR variant data"
+  }
+ ],
+ "items": [
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "IL",
+    "transmission": null,
+    "note": "Automax (Global Automax, an Israeli importer of Toyota, not Union Motors): C-HR driver's guide (hybrid), 2017 warranty terms. toyota.co.il (Union Motors' Toyota Israel site) is a generic article for Toyota vehicles under 10 years old"
+   },
+   "sources": [
+    {
+     "url": "http://web.archive.org/web/20251121004322/https://automax.co.il/wp-content/uploads/2017/02/chr_manual.pdf",
+     "publisher": "Global Automax (Israeli Toyota importer) - C-HR short driver's guide, warranty section",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "הלקוח חייב להקפיד לבצע טיפולים שגרתיים ברכב כל 15,000 ק\"מ או אחת לשנה, לפי הקודם, וזאת לפי מפרט הטיפולים של היצרן",
+     "locator": "section 'החובה לבצע טיפולים שגרתיים'"
+    },
+    {
+     "url": "http://web.archive.org/web/20251121004322/https://automax.co.il/wp-content/uploads/2017/02/chr_manual.pdf",
+     "publisher": "Global Automax (Israeli Toyota importer) - C-HR short driver's guide",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "למכוניות עם מנוע בנזין – יש לבצע טיפול שירות ובדיקת תקינות בכל 15,000 ק\"מ או כל שנה, כמוקדם מבניהם",
+     "locator": "section 'תדירות הבדיקות והטיפולים'"
+    },
+    {
+     "url": "https://www.toyota.co.il/company/news/service-and-maintenance",
+     "publisher": "Toyota Israel (toyota.co.il, Union Motors)",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "רכבים חדשים שיוצרו אחרי שנת 2,000 צריכים לעבור טיפול תקופתי אחת לשנה או אם עברו 15,000 ק\"מ.",
+     "locator": "article 'טיפול 10000 וטיפול 15000', section 'כל כמה זמן עושים טיפול לרכב?'"
+    },
+    {
+     "url": "https://www.toyota.co.il/company/news/service-and-maintenance",
+     "publisher": "Toyota Israel (toyota.co.il, Union Motors)",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "עבור רכב שיוצר לפני פחות מ- 10 שנים - ניתן לבצע טיפול תקופתי כל 15 אלף ק\"מ או טיפול שנתי.",
+     "locator": "same article, recommended guidelines list"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 15000,
+    "miles": 10000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "XW10 (1st gen C-HR)",
+    "engine": "1.8 Hybrid 2ZR-FXE (also 1.2 D-4T, 2.0 Hybrid)",
+    "market": "EU (European-market schedule per source)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://servicereset.net/maintenance/toyota-c-hr-2016-2023-service-indicator-reset/",
+     "publisher": "servicereset.net",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "claims Toyota European schedule (not cited)",
+     "quote": "Toyota's official European-market schedule for the XW10 C-HR: ... 1.8 Hybrid (2ZR-FXE): 10,000 miles (15,000 km) or 12 months.",
+     "locator": "section 'How often does the C-HR service indicator come up?'"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific; 'A' service every year / 15,000 km"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "SERVICE INTERVAL (SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST*) ... 1 15,000 A",
+     "locator": "page 1, interval grid (every row 15,000 km steps, each with service A)"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "AU",
+    "transmission": null,
+    "note": "forum post, Mar 2017, citing Motor Report; the 2017 AU C-HR launch model may not be the hybrid"
+   },
+   "sources": [
+    {
+     "url": "http://web.archive.org/web/20230322201335/https://www.toyotachrforum.com/threads/service-intervals.1657/",
+     "publisher": "Toyota C-HR Forum (Wayback 2023-03-22), post by TubeMan 2017-03-01",
+     "sourceType": "forum",
+     "derivedFrom": "Motor Report (press)",
+     "quote": "C-Hr owners will only need to bring it in once every 12 months/15,000km. Not sure if this applies globally, but in Australia",
+     "locator": "thread 'Service Intervals', post #1"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": null,
+    "miles": 10000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "1.2-litre, 1.8 hybrid, 2.0 hybrid",
+    "market": "UK",
+    "transmission": null,
+    "note": "services alternate minor/major"
+   },
+   "sources": [
+    {
+     "url": "https://mag.toyota.co.uk/toyota-c-hr-service-all-you-need-to-know/",
+     "publisher": "Toyota UK Magazine (Toyota GB)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Whether you own a Toyota C-HR powered by a 1.2-litre engine or either of the 1.8 or 2.0-litre hybrid models, service intervals are every 12 months or 10,000 miles, whichever comes first.",
+     "locator": "section 'When is my Toyota C-HR service due?'"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": null,
+    "miles": 5000,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "UK",
+    "transmission": null,
+    "note": "source hedges with 'typically'"
+   },
+   "sources": [
+    {
+     "url": "https://servicereset.net/maintenance/toyota-c-hr-2016-2023-service-indicator-reset/",
+     "publisher": "servicereset.net",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "UK severe-service / short-trip driving typically halves the interval to 5,000 miles or 6 months.",
+     "locator": "section 'How often does the C-HR service indicator come up?'"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Engine oil & filter (oil grade as recommended by TNZ) R",
+     "locator": "page 1, group A (performed at every A service: every 15,000 km / year); interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "oil_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Engine oil & filter (oil grade as recommended by TNZ) R",
+     "locator": "page 1, group A; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 15000,
+    "miles": 10000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "XW10",
+    "engine": "1.8 Hybrid 2ZR-FXE",
+    "market": "EU",
+    "transmission": null,
+    "note": "the service indicator tracks oil change only"
+   },
+   "sources": [
+    {
+     "url": "https://servicereset.net/maintenance/toyota-c-hr-2016-2023-service-indicator-reset/",
+     "publisher": "servicereset.net",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "the C-HR's service indicator refers only to oil change .",
+     "locator": "warning note"
+    },
+    {
+     "url": "https://servicereset.net/maintenance/toyota-c-hr-2016-2023-service-indicator-reset/",
+     "publisher": "servicereset.net",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Typical XW10 C-HR intervals: 10,000 miles (15,000 km) or 12 months for both the 1.2 D-4T petrol and the 1.8 / 2.0 Hybrid engines.",
+     "locator": "Method 2 section"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 10000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "1.2-litre, 1.8 hybrid, 2.0 hybrid",
+    "market": "UK",
+    "transmission": null,
+    "note": "oil and filter changed at every (minor and major) service"
+   },
+   "sources": [
+    {
+     "url": "https://mag.toyota.co.uk/toyota-c-hr-service-all-you-need-to-know/",
+     "publisher": "Toyota UK Magazine (Toyota GB)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "The services alternate between minor and major, with the former involving an oil and filter change and a thorough inspection, while the latter replaces more items",
+     "locator": "section 'When is my Toyota C-HR service due?'"
+    }
+   ]
+  },
+  {
+   "task": "oil_filter",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 10000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "1.2-litre, 1.8 hybrid, 2.0 hybrid",
+    "market": "UK",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://mag.toyota.co.uk/toyota-c-hr-service-all-you-need-to-know/",
+     "publisher": "Toyota UK Magazine (Toyota GB)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "The services alternate between minor and major, with the former involving an oil and filter change and a thorough inspection, while the latter replaces more items",
+     "locator": "section 'When is my Toyota C-HR service due?'"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 10000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": null,
+    "engine": null,
+    "market": "US",
+    "transmission": null,
+    "note": "US-market 2019 C-HR; KBB does not state the engine (the US C-HR was not the 1.8 hybrid; not verified in a quote here)"
+   },
+   "sources": [
+    {
+     "url": "https://www.kbb.com/toyota/c-hr/2019/maintenance-schedules/",
+     "publisher": "Kelley Blue Book",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Replace the engine oil and oil filter",
+     "locator": "2019 C-HR maintenance schedule, 10,000-mile entry"
+    }
+   ]
+  },
+  {
+   "task": "tire_rotation",
+   "action": "other",
+   "interval": {
+    "km": null,
+    "miles": 10000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": null,
+    "engine": null,
+    "market": "US",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.kbb.com/toyota/c-hr/2019/maintenance-schedules/",
+     "publisher": "Kelley Blue Book",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "tire rotation to maintain even tire wear",
+     "locator": "2019 C-HR maintenance schedule, 10,000-mile entry"
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 30000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": null,
+    "engine": null,
+    "market": "US",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.kbb.com/toyota/c-hr/2019/maintenance-schedules/",
+     "publisher": "Kelley Blue Book",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Change engine air filter and in-cabin air filter",
+     "locator": "2019 C-HR maintenance schedule, 30,000-mile entry"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 30000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": null,
+    "engine": null,
+    "market": "US",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.kbb.com/toyota/c-hr/2019/maintenance-schedules/",
+     "publisher": "Kelley Blue Book",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Change engine air filter and in-cabin air filter",
+     "locator": "2019 C-HR maintenance schedule, 30,000-mile entry"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ; IL",
+    "transmission": null,
+    "note": "NZ: generic Toyota petrol hybrid (group B at years 2/4/6... / 30,000 km steps). midrag (Israeli garage-rating platform) names Corolla, RAV4, C-HR, Yaris, without model year or engine"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Brake fluid (DOT3 or DOT4) R",
+     "locator": "page 1, group B; grid row '2 30,000 A + B', repeating every 2 years / 30,000 km; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    },
+    {
+     "url": "https://www.midrag.co.il/Content/Tip/9552",
+     "publisher": "Midrag (Israeli garage platform), tip 9552",
+     "sourceType": "garage_publication",
+     "derivedFrom": null,
+     "quote": "בכל דגמי טויוטה הבאים מחליפים נוזל בלמים כל 30,000 ק\"מ או שנתיים, המוקדם מביניהם: טויוטה קורולה, טויוטה ראב 4, טויוטה C-HR , טויוטה יאריס.",
+     "locator": "section 'מתי מחליפים נוזל בלמים בטויוטה'"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "XW10",
+    "engine": null,
+    "market": "EU (per source)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://servicereset.net/maintenance/toyota-c-hr-2016-2023-service-indicator-reset/",
+     "publisher": "servicereset.net",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Other items (brake fluid every 2 years, coolant every 10 years on Toyota Super Long Life Coolant, hybrid transaxle fluid where applicable) aren't tracked by the cluster",
+     "locator": "warning note"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 90000,
+    "miles": null,
+    "months": 72,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific; iridium plugs"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Spark plugs (Iridium type) Replace at specified kms only, unless included in Service Plan R",
+     "locator": "page 1, group C; grid rows '6 90,000 A + B + C' and '12 180,000 A + B + C'; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "transmission_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": 90000,
+    "miles": null,
+    "months": 72,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": "ECVT (hybrid transaxle)",
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "ECVT fluid R",
+     "locator": "page 1, group C; grid rows 6 / 90,000 and 12 / 180,000; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "transmission_fluid",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": "hybrid",
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific; visual leak inspection only"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Transmission fluid (visual leak inspection) I",
+     "locator": "page 1, group A; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 75000,
+    "miles": null,
+    "months": 60,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Air Filter Element R",
+     "locator": "page 1, group D; grid rows '5 75,000 A + D' and '10 150,000 ... D'; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific; 'dealer may recommend replacement if unable to clean'"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Air Filter Element ¤ I",
+     "locator": "page 1, group A; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific; 'dealer may recommend replacement if unable to clean'; the NZ grid has no scheduled cabin filter replacement"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Cabin air filter ¤ I",
+     "locator": "page 1, group A; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 75000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 150000,
+    "firstMonths": 120,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific; engine/heater coolant; first at year 10 / 150,000 km (whichever first), then every 75,000 km"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Engine / Heater Coolant (then every 75,000 km) R",
+     "locator": "page 1, group E; grid row '10 150,000 A + B + D + E'; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "other",
+   "label": "inverter coolant (hybrid system)",
+   "action": "replacement",
+   "interval": {
+    "km": 75000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 150000,
+    "firstMonths": 120,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Inverter Coolant (then every 75,000 km) R",
+     "locator": "page 1, group E; grid row '10 150,000 A + B + D + E'; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 120,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "XW10",
+    "engine": null,
+    "market": "EU (per source)",
+    "transmission": null,
+    "note": "Toyota Super Long Life Coolant"
+   },
+   "sources": [
+    {
+     "url": "https://servicereset.net/maintenance/toyota-c-hr-2016-2023-service-indicator-reset/",
+     "publisher": "servicereset.net",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "Other items (brake fluid every 2 years, coolant every 10 years on Toyota Super Long Life Coolant, hybrid transaxle fluid where applicable) aren't tracked by the cluster",
+     "locator": "warning note"
+    }
+   ]
+  },
+  {
+   "task": "other",
+   "label": "HEV battery cooling intake filter",
+   "action": "other",
+   "interval": {
+    "km": 30000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific; action = clean (C)"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "HEV battery cooling intake filter C",
+     "locator": "page 1, group B (years 2/4/6... / 30,000 km steps); interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "other",
+   "label": "HEV battery cooling intake filter",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "HEV battery cooling intake filter I",
+     "locator": "page 1, group A; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Front brake pads and discs I ... Rear brake linings/Disc pads - discs/drums I ... Brake pipes and hoses I",
+     "locator": "page 1, group A; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  },
+  {
+   "task": "general_inspection",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "NZ",
+    "transmission": null,
+    "note": "generic Toyota petrol-hybrid schedule (NZ), not C-HR-specific; includes an electronic health check of the hybrid system"
+   },
+   "sources": [
+    {
+     "url": "https://www.toyota.co.nz/globalassets/owners/servicing-your-toyota/toyota-petrol-hybrid-service-requirements.pdf",
+     "publisher": "Toyota New Zealand - Service Requirements, Petrol Hybrid Vehicles (Version: Sept 2023)",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Electronic Health Check - Toyota diagnostic computer (GTS+) S",
+     "locator": "page 1, group A; interval grid headed 'SERVICE BY AGE OR KM, WHICHEVER OCCURS FIRST'"
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "positions": [
+    "15,000 km / 12 months, whichever first (IL importers Automax and toyota.co.il; NZ Toyota; AU forum; servicereset EU)",
+    "10,000 miles (~16,000 km) / 12 months (Toyota UK)",
+    "US 2019 C-HR: oil and filter at 10,000 miles (KBB)"
+   ],
+   "explainedBy": "market (UK schedule in miles vs km markets; US market and engine differ)",
+   "note": "servicereset equates 10,000 miles with 15,000 km. The IL position is the relevant one, and IL/NZ/AU agree."
+  },
+  {
+   "task": "air_filter / cabin_filter",
+   "action": "replacement",
+   "positions": [
+    "US: replace both at 30,000 miles (KBB, 2019 US C-HR)",
+    "NZ: air filter replaced at 75,000 km / 5 years; cabin filter inspected only, every 15,000 km"
+   ],
+   "explainedBy": "market and engine (US C-HR is not the 1.8 hybrid; NZ sheet is generic for Toyota hybrids)",
+   "note": "No IL- or EU-specific itemized filter interval was found."
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "positions": [
+    "30,000 km / 2 years, whichever first (NZ Toyota; Midrag IL)",
+    "every 2 years (servicereset EU)"
+   ],
+   "explainedBy": "source granularity (time-only statement vs whichever-first); not a real conflict",
+   "note": ""
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "positions": [
+    "first at 10 years / 150,000 km, then every 75,000 km (NZ)",
+    "every 10 years (servicereset EU)"
+   ],
+   "explainedBy": "first vs recurring / granularity; the time figure agrees",
+   "note": ""
+  }
+ ],
+ "notes": "The Israeli periodic interval of 15,000 km / 12 months (whichever first) is quoted from two Israeli importer sources: Global Automax's C-HR guide, and toyota.co.il, Union Motors' Toyota Israel site, in a generic article. It is corroborated by NZ Toyota, an AU forum and servicereset (EU). Toyota UK states 10,000 miles / 12 months. No Union Motors C-HR-specific service booklet and no EU/IL itemized C-HR schedule were accessible. All item-level intervals (spark plugs 90,000 km / 6 y, ECVT fluid 90,000 km / 6 y, air filter 75,000 km / 5 y, coolant first 150,000 km / 10 y then every 75,000 km, brake fluid 30,000 km / 2 y, HEV intake filter clean 30,000 km / 2 y) come from ONE official source: the Toyota NZ generic petrol-hybrid 'Service Requirements' sheet (Sept 2023). That sheet is not C-HR- or model-year-specific and is for the NZ market, so treat its items as single-source. Brake fluid (Midrag IL; servicereset) and coolant time (servicereset) have partial independent corroboration. The toyota.co.il article lists generic service contents (oil, brake fluid, coolant, spark plugs, filters) without intervals, so it was not used for items. US data (KBB) is for the US 2019 C-HR, whose engine differs; it is kept only for conflict tracking. No timing belt applies to 2ZR-FXE (it has a chain), but no quoted source was found stating this, so no item was recorded."
+}

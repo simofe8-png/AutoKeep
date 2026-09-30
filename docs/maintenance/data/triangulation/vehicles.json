@@ -1,0 +1,180 @@
+{
+  "_note": "Blind vehicles B1–B12 (unchanged identities from src/discovery/maintenance/__live__/blindSet.ts). modelPattern: how a source names the model. generationPattern: generation names that cover the vehicle's model year (a source stating one of these counts as stating the years). excludePattern: variants that are NOT this vehicle. includePattern: text that names THIS variant (an item naming it is never excluded). excludeSources: publisher host → why its claims do not apply to this vehicle (documented curation).",
+  "B1": {
+    "kind": "car",
+    "make": "mazda",
+    "models": [
+      "3",
+      "mazda 3",
+      "mazda3"
+    ],
+    "year": 2011,
+    "litres": 1.6,
+    "powertrains": [
+      "petrol"
+    ],
+    "modelPattern": "mazda ?3|mazda3|\\bmazda\\b.*\\b3\\b",
+    "generationPattern": "\\bBL\\b|2nd gen|second gen|2009.?2013",
+    "excludePattern": "\\bBM\\b|3rd gen|third gen",
+    "excludeSources": {
+      "kbb.com": "restates the Mazda USA 2011 schedule, which covers only the US 2.0 / 2.5 L engines (no 1.6 L)",
+      "mazdausa.com": "the Mazda USA 2011 schedule covers only the US 2.0 / 2.5 L engines; the document has no 1.6 L engine"
+    }
+  },
+  "B2": {
+    "kind": "car",
+    "make": "kia",
+    "models": [
+      "sportage"
+    ],
+    "year": 2023,
+    "litres": 1.6,
+    "modelPattern": "sportage",
+    "generationPattern": "NQ5|5th gen|fifth gen|2022.?(20)?2[4-6]|2021.?(20)?2[4-6]"
+  },
+  "B3": {
+    "kind": "car",
+    "make": "toyota",
+    "models": [
+      "c-hr",
+      "chr",
+      "c-hr hybrid"
+    ],
+    "year": 2019,
+    "litres": 1.8,
+    "powertrains": [
+      "hybrid"
+    ],
+    "modelPattern": "c-?hr",
+    "generationPattern": "XW10|AX10|1st gen|first gen"
+  },
+  "B4": {
+    "kind": "car",
+    "make": "tesla",
+    "models": [
+      "model 3"
+    ],
+    "year": 2022,
+    "powertrains": [
+      "electric"
+    ],
+    "modelPattern": "model ?3|model_3|/model3",
+    "generationPattern": "2017.?(20)?2[3-5]"
+  },
+  "B5": {
+    "kind": "car",
+    "make": "skoda",
+    "models": [
+      "octavia"
+    ],
+    "year": 2018,
+    "litres": 1.4,
+    "powertrains": [
+      "petrol"
+    ],
+    "modelPattern": "octavia",
+    "generationPattern": "\\b(mk ?3|iii|5e|nl)\\b|3rd gen|third gen|2013.?(20)?(19|20)",
+    "excludePattern": "diesel|tdi",
+    "includePattern": "tsi|petrol|benz|1\\.4"
+  },
+  "B6": {
+    "kind": "car",
+    "make": "hyundai",
+    "models": [
+      "i20"
+    ],
+    "year": 2016,
+    "litres": 1.4,
+    "powertrains": [
+      "petrol"
+    ],
+    "modelPattern": "i20|i-20|i 20",
+    "generationPattern": "\\bGB\\b|2nd gen|second gen|2014.?(20)?(20)",
+    "excludePattern": "diesel|crdi",
+    "includePattern": "petrol|mpi|gasoline|1\\.4"
+  },
+  "B7": {
+    "kind": "motorcycle",
+    "make": "yamaha",
+    "models": [
+      "mt-07",
+      "mt07",
+      "mt 07"
+    ],
+    "year": 2020,
+    "litres": 0.7,
+    "modelPattern": "mt-? ?07|fz-?07",
+    "generationPattern": "2014.?(20)?20|2018.?(20)?20"
+  },
+  "B8": {
+    "kind": "motorcycle",
+    "make": "honda",
+    "models": [
+      "pcx 125",
+      "pcx125",
+      "pcx"
+    ],
+    "year": 2019,
+    "modelPattern": "pcx",
+    "generationPattern": "JF81|WW125.?J|2018.?(20)?20",
+    "excludePattern": "pcx ?150|pcx ?160|JF28|JF56|JK05|KF18|KF30",
+    "includePattern": "pcx ?125|JF81|WW125"
+  },
+  "B9": {
+    "kind": "motorcycle",
+    "make": "sym",
+    "models": [
+      "jet 14 125",
+      "jet 14",
+      "jet14"
+    ],
+    "year": 2021,
+    "modelPattern": "jet ?14|jet14",
+    "excludePattern": "evo|200i|xc20",
+    "includePattern": "125|xc12"
+  },
+  "B10": {
+    "kind": "car",
+    "make": "mg",
+    "models": [
+      "zs ev",
+      "zs"
+    ],
+    "year": 2021,
+    "powertrains": [
+      "electric"
+    ],
+    "modelPattern": "zs ?ev|zsev",
+    "generationPattern": "2019.?(20)?2[01]|2020.?(20)?21|pre-?facelift|דור 1"
+  },
+  "B11": {
+    "kind": "car",
+    "make": "suzuki",
+    "models": [
+      "swift"
+    ],
+    "year": 2019,
+    "litres": 1.2,
+    "powertrains": [
+      "petrol"
+    ],
+    "modelPattern": "swift",
+    "generationPattern": "A2L|AZ|4th gen|fourth gen|2017.?(20)?2[0-4]"
+  },
+  "B12": {
+    "kind": "car",
+    "make": "peugeot",
+    "models": [
+      "208"
+    ],
+    "year": 2021,
+    "litres": 1.2,
+    "powertrains": [
+      "petrol"
+    ],
+    "modelPattern": "\\b208\\b",
+    "generationPattern": "P21|2nd gen|second gen|2019.?(20)?2[4-6]",
+    "excludePattern": "diesel|bluehdi|e-208",
+    "includePattern": "puretech|petrol|1\\.2"
+  }
+}

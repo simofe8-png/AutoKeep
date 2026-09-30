@@ -1,0 +1,1156 @@
+[
+  {
+    "id": "B1",
+    "vehicle": "Mazda 3 2011",
+    "label": "older ICE, Japanese",
+    "outcome": "INSUFFICIENT",
+    "usable": false,
+    "items": [],
+    "confidence": {
+      "high": 0,
+      "medium": 0
+    },
+    "missingCore": [
+      "engine_oil|periodic_service",
+      "brake_fluid",
+      "air_filter",
+      "spark_plugs",
+      "coolant"
+    ],
+    "conflicts": [],
+    "unresolved": [
+      "periodic_service:replacement:unverified_only"
+    ],
+    "fallback": true,
+    "uploadOffered": true
+  },
+  {
+    "id": "B2",
+    "vehicle": "Kia Sportage 2023",
+    "label": "recent ICE, Korean",
+    "outcome": "PARTIAL",
+    "usable": true,
+    "items": [
+      {
+        "task": "air_filter",
+        "action": "inspection",
+        "interval": "first 30000 km / first 24 mo / 60000 km / 48 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "air_filter",
+        "action": "replacement",
+        "interval": "60000 km / 48 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "auxiliary_belt",
+        "action": "inspection",
+        "interval": "first 90000 km / first 72 mo / 30000 km / 24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "brake_fluid",
+        "action": "replacement",
+        "interval": "30000 km / 24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "brake_system",
+        "action": "inspection",
+        "interval": "30000 km / 24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)",
+          "Kia Corporation (ownersmanual.kia.com)"
+        ]
+      },
+      {
+        "task": "cabin_filter",
+        "action": "replacement",
+        "interval": "30000 km / 24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "coolant",
+        "action": "replacement",
+        "interval": "first 210000 km / first 120 mo / 30000 km / 24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)",
+          "Kia Corporation (ownersmanual.kia.com)",
+          "Kia Corporation (ownersmanual.kia.com)"
+        ]
+      },
+      {
+        "task": "drive_belt",
+        "action": "inspection",
+        "interval": "15000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "drive_belt",
+        "action": "replacement",
+        "interval": "105000 km / 48 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "engine_oil",
+        "action": "replacement",
+        "interval": "15000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "final_drive_oil",
+        "action": "inspection",
+        "interval": "60000 km / 48 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)",
+          "Kia Corporation (ownersmanual.kia.com)"
+        ]
+      },
+      {
+        "task": "general_inspection",
+        "action": "inspection",
+        "interval": "15000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "oil_filter",
+        "action": "replacement",
+        "interval": "15000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      },
+      {
+        "task": "spark_plugs",
+        "action": "replacement",
+        "interval": "75000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Talcar / Kia Israel (cdnmedia.kia-israel.co.il)"
+        ]
+      }
+    ],
+    "confidence": {
+      "high": 0,
+      "medium": 14
+    },
+    "missingCore": [],
+    "conflicts": [],
+    "unresolved": [
+      "brake_fluid:inspection:unverified_only"
+    ],
+    "fallback": false,
+    "uploadOffered": false
+  },
+  {
+    "id": "B3",
+    "vehicle": "Toyota C-HR 2019",
+    "label": "hybrid, Japanese",
+    "outcome": "PARTIAL",
+    "usable": true,
+    "items": [
+      {
+        "task": "periodic_service",
+        "action": "other",
+        "interval": "15000 km / 12 mo",
+        "level": "T",
+        "confidence": "high",
+        "independentSources": 2,
+        "officialSources": 1,
+        "sources": [
+          "Global Automax (Israeli Toyota importer) - C-HR short driver's guide, warranty section",
+          "Global Automax (Israeli Toyota importer) - C-HR short driver's guide",
+          "Toyota Israel (toyota.co.il, Union Motors)",
+          "Toyota Israel (toyota.co.il, Union Motors)",
+          "servicereset.net",
+          "Toyota C-HR Forum (Wayback 2023-03-22), post by TubeMan 2017-03-01"
+        ]
+      }
+    ],
+    "confidence": {
+      "high": 1,
+      "medium": 0
+    },
+    "missingCore": [
+      "brake_fluid",
+      "air_filter",
+      "spark_plugs",
+      "coolant"
+    ],
+    "conflicts": [],
+    "unresolved": [
+      "air_filter:replacement:unverified_only",
+      "brake_fluid:replacement:unverified_only",
+      "cabin_filter:replacement:unverified_only",
+      "coolant:replacement:unverified_only",
+      "tire_rotation:other:unverified_only"
+    ],
+    "fallback": false,
+    "uploadOffered": false
+  },
+  {
+    "id": "B4",
+    "vehicle": "Tesla Model 3 2022",
+    "label": "EV, US",
+    "outcome": "COMPLETE",
+    "usable": true,
+    "items": [
+      {
+        "task": "brake_fluid",
+        "action": "inspection",
+        "interval": "48 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Tesla Model 3 Owner's Manual 2017-2023 edition en_us (Wayback 2025-03-21)",
+          "Tesla Model 3 Owner's Manual 2017-2023 edition he_il (Wayback 2024-09-17)",
+          "Tesla Model 3 Owner's Manual en_eu (Wayback 2024-12-16)",
+          "Tesla Service (Model 3 Do It Yourself intervals page)"
+        ]
+      },
+      {
+        "task": "cabin_filter",
+        "action": "replacement",
+        "interval": "24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 2,
+        "officialSources": 1,
+        "sources": [
+          "Tesla Model 3 Owner's Manual en_us (Wayback 2022-06-30)",
+          "Tesla Model 3 Owner's Manual en_il Israel (Wayback 2021-11-01)",
+          "Tesla Model 3 Owner's Manual he_il Israel Hebrew (Wayback 2021-11-01)",
+          "Tesla Model 3 Owner's Manual 2017-2023 edition en_us (Wayback 2025-03-21)",
+          "Tesla Service (Model 3 DIY intervals page)",
+          "Everyday Chris (blog), 2022-08-31",
+          "Zecar (Australia), 2023-01-02"
+        ]
+      },
+      {
+        "task": "tire_rotation",
+        "action": "other",
+        "interval": "10000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Tesla Model 3 Owner's Manual en_us (Wayback 2022-06-30)",
+          "Tesla Model 3 Owner's Manual 2017-2023 edition en_us (Wayback 2025-03-21)",
+          "Tesla Service (Model 3 DIY intervals page)"
+        ]
+      }
+    ],
+    "confidence": {
+      "high": 0,
+      "medium": 3
+    },
+    "missingCore": [],
+    "conflicts": [],
+    "unresolved": [],
+    "fallback": false,
+    "uploadOffered": false
+  },
+  {
+    "id": "B5",
+    "vehicle": "Skoda Octavia 2018",
+    "label": "European, multiple engine variants",
+    "outcome": "COMPLETE",
+    "usable": true,
+    "items": [
+      {
+        "task": "air_filter",
+        "action": "replacement",
+        "interval": "30000 km / 24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Skoda Egypt (importer after-sales) - 'After Sales Services Skoda Old Models Maintenance Table'"
+        ]
+      },
+      {
+        "task": "auxiliary_belt",
+        "action": "replacement",
+        "interval": "60000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Skoda Egypt (importer after-sales) - 'After Sales Services Skoda Old Models Maintenance Table'"
+        ]
+      },
+      {
+        "task": "brake_fluid",
+        "action": "replacement",
+        "interval": "50000 km / 24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Skoda Egypt (importer after-sales) - 'After Sales Services Skoda Old Models Maintenance Table'"
+        ]
+      },
+      {
+        "task": "cabin_filter",
+        "action": "replacement",
+        "interval": "20000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Skoda Egypt (importer after-sales) - 'After Sales Services Skoda Old Models Maintenance Table'"
+        ]
+      },
+      {
+        "task": "coolant",
+        "action": "replacement",
+        "interval": "50000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Skoda Egypt (importer after-sales) - 'After Sales Services Skoda Old Models Maintenance Table'"
+        ]
+      },
+      {
+        "task": "drive_belt",
+        "action": "replacement",
+        "interval": "100000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Skoda Egypt (importer after-sales) - 'After Sales Services Skoda Old Models Maintenance Table'"
+        ]
+      },
+      {
+        "task": "periodic_service",
+        "action": "other",
+        "interval": "15000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 2,
+        "officialSources": 0,
+        "sources": [
+          "carz.co.il - Octavia 2013-2018 FAQ (anonymous user answer)",
+          "GarageHub (getgaragehub.com) - Skoda Maintenance Schedule (2025)"
+        ]
+      },
+      {
+        "task": "spark_plugs",
+        "action": "replacement",
+        "interval": "30000 km / 24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Skoda Egypt (importer after-sales) - 'After Sales Services Skoda Old Models Maintenance Table'"
+        ]
+      },
+      {
+        "task": "timing_belt",
+        "action": "replacement",
+        "interval": "100000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Skoda Egypt (importer after-sales) - 'After Sales Services Skoda Old Models Maintenance Table'"
+        ]
+      }
+    ],
+    "confidence": {
+      "high": 0,
+      "medium": 9
+    },
+    "missingCore": [],
+    "conflicts": [],
+    "unresolved": [],
+    "fallback": false,
+    "uploadOffered": false
+  },
+  {
+    "id": "B6",
+    "vehicle": "Hyundai i20 2016",
+    "label": "older ICE, Korean",
+    "outcome": "INSUFFICIENT",
+    "usable": false,
+    "items": [],
+    "confidence": {
+      "high": 0,
+      "medium": 0
+    },
+    "missingCore": [
+      "engine_oil|periodic_service",
+      "brake_fluid",
+      "air_filter",
+      "spark_plugs",
+      "coolant"
+    ],
+    "conflicts": [],
+    "unresolved": [
+      "air_filter:replacement:unverified_only",
+      "auxiliary_belt:replacement:unverified_only",
+      "coolant:replacement:unverified_only",
+      "engine_oil:replacement:unverified_only",
+      "fuel_filter:replacement:unverified_only",
+      "spark_plugs:replacement:unverified_only"
+    ],
+    "fallback": true,
+    "uploadOffered": true
+  },
+  {
+    "id": "B7",
+    "vehicle": "Yamaha MT-07 2020",
+    "label": "motorcycle",
+    "outcome": "PARTIAL",
+    "usable": true,
+    "items": [
+      {
+        "task": "air_filter",
+        "action": "replacement",
+        "interval": "40000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MaintenanceSchedule.com (Dana Hooshmand)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "brake_fluid",
+        "action": "replacement",
+        "interval": "24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MaintenanceSchedule.com (Dana Hooshmand)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "brake_system",
+        "action": "replacement",
+        "interval": "48 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MaintenanceSchedule.com (Dana Hooshmand)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "coolant",
+        "action": "replacement",
+        "interval": "36 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MaintenanceSchedule.com (Dana Hooshmand)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "drive_chain",
+        "action": "adjustment",
+        "interval": "1000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MaintenanceSchedule.com (Dana Hooshmand)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "engine_oil",
+        "action": "replacement",
+        "interval": "first 1000 km / 10000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MaintenanceSchedule.com (Dana Hooshmand)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "oil_filter",
+        "action": "replacement",
+        "interval": "first 1000 km / 20000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "periodic_service",
+        "action": "inspection",
+        "interval": "first 1000 km / 10000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MaintenanceSchedule.com (Dana Hooshmand)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "spark_plugs",
+        "action": "inspection",
+        "interval": "first 10000 km / 20000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "spark_plugs",
+        "action": "replacement",
+        "interval": "20000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MotoVault (Andrej Kanuch)"
+        ]
+      },
+      {
+        "task": "valve_clearance",
+        "action": "inspection",
+        "interval": "40000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Yamaha Motor Co., Ltd. (Yamaha Motor Europe CDN)",
+          "MaintenanceSchedule.com (Dana Hooshmand)"
+        ]
+      }
+    ],
+    "confidence": {
+      "high": 0,
+      "medium": 11
+    },
+    "missingCore": [],
+    "conflicts": [],
+    "unresolved": [
+      "brake_system:inspection:unverified_only",
+      "coolant:inspection:unverified_only",
+      "general_inspection:other:unverified_only"
+    ],
+    "fallback": false,
+    "uploadOffered": false
+  },
+  {
+    "id": "B8",
+    "vehicle": "Honda PCX 125 2019",
+    "label": "scooter, Japanese",
+    "outcome": "COMPLETE",
+    "usable": true,
+    "items": [
+      {
+        "task": "air_filter",
+        "action": "replacement",
+        "interval": "18000 km",
+        "level": "T",
+        "confidence": "high",
+        "independentSources": 2,
+        "officialSources": 1,
+        "sources": [
+          "Honda Korea (via Honda Motopub)",
+          "Honda Philippines (via Honda Motopub)",
+          "erwinsalarda.com (personal blog, Philippines)"
+        ]
+      },
+      {
+        "task": "brake_fluid",
+        "action": "replacement",
+        "interval": "24 mo",
+        "level": "T",
+        "confidence": "high",
+        "independentSources": 2,
+        "officialSources": 1,
+        "sources": [
+          "Honda Philippines (via Honda Motopub)",
+          "erwinsalarda.com (personal blog, Philippines)"
+        ]
+      },
+      {
+        "task": "brake_system",
+        "action": "inspection",
+        "interval": "6000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Honda Korea (via Honda Motopub)",
+          "Honda Philippines (via Honda Motopub)"
+        ]
+      },
+      {
+        "task": "coolant",
+        "action": "replacement",
+        "interval": "36 mo",
+        "level": "T",
+        "confidence": "high",
+        "independentSources": 2,
+        "officialSources": 1,
+        "sources": [
+          "Honda Korea (via Honda Motopub)",
+          "Honda Philippines (via Honda Motopub)",
+          "erwinsalarda.com (personal blog, Philippines)"
+        ]
+      },
+      {
+        "task": "drive_belt",
+        "action": "replacement",
+        "interval": "24000 km",
+        "level": "T",
+        "confidence": "high",
+        "independentSources": 2,
+        "officialSources": 1,
+        "sources": [
+          "Honda Philippines (via Honda Motopub)",
+          "erwinsalarda.com (personal blog, Philippines)"
+        ]
+      },
+      {
+        "task": "engine_oil",
+        "action": "replacement",
+        "interval": "first 1000 km / 6000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Honda Philippines (via Honda Motopub)"
+        ]
+      },
+      {
+        "task": "final_drive_oil",
+        "action": "replacement",
+        "interval": "24 mo",
+        "level": "T",
+        "confidence": "high",
+        "independentSources": 2,
+        "officialSources": 1,
+        "sources": [
+          "Honda Philippines (via Honda Motopub)",
+          "erwinsalarda.com (personal blog, Philippines)"
+        ]
+      },
+      {
+        "task": "oil_filter",
+        "action": "other",
+        "interval": "12000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Honda Korea (via Honda Motopub)",
+          "Honda Philippines (via Honda Motopub)"
+        ]
+      },
+      {
+        "task": "periodic_service",
+        "action": "inspection",
+        "interval": "first 1000 km / 6000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Honda Korea (via Honda Motopub)",
+          "Honda Philippines (via Honda Motopub)"
+        ]
+      },
+      {
+        "task": "spark_plugs",
+        "action": "replacement",
+        "interval": "12000 km",
+        "level": "T",
+        "confidence": "high",
+        "independentSources": 2,
+        "officialSources": 1,
+        "sources": [
+          "Honda Korea (via Honda Motopub)",
+          "Honda Philippines (via Honda Motopub)",
+          "erwinsalarda.com (personal blog, Philippines)"
+        ]
+      },
+      {
+        "task": "valve_clearance",
+        "action": "inspection",
+        "interval": "6000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "Honda Philippines (via Honda Motopub)"
+        ]
+      }
+    ],
+    "confidence": {
+      "high": 6,
+      "medium": 5
+    },
+    "missingCore": [],
+    "conflicts": [],
+    "unresolved": [],
+    "fallback": false,
+    "uploadOffered": false
+  },
+  {
+    "id": "B9",
+    "vehicle": "SYM Jet 14 125 2021",
+    "label": "scooter, Taiwanese",
+    "outcome": "PARTIAL",
+    "usable": false,
+    "items": [
+      {
+        "task": "brake_system",
+        "action": "inspection",
+        "interval": "first 300 km / 1000 km / 1 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "drive_belt",
+        "action": "inspection",
+        "interval": "6000 km / 6 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "drive_belt",
+        "action": "replacement",
+        "interval": "12000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "engine_oil",
+        "action": "inspection",
+        "interval": "500 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "final_drive_oil",
+        "action": "replacement",
+        "interval": "first 300 km / 5000 km / 5 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "fuel_filter",
+        "action": "replacement",
+        "interval": "10000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "general_inspection",
+        "action": "inspection",
+        "interval": "first 300 km / 1000 km / 1 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "oil_filter",
+        "action": "other",
+        "interval": "first 300 km / 6000 km / 6 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "spark_plugs",
+        "action": "inspection",
+        "interval": "first 300 km / 3000 km / 3 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "spark_plugs",
+        "action": "replacement",
+        "interval": "12000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "timing_chain",
+        "action": "inspection",
+        "interval": "first 300 km / 3000 km / 3 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      },
+      {
+        "task": "valve_clearance",
+        "action": "inspection",
+        "interval": "first 300 km / 6000 km / 6 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es)"
+        ]
+      }
+    ],
+    "confidence": {
+      "high": 0,
+      "medium": 12
+    },
+    "missingCore": [
+      "engine_oil|periodic_service",
+      "air_filter"
+    ],
+    "conflicts": [
+      {
+        "task": "air_filter",
+        "action": "replacement",
+        "positions": [
+          "6000 km / 6 mo (SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es))",
+          "12000 km / 12 mo (SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es))"
+        ]
+      },
+      {
+        "task": "engine_oil",
+        "action": "replacement",
+        "positions": [
+          "first 300 km / 1000 km (SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es))",
+          "1000 km / 3 mo (SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es))",
+          "3000 km (SANYANG MOTOR CO., LTD. (SYM) 'Manual del usuario', hosted by SYM Spain (sym.com.es))"
+        ]
+      }
+    ],
+    "unresolved": [
+      "coolant:replacement:unverified_only"
+    ],
+    "fallback": true,
+    "uploadOffered": true
+  },
+  {
+    "id": "B10",
+    "vehicle": "MG ZS EV 2021",
+    "label": "EV, Chinese",
+    "outcome": "PARTIAL",
+    "usable": true,
+    "items": [
+      {
+        "task": "brake_fluid",
+        "action": "replacement",
+        "interval": "24 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "MG Israel (Car East importer) - mg-israel.co.il"
+        ]
+      },
+      {
+        "task": "coolant",
+        "action": "replacement",
+        "interval": "first 96000 km / first 48 mo / 96000 km / 48 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "MG Israel (Car East importer) - mg-israel.co.il"
+        ]
+      },
+      {
+        "task": "general_inspection",
+        "action": "inspection",
+        "interval": "24000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "MG Israel (Car East importer) - mg-israel.co.il"
+        ]
+      },
+      {
+        "task": "periodic_service",
+        "action": "other",
+        "interval": "24000 km / 12 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "MG Israel (Car East importer) - mg-israel.co.il",
+          "Car East Import (MG importer, IL) - service & warranty booklet 11.2025/12.2025"
+        ]
+      },
+      {
+        "task": "reduction_gear_oil",
+        "action": "replacement",
+        "interval": "80000 km",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 1,
+        "officialSources": 1,
+        "sources": [
+          "MG Israel (Car East importer) - mg-israel.co.il"
+        ]
+      }
+    ],
+    "confidence": {
+      "high": 0,
+      "medium": 5
+    },
+    "missingCore": [
+      "cabin_filter"
+    ],
+    "conflicts": [],
+    "unresolved": [],
+    "fallback": false,
+    "uploadOffered": false
+  },
+  {
+    "id": "B11",
+    "vehicle": "Suzuki Swift 2019",
+    "label": "recent ICE, Japanese",
+    "outcome": "INSUFFICIENT",
+    "usable": false,
+    "items": [],
+    "confidence": {
+      "high": 0,
+      "medium": 0
+    },
+    "missingCore": [
+      "engine_oil|periodic_service",
+      "brake_fluid",
+      "air_filter",
+      "spark_plugs",
+      "coolant"
+    ],
+    "conflicts": [],
+    "unresolved": [],
+    "fallback": true,
+    "uploadOffered": true
+  },
+  {
+    "id": "B12",
+    "vehicle": "Peugeot 208 2021",
+    "label": "European, French",
+    "outcome": "PARTIAL",
+    "usable": false,
+    "items": [
+      {
+        "task": "timing_belt",
+        "action": "replacement",
+        "interval": "100000 km / 72 mo",
+        "level": "T",
+        "confidence": "medium",
+        "independentSources": 2,
+        "officialSources": 0,
+        "sources": [
+          "L'argus (FR automotive press), citing Stellantis internal documents",
+          "L'argus",
+          "GarageHub"
+        ]
+      }
+    ],
+    "confidence": {
+      "high": 0,
+      "medium": 1
+    },
+    "missingCore": [
+      "engine_oil|periodic_service",
+      "brake_fluid",
+      "air_filter",
+      "spark_plugs",
+      "coolant"
+    ],
+    "conflicts": [],
+    "unresolved": [
+      "brake_fluid:replacement:unverified_only",
+      "coolant:replacement:unverified_only",
+      "engine_oil:replacement:unverified_only",
+      "periodic_service:other:unverified_only",
+      "spark_plugs:replacement:unverified_only",
+      "timing_belt:inspection:unverified_only"
+    ],
+    "fallback": true,
+    "uploadOffered": true
+  }
+]

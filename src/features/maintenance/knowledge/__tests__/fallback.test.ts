@@ -72,8 +72,30 @@ describe('§24 user fallback', () => {
     expect(p.fallback).toBeNull();
   });
 
-  it('a complete verified schedule → ready, no fallback', () => {
-    const p = build([req({})]);
+  it('items established but no service interval → PARTIAL items AND the fallback with upload', () => {
+    const p = build([
+      req({
+        id: 'synthetic-bf-only',
+        task: 'brake_fluid',
+        interval: { everyMonths: 24, rule: 'time_only', repeats: true },
+      }),
+    ]);
+    expect(p.items.map((i) => i.task)).toEqual(['brake_fluid']);
+    expect(p.status).toBe('partial');
+    expect(p.fallback?.reasons).toContain('no_service_interval');
+    expect(p.requests).toContainEqual({ kind: 'upload_booklet', hint: 'generic' });
+  });
+
+  it('a verified schedule covering every core item → ready; missing core items → partial', () => {
+    expect(build([req({})]).status).toBe('partial'); // brake fluid missing
+    const p = build([
+      req({}),
+      req({
+        id: 'synthetic-bf',
+        task: 'brake_fluid',
+        interval: { everyMonths: 24, rule: 'time_only', repeats: true },
+      }),
+    ]);
     expect(p.status).toBe('ready');
     expect(p.fallback).toBeNull();
   });

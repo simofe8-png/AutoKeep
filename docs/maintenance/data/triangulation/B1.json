@@ -1,0 +1,1601 @@
+{
+ "id": "B1",
+ "vehicle": "Mazda 3, MY2011, petrol 1598 cc (1.6 MZR, BL generation), Israel (Delek Motors)",
+ "searchedAt": "2026-09-30",
+ "queries": [
+  "2011 Mazda3 scheduled maintenance oil change 7500 miles spark plugs 75000 coolant",
+  "Mazda3 2010 2011 owner's manual \"Scheduled Maintenance\" \"Except\" Europe \"Others\" MZR 1.6 brake fluid replace every",
+  "Mazda3 BL owner's manual \"Scheduled Maintenance (Europe)\" 2009 2010 2011 pdf",
+  "מאזדה 3 2011 טיפולים כל כמה ק\"מ דלק מוטורס 1.6",
+  "\"מאזדה 3\" \"טיפולים כל\" ק\"מ שרשרת תזמון 1.6",
+  "טיפול מאזדה 3 1.6 מצתים נוזל בלמים נוזל קירור כל ק\"מ 2009-2013",
+  "Mazda3 BL 2009-2013 service intervals 10,000 km or 6 months Australia brake fluid spark plugs",
+  "Mazda 3 1.6 petrol 2010 UK service schedule 12,500 miles 20,000 km 12 months MZR brake fluid",
+  "Mazda 3 BL 1.6 MZR Z6 timing chain service interval",
+  "owners-manual.mazda.com mazda3 Israel scheduled maintenance 15,000 km MZR"
+ ],
+ "sourcesConsulted": [
+  {
+   "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+   "publisher": "Mazda USA",
+   "sourceType": "official_booklet",
+   "useful": true,
+   "note": "2011 Mazda3 maintenance schedule (owner's-manual excerpt 8BM5-EA-10F), parsed locally with pypdf. US engines only (2.0/2.5/2.3T); no 1.6 MZR."
+  },
+  {
+   "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+   "publisher": "Mazda Motor Corp.",
+   "sourceType": "official_manual",
+   "useful": true,
+   "note": "BM-generation Mazda3 manual with an explicit Israel table, parsed from HTML. Different generation from B1."
+  },
+  {
+   "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+   "publisher": "Mazda Motor Corp.",
+   "sourceType": "official_manual",
+   "useful": true,
+   "note": "BM-generation Europe table with MZR 1.6 rows."
+  },
+  {
+   "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020106.html",
+   "publisher": "Mazda Motor Corp.",
+   "sourceType": "official_manual",
+   "useful": false,
+   "note": "Thailand schedule; market not relevant."
+  },
+  {
+   "url": "https://www.mazda.co.il/service-plans",
+   "publisher": "Mazda Israel",
+   "sourceType": "importer",
+   "useful": true,
+   "note": "15,000 km / 1 year / dashboard-alert rule; current models."
+  },
+  {
+   "url": "https://cars.walla.co.il/item/1685637",
+   "publisher": "Walla Cars",
+   "sourceType": "press",
+   "useful": true,
+   "note": "15,000 km basic service; timing-chain statement."
+  },
+  {
+   "url": "https://www.kbb.com/mazda/mazda3/2011/maintenance-schedules/",
+   "publisher": "Kelley Blue Book",
+   "sourceType": "maintenance_database",
+   "useful": true,
+   "note": "7,500-mile oil service and 15,000-mile cabin filter; quotes obtained via fetched-page summary."
+  },
+  {
+   "url": "https://www.carsguide.com.au/car-advice/q-and-a/mazda-service-intervals-29004",
+   "publisher": "CarsGuide",
+   "sourceType": "press",
+   "useful": true,
+   "note": "AU 2013 Mazda3: 6 months / 10,000 km."
+  },
+  {
+   "url": "https://www.icar.co.il/%D7%9E%D7%90%D7%96%D7%93%D7%94/%D7%9E%D7%90%D7%96%D7%93%D7%94_3/%D7%9E%D7%90%D7%96%D7%93%D7%94_3_%D7%99%D7%93_%D7%A9%D7%A0%D7%99%D7%94_%D7%9311/",
+   "publisher": "iCar",
+   "sourceType": "press",
+   "useful": false,
+   "note": "No interval text on the fetched page (a search snippet claimed 15,000 km / 12 months but it was not visible); not recorded."
+  },
+  {
+   "url": "https://thelet.co.il/%D7%98%D7%99%D7%A4%D7%95%D7%9C-%D7%9E%D7%90%D7%96%D7%93%D7%94-3/",
+   "publisher": "Thelet service centre",
+   "sourceType": "garage_publication",
+   "useful": false,
+   "note": "No intervals."
+  },
+  {
+   "url": "https://www.mkmotors.co.il/%D7%97%D7%A0%D7%95%D7%AA/%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%A9%D7%A0%D7%AA%D7%99%D7%9C%D7%A8%D7%9B%D7%91%D7%9E%D7%96%D7%93%D7%943",
+   "publisher": "MK Motors",
+   "sourceType": "garage_publication",
+   "useful": false,
+   "note": "Annual service package for 2004-2013 Mazda 3 (oil, oil filter, air filter); no interval stated."
+  },
+  {
+   "url": "https://knufia.org/%D7%9E%D7%90%D7%96%D7%93%D7%94-3-2008-1-6-%D7%94%D7%97%D7%9C%D7%A4%D7%AA-%D7%A0%D7%95%D7%96%D7%9C-%D7%A7%D7%99%D7%A8%D7%95%D7%A8/",
+   "publisher": "knufia.org",
+   "sourceType": "other",
+   "useful": false,
+   "note": "Coolant DIY guide, no interval."
+  },
+  {
+   "url": "https://www.manualslib.com/manual/516763/Mazda-3.html",
+   "publisher": "ManualsLib",
+   "sourceType": "archived_official_copy",
+   "useful": false,
+   "note": "HTTP 403."
+  },
+  {
+   "url": "https://carsforum.co.il/topic/443702-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%9E%D7%90%D7%96%D7%93%D7%94-3/",
+   "publisher": "carsforum.co.il",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "HTTP 403 (topics 400902 and 668475 also 403)."
+  },
+  {
+   "url": "https://www.fxp.co.il/showthread.php?t=20850005",
+   "publisher": "FXP",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "HTTP 403. A search snippet claimed 'every two years or 70,000 km' brake fluid for Mazda 3; NOT verified, not recorded."
+  },
+  {
+   "url": "https://www.mazda3forums.com/threads/conflicting-maintenance-schedules.302901/",
+   "publisher": "mazda3forums",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "Redirects to a paid bot gate (tollbit); not accessed."
+  },
+  {
+   "url": "https://forums.whirlpool.net.au/archive/2585284",
+   "publisher": "Whirlpool forums",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "HTTP 403; search-snippet claims (e.g. timing belt 100,000 km) unverified and implausible for a chain engine."
+  },
+  {
+   "url": "https://repairpal.com/estimator/mazda/3/maintenance-schedule",
+   "publisher": "RepairPal",
+   "sourceType": "maintenance_database",
+   "useful": false,
+   "note": "HTTP 403."
+  },
+  {
+   "url": "https://manuals.plus/m/5686bce08051aac71dee9f896154b1654243b045734c5d4ddefede98d079884a",
+   "publisher": "manuals.plus",
+   "sourceType": "archived_official_copy",
+   "useful": false,
+   "note": "HTTP 403."
+  },
+  {
+   "url": "https://www.carzone.co.il/Mazda/3/2011",
+   "publisher": "Carzone",
+   "sourceType": "press",
+   "useful": false,
+   "note": "HTTP 429."
+  }
+ ],
+ "items": [
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 12000,
+    "miles": 7500,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Schedule 1 ... Number of months or kilometers (miles), whichever comes first Months 6 12 18 24 ... x1000 km 12 24 36 ... x1000 miles 7.5 15 ... Engine oil RRRRRRRR",
+     "locator": "p.8-4 (PDF p.2), Schedule 1"
+    }
+   ]
+  },
+  {
+   "task": "oil_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 12000,
+    "miles": 7500,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Engine oil filter RRRRRRRR (Schedule 1 columns: Months 6 12 18 ...; x1000 km 12 24 36 ...; x1000 miles 7.5 15 22.5 ...)",
+     "locator": "p.8-4, Schedule 1"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 8000,
+    "miles": 5000,
+    "months": 4,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Schedule 2 ... Months 4 8 12 ... x1000 km 8 16 24 ... x1000 miles 5 10 15 ... Engine oil ... Others RRRRRRRRRRRR",
+     "locator": "p.8-6, Schedule 2 (Puerto Rico instead: 'Replace every 5,000 km (3,000 miles) or 3 months')"
+    }
+   ]
+  },
+  {
+   "task": "oil_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 8000,
+    "miles": 5000,
+    "months": 4,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Engine oil filter RRRRRRRRRRRR (Schedule 2 columns: Months 4 8 12 ...; x1000 km 8 16 24 ...; x1000 miles 5 10 15 ...)",
+     "locator": "p.8-6, Schedule 2"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 7500,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL",
+    "engine": null,
+    "market": "USA",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.kbb.com/mazda/mazda3/2011/maintenance-schedules/",
+     "publisher": "Kelley Blue Book",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "appears derived from the Mazda USA 2011 schedule (not independent)",
+     "quote": "Every 7,500 Miles: Oil and oil filter service",
+     "locator": "2011 Mazda3 maintenance schedule page (quote obtained via fetched-page summary)"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "replacement",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Israel ... Number of months or kilometres, whichever comes first. Months 12 24 36 ... x1000 km 15 30 45 ... Engine oil & oil filter*2 R R R R R R R R R R R R",
+     "locator": "Scheduled Maintenance (Except Europe) > Israel table"
+    },
+    {
+     "url": "https://www.mazda.co.il/service-plans",
+     "publisher": "Mazda Israel (importer site mazda.co.il)",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "כשמופיעה התראה בלוח המחוונים של רכבך / לאחר נסיעה של 15,000 ק״מ / במידה וחלפה שנה",
+     "locator": "/service-plans page; applies to current lineup (CX-5, CX-90, MAZDA3); not explicitly the 2011 car"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "replacement",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2005,
+     "to": null
+    },
+    "generation": "BK/BL (article recommends 2005+ models)",
+    "engine": "1.6 L or 2.0 L",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://cars.walla.co.il/item/1685637",
+     "publisher": "Walla! Cars (cars.walla.co.il)",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "טיפול בסיסי הכולל החלפת שמן מנוע, דיסקיות בילום ומסנן אוויר, נעשה במרווחים של 15 אלף ק\"מ",
+     "locator": "used Mazda 3 buying-guide article"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 10000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "If the vehicle is operated primarily under any of the following conditions, replace the engine oil and oil filter at every 10,000 km or shorter.",
+     "locator": "Israel table, remark *2 (police/taxi/driving school, dust, idling, short trips, extreme heat, mountains)"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "replacement",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H; NOT the BL generation",
+    "engine": "MZR 1.6 (row shared with SKYACTIV-G 1.5/2.0 unless stated)",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "The next maintenance is due at least every 20,000 km or 12 months after the last maintenance.",
+     "locator": "Europe section header; 'Engine oil & filter' R at every service"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "replacement",
+   "interval": {
+    "km": 10000,
+    "miles": null,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2013,
+     "to": 2013
+    },
+    "generation": "BL (Australian 2013 Mazda3)",
+    "engine": null,
+    "market": "Australia",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.carsguide.com.au/car-advice/q-and-a/mazda-service-intervals-29004",
+     "publisher": "CarsGuide (carsguide.com.au)",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "services must be at intervals of six months or 10,000km to preserve her warranty",
+     "locator": "Q&A 'Mazda 3 2013: Servicing intervals'"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 120000,
+    "miles": 75000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Spark plugs Replace every 120,000 km (75,000 miles)",
+     "locator": "p.8-4 Schedule 1 (Schedule 2 p.8-6 identical for 2.0/2.5-liter engine)"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 120000,
+    "miles": null,
+    "months": 72,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Spark plugs | Replace every 120,000 km or 6 years.",
+     "locator": "Israel table"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H; NOT the BL generation",
+    "engine": "MZR 1.6 (row shared with SKYACTIV-G 1.5/2.0 unless stated)",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "Spark plugs*1 ... MZR 1.6 | . | R | . | R | . | R | . | R (maintenance every 20,000 km or 12 months)",
+     "locator": "Europe table, MZR 1.6 row: R at every 2nd service"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 96000,
+    "miles": 60000,
+    "months": 60,
+    "rule": "whichever_first",
+    "firstKm": 192000,
+    "firstMonths": 120,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "FL22 type*1 Replace at first 192,000 km (120,000 miles) or 10 years; after that, every 96,000 km (60,000 miles) or 5 years",
+     "locator": "p.8-4 and p.8-6 (both schedules), FL22-type coolant"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": 96000,
+    "firstMonths": 48,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Others Replace at first 96,000 km (60,000 miles) or 4 years; after that, every 2 years",
+     "locator": "p.8-4 and p.8-6, non-FL22 coolant"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 90000,
+    "miles": null,
+    "months": 60,
+    "rule": "whichever_first",
+    "firstKm": 195000,
+    "firstMonths": 120,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Engine coolant*4 | Replace at first 195,000 km or 10 years; after that, every 90,000 km or 5 years.",
+     "locator": "Israel table"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 100000,
+    "miles": 62500,
+    "months": 60,
+    "rule": "whichever_first",
+    "firstKm": 200000,
+    "firstMonths": 120,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H; NOT the BL generation",
+    "engine": "MZR 1.6 (row shared with SKYACTIV-G 1.5/2.0 unless stated)",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "Engine coolant*8 | Replace at first 200,000 km (125,000 miles) or 10 years; after that, every 100,000 km (62,500 miles) or 5 years.",
+     "locator": "Europe table"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Brake fluid*6 | I | R | I | R | I | R | I | R (columns: every 15,000 km / 12 months)",
+     "locator": "Israel table: R at every 2nd column"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Brake fluid*6 | I | R | I | R | I | R | I | R (columns: every 15,000 km / 12 months)",
+     "locator": "Israel table: I at alternate columns"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 12,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "If the brakes are used extensively (for example, continuous hard driving or mountain driving) or if the vehicle is operated in extremely humid climates, replace the brake fluid annually.",
+     "locator": "Israel table remark *6"
+    },
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "If the brakes are used extensively (for example, continuous hard driving or mountain driving) or if the vehicle is operated in extremely humid climates, replace the brake fluid annually.",
+     "locator": "Europe table remark *10 (same manual; not independent)"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H; NOT the BL generation",
+    "engine": "MZR 1.6 (row shared with SKYACTIV-G 1.5/2.0 unless stated)",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "Brake fluid*10 | . | R | . | R | . | R (maintenance every 20,000 km or 12 months)",
+     "locator": "Europe table: R at every 2nd service"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "inspection",
+   "interval": {
+    "km": 8000,
+    "miles": 5000,
+    "months": 4,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Brake fluid level IIIIIIIIIIII",
+     "locator": "p.8-7 Schedule 2 (level inspection only; the 2011 US schedule lists no brake-fluid replacement)"
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 60000,
+    "miles": null,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Air filter*3 | C | C | C | R | C | C | C | R (columns: every 15,000 km / 12 months)",
+     "locator": "Israel table: R every 4th column"
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "other",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Air filter*3 | C | C | C | R | C | C | C | R (C: Clean)",
+     "locator": "Israel table: clean at non-replacement services"
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 60000,
+    "miles": null,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H; NOT the BL generation",
+    "engine": "MZR 1.6 (row shared with SKYACTIV-G 1.5/2.0 unless stated)",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "Air filter*2 | . | . | R | . | . | R (MZR 1.6/SKYACTIV-G; maintenance every 20,000 km or 12 months)",
+     "locator": "Europe table: R every 3rd service"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Cabin air filter (if installed) | | R | | R | | R (columns: every 15,000 km / 12 months)",
+     "locator": "Israel table"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H; NOT the BL generation",
+    "engine": "MZR 1.6 (row shared with SKYACTIV-G 1.5/2.0 unless stated)",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "Cabin air filter (if installed) | . | R | . | R (maintenance every 20,000 km or 12 months)",
+     "locator": "Europe table"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": 25000,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Cabin air filter Replace every 40,000 km (25,000 miles) or 2 years",
+     "locator": "p.8-7 Schedule 2"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 15000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL",
+    "engine": null,
+    "market": "USA",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.kbb.com/mazda/mazda3/2011/maintenance-schedules/",
+     "publisher": "Kelley Blue Book",
+     "sourceType": "maintenance_database",
+     "derivedFrom": "appears derived from Mazda USA schedule",
+     "quote": "Cabin air filter every 15,000 miles",
+     "locator": "15,000-mile service section (quote via fetched-page summary)"
+    }
+   ]
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "interval": {
+    "km": 120000,
+    "miles": 75000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Engine valve clearance Audibly inspect every 120,000 km (75,000 miles), if noisy, adjust",
+     "locator": "p.8-4 and p.8-6"
+    }
+   ]
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "interval": {
+    "km": 120000,
+    "miles": 75000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H; NOT the BL generation",
+    "engine": "MZR 1.6 (row shared with SKYACTIV-G 1.5/2.0 unless stated)",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "Engine valve clearance (Only MZR 1.6) | Audibly inspect every 120,000 km (75,000 miles), if noisy, adjust.",
+     "locator": "Europe table"
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Drive belts*1 | I | I | I | I | I | I | I | I | I | I | I | I",
+     "locator": "Israel table (every column = 15,000 km / 12 months)"
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "inspection",
+   "interval": {
+    "km": 10000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "If the vehicle is operated primarily under any of the following conditions, inspect the drive belts at every 10,000 km or shorter.",
+     "locator": "Israel table remark *1"
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "inspection",
+   "interval": {
+    "km": 60000,
+    "miles": null,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H; NOT the BL generation",
+    "engine": "MZR 1.6 (row shared with SKYACTIV-G 1.5/2.0 unless stated)",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "Drive belts*4 | . | . | I | . | . | I (maintenance every 20,000 km or 12 months)",
+     "locator": "Europe table"
+    }
+   ]
+  },
+  {
+   "task": "fuel_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 135000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Fuel filter | Replace every 135,000 km.",
+     "locator": "Israel table"
+    }
+   ]
+  },
+  {
+   "task": "transmission_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": 180000,
+    "miles": 112500,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen)",
+    "engine": "all engines in Europe table",
+    "market": "Europe",
+    "transmission": "manual transaxle"
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "Manual transaxle oil | Replace every 180,000 km (112,500 miles).",
+     "locator": "Europe table"
+    }
+   ]
+  },
+  {
+   "task": "tire_rotation",
+   "action": "other",
+   "interval": {
+    "km": 12000,
+    "miles": 7500,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Tire (Rotation) Rotate every 12,000 km (7,500 miles)",
+     "locator": "p.8-4 Schedule 1"
+    }
+   ]
+  },
+  {
+   "task": "tire_rotation",
+   "action": "other",
+   "interval": {
+    "km": 8000,
+    "miles": 5000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Tire (Rotation) Rotate every 8,000 km (5,000 miles)",
+     "locator": "p.8-7 Schedule 2"
+    }
+   ]
+  },
+  {
+   "task": "tire_rotation",
+   "action": "other",
+   "interval": {
+    "km": 10000,
+    "miles": 6250,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H; NOT the BL generation",
+    "engine": "MZR 1.6 (row shared with SKYACTIV-G 1.5/2.0 unless stated)",
+    "market": "Europe",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020101.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance', Europe table",
+     "quote": "Tyre rotation is recommended every 10,000 km (6,250 miles).",
+     "locator": "Europe table remark"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "inspection",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Disc brakes | I | I | I | I | I | I | I | I | I | I | I | I",
+     "locator": "Israel table (brake lines/hoses, parking brake, booster also I every column)"
+    }
+   ]
+  },
+  {
+   "task": "general_inspection",
+   "action": "inspection",
+   "interval": {
+    "km": 75000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "BM (3rd gen), manual 8GD7-EE-17H (2017 edition); NOT the BL generation",
+    "engine": "not engine-split in the Israel table (manual covers MZR 1.6 and SKYACTIV-G)",
+    "market": "Israel",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://owners-manual.mazda.com/gen/en/mazda3/mazda3_8gd7ee17h/contents/07020102.html",
+     "publisher": "Mazda Motor Corporation (owners-manual.mazda.com)",
+     "sourceType": "official_manual",
+     "derivedFrom": "Mazda3 Owner's Manual 8GD7-EE-17H (BM generation), 'Scheduled Maintenance (Except Europe)', Israel table",
+     "quote": "Exhaust system and heat shields | Inspect every 75,000 km.",
+     "locator": "Israel table"
+    }
+   ]
+  },
+  {
+   "task": "general_inspection",
+   "action": "inspection",
+   "interval": {
+    "km": 72000,
+    "miles": 45000,
+    "months": 60,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2011,
+     "to": 2011
+    },
+    "generation": "BL (2nd gen)",
+    "engine": "2.0 L / 2.5 L MZR (US lineup; document has no 1.6 L engine)",
+    "market": "USA, Canada, Puerto Rico",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mazdausa.com/siteassets/pdf/owners-optimized/2011/mazda3-4door/2011-mazda3-maintenance-schedule.pdf",
+     "publisher": "Mazda North American Operations (mazdausa.com)",
+     "sourceType": "official_booklet",
+     "derivedFrom": "2011 Mazda3 Owner's Manual (Form 8BM5-EA-10F, Edition 2), ch. 8 'Scheduled Maintenance (USA, Canada, and Puerto Rico)'",
+     "quote": "Exhaust system and heat shields Inspect every 72,000 km (45,000 miles) or 5 years",
+     "locator": "p.8-4 and p.8-7"
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "task": "periodic_service",
+   "action": "replacement",
+   "positions": [
+    "USA 2011 BL: 12,000 km / 7,500 mi / 6 months (Schedule 1); 8,000 km / 5,000 mi / 4 months (Schedule 2)",
+    "Israel (BM manual Israel table + mazda.co.il): 15,000 km / 12 months",
+    "Europe (BM manual): 20,000 km / 12 months",
+    "Australia 2013 BL (CarsGuide): 10,000 km / 6 months",
+    "Walla (Israeli press, BK/BL): every 15,000 km"
+   ],
+   "explainedBy": "market (plus generation: Israel and Europe figures come from the BM manual, not a BL document)",
+   "note": "No BL-era Israel or Europe schedule could be retrieved. The Israeli 15,000 km / 12-month figure is consistent across the official BM Israel table, the importer site and Israeli press."
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "positions": [
+    "USA 2011 BL 2.0/2.5: 120,000 km (75,000 mi)",
+    "Israel BM: 120,000 km or 6 years",
+    "Europe BM, MZR 1.6 row: every 2nd service = 40,000 km / 24 months"
+   ],
+   "explainedBy": "engine and market (MZR 1.6 is listed with a much shorter interval than SKYACTIV-G/US MZR 2.0-2.5; the Russia table also shows MZR 1.6 R every 2nd 15,000 km column); generation for IL/EU",
+   "note": "No source gives the plug interval for a 2011 BL 1.6 MZR in Israel. The Israel table is not engine-split; the only row explicitly for MZR 1.6 in a comparable market (Europe) says 40,000 km / 24 months."
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "positions": [
+    "USA 2011 FL22: first 192,000 km / 10 y, then 96,000 km / 5 y; non-FL22: first 96,000 km / 4 y, then every 2 y",
+    "Israel BM: first 195,000 km / 10 y, then 90,000 km / 5 y",
+    "Europe BM: first 200,000 km / 10 y, then 100,000 km / 5 y"
+   ],
+   "explainedBy": "market (km rounded to the local service grid) and coolant type (FL22 vs others)",
+   "note": "All agree on 10 years first and 5 years thereafter for FL22 coolant."
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "positions": [
+    "Israel BM: every 30,000 km / 24 months (annually under severe use)",
+    "Europe BM: every 40,000 km / 24 months",
+    "USA 2011: no replacement interval (level inspection only in Schedule 2)"
+   ],
+   "explainedBy": "market",
+   "note": "IL and EU agree on 24 months; the US schedule omits replacement."
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "positions": [
+    "Israel BM: 30,000 km / 24 months",
+    "Europe BM: 40,000 km / 24 months",
+    "USA 2011 Schedule 2: 40,000 km (25,000 mi) or 2 years",
+    "KBB (US): every 15,000 miles"
+   ],
+   "explainedBy": "market; KBB figure unexplained",
+   "note": "The US Schedule 1 row 'Cabin air filter R R' could not be column-located from PDF text, so it is not recorded."
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "positions": [
+    "Israel BM: replace 60,000 km / 48 months, clean every 15,000 km",
+    "Europe BM MZR 1.6: replace every 60,000 km / 36 months"
+   ],
+   "explainedBy": "market (service grid 15,000 km/12 mo vs 20,000 km/12 mo)",
+   "note": "The US 2011 PDF lists 'Air filter R' once in Schedule 1, but its column could not be located; not recorded."
+  }
+ ],
+ "notes": "No BL-generation (2009-2013) schedule for the 1.6 MZR in Israel or Europe could be retrieved: manualslib and manuals.plus returned 403, and owners-manual.mazda.com hosts only BM and later editions. The closest official Israel data is the Israel table in the BM-generation Mazda3 manual 8GD7-EE-17H (15,000 km / 12-month grid). It is a different generation, so flag it before applying it to a 2011 car. The 2011 US document covers only the 2.0/2.5 L engines. Timing drive: Walla says 'ל-3 מותקנת שרשרת תזמון ומכאן כי נחסכת הוצאה גדולה של החלפת סט טיימינג' (timing chain). No source gives a chain replacement interval, so no timing item is recorded. The Hebrew claims each have one source; several Israeli forums returned 403. Intervals derived from table columns (e.g. 'R every 2nd column') are readings of the quoted table row against the column headers quoted in the same source. The Russia/Belarus/Kazakhstan table (MZR 1.6 plugs R every 30,000 km, valve clearance every 45,000 km or 3 years in RU/BY/AZ) was seen but not recorded as an item because that market is not relevant."
+}

@@ -40,6 +40,8 @@ function itemVM(item: PlanItem): PlanItemVM | null {
     key: action === 'inspection' || action === 'adjustment' ? `${item.task}-${action}` : item.task,
     task: item.task,
     level: item.level,
+    confidence: item.confidence,
+    corroboratingSources: item.requirement.corroboration?.independentSources,
     title: he.maintenancePlan.tasks[item.task],
     actionType: action === 'adjustment' ? 'other' : action,
     actionLabel: he.maintenancePlan.actions[action],

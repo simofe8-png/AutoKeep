@@ -166,9 +166,14 @@ export interface PlanItemVM {
   task: string;
   /**
    * Evidence level (owner decision 2026-09-29): A = official source for the Israeli market;
-   * B = the manufacturer's document for this model, Israeli-market applicability not verified.
+   * B = the manufacturer's document for this model, Israeli-market applicability not verified;
+   * T = triangulated from independent (possibly non-official) sources, with `confidence`.
    */
-  level: 'A' | 'B';
+  level: 'A' | 'B' | 'T';
+  /** Requirement confidence (separate from source authority). */
+  confidence: 'high' | 'medium';
+  /** Independent corroborating sources (T only). */
+  corroboratingSources?: number;
   title: string;
   actionType: ActionType;
   actionLabel: string;

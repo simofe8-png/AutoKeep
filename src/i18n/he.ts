@@ -325,6 +325,9 @@ export const he = {
     levelA: 'לפי מקור רשמי לשוק הישראלי',
     levelB: 'על פי ספר היצרן לדגם זה',
     levelBNote: 'טרם אומתה התאמה ספציפית לשוק הישראלי',
+    levelT: 'מבוסס על הצלבת מקורות טכניים',
+    levelTNote: (sources: number) => `${sources} מקורות בלתי תלויים מסכימים`,
+    confidence: { high: 'רמת ביטחון גבוהה', medium: 'רמת ביטחון בינונית' },
     officialSourceTitle: 'המקור הרשמי של היצרן או היבואן',
     officialSourceReason: {
       manual_access_required:

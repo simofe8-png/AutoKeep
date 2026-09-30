@@ -1,0 +1,1605 @@
+{
+ "id": "B8",
+ "vehicle": "Honda PCX 125, MY2019 (JF81 / eSP+ 2018-2020 generation), scooter (market IL)",
+ "searchedAt": "2026-09-30",
+ "queries": [
+  "Honda PCX125 2019 maintenance schedule owner's manual engine oil 12000 km air cleaner drive belt",
+  "Honda PCX125 2018 2019 owner's manual PDF WW125 maintenance schedule \"drive belt\" \"every 24,000 km\"",
+  "PCX125 JF81 maintenance schedule engine oil 12,000 km air cleaner 18,000 km drive belt replace",
+  "\"PCX125-18\" OR \"PCX125-19\" OR \"PCX125-20\" owners manual pdf honda",
+  "hondamotopub.com WW125 PCX 2019 owner's manual",
+  "\"WW125\" 2018 owner's manual \"32K97\" PCX125 pdf",
+  "Honda PCX125 2018-2020 maintenance schedule service intervals JF81 valve clearance 4000 km oil",
+  "הונדה PCX 125 טיפול כל כמה ק\"מ החלפת רצועה",
+  "hondamotopub ajax model/year listings for HMEE, HTR, HKO, HPI, NCXCA, MCT, HMJ"
+ ],
+ "sourcesConsulted": [
+  {
+   "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+   "publisher": "Honda Korea via Honda Motopub",
+   "sourceType": "official_manual",
+   "useful": true,
+   "note": "125 cm3 'ALL NEW PCX' 2019MY, Korean. 6,000 km schedule. Frame code not printed in the text layer."
+  },
+  {
+   "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+   "publisher": "Honda Turkey via Honda Motopub",
+   "sourceType": "official_manual",
+   "useful": true,
+   "note": "WW125 'Tipi: JF81' 2018, Turkish. 4,000 km grid with oil every 2,000 km / 6 months. Text layer is garbled, so the chart was read from rendered pages."
+  },
+  {
+   "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+   "publisher": "Honda Philippines via Honda Motopub",
+   "sourceType": "official_manual",
+   "useful": true,
+   "note": "PCX150 (WW150A) 2019, English. Same chart as the Korean PCX 125. It is a 149 cc sister model, so its applicability is kept separate."
+  },
+  {
+   "url": "https://www.honda.co.uk/motorcycles/my-bike/honda-motorcycles-owners-manuals/_jcr_content/par1/textcolumnwithimagem_309684120/textColumn/richtextdownload_90f/file.res/PCX125-21-OWNERS.pdf",
+   "publisher": "Honda Motor Europe (UK)",
+   "sourceType": "official_manual",
+   "useful": false,
+   "note": "PCX125 2021 (next generation, JK05). EU grid is 1/6/12/18/24/30/36 x1,000 km: engine oil R each column + annual, air cleaner R 18/36, spark plug alternating I/R, valve I 6-36, drive belt R 24, coolant 3 years, final drive oil 2 years. Context only; suggests the EU uses the 6,000 km grid, but that is not proven for 2018-2020."
+  },
+  {
+   "url": "https://www.hondamotopub.com/HMEE",
+   "publisher": "Honda Motor Europe (Motopub)",
+   "sourceType": "manufacturer_site",
+   "useful": false,
+   "note": "EU listing for WW125A (PCX) starts at 2021; no 2018-2020 EU PCX125 manual is available."
+  },
+  {
+   "url": "https://2rom-prd-data.hondamotopub.com/om/BSH/PCX%20%28STD%29/2018/WW150_32K97F00_0.pdf",
+   "publisher": "Boon Siew Honda (MY)",
+   "sourceType": "official_manual",
+   "useful": false,
+   "note": "Malaysian 2018 PCX is WW150 (150 cc). Not downloaded or analysed."
+  },
+  {
+   "url": "https://www.manualslib.com/manual/1201842/Honda-Pcx125.html",
+   "publisher": "ManualsLib",
+   "sourceType": "archived_official_copy",
+   "useful": false,
+   "note": "Cloudflare/403; generation unknown; not read. No Wayback snapshot."
+  },
+  {
+   "url": "https://hondapcx.org/viewtopic.php?t=11209",
+   "publisher": "hondapcx.org forum",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "'2019 & 2020 Maintenance Intervals' (US PCX150). 403/Cloudflare, not read. The search snippet mentioned a US valve check every 4,000 mi, but it could not be verified."
+  },
+  {
+   "url": "https://erwinsalarda.com/comprehensive-maintenance-schedule-for-the-honda-pcx-scooter/",
+   "publisher": "erwinsalarda.com",
+   "sourceType": "other",
+   "useful": true,
+   "note": "Generic 'Honda PCX' schedule with no generation or market; matches the 6,000 km-grid numbers. Low weight."
+  },
+  {
+   "url": "https://wheel.co.il/%D7%90%D7%A8%D7%95%D7%9A-%D7%98%D7%95%D7%95%D7%97-%D7%A9%D7%A0%D7%AA%D7%99%D7%99%D7%9D-%D7%A2%D7%9D-%D7%94%D7%95%D7%A0%D7%93%D7%94-pcx-125/",
+   "publisher": "Wheel.co.il (IL press)",
+   "sourceType": "press",
+   "useful": false,
+   "note": "2012 long-term test of the first-generation PCX (Israel, from 2010). It mentions 1,000/4,000/8,000 km services at Israeli Honda garages, but this is the wrong generation, so it was not used as an item."
+  },
+  {
+   "url": "https://hondabike.co.il/models/scooter/small-scooter/scooter-small-scooter-pcx-125/",
+   "publisher": "Honda Bike Israel (importer)",
+   "sourceType": "importer",
+   "useful": false,
+   "note": "Current-model page. States 2 years unlimited-km warranty; no service intervals."
+  }
+ ],
+ "items": [
+  {
+   "task": "periodic_service",
+   "action": "inspection",
+   "interval": {
+    "km": 6000,
+    "miles": 4000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "× 1,000 km 1 6 12 18 24 30 36 | 연례 점검 | *1: 오도미터 수치가 높을 때에는 여기에 지정된 주기로 반복하십시오.",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; chart header and note *1 (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "inspection",
+   "interval": {
+    "km": 6000,
+    "miles": 4000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "× 1,000 km 1 6 12 18 24 30 36 | Annual Check | *1 : At higher odometer reading, repeat at the frequency interval established here.",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; chart header and note *1 (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 6000,
+    "miles": 4000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "엔진 오일 ... R (교체)",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 엔진 오일: R at 1, 6, 12, 18, 24, 30, 36 x1,000 km and R in 연례 점검 (annual) column (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 6000,
+    "miles": 4000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Engine Oil ... R : Replace",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Engine Oil: R at 1, 6, 12, 18, 24, 30, 36 x1,000 km and R in Annual Check column (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "oil_filter",
+   "action": "other",
+   "interval": {
+    "km": 12000,
+    "miles": 8000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "엔진 오일 스트레이너 스크린 ... C : 세척",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 엔진 오일 스트레이너 스크린: C (clean) at 12, 24, 36 x1,000 km (read from rendered page)"
+    }
+   ],
+   "note": "PCX has an oil strainer screen (cleaned), not a replaceable oil filter cartridge."
+  },
+  {
+   "task": "oil_filter",
+   "action": "other",
+   "interval": {
+    "km": 12000,
+    "miles": 8000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Engine Oil Strainer Screen ... C : Clean",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Engine Oil Strainer Screen: C at 12, 24, 36 x1,000 km (read from rendered page)"
+    }
+   ],
+   "note": "Strainer screen cleaning, not a filter replacement."
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 18000,
+    "miles": 12000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "에어 클리너 *2 ... *2: 물기 또는 먼지가 비정상적으로 많은 환경에서 주행할 경우에는 정비를 더 자주 하십시오.",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 에어 클리너: R at 18 and 36 x1,000 km (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 18000,
+    "miles": 12000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Air Cleaner *2 ... *2 : Service more frequently when riding in unusually wet or dusty areas.",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Air Cleaner: R at 18 and 36 x1,000 km (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 12000,
+    "miles": 8000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "스파크 플러그 ... R : 교체",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 스파크 플러그: R at 12, 24, 36 x1,000 km (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 12000,
+    "miles": 8000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Spark Plug ... R : Replace",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Spark Plug: R at 12, 24, 36 x1,000 km (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "interval": {
+    "km": 6000,
+    "miles": 4000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "밸브 간극 ... I : 검사(필요에 따라 세척, 조정, 윤활 또는 교체)",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 밸브 간극: I at 6, 12, 18, 24, 30, 36 x1,000 km; not at 1,000 km; no annual mark (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "interval": {
+    "km": 6000,
+    "miles": 4000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Valve Clearance ... I : Inspect (clean, adjust, lubricate, or replace, if necessary)",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Valve Clearance: I at 6, 12, 18, 24, 30, 36 x1,000 km; not at 1,000 km (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 36,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "라디에이터 냉각수 *4 ... 정기 교체 3년",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 라디에이터 냉각수, 정기 교체 (regular replace) column (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 36,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Radiator Coolant *4 ... Regular Replace 3 Years",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Radiator Coolant, Regular Replace column (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "drive_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 24000,
+    "miles": 16000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "드라이브 벨트 ... R : 교체",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 드라이브 벨트: I at 12 and 36, R at 24 x1,000 km (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "drive_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 24000,
+    "miles": 16000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Drive Belt ... R : Replace",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Drive Belt: I at 12 and 36, R at 24 x1,000 km (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "drive_belt",
+   "action": "inspection",
+   "interval": {
+    "km": 24000,
+    "miles": 16000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 12000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "드라이브 벨트 ... I : 검사",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 드라이브 벨트: I at 12 and 36 x1,000 km (between replacements) (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "final_drive_oil",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "최종 드라이브 오일 *4 ... 2년",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 최종 드라이브 오일, 정기 교체 column only (no distance marks) (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "final_drive_oil",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Final Drive Oil *4 ... 2 Years",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Final Drive Oil, Regular Replace column only (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "브레이크액 *4 ... 2년",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 브레이크액, 정기 교체 column; I at 6-36 and annual (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Brake Fluid *4 ... 2 Years",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Brake Fluid, Regular Replace column; I at 6-36 and annual (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "inspection",
+   "interval": {
+    "km": 6000,
+    "miles": 4000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "'ALL NEW PCX' 2019MY (doc 32K96B00; same K96 manual family as the JF81 Turkish manual)",
+    "engine": "125 cm3 (52.4 x 57.9 mm) eSP",
+    "market": "South Korea",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HKO/PCX/2019/PCX_%2032K96B00_0.pdf",
+     "publisher": "Honda Korea (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "브레이크 시스템 ... I : 검사",
+     "locator": "Korean owner's manual 'ALL NEW PCX' 2019MY, doc 32K96B00, 점검유지 주기표 printed pp.65-66; row 브레이크 시스템: I at pre-ride, 6, 12, 18, 24, 30, 36 x1,000 km and 연례 점검 (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "inspection",
+   "interval": {
+    "km": 6000,
+    "miles": 4000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2019
+    },
+    "generation": "WW150A 2019MY (doc 32K97C00; PCX150 sister of JF81 generation)",
+    "engine": "149 cc (PCX150, NOT the 125)",
+    "market": "Philippines",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HPI/PCX150/2019/PCX150_32K97C000_0.pdf",
+     "publisher": "Honda Philippines (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Brake System ... I : Inspect",
+     "locator": "English owner's manual PCX150 (WW150A) 2019MY, doc 32K97C00, Maintenance Schedule printed pp.69-70; row Brake System: I at pre-ride, 6-36 x1,000 km and Annual Check (read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "inspection",
+   "interval": {
+    "km": 4000,
+    "miles": 2500,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "× 1,000 km 1 4 8 12 16 20 24 | Yıllık Kontrol | *1 : Yüksek kilometre sayacı değerlerinde, burada belirtilen bakım aralıklarını tekrar ediniz.",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; chart header 'Değişim Periyodu *1' and note *1 (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 2000,
+    "miles": null,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Motor Yağı ... Her 2.000 km'de bir D ... Düzenli Değişim 6 Ay",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Motor Yağı: D (Değiştir) at 1 x1,000 km, then 'Her 2.000 km'de bir D' spanning 4-24; Düzenli Değişim (regular replacement) '6 Ay' (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ],
+   "note": "Unusually short (2,000 km / 6 months) versus the 6,000 km schedule of the Korean/Philippine manuals; verbatim as printed in the Turkish JF81 manual."
+  },
+  {
+   "task": "oil_filter",
+   "action": "other",
+   "interval": {
+    "km": 12000,
+    "miles": 7500,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Motor Yağı Filtresi Süzgeci ... T : Temizle",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Motor Yağı Filtresi Süzgeci: T at 12 and 24 x1,000 km (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ],
+   "note": "Strainer screen cleaning."
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 16000,
+    "miles": 10000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Hava Filtresi *2 ... D : Değiştir ... *2 : Aracınızı çok ıslak ve tozlu bölgelerde kullanıyorsanız daha sık servis yaptırınız.",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Hava Filtresi: K at 8 and 24, D at 16 x1,000 km (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 8000,
+    "miles": 5000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Buji ... D : Değiştir",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Buji: K at 4, 12, 20; D at 8, 16, 24 x1,000 km (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "inspection",
+   "interval": {
+    "km": 8000,
+    "miles": 5000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 4000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Buji ... K : Kontrol et (temizle, yağla veya gerekli ise değiştir)",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Buji: K at 4, 12, 20 x1,000 km (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "interval": {
+    "km": 4000,
+    "miles": 2500,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 1000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Subap Boşluğu ... K : Kontrol et (temizle, yağla veya gerekli ise değiştir)",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Subap Boşluğu: K at 1, 4, 8, 12, 16, 20, 24 x1,000 km; no annual mark (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 36,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Radyatör Soğutma *4 ... 3 Yıl",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Radyatör Soğutma, Düzenli Değişim column (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "drive_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 24000,
+    "miles": 15000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Tahrik kayışı ... D : Değiştir",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Tahrik kayışı: K at 12, D at 24 x1,000 km (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "drive_belt",
+   "action": "inspection",
+   "interval": {
+    "km": 24000,
+    "miles": 15000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 12000,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Tahrik kayışı ... K : Kontrol et",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Tahrik kayışı: K at 12 x1,000 km (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "final_drive_oil",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Redüksiyon yağı *4 ... 2 Yıl",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Redüksiyon yağı, Düzenli Değişim column only (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Fren Hidroliği *4 ... 2 Yıl",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Fren Hidroliği, Düzenli Değişim column; K at 4-24 and Yıllık Kontrol (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "inspection",
+   "interval": {
+    "km": 4000,
+    "miles": 2500,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2018,
+     "to": 2018
+    },
+    "generation": "JF81 (WW125, doc 32K96A00)",
+    "engine": "125 cc eSP+",
+    "market": "Turkey",
+    "transmission": "CVT (V-Matic)"
+   },
+   "sources": [
+    {
+     "url": "https://2rom-prd-data.hondamotopub.com/om/HTR/PCX125/2018/PCX125_32K96A00_0.pdf",
+     "publisher": "Honda Turkey (via Honda Motopub)",
+     "sourceType": "official_manual",
+     "derivedFrom": null,
+     "quote": "Fren Sistemi ... K : Kontrol et",
+     "locator": "Turkish owner's manual WW125 Tipi JF81 2018, doc 32K96A00, 'Bakım Programı' printed pp.61-62; row Fren Sistemi: K at pre-ride, 4-24 x1,000 km and Yıllık Kontrol (text layer uses a non-Unicode font, so read from rendered page)"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 6000,
+    "miles": 3728,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "PCX 125/150/160 (unspecified)",
+    "market": null,
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://erwinsalarda.com/comprehensive-maintenance-schedule-for-the-honda-pcx-scooter/",
+     "publisher": "erwinsalarda.com (personal blog, Philippines)",
+     "sourceType": "other",
+     "derivedFrom": "unstated; cites Honda Powersports PCX pages (generation not specified)",
+     "quote": "Engine Oil : Replace every 6,000 km (3,728 miles)",
+     "locator": "'Maintenance Schedule - Regular Maintenance Items' list (July 20, 2024)"
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 12000,
+    "miles": 7456,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "PCX 125/150/160 (unspecified)",
+    "market": null,
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://erwinsalarda.com/comprehensive-maintenance-schedule-for-the-honda-pcx-scooter/",
+     "publisher": "erwinsalarda.com (personal blog, Philippines)",
+     "sourceType": "other",
+     "derivedFrom": "unstated; cites Honda Powersports PCX pages (generation not specified)",
+     "quote": "Spark Plug : Replace every 12,000 km (7,456 miles)",
+     "locator": "'Maintenance Schedule - Regular Maintenance Items' list (July 20, 2024)"
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 18000,
+    "miles": 11184,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "PCX 125/150/160 (unspecified)",
+    "market": null,
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://erwinsalarda.com/comprehensive-maintenance-schedule-for-the-honda-pcx-scooter/",
+     "publisher": "erwinsalarda.com (personal blog, Philippines)",
+     "sourceType": "other",
+     "derivedFrom": "unstated; cites Honda Powersports PCX pages (generation not specified)",
+     "quote": "Air Filter : Replace every 18,000 km (11,184 miles)",
+     "locator": "'Maintenance Schedule - Regular Maintenance Items' list (July 20, 2024)"
+    }
+   ]
+  },
+  {
+   "task": "drive_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 24000,
+    "miles": 14912,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "PCX 125/150/160 (unspecified)",
+    "market": null,
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://erwinsalarda.com/comprehensive-maintenance-schedule-for-the-honda-pcx-scooter/",
+     "publisher": "erwinsalarda.com (personal blog, Philippines)",
+     "sourceType": "other",
+     "derivedFrom": "unstated; cites Honda Powersports PCX pages (generation not specified)",
+     "quote": "Drive Belt : Replace every 24,000 km (14,912 miles)",
+     "locator": "'Maintenance Schedule - Regular Maintenance Items' list (July 20, 2024)"
+    }
+   ]
+  },
+  {
+   "task": "final_drive_oil",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "PCX 125/150/160 (unspecified)",
+    "market": null,
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://erwinsalarda.com/comprehensive-maintenance-schedule-for-the-honda-pcx-scooter/",
+     "publisher": "erwinsalarda.com (personal blog, Philippines)",
+     "sourceType": "other",
+     "derivedFrom": "unstated; cites Honda Powersports PCX pages (generation not specified)",
+     "quote": "Final Drive Oil : Replace every 2 years",
+     "locator": "'Maintenance Schedule - Regular Maintenance Items' list (July 20, 2024)"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "PCX 125/150/160 (unspecified)",
+    "market": null,
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://erwinsalarda.com/comprehensive-maintenance-schedule-for-the-honda-pcx-scooter/",
+     "publisher": "erwinsalarda.com (personal blog, Philippines)",
+     "sourceType": "other",
+     "derivedFrom": "unstated; cites Honda Powersports PCX pages (generation not specified)",
+     "quote": "Brake Fluid : Replace every 2 years",
+     "locator": "'Maintenance Schedule - Regular Maintenance Items' list (July 20, 2024)"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 36,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": "PCX 125/150/160 (unspecified)",
+    "market": null,
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://erwinsalarda.com/comprehensive-maintenance-schedule-for-the-honda-pcx-scooter/",
+     "publisher": "erwinsalarda.com (personal blog, Philippines)",
+     "sourceType": "other",
+     "derivedFrom": "unstated; cites Honda Powersports PCX pages (generation not specified)",
+     "quote": "Coolant : Replace every 3 years",
+     "locator": "'Maintenance Schedule - Regular Maintenance Items' list (July 20, 2024)"
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "positions": [
+    "Korea 2019 PCX 125 (official) and Philippines PCX150 2019 (official): first 1,000 km, then every 6,000 km, plus annual replacement",
+    "Turkey 2018 JF81 PCX125 (official): first 1,000 km, then every 2,000 km, or 6 months",
+    "Blog (generation unspecified): every 6,000 km"
+   ],
+   "explainedBy": "market",
+   "note": "Same generation, different national manuals. The EU (and Israeli) 2018-2020 PCX125 schedule could not be retrieved, so it is unknown which grid applies to an Israeli JF81."
+  },
+  {
+   "task": "periodic_service",
+   "action": "inspection",
+   "positions": [
+    "Korea/Philippines: 6,000 km grid (1, 6, 12, ... 36 x1,000 km) + annual",
+    "Turkey: 4,000 km grid (1, 4, 8, ... 24 x1,000 km) + annual"
+   ],
+   "explainedBy": "market",
+   "note": ""
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "positions": [
+    "Korea/Philippines/blog: every 18,000 km",
+    "Turkey: every 16,000 km"
+   ],
+   "explainedBy": "market",
+   "note": "Each follows its own service grid (a multiple of 6,000 vs 4,000 km)."
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "positions": [
+    "Korea/Philippines/blog: every 12,000 km",
+    "Turkey: every 8,000 km"
+   ],
+   "explainedBy": "market",
+   "note": ""
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "positions": [
+    "Korea/Philippines: every 6,000 km, none at 1,000 km",
+    "Turkey: at 1,000 km, then every 4,000 km"
+   ],
+   "explainedBy": "market",
+   "note": "Also a first-vs-recurring difference (Turkey includes an initial 1,000 km check)."
+  },
+  {
+   "task": "drive_belt",
+   "action": "replacement",
+   "positions": [
+    "All sources: replace at 24,000 km (inspect at 12,000 km)"
+   ],
+   "explainedBy": "none (agreement)",
+   "note": "Consistent across markets."
+  }
+ ],
+ "notes": "No European or Israeli 2018-2020 (JF81) PCX125 owner's manual could be retrieved. Honda Motopub Europe lists PCX125 manuals only from 2021, and ManualsLib and hondapcx.org are Cloudflare-blocked. Two official manuals of the same generation disagree by market: Korea 2019 (6,000 km grid) and Turkey 2018 JF81 (4,000 km grid, oil every 2,000 km / 6 months). The Philippine PCX150 2019 manual (149 cc sister) matches Korea exactly. These are separate national Honda documents from the same template, so they are not fully independent publishers. The 2021 EU PCX125 manual (next generation) uses the 6,000 km grid; that is context only. All chart intervals were read from tick-mark positions on rendered pages; the quotes give the row label plus legend/column text, and the locators give the ticked columns. Honda charts have an 'Annual Check' column: oil is marked R there in the KR/PH manuals, hence 12 months. Severe-use notes with no numbers: air cleaner *2 'service more frequently when riding in unusually wet or dusty areas'; crankcase breather *3 'rain or full throttle'. The drive belt (replace 24,000 km, inspect 12,000 km), final drive oil (2 years), brake fluid (2 years) and coolant (3 years) agree across all sources. Recommendation: confirm with the Israeli importer or an EU 2018-2020 manual before choosing between the 6,000 km and 4,000 km grids."
+}

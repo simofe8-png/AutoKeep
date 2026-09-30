@@ -228,6 +228,18 @@ export interface EvidenceRef {
 
 export type RequirementVerification = 'verified' | 'candidate' | 'rejected';
 
+export type Confidence = 'high' | 'medium' | 'low';
+
+export interface Corroboration {
+  /** Independent source groups that state this obligation, each grounded (quote re-found). */
+  independentSources: number;
+  /** Of those, groups that are (copies of) a manufacturer / importer document. */
+  officialSources: number;
+  confidence: Confidence;
+  /** The independence keys (publisher or underlying document), for audit. */
+  groups: string[];
+}
+
 export interface MaintenanceRequirement {
   id: string;
   task: TaskCode;
@@ -240,6 +252,12 @@ export interface MaintenanceRequirement {
   evidence: EvidenceRef[];
   verification: RequirementVerification;
   extraction: ExtractionProvenance;
+  /**
+   * Source-agnostic triangulation (owner instruction 2026-09-30): how independently this exact
+   * obligation is corroborated. Source authority and requirement confidence are separate: a
+   * non-official requirement can drive a plan only through this record (evidence level T).
+   */
+  corroboration?: Corroboration;
   /** Test fixtures only: never a real manufacturer fact. */
   synthetic?: true;
 }
@@ -283,12 +301,27 @@ export function isVerifiedRequirement(r: MaintenanceRequirement): boolean {
  *  - C: verified official evidence whose applicability to this vehicle has unresolved dimensions
  *       (engine, regime, usage, …) — technically relevant, never scheduled until resolved;
  *  - D: secondary / supporting evidence (press, forums, dealers, user reports) — never scheduled;
- *  - E: an unverified candidate (AI or unreviewed extraction) — never scheduled.
- * Only A and B drive a maintenance plan; A outranks B per atomic task, never per schedule.
+ *  - E: an unverified candidate (AI or unreviewed extraction) — never scheduled;
+ *  - T: triangulated (2026-09-30): not individually verified, but grounded in and corroborated by
+ *       independent sources (≥ 2, or one official document) with confidence high / medium, and
+ *       applicable to the vehicle. Drives a plan below A and B, always labelled with confidence.
+ * A, B and T drive a maintenance plan; A outranks B outranks T per atomic task.
  */
-export type EvidenceLevel = 'A' | 'B' | 'C' | 'D' | 'E';
+export type EvidenceLevel = 'A' | 'B' | 'C' | 'D' | 'E' | 'T';
 
-export const PLAN_DRIVING_LEVELS: readonly EvidenceLevel[] = ['A', 'B'];
+export const PLAN_DRIVING_LEVELS: readonly EvidenceLevel[] = ['A', 'B', 'T'];
+
+/** A triangulated requirement that may drive a plan (see level T). */
+export function isTriangulated(r: MaintenanceRequirement): boolean {
+  const c = r.corroboration;
+  return (
+    r.verification === 'verified' &&
+    Boolean(r.extraction.grounded) &&
+    c != null &&
+    (c.confidence === 'high' || c.confidence === 'medium') &&
+    (c.independentSources >= 2 || c.officialSources >= 1)
+  );
+}
 
 /** Structural checks on a requirement (the interval must be computable and consistent). */
 export function requirementIssues(r: MaintenanceRequirement): string[] {

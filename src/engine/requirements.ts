@@ -4,6 +4,7 @@ import {
   compareDates,
   daysBetween,
   distanceKm,
+  isTriangulated,
   isVerifiedRequirement,
   type RequirementApplicability,
   type ApplicabilityDimension,
@@ -169,15 +170,19 @@ export function assessEvidence(r: MaintenanceRequirement, f: VehicleFacts): Evid
   const level: EvidenceLevel | null =
     applicability.verdict === 'does_not_apply'
       ? null
-      : NON_EVIDENCE.includes(r.authority)
-        ? 'D'
-        : !isVerifiedRequirement(r)
-          ? 'E'
-          : applicability.verdict === 'insufficient_information'
-            ? 'C'
-            : marketNamed
-              ? 'A'
-              : 'B';
+      : !isVerifiedRequirement(r) && isTriangulated(r)
+        ? applicability.verdict === 'insufficient_information'
+          ? 'C'
+          : 'T'
+        : NON_EVIDENCE.includes(r.authority)
+          ? 'D'
+          : !isVerifiedRequirement(r)
+            ? 'E'
+            : applicability.verdict === 'insufficient_information'
+              ? 'C'
+              : marketNamed
+                ? 'A'
+                : 'B';
   return { level, applicability, marketNamed };
 }
 
@@ -196,18 +201,33 @@ function foreignMarketOnly(r: MaintenanceRequirement, f: VehicleFacts): boolean 
  * within level B a source stated for other markets only ranks below a global/unspecified one;
  * a foreign importer has no importer privilege outside its market.
  */
-export function precedence(r: MaintenanceRequirement, f: VehicleFacts): [number, number, number] {
+export function precedence(
+  r: MaintenanceRequirement,
+  f: VehicleFacts,
+): [number, number, number, number] {
   const named = namesVehicleMarket(r, f);
   const foreign = foreignMarketOnly(r, f);
   const authority =
     r.authority === 'importer' && !named
       ? AUTHORITY_RANK.manufacturer
       : AUTHORITY_RANK[r.authority];
-  return [named ? 0 : 1, foreign ? 1 : 0, authority];
+  // Triangulated evidence ranks below every individually verified official requirement.
+  // Within it, a source naming the vehicle's market outranks one that does not (market first).
+  const tier = isVerifiedRequirement(r) ? (named ? 0 : 1) : named ? 2 : 3;
+  // Among triangulated evidence, the source whose stated model years fit the vehicle most
+  // narrowly ranks first (model year is the first conflict dimension); verified tiers keep ties.
+  return [tier, foreign ? 1 : 0, authority, tier >= 2 ? yearSpan(r) : 0];
 }
 
-type Rank = [number, number, number];
-const cmpPrecedence = (a: Rank, b: Rank) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2];
+function yearSpan(r: MaintenanceRequirement): number {
+  const y = r.applicability.modelYears;
+  if (!y) return 999;
+  return (y.to ?? 2100) - (y.from ?? 1900);
+}
+
+type Rank = [number, number, number, number];
+const cmpPrecedence = (a: Rank, b: Rank) =>
+  a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[3] - b[3];
 
 /** Two requirements state the same obligation (same action and interval). */
 export function sameObligation(a: MaintenanceRequirement, b: MaintenanceRequirement): boolean {
@@ -304,7 +324,7 @@ function resolveTask(
     considered.push({ requirement: r, applicability: e.applicability, level: e.level, role: rl });
   };
 
-  const applicable = evaluated.filter((e) => e.level === 'A' || e.level === 'B');
+  const applicable = evaluated.filter((e) => e.level === 'A' || e.level === 'B' || e.level === 'T');
   const insufficient = evaluated.filter((e) => e.level === 'C');
   for (const e of evaluated) {
     if (e.level === null) role(e.requirement, 'not_applicable');

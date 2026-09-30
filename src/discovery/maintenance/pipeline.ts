@@ -68,7 +68,7 @@ export async function runMaintenancePipeline(
     discovery: [],
     documents: [],
     requirements: [],
-    levels: { A: 0, B: 0, C: 0, D: 0, E: 0 },
+    levels: { A: 0, B: 0, C: 0, D: 0, E: 0, T: 0 },
     userActions: [],
     failures: [],
   };

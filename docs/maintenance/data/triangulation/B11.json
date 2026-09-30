@@ -1,0 +1,1798 @@
+{
+ "id": "B11",
+ "vehicle": "Suzuki Swift MY2019, 1242 cc petrol 1.2 Dualjet K12C, A2L generation, Israel (M.T.)",
+ "searchedAt": "2026-09-30",
+ "queries": [
+  "Suzuki Swift 2019 1.2 Dualjet service schedule intervals 12 months 15,000 km",
+  "Swift owner's manual 2017 2018 2019 periodic maintenance schedule K12C spark plugs Iridium coolant pdf",
+  "סוזוקי סוויפט טיפולים כל 15,000 ק\"מ מכשירי תנועה",
+  "סוזוקי סוויפט 2017 2018 2019 1.2 טיפול 60,000 מצתים נוזל בלמים מחירון טיפולים",
+  "\"חוברת אחריות תפעול ושירות\" סוזוקי",
+  "Suzuki Australia capped price servicing Swift AZ 1.2 12 months 15,000 km",
+  "Swift 1.2 Dualjet SHVS 2018 plan przeglądów co 15 000 km",
+  "Suzuki Swift 2018 UK service interval 9,000 miles / 10,000 miles",
+  "carmanualsonline SUZUKI SWIFT 2018 owners manual maintenance schedule",
+  "suzuki.co.il ספרי נהג סוזוקי (field_title_value_selective=סוויפט / סוויפט Mild Hybrid)"
+ ],
+ "sourcesConsulted": [
+  {
+   "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+   "publisher": "Suzuki Israel (suzuki.co.il) — Swift Mild Hybrid 2020-2024 owner's manual (Arabic)",
+   "sourceType": "importer",
+   "useful": true,
+   "note": "Official IL-importer-hosted manual; K12D (2020+ mild hybrid), NOT the 2019 K12C. Two schedules both for 'Europe and Israel' (pp.7-3..7-9 and 7-13..7-19). Pages read as rendered images."
+  },
+  {
+   "url": "https://suzuki.co.il/content/%D7%A1%D7%A4%D7%A8%D7%99-%D7%A0%D7%94%D7%92-%D7%A1%D7%95%D7%96%D7%95%D7%A7%D7%99",
+   "publisher": "Suzuki Israel",
+   "sourceType": "importer",
+   "useful": true,
+   "note": "Owner's-manual index: Swift entries are 'סוויפט' (swift2016.pdf), 'סוויפט MC משילדה JSAZCEDS000271867', 'סוויפט Mild Hybrid', 'סוויפט חדשה יולי 24'. No separate 2017-2019 non-hybrid A2L (K12C) manual found."
+  },
+  {
+   "url": "https://suzuki.co.il/sites/default/files/pdf/swift2016.pdf",
+   "publisher": "M.T. (Suzuki Israel) Swift booklet 12/2016",
+   "sourceType": "official_booklet",
+   "useful": true,
+   "note": "Previous generation (K12B/D13A). Context only."
+  },
+  {
+   "url": "https://www.autopaz.co.il/wp-content/uploads/2022/01/SWIFT2016-pages-deleted-compressed-1.pdf",
+   "publisher": "Topaz garage copy of the same booklet",
+   "sourceType": "archived_official_copy",
+   "useful": true,
+   "note": "Same document as swift2016.pdf; not independent."
+  },
+  {
+   "url": "https://autopaz.co.il/wp-content/uploads/2024/09/%D7%A1%D7%95%D7%95%D7%99%D7%A4%D7%98.pdf",
+   "publisher": "Topaz garage (authorized Suzuki garage)",
+   "sourceType": "garage_publication",
+   "useful": true,
+   "note": "Swift service spec, 20,000 km/12-month grid; model years not stated; item rows' column order ambiguous in extracted text, so only oil/filter used."
+  },
+  {
+   "url": "https://www.manuals.co.uk/suzuki/swift-2017/manual",
+   "publisher": "manuals.co.uk copy of Suzuki Motor (Thailand) Swift 2017 manual",
+   "sourceType": "archived_official_copy",
+   "useful": true,
+   "note": "Thai market; also listed as 'swift-2021' (same document)."
+  },
+  {
+   "url": "https://www.carmanualsonline.info/suzuki-swift-2018-owners-manual",
+   "publisher": "carmanualsonline.info copy of Magyar Suzuki Swift manual ©2016 (labelled 2018)",
+   "sourceType": "archived_official_copy",
+   "useful": true,
+   "note": "Mislabelled: previous-generation Swift (Hungary-built), not A2L."
+  },
+  {
+   "url": "https://www.galgalim.co.il/%D7%A8%D7%9B%D7%91/%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D?treat=1436&manufacturers=10",
+   "publisher": "Galgalim",
+   "sourceType": "maintenance_database",
+   "useful": true,
+   "note": "Brand-level Suzuki treatment names 15,000 km (or a year) steps."
+  },
+  {
+   "url": "https://www.queenoftheroad.co.il/%D7%94%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%94%D7%9E%D7%9C%D7%90-%D7%9C%D7%A1%D7%95%D7%96%D7%95%D7%A7%D7%99-%D7%A1%D7%95%D7%95%D7%99%D7%A4%D7%98-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95/",
+   "publisher": "Malkat HaKvish",
+   "sourceType": "press",
+   "useful": true,
+   "note": "Covers only 2006-2016 Swift."
+  },
+  {
+   "url": "https://www.odopass.fr/blog/plan-entretien-suzuki-swift-essence-diesel-hybride-carnet-programme-guide-complet",
+   "publisher": "Odopass (FR blog)",
+   "sourceType": "other",
+   "useful": false,
+   "note": "Table row '1.2 DualJet 90 ch Chaîne 15 000 km / 1 an 0W-20 Pas de remplacement'; detailed item lists on the page are for other engines; low reliability, not used for items."
+  },
+  {
+   "url": "https://testflotowy.pl/serwis-gwarancja-suzuki-swift-1-2-dualjet-83-km-2wd-5mt/",
+   "publisher": "testflotowy.pl",
+   "sourceType": "press",
+   "useful": false,
+   "note": "2024 Swift (new generation) 'Co 15 000 km lub co 1 rok' — different generation."
+  },
+  {
+   "url": "https://www.carsguide.com.au/car-advice/suzuki-capped-price-servicing-cost-schedule-info-70036",
+   "publisher": "CarsGuide AU",
+   "sourceType": "press",
+   "useful": false,
+   "note": "Reported 'Swift non-turbo' every 12 months/15,000km (AU) via fetch tool; direct text verification blocked (403), so not used as evidence."
+  },
+  {
+   "url": "https://www.manualslib.com/manual/1594932/Suzuki-Swift.html?page=240",
+   "publisher": "ManualsLib",
+   "sourceType": "archived_official_copy",
+   "useful": false,
+   "note": "403 / Cloudflare challenge; not bypassed."
+  },
+  {
+   "url": "https://www.suzuki-forums.com/threads/service-schedule-swift-1-2-euro-6.286172/",
+   "publisher": "suzuki-forums.com",
+   "sourceType": "forum",
+   "useful": false,
+   "note": "Redirects to paid bot gateway (tollbit); not accessed."
+  },
+  {
+   "url": "https://www.autodoc.co.uk/info/suzuki-swift-service-intervals-maintenance-schedule-costs-and-mileage",
+   "publisher": "AUTODOC",
+   "sourceType": "parts_platform",
+   "useful": false,
+   "note": "403."
+  },
+  {
+   "url": "https://club.autodoc.co.uk/manuals/maintenance/suzuki/swift",
+   "publisher": "AUTODOC CLUB",
+   "sourceType": "parts_platform",
+   "useful": false,
+   "note": "No readable intervals."
+  },
+  {
+   "url": "https://cars.suzuki.co.uk/owners/using-your-car/owners-handbooks/",
+   "publisher": "Suzuki GB",
+   "sourceType": "manufacturer_site",
+   "useful": false,
+   "note": "Handbooks require VIN; not used."
+  },
+  {
+   "url": "https://www.servicingstop.co.uk/suzuki_swift_service.html",
+   "publisher": "Servicing Stop",
+   "sourceType": "garage_publication",
+   "useful": false,
+   "note": "Generic '12 months or around 10,000 miles'; no model/engine applicability."
+  },
+  {
+   "url": "https://onestopsuzishop.com.au/how-often-should-you-service-your-suzuki-a-model-by-model-guide/",
+   "publisher": "One Stop Suzi Shop AU",
+   "sourceType": "garage_publication",
+   "useful": false,
+   "note": "Generic '10,000 to 15,000 kilometres, or every 12 months'."
+  },
+  {
+   "url": "https://tsemed.co.il/%D7%9E%D7%9B%D7%95%D7%A0%D7%90%D7%95%D7%AA-%D7%A8%D7%9B%D7%91/",
+   "publisher": "Tsemed garage (IL)",
+   "sourceType": "garage_publication",
+   "useful": false,
+   "note": "Generic Suzuki small service 'כל 15,000 ק\"מ'; not model-specific."
+  }
+ ],
+ "items": [
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) 20 | 40 | 60 … ; شهر 12 | 24 | 36 … ; 1-2. زيت المحرك وفلتر زيت المحرك [الفئة 1] (ACEA) أو زيت سوزوكي الأصلي: R R R R R R",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72. Table-derived: 'R' in every 20,000 km / 12-month column; row also says to follow the oil-change request light (ارجع إلى \"مصباح طلب تغيير الزيت\")."
+    },
+    {
+     "url": "https://autopaz.co.il/wp-content/uploads/2024/09/%D7%A1%D7%95%D7%95%D7%99%D7%A4%D7%98.pdf",
+     "publisher": "Topaz garage (authorized Suzuki garage in importer network)",
+     "sourceType": "garage_publication",
+     "derivedFrom": null,
+     "quote": "מפרט טיפולים לרכב סוזוקי סוויפט … 20000 קילומטרים … 12 חודשים … שמן מנוע ACEA A3/B3 החלף החלף החלף החלף החלף החלף",
+     "locator": "1-page PDF, uploaded 2024-09; model years/engine NOT stated. Table: 'החלף' (replace) in every column 20,000..120,000 km / 12..72 months. Oil filter row identical."
+    }
+   ]
+  },
+  {
+   "task": "oil_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "1-2. زيت المحرك وفلتر زيت المحرك [الفئة 1] … R R R R R R",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72. Oil and oil filter are a single row (table-derived, every 20,000 km / 12 months)."
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 15000,
+    "miles": 9375,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "[الفئة 1] بخلاف معايير رابطة مصنعي السيارات في أوروبا (ACEA) أو زيت سوزوكي الأصلي (رقم 1): استبدل كل 15000 كم (9375 ميل) أو 12 شهرًا.",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72. Applies when oil is NOT ACEA-spec / not Suzuki genuine oil."
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 10000,
+    "miles": null,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) 10 | 20 | 30 … ; شهر 6 | 12 | 18 … ; 1-2. زيت المحرك وفلتر زيت المحرك [الفئة 1] (ACEA) أو زيت سوزوكي الأصلي: R R R R R R",
+     "locator": "PDF p.427 (manual p.7-9) — severe-conditions schedule 'للدول الأوروبية وإسرائيل' (PDF p.426); columns km(x1000) 10..60, months 6..36. Table-derived: 'R' in every 10,000 km / 6-month column."
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 7500,
+    "miles": 4687,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "[الفئة 1] بخلاف معايير رابطة مصنعي السيارات في أوروبا (ACEA) أو زيت سوزوكي الأصلي (رقم 1): استبدل كل 7500 كم (4687 ميل) أو 6 شهور.",
+     "locator": "PDF p.427 (manual p.7-9) — severe-conditions schedule 'للدول الأوروبية وإسرائيل' (PDF p.426); columns km(x1000) 10..60, months 6..36. Non-ACEA oil, severe conditions."
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 80000,
+    "miles": 50000,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": 160000,
+    "firstMonths": 96,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "\"SUZUKI LLC: Super\" (أزرق): المرة الأولى فقط: استبدله عند قطع مسافة 160000 كم (100000 ميل) أو عند انقضاء 96 شهرًا. المرة الثانية وما يليها: استبدل كل 80000 كم (50000 ميل) أو 48 شهرًا.",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72 row 1-3 (Super/blue coolant). Same text repeated in the severe table (PDF p.427)."
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": 25000,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "\"Standard :SUZUKI LLC\" (أخضر): استبدل كل 40000 كم (25000 ميل) أو 36 شهرًا.",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72 row 1-3, only if Standard (green) coolant is used."
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 100000,
+    "miles": 62500,
+    "months": 84,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "2-1. شمعات الإشعال — شمعة الإيريديوم [الفئة 1] استبدل كل 100000 كم (62500 ميل) أو 84 شهرًا.",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72 row 2-1 (iridium)."
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": 18750,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "2-1. شمعات الإشعال — شمعة الإيريديوم: استبدل كل 30000 كم (18750 ميل) أو 24 شهرًا.",
+     "locator": "PDF p.427 (manual p.7-9) — severe-conditions schedule 'للدول الأوروبية وإسرائيل' (PDF p.426); columns km(x1000) 10..60, months 6..36 row 2-1."
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "inspection",
+   "interval": {
+    "km": 20000,
+    "miles": 12500,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "3-1. عنصر فلتر منقي الهواء — طريق معبّد: افحص كل 20000 كم (12500 ميل) أو 12 شهرًا.",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72 row 3-1, paved road."
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": 25000,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "3-1. عنصر فلتر منقي الهواء — طريق معبّد: استبدل كل 40000 كم (25000 ميل) أو 36 شهرًا.",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72 row 3-1, paved road."
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "inspection",
+   "interval": {
+    "km": 2500,
+    "miles": 1562,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "3-1. عنصر فلتر منقي الهواء: افحص كل 2500 كم (1562 ميل).",
+     "locator": "PDF p.427 (manual p.7-9) — severe-conditions schedule 'للدول الأوروبية وإسرائيل' (PDF p.426); columns km(x1000) 10..60, months 6..36 row 3-1."
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": 18750,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "3-1. عنصر فلتر منقي الهواء: استبدل كل 30000 كم (18750 ميل) أو 24 شهرًا.",
+     "locator": "PDF p.427 (manual p.7-9) — severe-conditions schedule 'للدول الأوروبية وإسرائيل' (PDF p.426); columns km(x1000) 10..60, months 6..36 row 3-1."
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 80000,
+    "miles": null,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) / شهر: 20/12: I | 40/24: I | 60/36: I | 80/48: R | 100/60: I | 120/72: I | 160/96: R — 1-1. سير إدارة المحرك الإضافي [الفئة 1]",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72 and PDF p.423 (7-5). Table-derived: 'R' at 80,000 km/48 months and 160,000 km/96 months; 'I' (tension check) at the other 20,000 km columns."
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "inspection",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) 20 | 40 | 60 … ; شهر 12 | 24 | 36 … ; 1-1. سير إدارة المحرك الإضافي [الفئة 1] فحص الشد: I I I R I I",
+     "locator": "PDF p.422 (manual p.7-4) — periodic schedule 'للدول الأوروبية وإسرائيل', normal conditions; columns km(x1000) 20/40/60/80/100/120, months 12/24/36/48/60/72. Table-derived tension check at each 20,000 km / 12-month column where not replaced."
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) / شهر: 20/12: I | 40/24: R | 60/36: I | 80/48: R | 100/60: I | 120/72: R — 5-4. زيت الفرامل (رقم 3)",
+     "locator": "PDF p.424 (manual p.7-6) — same schedule, brakes/chassis rows. Table-derived (months row 12/24/36/48/60/72)."
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 60000,
+    "miles": null,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) / شهر: 20/12: – | 40/24: I | 60/36: R | 80/48: – | 100/60: I | 120/72: R — 6-14. عنصر فلتر مكيّف الهواء (إن وجد)",
+     "locator": "PDF p.424 (manual p.7-6) — same schedule, brakes/chassis rows. Table-derived; inspection at 40,000/100,000 km."
+    }
+   ]
+  },
+  {
+   "task": "transmission_fluid",
+   "action": "inspection",
+   "interval": {
+    "km": 40000,
+    "miles": 25000,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D/K14D",
+    "market": "Europe and Israel",
+    "transmission": "manual (with SUZUKI GEAR OIL 75W)"
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "6-9. زيت مجموعة نقل الحركة اليدوية — \"SUZUKI GEAR OIL 75W\" الأصلي: افحص كل 40000 كم (25000 ميل) أو 24 شهرًا.",
+     "locator": "PDF p.424 (manual p.7-6) — same schedule, brakes/chassis rows. If non-genuine oil: 'R' at 40/80/120 (table)."
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "inspection",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) 20 | 40 | 60 … ; شهر 12 | 24 | 36 … ; 5-1. أقراص وتيل الفرامل: I I I I I I",
+     "locator": "PDF p.424 (manual p.7-6) — same schedule, brakes/chassis rows. Table-derived: inspect at every 20,000 km / 12-month column."
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "adjustment",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 20000,
+    "firstMonths": null,
+    "repeats": false
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D 1.2 Dualjet SHVS ('Class 1' in schedule)",
+    "market": "Europe and Israel (schedule headed 'للدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "5-5. ذراع وكبل فرامل اليد: فحص، *ضبط (أول 20000 كم فقط)",
+     "locator": "PDF p.424 (manual p.7-6) — same schedule, brakes/chassis rows. Parking-brake lever/cable check & adjustment, first 20,000 km only."
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "replacement",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) 15 | 30 | 45 … ; شهر 12 | 24 | 36 … ; 1-2. زيت المحرك وفلتر زيت المحرك: R R R R R R",
+     "locator": "PDF p.432 (manual p.7-14) — second periodic schedule 'خاص بالدول الأوروبية وإسرائيل' (heading PDF p.431); columns km(x1000) 15/30/45/60/75/90, months 12..72. Table-derived: oil+filter 'R' every 15,000 km / 12 months."
+    },
+    {
+     "url": "https://www.galgalim.co.il/%D7%A8%D7%9B%D7%91/%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D?treat=1436&manufacturers=10",
+     "publisher": "Galgalim (Israeli service-price portal)",
+     "sourceType": "maintenance_database",
+     "derivedFrom": null,
+     "quote": "טיפול 15,000 ק\"מ (או שנה) טיפול 30,000 ק\"מ (או שנתיים) טיפול 45,000 ק\"מ (או שלוש שנים) טיפול 60,000 ק\"מ (או ארבע שנים)",
+     "locator": "Suzuki treatments list (brand-level, not Swift-generation specific)."
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 75000,
+    "miles": 45000,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": 150000,
+    "firstMonths": 96,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "\"SUZUKI LLC: Super\" (الأزرق): المرة الأولى فقط: استبدله عند قطع مسافة 150000 كم (90000 ميل) أو عند انقضاء 96 شهرًا. المرة الثانية وما يليها: استبدل كل 75000 كم (45000 ميل) أو 48 شهرًا.",
+     "locator": "PDF p.432 (manual p.7-14) — second periodic schedule 'خاص بالدول الأوروبية وإسرائيل' (heading PDF p.431); columns km(x1000) 15/30/45/60/75/90, months 12..72 row 1-3."
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 45000,
+    "miles": 27000,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "وإذا استخدمت سائلاً آخر لتبريد المحرك خلاف \"SUZUKI LLC: Super\" (الأزرق) للاستبدال؛ اتبع جدول \"SUZUKI LLC: Standard\" (الأخضر). (استبدل كل 45000 كم (27000 ميل) أو 36 شهرًا).",
+     "locator": "PDF p.432 (manual p.7-14) — second periodic schedule 'خاص بالدول الأوروبية وإسرائيل' (heading PDF p.431); columns km(x1000) 15/30/45/60/75/90, months 12..72 footnote 1."
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 105000,
+    "miles": 63000,
+    "months": 84,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "2-1. شمعات الإشعال — شمعة الإيريديوم: استبدله كل 105000 كم (63000 ميل) أو 84 شهرًا.",
+     "locator": "PDF p.432 (manual p.7-14) — second periodic schedule 'خاص بالدول الأوروبية وإسرائيل' (heading PDF p.431); columns km(x1000) 15/30/45/60/75/90, months 12..72 row 2-1."
+    }
+   ]
+  },
+  {
+   "task": "fuel_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 105000,
+    "miles": 63000,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "3-3. فلتر الوقود: استبدل كل 105000 كم (63000 ميل).",
+     "locator": "PDF p.432 (manual p.7-14) — second periodic schedule 'خاص بالدول الأوروبية وإسرائيل' (heading PDF p.431); columns km(x1000) 15/30/45/60/75/90, months 12..72 row 3-3."
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 45000,
+    "miles": null,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) / شهر: 15/12: I | 30/24: I | 45/36: R | 60/48: I | 75/60: I | 90/72: R — 3-1. عنصر فلتر منقي الهواء، طريق معبّد",
+     "locator": "PDF p.432 (manual p.7-14) — second periodic schedule 'خاص بالدول الأوروبية وإسرائيل' (heading PDF p.431); columns km(x1000) 15/30/45/60/75/90, months 12..72. Table-derived."
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 75000,
+    "miles": null,
+    "months": 60,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) / شهر: 15/12: I | 30/24: I | 45/36: I | 60/48: I | 75/60: R | 90/72: I | 150/120: R — 1-1. سير إدارة المحرك الإضافي",
+     "locator": "PDF p.432 (manual p.7-14) — second periodic schedule 'خاص بالدول الأوروبية وإسرائيل' (heading PDF p.431); columns km(x1000) 15/30/45/60/75/90, months 12..72 and PDF p.433. Table-derived."
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) / شهر: 15/12: I | 30/24: R | 45/36: I | 60/48: R | 75/60: I | 90/72: R — 5-4. زيت الفرامل (رقم 2)",
+     "locator": "PDF p.434 (manual p.7-16) — second schedule, brakes/chassis rows. Table-derived."
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 45000,
+    "miles": null,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) / شهر: 15/12: – | 30/24: I | 45/36: R | 60/48: – | 75/60: I | 90/72: R — 6-11. عنصر فلتر مكيّف الهواء (إن وجد)",
+     "locator": "PDF p.434 (manual p.7-16) — second schedule, brakes/chassis rows. Table-derived."
+    }
+   ]
+  },
+  {
+   "task": "transmission_fluid",
+   "action": "inspection",
+   "interval": {
+    "km": 30000,
+    "miles": 18000,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": null,
+    "market": "Europe and Israel (second schedule)",
+    "transmission": "manual (with SUZUKI GEAR OIL 75W)"
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "6-8. زيت مجموعة نقل الحركة اليدوية — \"SUZUKI GEAR OIL 75W\" الأصلي: افحص كل 30000 كم (18000 ميل) أو 24 شهرًا.",
+     "locator": "PDF p.434 (manual p.7-16) — second schedule, brakes/chassis rows"
+    }
+   ]
+  },
+  {
+   "task": "brake_system",
+   "action": "adjustment",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": 15000,
+    "firstMonths": null,
+    "repeats": false
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "5-5. ذراع وكبل فرامل اليد: فحص، *ضبط (أول 15000 كم فقط)",
+     "locator": "PDF p.434 (manual p.7-16) — second schedule, brakes/chassis rows"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 7500,
+    "miles": null,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) 7,5 | 15 | 22,5 … ; شهر 6 | 12 | 18 … ; 1-2. زيت المحرك وفلتر زيت المحرك: R R R R R R",
+     "locator": "PDF p.437 (manual p.7-19) — second severe-conditions schedule; columns km(x1000) 7.5..45, months 6..36. Table-derived."
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "كم (x1000) / شهر: 7,5/6: – | 15/12: – | 22,5/18: – | 30/24: R | 37,5/30: – | 45/36: – — 2-1. شمعات الإشعال، شمعة الإيريديوم",
+     "locator": "PDF p.437 (manual p.7-19) — second severe-conditions schedule; columns km(x1000) 7.5..45, months 6..36. Table-derived (30 km×1000 = 24 months column)."
+    }
+   ]
+  },
+  {
+   "task": "air_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 30000,
+    "miles": 18000,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2024
+    },
+    "generation": "A2L (Swift Mild Hybrid, SHVS)",
+    "engine": "K12D / K14D (schedule not split by engine class)",
+    "market": "Europe and Israel (second schedule headed 'خاص بالدول الأوروبية وإسرائيل')",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift_mild_hybrid_2020-2024_compressed.pdf",
+     "publisher": "Suzuki Israel / M.T. Mechanical Movement & Cars (2004) Ltd (importer); Suzuki Motor Corporation owner's manual, Arabic edition",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "3-1. عنصر فلتر منقي الهواء: افحص كل 2500 كم (1500 ميل). استبدل كل 30000 كم (18000 ميل) أو 24 شهرًا.",
+     "locator": "PDF p.437 (manual p.7-19) — second severe-conditions schedule; columns km(x1000) 7.5..45, months 6..36"
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 10000,
+    "miles": null,
+    "months": 6,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2017,
+     "to": null
+    },
+    "generation": "A2L (Thai-built Swift)",
+    "engine": "1.2 petrol (engine code not stated on schedule pages)",
+    "market": "Thailand / Suzuki Motor (Thailand) market",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.manuals.co.uk/suzuki/swift-2017/manual",
+     "publisher": "Suzuki Motor (Thailand) Co., Ltd. owner's manual (copy hosted by manuals.co.uk)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "km (x1000) 1 10 20 30 … months 1 6 12 18 … 1-3. Engine oil and engine oil filter I R R R R R R R R R R",
+     "locator": "Manual p.7-4 (viewer page 239). Table-derived: I at 1,000 km/1 month, then R every 10,000 km / 6 months."
+    }
+   ]
+  },
+  {
+   "task": "engine_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 5000,
+    "miles": null,
+    "months": 3,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2017,
+     "to": null
+    },
+    "generation": "A2L (Thai-built Swift)",
+    "engine": "1.2 petrol (engine code not stated on schedule pages)",
+    "market": "Thailand / Suzuki Motor (Thailand) market",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.manuals.co.uk/suzuki/swift-2017/manual",
+     "publisher": "Suzuki Motor (Thailand) Co., Ltd. owner's manual (copy hosted by manuals.co.uk)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "Engine oil and engine oil filter R Every 5,000 km Or every 3 months",
+     "locator": "Manual p.7-6 (viewer page 241), severe driving conditions table."
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 100000,
+    "miles": null,
+    "months": 60,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2017,
+     "to": null
+    },
+    "generation": "A2L (Thai-built Swift)",
+    "engine": "1.2 petrol (engine code not stated on schedule pages)",
+    "market": "Thailand / Suzuki Motor (Thailand) market",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.manuals.co.uk/suzuki/swift-2017/manual",
+     "publisher": "Suzuki Motor (Thailand) Co., Ltd. owner's manual (copy hosted by manuals.co.uk)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "2-1. Iridium spark plug (Replace every 100,000 km. or 60 months.)",
+     "locator": "Manual p.7-4 (viewer page 239)."
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 60000,
+    "miles": null,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2017,
+     "to": null
+    },
+    "generation": "A2L (Thai-built Swift)",
+    "engine": "1.2 petrol (engine code not stated on schedule pages)",
+    "market": "Thailand / Suzuki Motor (Thailand) market",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.manuals.co.uk/suzuki/swift-2017/manual",
+     "publisher": "Suzuki Motor (Thailand) Co., Ltd. owner's manual (copy hosted by manuals.co.uk)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "Spark Plugs Iridium spark plug R Every 60,000 km or every 36 months",
+     "locator": "Manual p.7-6 (viewer page 241)."
+    }
+   ]
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "replacement",
+   "interval": {
+    "km": 60000,
+    "miles": null,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": {
+     "from": 2017,
+     "to": null
+    },
+    "generation": "A2L (Thai-built Swift)",
+    "engine": "1.2 petrol (engine code not stated on schedule pages)",
+    "market": "Thailand / Suzuki Motor (Thailand) market",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.manuals.co.uk/suzuki/swift-2017/manual",
+     "publisher": "Suzuki Motor (Thailand) Co., Ltd. owner's manual (copy hosted by manuals.co.uk)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "Engine accessory drive belt I Every 20,000 km or 12 months R Every 60,000 km or 36 months",
+     "locator": "Manual p.7-6 (viewer page 241)."
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 60000,
+    "miles": null,
+    "months": 36,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": false
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2017,
+     "to": null
+    },
+    "generation": "A2L (Thai-built Swift)",
+    "engine": "1.2 petrol (engine code not stated on schedule pages)",
+    "market": "Thailand / Suzuki Motor (Thailand) market",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.manuals.co.uk/suzuki/swift-2017/manual",
+     "publisher": "Suzuki Motor (Thailand) Co., Ltd. owner's manual (copy hosted by manuals.co.uk)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "km (x1000) 1 10 20 30 40 50 60 … months 1 6 12 18 24 30 36 … 1-4. Engine coolant Suzuki S-LLC: Super long life coolant (Blue) ------ R----",
+     "locator": "Manual p.7-4 (viewer page 239). Table-derived: single 'R' in the 60 (km×1000) / 36-month column within the 100,000 km table."
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2017,
+     "to": null
+    },
+    "generation": "A2L (Thai-built Swift)",
+    "engine": "1.2 petrol (engine code not stated on schedule pages)",
+    "market": "Thailand / Suzuki Motor (Thailand) market",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.manuals.co.uk/suzuki/swift-2017/manual",
+     "publisher": "Suzuki Motor (Thailand) Co., Ltd. owner's manual (copy hosted by manuals.co.uk)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "km (x1000) 1 10 20 30 40 … 80 … months 1 6 12 18 24 … 48 … 5-3. Brake Fluid Inspect, *Replacement ----R---R--",
+     "locator": "Manual p.7-5 (viewer page 240). Table-derived: R at 40 and 80 (km×1000) = 24 and 48 months."
+    }
+   ]
+  },
+  {
+   "task": "valve_clearance",
+   "action": "inspection",
+   "interval": {
+    "km": 30000,
+    "miles": null,
+    "months": 18,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2017,
+     "to": null
+    },
+    "generation": "A2L (Thai-built Swift)",
+    "engine": "1.2 petrol (engine code not stated on schedule pages)",
+    "market": "Thailand / Suzuki Motor (Thailand) market",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.manuals.co.uk/suzuki/swift-2017/manual",
+     "publisher": "Suzuki Motor (Thailand) Co., Ltd. owner's manual (copy hosted by manuals.co.uk)",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "km (x1000) 1 10 20 30 … months 1 6 12 18 … * 1-2. Valve clearance ---I-- I-- I -",
+     "locator": "Manual p.7-4 (viewer page 239). Table-derived: I at 30/60/90 (km×1000) = 18/36/54 months."
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2010,
+     "to": 2017
+    },
+    "generation": "FZ/NZ (previous generation, NOT A2L)",
+    "engine": "K12B 1.2 petrol (booklet also covers D13A)",
+    "market": "Israel (M.T. booklet 12/2016) / EU (Magyar Suzuki manual)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift2016.pdf",
+     "publisher": "M.T. Mechanical Movement & Cars (2004) Ltd (Suzuki importer, Israel)",
+     "sourceType": "official_booklet",
+     "derivedFrom": null,
+     "quote": "חשוב! על מנת לשמור על תנאי האחריות אנא הקפד על מעקב ורישום שירות תקופתי כל 15,000 ק\"מ או כל שנה - הקודם מבין השניים.",
+     "locator": "Swift warranty/operation/service booklet, 'עדכון 01 12/2016', service log pages 385-388. Same file also at https://www.autopaz.co.il/wp-content/uploads/2022/01/SWIFT2016-pages-deleted-compressed-1.pdf"
+    },
+    {
+     "url": "https://www.queenoftheroad.co.il/%D7%94%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%94%D7%9E%D7%9C%D7%90-%D7%9C%D7%A1%D7%95%D7%96%D7%95%D7%A7%D7%99-%D7%A1%D7%95%D7%95%D7%99%D7%A4%D7%98-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95/",
+     "publisher": "Malkat HaKvish (Israeli auto site)",
+     "sourceType": "press",
+     "derivedFrom": null,
+     "quote": "הטיפולים צריכים להתבצע כל 15,000 ק”מ או כל שנה, הראשון מבניהם.",
+     "locator": "Article dated 27.05.2020; covers Swift 2006-2010 (1.5) and 2011-2016 (1.3/1.25) only."
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 75000,
+    "miles": null,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": 150000,
+    "firstMonths": 96,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2010,
+     "to": 2017
+    },
+    "generation": "FZ/NZ (previous generation, NOT A2L)",
+    "engine": "K12B 1.2 petrol (booklet also covers D13A)",
+    "market": "Israel (M.T. booklet 12/2016) / EU (Magyar Suzuki manual)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift2016.pdf",
+     "publisher": "M.T. Mechanical Movement & Cars (2004) Ltd",
+     "sourceType": "official_booklet",
+     "derivedFrom": "Translated/edited from the original Suzuki owner's manual (booklet states it is 'תמצית מתורגמת וערוכה של ספר הנהג המקורי')",
+     "quote": "החלפת נוזל קירור ראשונה לאחר 150,000 ק\"מ או 8 שנים ולאחר מכן כל 75,000 ק\"מ או 4 שנים.",
+     "locator": "Chapter 11 periodic service table (booklet p.369 area), row 1-4 Blue super coolant."
+    },
+    {
+     "url": "https://www.carmanualsonline.info/suzuki-swift-2018-owners-manual",
+     "publisher": "Magyar Suzuki Corporation Ltd. owner's manual ©2016 (copy on carmanualsonline.info, labelled 'SWIFT 2018')",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "SUZUKI LLC: Super (Blue) … First time only: Replace at 150000 km (90000 miles) or 96 months Second time and after: Replace every 75000 km (45000 miles) or 48 months",
+     "locator": "Manual p.7-3 (image w960_43485-265). Cover shows previous-generation Swift/Swift Sport, ©2016 Magyar Suzuki."
+    }
+   ]
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "interval": {
+    "km": 105000,
+    "miles": null,
+    "months": 84,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2010,
+     "to": 2017
+    },
+    "generation": "FZ/NZ (previous generation, NOT A2L)",
+    "engine": "K12B 1.2 petrol (booklet also covers D13A)",
+    "market": "Israel (M.T. booklet 12/2016) / EU (Magyar Suzuki manual)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://suzuki.co.il/sites/default/files/pdf/swift2016.pdf",
+     "publisher": "M.T. Mechanical Movement & Cars (2004) Ltd",
+     "sourceType": "official_booklet",
+     "derivedFrom": "Translated from original Suzuki owner's manual",
+     "quote": "החלף כל 105,000 ק\"מ או 7 שנים",
+     "locator": "Chapter 11 periodic service table, row 2-1 iridium spark plugs."
+    },
+    {
+     "url": "https://www.carmanualsonline.info/suzuki-swift-2018-owners-manual",
+     "publisher": "Magyar Suzuki Corporation Ltd. owner's manual ©2016",
+     "sourceType": "archived_official_copy",
+     "derivedFrom": null,
+     "quote": "[Class 1] (Highly recommended) Iridium plug (Except Sport model) Replace every 105000 km (63000 miles) or 84 months.",
+     "locator": "Manual p.7-3 (image w960_43485-265)."
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "task": "periodic_service / engine_oil",
+   "action": "replacement",
+   "positions": [
+    "20,000 km / 12 months (IL/EU schedule A, K12D Class 1, ACEA oil; Topaz garage sheet)",
+    "15,000 km / 12 months (IL/EU schedule B in the same K12D document; non-ACEA oil in schedule A; IL booklet 2016 for K12B; Galgalim IL; FR blog odopass)",
+    "10,000 km / 6 months (Thai-market manual)"
+   ],
+   "explainedBy": "market (Thailand vs EU/IL) and oil specification (ACEA vs non-ACEA); the two EU/IL schedules inside one document are otherwise unexplained",
+   "note": "The IL importer's Arabic manual for Swift Mild Hybrid 2020-2024 contains two schedules both headed for 'European countries and Israel'. Which one M.T. applies to a 2019 K12C car is not stated in any source found."
+  },
+  {
+   "task": "spark_plugs",
+   "action": "replacement",
+   "positions": [
+    "100,000 km / 84 months (schedule A, K12D)",
+    "105,000 km / 84 months (schedule B; previous-gen K12B IL booklet & Magyar manual)",
+    "100,000 km / 60 months (Thai manual)"
+   ],
+   "explainedBy": "schedule variant / market",
+   "note": "Severe: 30,000 km/24 months (IL/EU) vs 60,000 km/36 months (Thai)."
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "positions": [
+    "first 160,000 km/96 months then 80,000 km/48 months (schedule A)",
+    "first 150,000 km/96 months then 75,000 km/48 months (schedule B; previous gen)",
+    "single R at 60,000 km/36 months (Thai table)"
+   ],
+   "explainedBy": "schedule variant / market (and coolant type: Standard green 40,000 km/36 months or 45,000 km/36 months)",
+   "note": ""
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "positions": [
+    "40,000 km / 24 months (schedule A; Thai)",
+    "30,000 km / 24 months (schedule B)"
+   ],
+   "explainedBy": "schedule column grid (20k vs 15k columns); both = 24 months",
+   "note": "Table-derived."
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "positions": [
+    "60,000 km / 36 months (schedule A)",
+    "45,000 km / 36 months (schedule B)"
+   ],
+   "explainedBy": "schedule column grid",
+   "note": "Table-derived."
+  },
+  {
+   "task": "auxiliary_belt",
+   "action": "replacement",
+   "positions": [
+    "80,000 km / 48 months (schedule A)",
+    "75,000 km / 60 months (schedule B)",
+    "60,000 km / 36 months severe (Thai)"
+   ],
+   "explainedBy": "schedule variant / market",
+   "note": "Table-derived for A and B."
+  }
+ ],
+ "notes": "No source found that is explicitly scoped to the 2017-2019 non-hybrid A2L Swift with K12C for Israel or Europe. The closest official source is the Israeli importer's own Arabic-language manual for the A2L Swift Mild Hybrid 2020-2024 (K12D, SHVS), which gives two different schedules both headed for Europe and Israel: schedule A (20,000 km/12 months grid, Class 1 = K12D) and schedule B (15,000 km/12 months grid). Israeli secondary sources (Galgalim, the IL 2016 booklet for the previous generation, local press) consistently use 15,000 km or 1 year for Suzuki, which matches schedule B. SHVS: whether the MY2019 Israeli car is SHVS is not established by any source read. The importer's manual index lists 'סוויפט Mild Hybrid' separately and its manual is dated 2020, and the 2016 booklet is for K12B, so K12C (2017-2019) coverage is a gap. Items marked 'Table-derived' in the locator come from R/I schedule-table cells mapped to column headers; their numbers are column headers, not free text. Timing: the Dualjet has a timing chain. The FR blog odopass says 'Pas de remplacement', but no official schedule found lists a timing-chain interval, so no timing_chain item was recorded. Thai-market manual (Suzuki Motor Thailand) intervals (10,000 km/6 months) are not applicable to IL but are recorded for triangulation."
+}

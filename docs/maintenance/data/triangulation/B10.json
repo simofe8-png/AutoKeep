@@ -1,0 +1,843 @@
+{
+ "id": "B10",
+ "vehicle": "MG ZS EV, model year 2021, Israel (importer Car East / MG Israel)",
+ "searchedAt": "2026-09-30",
+ "queries": [
+  "MG ZS EV service schedule interval 16000 miles 12 months brake fluid coolant",
+  "MG ZS EV טיפול תקופתי כל 20,000 ק\"מ קאר איסט",
+  "MG ZS EV service schedule Australia km months brake fluid coolant replacement",
+  "\"ZS EV\" owner manual maintenance \"brake fluid\" \"every 2 years\" reduction gear oil coolant",
+  "\"ZS EV\" טיפול \"24,000\" ק\"מ נוזל בלמים מסנן מזגן"
+ ],
+ "sourcesConsulted": [
+  {
+   "url": "https://www.mg.co.uk/servicing",
+   "publisher": "MG Motor UK",
+   "sourceType": "manufacturer_site",
+   "useful": true,
+   "note": "Official UK service-schedule tables for ZS EV (2019-2020) and (2021-2025); retrieved with curl (WebFetch 403)."
+  },
+  {
+   "url": "https://mg-israel.co.il/wp-content/uploads/2020/10/Doc1-1.pdf",
+   "publisher": "MG Israel / Car East",
+   "sourceType": "importer",
+   "useful": true,
+   "note": "IL importer service spec for ZS EV gen 1 2020-2021, three annual-mileage scenarios; data as of 20.2.2022."
+  },
+  {
+   "url": "https://media.mg-israel.co.il/wp-content/uploads/2020/10/Warranty-MG-7Y-BEV-PHEV-HEV-He-11.2025.3.2-idkun-12.2025.pdf",
+   "publisher": "Car East (MG IL)",
+   "sourceType": "official_booklet",
+   "useful": true,
+   "note": "2025 generic service/warranty booklet; EV interval 12 mo/24,000 km; ZS EV not named; special-maintenance columns list other EV models."
+  },
+  {
+   "url": "https://www.manualslib.com/manual/2984517/Mg-Zs-Ev.html?page=220",
+   "publisher": "ManualsLib",
+   "sourceType": "archived_official_copy",
+   "useful": false,
+   "note": "403 (blocked); no Wayback snapshot."
+  },
+  {
+   "url": "https://s3-ap-southeast-2.amazonaws.com/files.digitaldealer.com.au/mgmotor/files/ZS-EV-Owners-Manual.pdf",
+   "publisher": "MG Motor Australia (dealer CDN)",
+   "sourceType": "official_manual",
+   "useful": false,
+   "note": "Owner's manual defers to separate 'Service Schedule'; no intervals."
+  },
+  {
+   "url": "https://www.carexpert.com.au/car-news/mg-announced-capped-price-servicing-for-australia",
+   "publisher": "CarExpert",
+   "sourceType": "press",
+   "useful": true,
+   "note": "AU capped-price table."
+  },
+  {
+   "url": "https://www.carsguide.com.au/car-news/mg-zs-mg3-and-mg-hs-capped-price-servicing-now-available-rising-chinese-brand-gets-upfront",
+   "publisher": "CarsGuide",
+   "sourceType": "press",
+   "useful": true,
+   "note": "Same AU announcement."
+  },
+  {
+   "url": "https://www.autoguru.com.au/car-advice/ev-hybrid/mg-ev-car-servicing-guide",
+   "publisher": "AutoGuru",
+   "sourceType": "garage_publication",
+   "useful": true,
+   "note": "Generic MG EV AU interval."
+  },
+  {
+   "url": "https://www.mycar.com.au/servicing/vehicle/mg/zs-ev",
+   "publisher": "mycar",
+   "sourceType": "garage_publication",
+   "useful": false,
+   "note": "403."
+  },
+  {
+   "url": "https://allaboutevs.com/blog/mg-zs-ev-maintenance-cost",
+   "publisher": "AllAboutEVs",
+   "sourceType": "other",
+   "useful": true,
+   "note": "India-market blog; low credibility."
+  },
+  {
+   "url": "https://www.mgevs.com/threads/servicing-intervals-etc.5647/",
+   "publisher": "mgevs.com",
+   "sourceType": "forum",
+   "useful": true,
+   "note": "Coolant year 3 vs year 4 discussion."
+  },
+  {
+   "url": "https://www.mgevs.com/threads/gear-reduction-box.15277/",
+   "publisher": "mgevs.com",
+   "sourceType": "forum",
+   "useful": true,
+   "note": "Drive transmission fluid 4 yr / 60k mi."
+  },
+  {
+   "url": "https://www.auto.co.il/articles/car-news/local-news/134887/",
+   "publisher": "auto.co.il",
+   "sourceType": "press",
+   "useful": false,
+   "note": "2022 facelift IL launch (batteries 50.3/69.9 kWh); no intervals."
+  },
+  {
+   "url": "https://cars.walla.co.il/item/3332083",
+   "publisher": "Walla Cars",
+   "sourceType": "press",
+   "useful": false,
+   "note": "Early IL ZS EV review (45.6 kWh stated; importer then named as Lubinski); maintenance cost only, no intervals."
+  }
+ ],
+ "items": [
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 24000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2021
+    },
+    "generation": "Gen 1 (pre-facelift) - 'דור 1: 2020 עד 2021'",
+    "engine": null,
+    "market": "IL",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://mg-israel.co.il/wp-content/uploads/2020/10/Doc1-1.pdf",
+     "publisher": "MG Israel (Car East importer) - mg-israel.co.il",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "טיפול 12חודשים 24,000 /ק\"מ (הקודם מבינהם) ... בדיקה שגרתית רכב חשמלי",
+     "locator": "PDF 'מפרט טיפולים MG ZS EV דור 1: 2020 עד 2021', data correct to 20.2.2022; services listed at 12/24/36/48/60(/72/84/96) months = 24,000/48,000/72,000/96,000/120,000(...) km"
+    },
+    {
+     "url": "https://media.mg-israel.co.il/wp-content/uploads/2020/10/Warranty-MG-7Y-BEV-PHEV-HEV-He-11.2025.3.2-idkun-12.2025.pdf",
+     "publisher": "Car East Import (MG importer, IL) - service & warranty booklet 11.2025/12.2025",
+     "sourceType": "official_booklet",
+     "derivedFrom": null,
+     "quote": "תדירות טיפולים לדגמים חשמליים ... זמן (חודשים) 12 / חודשים 24 ... מרחק (ק\"מ) 24,000 ק\"מ 48,000 ק\"מ ... הערה: מספר חודשים או קילומטרים (הקודם מביניהם)",
+     "locator": "p.7 'תדירות טיפולים לדגמים חשמליים' (A/B alternation). NOTE: generic MG-EV table; ZS EV not named in this 2025 booklet"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": null,
+    "miles": 15000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2025
+    },
+    "generation": "MG ZS EV (2019-2020) and (2021-2025) tables",
+    "engine": null,
+    "market": "UK",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mg.co.uk/servicing",
+     "publisher": "MG Motor UK",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "Each service should occur every 15,000 miles (or 10,000 miles for 16MY MG3 with Stop/Start) or every year - whichever comes first.",
+     "locator": "mg.co.uk/servicing intro paragraph"
+    },
+    {
+     "url": "https://www.mg.co.uk/servicing",
+     "publisher": "MG Motor UK",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "MG ZS EV (2021-2025) STANDARD MILEAGE SERVICE PLAN - 15,000 MILE/12 MONTH",
+     "locator": "ZS EV (2021-2025) table header; ZS EV (2019-2020) table uses same '1st year or 15,000 miles ... 5th year or 75,000 miles' columns"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": null,
+    "miles": 10000,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2021,
+     "to": 2025
+    },
+    "generation": "MG ZS EV (2021-2025) - optional LOW MILEAGE SERVICE PLAN",
+    "engine": null,
+    "market": "UK",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mg.co.uk/servicing",
+     "publisher": "MG Motor UK",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "LOW MILEAGE SERVICE PLAN - 10,000 MILE/12 MONTH",
+     "locator": "ZS EV (2021-2025) second table"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": null,
+    "generation": "MG ZS EV as sold Aug 2021",
+    "engine": null,
+    "market": "AU",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.carexpert.com.au/car-news/mg-announced-capped-price-servicing-for-australia",
+     "publisher": "CarExpert",
+     "sourceType": "press",
+     "derivedFrom": "MG Motor Australia capped-price servicing announcement",
+     "quote": "24 months/20,000km: $268 ... 48 months/40,000km: $268 ... 96 months/80,000km: $807",
+     "locator": "MG ZS EV capped-price table, article 19 Aug 2021"
+    },
+    {
+     "url": "https://www.carsguide.com.au/car-news/mg-zs-mg3-and-mg-hs-capped-price-servicing-now-available-rising-chinese-brand-gets-upfront",
+     "publisher": "CarsGuide",
+     "sourceType": "press",
+     "derivedFrom": "MG Motor Australia capped-price servicing announcement",
+     "quote": "24 months/20,000km - $268 ... 48 months/40,000km - $268 ... 96 months/80,000km - $807",
+     "locator": "MG ZS EV capped-price schedule, article 19 Aug 2021"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 15000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": "MG EVs generally (not ZS EV specific)",
+    "engine": null,
+    "market": "AU",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.autoguru.com.au/car-advice/ev-hybrid/mg-ev-car-servicing-guide",
+     "publisher": "AutoGuru",
+     "sourceType": "garage_publication",
+     "derivedFrom": null,
+     "quote": "The service intervals for your MG EV in Australia are usually every 12 months or 15,000 kilometres, whichever happens first.",
+     "locator": "article body; generic for MG EVs"
+    }
+   ]
+  },
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "interval": {
+    "km": 20000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "IN",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://allaboutevs.com/blog/mg-zs-ev-maintenance-cost",
+     "publisher": "AllAboutEVs (blog)",
+     "sourceType": "other",
+     "derivedFrom": null,
+     "quote": "typically scheduled at every 12 months or 20,000 km, whichever comes first",
+     "locator": "article body; Indian market (costs in INR)"
+    }
+   ]
+  },
+  {
+   "task": "general_inspection",
+   "action": "inspection",
+   "interval": {
+    "km": 24000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2021
+    },
+    "generation": "Gen 1 (pre-facelift) - 'דור 1: 2020 עד 2021'",
+    "engine": null,
+    "market": "IL",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://mg-israel.co.il/wp-content/uploads/2020/10/Doc1-1.pdf",
+     "publisher": "MG Israel (Car East importer) - mg-israel.co.il",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "בדיקה שגרתית רכב חשמלי",
+     "locator": "PDF 'מפרט טיפולים MG ZS EV דור 1: 2020 עד 2021', data correct to 20.2.2022; line item in every service row (12-month / 24,000 km steps, whichever first)"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 24,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2021
+    },
+    "generation": "Gen 1 (pre-facelift) - 'דור 1: 2020 עד 2021'",
+    "engine": null,
+    "market": "IL",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://mg-israel.co.il/wp-content/uploads/2020/10/Doc1-1.pdf",
+     "publisher": "MG Israel (Car East importer) - mg-israel.co.il",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "הח' נוזל בלם (ע\"פ הוראות היצרן יש להחליף כל שנתיים ,ע\"מ לחסוך הגעה נוספת אנו ממליצים על החלפה במסגרת טיפול זה)",
+     "locator": "PDF 'מפרט טיפולים MG ZS EV דור 1: 2020 עד 2021', data correct to 20.2.2022; listed under 24/48(/72/84/96)-month services"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 30000,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2025
+    },
+    "generation": "MG ZS EV (2019-2020) and (2021-2025) tables",
+    "engine": null,
+    "market": "UK",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mg.co.uk/servicing",
+     "publisher": "MG Motor UK",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "2nd year or 30,000 miles ... Brake fluid - ü - ü -",
+     "locator": "ZS EV (2019-2020) and (2021-2025) standard tables: ticks at 2nd year/30,000 mi and 4th year/60,000 mi (5-year table)"
+    }
+   ]
+  },
+  {
+   "task": "brake_fluid",
+   "action": "replacement",
+   "interval": {
+    "km": 40000,
+    "miles": null,
+    "months": 12,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "MG electric models generally (2025 IL booklet; ZS EV not named)",
+    "engine": null,
+    "market": "IL",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://media.mg-israel.co.il/wp-content/uploads/2020/10/Warranty-MG-7Y-BEV-PHEV-HEV-He-11.2025.3.2-idkun-12.2025.pdf",
+     "publisher": "Car East Import (MG importer, IL) - service & warranty booklet 11.2025/12.2025",
+     "sourceType": "official_booklet",
+     "derivedFrom": null,
+     "quote": "יש להחליף נוזל בלמים כל 40,000 ק״מ או פעם בשנה (המוקדם מבניהם). אם המכונית נוסעת לרוב באזורים הרריים והבלמים נמצאים בשימוש רציף",
+     "locator": "p.11 severe-conditions maintenance, item 1"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": 48000,
+    "miles": null,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2021
+    },
+    "generation": "Gen 1 (pre-facelift) - 'דור 1: 2020 עד 2021'",
+    "engine": null,
+    "market": "IL",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://mg-israel.co.il/wp-content/uploads/2020/10/Doc1-1.pdf",
+     "publisher": "MG Israel (Car East importer) - mg-israel.co.il",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "טיפול 24חודשים 48000/ק\"מ(הקודם מבינהם) ... מסנן מזגן",
+     "locator": "PDF 'מפרט טיפולים MG ZS EV דור 1: 2020 עד 2021', data correct to 20.2.2022; 'מסנן מזגן' at 24- and 48-month services (40,000 km/yr table also lists it at 72- and 84-month rows)"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 30000,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2025
+    },
+    "generation": "MG ZS EV (2019-2020) and (2021-2025) tables",
+    "engine": null,
+    "market": "UK",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mg.co.uk/servicing",
+     "publisher": "MG Motor UK",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "2nd year or 30,000 miles ... Pollen filter - ü - ü -",
+     "locator": "ZS EV standard tables: ticks at 2nd and 4th year"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 20000,
+    "months": 24,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": {
+     "from": 2021,
+     "to": 2025
+    },
+    "generation": "MG ZS EV (2021-2025) LOW MILEAGE plan",
+    "engine": null,
+    "market": "UK",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mg.co.uk/servicing",
+     "publisher": "MG Motor UK",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "LOW MILEAGE SERVICE PLAN - 10,000 MILE/12 MONTH ... 2nd year or 20,000 miles ... Pollen filter - ü - ü -",
+     "locator": "ZS EV (2021-2025) low-mileage table"
+    }
+   ]
+  },
+  {
+   "task": "cabin_filter",
+   "action": "inspection",
+   "interval": {
+    "km": 5000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "severe",
+   "applicability": {
+    "modelYears": null,
+    "generation": "MG electric models generally (2025 IL booklet; ZS EV not named)",
+    "engine": null,
+    "market": "IL",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://media.mg-israel.co.il/wp-content/uploads/2020/10/Warranty-MG-7Y-BEV-PHEV-HEV-He-11.2025.3.2-idkun-12.2025.pdf",
+     "publisher": "Car East Import (MG importer, IL) - service & warranty booklet 11.2025/12.2025",
+     "sourceType": "official_booklet",
+     "derivedFrom": null,
+     "quote": "אם הרכב נוסע באזורים מאובקים או חוליים, בדוק את קרב מסנן A/C כל 5,000 ק״מ, והחלף אותו בהתאם לצורך.",
+     "locator": "p.11 severe-conditions item 2"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": 96000,
+    "miles": null,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": 96000,
+    "firstMonths": 48,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2021
+    },
+    "generation": "Gen 1 (pre-facelift) - 'דור 1: 2020 עד 2021'",
+    "engine": null,
+    "market": "IL",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://mg-israel.co.il/wp-content/uploads/2020/10/Doc1-1.pdf",
+     "publisher": "MG Israel (Car East importer) - mg-israel.co.il",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "טיפול 48חודשים 96,000/ק\"מ (הקודם מבינהם) ... הח' נוזל קירור",
+     "locator": "PDF 'מפרט טיפולים MG ZS EV דור 1: 2020 עד 2021', data correct to 20.2.2022; coolant at 48-month/96,000 km service and again at 96-month/192,000 km service (40,000 km/yr table)"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 60000,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": 48,
+    "repeats": false
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2019,
+     "to": 2020
+    },
+    "generation": "MG ZS EV (2019-2020) - pre-facelift",
+    "engine": null,
+    "market": "UK",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mg.co.uk/servicing",
+     "publisher": "MG Motor UK",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "MG ZS EV (2019-2020) ... 4th year or 60,000 miles ... Coolant - - - ü -",
+     "locator": "ZS EV (2019-2020) table; only 5 years shown so repetition not stated"
+    },
+    {
+     "url": "https://www.mgevs.com/threads/servicing-intervals-etc.5647/",
+     "publisher": "mgevs.com forum (Kithmo, 13 Apr 2022)",
+     "sourceType": "forum",
+     "derivedFrom": null,
+     "quote": "Coolant change is at year 4 on the Gen 1 IIRC, cost about £400 (or more) for that service.",
+     "locator": "thread 'Servicing intervals etc'"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 75000,
+    "months": 60,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": 60,
+    "repeats": false
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2021,
+     "to": 2025
+    },
+    "generation": "MG ZS EV (2021-2025) - facelift",
+    "engine": null,
+    "market": "UK",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mg.co.uk/servicing",
+     "publisher": "MG Motor UK",
+     "sourceType": "manufacturer_site",
+     "derivedFrom": null,
+     "quote": "MG ZS EV (2021-2025) ... 5th year or 75,000 miles ... Coolant - - - - ü",
+     "locator": "ZS EV (2021-2025) standard table (low-mileage table also ticks coolant at 5th year / 50,000 miles)"
+    }
+   ]
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": null,
+    "months": 36,
+    "rule": "time_only",
+    "firstKm": null,
+    "firstMonths": 36,
+    "repeats": false
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": null,
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mgevs.com/threads/servicing-intervals-etc.5647/",
+     "publisher": "mgevs.com forum (hmadsen, 12 Apr 2022)",
+     "sourceType": "forum",
+     "derivedFrom": null,
+     "quote": "Year 3, is a bit more involving, as they flush the battery coolant system, and fill it with new fluid.",
+     "locator": "thread 'Servicing intervals etc'; corrected next day by another member (year 4 on Gen 1)"
+    }
+   ]
+  },
+  {
+   "task": "reduction_gear_oil",
+   "action": "replacement",
+   "interval": {
+    "km": 80000,
+    "miles": null,
+    "months": null,
+    "rule": "distance_only",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "normal",
+   "applicability": {
+    "modelYears": {
+     "from": 2020,
+     "to": 2021
+    },
+    "generation": "Gen 1 (pre-facelift) - 'דור 1: 2020 עד 2021'",
+    "engine": null,
+    "market": "IL",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://mg-israel.co.il/wp-content/uploads/2020/10/Doc1-1.pdf",
+     "publisher": "MG Israel (Car East importer) - mg-israel.co.il",
+     "sourceType": "importer",
+     "derivedFrom": null,
+     "quote": "הח' שמן תיבת הילוכים (ע\"פ הוראות היצרן יש להחליף כל 80,000ק\"מ ,ע\"מ לחסוך הגעה נוספת אנו ממליצים על החלפה במסגרת טיפול זה)",
+     "locator": "PDF 'מפרט טיפולים MG ZS EV דור 1: 2020 עד 2021', data correct to 20.2.2022; listed in the 24,000 and 40,000 km/yr tables"
+    }
+   ]
+  },
+  {
+   "task": "reduction_gear_oil",
+   "action": "replacement",
+   "interval": {
+    "km": null,
+    "miles": 60000,
+    "months": 48,
+    "rule": "whichever_first",
+    "firstKm": null,
+    "firstMonths": null,
+    "repeats": true
+   },
+   "conditions": "unspecified",
+   "applicability": {
+    "modelYears": null,
+    "generation": null,
+    "engine": null,
+    "market": "UK (forum)",
+    "transmission": null
+   },
+   "sources": [
+    {
+     "url": "https://www.mgevs.com/threads/gear-reduction-box.15277/",
+     "publisher": "mgevs.com forum (Lovemyev, 15 Mar 2024)",
+     "sourceType": "forum",
+     "derivedFrom": null,
+     "quote": "REPLACE drive transmission fluid - every 60,000 miles OR four years, whichever arrives first.",
+     "locator": "thread 'Gear reduction box'; poster quotes MG dealer schedule; model year not stated"
+    }
+   ]
+  }
+ ],
+ "conflicts": [
+  {
+   "task": "periodic_service",
+   "action": "other",
+   "positions": [
+    "IL importer gen1: 12 months/24,000 km whichever first",
+    "UK: 12 months/15,000 miles whichever first (optional low-mileage plan 12 months/10,000 miles)",
+    "AU press 2021: capped-price points at 24 months/20,000km, 48 months/40,000km ...",
+    "AU AutoGuru (generic MG EVs): 12 months/15,000 km",
+    "India blog: 12 months/20,000 km"
+   ],
+   "explainedBy": "market (IL and UK agree after unit conversion: 15,000 mi ≈ 24,140 km)",
+   "note": "AU '24 months/20,000km' is two press copies of one MG AU announcement; unusual time/distance ratio - treat as unverified."
+  },
+  {
+   "task": "coolant",
+   "action": "replacement",
+   "positions": [
+    "IL gen1 2020-2021: 48 months/96,000 km (repeats at 96 months/192,000 km)",
+    "UK 2019-2020: 4th year / 60,000 miles",
+    "UK 2021-2025: 5th year / 75,000 miles",
+    "forum: year 3 battery coolant flush"
+   ],
+   "explainedBy": "generation (pre-facelift 4th year vs facelift 5th year); forum year-3 claim unexplained/likely erroneous",
+   "note": "IL gen1 and UK 2019-2020 agree (96,000 km ≈ 60,000 mi)."
+  },
+  {
+   "task": "reduction_gear_oil",
+   "action": "replacement",
+   "positions": [
+    "IL gen1 importer: every 80,000 km (distance only)",
+    "UK forum: 4 years or 60,000 miles whichever first"
+   ],
+   "explainedBy": "unexplained",
+   "note": "Forum model year unknown; mg.co.uk servicing tables do not list reduction-gear oil for ZS EV."
+  }
+ ],
+ "notes": "Applicability: the IL importer document explicitly covers 'MG ZS EV דור 1: 2020 עד 2021' (pre-facelift), the best match for an IL MY2021 car; the IL facelift (50.3/69.9 kWh) launched in 2022 per auto.co.il. UK splits ZS EV (2019-2020) vs (2021-2025); for an IL MY2021 pre-facelift car the UK 2019-2020 table is the closer analogue and agrees with IL on coolant (4th year; 96,000 km ≈ 60,000 mi). UK tables span 5 years only, so repetition beyond is not stated there. No numeric HV-battery inspection interval was found in a quotable source (IL 2025 booklet lists HV cell-balance check within services, no separate interval). The two IL documents come from the same importer, so they are not independent publishers. Hebrew quotes had bidi control characters stripped; spacing as extracted by pdftotext. ManualsLib owner's manual blocked (403)."
+}
