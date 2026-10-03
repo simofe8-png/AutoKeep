@@ -24,3 +24,14 @@ jest.mock('expo-crypto', () => ({
 
 // UI suites render the labeled prototype data unless a test selects the local store explicitly.
 configureDataSource({ kind: 'demo' });
+
+// react-native-webview has no native module under Jest. The on-device PDF reader page is verified
+// in a real Chromium; tests use the bridge with a fake page (pdfBridge.test.ts). Hermetic stand-in.
+jest.mock('react-native-webview', () => {
+  const { createElement, forwardRef } = jest.requireActual('react');
+  const { View } = jest.requireActual('react-native');
+  const WebView = forwardRef((props: { testID?: string }, _ref: unknown) =>
+    createElement(View, { testID: props.testID }),
+  );
+  return { __esModule: true, WebView, default: WebView };
+});

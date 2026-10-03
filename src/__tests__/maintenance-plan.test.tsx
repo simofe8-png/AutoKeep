@@ -13,6 +13,11 @@ import {
 } from '@/persistence';
 import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { MemoryFileStore } from '@/providers/storage/types';
+import { FakeWeb } from '@/discovery/maintenance/msource/testing';
+import {
+  startMaintenanceDiscovery,
+  type DiscoveryStore,
+} from '@/features/maintenance/msource/service';
 
 /**
  * Tasks 9–10 on the real local store: the Maintenance tab shows a useful schedule only from
@@ -365,4 +370,69 @@ describe('service journal (Task 10)', () => {
       expect(screen.queryByTestId('plan-discovery-identity')).toBeNull();
     }, 60000);
   });
+
+  it("owner review: items from the owner's own document enter the plan only once accepted", async () => {
+    await seed(false);
+    const store = await LocalStore.open(db, sequentialIds(9000), clock, new MemoryFileStore());
+    // The owner's booklet (SYNTHETIC): states the vehicle; two items.
+    const booklet = new TextEncoder().encode(
+      '<html><head><title>Ford Fiesta 2013-2017 1.25 maintenance schedule</title></head><body>' +
+        '<h1>Ford Fiesta 2013-2017 1.25 maintenance schedule</h1>' +
+        '<p>Engine oil: replace every 20,000 km or 12 months, whichever comes first.</p>' +
+        '<p>Brake fluid: replace every 24 months.</p></body></html>',
+    );
+    const io: DiscoveryStore = {
+      load: async (id) => ({
+        ...(await store.msourceLoad(id))!,
+        uploads: [{ id: 'doc-owner-1', name: 'booklet.html', bytes: booklet }],
+      }),
+      progress: (id, run, key, status) => store.msourceProgress(id, run, key, status),
+      complete: (id, run, status, reqs, cache) =>
+        store.msourceComplete(id, run, status, reqs, cache),
+    };
+    const web = new FakeWeb({});
+    await startMaintenanceDiscovery(
+      FIESTA,
+      io,
+      {
+        net: web.net(),
+        sha256: async () => 'c'.repeat(64),
+        registry: [],
+        catalog: () => [],
+        research: null,
+      },
+      clock,
+    );
+
+    await open('/maintenance', 'screen-maintenance');
+    await waitFor(() => expect(screen.getByTestId('plan-owner-review')).toBeOnTheScreen(), LONG);
+    expect(screen.getByTestId('plan-owner-review')).toHaveTextContent(/2 פריטים ממתינים לאישורך/);
+    // Held: nothing from the document is scheduled before the owner decides.
+    expect(screen.queryByTestId('plan-item-engine_oil')).toBeNull();
+
+    await fireEvent.press(screen.getByTestId('plan-owner-review-open'));
+    await waitFor(
+      () => expect(screen.getByTestId('screen-maintenance-review')).toBeOnTheScreen(),
+      LONG,
+    );
+    expect(screen.getByTestId('owner-proposal-engine_oil-interval')).toHaveTextContent(
+      /20,000.*12 חודשים, המוקדם מביניהם/,
+    );
+    expect(screen.getByTestId('owner-proposal-brake_fluid-interval')).toHaveTextContent(
+      /כל 24 חודשים/,
+    );
+    await fireEvent.press(screen.getByTestId('owner-proposal-engine_oil-accept'));
+    await fireEvent.press(screen.getByTestId('owner-proposal-brake_fluid-reject'));
+    await waitFor(
+      () =>
+        expect(screen.getByTestId('owner-proposal-engine_oil-decision')).toHaveTextContent(/אושר/),
+      LONG,
+    );
+    expect(screen.getByTestId('owner-proposal-brake_fluid-decision')).toHaveTextContent(/נדחה/);
+
+    await open('/maintenance', 'screen-maintenance');
+    await waitFor(() => expect(screen.getByTestId('plan-item-engine_oil')).toBeOnTheScreen(), LONG);
+    expect(screen.queryByTestId('plan-item-brake_fluid')).toBeNull();
+    expect(screen.getByTestId('plan-owner-review')).toHaveTextContent(/כל הפריטים מהמסמך נבדקו/);
+  }, 90000);
 });

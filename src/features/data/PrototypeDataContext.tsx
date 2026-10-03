@@ -250,6 +250,7 @@ export function PrototypeDataProvider({
       setMaintenanceAnswers: () => undefined,
       registerMaintenanceBooklet: () => undefined,
       retryMaintenanceDiscovery: () => undefined,
+      reviewOwnerDocumentItem: () => undefined,
       network,
       setNetwork,
       account,

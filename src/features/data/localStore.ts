@@ -71,6 +71,7 @@ import { buildFingerprint, fingerprintKey } from '@/discovery/maintenance/msourc
 import type { CachedSource, MSourceRun } from '@/discovery/maintenance/msource/run';
 import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 import { MSOURCE_VERSION } from '@/discovery/maintenance/msource/types';
+import { ownerReviewState } from '@/features/maintenance/msource/ownerReview';
 import type { DiscoveryInput } from '@/features/maintenance/msource/service';
 
 import type { SourcePlan } from '@/features/sources/sourceService';
@@ -234,6 +235,10 @@ export class LocalStore {
         status: await new MSourceRepository(this.db).latestStatus(id),
         requirements: (await new MSourceRepository(this.db).schedule(id))?.requirements ?? [],
         registry: await new VehicleRegistryRecordRepository(this.db).get(id).catch(() => null),
+        owner: ownerReviewState(
+          await new MSourceRepository(this.db).latestRun(id),
+          await new MSourceRepository(this.db).ownerDecisions(id),
+        ),
       },
     };
   }
@@ -969,6 +974,25 @@ export class LocalStore {
    * vehicle-scoped knowledge document — confirmed by the owner, NOT verified: its content only
    * counts after a professional review of the edition (docs/release/MAINTENANCE_M1.md).
    */
+  /**
+   * The owner's decision on one item read from their own document (owner review, D-A3). Only an
+   * accepted item becomes a requirement; the decision is local to this device.
+   */
+  async decideOwnerProposal(
+    vehicleId: string,
+    proposalKey: string,
+    decision: 'accepted' | 'rejected',
+  ): Promise<void> {
+    const vehicle = await new VehicleRepository(this.db).get(vehicleId as VehicleId);
+    if (!vehicle) return;
+    await new MSourceRepository(this.db).saveOwnerDecision(
+      vehicle.id,
+      proposalKey,
+      decision,
+      this.clock.now(),
+    );
+  }
+
   async registerMaintenanceBooklet(vehicleId: string, documentId: string): Promise<void> {
     const doc = await new DocumentRepository(this.db).get(
       vehicleId as VehicleId,

@@ -5,6 +5,7 @@ import { useAppData } from '@/features/data/DataContext';
 import { currentDataSource } from '@/features/data/dataSource';
 import { LocalDataProvider } from '@/features/data/LocalDataProvider';
 import { PrototypeDataProvider } from '@/features/data/PrototypeDataContext';
+import { PdfReaderHost } from '@/features/maintenance/msource/PdfReaderHost';
 import { ActiveVehicleProvider } from '@/features/vehicles/ActiveVehicleContext';
 import { VehicleImageProvider } from '@/features/vehicles/vehicleImage';
 import { MOCK_VEHICLE_DATA } from '@/mocks/vehicleData';
@@ -50,6 +51,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
       msource={source.msource ?? null}
     >
       <ActiveVehicleBridge>{children}</ActiveVehicleBridge>
+      <PdfReaderHost />
     </LocalDataProvider>
   );
 }

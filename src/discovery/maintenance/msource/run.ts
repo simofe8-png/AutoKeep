@@ -154,8 +154,16 @@ export interface RunnerDeps {
   adapters: DiscoveryAdapter[];
   access: AccessContext;
   net: GuardedFetchDeps;
-  /** PDF text reader; null where none is available (the mobile app host). */
-  readers: { pdf: TextReader | null; html: TextReader };
+  /**
+   * Text readers. `pdf` reads any PDF (null where none is available: the mobile app host);
+   * `uploadPdf` reads only the owner's own uploaded PDFs (the on-device WebView reader).
+   */
+  readers: { pdf: TextReader | null; html: TextReader; uploadPdf?: TextReader | null };
+  /**
+   * The owner's uploads are extracted and matched, but kept out of automatic resolution: their
+   * items become requirements only once the owner accepts them (owner review, D-A3).
+   */
+  holdUploadsForOwnerReview?: boolean;
   sha256: (b: Uint8Array) => Promise<string>;
   today: IsoDate;
   now: () => string;
@@ -612,7 +620,12 @@ export async function runMSource(fp: VehicleFingerprint, deps: RunnerDeps): Prom
       aq.failures.push({ code: 'EXTRACTION_BLOCKED', detail: extraction.reason, sourceId });
       return;
     }
-    const reader = format === 'pdf' ? deps.readers.pdf : deps.readers.html;
+    const reader =
+      format === 'pdf'
+        ? c.upload
+          ? (deps.readers.uploadPdf ?? deps.readers.pdf)
+          : deps.readers.pdf
+        : deps.readers.html;
     if (!reader) return fail('EXTRACTOR_UNAVAILABLE', `no ${format} reader on this host`);
     const doc: AcquiredDocument = {
       lead: {
@@ -863,17 +876,23 @@ export async function runMSource(fp: VehicleFingerprint, deps: RunnerDeps): Prom
     const s = systemForHost(host, deps.access.registry);
     return !!s && s.status === 'approved';
   };
-  const resolveNow = () =>
-    resolveSchedule({
+  const held = (e: EvidenceRecord) =>
+    deps.holdUploadsForOwnerReview === true &&
+    sources.find((x) => x.sourceId === e.sourceId)?.sourceType === 'user_upload';
+  // Held evidence stays in the schedule's evidence list (for owner review), never in its items.
+  const resolveNow = (): ResolvedSchedule => ({
+    ...resolveSchedule({
       fingerprintKey: classKey,
       market: fp.market,
       make: fp.make,
       sources,
-      evidence,
+      evidence: evidence.filter((e) => !held(e)),
       officialHost,
       now: deps.now(),
       acquiredSources: sources.length,
-    });
+    }),
+    evidence,
+  });
 
   aq.counts.acquired = acquired.length;
   end(aq, acquired.length || cachedSources.length ? undefined : 'failed');

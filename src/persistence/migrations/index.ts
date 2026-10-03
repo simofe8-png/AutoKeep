@@ -361,4 +361,20 @@ CREATE TABLE msource_evidence_cache (
 );
 `,
   },
+  {
+    version: 11,
+    name: 'msource_owner_review',
+    // Owner review of items read from the owner's OWN uploaded documents (spec Part A, D-A3).
+    // LOCAL ONLY (not in SYNC_TABLES; D-A4: no network sharing of uploads). One decision per
+    // proposal key (document sha prefix + obligation), so it survives re-runs of the same document.
+    up: `
+CREATE TABLE msource_owner_reviews (
+  vehicle_id TEXT NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
+  proposal_key TEXT NOT NULL,
+  decision TEXT NOT NULL CHECK (decision IN ('accepted', 'rejected')),
+  decided_at TEXT NOT NULL,
+  PRIMARY KEY (vehicle_id, proposal_key)
+);
+`,
+  },
 ];

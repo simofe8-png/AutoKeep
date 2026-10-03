@@ -29,6 +29,7 @@ import {
   type DiscoveryStatus,
 } from '@/discovery/maintenance/msource/status';
 import { MSOURCE_VERSION } from '@/discovery/maintenance/msource/types';
+import type { TextReader } from '@/discovery/maintenance/types';
 import type { IsoDate, MaintenanceRequirement } from '@/domain';
 
 /**
@@ -36,8 +37,9 @@ import type { IsoDate, MaintenanceRequirement } from '@/domain';
  * vehicle. The long network run never blocks a screen: progress is written as it goes, the
  * result is persisted at the end, and the maintenance plan picks the requirements up on the
  * next snapshot. Uses the SAME runner as the worker host; what differs is only the ports
- * (no research assistant and no PDF reader on the phone — PDF evidence comes from the
- * class-level catalog produced by the worker host).
+ * (no research assistant on the phone; web PDF evidence comes from the class-level catalog
+ * produced by the worker host; the owner's own PDFs are read on the device and held for owner
+ * review).
  */
 
 export interface MSourceHost {
@@ -47,6 +49,8 @@ export interface MSourceHost {
   /** Class-level results produced by the worker host (structured evidence, no documents). */
   catalog: (classKey: string) => { canonicalUrl: string; value: CachedSource }[];
   research?: ResearchProvider | null;
+  /** Reads the owner's own uploaded PDFs on the device (WebView pdf.js, D-A1); never web PDFs. */
+  uploadPdf?: TextReader | null;
   log?: MSourceLogger;
 }
 
@@ -151,7 +155,9 @@ export async function startMaintenanceDiscovery(
         adapters,
         access: { registry: host.registry, net: host.net, now: clock.now, robots: new Map() },
         net: host.net,
-        readers: { pdf: null, html: htmlTextReader },
+        readers: { pdf: null, html: htmlTextReader, uploadPdf: host.uploadPdf ?? null },
+        // The owner's documents become requirements only through owner review (D-A3).
+        holdUploadsForOwnerReview: true,
         sha256: host.sha256,
         today: clock.today() as IsoDate,
         now: clock.now,

@@ -495,6 +495,31 @@ export const he = {
     actions: { inspection: 'בדיקה', replacement: 'החלפה', adjustment: 'כיוון', other: 'טיפול' },
     recordTitle: 'פעולות מלוח הטיפולים',
     recordHint: 'סמנו רק מה שבוצע בפועל. פריט שלא סומן לא יסומן כבוצע.',
+    /** Owner review of items read from the owner's own document (spec Part A, D-A3). */
+    ownerReview: {
+      cardTitle: 'פריטים מהמסמך שהעלית',
+      cardPending: (n: number) =>
+        n === 1 ? 'פריט אחד ממתין לאישורך' : `${n} פריטים ממתינים לאישורך`,
+      cardDone: 'כל הפריטים מהמסמך נבדקו',
+      open: 'בדיקה ואישור',
+      screenTitle: 'אישור פריטים מהמסמך',
+      intro:
+        'הפריטים נקראו מהמסמך שהעלית. רק פריט שתאשר ייכנס ללוח הטיפולים, עם הפניה לעמוד במסמך. המסמך והחלטותיך נשמרים במכשיר בלבד.',
+      empty: 'לא נמצאו במסמכים שהעלית מרווחי טיפול שניתן לקרוא.',
+      everyKm: (km: string) => `כל ${km}`,
+      everyMonths: (n: number) => `כל ${n} חודשים`,
+      kmOrMonths: (km: string, n: number) => `כל ${km} או ${n} חודשים, המוקדם מביניהם`,
+      kmAndMonths: (km: string, n: number) => `כל ${km} · כל ${n} חודשים`,
+      severe: 'בתנאי שימוש קשים',
+      page: (n: number, doc: string) => `עמ׳ ${n} · ${doc}`,
+      fitMatched: 'המסמך מציין את פרטי הרכב שלך.',
+      fitUnstated: 'המסמך אינו מציין את כל פרטי הרכב — אשרו רק אם זה המסמך של הרכב הזה.',
+      regimes: (codes: string) => `חל רק על קוד תוכנית שירות ${codes}`,
+      accept: 'אישור',
+      reject: 'דחייה',
+      accepted: 'אושר — נכלל בלוח הטיפולים',
+      rejected: 'נדחה',
+    },
     /** M-SOURCE: automatic schedule discovery after the vehicle identity is confirmed. */
     discovery: {
       title: 'חיפוש לוח טיפולים',

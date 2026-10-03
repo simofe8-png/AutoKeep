@@ -6,6 +6,7 @@ import { newLocalId, useAppData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
 import type { MaintenancePlanVM, PlanItemVM, PlanRequestVM } from '@/features/data/types';
 import { discoveryPresentation } from '@/features/maintenance/knowledge/planVM';
+import { OwnerReviewCard } from '@/features/maintenance/OwnerReview';
 import { displayValue } from '@/features/vehicles/RegistryFacts';
 import { formatDate, formatKm, formatNumber } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
@@ -439,6 +440,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
             onUpload={() => void upload()}
           />
         ) : null}
+        <OwnerReviewCard proposals={plan.ownerReview?.proposals ?? []} />
         <Card tone="warning" testID="plan-fallback">
           <Stack gap={spacing.sm}>
             <View style={styles.needHead}>
@@ -516,6 +518,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
           onUpload={() => void upload()}
         />
       ) : null}
+      <OwnerReviewCard proposals={plan.ownerReview?.proposals ?? []} />
       {plan.requests.length > 0 ? (
         <Card tone="warning" testID="plan-needs-information">
           <Stack gap={spacing.sm}>

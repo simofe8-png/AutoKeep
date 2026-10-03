@@ -7,6 +7,7 @@ import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { MemoryFileStore } from '@/providers/storage/types';
 
 import { catalogFor } from '../catalog';
+import { ownerReviewState } from '../ownerReview';
 import { startMaintenanceDiscovery, type DiscoveryStore, type MSourceHost } from '../service';
 
 /**
@@ -29,6 +30,15 @@ const page = (title: string, body: string[]) =>
 
 // Engine-scoped (ENGINE_FAMILY): the title states the 1.25 Duratec engine.
 const A = page('Ford Fiesta 2013-2017 1.25 Duratec maintenance schedule', [
+  'Engine oil: replace every 20,000 km or 12 months, whichever comes first.',
+]);
+// The owner's own booklet (SYNTHETIC): states the vehicle's engine; two items.
+const BOOKLET = page('Ford Fiesta 2013-2017 1.25 Duratec maintenance schedule', [
+  'Engine oil: replace every 20,000 km or 12 months, whichever comes first.',
+  'Brake fluid: replace every 24 months.',
+]);
+// A booklet for a different engine of the same model (SYNTHETIC).
+const OTHER_ENGINE_BOOKLET = page('Ford Fiesta 2013-2017 1.6 EcoBoost ST maintenance schedule', [
   'Engine oil: replace every 20,000 km or 12 months, whichever comes first.',
 ]);
 // Explicitly all-engine (ALL_ENGINES).
@@ -180,8 +190,8 @@ describe('M-SOURCE application service (local store, migration v10)', () => {
     expect(plan.items.some((i) => i.task === 'engine_oil')).toBe(false);
   });
 
-  it("the owner's uploaded document enters the same pipeline and corroborates a web source", async () => {
-    const { store, io } = await setup();
+  it("the owner's uploaded document enters the same pipeline, held for owner review", async () => {
+    const { db, store, io } = await setup();
     const input = await store.msourceLoad(FIESTA);
     expect(input?.input).toMatchObject({
       manufacturer: 'פורד גרמניה',
@@ -190,21 +200,74 @@ describe('M-SOURCE application service (local store, migration v10)', () => {
     });
     expect(JSON.stringify(input)).not.toMatch(/12-345-67|1234567/);
     const web = new FakeWeb(WEB);
-    const withUpload: DiscoveryStore = {
+    const withUpload = (bytes: Uint8Array): DiscoveryStore => ({
       ...io,
       load: async (id) => ({
         ...(await io.load(id))!,
-        uploads: [{ id: 'doc-1', name: 'booklet.html', bytes: new TextEncoder().encode(A) }],
+        uploads: [{ id: 'doc-1', name: 'booklet.html', bytes }],
       }),
-    };
-    const out = await startMaintenanceDiscovery(FIESTA, withUpload, host(web, [URLS[1]]), clock);
-    expect(out).toMatchObject({ started: true, status: { state: 'READY' } });
+    });
+    const booklet = new TextEncoder().encode(BOOKLET);
+    const out = await startMaintenanceDiscovery(FIESTA, withUpload(booklet), host(web), clock);
     expect(web.requested.some((u) => u.startsWith('upload:'))).toBe(false);
-    const run = await new MSourceRepository((store as unknown as { db: never }).db).latestRun(
-      FIESTA as never,
-    );
+    // Held: the upload alone never produces a schedule item before the owner reviews it.
+    expect(out).toMatchObject({ started: true, status: { state: 'INSUFFICIENT_EVIDENCE' } });
+    const repo = new MSourceRepository(db);
+    const run = await repo.latestRun(FIESTA as never);
     const up = run!.schedule!.sources.find((s) => s.sourceType === 'user_upload');
     expect(up?.access.map((a) => a.reason)).toEqual(expect.arrayContaining(['user_provided']));
+    expect(run!.schedule!.items).toEqual([]);
+
+    let state = ownerReviewState(run, await repo.ownerDecisions(FIESTA as never));
+    expect(state.requirements).toEqual([]);
+    expect(state.proposals.map((x) => [x.task, x.intervalKm, x.intervalMonths, x.fit])).toEqual(
+      expect.arrayContaining([
+        ['engine_oil', 20000, 12, 'matched'],
+        ['brake_fluid', null, 24, 'matched'],
+      ]),
+    );
+    const oil = state.proposals.find((x) => x.task === 'engine_oil')!;
+    const brake = state.proposals.find((x) => x.task === 'brake_fluid')!;
+    expect(oil).toMatchObject({ documentId: 'doc-1', page: expect.any(Number), decision: null });
+
+    await store.decideOwnerProposal(FIESTA, oil.key, 'accepted');
+    await store.decideOwnerProposal(FIESTA, brake.key, 'rejected');
+    // The same document read again: the decisions still apply (stable keys).
+    await startMaintenanceDiscovery(FIESTA, withUpload(booklet), host(web), clock);
+    state = ownerReviewState(
+      await repo.latestRun(FIESTA as never),
+      await repo.ownerDecisions(FIESTA as never),
+    );
+    expect(state.requirements).toHaveLength(1);
+    expect(state.requirements[0]).toMatchObject({
+      task: 'engine_oil',
+      authority: 'vehicle_document',
+      verification: 'verified',
+      extraction: { method: 'deterministic_parser', grounded: true, reviewedBy: 'owner' },
+      evidence: [{ documentId: 'doc-1', page: oil.page, authority: 'vehicle_document' }],
+    });
+    expect(state.requirements[0].evidence[0].documentSha256).toMatch(/^[0-9a-f]{64}$/);
+    // Decisions are per vehicle: nothing leaks to another vehicle.
+    expect((await repo.ownerDecisions(OTHER as never)).size).toBe(0);
+  });
+
+  it("an owner's document that states ANOTHER engine is never proposed", async () => {
+    const { db, io } = await setup();
+    const other = new TextEncoder().encode(OTHER_ENGINE_BOOKLET);
+    const store: DiscoveryStore = {
+      ...io,
+      load: async (id) => ({
+        ...(await io.load(id))!,
+        uploads: [{ id: 'doc-2', name: 'other.html', bytes: other }],
+      }),
+    };
+    await startMaintenanceDiscovery(FIESTA, store, host(new FakeWeb(WEB)), clock);
+    const repo = new MSourceRepository(db);
+    const state = ownerReviewState(
+      await repo.latestRun(FIESTA as never),
+      await repo.ownerDecisions(FIESTA as never),
+    );
+    expect(state.proposals).toEqual([]);
   });
 
   it('phone path: the bundled worker catalog is reused offline and reproduces the factual result', async () => {

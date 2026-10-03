@@ -28,6 +28,7 @@ import { toPlanVM, verifiedIdentity } from '@/features/maintenance/knowledge/pla
 import { triangulatedRequirements } from '@/features/maintenance/knowledge/triangulated';
 import { syntheticDemoRequirements } from '@/features/maintenance/knowledge/syntheticDemo';
 import type { MaintenanceProfile, StoredKnowledgeDocument } from '@/persistence';
+import type { OwnerReviewState } from '@/features/maintenance/msource/ownerReview';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import type { EngineResult, ItemDue } from '@/engine/maintenance';
 import { formatDate, formatKm } from '@/features/vehicles/format';
@@ -77,6 +78,8 @@ export interface VehicleRecords {
     requirements: MaintenanceRequirement[];
     /** The Ministry record the vehicle was identified by (null when entered by hand). */
     registry?: VehicleRegistryRecord | null;
+    /** Items read from the owner's own documents, with the owner's decisions (local only). */
+    owner?: OwnerReviewState;
   };
 }
 
@@ -436,6 +439,8 @@ export function vehicleRequirements(rec: VehicleRecords): MaintenanceRequirement
     // M-SOURCE: only EXACT / STRONG / SUPPORTED items ever become requirements; the engine
     // re-checks their applicability against this vehicle's facts on every read.
     ...(rec.msource?.requirements ?? []),
+    // Items from the owner's own documents: only those the owner accepted (owner review).
+    ...(rec.msource?.owner?.requirements ?? []),
   ];
 }
 
@@ -474,6 +479,7 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
     (rec.knowledgeDocuments ?? []).length > 0,
     rec.msource?.status ?? null,
     verifiedIdentity(rec.msource?.registry),
+    rec.msource?.owner?.proposals ?? [],
   );
 }
 

@@ -1,3 +1,4 @@
+import type { OwnerProposal } from '@/discovery/maintenance/msource/ownerReview';
 import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 /**
  * UI view-models consumed by screens. They are shaped for display, not persistence. The domain
@@ -240,7 +241,11 @@ export interface MaintenancePlanVM {
    * code, displacement, fuel); null when the vehicle was not identified through the registry.
    */
   verifiedIdentity?: RegistryFact[] | null;
+  /** Items read from the owner's own documents, awaiting or carrying the owner's decision. */
+  ownerReview?: { proposals: OwnerProposalVM[] };
 }
+
+export type OwnerProposalVM = OwnerProposal & { decision: 'accepted' | 'rejected' | null };
 
 export interface VehicleDataBundle {
   /** Evidence-based plan from the requirement engine (absent in prototype bundles). */

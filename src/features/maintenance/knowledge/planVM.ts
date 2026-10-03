@@ -121,6 +121,7 @@ export function toPlanVM(
   bookletUploaded: boolean,
   discovery: DiscoveryStatus | null = null,
   identity: MaintenancePlanVM['verifiedIdentity'] = null,
+  ownerProposals: NonNullable<MaintenancePlanVM['ownerReview']>['proposals'] = [],
 ): MaintenancePlanVM {
   const items = plan.items.map(itemVM).filter((x): x is PlanItemVM => x !== null);
   const next = plan.next.map(itemVM).filter((x): x is PlanItemVM => x !== null);
@@ -133,5 +134,6 @@ export function toPlanVM(
     bookletUploaded,
     discovery,
     verifiedIdentity: identity,
+    ownerReview: { proposals: ownerProposals },
   };
 }

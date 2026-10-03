@@ -152,6 +152,12 @@ export interface AppDataValue {
   registerMaintenanceBooklet: (vehicleId: string, documentId: string) => void;
   /** M-SOURCE: runs automatic maintenance-schedule discovery again for the vehicle. */
   retryMaintenanceDiscovery: (vehicleId: string) => void;
+  /** Owner review: accept or reject one item read from the owner's own document. */
+  reviewOwnerDocumentItem: (
+    vehicleId: string,
+    proposalKey: string,
+    decision: 'accepted' | 'rejected',
+  ) => void;
   /** Stores a user-provided vehicle photo (device-local). */
   setVehiclePhoto: (vehicleId: string, file: AcquiredFile) => void;
   network: NetworkMode;

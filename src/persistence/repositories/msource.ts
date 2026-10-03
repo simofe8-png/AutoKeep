@@ -6,7 +6,7 @@ import type { MaintenanceRequirement, Timestamp, VehicleId } from '@/domain';
 import { fromJson, toJson, type Executor } from './base';
 
 /**
- * M-SOURCE persistence (local-only, migration v10). Runs and schedules are vehicle-scoped and
+ * M-SOURCE persistence (local-only, migrations v10–v11). Runs and schedules are vehicle-scoped and
  * every query filters by vehicle_id; the evidence cache is keyed by vehicle CLASS only.
  */
 
@@ -18,8 +18,42 @@ export interface StoredMSourceSchedule {
   resolvedAt: string;
 }
 
+export type OwnerDecision = 'accepted' | 'rejected';
+
 export class MSourceRepository {
   constructor(private readonly db: Executor) {}
+
+  /** The owner's decisions on proposals from their own documents, by proposal key. */
+  async ownerDecisions(
+    vehicleId: VehicleId,
+  ): Promise<Map<string, { decision: OwnerDecision; decidedAt: string }>> {
+    const rows = await this.db.all<{
+      proposal_key: string;
+      decision: OwnerDecision;
+      decided_at: string;
+    }>(
+      'SELECT proposal_key, decision, decided_at FROM msource_owner_reviews WHERE vehicle_id = ?',
+      [vehicleId],
+    );
+    return new Map(
+      rows.map((r) => [r.proposal_key, { decision: r.decision, decidedAt: r.decided_at }]),
+    );
+  }
+
+  async saveOwnerDecision(
+    vehicleId: VehicleId,
+    proposalKey: string,
+    decision: OwnerDecision,
+    now: Timestamp,
+  ): Promise<void> {
+    await this.db.run(
+      `INSERT INTO msource_owner_reviews (vehicle_id, proposal_key, decision, decided_at)
+       VALUES (?, ?, ?, ?)
+       ON CONFLICT(vehicle_id, proposal_key) DO UPDATE SET decision = excluded.decision,
+         decided_at = excluded.decided_at`,
+      [vehicleId, proposalKey, decision, now],
+    );
+  }
 
   /** Creates or updates the run row with its current (progress or terminal) status. */
   async saveStatus(
