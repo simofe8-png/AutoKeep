@@ -7,7 +7,9 @@
  *  - safety / equipment indicators are kept ONLY when positive: a "no", 0 or absent value is
  *    dropped, never shown as a missing feature;
  *  - every available environmental value is kept;
- *  - the VIN is kept as a fact but never displayed in full (see `maskVin`).
+ *  - the VIN and the engine serial number are kept as facts but never displayed in full;
+ *  - NO unit is attached: the Ministry publishes none in its dataset metadata (checked
+ *    2026-09-30 — the field schemas carry no unit information), so none is assumed.
  */
 
 export type RegistryFactGroup =
@@ -30,6 +32,7 @@ export interface RegistryFact {
   group: RegistryFactGroup;
   kind: RegistryFactKind;
   value: string | number | true;
+  /** Only when the source states it (the Ministry datasets currently state none). */
   unit?: string;
 }
 
@@ -91,16 +94,16 @@ export const MODEL_FIELDS: readonly FieldSpec[] = [
   f('tozar', 'manufacturer', 'identity', 'text'),
   f('tozeret_eretz_nm', 'countryOfManufacture', 'identity', 'text'),
   f('merkav', 'body', 'identity', 'text'),
-  f('nefah_manoa', 'displacement', 'technical', 'number', 'סמ״ק'),
-  f('koah_sus', 'horsepower', 'technical', 'number', 'כ״ס'),
-  f('mishkal_kolel', 'grossWeight', 'technical', 'number', 'ק״ג'),
-  f('gova', 'height', 'technical', 'number', 'ס״מ'),
+  f('nefah_manoa', 'displacement', 'technical', 'number'),
+  f('koah_sus', 'horsepower', 'technical', 'number'),
+  f('mishkal_kolel', 'grossWeight', 'technical', 'number'),
+  f('gova', 'height', 'technical', 'number'),
   f('hanaa_nm', 'drive', 'technical', 'text'),
   f('technologiat_hanaa_nm', 'propulsion', 'technical', 'text'),
   f('mispar_dlatot', 'doors', 'technical', 'number'),
   f('mispar_moshavim', 'seats', 'technical', 'number'),
-  f('kosher_grira_im_blamim', 'towingBraked', 'technical', 'number', 'ק״ג'),
-  f('kosher_grira_bli_blamim', 'towingUnbraked', 'technical', 'number', 'ק״ג'),
+  f('kosher_grira_im_blamim', 'towingBraked', 'technical', 'number'),
+  f('kosher_grira_bli_blamim', 'towingUnbraked', 'technical', 'number'),
   f('sug_tkina_nm', 'standard', 'technical', 'text'),
   f('automatic_ind', 'automatic', 'technical', 'flag'),
   f('hege_koah_ind', 'powerSteering', 'technical', 'flag'),
@@ -137,18 +140,18 @@ export const MODEL_FIELDS: readonly FieldSpec[] = [
   // Environment: everything available.
   f('madad_yarok', 'greenIndex', 'environment', 'positive'),
   f('kvutzat_zihum', 'pollutionGroup', 'environment', 'positive'),
-  f(['CO2_WLTP', 'kamut_CO2'], 'co2', 'environment', 'number', 'גרם/ק״מ'),
-  f('kamut_CO2_city', 'co2City', 'environment', 'number', 'גרם/ק״מ'),
-  f('kamut_CO2_hway', 'co2Highway', 'environment', 'number', 'גרם/ק״מ'),
-  f('CO2_WLTP_NEDC', 'co2Nedc', 'environment', 'number', 'גרם/ק״מ'),
-  f(['NOX_WLTP', 'kamut_NOX'], 'nox', 'environment', 'number', 'גרם/ק״מ'),
-  f(['PM_WLTP', 'kamut_PM10'], 'pm', 'environment', 'number', 'גרם/ק״מ'),
-  f(['HC_WLTP', 'kamut_HC'], 'hc', 'environment', 'number', 'גרם/ק״מ'),
-  f('kamut_HC_NOX', 'hcNox', 'environment', 'number', 'גרם/ק״מ'),
-  f(['CO_WLTP', 'kamut_CO'], 'co', 'environment', 'number', 'גרם/ק״מ'),
+  f(['CO2_WLTP', 'kamut_CO2'], 'co2', 'environment', 'number'),
+  f('kamut_CO2_city', 'co2City', 'environment', 'number'),
+  f('kamut_CO2_hway', 'co2Highway', 'environment', 'number'),
+  f('CO2_WLTP_NEDC', 'co2Nedc', 'environment', 'number'),
+  f(['NOX_WLTP', 'kamut_NOX'], 'nox', 'environment', 'number'),
+  f(['PM_WLTP', 'kamut_PM10'], 'pm', 'environment', 'number'),
+  f(['HC_WLTP', 'kamut_HC'], 'hc', 'environment', 'number'),
+  f('kamut_HC_NOX', 'hcNox', 'environment', 'number'),
+  f(['CO_WLTP', 'kamut_CO'], 'co', 'environment', 'number'),
 ];
 
-/** Two-wheelers (their own dataset: no model catalog join). The engine serial is not kept. */
+/** Two-wheelers (their own dataset: no model catalog join). */
 export const TWO_WHEELER_FIELDS: readonly FieldSpec[] = [
   f('tozeret_nm', 'manufacturerRegistered', 'identity', 'text'),
   f('tozeret_eretz_nm', 'countryOfManufacture', 'identity', 'text'),
@@ -156,11 +159,12 @@ export const TWO_WHEELER_FIELDS: readonly FieldSpec[] = [
   f('shnat_yitzur', 'modelYear', 'identity', 'number'),
   f('sug_rechev_nm', 'vehicleCategory', 'identity', 'text'),
   f('misgeret', 'vin', 'identity', 'text'),
+  f('mispar_manoa', 'engineNumber', 'identity', 'text'),
   f('mkoriut_nm', 'origin', 'identity', 'text'),
   f('sug_delek_nm', 'fuel', 'technical', 'text'),
-  f('nefach_manoa', 'displacement', 'technical', 'number', 'סמ״ק'),
-  f('hespek', 'power', 'technical', 'number', 'קילוואט'),
-  f('mishkal_kolel', 'grossWeight', 'technical', 'number', 'ק״ג'),
+  f('nefach_manoa', 'displacement', 'technical', 'number'),
+  f('hespek', 'power', 'technical', 'number'),
+  f('mishkal_kolel', 'grossWeight', 'technical', 'number'),
   f('mispar_mekomot', 'seats', 'technical', 'number'),
   f('moed_aliya_lakvish', 'roadDate', 'registration', 'date'),
   f('baalut', 'ownership', 'registration', 'text'),

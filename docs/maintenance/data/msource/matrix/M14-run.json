@@ -1,0 +1,1587 @@
+{
+  "run": {
+    "runId": "matrix-M14",
+    "vehicleRef": "M14",
+    "fingerprintKey": "car|bmw|318i|2017|1499||petrol|",
+    "msourceVersion": "msource/1",
+    "startedAt": "2026-10-03T05:36:29.584Z",
+    "finishedAt": "2026-10-03T05:37:18.572Z",
+    "stages": [
+      {
+        "stage": "VEHICLE_VERIFIED",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:36:29.584Z",
+        "finishedAt": "2026-10-03T05:36:29.584Z",
+        "durationMs": 0,
+        "counts": {
+          "engineCodes": 0,
+          "displacementKnown": 1
+        },
+        "failures": [],
+        "notes": [
+          "class car|bmw|318i|2017|1499||petrol|"
+        ]
+      },
+      {
+        "stage": "DISCOVERY",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:36:29.584Z",
+        "finishedAt": "2026-10-03T05:36:29.588Z",
+        "durationMs": 4,
+        "counts": {
+          "fable": 15,
+          "registry": 0,
+          "knowledge": 2
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SOURCE_CANDIDATES",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:36:29.588Z",
+        "finishedAt": "2026-10-03T05:36:29.589Z",
+        "durationMs": 1,
+        "counts": {
+          "discovered": 17,
+          "unique": 17,
+          "duplicates": 0,
+          "kept": 17
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "ACQUISITION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:36:29.589Z",
+        "finishedAt": "2026-10-03T05:37:18.417Z",
+        "durationMs": 48828,
+        "counts": {
+          "acquired": 6
+        },
+        "failures": [
+          {
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
+            "sourceId": "src-5b858b363610b918"
+          },
+          {
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
+            "sourceId": "src-1269c85bd6f8f13d"
+          },
+          {
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
+            "sourceId": "src-e289e026db3b89c4"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-a7d77b7404c7b25e"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-244d7d91ed1a5da7"
+          },
+          {
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
+            "sourceId": "src-8722cb99fb0b2ee3"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-d01f8756755e2080"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-c31dcaa6a3c54a1c"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-b6b53b974ff7171d"
+          },
+          {
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
+            "sourceId": "src-019fee85552e5d17"
+          },
+          {
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
+            "sourceId": "src-d6bcadbd52eef0ff"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-06f96b3ff6ad2a71"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "EXTRACTION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:37:18.417Z",
+        "finishedAt": "2026-10-03T05:37:18.571Z",
+        "durationMs": 154,
+        "counts": {
+          "extracted": 5,
+          "grounded": 5
+        },
+        "failures": [
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf",
+            "sourceId": "src-471722c89263c2de"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf",
+            "sourceId": "src-28fbbe986325e6c6"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.repareo.de/oelwechsel-bmw-3er/",
+            "sourceId": "src-7309e6217fd50903"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+            "sourceId": "src-131d526937b6f7a3"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "VEHICLE_MATCHING",
+        "status": "failed",
+        "startedAt": "2026-10-03T05:37:18.571Z",
+        "finishedAt": "2026-10-03T05:37:18.572Z",
+        "durationMs": 1,
+        "counts": {
+          "INSUFFICIENT": 5,
+          "PARTIAL": 1
+        },
+        "failures": [
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "INSUFFICIENT: the document does not name \"318I\"; the document does not state its model years",
+            "sourceId": "src-53f2fd9565919a47"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "INSUFFICIENT: the document does not name \"318I\"; the document does not state its model years",
+            "sourceId": "src-170bc65cdfee6d1a"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "CROSS_SOURCE_VALIDATION",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:37:18.572Z",
+        "finishedAt": "2026-10-03T05:37:18.572Z",
+        "durationMs": 0,
+        "counts": {
+          "obligations": 0,
+          "corroborated": 0,
+          "conflicting": 0
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SCHEDULE_RESOLUTION",
+        "status": "failed",
+        "startedAt": "2026-10-03T05:37:18.572Z",
+        "finishedAt": "2026-10-03T05:37:18.572Z",
+        "durationMs": 0,
+        "counts": {
+          "items": 0,
+          "unresolved": 0,
+          "exact": 0,
+          "strong": 0,
+          "supported": 0
+        },
+        "failures": [
+          {
+            "code": "INSUFFICIENT_EVIDENCE",
+            "detail": "INSUFFICIENT_EVIDENCE"
+          }
+        ],
+        "notes": [
+          "status INSUFFICIENT_EVIDENCE"
+        ]
+      },
+      {
+        "stage": "PERSISTENCE",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:37:18.572Z",
+        "finishedAt": "2026-10-03T05:37:18.572Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "NEXT_SERVICE_CALCULATION",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:37:18.572Z",
+        "finishedAt": "2026-10-03T05:37:18.572Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": [
+          "no schedule"
+        ]
+      }
+    ],
+    "queries": [
+      "BMW 318I 1.5 service intervals",
+      "ב.מ.וו 318I 1.5 מרווחי טיפולים",
+      "BMW 318I 1.5 Wartungsintervalle",
+      "BMW 318I 2017 maintenance manual",
+      "ב.מ.וו 318I 2017 ספר רכב טיפולים",
+      "BMW 318I 2017 Betriebsanleitung Wartung",
+      "BMW 318I maintenance schedule",
+      "ב.מ.וו 318I לוח טיפולים",
+      "BMW 318I Wartungsplan"
+    ],
+    "candidates": [
+      {
+        "url": "https://bmwtechinfo.bmwgroup.com/sib_attachments/B000217%20Attachment%202%20CBS%20intervals%20Rev5%207_20.pdf",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
+        }
+      },
+      {
+        "url": "https://bmwtechinfo.bmwgroup.com/sib_attachments/B000221%20Attachment%202%20CBS%20intervals%2012-21.pdf",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
+        }
+      },
+      {
+        "url": "https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
+        }
+      },
+      {
+        "url": "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://static.nhtsa.gov/odi/tsbs/2015/MC-10147240-9999.pdf",
+        "by": "fable",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "INSUFFICIENT: the document does not name \"318I\"; the document does not state its model years"
+        }
+      },
+      {
+        "url": "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://club.autodoc.co.uk/manuals/maintenance/bmw/3-series",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://club.autodoc.de/manuals/wartung-inspektion/bmw/3-series",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/oelwechsel-bmw-3er/",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://uk.haynes.com/de/pages/maintenance-plans-car-bmw",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
+        }
+      },
+      {
+        "url": "https://club.autodoc.co.uk/manuals/bmw/3-series/3-f30-f35-f80",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/inspektion-bmw-3er/",
+        "by": "fable",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "INSUFFICIENT: the document does not name \"318I\"; the document does not state its model years"
+        }
+      },
+      {
+        "url": "https://www.underhoodservice.com/?p=69010",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.manualslib.de/manual/78563/Bmw-318I.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://carwiki.de/bmw-318i-inspektion",
+        "by": "knowledge",
+        "outcome": "failed",
+        "failure": {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
+        }
+      },
+      {
+        "url": "https://www.whocanfixmycar.com/advice/bmw-318i-owners-guide",
+        "by": "knowledge",
+        "outcome": "failed",
+        "failure": {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
+        }
+      },
+      {
+        "url": "https://f30.bimmerpost.com/forums/showthread.php?p=11412850",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+        "by": "archive",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      }
+    ],
+    "restricted": [
+      {
+        "url": "https://www.leebmann24.com/be/en/product/bmw-owners-manual-for-f30-10042233",
+        "reason": "shop product page for a printed F30 owner's manual (purchase required)",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://www.bimmerworld.com/Engine/Engine-Maintenance/Bentley-Service-Manual-F30-F31-F34-12-15-3-Series.html",
+        "reason": "paid Bentley service manual (2012-2015 only)",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://autodiscover.bps.go.id/pub/key/nq/741Q79N/bmw_f30__service__manual.pdf",
+        "reason": "excluded: SEO-spam PDF mirror on unrelated government domain, provenance unknown",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://db1.greenfirefarms.com/files/uploaded-files/fetch.php/bmw_f30_owners_manual.pdf",
+        "reason": "excluded: SEO-spam PDF mirror, provenance unknown",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://www.ebay.de/itm/205879422840",
+        "reason": "eBay sales listing for a printed manual",
+        "adapter": "fable"
+      }
+    ],
+    "schedule": {
+      "fingerprintKey": "car|bmw|318i|2017|1499||petrol|",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "items": [],
+      "unresolved": [],
+      "sources": [
+        {
+          "sourceId": "src-471722c89263c2de",
+          "canonicalUrl": "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf",
+          "finalUrl": "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf",
+          "chain": [
+            "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf"
+          ],
+          "sourceName": "NHTSA (hosting BMW of North America bulletin)",
+          "sourceType": "service_document",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:36:29.585Z",
+          "retrievedAt": "2026-10-03T05:36:39.672Z",
+          "format": "pdf",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "f95feda2cca7abf52650a5500469e3a37806a351a22bb332dd850e8f0b18f702",
+          "byteLength": 130298,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://static.nhtsa.gov/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:39.463Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:39.672Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://static.nhtsa.gov/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://static.nhtsa.gov/odi/tsbs/2016/MC-10151173-9999.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:39.672Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "static.nhtsa.gov"
+          }
+        },
+        {
+          "sourceId": "src-53f2fd9565919a47",
+          "canonicalUrl": "https://static.nhtsa.gov/odi/tsbs/2015/MC-10147240-9999.pdf",
+          "finalUrl": "https://static.nhtsa.gov/odi/tsbs/2015/MC-10147240-9999.pdf",
+          "chain": [
+            "https://static.nhtsa.gov/odi/tsbs/2015/MC-10147240-9999.pdf"
+          ],
+          "sourceName": "NHTSA (hosting BMW of North America bulletin)",
+          "sourceType": "service_document",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:36:29.585Z",
+          "retrievedAt": "2026-10-03T05:36:42.812Z",
+          "format": "pdf",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "2ec2c2b1f70588973c065132ed7a1e2ecc46fe5de1ab853f4a15e27f8c804e71",
+          "byteLength": 121410,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2015/MC-10147240-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://static.nhtsa.gov/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:42.713Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2015/MC-10147240-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://static.nhtsa.gov/odi/tsbs/2015/MC-10147240-9999.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:42.812Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2015/MC-10147240-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://static.nhtsa.gov/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://static.nhtsa.gov/odi/tsbs/2015/MC-10147240-9999.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:42.812Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "static.nhtsa.gov"
+          }
+        },
+        {
+          "sourceId": "src-28fbbe986325e6c6",
+          "canonicalUrl": "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf",
+          "finalUrl": "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf",
+          "chain": [
+            "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf"
+          ],
+          "sourceName": "NHTSA (hosting BMW of North America bulletin)",
+          "sourceType": "service_document",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:36:29.585Z",
+          "retrievedAt": "2026-10-03T05:36:44.293Z",
+          "format": "pdf",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "46e579d74d8e58833f1876f7febed33f047f93baf4f90251c2175037abba7960",
+          "byteLength": 22932,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://static.nhtsa.gov/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:42.713Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:44.293Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://static.nhtsa.gov/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://static.nhtsa.gov/odi/tsbs/2013/MC-10150302-9999.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:44.293Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "static.nhtsa.gov"
+          }
+        },
+        {
+          "sourceId": "src-7309e6217fd50903",
+          "canonicalUrl": "https://www.repareo.de/oelwechsel-bmw-3er/",
+          "finalUrl": "https://www.repareo.de/oelwechsel-bmw-3er/",
+          "chain": [
+            "https://www.repareo.de/oelwechsel-bmw-3er/"
+          ],
+          "sourceName": "repareo",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:36:29.585Z",
+          "retrievedAt": "2026-10-03T05:36:46.587Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "b176d3aecc69d00d354c09d71231fab91df87ae1d1b609122dc7a504a85e5ad7",
+          "byteLength": 1281284,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "318I"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              620,
+              700,
+              1000,
+              1100,
+              1200,
+              1300,
+              1400,
+              1500,
+              1596,
+              1599,
+              1600,
+              1665,
+              1700,
+              1766,
+              1796,
+              1895,
+              1900,
+              1951,
+              1990,
+              1991,
+              1995,
+              1997,
+              1998,
+              2171,
+              2300,
+              2443,
+              2494,
+              2497,
+              2500,
+              2503,
+              2693,
+              2793,
+              2979,
+              2990,
+              2993,
+              2996,
+              2998,
+              3000,
+              3201,
+              3246,
+              3999,
+              4000,
+              4250,
+              4600,
+              5000,
+              5200,
+              5250,
+              5300,
+              5500,
+              6200,
+              6500
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/oelwechsel-bmw-3er/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:45.552Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/oelwechsel-bmw-3er/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/oelwechsel-bmw-3er/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:46.587Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/oelwechsel-bmw-3er/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/oelwechsel-bmw-3er/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:46.587Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-170bc65cdfee6d1a",
+          "canonicalUrl": "https://www.repareo.de/inspektion-bmw-3er/",
+          "finalUrl": "https://www.repareo.de/inspektion-bmw-3er/",
+          "chain": [
+            "https://www.repareo.de/inspektion-bmw-3er/"
+          ],
+          "sourceName": "repareo",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:36:29.585Z",
+          "retrievedAt": "2026-10-03T05:36:48.948Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "274b43c5e35debb7e97795fc82cffdf3880c3b38c5a9563f675b35d7a7682913",
+          "byteLength": 1480641,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1100,
+              1200,
+              1300,
+              1400,
+              1500,
+              1573,
+              1596,
+              1599,
+              1600,
+              1665,
+              1766,
+              1796,
+              1895,
+              1951,
+              1990,
+              1991,
+              1995,
+              1997,
+              1998,
+              2171,
+              2443,
+              2494,
+              2497,
+              2503,
+              2793,
+              2926,
+              2979,
+              2990,
+              2993,
+              2996,
+              2998,
+              3201,
+              3246,
+              3999,
+              4000,
+              4250,
+              4800,
+              5000,
+              5200,
+              5250,
+              5300,
+              5500,
+              6200,
+              6500
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/inspektion-bmw-3er/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:47.761Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/inspektion-bmw-3er/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/inspektion-bmw-3er/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:48.948Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/inspektion-bmw-3er/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/inspektion-bmw-3er/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:48.948Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-131d526937b6f7a3",
+          "canonicalUrl": "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+          "finalUrl": "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+          "chain": [
+            "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf"
+          ],
+          "sourceName": "BMW Group / BMW of North America (bmwtechinfo.bmwgroup.com)",
+          "sourceType": "service_document",
+          "discoveredBy": "archive",
+          "discoveredAt": "2026-10-03T05:36:38.814Z",
+          "retrievedAt": "2026-10-03T05:36:58.465Z",
+          "format": "pdf",
+          "documentType": "other",
+          "contentSha256": "a250370bf0680191e95495a58c56ef4d08ff9dbff52fff4d9668ff10361258ec",
+          "byteLength": 46091,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+              "host": "web.archive.org",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://web.archive.org/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:57.258Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+              "host": "web.archive.org",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:58.465Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+              "host": "web.archive.org",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://web.archive.org/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://web.archive.org/web/20240330020955id_/https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:36:58.465Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "archiveOf": "https://bmwtechinfo.bmwgroup.com/sib_attachments/B000419%20Attachment%202%20CBS%20intervals%2010_2021.pdf",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "web.archive.org"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "src-53f2fd9565919a47:2ec2c2b1f705-p1-s-periodic_service-other-0",
+          "sourceId": "src-53f2fd9565919a47",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "On vehicles with option code 8KC (CBS oil service interval of 15k miles/24 months)",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "locator": "column sentence \"On vehicles with option code 8KC (CBS oil service interval of 15k miles/24 month\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"318I\"",
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "2ec2c2b1f705-p1-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "On vehicles with option code 8KC (CBS oil service interval of 15k miles/24 months)",
+            "action": "other",
+            "interval": {
+              "everyMonths": 24,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "bmw"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "2ec2c2b1f70588973c065132ed7a1e2ecc46fe5de1ab853f4a15e27f8c804e71",
+                "documentTitle": "BMW technical service bulletin MC-10147240-9999 (2015) — NHTSA ODI",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 1,
+                "section": "SITUATION",
+                "locator": "column sentence \"On vehicles with option code 8KC (CBS oil service interval of 15k miles/24 month\"",
+                "documentSha256": "2ec2c2b1f70588973c065132ed7a1e2ecc46fe5de1ab853f4a15e27f8c804e71"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-53f2fd9565919a47:2ec2c2b1f705-p1-s-periodic_service-other-1",
+          "sourceId": "src-53f2fd9565919a47",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "On vehicles with option code 8KL (CBS oil service interval of 10k miles/12 months)",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "locator": "column sentence \"On vehicles with option code 8KL (CBS oil service interval of 10k miles/12 month\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"318I\"",
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "2ec2c2b1f705-p1-s-periodic_service-other-1",
+            "task": "periodic_service",
+            "taskText": "On vehicles with option code 8KL (CBS oil service interval of 10k miles/12 months)",
+            "action": "other",
+            "interval": {
+              "everyMonths": 12,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "bmw"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "2ec2c2b1f70588973c065132ed7a1e2ecc46fe5de1ab853f4a15e27f8c804e71",
+                "documentTitle": "BMW technical service bulletin MC-10147240-9999 (2015) — NHTSA ODI",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 1,
+                "section": "SITUATION",
+                "locator": "column sentence \"On vehicles with option code 8KL (CBS oil service interval of 10k miles/12 month\"",
+                "documentSha256": "2ec2c2b1f70588973c065132ed7a1e2ecc46fe5de1ab853f4a15e27f8c804e71"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-170bc65cdfee6d1a:274b43c5e35d-p4-s-periodic_service-other-0",
+          "sourceId": "src-170bc65cdfee6d1a",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "In den frühen Bauphasen der 3er-Reihe unterscheidet BMW zwischen Inspektion I und II, die in kürzeren Abständen alle 15.000 km oder alle 12 Monate anstehen.",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 4,
+            "locator": "column sentence \"In den frühen Bauphasen der 3er-Reihe unterscheidet BMW zwischen Inspektion I un\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"318I\"",
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "274b43c5e35d-p4-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "In den frühen Bauphasen der 3er-Reihe unterscheidet BMW zwischen Inspektion I und II, die in kürzeren Abständen alle 15.000 km oder alle 12 Monate anstehen.",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "bmw"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "274b43c5e35debb7e97795fc82cffdf3880c3b38c5a9563f675b35d7a7682913",
+                "documentTitle": "Inspektion BMW 3er – Kosten, Intervalle — repareo.de",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 4,
+                "section": "Wann schreibt BMW die Inspektionen beim 3er vor?",
+                "locator": "column sentence \"In den frühen Bauphasen der 3er-Reihe unterscheidet BMW zwischen Inspektion I un\"",
+                "documentSha256": "274b43c5e35debb7e97795fc82cffdf3880c3b38c5a9563f675b35d7a7682913"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-170bc65cdfee6d1a:274b43c5e35d-p4-s-periodic_service-other-1",
+          "sourceId": "src-170bc65cdfee6d1a",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "In späteren Baujahren geht BMW dazu über, die Inspektion I und Inspektion II in längeren Intervallen vorzuschreiben oder ab der Modellgeneration E90 nach Intervallanzeige bzw. spätestens alle 24 Monat",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 4,
+            "locator": "column sentence \"In späteren Baujahren geht BMW dazu über, die Inspektion I und Inspektion II in \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"318I\"",
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "274b43c5e35d-p4-s-periodic_service-other-1",
+            "task": "periodic_service",
+            "taskText": "In späteren Baujahren geht BMW dazu über, die Inspektion I und Inspektion II in längeren Intervallen vorzuschreiben oder ab der Modellgeneration E90 nach Intervallanzeige bzw. spätestens alle 24 Monat",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "everyMonths": 24,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "bmw"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "274b43c5e35debb7e97795fc82cffdf3880c3b38c5a9563f675b35d7a7682913",
+                "documentTitle": "Inspektion BMW 3er – Kosten, Intervalle — repareo.de",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 4,
+                "section": "Wann schreibt BMW die Inspektionen beim 3er vor?",
+                "locator": "column sentence \"In späteren Baujahren geht BMW dazu über, die Inspektion I und Inspektion II in \"",
+                "documentSha256": "274b43c5e35debb7e97795fc82cffdf3880c3b38c5a9563f675b35d7a7682913"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-170bc65cdfee6d1a:274b43c5e35d-p4-s-brake_fluid-replacement-2",
+          "sourceId": "src-170bc65cdfee6d1a",
+          "operationKey": "brake_fluid",
+          "task": "brake_fluid",
+          "originalText": "Alle 24 Monate: Bremsflüssigkeit erneuern.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 4,
+            "locator": "column sentence \"Alle 24 Monate: Bremsflüssigkeit erneuern.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"318I\"",
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "274b43c5e35d-p4-s-brake_fluid-replacement-2",
+            "task": "brake_fluid",
+            "taskText": "Alle 24 Monate: Bremsflüssigkeit erneuern.",
+            "action": "replacement",
+            "interval": {
+              "everyMonths": 24,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "bmw"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "274b43c5e35debb7e97795fc82cffdf3880c3b38c5a9563f675b35d7a7682913",
+                "documentTitle": "Inspektion BMW 3er – Kosten, Intervalle — repareo.de",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 4,
+                "section": "Wann schreibt BMW die Inspektionen beim 3er vor?",
+                "locator": "column sentence \"Alle 24 Monate: Bremsflüssigkeit erneuern.\"",
+                "documentSha256": "274b43c5e35debb7e97795fc82cffdf3880c3b38c5a9563f675b35d7a7682913"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        }
+      ],
+      "resolvedAt": "2026-10-03T05:37:18.571Z",
+      "msourceVersion": "msource/1"
+    }
+  }
+}

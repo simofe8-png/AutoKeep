@@ -132,6 +132,8 @@ export interface AppDataValue {
   addDocument: (vehicleId: string, attachment: AttachmentInput, kind: DocumentKind) => void;
   /** T123: the stored original (null when there is no file, e.g. prototype data). */
   getOriginal: (vehicleId: string, documentId: string) => Promise<OriginalView | null>;
+  /** The Ministry of Transport record saved when the vehicle was added (null if none). */
+  getRegistryRecord: (vehicleId: string) => Promise<VehicleRegistryRecord | null>;
   openOriginal: (vehicleId: string, documentId: string) => Promise<boolean>;
   addGarageRecommendation: (rec: GarageRecommendationVM) => void;
   /** The user's own photo of a vehicle (viewable URI), if they added one. */
@@ -148,6 +150,8 @@ export interface AppDataValue {
   ) => void;
   /** Marks a stored document as this vehicle's maintenance booklet (owner-confirmed, unverified). */
   registerMaintenanceBooklet: (vehicleId: string, documentId: string) => void;
+  /** M-SOURCE: runs automatic maintenance-schedule discovery again for the vehicle. */
+  retryMaintenanceDiscovery: (vehicleId: string) => void;
   /** Stores a user-provided vehicle photo (device-local). */
   setVehiclePhoto: (vehicleId: string, file: AcquiredFile) => void;
   network: NetworkMode;

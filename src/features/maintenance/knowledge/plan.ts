@@ -66,11 +66,13 @@ export interface PlanItem {
   lastCompletion: (Completion & { serviceEventId: string }) | null;
 }
 
-export type BookletHint = 'seat_maintenance_programme' | 'ford_service_plan' | 'generic';
+/** What to photograph: generic, or the vehicle's service-plan code when a source requires it. */
+export type BookletHint = 'service_plan_code' | 'generic';
 
 export type EvidenceRequest =
   | { kind: 'upload_booklet'; hint: BookletHint }
-  | { kind: 'service_regime'; hint: BookletHint }
+  /** The vehicle's service-plan code; `codes` = the codes the sources themselves name. */
+  | { kind: 'service_regime'; hint: BookletHint; codes: string[] }
   | { kind: 'usage' }
   | { kind: 'engine_code' }
   | { kind: 'in_service_date' }
@@ -327,10 +329,14 @@ function missReasons(
 
 // ---------- the plan ----------
 
-export function bookletHint(make: string | undefined): BookletHint {
-  if (make === 'seat') return 'seat_maintenance_programme';
-  if (make === 'ford') return 'ford_service_plan';
-  return 'generic';
+/**
+ * Generic for every manufacturer: when an applicable source depends on a service-plan code, the
+ * hint asks for the code (data sticker / booklet cover); otherwise the schedule pages.
+ */
+export function bookletHint(requirements: readonly MaintenanceRequirement[]): BookletHint {
+  return requirements.some((r) => r.applicability.serviceRegimes?.length)
+    ? 'service_plan_code'
+    : 'generic';
 }
 
 const STATE_RANK = { overdue: 0, due: 1, upcoming: 2, ok: 3, completed: 9 } as const;
@@ -394,7 +400,13 @@ export function buildMaintenancePlan(input: {
   }
 
   // What is missing — the exact next actions, never an invented interval.
-  const hint = bookletHint(facts.make);
+  const forMake = input.requirements.filter(
+    (r) =>
+      !r.applicability.makes ||
+      (facts.make != null &&
+        r.applicability.makes.some((m) => m.toLowerCase() === facts.make!.toLowerCase())),
+  );
+  const hint = bookletHint(forMake);
   const requests: EvidenceRequest[] = [];
   const add = (r: EvidenceRequest) => {
     if (!requests.some((x) => JSON.stringify(x) === JSON.stringify(r))) requests.push(r);
@@ -416,8 +428,19 @@ export function buildMaintenancePlan(input: {
   }
   for (const r of unresolved) {
     for (const d of r.missing) {
-      if (d === 'serviceRegime') add({ kind: 'service_regime', hint });
-      else if (d === 'usage') add({ kind: 'usage' });
+      if (d === 'serviceRegime') {
+        // The codes the sources themselves name (never a fixed list of one manufacturer's codes).
+        const codes = [
+          ...new Set(
+            r.considered.flatMap((c) =>
+              (c.requirement.applicability.serviceRegimes ?? []).filter((x) =>
+                /^[A-Z]{1,3}\d{1,2}$/.test(x),
+              ),
+            ),
+          ),
+        ].sort();
+        add({ kind: 'service_regime', hint, codes });
+      } else if (d === 'usage') add({ kind: 'usage' });
       else if (d === 'engineCode') add({ kind: 'engine_code' });
     }
     if (r.considered.some((c) => c.applicability.coverageUnknown?.includes('modelYear'))) {

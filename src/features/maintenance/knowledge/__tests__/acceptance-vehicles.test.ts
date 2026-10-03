@@ -85,7 +85,7 @@ describe('Case A — SEAT Ibiza 2012 / CGG', () => {
           }),
         ],
       },
-      { kind: 'upload_booklet', hint: 'seat_maintenance_programme' },
+      { kind: 'upload_booklet', hint: 'service_plan_code' },
       {
         kind: 'awaiting_verification',
         sources: [{ title: "SEAT Ibiza owner's manual (UK English)", publishedOn: undefined }],
@@ -109,9 +109,11 @@ describe('Case A — SEAT Ibiza 2012 / CGG', () => {
     const input = { profile: null, requirements: reviewed, history: [], readings: [], today };
     const unknown = buildMaintenancePlan({ vehicle: ibiza, ...input });
     expect(unknown.items).toEqual([]);
+    // The options are the codes the source itself names — not a fixed list of one make's codes.
     expect(unknown.requests).toContainEqual({
       kind: 'service_regime',
-      hint: 'seat_maintenance_programme',
+      hint: 'service_plan_code',
+      codes: ['QG0', 'QG2'],
     });
     const qg0 = buildMaintenancePlan({
       vehicle: ibiza,
@@ -144,7 +146,8 @@ describe('Case A — SEAT Ibiza 2012 / CGG', () => {
     expect(p.items).toEqual([]);
     expect(p.requests).toContainEqual({
       kind: 'service_regime',
-      hint: 'seat_maintenance_programme',
+      hint: 'service_plan_code',
+      codes: ['QG0', 'QG2'],
     });
   });
 });
@@ -156,7 +159,7 @@ describe('Case B — Ford Fiesta 2015 / 1.25 / SNJB', () => {
     expect(p.requests).toEqual([
       // Delek's Ford system is identified but not yet approved as an authority: said precisely.
       { kind: 'official_source_pending' },
-      { kind: 'upload_booklet', hint: 'ford_service_plan' },
+      { kind: 'upload_booklet', hint: 'generic' },
       {
         kind: 'awaiting_verification',
         sources: [{ title: 'ford.co.il — תוכנית טיפול', publishedOn: '2024-11-24' }],

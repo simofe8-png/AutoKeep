@@ -7,6 +7,11 @@ import { he } from '@/i18n/he';
 import type { SqlDatabase } from '@/persistence';
 import type { AccountBackend } from '@/features/account/backend';
 import { planOfficialSource, type SourceServices } from '@/features/sources/sourceService';
+import {
+  startMaintenanceDiscovery,
+  type DiscoveryStore,
+  type MSourceHost,
+} from '@/features/maintenance/msource/service';
 import type { NetworkMonitor } from '@/providers/network/types';
 import type { OriginalFileStore } from '@/providers/storage/types';
 import { colors, Dialog, ErrorState, LoadingState } from '@/ui';
@@ -30,10 +35,21 @@ export interface LocalDataProviderProps {
   account?: AccountBackend | null;
   network?: NetworkMonitor | null;
   sources?: Omit<SourceServices, 'uriFor'> | null;
+  /** M-SOURCE host (null: automatic schedule discovery is not run, e.g. tests). */
+  msource?: MSourceHost | null;
   children: ReactNode;
 }
 
 type Phase = { kind: 'loading' } | { kind: 'ready'; snapshot: Snapshot } | { kind: 'failed' };
+
+const PROGRESS = [
+  'IDENTIFYING_VEHICLE',
+  'DISCOVERING_SOURCES',
+  'FOUND_SOURCES',
+  'VERIFYING_MATCH',
+  'BUILDING_SCHEDULE',
+];
+const isProgress = (state: string) => PROGRESS.includes(state);
 
 /** Holds the open store and serializes writes so they apply in the user's order. */
 class StoreRuntime {
@@ -151,6 +167,7 @@ export function LocalDataProvider({
   account: backend = null,
   network: monitor = null,
   sources = null,
+  msource = null,
   children,
 }: LocalDataProviderProps) {
   const [phase, setPhase] = useState<Phase>({ kind: 'loading' });
@@ -258,6 +275,50 @@ export function LocalDataProvider({
     };
   }, [openDatabase, ids, clock, files, attempt, runtime, scheduler]);
 
+  // M-SOURCE (Phase 18): discovery starts automatically once a vehicle identity is confirmed.
+  // The network run happens OUTSIDE the write queue; its progress and result are written through
+  // it (each write refreshes the snapshot), so the app is never blocked by the research.
+  const [discover] = useState(() => (vehicleId: string) => {
+    if (!msource) return;
+    const ready = (next: Snapshot) => setPhase({ kind: 'ready', snapshot: next });
+    const failed = () => setPhase({ kind: 'failed' });
+    const store: DiscoveryStore = {
+      load: (id) => runtime.read((s) => s.msourceLoad(id), null),
+      progress: (id, runId, classKey, status) =>
+        runtime.task(
+          (s) => s.msourceProgress(id, runId, classKey, status),
+          undefined,
+          ready,
+          failed,
+        ),
+      complete: (id, run, status, requirements, cache) =>
+        runtime.task(
+          (s) => s.msourceComplete(id, run, status, requirements, cache),
+          undefined,
+          ready,
+          failed,
+        ),
+    };
+    void startMaintenanceDiscovery(vehicleId, store, msource, {
+      now: clock.now,
+      today: () => clock.today(),
+    }).catch((e) => {
+      if (__DEV__) console.warn('AutoKeep: maintenance discovery failed', safeErrorText(e));
+    });
+  });
+
+  // Vehicles confirmed before M-SOURCE existed (or whose run never finished) are picked up once.
+  const [resumed] = useState(() => new Set<string>());
+  useEffect(() => {
+    if (phase.kind !== 'ready' || !msource) return;
+    for (const v of phase.snapshot.vehicles) {
+      if (v.archived || resumed.has(v.id)) continue;
+      resumed.add(v.id);
+      const d = phase.snapshot.bundles[v.id]?.plan?.discovery;
+      if (!d || !d.updatedAt || isProgress(d.state)) discover(v.id);
+    }
+  }, [phase, msource, resumed, discover]);
+
   const snapshot = phase.kind === 'ready' ? phase.snapshot : null;
 
   const value = useMemo<AppDataValue | null>(() => {
@@ -327,6 +388,9 @@ export function LocalDataProvider({
           const id = await s.addVehicle(vehicle, details, plan ?? null);
           await s.setActiveVehicle(id);
         });
+        // The user confirmed this identity: start M-SOURCE (runs after the write is applied).
+        resumed.add(vehicle.id);
+        discover(vehicle.id);
       },
       updateVehicleDetails: (id, patch) => write((s) => s.updateVehicleDetails(id, patch)),
       archiveVehicle: (id) => write((s) => s.archiveVehicle(id)),
@@ -355,13 +419,18 @@ export function LocalDataProvider({
         write((s) => s.setImagePromptDismissed(vid, dismissed)),
       setVehiclePhoto: (vid, file) => write((s) => s.setVehiclePhoto(vid, file)),
       setMaintenanceAnswers: (vid, answers) => write((s) => s.setMaintenanceAnswers(vid, answers)),
-      registerMaintenanceBooklet: (vid, did) =>
-        write((s) => s.registerMaintenanceBooklet(vid, did)),
+      registerMaintenanceBooklet: (vid, did) => {
+        write((s) => s.registerMaintenanceBooklet(vid, did));
+        // The uploaded document enters the same M-SOURCE pipeline.
+        discover(vid);
+      },
+      retryMaintenanceDiscovery: (vid) => discover(vid),
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
       // Reads of the original go straight to the store (no snapshot change).
       getOriginal: (vid, did) =>
         runtime.read((s) => s.original(vid, did, username !== null ? backend : null), null),
       openOriginal: (vid, did) => runtime.read((s) => s.openOriginal(vid, did), false),
+      getRegistryRecord: (vid) => runtime.read((s) => s.registryRecord(vid), null),
       network,
       setNetwork,
       account: backend
@@ -419,6 +488,8 @@ export function LocalDataProvider({
     files,
     ids,
     scheduler,
+    discover,
+    resumed,
   ]);
 
   if (phase.kind === 'failed') {

@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { useAppData, type DeletionPreviewVM } from '@/features/data/DataContext';
@@ -8,7 +8,9 @@ import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatKm, SEP } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
-import { VehiclePhoto, vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
+import { RegistryFacts } from '@/features/vehicles/RegistryFacts';
+import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
+import { vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
 import { vehicleClass } from '@/identification/vehicleClass';
 import { onboardingServices } from '@/features/data/dataSource';
 import { he } from '@/i18n/he';
@@ -71,7 +73,20 @@ export default function VehicleManageScreen() {
     removeVehiclePhoto,
     updateVehicleDetails,
     setImagePromptDismissed,
+    getRegistryRecord,
   } = useAppData();
+  const [registryRecord, setRegistryRecord] = useState<VehicleRegistryRecord | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    if (id) {
+      void getRegistryRecord(id).then((r) => {
+        if (!cancelled) setRegistryRecord(r);
+      });
+    }
+    return () => {
+      cancelled = true;
+    };
+  }, [id, getRegistryRecord]);
   const services = isDemoData ? null : onboardingServices();
   const [preview, setPreview] = useState<DeletionPreviewVM | null>(null);
   const [archiveOpen, setArchiveOpen] = useState(false);
@@ -123,9 +138,6 @@ export default function VehicleManageScreen() {
             {vehicleSpecLine(vehicle)}
           </AppText>
           <PlateBadge number={vehicle.registration} size="sm" />
-        </View>
-        <View style={styles.topImage}>
-          <VehiclePhoto vehicle={vehicle} variant="card" />
         </View>
       </View>
       {services ? (
@@ -218,6 +230,13 @@ export default function VehicleManageScreen() {
           />
         </Stack>
       </Card>
+
+      {registryRecord ? (
+        <Stack gap={spacing.sm} testID="vehicle-registry">
+          <SectionHeader title={he.vehicleSearch.detailsTitle} />
+          <RegistryFacts record={registryRecord} testID="vehicle-registry-facts" />
+        </Stack>
+      ) : null}
 
       <Card compact>
         <ListRow
@@ -336,7 +355,6 @@ export default function VehicleManageScreen() {
 const styles = StyleSheet.create({
   top: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   topText: { flex: 1, gap: spacing.xs },
-  topImage: { alignItems: 'center', gap: spacing.xs },
   photoActions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   detailsHeader: { flexDirection: 'row', alignItems: 'center' },
   flex: { flex: 1 },

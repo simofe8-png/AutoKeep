@@ -127,6 +127,7 @@ export const he = {
       modelYear: 'שנת ייצור',
       color: 'צבע',
       vin: 'מספר שלדה',
+      engineNumber: 'מספר מנוע',
       countryOfManufacture: 'ארץ ייצור',
       body: 'מרכב',
       vehicleCategory: 'סוג רכב',
@@ -210,16 +211,9 @@ export const he = {
     benefits: ['תוכנית טיפולים מותאמת ליצרן', 'תזכורות והתראות בזמן', 'כל המסמכים במקום אחד'],
     addFirstVehicle: 'הוספת הרכב הראשון',
     haveAccount: 'יש כבר חשבון? התחברות',
-    addVehicleSubtitle: 'זיהוי כלי הרכב ואיתור לוח התחזוקה',
-    chooseMethod: 'בחרו שיטת זיהוי',
-    scanMethodBody: 'זיהוי פרטי כלי הרכב מתמונת הרישיון',
-    manualMethodBody: 'יצרן, דגם, שנה ועוד',
-    methodInfo: 'הפרטים משמשים לאיתור ספר הבעלים ולוח התחזוקה הרשמי של היצרן או היבואן.',
-    stepNames: ['זיהוי רכב', 'אישור פרטים', 'מד אוץ', 'אימות תוכנית'],
     startScan: 'סריקת רישיון רכב',
     manualEntry: 'הזנה ידנית',
     orManual: 'או הזינו את הפרטים ידנית',
-    addVehicleTitle: 'הוספת כלי רכב',
     scanTitle: 'סריקת רישיון הרכב',
     scanHint: 'מקמו את רישיון הרכב בתוך המסגרת, באור טוב וללא השתקפויות.',
     scanCropHint:
@@ -416,10 +410,8 @@ export const he = {
     needInfoBody: 'לא נציג מרווחי טיפול שלא אומתו במקור רשמי המתאים לרכב שלך.',
     uploadBooklet: 'העלה את חוברת הטיפולים של הרכב',
     bookletHints: {
-      seat_maintenance_programme:
-        'צלמו את טבלת הטיפולים בחוברת ״תוכנית השירות״ (Maintenance Programme) ואת מדבקת נתוני הרכב שבכריכה האחורית שלה או בתא הגלגל הרזרבי — היא מציינת את קוד תוכנית השירות (QG0 / QG1 / QG2).',
-      ford_service_plan:
-        'צלמו את חוברת השירות של הרכב, או את תוכנית הטיפולים של היבואן לדגם שלכם (אתר פורד ישראל ← שירות ← תוכנית טיפול, או מוקד השירות ‎*2880).',
+      service_plan_code:
+        'צלמו את טבלת הטיפולים בחוברת השירות ואת מדבקת נתוני הרכב (לרוב בכריכת החוברת או בתא המטען / הגלגל הרזרבי) — היא מציינת את קוד תוכנית השירות של הרכב.',
       generic: 'צלמו את עמודי טבלת הטיפולים בספר הרכב או בחוברת השירות.',
     },
     bookletReceived: 'החוברת התקבלה ונשמרה. היא תשמש לבניית לוח הטיפולים לאחר אימות מקצועי.',
@@ -436,6 +428,7 @@ export const he = {
     levelBNote: 'טרם אומתה התאמה ספציפית לשוק הישראלי',
     levelT: 'מבוסס על הצלבת מקורות טכניים',
     levelTNote: (sources: number) => `${sources} מקורות בלתי תלויים מסכימים`,
+    levelTSingle: 'מבוסס על מקור טכני יחיד שהותאם לרכב',
     confidence: { high: 'רמת ביטחון גבוהה', medium: 'רמת ביטחון בינונית' },
     officialSourceTitle: 'המקור הרשמי של היצרן או היבואן',
     officialSourceReason: {
@@ -502,6 +495,37 @@ export const he = {
     actions: { inspection: 'בדיקה', replacement: 'החלפה', adjustment: 'כיוון', other: 'טיפול' },
     recordTitle: 'פעולות מלוח הטיפולים',
     recordHint: 'סמנו רק מה שבוצע בפועל. פריט שלא סומן לא יסומן כבוצע.',
+    /** M-SOURCE: automatic schedule discovery after the vehicle identity is confirmed. */
+    discovery: {
+      title: 'חיפוש לוח טיפולים',
+      progress: {
+        IDENTIFYING_VEHICLE: 'מאמת את פרטי הרכב…',
+        DISCOVERING_SOURCES: 'מחפש מקורות ללוח הטיפולים של הרכב…',
+        FOUND_SOURCES: 'נמצאו מקורות אפשריים — בודק אותם…',
+        VERIFYING_MATCH: 'בודק שהמקורות מתאימים בדיוק לרכב שלך…',
+        BUILDING_SCHEDULE: 'בונה את לוח הטיפולים…',
+      },
+      ready: 'לוח הטיפולים נבנה ממקורות שנבדקו והותאמו לרכב שלך.',
+      readyPartial: 'נמצא לוח טיפולים חלקי שהותאם לרכב שלך. חלק מהטיפולים עדיין לא אומתו.',
+      notFound: 'לא נמצא עדיין לוח טיפולים שניתן להתאים בוודאות לרכב הזה.',
+      identityOnly: 'פרטי הרכב אומתו מול משרד התחבורה. שגרת הטיפולים לדגם זה טרם אומתה.',
+      identityTitle: 'פרטי הרכב שאומתו',
+      // Wording only (owner decision 2026-10-03): no default numbers, no synthesized intervals.
+      identityFallback:
+        'פרטי הרכב אומתו בהצלחה. לקבלת מפרט טיפולים מדויק לדגם זה, ניתן להעלות את ספר הרכב או להזין טיפולים ידנית.',
+      conditional:
+        'נמצא לוח טיפולים רשמי שתלוי בקוד תוכנית השירות של הרכב. ענו על השאלה בהמשך כדי להפעיל אותו — אין צורך בחיפוש נוסף.',
+      conflicting:
+        'נמצאו מקורות שמציינים מרווחי טיפול שונים לרכב הזה. לא נציג מרווח עד שהסתירה תוכרע.',
+      error: 'החיפוש לא הושלם. אפשר לנסות שוב כשיש חיבור לאינטרנט.',
+      summary: (found: number, used: number) =>
+        used > 0 ? `נבדקו ${found} מקורות · ${used} שימשו ללוח` : `נבדקו ${found} מקורות`,
+      retry: 'חפש שוב',
+      uploadTitle: 'אפשר גם להעלות מסמך של הרכב:',
+      uploadManual: 'העלה ספר רכב',
+      uploadBooklet: 'העלה חוברת טיפולים',
+      uploadDocument: 'העלה מסמך טיפולים (PDF)',
+    },
   },
   actionType: {
     inspection: 'בדיקה',

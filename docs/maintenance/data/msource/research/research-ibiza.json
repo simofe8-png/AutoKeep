@@ -1,0 +1,572 @@
+{
+  "vehicle": "SEAT Ibiza 2012 1.4 16V CGG 5-door",
+  "searchedAt": "2026-10-03",
+  "bodyVariantEvidence": [
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf",
+      "quote": "Due to the fact that this is a general manual for the IBIZA, some of the equipment and functions that are described in this manual are not included in all types or variants of the model",
+      "conclusion": "Official SEAT UK MY12 owner's manual for the plain 'IBIZA' (hatchback), document code 6J4012003DC (12.11), 'SEAT S.A. - Reprint: 15.12.11', 279 PDF pages, cover 'IBIZA Owner's manual'. SEAT publishes separate 'ibiza_sc' and 'ibiza_st' manuals (see below), so this 'ibiza' document is the one for the 5-door hatchback. It does not use the words '5-door'/'3-door' anywhere; the engine table includes 'Petrol engine 1.4 63 kW (85 PS)' with '4/ 1390' cm3 (manual p.254)."
+    },
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my13_w45/en-uk/Ibiza_EN.pdf",
+      "quote": "Due to the fact that this is a general manual for the IBIZA, some of the equipment and functions that are described in this manual are not included in all types or variants of the model",
+      "conclusion": "MY13 edition of the same 'IBIZA' manual, document code 6J4012003DL (07.12), 'SEAT S.A. - Reprint: 15.07.12'. Same body coverage statement; also lists 'Petrol engine 1.4 63 kW (85 PS)' (p.258 TOC)."
+    },
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my11_w45/en-uk/Ibiza_EN.pdf",
+      "quote": "Due to the fact that this is a general manual for the IBIZA, some of the equipment and functions that are described in this manual are not included in all types or variants of the model",
+      "conclusion": "MY11 edition, document code 6J4012003BQ (07.10), 'SEAT S.A. - Reprint: 15.09.10'. Cover 'IBIZA OWNER'S MANUAL'."
+    },
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza_sc/my11_w45/en-uk/IbizaSC_EN.pdf",
+      "quote": "Due to the fact that this is a general manual for the IBIZA SC, some of the equipment and functions that are described in this manual are not included in all types or variants of the model",
+      "conclusion": "Separate SC (3-door) manual, cover 'IBIZA SC OWNER'S MANUAL', document code 6J3012003AM (07.10). Confirms the 'ibiza' document is NOT the SC document."
+    },
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza_st/my11_w45/en-uk/IbizaST_EN.pdf",
+      "quote": "As this is a general manual for the IBIZA ST, some of the equipment and functions described in this manual are not included in all types or versions of the model.",
+      "conclusion": "Separate ST (estate) manual, cover 'IBIZA ST OWNER'S MANUAL', document code 6J8012003AE (07.10). Confirms the 'ibiza' document is NOT the ST document."
+    },
+    {
+      "url": "https://www.seat.com/datamanual-manual/ibiza/my14_w45/en-uk/Gama%20Ibiza_EN.pdf",
+      "quote": "Because this is a general manual for the IBIZA range, some of the equipment and functions that are described in this manual are not included in all types or variants of the model",
+      "conclusion": "From MY14 (document 6J0012720BA (10.13), 'Reprint: 15.10.13') SEAT merged all bodies into one 'IBIZA range' manual; it contains 'Applies to the model: IBIZA ST', 'Applies to the model: IBIZA / IBIZA SC', 'Valid for vehicles: 5-door versions' and 'Valid for vehicles: 3-door versions'. Not the MY12 document, but shows the body split used up to MY13."
+    },
+    {
+      "url": "https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/seat/ibiza/6j/214685",
+      "quote": "SEAT Ibiza 1.4 16V Sport (06/08 - 05/10)",
+      "conclusion": "ADAC catalogue entry for the 6J 1.4 16V (5-door 'Schrägheck'); fetch reported engine code 'CGG' and that the engine has a 'Zahnriemen' (timing belt). 2008-2010 variant, not MY12; no intervals given."
+    }
+  ],
+  "qgEvidence": [
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf",
+      "location": "MY12 IBIZA owner's manual, 'Checking and refilling levels', manual page 197 (PDF page 199), heading 'Service intervals'",
+      "quote": "If the PR code that appears on the back of the Maintenance Programme booklet is QG1, this means that your vehicle has the LongLife service programmed. If it has the codes QG0 or QG2 the interval service is dependent on time/distance travelled."
+    },
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf",
+      "location": "MY12 IBIZA owner's manual, manual page 197 (PDF page 199), heading 'Service intervals'",
+      "quote": "Service intervals can be flexible (LongLife service) or fixed (dependent on time/distance travelled)."
+    },
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my13_w45/en-uk/Ibiza_EN.pdf",
+      "location": "MY13 IBIZA owner's manual, manual page 198 (PDF page 200), 'Service intervals'",
+      "quote": "If the PR code that appears on the back of the \"Maintenance Programme\" booklet is QG1, this means that your vehicle has the LongLife service programmed. If it has the codes QG0 or QG2 the interval service is dependent on time/distance travelled."
+    },
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my11_w45/en-uk/Ibiza_EN.pdf",
+      "location": "MY11 IBIZA owner's manual, manual page 186 (PDF page 193), 'Service intervals'",
+      "quote": "If the PR code that appears on the back of the Maintenance Programme booklet is QG1, this means that your vehicle has the LongLife service programmed. If it has the codes QG0 or QG2 the interval service is dependent on time/distance travelled."
+    },
+    {
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza_st/my11_w45/en-uk/IbizaST_EN.pdf",
+      "location": "MY11 IBIZA ST owner's manual, PDF page 198",
+      "quote": "If the PR code that appears on the back of the Maintenance Programme booklet is QG1, this means that your vehicle has the LongLife service programmed. If it has the codes QG0 or QG2 the interval service is dependent on time/distance travelled."
+    },
+    {
+      "url": "https://www.seat.com/datamanual-manual/ibiza/my14_w45/en-uk/Gama%20Ibiza_EN.pdf",
+      "location": "MY14 IBIZA range owner's manual, manual page 209 (PDF page 211), 'Service intervals' (shows the later QI code scheme replacing QG)",
+      "quote": "If the PR code that appears on the back of the \"Maintenance Programme\" booklet is PR QI6, this means that your vehicle has the LongLife service programmed. If it lists the codes QI1, QI2, QI3, QI4 or QI7, the interval service is dependent on time/distance travelled."
+    },
+    {
+      "url": "https://diagnostics.vis4vag.com/en/seat/alhambra-71/17-dashboard-kombi-h3-h4-h5-h23-ev-kombi-uds-vdd-rm09-uds/qg-or-qi-detection-of-service-interval-type",
+      "location": "vis4vag diagnostics page 'QG or QI? detection of service interval type' (Seat Alhambra page; VAG-generic adaptation channel list)",
+      "quote": "change to fixed service interval QG0"
+    },
+    {
+      "url": "https://diagnostics.vis4vag.com/en/seat/alhambra-71/17-dashboard-kombi-h3-h4-h5-h23-ev-kombi-uds-vdd-rm09-uds/qg-or-qi-detection-of-service-interval-type",
+      "location": "same page, adaptation options list",
+      "quote": "change to fixed service interval QG2"
+    },
+    {
+      "url": "https://diagnostics.vis4vag.com/en/seat/alhambra-71/17-dashboard-kombi-h3-h4-h5-h23-ev-kombi-uds-vdd-rm09-uds/qg-or-qi-detection-of-service-interval-type",
+      "location": "same page, adaptation options list",
+      "quote": "change to variable service interval QG1"
+    },
+    {
+      "url": "https://diagnostics.vis4vag.com/en/vw/service-intervals-vw/qg-or-qi/detection-of-service-interval-type",
+      "location": "vis4vag 'VW / Service intervals - QG or QI? / detection of service interval type'",
+      "quote": "the type of service interval can be identified according to the PR-code, which is on the data label on the floor of the luggage compartment or on the first page of the service book."
+    },
+    {
+      "url": "https://uk.haynes.com/pages/maintenance-plans-car-seat-ibiza-2008-2015",
+      "location": "Haynes UK 'Seat Ibiza 2008-2015 Maintenance Plans', variant heading (1.2 engine, not 1.4)",
+      "quote": "1.2 Petrol (CGPA) · Time/distance dependent service, Equipment code QG0, (2011 - 2013)"
+    }
+  ],
+  "evidence": [
+    {
+      "item": "periodic_service",
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf",
+      "sourceIdentity": "SEAT S.A. (SEAT UK datamanual library), MY12 IBIZA owner's manual 6J4012003DC (12.11)",
+      "sourceType": "seat_official",
+      "location": "'Checking and refilling levels', manual page 197 (PDF page 199), heading 'Fixed service intervals*'",
+      "applicabilityQuote": "Due to the fact that this is a general manual for the IBIZA, some of the equipment and functions that are described in this manual are not included in all types or variants of the model",
+      "vehicleApplicability": "SEAT IBIZA (general manual), MY12 edition dated 12.11, reprint 15.12.11",
+      "bodyApplicability": "IBIZA (hatchback document; SC and ST have their own manuals)",
+      "engineApplicability": "all engines in the manual, incl. 'Petrol engine 1.4 63 kW (85 PS)' 4/1390 cm3 (manual p.254); engine code not printed",
+      "modelYearApplicability": "MY12 (edition 12.11)",
+      "regime": "fixed",
+      "intervalQuote": "In this case, your vehicle must be serviced after a fixed interval of 1 year / 15 000 km (whatever comes first) Booklet Maintenance Programme.",
+      "intervalKm": 15000,
+      "intervalMiles": null,
+      "intervalMonths": 12,
+      "notes": "Preceding sentence: 'If your vehicle does not have the \"LongLife service interval\" or it has been disabled (by request), you may use oils for fixed service intervals'. Applies to QG0/QG2 vehicles per the QG paragraph on the same page. Oil spec table (p.198): 'Petrol without flexible service interval' = 'VW 502 00/ VW 504 00'; 'Petrol with flexible service interval (LongLife)' = 'VW 504 00'."
+    },
+    {
+      "item": "periodic_service",
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf",
+      "sourceIdentity": "SEAT S.A., MY12 IBIZA owner's manual",
+      "sourceType": "seat_official",
+      "location": "'Cockpit' > 'Service interval display' > 'Resetting service interval display', manual page 60 (PDF page 62)",
+      "applicabilityQuote": "Vehicles with service intervals dependent on time/distance travelled already have certain service intervals set.",
+      "vehicleApplicability": "SEAT IBIZA MY12 (general manual)",
+      "bodyApplicability": "IBIZA (hatchback document)",
+      "engineApplicability": "not stated (all)",
+      "modelYearApplicability": "MY12",
+      "regime": "fixed",
+      "intervalQuote": "If the display is reset manually, the next service interval will be indicated after 15 000 km or one year and will not be calculated individually.",
+      "intervalKm": 15000,
+      "intervalMiles": null,
+      "intervalMonths": 12,
+      "notes": "Also: 'SEAT distinguishes between services with engine oil change (e.g. Maintenance Service) and services without engine oil change (e.g. Inspection Service). The service interval display only indicates the dates of services that include engine oil change. The dates of all other services, such as Inspection Service or brake fluid change, appear on the sticker on the door pillar or in the Service Schedule.' LongLife: 'To calculate this (max. two years)'."
+    },
+    {
+      "item": "periodic_service",
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my13_w45/en-uk/Ibiza_EN.pdf",
+      "sourceIdentity": "SEAT S.A., MY13 IBIZA owner's manual 6J4012003DL (07.12)",
+      "sourceType": "seat_official",
+      "location": "manual page 199 (PDF page 201), 'Fixed service intervals*'",
+      "applicabilityQuote": "Due to the fact that this is a general manual for the IBIZA, some of the equipment and functions that are described in this manual are not included in all types or variants of the model",
+      "vehicleApplicability": "SEAT IBIZA (general manual), edition 07.12",
+      "bodyApplicability": "IBIZA (hatchback document)",
+      "engineApplicability": "all engines incl. 'Petrol engine 1.4 63 kW (85 PS)'",
+      "modelYearApplicability": "MY13 (edition 07.12; printed mid-2012, i.e. covers 2012 production)",
+      "regime": "fixed",
+      "intervalQuote": "In this case, your vehicle must be serviced after a fixed interval of 1 year/15 000 km (10 000 miles)(whatever comes first) Booklet Maintenance Programme.",
+      "intervalKm": 15000,
+      "intervalMiles": 10000,
+      "intervalMonths": 12,
+      "notes": "Same wording as MY12 plus the miles figure."
+    },
+    {
+      "item": "periodic_service",
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my11_w45/en-uk/Ibiza_EN.pdf",
+      "sourceIdentity": "SEAT S.A., MY11 IBIZA owner's manual 6J4012003BQ (07.10)",
+      "sourceType": "seat_official",
+      "location": "manual page 186 (PDF page 193), 'Fixed service intervals*'",
+      "applicabilityQuote": "Due to the fact that this is a general manual for the IBIZA, some of the equipment and functions that are described in this manual are not included in all types or variants of the model",
+      "vehicleApplicability": "SEAT IBIZA (general manual), edition 07.10",
+      "bodyApplicability": "IBIZA (hatchback document)",
+      "engineApplicability": "all engines incl. 'Petrol engine 1.4 63 kW (85 PS)' (TOC p.238)",
+      "modelYearApplicability": "MY11",
+      "regime": "fixed",
+      "intervalQuote": "In this case, your vehicle must be serviced after a fixed interval of 1 year / 15,000 km (whatever comes first)  Booklet \"Maintenance Programme\".",
+      "intervalKm": 15000,
+      "intervalMiles": null,
+      "intervalMonths": 12,
+      "notes": "Shows the regime is unchanged MY11 -> MY12 -> MY13."
+    },
+    {
+      "item": "engine_oil",
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf",
+      "sourceIdentity": "SEAT S.A., MY12 IBIZA owner's manual",
+      "sourceType": "seat_official",
+      "location": "'Changing engine oil', manual page 200 (PDF page 202); engine data manual page 254 (PDF page 256)",
+      "applicabilityQuote": "Petrol engine 1.4 63 kW (85 PS)",
+      "vehicleApplicability": "SEAT IBIZA MY12",
+      "bodyApplicability": "IBIZA (hatchback document)",
+      "engineApplicability": "Petrol engine 1.4 63 kW (85 PS), '63 (85)/ 5000 132/ 3800 4/ 1390 Super 95 RONa)/Normal 91 RONb)'",
+      "modelYearApplicability": "MY12",
+      "regime": "not stated",
+      "intervalQuote": "The engine oil must be changed at the intervals given in the service schedule.",
+      "intervalKm": null,
+      "intervalMiles": null,
+      "intervalMonths": null,
+      "notes": "Oil capacity for this engine: 'Approximate engine oil capacity with oil filter change 2.8 litres'. The manual defers the oil-change interval to the Maintenance Programme booklet; the fixed regime on p.197 is 1 year / 15 000 km. Also 'The oil change intervals are shown in the Maintenance Programme.'"
+    },
+    {
+      "item": "cabin_filter",
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf",
+      "sourceIdentity": "SEAT S.A., MY12 IBIZA owner's manual",
+      "sourceType": "seat_official",
+      "location": "'Air conditioning' > 'General notes' > 'Pollution filter', manual page 134 (PDF page 136)",
+      "applicabilityQuote": "general manual for the IBIZA",
+      "vehicleApplicability": "SEAT IBIZA MY12",
+      "bodyApplicability": "IBIZA (hatchback document)",
+      "engineApplicability": "not stated (all)",
+      "modelYearApplicability": "MY12",
+      "regime": "not stated",
+      "intervalQuote": "For the air conditioner to work with maximum efficiency, the pollution filter must be replaced at the specified intervals in the Maintenance Programme.",
+      "intervalKm": null,
+      "intervalMiles": null,
+      "intervalMonths": null,
+      "notes": "No figure in the owner's manual; also says the pollen filter 'must be changed more frequently than stated in the Service Schedule' in high-pollution areas."
+    },
+    {
+      "item": "brake_fluid",
+      "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf",
+      "sourceIdentity": "SEAT S.A., MY12 IBIZA owner's manual",
+      "sourceType": "seat_official",
+      "location": "'Brake fluid' > 'Checking the brake fluid level', manual page 206 (PDF page 208)",
+      "applicabilityQuote": "general manual for the IBIZA",
+      "vehicleApplicability": "SEAT IBIZA MY12",
+      "bodyApplicability": "IBIZA (hatchback document)",
+      "engineApplicability": "not stated (all)",
+      "modelYearApplicability": "MY12",
+      "regime": "not stated",
+      "intervalQuote": "The brake fluid is checked at the intervals given in the service schedule.",
+      "intervalKm": null,
+      "intervalMiles": null,
+      "intervalMonths": null,
+      "notes": "No change interval figure in the owner's manual; p.60 says brake fluid change dates 'appear on the sticker on the door pillar or in the Service Schedule'."
+    },
+    {
+      "item": "periodic_service",
+      "url": "https://www.idgarages.com/fr-fr/entretien/seat/carnet-entretien-seat-ibiza-4",
+      "sourceIdentity": "iDGARAGES (French garage network) 'carnet d'entretien' schedule page",
+      "sourceType": "workshop_data",
+      "location": "section 'SEAT IBIZA IV 1.4i 85 16V 2008-05 à 2012-01 Essence 85CV', tables 'By duration' and 'By kilometers'",
+      "applicabilityQuote": "SEAT IBIZA IV 1.4i 85 16V 2008-05 à 2012-01 Essence 85CV",
+      "vehicleApplicability": "SEAT IBIZA IV 1.4i 85 16V, 2008-05 to 2012-01 (as stated)",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4i 85 16V petrol 85 CV (engine code not shown)",
+      "modelYearApplicability": "2008-05 à 2012-01 (as stated; a MY12 car built after 2012-01 is outside the stated range)",
+      "regime": "not stated",
+      "intervalQuote": "Révision intermédiaire — 12, 24, 36, 48, 60, 84, 96, 108, 120 mois",
+      "intervalKm": 15000,
+      "intervalMiles": null,
+      "intervalMonths": 12,
+      "notes": "Kilometre table: 'Révision intermédiaire — 15,000, 30,000, 45,000, 60,000, 75,000 ... km'; 'Révision générale — 72 mois' and '90,000, 180,000, 270,000 km'. Quotes are as returned by the page extraction tool (row label + figures), not a single sentence."
+    },
+    {
+      "item": "cabin_filter",
+      "url": "https://www.idgarages.com/fr-fr/entretien/seat/carnet-entretien-seat-ibiza-4",
+      "sourceIdentity": "iDGARAGES schedule page",
+      "sourceType": "workshop_data",
+      "location": "section 'SEAT IBIZA IV 1.4i 85 16V 2008-05 à 2012-01 Essence 85CV'",
+      "applicabilityQuote": "SEAT IBIZA IV 1.4i 85 16V 2008-05 à 2012-01 Essence 85CV",
+      "vehicleApplicability": "SEAT IBIZA IV 1.4i 85 16V, 2008-05 to 2012-01",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4i 85 16V petrol",
+      "modelYearApplicability": "2008-05 à 2012-01",
+      "regime": "not stated",
+      "intervalQuote": "Filtre habitacle — 24, 48, 72, 96, 120 mois",
+      "intervalKm": 30000,
+      "intervalMiles": null,
+      "intervalMonths": 24,
+      "notes": "Km table: 'Filtre habitacle — 30,000, 60,000, 90,000, 120,000 ... km'."
+    },
+    {
+      "item": "brake_fluid",
+      "url": "https://www.idgarages.com/fr-fr/entretien/seat/carnet-entretien-seat-ibiza-4",
+      "sourceIdentity": "iDGARAGES schedule page",
+      "sourceType": "workshop_data",
+      "location": "section 'SEAT IBIZA IV 1.4i 85 16V 2008-05 à 2012-01 Essence 85CV', 'By duration'",
+      "applicabilityQuote": "SEAT IBIZA IV 1.4i 85 16V 2008-05 à 2012-01 Essence 85CV",
+      "vehicleApplicability": "SEAT IBIZA IV 1.4i 85 16V, 2008-05 to 2012-01",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4i 85 16V petrol",
+      "modelYearApplicability": "2008-05 à 2012-01",
+      "regime": "not stated",
+      "intervalQuote": "Remplacement et purge Liquide de frein — 36, 60, 84, 108 mois",
+      "intervalKm": null,
+      "intervalMiles": null,
+      "intervalMonths": 24,
+      "notes": "First change at 36 months, then every 24 months (36, 60, 84, 108). Time-based only; no km figure."
+    },
+    {
+      "item": "coolant",
+      "url": "https://www.idgarages.com/fr-fr/entretien/seat/carnet-entretien-seat-ibiza-4",
+      "sourceIdentity": "iDGARAGES schedule page",
+      "sourceType": "workshop_data",
+      "location": "section 'SEAT IBIZA IV 1.4i 85 16V 2008-05 à 2012-01 Essence 85CV', 'By duration'",
+      "applicabilityQuote": "SEAT IBIZA IV 1.4i 85 16V 2008-05 à 2012-01 Essence 85CV",
+      "vehicleApplicability": "SEAT IBIZA IV 1.4i 85 16V, 2008-05 to 2012-01",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4i 85 16V petrol",
+      "modelYearApplicability": "2008-05 à 2012-01",
+      "regime": "not stated",
+      "intervalQuote": "Remplacement et purge Liquide de refroidissement — 36, 60, 84, 108 mois",
+      "intervalKm": null,
+      "intervalMiles": null,
+      "intervalMonths": 24,
+      "notes": "First at 36 months then every 24 months per this page. Caution: VW-group G12/G13 coolant is normally not a scheduled change item; this is a third-party schedule. Page did not list 'Courroie de distribution', 'Bougies' or 'Filtre à air' rows for this engine in the second (verbatim) extraction; a first extraction attributed air filter and spark plugs to the 'Révision générale' (72 months / 90,000 km) — treat as unconfirmed."
+    },
+    {
+      "item": "engine_oil",
+      "url": "https://cararac.com/engine_oil/seat/ibiza.html",
+      "sourceIdentity": "cararac.com (vehicle fluid/capacity database)",
+      "sourceType": "technical_publication",
+      "location": "section Ibiza 6J (2008-2015), row 'Ibiza 1.4 16V (63 kW)'",
+      "applicabilityQuote": "Ibiza 1.4 16V (63 kW)",
+      "vehicleApplicability": "SEAT Ibiza 6J (2008-2015)",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4 16V (63 kW)",
+      "modelYearApplicability": "2008-2015",
+      "regime": "not stated",
+      "intervalQuote": "15000 km/ 12 months",
+      "intervalKm": 15000,
+      "intervalMiles": null,
+      "intervalMonths": 12,
+      "notes": "Same row: capacity '3,2 L', oil '0W-40, 5W-40, 5W-30'. Note the official MY12 manual states 2.8 litres with filter for the 1.4 63 kW."
+    },
+    {
+      "item": "brake_fluid",
+      "url": "https://cararac.com/brake_oil/seat/ibiza.html",
+      "sourceIdentity": "cararac.com",
+      "sourceType": "technical_publication",
+      "location": "section Ibiza 6J (2008-2015), row 'Ibiza 1.4 16V (63 kW)'",
+      "applicabilityQuote": "Ibiza 1.4 16V (63 kW)",
+      "vehicleApplicability": "SEAT Ibiza 6J (2008-2015)",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4 16V (63 kW)",
+      "modelYearApplicability": "2008-2015",
+      "regime": "not stated",
+      "intervalQuote": "24 months",
+      "intervalKm": null,
+      "intervalMiles": null,
+      "intervalMonths": 24,
+      "notes": "Same row: capacity '1,15 L', type 'DOT-4'."
+    },
+    {
+      "item": "periodic_service",
+      "url": "https://carwiki.de/seat-ibiza-inspektion",
+      "sourceIdentity": "carwiki.de (German consumer car-maintenance site)",
+      "sourceType": "other",
+      "location": "article 'Seat Ibiza Inspektion', section on Ibiza IV (6J) intervals",
+      "applicabilityQuote": "Seat Ibiza IV (6J) 2008-2017 (section heading as summarised by the fetch tool)",
+      "vehicleApplicability": "Seat Ibiza IV (6J), 2008-2017",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "not stated (model-generic)",
+      "modelYearApplicability": "2008-2017",
+      "regime": "fixed",
+      "intervalQuote": "15.000 Kilometern bzw. einmal pro Jahr",
+      "intervalKm": 15000,
+      "intervalMiles": null,
+      "intervalMonths": 12,
+      "notes": "LongLife stated as '30.000 zurückgelegten Kilometern oder 2 Jahren'. Timing belt: 'Bei den meisten Ibiza Modellen gibt der Hersteller Seat keine festen Intervalle für einen Zahnriemenwechsel vor' and a replacement range 'zwischen 60.000 und 210.000 km'. Generic, not engine-specific."
+    },
+    {
+      "item": "oil_filter",
+      "url": "https://club.autodoc.co.uk/manuals/filters/oil-filter/seat/ibiza",
+      "sourceIdentity": "AUTODOC Club (parts retailer's maintenance guide)",
+      "sourceType": "parts_retailer",
+      "location": "'Oil filter replacement intervals' table",
+      "applicabilityQuote": "Ibiza IV Hatchback (6J5, 6P1) (03.2008 - 12.2017)",
+      "vehicleApplicability": "Ibiza IV Hatchback (6J5, 6P1) 03.2008-12.2017",
+      "bodyApplicability": "Hatchback (6J5, 6P1)",
+      "engineApplicability": "not stated (model-generic)",
+      "modelYearApplicability": "03.2008 - 12.2017",
+      "regime": "not stated",
+      "intervalQuote": "every 15000 km / every 12 months",
+      "intervalKm": 15000,
+      "intervalMiles": null,
+      "intervalMonths": 12,
+      "notes": "Generic per-model list, no engine code; corroborates the fixed regime only."
+    },
+    {
+      "item": "timing_belt",
+      "url": "https://www.seatcupra.net/forums/threads/cambelt-advice.390542",
+      "sourceIdentity": "SEATCupra.net owners' forum, thread 'Cambelt Advice', post by yozza1987, Nov 6, 2013",
+      "sourceType": "forum",
+      "location": "post #11 (goto/post?id=4306537 area)",
+      "applicabilityQuote": "I had the 1.4 16v engine . Code cggb in a 2012 prefacelift.",
+      "vehicleApplicability": "2012 pre-facelift Ibiza 1.4 16v, engine code CGGB (owner statement)",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4 16v CGGB",
+      "modelYearApplicability": "2012",
+      "regime": "not stated",
+      "intervalQuote": "I can say 100% it is belt driven, 2 belts tbh, one for crank, water pump and inlet cam and a secondary one for inlet to exhaust cam.",
+      "intervalKm": null,
+      "intervalMiles": null,
+      "intervalMonths": null,
+      "notes": "Confirms timing BELT (two belts) on the 2012 CGGB; no interval given. The thread's dealer quote '60k miles or every four years whichever comes first' concerned a 2009 1.6 and was later contradicted by SEAT UK (chain) - not applicable."
+    },
+    {
+      "item": "timing_belt",
+      "url": "https://www.seatcupra.net/forums/threads/timing-belt-1-4-16v-bxw-engine.467685",
+      "sourceIdentity": "SEATCupra.net forum, thread 'Timing belt 1.4 16V BXW engine', post by RUM4MO, Nov 18, 2021",
+      "sourceType": "forum",
+      "location": "reply post, Nov 18, 2021",
+      "applicabilityQuote": "the timing belts of these 1.4 16V indirect injection petrol engines",
+      "vehicleApplicability": "Ibiza 1.4 16V indirect-injection petrol engines (forum member's statement; his example is a late-2009 BXW)",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4 16V BXW (stated); family claim for engines built after ~2007",
+      "modelYearApplicability": "engines built after maybe 2007 (as stated)",
+      "regime": "not stated",
+      "intervalQuote": "due to a design change for engines built after maybe 2007, the recommendation changed to every 5 years or 60K miles",
+      "intervalKm": null,
+      "intervalMiles": 60000,
+      "intervalMonths": 60,
+      "notes": "Forum opinion, not an official document. Full quote: 'originally recommended to be replaced along with tensioner...at the 4 years or maybe 60K miles, due to a design change for engines built after maybe 2007, the recommendation changed to every 5 years or 60K miles'. Different engine code (BXW) from CGGA/CGGB."
+    },
+    {
+      "item": "timing_belt",
+      "url": "https://www.seatcupra.net/forums/threads/timing-belt-1-4-16v-bxw-engine.467685",
+      "sourceIdentity": "SEATCupra.net forum, post by dm222, Nov 19, 2021, quoting his vehicle's manual",
+      "sourceType": "forum",
+      "location": "reply post, Nov 19, 2021",
+      "applicabilityQuote": "Timing belt 1.4 16V BXW engine (thread title); owner's car replaced belt 'in January 2013 at 90.000kms'",
+      "vehicleApplicability": "Ibiza 1.4 16V BXW (owner's vehicle)",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4 16V BXW",
+      "modelYearApplicability": "not stated (pre-2012 BXW car)",
+      "regime": "not stated",
+      "intervalQuote": "At 90.000km (the first time), and after that each 30.000km * Cambelt: Check condition and eventually replace (only on petrol engines).",
+      "intervalKm": 90000,
+      "intervalMiles": null,
+      "intervalMonths": null,
+      "notes": "Inspection schedule (check at 90,000 km then every 30,000 km), not a replacement interval. Same thread: 'I called SEAT to get a quote to change the timing belt they said that it is 700€ but it is not necessary to change, it should just be checked and changed only if necessary'. BXW, not CGGA/CGGB."
+    },
+    {
+      "item": "timing_belt",
+      "url": "https://www.seatcupra.net/forums/threads/timing-belt-change-interval.459635/",
+      "sourceIdentity": "SEATCupra.net forum, post by 'SEAT Rule', Apr 22, 2020, citing Autodata workshop reference books",
+      "sourceType": "forum",
+      "location": "post #2, Apr 22, 2020",
+      "applicabilityQuote": "SEAT Ibiza 1.4 16v twin cam (1999-2010)",
+      "vehicleApplicability": "SEAT Ibiza 1.4 16v twin cam, 1999-2010 (as stated)",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4 16v twin cam (engine code not stated)",
+      "modelYearApplicability": "1999-2010 (does NOT state 2012)",
+      "regime": "not stated",
+      "intervalQuote": "check and replace cam belt if necessary every 60,000 miles or every 5 years which ever comes first.",
+      "intervalKm": null,
+      "intervalMiles": 60000,
+      "intervalMonths": 60,
+      "notes": "Second-hand Autodata citation for 1999-2010 cars; a 2012 CGGB is outside the stated years. Also: 'Don't just replace the cam belt you'll more then likely need to replace the belt tensioner pulley and idler pulley'."
+    },
+    {
+      "item": "timing_belt",
+      "url": "https://www.seatcupra.net/forums/threads/timing-belt-change-for-1-4-2013-ibiza.445463/latest",
+      "sourceIdentity": "SEATCupra.net forum, thread 'Timing belt change for 1.4 2013 Ibiza', post by camelspyyder, Jul 18, 2018",
+      "sourceType": "forum",
+      "location": "first reply, Jul 18, 2018",
+      "applicabilityQuote": "My lad has a 2013 1.4 Ibiza Toca. It's done about 40K miles.",
+      "vehicleApplicability": "2013 Ibiza 1.4 Toca (original poster's car)",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "1.4 (code not stated)",
+      "modelYearApplicability": "2013",
+      "regime": "not stated",
+      "intervalQuote": "VW website says 5 years (or on mileage if reached first)",
+      "intervalKm": null,
+      "intervalMiles": null,
+      "intervalMonths": 60,
+      "notes": "Forum member paraphrasing a VW website; adds 'every forum in the world has different answers for the mileage from 40000 to 120000 miles!'"
+    },
+    {
+      "item": "periodic_service",
+      "url": "https://www.auto.co.il/articles/car-news/127813/",
+      "sourceIdentity": "auto.co.il (Israeli motoring site), article 'סיאט איביזה - עלויות טיפולים ואחזקה', 16.09.2016",
+      "sourceType": "other",
+      "location": "service-cost list by mileage (importer prices)",
+      "applicabilityQuote": "סיאט איביזה (engine/year not specified in the article)",
+      "vehicleApplicability": "SEAT Ibiza, Israeli market (importer pricing), engine/year not specified",
+      "bodyApplicability": "not stated",
+      "engineApplicability": "not stated",
+      "modelYearApplicability": "not stated (article dated 2016)",
+      "regime": "not stated",
+      "intervalQuote": "טיפול 15,000 ק\"מ",
+      "intervalKm": 15000,
+      "intervalMiles": null,
+      "intervalMonths": null,
+      "notes": "Israeli importer service ladder in 15,000 km steps: 'טיפול 15,000 ק\"מ' (oil + oil filter, 541 NIS), 'טיפול 30,000 ק\"מ' (adds air filter and cabin filter, 917 NIS), 'טיפול 60,000 ק\"מ' (adds spark plugs, 1,732 NIS), 'טיפול 90,000 ק\"מ' (oil, oil filter, air filter, cabin filter). Implies air/cabin filter every 30,000 km and spark plugs every 60,000 km at the importer, but engine is not specified; the importer is referred to only as 'יבואן'."
+    }
+  ],
+  "rejected": [
+    {
+      "url": "https://uk.haynes.com/pages/maintenance-plans-car-seat-ibiza-2008-2015",
+      "reason": "Page only contains 1.2 petrol (BZG, CGPA, CGPB) and 1.2 TDI (CFWA) variants; no 1.4 petrol (CGGA/CGGB/BXW) schedule. Used only for the QG0 heading."
+    },
+    {
+      "url": "https://www.glinicke.de/media/mediathek/book/seat/altea/Seat_Altea_2012_Programa_mant_sem_45_12_DE.pdf",
+      "reason": "robots.txt request and the PDF request both returned the dealer's HTML landing page (document not served); also it is an Altea, not Ibiza, programme."
+    },
+    {
+      "url": "https://www.glinicke.de/media/mediathek/book/seat/ibiza/Seat_Ibiza_2012_Programa_mant_sem_45_12_DE.pdf",
+      "reason": "Guessed URL; returned the dealer landing page, not a PDF."
+    },
+    {
+      "url": "https://www.commaoil.com/products/results/91069436/1/print:true",
+      "reason": "HTTP 500 on fetch (robots allowed). Search snippet claimed 'CGGB ... 15,000 km/12 months normal, 30,000 km/24 months flexible' but could not be verified on the live page."
+    },
+    {
+      "url": "https://www.fairgarage.com/de-de/zahnriemenwechsel-seat",
+      "reason": "robots.txt 403 and page 403 (bot block). Not read."
+    },
+    {
+      "url": "https://www.queenoftheroad.co.il/טיפול-תקופתי-שנתי-לרכב-סיאט/",
+      "reason": "robots.txt contains 'User-agent: * / Disallow: /' - not fetched."
+    },
+    {
+      "url": "https://www.repareo.de/zahnriemenwechsel-seat-ibiza/",
+      "reason": "No 1.4 16V petrol entry for Ibiza IV (6J5); the only 1.4 16V 63 kW row is Ibiza III (6L1) 'vom Hersteller nicht vorgeschrieben' - different generation."
+    },
+    {
+      "url": "https://www.repareo.de/inspektion-seat-ibiza/",
+      "reason": "Tables cover 1.2 TSI 81 kW, 1.6 77 kW, 1.9 TDI, 1.4 TDI only; '12 Monate / 15000 km ... mit festem Wartungsintervall' not tied to the 1.4 16V 63 kW."
+    },
+    {
+      "url": "https://club.autodoc.co.uk/manuals/engine/timing-belt/seat/ibiza",
+      "reason": "Generic per-model list: 'every 70000 km' attributed to every Ibiza generation incl. 'Ibiza IV Hatchback (6J5, 6P1) (03.2008 - 12.2017)' with no engine; not engine-specific evidence."
+    },
+    {
+      "url": "https://club.autodoc.co.uk/manuals/engine/spark-plug/seat/ibiza",
+      "reason": "Generic list gives two contradictory intervals for 'Ibiza IV Hatchback (6J5, 6P1)': 'every 30000 km / every 18 months' and 'every 60000 km / every 4 years', no engine code; cannot assign to the 1.4 16V."
+    },
+    {
+      "url": "https://www.seatcupra.net/forums/threads/service-requirements-1-4-petrol.267488/post-2940447",
+      "reason": "2010 thread; only personal opinions ('every 10k or 12 months', 'timing belt ... every 60k or 4 years ... IMO'), no engine code, no official source."
+    },
+    {
+      "url": "https://www.seatcupra.net/forums/goto/post?id=4729838",
+      "reason": "Thread about a 2011 1.2 TDI Ecomotive, not the 1.4 petrol."
+    },
+    {
+      "url": "https://www.seatcupra.net/forums/goto/post?id=4284285",
+      "reason": "'cambelt change intervals' thread discusses 1.2 TSI / 1.8 TSI (chain) only."
+    },
+    {
+      "url": "https://www.seatcupra.net/forums/goto/post?id=5026678",
+      "reason": "Thread about a 2016 Leon 1.4 EcoTSI (EA211), not the Ibiza 1.4 16V."
+    },
+    {
+      "url": "https://www.seatcupra.net/forums/goto/post?id=4888578",
+      "reason": "How-to request for a 2009 1.4 SC; no interval or official statement."
+    },
+    {
+      "url": "https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/seat/ibiza/6j/214685",
+      "reason": "2008-2010 variant page; confirms 'Zahnriemen' and engine code 'CGG' but gives no maintenance intervals."
+    },
+    {
+      "url": "https://www.seat.mx/content/dam/countries/mx/seat-website/descargas/Mantenimiento/Servicio_Mantenimiento_SEAT_modelo_2024_y_anteriores_abr_jun_2026-service-guide-pricelist-all-NA-04-2026.pdf",
+      "reason": "Mexican 2024+ price list; wrong market and model years. Not fetched."
+    },
+    {
+      "url": "https://www.live-work.immigration.govt.nz/~97116898/cdevelopn/rmeasurez/bfeaturep/seat+ibiza+2012+owners+manual.pdf",
+      "reason": "Spam/scraper PDF mirrors (also clc.fordham.edu, openlearning.sky.it, sbrc2017.ufpa.br, wiki.nektra.com, partnernews.mambu.com etc.); not credible, not fetched."
+    }
+  ],
+  "robotsChecked": [
+    { "host": "uk.haynes.com", "status": "allowed" },
+    { "host": "www.seat.co.uk", "status": "allowed" },
+    { "host": "www.seat.com", "status": "allowed" },
+    { "host": "www.seatcupra.net", "status": "allowed" },
+    { "host": "carwiki.de", "status": "allowed" },
+    { "host": "www.repareo.de", "status": "allowed" },
+    { "host": "www.autoplenum.de", "status": "allowed" },
+    { "host": "cararac.com", "status": "allowed" },
+    { "host": "www.glinicke.de", "status": "unavailable" },
+    { "host": "diagnostics.vis4vag.com", "status": "allowed" },
+    { "host": "club.autodoc.co.uk", "status": "allowed" },
+    { "host": "www.commaoil.com", "status": "allowed" },
+    { "host": "www.adac.de", "status": "allowed" },
+    { "host": "www.idgarages.com", "status": "allowed" },
+    { "host": "www.fairgarage.com", "status": "unavailable" },
+    { "host": "www.auto.co.il", "status": "allowed" },
+    { "host": "www.queenoftheroad.co.il", "status": "disallowed" }
+  ],
+  "notes": "Strongest result: SEAT's own MY12 'IBIZA' owner's manual (6J4012003DC, edition 12.11, reprint 15.12.11) at seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf - a 'general manual for the IBIZA' (SC and ST have separate documents) - states verbatim that QG1 = LongLife and QG0/QG2 = time/distance-dependent, and that the fixed regime is '1 year / 15 000 km (whatever comes first)'; identical wording in the MY11 and MY13 editions (MY13 adds '(10 000 miles)'). The owner's manuals do not print per-item intervals (oil, brake fluid, pollen filter all defer to the 'Maintenance Programme' booklet, which was not found online; Haynes covers only 1.2 engines for this generation). No official SEAT document with a timing-belt interval for CGGA/CGGB was found; forum/Autodata-derived figures cluster at 5 years / 60,000 miles (older 1999-2010 Autodata text and a BXW thread), or 'check at 90,000 km then every 30,000 km' (BXW owner's manual quote). Third-party engine-specific rows (cararac 'Ibiza 1.4 16V (63 kW)' 6J: oil 15000 km/12 months, brake fluid 24 months; iDGARAGES '1.4i 85 16V 2008-05 à 2012-01': service 12 months/15,000 km, cabin filter 24 months/30,000 km, brake fluid first at 36 then every 24 months) are consistent with the official fixed regime. Engine codes CGGA/CGGB are not printed in the official PDFs (SEAT manuals list engines by kW only). The PDFs were downloaded by the fetch tool and text was extracted to stdout; page numbers given as both printed manual page and PDF page."
+}

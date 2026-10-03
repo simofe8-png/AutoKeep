@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { maskVin, parseRegistration, parseVin } from '@/domain';
+import { parseRegistration } from '@/domain';
 import { onboardingServices } from '@/features/data/dataSource';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { vehicleKindIcon } from '@/features/vehicles/ActiveVehicleBar';
@@ -11,16 +11,11 @@ import { he } from '@/i18n/he';
 import { applyRegistry } from '@/identification/registry';
 import { DEMO_REGISTRY } from '@/mocks/registry';
 import type { RegistryVehicle, VehicleRegistryProvider } from '@/providers/registry/types';
-import {
-  FACT_GROUPS,
-  type RegistryFact,
-  type VehicleRegistryRecord,
-} from '@/providers/registry/vehicleRecord';
+import { RegistryFacts } from '@/features/vehicles/RegistryFacts';
 import {
   AppText,
   Button,
   Card,
-  Divider,
   InlineNotice,
   ListRow,
   PlateBadge,
@@ -114,6 +109,7 @@ export function VehicleSearchScreen() {
         }}
         keyboardType="number-pad"
         maxLength={10}
+        required
         error={message}
       />
       {problem?.kind === 'unavailable' ? (
@@ -133,59 +129,6 @@ export function VehicleSearchScreen() {
         onPress={() => void find()}
       />
     </Screen>
-  );
-}
-
-function factText(fact: RegistryFact): string {
-  if (fact.value === true) return he.vehicleSearch.present;
-  if (fact.key === 'vin') {
-    const vin = parseVin(String(fact.value));
-    return vin ? maskVin(vin) : '••••';
-  }
-  if (typeof fact.value === 'number' && fact.key !== 'modelYear') {
-    return [fact.value.toLocaleString('he-IL'), fact.unit].filter(Boolean).join(' ');
-  }
-  if (fact.kind === 'date') {
-    const [y, m, d] = String(fact.value).split('-');
-    return d ? `${Number(d)}.${Number(m)}.${y}` : `${Number(m)}.${y}`;
-  }
-  return [String(fact.value), fact.unit].filter(Boolean).join(' ');
-}
-
-/** All valid Ministry facts, grouped; the VIN only partially. */
-export function RegistryFacts({ record }: { record: VehicleRegistryRecord }) {
-  return (
-    <Stack gap={spacing.md} testID="vehicle-facts">
-      {FACT_GROUPS.map((g) => {
-        const facts = record.facts.filter((f) => f.group === g);
-        if (facts.length === 0) return null;
-        return (
-          <Card key={g} testID={`vehicle-facts-${g}`}>
-            <Stack gap={spacing.xs}>
-              <AppText variant="bodyStrong" accessibilityRole="header">
-                {he.vehicleSearch.groups[g]}
-              </AppText>
-              {facts.map((fact, i) => (
-                <View key={fact.key}>
-                  {i > 0 ? <Divider /> : null}
-                  <View style={styles.row} testID={`vehicle-fact-${fact.key}`}>
-                    <AppText variant="small" color="textSecondary" style={styles.label}>
-                      {he.vehicleSearch.facts[fact.key] ?? fact.key}
-                    </AppText>
-                    <AppText variant="smallStrong" style={styles.value}>
-                      {factText(fact)}
-                    </AppText>
-                  </View>
-                </View>
-              ))}
-            </Stack>
-          </Card>
-        );
-      })}
-      <AppText variant="caption" color="textMuted">
-        {he.vehicleSearch.source}
-      </AppText>
-    </Stack>
   );
 }
 
@@ -262,12 +205,4 @@ export function VehicleDetailsStep() {
 
 const styles = StyleSheet.create({
   center: { alignItems: 'center' },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    gap: spacing.md,
-    paddingVertical: spacing.xxs,
-  },
-  label: { flex: 1 },
-  value: { flexShrink: 1, textAlign: 'left' },
 });

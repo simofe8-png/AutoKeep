@@ -280,22 +280,34 @@ describe('vehicle image: no suitable image and the user photo', () => {
     expect(screen.getAllByTestId('vehicle-photo-art', hidden).length).toBeGreaterThan(0);
   }, 40000);
 
-  it('user photo overrides the reference; removing it brings the approved reference back', async () => {
+  it('user photo overrides the reference on the Home card; removing it brings the reference back', async () => {
     const id = await withVehicle({}, { ...ibiza, exteriorPhase: 'pre-fl' });
-    await renderRouter('./src/app', { initialUrl: `/vehicle/${id}` });
+    const home = async () => {
+      await renderRouter('./src/app', { initialUrl: '/' });
+      await waitFor(() => expect(screen.getByTestId('vehicle-hero')).toBeOnTheScreen(), LONG);
+    };
+    await home();
     await waitFor(
       () => expect(screen.getAllByTestId('vehicle-photo-reference').length).toBeGreaterThan(0),
       LONG,
     );
+    // The photo is managed on the vehicle screen, which shows no vehicle image itself.
+    await renderRouter('./src/app', { initialUrl: `/vehicle/${id}` });
+    await waitFor(() => expect(screen.getByTestId('vehicle-photo')).toBeOnTheScreen(), LONG);
+    expect(screen.queryAllByTestId(/^vehicle-photo-(art|reference|user)$/)).toHaveLength(0);
     await fireEvent.press(screen.getByTestId('vehicle-photo')); // gallery
+    await waitFor(() => expect(screen.getByTestId('vehicle-photo-remove')).toBeOnTheScreen(), LONG);
+    await home();
     await waitFor(() => expect(screen.getByTestId('vehicle-photo-user')).toBeOnTheScreen(), LONG);
     expect(screen.queryByTestId('vehicle-photo-reference')).toBeNull();
-    await fireEvent.press(screen.getByTestId('vehicle-photo-camera')); // replace with a new photo
+    await renderRouter('./src/app', { initialUrl: `/vehicle/${id}` });
     await waitFor(() => expect(screen.getByTestId('vehicle-photo-remove')).toBeOnTheScreen(), LONG);
     await fireEvent.press(screen.getByTestId('vehicle-photo-remove'));
-    await waitFor(() =>
-      expect(screen.getAllByTestId('vehicle-photo-reference').length).toBeGreaterThan(0),
+    await waitFor(() => expect(screen.queryByTestId('vehicle-photo-remove')).toBeNull());
+    await home();
+    await waitFor(
+      () => expect(screen.getAllByTestId('vehicle-photo-reference').length).toBeGreaterThan(0),
+      LONG,
     );
-    expect(screen.queryByTestId('vehicle-photo-remove')).toBeNull();
-  }, 40000);
+  }, 60000);
 });

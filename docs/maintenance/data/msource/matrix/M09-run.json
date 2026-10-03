@@ -1,0 +1,5006 @@
+{
+  "run": {
+    "runId": "matrix-M09",
+    "vehicleRef": "M09",
+    "fingerprintKey": "car|peugeot|208|2016|1199||petrol|",
+    "msourceVersion": "msource/1",
+    "startedAt": "2026-10-03T05:32:08.918Z",
+    "finishedAt": "2026-10-03T05:33:13.932Z",
+    "stages": [
+      {
+        "stage": "VEHICLE_VERIFIED",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:32:08.918Z",
+        "finishedAt": "2026-10-03T05:32:08.918Z",
+        "durationMs": 0,
+        "counts": {
+          "engineCodes": 0,
+          "displacementKnown": 1
+        },
+        "failures": [],
+        "notes": [
+          "class car|peugeot|208|2016|1199||petrol|"
+        ]
+      },
+      {
+        "stage": "DISCOVERY",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:32:08.918Z",
+        "finishedAt": "2026-10-03T05:32:08.923Z",
+        "durationMs": 5,
+        "counts": {
+          "fable": 15,
+          "registry": 0,
+          "knowledge": 1
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SOURCE_CANDIDATES",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:32:08.923Z",
+        "finishedAt": "2026-10-03T05:32:08.923Z",
+        "durationMs": 0,
+        "counts": {
+          "discovered": 16,
+          "unique": 16,
+          "duplicates": 0,
+          "kept": 16
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "ACQUISITION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:32:08.924Z",
+        "finishedAt": "2026-10-03T05:33:13.764Z",
+        "durationMs": 64840,
+        "counts": {
+          "acquired": 24
+        },
+        "failures": [
+          {
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
+            "sourceId": "src-939202115104ef57"
+          },
+          {
+            "code": "EXTRACTION_BLOCKED",
+            "detail": "registry_requires_permission",
+            "sourceId": "src-d120c6c5162958eb"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-ca9f504b9ddd5fcd"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-014a81c3113481f1"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-bcaf65e3e5d44465"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-be9e8fccae4803be"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "EXTRACTION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:33:13.764Z",
+        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "durationMs": 168,
+        "counts": {
+          "extracted": 16,
+          "grounded": 16
+        },
+        "failures": [
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+            "sourceId": "src-c46cf0f9595ede27"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+            "sourceId": "src-2867c48b267f72a5"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+            "sourceId": "src-3c733c27230ea811"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+            "sourceId": "src-3aab95b6ff170724"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.auto-abc.eu/service/Peugeot-208",
+            "sourceId": "src-cda950c097129e32"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+            "sourceId": "src-6ade51f3eef5c349"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf",
+            "sourceId": "src-38d925aee951c6f0"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.auto-abc.lv/service/Peugeot-208",
+            "sourceId": "src-6d8fee5c4692ddfa"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://es.auto-abc.eu/servicio/Peugeot-208",
+            "sourceId": "src-b795d6d61e5c7ca4"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.autority.co.il/",
+            "sourceId": "src-40e7b19cf8e755f6"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+            "sourceId": "src-fd9307061cd8d334"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+            "sourceId": "src-f024e0899e8b4867"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+            "sourceId": "src-d026ecc0fe8e1e1e"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+            "sourceId": "src-d0226f921e7f45f4"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/peugeot-208",
+            "sourceId": "src-a2bbf80465a2588a"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen",
+            "sourceId": "src-cfdb59c0c7541a6a"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/peugeot-208-technische-daten",
+            "sourceId": "src-0727114ca20153e2"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/peugeot-208-batteriewechsel",
+            "sourceId": "src-d512445c01c090be"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "VEHICLE_MATCHING",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:33:13.932Z",
+        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "durationMs": 0,
+        "counts": {
+          "PARTIAL": 10,
+          "STRONG": 2,
+          "SUPPORTED": 8,
+          "NOT_APPLICABLE": 3,
+          "INSUFFICIENT": 1
+        },
+        "failures": [
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "SUPPORTED: ",
+            "sourceId": "src-f7e55eb5ed501f5b"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: engines named: 1000 cc — not 1199 cc",
+            "sourceId": "src-a036621b24004fc9"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 1199 cc",
+            "sourceId": "src-47b8af0d9acb1eab"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "CROSS_SOURCE_VALIDATION",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:33:13.932Z",
+        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "durationMs": 0,
+        "counts": {
+          "obligations": 4,
+          "corroborated": 0,
+          "conflicting": 0
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SCHEDULE_RESOLUTION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:33:13.932Z",
+        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "durationMs": 0,
+        "counts": {
+          "items": 4,
+          "unresolved": 0,
+          "exact": 0,
+          "strong": 0,
+          "supported": 4
+        },
+        "failures": [],
+        "notes": [
+          "status READY_PARTIAL"
+        ]
+      },
+      {
+        "stage": "PERSISTENCE",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:33:13.932Z",
+        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "NEXT_SERVICE_CALCULATION",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:33:13.932Z",
+        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": [
+          "computed by the host from the stored schedule"
+        ]
+      }
+    ],
+    "queries": [
+      "Peugeot 208 1.2 service intervals",
+      "פיג'ו 208 1.2 מרווחי טיפולים",
+      "Peugeot 208 1.2 intervalles d'entretien",
+      "Peugeot 208 2016 maintenance manual",
+      "פיג'ו 208 2016 ספר רכב טיפולים",
+      "Peugeot 208 2016 notice d'utilisation entretien",
+      "Peugeot 208 maintenance schedule",
+      "פיג'ו 208 לוח טיפולים",
+      "Peugeot 208 plan d'entretien"
+    ],
+    "candidates": [
+      {
+        "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://uk.haynes.com/pages/maintenance-plans-car-peugeot-208",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
+        }
+      },
+      {
+        "url": "https://public.servicebox.peugeot.com/APddb/modeles/208.p2/eGuide_p21_ed01-23/pdfs/9999_9999_494_en-GB.pdf",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "EXTRACTION_BLOCKED",
+          "detail": "registry_requires_permission"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/service/Peugeot-208",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+        "by": "fable",
+        "outcome": "extracted",
+        "failure": null
+      },
+      {
+        "url": "https://www.queenoftheroad.co.il/?p=77673",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide",
+        "by": "fable",
+        "outcome": "extracted",
+        "failure": null
+      },
+      {
+        "url": "https://mecazen.fr/carnet-entretien-auto/peugeot/208/revision",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://carwiki.de/peugeot-208-inspektion",
+        "by": "knowledge",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "SUPPORTED: "
+        }
+      },
+      {
+        "url": "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://www.manualslib.fr/manual/9365/Peugeot-208-2017.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.forum-peugeot.com/Forum/threads/gamme-peugeot-208-tarifs-catalogues-et-plans-dentretien.117392/",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.forum-peugeot.com/Forum/threads/plan-dentretien-courroie-de-distribution-208-1-2-puretech-82cv.126304/",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.lv/service/Peugeot-208",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: engines named: 1000 cc — not 1199 cc"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/Peugeot-208/v20434-2015/service",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 1199 cc"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+        "by": "link",
+        "outcome": "extracted",
+        "failure": null
+      },
+      {
+        "url": "https://www.autority.co.il/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/2/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/3/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/5/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/peugeot-208",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/peugeot-208-technische-daten",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/peugeot-208-batteriewechsel",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      }
+    ],
+    "restricted": [
+      {
+        "url": "https://public.servicebox.peugeot.com/APddb/index.html",
+        "reason": "Interactive selector portal (language/model/edition), not a direct document; edition PDFs are linked from it",
+        "adapter": "fable"
+      }
+    ],
+    "schedule": {
+      "fingerprintKey": "car|peugeot|208|2016|1199||petrol|",
+      "status": "READY_PARTIAL",
+      "items": [
+        {
+          "operation": "brake_fluid",
+          "task": "brake_fluid",
+          "action": "replacement",
+          "condition": "normal",
+          "intervalKm": null,
+          "intervalMonths": 24,
+          "firstKm": null,
+          "firstMonths": null,
+          "rule": "TIME_ONLY",
+          "quality": "SUPPORTED",
+          "evidenceIds": [
+            "src-db226a7bee2c8ad9:717e54274d19-p4-brake_fluid-replacement-0"
+          ],
+          "independentSources": 1,
+          "officialSources": 0,
+          "applicability": "STRONG",
+          "conflicts": [],
+          "applicabilityStatus": "APPLICABLE",
+          "scope": "MODEL_YEAR_RANGE",
+          "notes": []
+        },
+        {
+          "operation": "coolant",
+          "task": "coolant",
+          "action": "replacement",
+          "condition": "normal",
+          "intervalKm": 120000,
+          "intervalMonths": 60,
+          "firstKm": null,
+          "firstMonths": null,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "quality": "SUPPORTED",
+          "evidenceIds": [
+            "src-d87e8d1a6f55fdf4:4a48cb919784-p7-coolant-replacement-0",
+            "src-f7bfa35ff52b6bc1:15d218a78e7c-p7-coolant-replacement-0"
+          ],
+          "independentSources": 1,
+          "officialSources": 0,
+          "applicability": "STRONG",
+          "conflicts": [],
+          "applicabilityStatus": "APPLICABLE",
+          "scope": "ENGINE_FAMILY",
+          "notes": []
+        },
+        {
+          "operation": "spark_plugs",
+          "task": "spark_plugs",
+          "action": "replacement",
+          "condition": "normal",
+          "intervalKm": 40000,
+          "intervalMonths": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "rule": "DISTANCE_ONLY",
+          "quality": "SUPPORTED",
+          "evidenceIds": [
+            "src-d87e8d1a6f55fdf4:4a48cb919784-p5-s-spark_plugs-replacement-0",
+            "src-f7bfa35ff52b6bc1:15d218a78e7c-p5-s-spark_plugs-replacement-0"
+          ],
+          "independentSources": 1,
+          "officialSources": 0,
+          "applicability": "STRONG",
+          "conflicts": [],
+          "applicabilityStatus": "APPLICABLE",
+          "scope": "ENGINE_FAMILY",
+          "notes": []
+        },
+        {
+          "operation": "timing_belt",
+          "task": "timing_belt",
+          "action": "replacement",
+          "condition": "normal",
+          "intervalKm": 180000,
+          "intervalMonths": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "rule": "DISTANCE_ONLY",
+          "quality": "SUPPORTED",
+          "evidenceIds": [
+            "src-d87e8d1a6f55fdf4:4a48cb919784-p6-s-timing_belt-replacement-1",
+            "src-f7bfa35ff52b6bc1:15d218a78e7c-p6-s-timing_belt-replacement-1"
+          ],
+          "independentSources": 1,
+          "officialSources": 0,
+          "applicability": "STRONG",
+          "conflicts": [],
+          "applicabilityStatus": "APPLICABLE",
+          "scope": "ENGINE_FAMILY",
+          "notes": []
+        }
+      ],
+      "unresolved": [],
+      "sources": [
+        {
+          "sourceId": "src-c46cf0f9595ede27",
+          "canonicalUrl": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+          "finalUrl": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+          "chain": [
+            "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf"
+          ],
+          "sourceName": "Forum-Peugeot (hosted Peugeot document)",
+          "sourceType": "service_document",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:32:08.918Z",
+          "retrievedAt": "2026-10-03T05:32:11.376Z",
+          "format": "pdf",
+          "documentType": "other",
+          "contentSha256": "6078f35ae5220fea69e0777a944999ae2a153525accd6fc0dd801aadbe55dae6",
+          "byteLength": 95774,
+          "locale": "fr",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.forum-peugeot.com/robots.txt",
+                  "detail": "group *; Allow: /wp-content/uploads"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:11.334Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:11.376Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.forum-peugeot.com/robots.txt",
+                  "detail": "group *; Allow: /wp-content/uploads"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech75.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:11.376Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.forum-peugeot.com"
+          }
+        },
+        {
+          "sourceId": "src-2867c48b267f72a5",
+          "canonicalUrl": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+          "finalUrl": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+          "chain": [
+            "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf"
+          ],
+          "sourceName": "Forum-Peugeot (hosted Peugeot document)",
+          "sourceType": "service_document",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:32:08.918Z",
+          "retrievedAt": "2026-10-03T05:32:12.888Z",
+          "format": "pdf",
+          "documentType": "other",
+          "contentSha256": "b616fcf1f814907d1ef3bf2ee964e41338734fed7050268faa7d617f8c49d365",
+          "byteLength": 95336,
+          "locale": "fr",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.forum-peugeot.com/robots.txt",
+                  "detail": "group *; Allow: /wp-content/uploads"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:11.335Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:12.888Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.forum-peugeot.com/robots.txt",
+                  "detail": "group *; Allow: /wp-content/uploads"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100bvm.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:12.888Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.forum-peugeot.com"
+          }
+        },
+        {
+          "sourceId": "src-3c733c27230ea811",
+          "canonicalUrl": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+          "finalUrl": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+          "chain": [
+            "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf"
+          ],
+          "sourceName": "Forum-Peugeot (hosted Peugeot document)",
+          "sourceType": "service_document",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:32:08.918Z",
+          "retrievedAt": "2026-10-03T05:32:14.368Z",
+          "format": "pdf",
+          "documentType": "other",
+          "contentSha256": "53b72f541b950bf6fdeddac253eae74663aab6679dd36d1cd8ff2ed568c23efe",
+          "byteLength": 95355,
+          "locale": "fr",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.forum-peugeot.com/robots.txt",
+                  "detail": "group *; Allow: /wp-content/uploads"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:13.763Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:14.367Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.forum-peugeot.com/robots.txt",
+                  "detail": "group *; Allow: /wp-content/uploads"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech130.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:14.368Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.forum-peugeot.com"
+          }
+        },
+        {
+          "sourceId": "src-3aab95b6ff170724",
+          "canonicalUrl": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+          "finalUrl": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+          "chain": [
+            "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf"
+          ],
+          "sourceName": "Forum-Peugeot (hosted Peugeot document)",
+          "sourceType": "service_document",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:32:08.918Z",
+          "retrievedAt": "2026-10-03T05:32:15.864Z",
+          "format": "pdf",
+          "documentType": "other",
+          "contentSha256": "e1c4849a344e38986fbaa3cdc5cde4f3f0a7b5e19ebe70bafe5b7a620a682964",
+          "byteLength": 95363,
+          "locale": "fr",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.forum-peugeot.com/robots.txt",
+                  "detail": "group *; Allow: /wp-content/uploads"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:13.764Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:15.864Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+              "host": "www.forum-peugeot.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.forum-peugeot.com/robots.txt",
+                  "detail": "group *; Allow: /wp-content/uploads"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.forum-peugeot.com/wp-content/uploads/2020/05/planentretien208puretech100eat8.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:15.864Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.forum-peugeot.com"
+          }
+        },
+        {
+          "sourceId": "src-cda950c097129e32",
+          "canonicalUrl": "https://www.auto-abc.eu/service/Peugeot-208",
+          "finalUrl": "https://www.auto-abc.eu/service/Peugeot-208",
+          "chain": [
+            "https://www.auto-abc.eu/service/Peugeot-208"
+          ],
+          "sourceName": "auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:32:08.918Z",
+          "retrievedAt": "2026-10-03T05:32:49.835Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "3fe821e78b1396dca4214a971d4e42af067d1bc10cc62a09324ec81a9ff07447",
+          "byteLength": 31681,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/service/Peugeot-208",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:49.674Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/service/Peugeot-208",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/service/Peugeot-208",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:49.835Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/service/Peugeot-208",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/service/Peugeot-208",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:49.835Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-d87e8d1a6f55fdf4",
+          "canonicalUrl": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+          "finalUrl": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+          "chain": [
+            "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service"
+          ],
+          "sourceName": "auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:32:08.918Z",
+          "retrievedAt": "2026-10-03T05:32:51.319Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e",
+          "byteLength": 36179,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2015,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [
+              1200
+            ],
+            "displacementsMentioned": [
+              1200
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:49.674Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:51.319Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:51.319Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-db226a7bee2c8ad9",
+          "canonicalUrl": "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide",
+          "finalUrl": "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide",
+          "chain": [
+            "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide"
+          ],
+          "sourceName": "WhoCanFixMyCar",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:32:08.918Z",
+          "retrievedAt": "2026-10-03T05:32:52.086Z",
+          "format": "html",
+          "documentType": "warranty_maintenance_booklet",
+          "contentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+          "byteLength": 395368,
+          "locale": "en",
+          "markets": [
+            "EU"
+          ],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2012,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [
+              "EU"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide",
+              "host": "www.whocanfixmycar.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.whocanfixmycar.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:51.591Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide",
+              "host": "www.whocanfixmycar.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:52.085Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide",
+              "host": "www.whocanfixmycar.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.whocanfixmycar.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:52.086Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.whocanfixmycar.com"
+          }
+        },
+        {
+          "sourceId": "src-6ade51f3eef5c349",
+          "canonicalUrl": "https://www.queenoftheroad.co.il/?p=77673",
+          "finalUrl": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+          "chain": [
+            "https://www.queenoftheroad.co.il/?p=77673",
+            "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/"
+          ],
+          "sourceName": "queenoftheroad.co.il",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:32:08.918Z",
+          "retrievedAt": "2026-10-03T05:32:52.457Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "71a526cfcea2f9984b19776fb7d16498e195a684f5cabb802073fe5efbdff582",
+          "byteLength": 176939,
+          "locale": "he",
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2012,
+            "yearTo": 2016,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/?p=77673",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:51.373Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:52.422Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:52.457Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:52.457Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.queenoftheroad.co.il"
+          }
+        },
+        {
+          "sourceId": "src-f7e55eb5ed501f5b",
+          "canonicalUrl": "https://carwiki.de/peugeot-208-inspektion",
+          "finalUrl": "https://carwiki.de/peugeot-208-inspektion",
+          "chain": [
+            "https://carwiki.de/peugeot-208-inspektion"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "knowledge",
+          "discoveredAt": "2026-10-03T05:32:08.923Z",
+          "retrievedAt": "2026-10-03T05:32:53.278Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "d59c2a8e8d4d67c98360275ce97dcf4307ec977a2b68f5edd680f7d26b3e0938",
+          "byteLength": 169591,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [
+              "e"
+            ],
+            "yearFrom": 2012,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/peugeot-208-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:52.518Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/peugeot-208-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208-inspektion",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:53.277Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/peugeot-208-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208-inspektion",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:53.278Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-38d925aee951c6f0",
+          "canonicalUrl": "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf",
+          "finalUrl": "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf",
+          "chain": [
+            "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf"
+          ],
+          "sourceName": "AutoJM (dealer)",
+          "sourceType": "dealer",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:32:08.918Z",
+          "retrievedAt": "2026-10-03T05:32:55.209Z",
+          "format": "pdf",
+          "documentType": "other",
+          "contentSha256": "8903463ca6aa8d9e047a3fed046ce4ae528d4cc0ee1a30de515e51b951072915",
+          "byteLength": 9719755,
+          "locale": "fr",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2015,
+            "yearTo": 2015,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf",
+              "host": "www.autojm.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.autojm.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:53.609Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf",
+              "host": "www.autojm.fr",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:55.209Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf",
+              "host": "www.autojm.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.autojm.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.autojm.fr/pdf/notices/PEUGEOT/208-2015.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:32:55.209Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.autojm.fr"
+          }
+        },
+        {
+          "sourceId": "src-6d8fee5c4692ddfa",
+          "canonicalUrl": "https://www.auto-abc.lv/service/Peugeot-208",
+          "finalUrl": "https://www.auto-abc.lv/service/Peugeot-208",
+          "chain": [
+            "https://www.auto-abc.lv/service/Peugeot-208"
+          ],
+          "sourceName": "www.auto-abc.lv",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:49.838Z",
+          "retrievedAt": "2026-10-03T05:33:00.785Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "0f1a959c56654eb183a572b8986e52a8f0fccefd286be83b05ab428a3792d2a2",
+          "byteLength": 32238,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.lv/service/Peugeot-208",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.lv/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:00.597Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.lv/service/Peugeot-208",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.lv/service/Peugeot-208",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:00.785Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.lv/service/Peugeot-208",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.lv/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.lv/service/Peugeot-208",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:00.785Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.lv"
+          }
+        },
+        {
+          "sourceId": "src-b795d6d61e5c7ca4",
+          "canonicalUrl": "https://es.auto-abc.eu/servicio/Peugeot-208",
+          "finalUrl": "https://es.auto-abc.eu/servicio/Peugeot-208",
+          "chain": [
+            "https://es.auto-abc.eu/servicio/Peugeot-208"
+          ],
+          "sourceName": "es.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:49.838Z",
+          "retrievedAt": "2026-10-03T05:33:00.787Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "0d29eb9b5ce102fc2f4157b457147ec0690c3e447d7b9f04cf668485a39c2e81",
+          "byteLength": 31797,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:00.598Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/Peugeot-208",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:00.787Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/Peugeot-208",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:00.787Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "es.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-a036621b24004fc9",
+          "canonicalUrl": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
+          "finalUrl": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
+          "chain": [
+            "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:49.838Z",
+          "retrievedAt": "2026-10-03T05:33:01.000Z",
+          "format": "html",
+          "documentType": "service_manual",
+          "contentSha256": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c",
+          "byteLength": 35750,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2015,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [
+              1000
+            ],
+            "displacementsMentioned": [
+              1000
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:00.788Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:00.999Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:01.000Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-47b8af0d9acb1eab",
+          "canonicalUrl": "https://www.auto-abc.eu/Peugeot-208/v20434-2015/service",
+          "finalUrl": "https://www.auto-abc.eu/Peugeot-208/v20434-2015/service",
+          "chain": [
+            "https://www.auto-abc.eu/Peugeot-208/v20434-2015/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:49.838Z",
+          "retrievedAt": "2026-10-03T05:33:02.426Z",
+          "format": "html",
+          "documentType": "service_manual",
+          "contentSha256": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9",
+          "byteLength": 35700,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2015,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [
+              1600
+            ],
+            "displacementsMentioned": [
+              1600
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20434-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:00.788Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20434-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Peugeot-208/v20434-2015/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:02.426Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20434-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Peugeot-208/v20434-2015/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:02.426Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-40e7b19cf8e755f6",
+          "canonicalUrl": "https://www.autority.co.il/",
+          "finalUrl": "https://www.autority.co.il/",
+          "chain": [
+            "https://www.autority.co.il/"
+          ],
+          "sourceName": "www.autority.co.il",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:52.463Z",
+          "retrievedAt": "2026-10-03T05:33:03.096Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "067447785f93f5ae5289f5d86300a33331f31669708fca5e4a44fbafdf9299c4",
+          "byteLength": 58428,
+          "locale": null,
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.autority.co.il/",
+              "host": "www.autority.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.autority.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:02.509Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.autority.co.il/",
+              "host": "www.autority.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.autority.co.il/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:03.096Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.autority.co.il/",
+              "host": "www.autority.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.autority.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.autority.co.il/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:03.096Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.autority.co.il"
+          }
+        },
+        {
+          "sourceId": "src-f7bfa35ff52b6bc1",
+          "canonicalUrl": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+          "finalUrl": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+          "chain": [
+            "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:49.838Z",
+          "retrievedAt": "2026-10-03T05:33:03.927Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e",
+          "byteLength": 36193,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2015,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [
+              1200
+            ],
+            "displacementsMentioned": [
+              1200
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:02.427Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:03.926Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:03.927Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-fd9307061cd8d334",
+          "canonicalUrl": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+          "finalUrl": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+          "chain": [
+            "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/"
+          ],
+          "sourceName": "www.queenoftheroad.co.il",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:52.463Z",
+          "retrievedAt": "2026-10-03T05:33:04.017Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "0b1b7b2958dbf2375b35b562280eacd46d6bf8c60c17dcd847dde290cd341fd9",
+          "byteLength": 176939,
+          "locale": null,
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2012,
+            "yearTo": 2016,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:03.927Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:04.016Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:04.017Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.queenoftheroad.co.il"
+          }
+        },
+        {
+          "sourceId": "src-f024e0899e8b4867",
+          "canonicalUrl": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/2/",
+          "finalUrl": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+          "chain": [
+            "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/2/",
+            "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/"
+          ],
+          "sourceName": "www.queenoftheroad.co.il",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:52.463Z",
+          "retrievedAt": "2026-10-03T05:33:05.506Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "b4891ac82f3d2b52580dba4fa03b9783eab9dc796d72a2c0218b2a1ad5e15965",
+          "byteLength": 176939,
+          "locale": null,
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2012,
+            "yearTo": 2016,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/2/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:03.927Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:05.469Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:05.506Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:05.506Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.queenoftheroad.co.il"
+          }
+        },
+        {
+          "sourceId": "src-d026ecc0fe8e1e1e",
+          "canonicalUrl": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/3/",
+          "finalUrl": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+          "chain": [
+            "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/3/",
+            "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/"
+          ],
+          "sourceName": "www.queenoftheroad.co.il",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:52.463Z",
+          "retrievedAt": "2026-10-03T05:33:07.090Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "71a457b3b853931e706b3572b798ae58cbf6d7656ee44b83a7a90d4e755a220c",
+          "byteLength": 176939,
+          "locale": null,
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2012,
+            "yearTo": 2016,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/3/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:05.508Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:07.055Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:07.090Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:07.090Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.queenoftheroad.co.il"
+          }
+        },
+        {
+          "sourceId": "src-d0226f921e7f45f4",
+          "canonicalUrl": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/5/",
+          "finalUrl": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+          "chain": [
+            "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/5/",
+            "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/"
+          ],
+          "sourceName": "www.queenoftheroad.co.il",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:52.463Z",
+          "retrievedAt": "2026-10-03T05:33:08.508Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "e74548b1038402923129019df4825dc3c7edf3b02db0faa2b972730ecb4ec63b",
+          "byteLength": 176939,
+          "locale": null,
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2012,
+            "yearTo": 2016,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/5/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:05.508Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:08.469Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:08.508Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a4%d7%99%d7%92%d7%95-208-%d7%a2%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%9b%d7%9c%d7%9c%d7%99%d7%9d-%d7%9c%d7%a9%d7%9e/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:08.508Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.queenoftheroad.co.il"
+          }
+        },
+        {
+          "sourceId": "src-a2bbf80465a2588a",
+          "canonicalUrl": "https://carwiki.de/peugeot-208",
+          "finalUrl": "https://carwiki.de/peugeot-208",
+          "chain": [
+            "https://carwiki.de/peugeot-208"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:53.283Z",
+          "retrievedAt": "2026-10-03T05:33:10.141Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "890868538a3e69c4eb088bd6144da7067d6233132661c6192ad2c0011931bcea",
+          "byteLength": 296208,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/peugeot-208",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:08.511Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/peugeot-208",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:10.141Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/peugeot-208",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:10.141Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-cfdb59c0c7541a6a",
+          "canonicalUrl": "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen",
+          "finalUrl": "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen",
+          "chain": [
+            "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:53.283Z",
+          "retrievedAt": "2026-10-03T05:33:11.523Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "5a381cabc3f570085eb446b977d6cd9bc8d289626a36eb32dc2b38d14a55f91e",
+          "byteLength": 157234,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2012,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": true,
+            "allEnginesPhrase": "Peugeot 208 Inspektion zurücksetzen | Service-Reset im Bordcomputer | alle Modelle &amp; Baureihen (Gen. I &amp; II) (au"
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:08.511Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:11.523Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208-inspektion-zuruecksetzen",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:11.523Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-0727114ca20153e2",
+          "canonicalUrl": "https://carwiki.de/peugeot-208-technische-daten",
+          "finalUrl": "https://carwiki.de/peugeot-208-technische-daten",
+          "chain": [
+            "https://carwiki.de/peugeot-208-technische-daten"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:53.284Z",
+          "retrievedAt": "2026-10-03T05:33:12.726Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "9b981e785bf768e487fa127980f2b151dd38ce5d6d5915e400f144048e735a18",
+          "byteLength": 274168,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/peugeot-208-technische-daten",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:11.525Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/peugeot-208-technische-daten",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208-technische-daten",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:12.725Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/peugeot-208-technische-daten",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208-technische-daten",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:12.726Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-d512445c01c090be",
+          "canonicalUrl": "https://carwiki.de/peugeot-208-batteriewechsel",
+          "finalUrl": "https://carwiki.de/peugeot-208-batteriewechsel",
+          "chain": [
+            "https://carwiki.de/peugeot-208-batteriewechsel"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:32:53.284Z",
+          "retrievedAt": "2026-10-03T05:33:13.761Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "17d822a17263aa369dcbe46e69478b678b0aaca2c51362f6a50cb707b688f346",
+          "byteLength": 175873,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/peugeot-208-batteriewechsel",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:11.525Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/peugeot-208-batteriewechsel",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208-batteriewechsel",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:13.761Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/peugeot-208-batteriewechsel",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/peugeot-208-batteriewechsel",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:33:13.761Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "src-d87e8d1a6f55fdf4:4a48cb919784-p7-coolant-replacement-0",
+          "sourceId": "src-d87e8d1a6f55fdf4",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2 petrol is 120,000 km or 5 years , which",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 120000,
+          "intervalMiles": null,
+          "intervalMonths": 60,
+          "intervalYears": 5,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 7,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "4a48cb919784-p7-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2 petrol is 120,000 km or 5 years , which",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 120000,
+                "unit": "km"
+              },
+              "everyMonths": 60,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e",
+                "documentTitle": "Peugeot 208 2015 1.2 petrol service and maintenance",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 7,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2\"",
+                "documentSha256": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-d87e8d1a6f55fdf4:4a48cb919784-p5-s-spark_plugs-replacement-0",
+          "sourceId": "src-d87e8d1a6f55fdf4",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Recommended spark plugs change interval is 40,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 40000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Recommended spark plugs change interval is 40,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "4a48cb919784-p5-s-spark_plugs-replacement-0",
+            "task": "spark_plugs",
+            "taskText": "Recommended spark plugs change interval is 40,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 40000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e",
+                "documentTitle": "Peugeot 208 2015 1.2 petrol service and maintenance",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Recommended spark plugs change interval is 40,000 km .\"",
+                "documentSha256": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-d87e8d1a6f55fdf4:4a48cb919784-p6-s-timing_belt-replacement-1",
+          "sourceId": "src-d87e8d1a6f55fdf4",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 petrol is 180,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 180000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 p\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "4a48cb919784-p6-s-timing_belt-replacement-1",
+            "task": "timing_belt",
+            "taskText": "Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 petrol is 180,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 180000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e",
+                "documentTitle": "Peugeot 208 2015 1.2 petrol service and maintenance",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "section": "Timing belt",
+                "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 p\"",
+                "documentSha256": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-brake_fluid-replacement-0",
+          "sourceId": "src-db226a7bee2c8ad9",
+          "operationKey": "brake_fluid",
+          "task": "brake_fluid",
+          "originalText": "Replace brake fluid Every 2 years",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2012,
+            "to": 2019
+          },
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 4,
+            "section": "Service intervals",
+            "locator": "line \"Replace brake fluid Every 2 years\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "717e54274d19-p4-brake_fluid-replacement-0",
+            "task": "brake_fluid",
+            "taskText": "Replace brake fluid Every 2 years",
+            "action": "replacement",
+            "interval": {
+              "everyMonths": 24,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2012,
+                "to": 2019
+              },
+              "markets": [
+                "EU"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentTitle": "Peugeot 208 Owners' Guide",
+                "authority": "vehicle_document",
+                "markets": [
+                  "EU"
+                ],
+                "edition": "versions and, in 2018, discontinued the three-d",
+                "page": 4,
+                "table": "Service intervals",
+                "locator": "line \"Replace brake fluid Every 2 years\"",
+                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2012–2019",
+            "sufficient": true,
+            "years": {
+              "from": 2012,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-air_filter-replacement-1",
+          "sourceId": "src-db226a7bee2c8ad9",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Replace air filter Every 12,000 miles/4 years",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 19312,
+          "intervalMiles": 12000,
+          "intervalMonths": 48,
+          "intervalYears": 4,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2012,
+            "to": 2019
+          },
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [
+            "stated in miles: 12000 mi ≈ 19312 km"
+          ],
+          "sourceLocation": {
+            "page": 4,
+            "section": "Service intervals",
+            "locator": "line \"Replace air filter Every 12,000 miles/4 years\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "market stated: EU (not IL)",
+              "scope MODEL_YEAR_RANGE is not sufficient for the powertrain-dependent operation air_filter"
+            ]
+          },
+          "requirement": {
+            "id": "717e54274d19-p4-air_filter-replacement-1",
+            "task": "air_filter",
+            "taskText": "Replace air filter Every 12,000 miles/4 years",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 12000,
+                "unit": "mi"
+              },
+              "everyMonths": 48,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2012,
+                "to": 2019
+              },
+              "markets": [
+                "EU"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentTitle": "Peugeot 208 Owners' Guide",
+                "authority": "vehicle_document",
+                "markets": [
+                  "EU"
+                ],
+                "edition": "versions and, in 2018, discontinued the three-d",
+                "page": 4,
+                "table": "Service intervals",
+                "locator": "line \"Replace air filter Every 12,000 miles/4 years\"",
+                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2012–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2012,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-fuel_filter-replacement-2",
+          "sourceId": "src-db226a7bee2c8ad9",
+          "operationKey": "fuel_filter",
+          "task": "fuel_filter",
+          "originalText": "Replace fuel filter (petrol) Every 25,000 miles",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 40234,
+          "intervalMiles": 25000,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2012,
+            "to": 2019
+          },
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [
+            "stated in miles: 25000 mi ≈ 40234 km"
+          ],
+          "sourceLocation": {
+            "page": 4,
+            "section": "Service intervals",
+            "locator": "line \"Replace fuel filter (petrol) Every 25,000 miles\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "market stated: EU (not IL)",
+              "scope MODEL_YEAR_RANGE is not sufficient for the powertrain-dependent operation fuel_filter"
+            ]
+          },
+          "requirement": {
+            "id": "717e54274d19-p4-fuel_filter-replacement-2",
+            "task": "fuel_filter",
+            "taskText": "Replace fuel filter (petrol) Every 25,000 miles",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 25000,
+                "unit": "mi"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2012,
+                "to": 2019
+              },
+              "markets": [
+                "EU"
+              ],
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentTitle": "Peugeot 208 Owners' Guide",
+                "authority": "vehicle_document",
+                "markets": [
+                  "EU"
+                ],
+                "edition": "versions and, in 2018, discontinued the three-d",
+                "page": 4,
+                "table": "Service intervals",
+                "locator": "line \"Replace fuel filter (petrol) Every 25,000 miles\"",
+                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2012–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2012,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-spark_plugs-replacement-3",
+          "sourceId": "src-db226a7bee2c8ad9",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Replace spark plugs Every 12,000 miles/4 years",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 19312,
+          "intervalMiles": 12000,
+          "intervalMonths": 48,
+          "intervalYears": 4,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2012,
+            "to": 2019
+          },
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [
+            "stated in miles: 12000 mi ≈ 19312 km"
+          ],
+          "sourceLocation": {
+            "page": 4,
+            "section": "Service intervals",
+            "locator": "line \"Replace spark plugs Every 12,000 miles/4 years\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "market stated: EU (not IL)",
+              "scope MODEL_YEAR_RANGE is not sufficient for the powertrain-dependent operation spark_plugs"
+            ]
+          },
+          "requirement": {
+            "id": "717e54274d19-p4-spark_plugs-replacement-3",
+            "task": "spark_plugs",
+            "taskText": "Replace spark plugs Every 12,000 miles/4 years",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 12000,
+                "unit": "mi"
+              },
+              "everyMonths": 48,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2012,
+                "to": 2019
+              },
+              "markets": [
+                "EU"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentTitle": "Peugeot 208 Owners' Guide",
+                "authority": "vehicle_document",
+                "markets": [
+                  "EU"
+                ],
+                "edition": "versions and, in 2018, discontinued the three-d",
+                "page": 4,
+                "table": "Service intervals",
+                "locator": "line \"Replace spark plugs Every 12,000 miles/4 years\"",
+                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2012–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2012,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-coolant-inspection-4",
+          "sourceId": "src-db226a7bee2c8ad9",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Check coolant pH 75,000 miles/4 years, then every 12,000/1 year",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 120701,
+          "intervalMiles": 75000,
+          "intervalMonths": 48,
+          "intervalYears": 4,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2012,
+            "to": 2019
+          },
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [
+            "stated in miles: 75000 mi ≈ 120701 km"
+          ],
+          "sourceLocation": {
+            "page": 4,
+            "section": "Service intervals",
+            "locator": "line \"Check coolant pH 75,000 miles/4 years, then every 12,000/1 year\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "market stated: EU (not IL)",
+              "scope MODEL_YEAR_RANGE is not sufficient for the powertrain-dependent operation coolant"
+            ]
+          },
+          "requirement": {
+            "id": "717e54274d19-p4-coolant-inspection-4",
+            "task": "coolant",
+            "taskText": "Check coolant pH 75,000 miles/4 years, then every 12,000/1 year",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 75000,
+                "unit": "mi"
+              },
+              "everyMonths": 48,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2012,
+                "to": 2019
+              },
+              "markets": [
+                "EU"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentTitle": "Peugeot 208 Owners' Guide",
+                "authority": "vehicle_document",
+                "markets": [
+                  "EU"
+                ],
+                "edition": "versions and, in 2018, discontinued the three-d",
+                "page": 4,
+                "table": "Service intervals",
+                "locator": "line \"Check coolant pH 75,000 miles/4 years, then every 12,000/1 year\"",
+                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2012–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2012,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-f7e55eb5ed501f5b:d59c2a8e8d4d-p4-s-periodic_service-other-0",
+          "sourceId": "src-f7e55eb5ed501f5b",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "Zusammenfassung der Intervalle bei der Peugeot 208 Inspektion Alle Fahrzeuge vom Typ Peugeot 208 I und 208 II müssen nach 20.000, 25.000 oder 30.000 Kilometer bzw. spätestens nach 12 Monaten …",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2012,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 4,
+            "locator": "column sentence \"Zusammenfassung der Intervalle bei der Peugeot 208 Inspektion Alle Fahrzeuge vom\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "scope MODEL_YEAR_RANGE is not sufficient for the powertrain-dependent operation periodic_service"
+            ]
+          },
+          "requirement": {
+            "id": "d59c2a8e8d4d-p4-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "Zusammenfassung der Intervalle bei der Peugeot 208 Inspektion Alle Fahrzeuge vom Typ Peugeot 208 I und 208 II müssen nach 20.000, 25.000 oder 30.000 Kilometer bzw. spätestens nach 12 Monaten zur Inspe",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2012,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "d59c2a8e8d4d67c98360275ce97dcf4307ec977a2b68f5edd680f7d26b3e0938",
+                "documentTitle": "https://carwiki.de/peugeot-208-inspektion",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 4,
+                "locator": "column sentence \"Zusammenfassung der Intervalle bei der Peugeot 208 Inspektion Alle Fahrzeuge vom\"",
+                "documentSha256": "d59c2a8e8d4d67c98360275ce97dcf4307ec977a2b68f5edd680f7d26b3e0938"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2012–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2012,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-a036621b24004fc9:6fe4c5ce901c-p6-coolant-replacement-0",
+          "sourceId": "src-a036621b24004fc9",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.0 petrol is 120,000 km or 5 years , which",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 120000,
+          "intervalMiles": null,
+          "intervalMonths": 60,
+          "intervalYears": 5,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.0\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1000 cc — not 1199 cc"
+            ]
+          },
+          "requirement": {
+            "id": "6fe4c5ce901c-p6-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.0 petrol is 120,000 km or 5 years , which",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 120000,
+                "unit": "km"
+              },
+              "everyMonths": 60,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c",
+                "documentTitle": "Peugeot 208 1.0 (Petrol, 68 HP, MT) 2015 - 2016",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.0\"",
+                "documentSha256": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2015–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-a036621b24004fc9:6fe4c5ce901c-p5-s-spark_plugs-replacement-0",
+          "sourceId": "src-a036621b24004fc9",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Recommended spark plugs change interval is 40,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 40000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Recommended spark plugs change interval is 40,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1000 cc — not 1199 cc"
+            ]
+          },
+          "requirement": {
+            "id": "6fe4c5ce901c-p5-s-spark_plugs-replacement-0",
+            "task": "spark_plugs",
+            "taskText": "Recommended spark plugs change interval is 40,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 40000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c",
+                "documentTitle": "Peugeot 208 1.0 (Petrol, 68 HP, MT) 2015 - 2016",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Recommended spark plugs change interval is 40,000 km .\"",
+                "documentSha256": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2015–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-47b8af0d9acb1eab:b60a7338b965-p6-coolant-replacement-0",
+          "sourceId": "src-47b8af0d9acb1eab",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.6 petrol is 120,000 km or 5 years , which",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 120000,
+          "intervalMiles": null,
+          "intervalMonths": 60,
+          "intervalYears": 5,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.6\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 1199 cc"
+            ]
+          },
+          "requirement": {
+            "id": "b60a7338b965-p6-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.6 petrol is 120,000 km or 5 years , which",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 120000,
+                "unit": "km"
+              },
+              "everyMonths": 60,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9",
+                "documentTitle": "Peugeot 208 1.6 (Petrol, 165 HP, MT) 2015 - 2019",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.6\"",
+                "documentSha256": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2015–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-47b8af0d9acb1eab:b60a7338b965-p5-s-spark_plugs-replacement-0",
+          "sourceId": "src-47b8af0d9acb1eab",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Replacement interval for spark plugs is 40,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 40000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Replacement interval for spark plugs is 40,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 1199 cc"
+            ]
+          },
+          "requirement": {
+            "id": "b60a7338b965-p5-s-spark_plugs-replacement-0",
+            "task": "spark_plugs",
+            "taskText": "Replacement interval for spark plugs is 40,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 40000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9",
+                "documentTitle": "Peugeot 208 1.6 (Petrol, 165 HP, MT) 2015 - 2019",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Replacement interval for spark plugs is 40,000 km .\"",
+                "documentSha256": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2015–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-f7bfa35ff52b6bc1:15d218a78e7c-p7-coolant-replacement-0",
+          "sourceId": "src-f7bfa35ff52b6bc1",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2 petrol is 120,000 km or 5 years , which",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 120000,
+          "intervalMiles": null,
+          "intervalMonths": 60,
+          "intervalYears": 5,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 7,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "15d218a78e7c-p7-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2 petrol is 120,000 km or 5 years , which",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 120000,
+                "unit": "km"
+              },
+              "everyMonths": 60,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e",
+                "documentTitle": "Peugeot 208 1.2 110 Hp (Petrol, 110 HP, MT) 2015 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 7,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2\"",
+                "documentSha256": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-f7bfa35ff52b6bc1:15d218a78e7c-p5-s-spark_plugs-replacement-0",
+          "sourceId": "src-f7bfa35ff52b6bc1",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Replacement interval for spark plugs is 40,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 40000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Replacement interval for spark plugs is 40,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "15d218a78e7c-p5-s-spark_plugs-replacement-0",
+            "task": "spark_plugs",
+            "taskText": "Replacement interval for spark plugs is 40,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 40000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e",
+                "documentTitle": "Peugeot 208 1.2 110 Hp (Petrol, 110 HP, MT) 2015 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Replacement interval for spark plugs is 40,000 km .\"",
+                "documentSha256": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-f7bfa35ff52b6bc1:15d218a78e7c-p6-s-timing_belt-replacement-1",
+          "sourceId": "src-f7bfa35ff52b6bc1",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 petrol is 180,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 180000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "208"
+          ],
+          "yearApplicability": {
+            "from": 2015,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 p\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "15d218a78e7c-p6-s-timing_belt-replacement-1",
+            "task": "timing_belt",
+            "taskText": "Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 petrol is 180,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 180000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "peugeot"
+              ],
+              "models": [
+                "208"
+              ],
+              "modelYears": {
+                "from": 2015,
+                "to": 2019
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e",
+                "documentTitle": "Peugeot 208 1.2 110 Hp (Petrol, 110 HP, MT) 2015 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "section": "Timing belt",
+                "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 p\"",
+                "documentSha256": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2015,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        }
+      ],
+      "resolvedAt": "2026-10-03T05:33:13.932Z",
+      "msourceVersion": "msource/1"
+    }
+  }
+}

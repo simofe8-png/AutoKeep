@@ -1,7 +1,6 @@
 import { useRouter } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
-import { VehiclePhoto } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import { AppText, BrandMark, Button, Icon, Screen, spacing, Stack } from '@/ui';
 
@@ -43,7 +42,6 @@ export function WelcomeScreen() {
           {he.onboarding.welcomeTagline}
         </AppText>
       </View>
-      <VehiclePhoto vehicle={{ kind: 'car' }} variant="hero" />
       <Stack gap={spacing.sm} testID="welcome-benefits">
         {he.onboarding.benefits.map((b) => (
           <View key={b} style={styles.benefit}>

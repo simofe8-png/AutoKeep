@@ -1,0 +1,1496 @@
+[
+  {
+    "id": "F01",
+    "label": "Ford Fiesta 2015 1.25 SNJB (regression)",
+    "covers": [
+      "Ford",
+      "petrol NA",
+      "engine code known",
+      "manual"
+    ],
+    "fingerprintKey": "car|ford|fiesta|2015|1242|SNJB|petrol|manual",
+    "status": "READY_PARTIAL",
+    "state": "READY",
+    "candidates": 44,
+    "byAdapter": {
+      "fable": 64,
+      "registry": 0,
+      "knowledge": 0
+    },
+    "acquired": 23,
+    "evidence": 19,
+    "usableEvidence": 2,
+    "outcomes": {
+      "blocked ACCESS_CONTROL_DETECTED": 8,
+      "no_evidence NO_SCHEDULE_SECTION": 13,
+      "failed HTTP_ERROR": 5,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 4,
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 2,
+      "not_applicable SOURCE_NOT_APPLICABLE": 5,
+      "extracted": 1,
+      "duplicate DUPLICATE_CONTENT": 2,
+      "not_attempted": 4
+    },
+    "items": [
+      {
+        "operation": "brake_fluid",
+        "action": "replacement",
+        "intervalKm": 30000,
+        "intervalMonths": 24,
+        "quality": "SUPPORTED",
+        "scope": "ALL_ENGINES",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://carwiki.de/ford-fiesta-inspektion",
+            "official": false,
+            "location": "p6",
+            "text": "Bremsflüssigkeit alle 2 Jahre wechseln (30.000 km)",
+            "documentYears": [
+              1900,
+              2100,
+              "all_models_stated"
+            ],
+            "itemScope": "the source states all engines: \"Die Inspektion am Ford Fiesta | Kosten, Umfang &amp; Intervalle | Serviceplan: Alle Modelle &amp; Motoren | Was wird gem\""
+          }
+        ]
+      },
+      {
+        "operation": "cabin_filter",
+        "action": "replacement",
+        "intervalKm": 30000,
+        "intervalMonths": 24,
+        "quality": "SUPPORTED",
+        "scope": "ALL_ENGINES",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://carwiki.de/ford-fiesta-inspektion",
+            "official": false,
+            "location": "p6",
+            "text": "Pollenfilter alle 2 Jahre wechseln (30.000 km)",
+            "documentYears": [
+              1900,
+              2100,
+              "all_models_stated"
+            ],
+            "itemScope": "the source states all engines: \"Die Inspektion am Ford Fiesta | Kosten, Umfang &amp; Intervalle | Serviceplan: Alle Modelle &amp; Motoren | Was wird gem\""
+          }
+        ]
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "S01",
+    "label": "SEAT Ibiza 2012 1.4 CGG 5-door (regression)",
+    "covers": [
+      "VW group",
+      "petrol NA",
+      "regime code",
+      "body variant"
+    ],
+    "fingerprintKey": "car|seat|ibiza|2012|1390|CGG|petrol|",
+    "status": "CONDITIONAL",
+    "state": "CONDITIONALLY_READY",
+    "candidates": 57,
+    "byAdapter": {
+      "fable": 47,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 31,
+    "evidence": 3,
+    "usableEvidence": 2,
+    "outcomes": {
+      "not_applicable SOURCE_NOT_APPLICABLE": 1,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 13,
+      "failed HTTP_ERROR": 2,
+      "no_evidence NO_SCHEDULE_SECTION": 15,
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 1,
+      "blocked ACCESS_CONTROL_DETECTED": 6,
+      "extracted": 2,
+      "not_attempted": 17
+    },
+    "items": [
+      {
+        "operation": "periodic_service",
+        "action": "other",
+        "intervalKm": 15000,
+        "intervalMonths": 12,
+        "quality": "STRONG",
+        "scope": "ALL_ENGINES",
+        "applicabilityStatus": "CONDITIONALLY_APPLICABLE",
+        "conditions": {
+          "serviceRegimes": [
+            "QG0",
+            "QG2"
+          ]
+        },
+        "independentSources": 1,
+        "officialSources": 1,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my12_w45/en-uk/Ibiza_EN.pdf",
+            "official": true,
+            "location": "p199",
+            "text": "In this case, your vehicle must be serviced after a fixed interval of 1 year / 15 000 km (whatever comes first)",
+            "documentYears": [
+              2012,
+              2012,
+              "official_metadata"
+            ],
+            "itemScope": "the manufacturer's own other for this model year; the item is not engine-qualified"
+          }
+        ]
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "M01",
+    "label": "Ford Focus 2016 1.0 EcoBoost",
+    "covers": [
+      "Ford",
+      "petrol turbo",
+      "engine code unknown"
+    ],
+    "fingerprintKey": "car|ford|focus|2016|998||petrol|",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "state": "INSUFFICIENT_EVIDENCE",
+    "candidates": 29,
+    "byAdapter": {
+      "fable": 15,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 20,
+    "evidence": 24,
+    "usableEvidence": 0,
+    "outcomes": {
+      "not_applicable SOURCE_NOT_APPLICABLE": 6,
+      "no_evidence NO_SCHEDULE_SECTION": 13,
+      "failed HTTP_ERROR": 2,
+      "blocked ACCESS_CONTROL_DETECTED": 4,
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 1,
+      "failed SOURCE_GONE": 1,
+      "duplicate DUPLICATE_CONTENT": 1,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 1
+    },
+    "items": [],
+    "unresolved": []
+  },
+  {
+    "id": "M02",
+    "label": "Volkswagen Golf 2015 1.6 TDI",
+    "covers": [
+      "VW group",
+      "diesel",
+      "flexible/fixed regimes"
+    ],
+    "fingerprintKey": "car|volkswagen|golf|2015|1598||diesel|",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "state": "INSUFFICIENT_EVIDENCE",
+    "candidates": 19,
+    "byAdapter": {
+      "fable": 14,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 11,
+    "evidence": 11,
+    "usableEvidence": 0,
+    "outcomes": {
+      "blocked ACCESS_CONTROL_DETECTED": 5,
+      "failed HTTP_ERROR": 1,
+      "not_applicable SOURCE_NOT_APPLICABLE": 5,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 2,
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 1,
+      "no_evidence NO_SCHEDULE_SECTION": 4,
+      "failed SOURCE_GONE": 1
+    },
+    "items": [],
+    "unresolved": []
+  },
+  {
+    "id": "M03",
+    "label": "Skoda Octavia 2018 1.4 TSI",
+    "covers": [
+      "VW group",
+      "petrol turbo",
+      "Czech manufacturer language"
+    ],
+    "fingerprintKey": "car|skoda|octavia|2018|1395||petrol|",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "state": "INSUFFICIENT_EVIDENCE",
+    "candidates": 38,
+    "byAdapter": {
+      "fable": 15,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 27,
+    "evidence": 13,
+    "usableEvidence": 4,
+    "outcomes": {
+      "failed HTTP_ERROR": 2,
+      "no_evidence NO_SCHEDULE_SECTION": 14,
+      "blocked ACCESS_CONTROL_DETECTED": 8,
+      "failed SOURCE_GONE": 1,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 6,
+      "not_applicable SOURCE_NOT_APPLICABLE": 3,
+      "extracted": 4
+    },
+    "items": [],
+    "unresolved": [
+      {
+        "operation": "timing_belt",
+        "action": "replacement",
+        "intervalKm": 60000,
+        "intervalMonths": null,
+        "quality": "INSUFFICIENT",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
+            "official": false,
+            "location": "p5",
+            "text": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+            "documentYears": [
+              2017,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service",
+            "official": false,
+            "location": "p5",
+            "text": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+            "documentYears": [
+              2017,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service",
+            "official": false,
+            "location": "p5",
+            "text": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+            "documentYears": [
+              2017,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+            "official": false,
+            "location": "p5",
+            "text": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+            "documentYears": [
+              2017,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M04",
+    "label": "Toyota Corolla 2017 1.6",
+    "covers": [
+      "Toyota",
+      "petrol NA",
+      "Japanese manufacturer"
+    ],
+    "fingerprintKey": "car|toyota|corolla|2017|1598||petrol|",
+    "status": "READY_PARTIAL",
+    "state": "READY",
+    "candidates": 17,
+    "byAdapter": {
+      "fable": 11,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 14,
+    "evidence": 37,
+    "usableEvidence": 8,
+    "outcomes": {
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 1,
+      "no_evidence NO_SCHEDULE_SECTION": 7,
+      "not_applicable SOURCE_NOT_APPLICABLE": 5,
+      "extracted": 2,
+      "blocked ACCESS_CONTROL_DETECTED": 2
+    },
+    "items": [
+      {
+        "operation": "air_filter",
+        "action": "replacement",
+        "intervalKm": 30000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/toyota-corolla/v15728-2016/service",
+            "official": false,
+            "location": "p5",
+            "text": "Air filter change interval is 30,000 km .",
+            "documentYears": [
+              2016,
+              2018,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/toyota-corolla/v15727-2016/service",
+            "official": false,
+            "location": "p5",
+            "text": "Replacement interval for the air filter is 30,000 km .",
+            "documentYears": [
+              2016,
+              2018,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "coolant",
+        "action": "replacement",
+        "intervalKm": 100000,
+        "intervalMonths": 60,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/toyota-corolla/v15728-2016/service",
+            "official": false,
+            "location": "p10",
+            "text": "Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla 1.6 petrol is 100,000 km or 5 years , wh",
+            "documentYears": [
+              2016,
+              2018,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/toyota-corolla/v15727-2016/service",
+            "official": false,
+            "location": "p10",
+            "text": "Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla 1.6 petrol is 100,000 km or 5 years , wh",
+            "documentYears": [
+              2016,
+              2018,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "fuel_filter",
+        "action": "replacement",
+        "intervalKm": 80000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/toyota-corolla/v15728-2016/service",
+            "official": false,
+            "location": "p6",
+            "text": "Toyota Corolla 1.6 petrol fuel filter change interval is 80,000 km Replacement interval for the fuel filter in the fuel ",
+            "documentYears": [
+              2016,
+              2018,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/toyota-corolla/v15727-2016/service",
+            "official": false,
+            "location": "p6",
+            "text": "Toyota Corolla 1.6 petrol fuel filter replacement interval: 80,000 km Change interval for the fuel filter in the fuel ta",
+            "documentYears": [
+              2016,
+              2018,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "spark_plugs",
+        "action": "replacement",
+        "intervalKm": 40000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/toyota-corolla/v15728-2016/service",
+            "official": false,
+            "location": "p7",
+            "text": "Replacement interval for spark plugs is 40,000 km .",
+            "documentYears": [
+              2016,
+              2018,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/toyota-corolla/v15727-2016/service",
+            "official": false,
+            "location": "p7",
+            "text": "Recommended spark plugs change interval is 40,000 km .",
+            "documentYears": [
+              2016,
+              2018,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "M05",
+    "label": "Hyundai i30 2014 1.6",
+    "covers": [
+      "Hyundai",
+      "petrol NA",
+      "Korean manufacturer"
+    ],
+    "fingerprintKey": "car|hyundai|i30|2014|1591||petrol|",
+    "status": "READY_PARTIAL",
+    "state": "READY",
+    "candidates": 23,
+    "byAdapter": {
+      "fable": 16,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 16,
+    "evidence": 40,
+    "usableEvidence": 12,
+    "outcomes": {
+      "not_applicable SOURCE_NOT_APPLICABLE": 5,
+      "failed HTTP_ERROR": 3,
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 1,
+      "blocked ACCESS_CONTROL_DETECTED": 3,
+      "extracted": 3,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 2,
+      "no_evidence NO_SCHEDULE_SECTION": 6
+    },
+    "items": [
+      {
+        "operation": "air_filter",
+        "action": "replacement",
+        "intervalKm": 45000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v16890-2013/service",
+            "official": false,
+            "location": "p5",
+            "text": "Air filter change interval is 45,000 km .",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v4860-2013/service",
+            "official": false,
+            "location": "p5",
+            "text": "Air filter change interval is 45,000 km .",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v4861-2013/service",
+            "official": false,
+            "location": "p5",
+            "text": "Replacement interval for the air filter is 45,000 km .",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "coolant",
+        "action": "replacement",
+        "intervalKm": 120000,
+        "intervalMonths": 96,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v16890-2013/service",
+            "official": false,
+            "location": "p10",
+            "text": "Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6 petrol is 120,000 km or 8 years , which",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v4860-2013/service",
+            "official": false,
+            "location": "p10",
+            "text": "Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6 petrol is 120,000 km or 8 years , which",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v4861-2013/service",
+            "official": false,
+            "location": "p10",
+            "text": "Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6 petrol is 120,000 km or 8 years , which",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "fuel_filter",
+        "action": "replacement",
+        "intervalKm": 60000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v16890-2013/service",
+            "official": false,
+            "location": "p6",
+            "text": "Hyundai i30 1.6 petrol fuel filter change interval is 60,000 km",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v4860-2013/service",
+            "official": false,
+            "location": "p6",
+            "text": "Hyundai i30 1.6 petrol fuel filter change interval is 60,000 km",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v4861-2013/service",
+            "official": false,
+            "location": "p6",
+            "text": "Hyundai i30 1.6 petrol fuel filter replacement interval: 60,000 km",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      }
+    ],
+    "unresolved": [
+      {
+        "operation": "spark_plugs",
+        "action": "replacement",
+        "intervalKm": null,
+        "intervalMonths": null,
+        "quality": "CONFLICTING",
+        "scope": null,
+        "applicabilityStatus": null,
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [
+          [
+            60000,
+            null
+          ],
+          [
+            75000,
+            null
+          ]
+        ],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v16890-2013/service",
+            "official": false,
+            "location": "p7",
+            "text": "Replacement interval for spark plugs is 60,000 km .",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v4860-2013/service",
+            "official": false,
+            "location": "p7",
+            "text": "Replacement interval for spark plugs is 75,000 km .",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Hyundai-i30/v4861-2013/service",
+            "official": false,
+            "location": "p7",
+            "text": "Recommended spark plugs change interval is 75,000 km .",
+            "documentYears": [
+              2013,
+              2015,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M06",
+    "label": "Kia Picanto 2018 1.0",
+    "covers": [
+      "Kia",
+      "petrol NA",
+      "small displacement"
+    ],
+    "fingerprintKey": "car|kia|picanto|2018|998||petrol|",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "state": "INSUFFICIENT_EVIDENCE",
+    "candidates": 23,
+    "byAdapter": {
+      "fable": 13,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 13,
+    "evidence": 10,
+    "usableEvidence": 0,
+    "outcomes": {
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 6,
+      "no_evidence NO_SCHEDULE_SECTION": 10,
+      "failed HTTP_ERROR": 1,
+      "blocked ACCESS_CONTROL_DETECTED": 2,
+      "failed SOURCE_GONE": 1,
+      "not_applicable SOURCE_NOT_APPLICABLE": 3
+    },
+    "items": [],
+    "unresolved": []
+  },
+  {
+    "id": "M07",
+    "label": "Renault Megane 2016 1.5 dCi",
+    "covers": [
+      "Renault",
+      "diesel",
+      "French manufacturer"
+    ],
+    "fingerprintKey": "car|renault|megane|2016|1461||diesel|",
+    "status": "READY_PARTIAL",
+    "state": "READY",
+    "candidates": 17,
+    "byAdapter": {
+      "fable": 13,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 10,
+    "evidence": 3,
+    "usableEvidence": 3,
+    "outcomes": {
+      "blocked ACCESS_BLOCKED": 4,
+      "no_evidence NO_SCHEDULE_SECTION": 7,
+      "extracted": 1,
+      "failed HTTP_ERROR": 1,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 2,
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 1,
+      "blocked ACCESS_CONTROL_DETECTED": 1
+    },
+    "items": [
+      {
+        "operation": "air_filter",
+        "action": "replacement",
+        "intervalKm": 10000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+            "official": false,
+            "location": "p5",
+            "text": "Replacement interval for the air filter is 10,000 km .",
+            "documentYears": [
+              2016,
+              2020,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "coolant",
+        "action": "replacement",
+        "intervalKm": 90000,
+        "intervalMonths": 60,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+            "official": false,
+            "location": "p10",
+            "text": "Engine coolant (antifreeze) recommended replacement interval for Renault Megane 1.5 diesel is 90,000 km or 5 years , whi",
+            "documentYears": [
+              2016,
+              2020,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "timing_belt",
+        "action": "replacement",
+        "intervalKm": 60000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+            "official": false,
+            "location": "p8",
+            "text": "Manufacturers recommended timing belt replacement interval for Renault Megane 1.5 diesel is 60,000 km .",
+            "documentYears": [
+              2016,
+              2020,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "M08",
+    "label": "Dacia Duster 2017 1.6",
+    "covers": [
+      "Dacia",
+      "petrol NA"
+    ],
+    "fingerprintKey": "car|dacia|duster|2017|1598||petrol|",
+    "status": "READY_PARTIAL",
+    "state": "READY",
+    "candidates": 26,
+    "byAdapter": {
+      "fable": 13,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 20,
+    "evidence": 30,
+    "usableEvidence": 7,
+    "outcomes": {
+      "failed SOURCE_GONE": 2,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 5,
+      "no_evidence NO_SCHEDULE_SECTION": 10,
+      "extracted": 1,
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 2,
+      "failed HTTP_ERROR": 1,
+      "failed MALFORMED_DOCUMENT": 1,
+      "not_applicable SOURCE_NOT_APPLICABLE": 4
+    },
+    "items": [
+      {
+        "operation": "air_filter",
+        "action": "replacement",
+        "intervalKm": 15000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Dacia-Duster/v14465-2017/service",
+            "official": false,
+            "location": "p5",
+            "text": "Replacement interval for the air filter is 15,000 km .",
+            "documentYears": [
+              2017,
+              2021,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "cabin_filter",
+        "action": "replacement",
+        "intervalKm": 15000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Dacia-Duster/v14465-2017/service",
+            "official": false,
+            "location": "p12",
+            "text": "Cabin air filter change interval is 15,000 km .",
+            "documentYears": [
+              2017,
+              2021,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "coolant",
+        "action": "replacement",
+        "intervalKm": 90000,
+        "intervalMonths": 60,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Dacia-Duster/v14465-2017/service",
+            "official": false,
+            "location": "p10",
+            "text": "Engine coolant (antifreeze) recommended replacement interval for Dacia Duster 1.6 petrol is 90,000 km or 5 years , which",
+            "documentYears": [
+              2017,
+              2021,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "fuel_filter",
+        "action": "replacement",
+        "intervalKm": 100000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Dacia-Duster/v14465-2017/service",
+            "official": false,
+            "location": "p6",
+            "text": "Dacia Duster 1.6 petrol fuel filter replacement interval: 100,000 km Change interval for the fuel filter in the fuel tan",
+            "documentYears": [
+              2017,
+              2021,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "manual_transmission_oil",
+        "action": "replacement",
+        "intervalKm": 45000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Dacia-Duster/v14465-2017/service",
+            "official": false,
+            "location": "p11",
+            "text": "Dacia Duster manual gearbox oil change interval is 45,000 km .",
+            "documentYears": [
+              2017,
+              2021,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "spark_plugs",
+        "action": "replacement",
+        "intervalKm": 30000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Dacia-Duster/v14465-2017/service",
+            "official": false,
+            "location": "p7",
+            "text": "Recommended spark plugs change interval is 30,000 km .",
+            "documentYears": [
+              2017,
+              2021,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "timing_belt",
+        "action": "replacement",
+        "intervalKm": 60000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Dacia-Duster/v14465-2017/service",
+            "official": false,
+            "location": "p8",
+            "text": "Manufacturers recommended timing belt replacement interval for Dacia Duster 1.6 petrol is 60,000 km .",
+            "documentYears": [
+              2017,
+              2021,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "M09",
+    "label": "Peugeot 208 2016 1.2 PureTech",
+    "covers": [
+      "Peugeot",
+      "petrol (3-cyl)"
+    ],
+    "fingerprintKey": "car|peugeot|208|2016|1199||petrol|",
+    "status": "READY_PARTIAL",
+    "state": "READY",
+    "candidates": 30,
+    "byAdapter": {
+      "fable": 15,
+      "registry": 0,
+      "knowledge": 1
+    },
+    "acquired": 24,
+    "evidence": 16,
+    "usableEvidence": 7,
+    "outcomes": {
+      "no_evidence NO_SCHEDULE_SECTION": 17,
+      "failed HTTP_ERROR": 1,
+      "blocked EXTRACTION_BLOCKED": 1,
+      "extracted": 3,
+      "blocked ACCESS_CONTROL_DETECTED": 4,
+      "not_applicable SOURCE_NOT_APPLICABLE": 3,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 1
+    },
+    "items": [
+      {
+        "operation": "brake_fluid",
+        "action": "replacement",
+        "intervalKm": null,
+        "intervalMonths": 24,
+        "quality": "SUPPORTED",
+        "scope": "MODEL_YEAR_RANGE",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.whocanfixmycar.com/advice/peugeot-208-owners-guide",
+            "official": false,
+            "location": "p4",
+            "text": "Replace brake fluid Every 2 years",
+            "documentYears": [
+              2012,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "document years 2012–2019"
+          }
+        ]
+      },
+      {
+        "operation": "coolant",
+        "action": "replacement",
+        "intervalKm": 120000,
+        "intervalMonths": 60,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+            "official": false,
+            "location": "p7",
+            "text": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2 petrol is 120,000 km or 5 years , which",
+            "documentYears": [
+              2015,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+            "official": false,
+            "location": "p7",
+            "text": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2 petrol is 120,000 km or 5 years , which",
+            "documentYears": [
+              2015,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "spark_plugs",
+        "action": "replacement",
+        "intervalKm": 40000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+            "official": false,
+            "location": "p5",
+            "text": "Recommended spark plugs change interval is 40,000 km .",
+            "documentYears": [
+              2015,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+            "official": false,
+            "location": "p5",
+            "text": "Replacement interval for spark plugs is 40,000 km .",
+            "documentYears": [
+              2015,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      },
+      {
+        "operation": "timing_belt",
+        "action": "replacement",
+        "intervalKm": 180000,
+        "intervalMonths": null,
+        "quality": "SUPPORTED",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Peugeot-208/v20433-2015/service",
+            "official": false,
+            "location": "p6",
+            "text": "Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 petrol is 180,000 km .",
+            "documentYears": [
+              2015,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Peugeot-208/v20432-2015/service",
+            "official": false,
+            "location": "p6",
+            "text": "Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 petrol is 180,000 km .",
+            "documentYears": [
+              2015,
+              2019,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      }
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "M10",
+    "label": "Citroen C3 2017 1.2 PureTech",
+    "covers": [
+      "Citroen",
+      "petrol"
+    ],
+    "fingerprintKey": "car|citroen|c3|2017|1199||petrol|",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "state": "INSUFFICIENT_EVIDENCE",
+    "candidates": 36,
+    "byAdapter": {
+      "fable": 15,
+      "registry": 0,
+      "knowledge": 2
+    },
+    "acquired": 29,
+    "evidence": 3,
+    "usableEvidence": 2,
+    "outcomes": {
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 9,
+      "no_evidence NO_SCHEDULE_SECTION": 17,
+      "failed HTTP_ERROR": 3,
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 2,
+      "blocked ACCESS_CONTROL_DETECTED": 1,
+      "not_applicable SOURCE_NOT_APPLICABLE": 1,
+      "failed SOURCE_GONE": 1,
+      "extracted": 2
+    },
+    "items": [],
+    "unresolved": [
+      {
+        "operation": "timing_belt",
+        "action": "replacement",
+        "intervalKm": 180000,
+        "intervalMonths": null,
+        "quality": "INSUFFICIENT",
+        "scope": "ENGINE_FAMILY",
+        "applicabilityStatus": "APPLICABLE",
+        "conditions": null,
+        "independentSources": 1,
+        "officialSources": 0,
+        "conflicts": [],
+        "sources": [
+          {
+            "url": "https://www.auto-abc.eu/Citroen-C3/v14446-2016/service",
+            "official": false,
+            "location": "p5",
+            "text": "Manufacturers recommended timing belt replacement interval for Citroen C3 1.2 petrol is 180,000 km .",
+            "documentYears": [
+              2016,
+              2020,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          },
+          {
+            "url": "https://www.auto-abc.eu/Citroen-C3/v14447-2016/service",
+            "official": false,
+            "location": "p5",
+            "text": "Manufacturers recommended timing belt replacement interval for Citroen C3 1.2 petrol is 180,000 km .",
+            "documentYears": [
+              2016,
+              2020,
+              "document_text"
+            ],
+            "itemScope": "the document states the engine family / displacement"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M11",
+    "label": "Mazda 3 2015 2.0",
+    "covers": [
+      "Mazda",
+      "petrol NA",
+      "numeric model name"
+    ],
+    "fingerprintKey": "car|mazda|3|2015|1998||petrol|",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "state": "INSUFFICIENT_EVIDENCE",
+    "candidates": 15,
+    "byAdapter": {
+      "fable": 11,
+      "registry": 0,
+      "knowledge": 2
+    },
+    "acquired": 8,
+    "evidence": 17,
+    "usableEvidence": 0,
+    "outcomes": {
+      "no_evidence NO_SCHEDULE_SECTION": 3,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 3,
+      "not_applicable SOURCE_NOT_APPLICABLE": 2,
+      "blocked ACCESS_CONTROL_DETECTED": 5,
+      "failed HTTP_ERROR": 1,
+      "failed SOURCE_GONE": 1
+    },
+    "items": [],
+    "unresolved": []
+  },
+  {
+    "id": "M12",
+    "label": "Honda Civic 2017 1.5 turbo",
+    "covers": [
+      "Honda",
+      "petrol turbo",
+      "maintenance-minder regime"
+    ],
+    "fingerprintKey": "car|honda|civic|2017|1498||petrol|",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "state": "INSUFFICIENT_EVIDENCE",
+    "candidates": 27,
+    "byAdapter": {
+      "fable": 14,
+      "registry": 0,
+      "knowledge": 2
+    },
+    "acquired": 17,
+    "evidence": 24,
+    "usableEvidence": 1,
+    "outcomes": {
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 2,
+      "no_evidence NO_SCHEDULE_SECTION": 12,
+      "failed SOURCE_GONE": 2,
+      "blocked ACCESS_CONTROL_DETECTED": 5,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 1,
+      "not_applicable SOURCE_NOT_APPLICABLE": 3,
+      "extracted": 1,
+      "failed TOO_LARGE": 1
+    },
+    "items": [],
+    "unresolved": []
+  },
+  {
+    "id": "M13",
+    "label": "Nissan Qashqai 2016 1.2 DIG-T",
+    "covers": [
+      "Nissan",
+      "petrol turbo"
+    ],
+    "fingerprintKey": "car|nissan|qashqai|2016|1197||petrol|",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "state": "INSUFFICIENT_EVIDENCE",
+    "candidates": 30,
+    "byAdapter": {
+      "fable": 14,
+      "registry": 0,
+      "knowledge": 2
+    },
+    "acquired": 24,
+    "evidence": 49,
+    "usableEvidence": 0,
+    "outcomes": {
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 1,
+      "not_applicable SOURCE_NOT_APPLICABLE": 5,
+      "failed HTTP_ERROR": 1,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 6,
+      "blocked ACCESS_CONTROL_DETECTED": 2,
+      "no_evidence NO_SCHEDULE_SECTION": 13,
+      "failed SOURCE_GONE": 2
+    },
+    "items": [],
+    "unresolved": []
+  },
+  {
+    "id": "M14",
+    "label": "BMW 318i 2017 1.5",
+    "covers": [
+      "BMW",
+      "petrol turbo",
+      "condition-based service"
+    ],
+    "fingerprintKey": "car|bmw|318i|2017|1499||petrol|",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "state": "INSUFFICIENT_EVIDENCE",
+    "candidates": 18,
+    "byAdapter": {
+      "fable": 15,
+      "registry": 0,
+      "knowledge": 2
+    },
+    "acquired": 6,
+    "evidence": 5,
+    "usableEvidence": 0,
+    "outcomes": {
+      "failed SOURCE_GONE": 5,
+      "no_evidence NO_REQUIREMENTS_EXTRACTED": 3,
+      "not_applicable SOURCE_NOT_APPLICABLE": 2,
+      "blocked ACCESS_CONTROL_DETECTED": 5,
+      "failed HTTP_ERROR": 1,
+      "blocked ACCESS_TEMPORARILY_UNREACHABLE": 1,
+      "no_evidence NO_SCHEDULE_SECTION": 1
+    },
+    "items": [],
+    "unresolved": []
+  }
+]

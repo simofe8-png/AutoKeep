@@ -238,6 +238,7 @@ export function PrototypeDataProvider({
         })),
       // Prototype documents have no stored file.
       getOriginal: async () => null,
+      getRegistryRecord: async () => null,
       openOriginal: async () => false,
       // Prototype: no stored photos (the illustration is shown).
       vehiclePhotos: {},
@@ -248,6 +249,7 @@ export function PrototypeDataProvider({
       // Prototype: the evidence-based plan is not simulated.
       setMaintenanceAnswers: () => undefined,
       registerMaintenanceBooklet: () => undefined,
+      retryMaintenanceDiscovery: () => undefined,
       network,
       setNetwork,
       account,

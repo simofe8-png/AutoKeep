@@ -1,7 +1,9 @@
+import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 /**
  * UI view-models consumed by screens. They are shaped for display, not persistence. The domain
  * model (M04) and real adapters (M13) map into these types so the approved UI does not change.
  */
+import type { RegistryFact } from '@/providers/registry/vehicleRecord';
 import type { VerificationState } from '@/ui';
 
 export type ActionType = 'inspection' | 'replacement' | 'other';
@@ -194,11 +196,8 @@ export interface PlanItemVM {
 }
 
 export type PlanRequestVM =
-  | { kind: 'upload_booklet'; hint: 'seat_maintenance_programme' | 'ford_service_plan' | 'generic' }
-  | {
-      kind: 'service_regime';
-      hint: 'seat_maintenance_programme' | 'ford_service_plan' | 'generic';
-    }
+  | { kind: 'upload_booklet'; hint: 'service_plan_code' | 'generic' }
+  | { kind: 'service_regime'; hint: 'service_plan_code' | 'generic'; codes: string[] }
   | { kind: 'usage' }
   | { kind: 'engine_code' }
   | { kind: 'in_service_date' }
@@ -234,6 +233,13 @@ export interface MaintenancePlanVM {
   requests: PlanRequestVM[];
   /** A maintenance booklet was uploaded for this vehicle (awaiting professional review). */
   bookletUploaded: boolean;
+  /** M-SOURCE: automatic schedule discovery status (null = never run on this device). */
+  discovery?: DiscoveryStatus | null;
+  /**
+   * Identity facts as the Ministry of Transport record states them (make, model, year, engine
+   * code, displacement, fuel); null when the vehicle was not identified through the registry.
+   */
+  verifiedIdentity?: RegistryFact[] | null;
 }
 
 export interface VehicleDataBundle {

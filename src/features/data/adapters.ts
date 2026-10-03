@@ -22,12 +22,13 @@ import {
   requirementFromClaim,
 } from '@/domain';
 import type { AlertCandidate } from '@/engine/alerts';
-import { knownRequirements } from '@/features/maintenance/knowledge/knownSources';
+import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 import { buildMaintenancePlan } from '@/features/maintenance/knowledge/plan';
-import { toPlanVM } from '@/features/maintenance/knowledge/planVM';
+import { toPlanVM, verifiedIdentity } from '@/features/maintenance/knowledge/planVM';
 import { triangulatedRequirements } from '@/features/maintenance/knowledge/triangulated';
 import { syntheticDemoRequirements } from '@/features/maintenance/knowledge/syntheticDemo';
 import type { MaintenanceProfile, StoredKnowledgeDocument } from '@/persistence';
+import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import type { EngineResult, ItemDue } from '@/engine/maintenance';
 import { formatDate, formatKm } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
@@ -70,6 +71,13 @@ export interface VehicleRecords {
   maintenanceProfile?: MaintenanceProfile | null;
   knowledgeDocuments?: StoredKnowledgeDocument[];
   claims?: CandidateClaim[];
+  /** M-SOURCE (local-only, migration v10): latest discovery status + resolved requirements. */
+  msource?: {
+    status: DiscoveryStatus | null;
+    requirements: MaintenanceRequirement[];
+    /** The Ministry record the vehicle was identified by (null when entered by hand). */
+    registry?: VehicleRegistryRecord | null;
+  };
 }
 
 // ---------- T103: vehicle / home ----------
@@ -420,10 +428,14 @@ export function vehicleRequirements(rec: VehicleRecords): MaintenanceRequirement
     return doc ? [requirementFromClaim(c, doc)] : [];
   });
   return [
-    ...knownRequirements(),
+    // (The two acceptance vehicles' research claims, knownSources.ts, are test fixtures only:
+    // production requirements never depend on specific vehicles.)
     ...triangulatedRequirements(),
     ...syntheticDemoRequirements(),
     ...own,
+    // M-SOURCE: only EXACT / STRONG / SUPPORTED items ever become requirements; the engine
+    // re-checks their applicability against this vehicle's facts on every read.
+    ...(rec.msource?.requirements ?? []),
   ];
 }
 
@@ -457,7 +469,12 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
     readings: rec.readings.map((r) => ({ date: r.measuredAt, km: r.valueKm })),
     today,
   });
-  return toPlanVM(plan, (rec.knowledgeDocuments ?? []).length > 0);
+  return toPlanVM(
+    plan,
+    (rec.knowledgeDocuments ?? []).length > 0,
+    rec.msource?.status ?? null,
+    verifiedIdentity(rec.msource?.registry),
+  );
 }
 
 // ---------- the full bundle ----------

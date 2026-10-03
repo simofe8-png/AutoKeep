@@ -8,6 +8,8 @@ import {
 } from '@/discovery/registry';
 import type { IdGenerator } from '@/domain';
 import { supabaseAccountBackend, type AccountBackend } from '@/features/account/backend';
+import { deviceMSourceHost } from '@/features/maintenance/msource/deviceHost';
+import type { MSourceHost } from '@/features/maintenance/msource/service';
 import { httpRetriever } from '@/features/sources/httpRetriever';
 import type { SourceServices } from '@/features/sources/sourceService';
 import type { OnboardingServices } from '@/features/onboarding/services';
@@ -54,6 +56,8 @@ export type DataSourceConfig =
       network?: NetworkMonitor | null;
       /** Official-source discovery + schedule reading (absent: none configured). */
       sources?: Omit<SourceServices, 'uriFor'> | null;
+      /** M-SOURCE automatic maintenance-schedule discovery (absent: not run in this build). */
+      msource?: MSourceHost | null;
       /** Approved vehicle model reference images (absent/null: no image search in this build). */
       referenceImages?: ReferenceImageCatalog | null;
     };
@@ -112,6 +116,7 @@ const production: DataSourceConfig = {
     curated: KNOWN_OFFICIAL_SOURCES,
   },
   referenceImages: referenceCatalog(),
+  msource: deviceMSourceHost(),
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.

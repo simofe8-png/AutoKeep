@@ -2,12 +2,15 @@ import { parseRegistration, type RegistrationNumber } from '@/domain';
 import { formatPlateInput } from '@/features/onboarding/plateInput';
 
 import { DataGovIlRegistry, PACKAGES, type HttpGet } from '../dataGovIl';
+import { displayValue, factText } from '@/features/vehicles/RegistryFacts';
+
 import {
   agreedModelFacts,
   factsFrom,
   MODEL_FIELDS,
   normalizeDate,
   PLATE_FIELDS,
+  TWO_WHEELER_FIELDS,
   type RegistryFact,
 } from '../vehicleRecord';
 
@@ -166,7 +169,7 @@ describe('normalization', () => {
     expect(f).toMatchObject({ airConditioning: true, alloyWheels: true, electricWindows: 2 });
   });
 
-  it('environment: every available value is kept with its unit', () => {
+  it('environment: every available value is kept — with NO assumed unit', () => {
     const env = factsFrom(catalogRow, MODEL_FIELDS).filter((x) => x.group === 'environment');
     expect(byKey(env)).toEqual({
       greenIndex: 298,
@@ -176,7 +179,30 @@ describe('normalization', () => {
       hc: 0.048,
       co: 0.135,
     });
-    expect(env.find((x) => x.key === 'co2')?.unit).toBe('גרם/ק״מ');
+    // The Ministry schema states no units: none is attached anywhere.
+    expect(factsFrom(catalogRow, MODEL_FIELDS).every((x) => x.unit === undefined)).toBe(true);
+  });
+
+  it('two-wheelers keep the engine serial number (identification), shown only partially', () => {
+    const facts = factsFrom(
+      { misgeret: 'MLHPC0000M0000001', mispar_manoa: 'PC45E-1234567', hespek: 35 },
+      TWO_WHEELER_FIELDS,
+    );
+    const engine = facts.find((x) => x.key === 'engineNumber')!;
+    expect(engine.value).toBe('PC45E-1234567');
+    expect(factText(engine)).toBe('••••4567');
+    expect(factText(facts.find((x) => x.key === 'vin')!)).toBe('••••0001');
+    // Displayed left-to-right inside the RTL layout (Android needs the marks in the text).
+    expect(displayValue(facts.find((x) => x.key === 'vin')!)).toBe('‎••••0001‎');
+    expect(
+      displayValue({ key: 'tireFront', group: 'tires', kind: 'text', value: '215/45 R16' }),
+    ).toBe('‎215/45 R16‎');
+    expect(displayValue({ key: 'color', group: 'identity', kind: 'text', value: 'שנהב לבן' })).toBe(
+      'שנהב לבן',
+    );
+    // `hespek` is kept as published, with no unit assumed.
+    expect(facts.find((x) => x.key === 'power')).toMatchObject({ value: 35 });
+    expect(facts.find((x) => x.key === 'power')?.unit).toBeUndefined();
   });
 
   it('"no towing hook" and "unknown code" are not values', () => {
@@ -237,7 +263,13 @@ describe('Ministry lookup (data.gov.il)', () => {
     if (r.status !== 'found') return;
     expect(r.candidates).toHaveLength(1);
     const c = r.candidates[0];
-    expect(c).toMatchObject({ modelCode: '6J52E4', color: 'שחור מטלי', year: 2012 });
+    // The catalog's plain manufacturer name replaces "סיאט ספרד" (name + country).
+    expect(c).toMatchObject({
+      manufacturer: 'סיאט',
+      modelCode: '6J52E4',
+      color: 'שחור מטלי',
+      year: 2012,
+    });
     const f = byKey(c.record!.facts);
     expect(f).toMatchObject({
       tireFrontLoad: '84',

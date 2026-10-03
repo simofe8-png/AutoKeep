@@ -1,4 +1,5 @@
 import {
+  type MaintenanceRequirement,
   addDays,
   asId,
   confirmServiceDraft,
@@ -63,8 +64,14 @@ import {
   type SqlDatabase,
   DiscoveryMissRepository,
   MaintenanceKnowledgeRepository,
+  MSourceRepository,
   VehicleRegistryRecordRepository,
 } from '@/persistence';
+import { buildFingerprint, fingerprintKey } from '@/discovery/maintenance/msource/fingerprint';
+import type { CachedSource, MSourceRun } from '@/discovery/maintenance/msource/run';
+import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
+import { MSOURCE_VERSION } from '@/discovery/maintenance/msource/types';
+import type { DiscoveryInput } from '@/features/maintenance/msource/service';
 
 import type { SourcePlan } from '@/features/sources/sourceService';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
@@ -223,6 +230,11 @@ export class LocalStore {
       maintenanceProfile: await new MaintenanceKnowledgeRepository(this.db).profile(id),
       knowledgeDocuments: await new MaintenanceKnowledgeRepository(this.db).documents(id),
       claims: await new MaintenanceKnowledgeRepository(this.db).claims(id),
+      msource: {
+        status: await new MSourceRepository(this.db).latestStatus(id),
+        requirements: (await new MSourceRepository(this.db).schedule(id))?.requirements ?? [],
+        registry: await new VehicleRegistryRecordRepository(this.db).get(id).catch(() => null),
+      },
     };
   }
 
@@ -977,6 +989,119 @@ export class LocalStore {
       this.clock.today(),
     );
     await repo.addDocument({ ...k, vehicleId: doc.vehicleId }, doc.id, this.clock.now());
+  }
+
+  /** The Ministry record saved at onboarding (vehicle-scoped). */
+  async registryRecord(vehicleId: string): Promise<VehicleRegistryRecord | null> {
+    return new VehicleRegistryRecordRepository(this.db).get(vehicleId as VehicleId);
+  }
+
+  // ---------- M-SOURCE (ADR-0020; local-only, migration v10) ----------
+
+  /**
+   * What a discovery run needs for one vehicle: its confirmed identity (no plate, no VIN), the
+   * owner's regime answer, the maintenance documents the owner uploaded (the same pipeline reads
+   * them) and the structured results this device already cached for the vehicle class.
+   */
+  async msourceLoad(vehicleId: string): Promise<DiscoveryInput | null> {
+    const vehicle = await new VehicleRepository(this.db).get(vehicleId as VehicleId);
+    if (!vehicle || vehicle.lifecycle === 'archived') return null;
+    const k = new MaintenanceKnowledgeRepository(this.db);
+    const profile = await k.profile(vehicle.id);
+    const uploads: DiscoveryInput['uploads'] = [];
+    if (this.files) {
+      for (const kd of await k.documents(vehicle.id)) {
+        if (!kd.documentId) continue;
+        const doc = await new DocumentRepository(this.db).get(
+          vehicle.id,
+          kd.documentId as VehicleDocument['id'],
+        );
+        if (!doc) continue;
+        const bytes = await this.files.readBytes(doc.original.storageKey).catch(() => null);
+        if (bytes) uploads.push({ id: doc.id, name: doc.title, bytes });
+      }
+    }
+    const input = {
+      kind: vehicle.type,
+      manufacturer: vehicle.identity.manufacturer,
+      model: vehicle.identity.model,
+      year: vehicle.identity.year,
+      engine: vehicle.identity.engine ?? null,
+      engineCode: vehicle.identity.engineCode ?? null,
+      fuel: vehicle.identity.fuel ?? null,
+      // Body variant as the Ministry record states it (never derived from the model name).
+      body: await new VehicleRegistryRecordRepository(this.db)
+        .get(vehicle.id)
+        .then((r) => {
+          const v = r?.facts.find((f) => f.key === 'body')?.value;
+          return typeof v === 'string' ? v : null;
+        })
+        .catch(() => null),
+    };
+    const fp = buildFingerprint(input);
+    const cached = fp.ok
+      ? await new MSourceRepository(this.db).cachedSources(fingerprintKey(fp.fingerprint))
+      : [];
+    return {
+      vehicleId: vehicle.id,
+      input,
+      serviceRegime: profile?.serviceRegime ?? null,
+      uploads,
+      cached,
+    };
+  }
+
+  async msourceProgress(
+    vehicleId: string,
+    runId: string,
+    classKey: string,
+    status: DiscoveryStatus,
+  ): Promise<void> {
+    await new MSourceRepository(this.db).saveStatus(
+      vehicleId as VehicleId,
+      runId,
+      classKey,
+      MSOURCE_VERSION,
+      status,
+      this.clock.now(),
+    );
+  }
+
+  /** Persists a finished run atomically: trace, status, resolved schedule, class cache. */
+  async msourceComplete(
+    vehicleId: string,
+    run: MSourceRun,
+    status: DiscoveryStatus,
+    requirements: MaintenanceRequirement[],
+    cache: { classKey: string; url: string; value: CachedSource }[],
+  ): Promise<void> {
+    const now = this.clock.now();
+    await this.db.transaction(async (tx) => {
+      const repo = new MSourceRepository(tx);
+      await repo.saveStatus(
+        vehicleId as VehicleId,
+        run.runId,
+        run.fingerprintKey,
+        MSOURCE_VERSION,
+        status,
+        now,
+      );
+      await repo.saveRun(vehicleId as VehicleId, run, status, now);
+      if (run.schedule) {
+        await repo.saveSchedule(
+          vehicleId as VehicleId,
+          {
+            runId: run.runId,
+            fingerprintKey: run.fingerprintKey,
+            schedule: run.schedule,
+            requirements,
+            resolvedAt: run.schedule.resolvedAt,
+          },
+          now,
+        );
+      }
+      for (const c of cache) await repo.cacheSource(c.classKey, c.url, c.value);
+    });
   }
 
   async openOriginal(vehicleId: string, documentId: string): Promise<boolean> {

@@ -1,6 +1,6 @@
 # AutoKeep — Current Status (resume pointer)
 
-_Last updated: 2026-09-30_
+_Last updated: 2026-10-03_
 
 ## Position
 
@@ -32,7 +32,82 @@ _Last updated: 2026-09-30_
   - Coverage unchanged: 0.77% document ceiling (SYM, owner decision only), 0% Israeli authority, 0/12 blind.
   - §24 fallback: owner-approved Hebrew message + direct private upload when no reliable schedule; partial schedules labelled; discovery misses recorded per vehicle class (local SQLite v8 `discovery_misses`, not synced). B1–B12: all fallback + upload, no full or partial schedule.
 - **Source-agnostic maintenance discovery (2026-09-30): 7/12 blind vehicles get a usable schedule (3 COMPLETE, 4 PARTIAL); 5 fallback.** `docs/maintenance/SOURCE_AGNOSTIC_RESULTS_2026-09-30.md`. Research of any credible source → deterministic grounding (quote + interval values re-found on the page) → triangulation (evidence level T, confidence high/medium) → engine (market, model years, conflicts) → plan with core-item completeness; no service interval → §24 fallback.
-- **Next action:** stop for owner review. Pending owner decisions:
+- **M-SOURCE V1 runtime discovery engine (2026-10-02): IMPLEMENTED, not committed.** ADR-0020;
+  results `docs/maintenance/MSOURCE_V1_RESULTS_2026-10-02.md`.
+  - The runner has explicit stages and a per-operation access engine (DISCOVERY / FETCH /
+    EXTRACTION / STORAGE; robots-based positive evidence for FETCH).
+  - Acquisition is SSRF-safe, PDFs are parsed in an isolated process, and extraction is
+    column-aware and multilingual.
+  - Vehicle matching gives EXACT…NOT_APPLICABLE; resolution is support-based and never averages
+    conflicting values.
+  - Persistence is SQLite v10 (local only).
+  - Discovery starts automatically once a vehicle is added or confirmed. Uploads go through the
+    same pipeline, and there is a retry. The maintenance-plan card shows the Hebrew states.
+  - Fable is used as recorded research on the worker host; its output is never evidence.
+  - **Live results: Fiesta SNJB — INSUFFICIENT_EVIDENCE; Ibiza CGG — INSUFFICIENT_EVIDENCE.**
+    Nothing was fabricated. Each obligation has one non-official source; the SEAT manual's fixed
+    1 yr / 15,000 km (QG0/QG2) is PARTIAL because it states no model years and seat.co.uk is not
+    an approved system.
+  - Tests: 84 engine + 6 app tests. Full verify: see task-plan "M-SOURCE V1".
+- **M-SOURCE V1 correction (2026-10-02, evening): DONE, not committed.**
+  - FETCH follows RFC 9309 (`msource-access/2`).
+  - One strongly applicable independent source may be SUPPORTED (never EXACT).
+  - A generic all-engines page no longer counts as engine-specific.
+  - **Live: Fiesta CONFLICTING_EVIDENCE** (cabin filter 20,000 mi vs 30,000 km / 24 months;
+    everything else single-source generic → INSUFFICIENT). **Ibiza INSUFFICIENT_EVIDENCE.** No
+    item was scheduled for either.
+  - SEAT QG0/QG2 cannot be established from project data; the owner must read the data sticker.
+    See `docs/maintenance/MSOURCE_V1_RESULTS_2026-10-02.md` §Correction run.
+- **M-SOURCE V1 applicability and provenance correction (2026-10-03): DONE, not committed.**
+  - Item-level scopes and per-operation sufficiency; section and official-metadata years.
+  - Official identity is separate from fetch permission (brand domain), and schedules can be
+    CONDITIONAL / READY_PARTIAL.
+  - **Live:**
+    - **Fiesta READY_PARTIAL:** brake fluid 30,000 km / 24 months and pollen filter
+      30,000 km / 24 months are SUPPORTED (carwiki.de, all models and engines). The guide's
+      schedule was a 2019 one and does not apply.
+    - **Ibiza CONDITIONAL:** the official MY12 manual's 15,000 km / 12 months is STRONG and
+      applies once the owner confirms QG0 or QG2.
+  - Results doc §"Applicability and provenance correction".
+- **M-SOURCE generalization (2026-10-03): DONE, not committed.** See
+  `docs/maintenance/MSOURCE_GENERALIZATION_2026-10-03.md`.
+  - Vehicle-specific production logic was removed: the QG regime pattern, the SEAT/Ford booklet
+    hints, the fixed QG0/1/2 options, and the two-car research claims. A guard test now fails on
+    any recurrence.
+  - Queries are progressive (L1–L5), the fingerprint carries the body variant, and source
+    families are learned without intervals.
+  - Matrix: 16 vehicles across 13 manufacturers, one generic pipeline. 8 vehicles have
+    established items (partial), 1 is conditional (Ibiza, QG0/QG2) and 7 are insufficient.
+  - No core service / oil interval is established for any vehicle; the non-official items rest
+    on a single publisher.
+  - Eleven generic defects found by the matrix were fixed, including reflected-content patterns
+    that had produced false items.
+- **Provider research and identity-only state (2026-10-03): DONE, not committed.** See
+  `docs/maintenance/PROVIDER_RESEARCH_2026-10-03.md`.
+  - The registry's `misgeret` is the full VIN. `sanitizeVin` (`src/providers/registry/vin.ts`)
+    yields a valid 17-character VIN or nothing; the UI still shows `••••1234`. No VIN is sent
+    anywhere: that is a personal-data and provider-choice gate.
+  - New presentation state VERIFIED_IDENTITY_ONLY: a registry-identified vehicle with no
+    matched schedule shows its verified identity and "פרטי הרכב אומתו מול משרד התחבורה. שגרת
+    הטיפולים לדגם זה טרם אומתה.". Retry, upload and manual entry stay available.
+  - Catalog guard tests: exact engine-code segments only (no prefix, substring or empty match).
+    No high-mileage task synthesis exists in production.
+  - Owner decisions applied (2026-10-03): the matcher no longer relates engine codes by prefix.
+    Only identical codes or entries in `explicitAliases` (`msource/engineAliases.ts`, empty until an
+    equivalence is verified with cited evidence) match; CGG ≠ CGGB. The identity-only view carries the
+    approved wording-only notice. VIN dispatch stays gated until a signed DPA and a B2C display licence.
+- **Owner backlog (recorded, not started):** Home shortcut tiles duplicate the bottom navigation
+  (history / documents / maintenance). Keep the bottom navigation, and keep only unique Home
+  shortcuts such as Garage Mode.
+- **Next action:** owner review of M-SOURCE V1. Decisions:
+  - (a) [done: RFC 9309 semantics];
+  - (b) approve SEAT/Ford global manufacturer domains as authorities (official provenance);
+  - (c) on-device PDF text reading (pdf.js in a WebView, a new free dependency);
+  - (d) a live research/search provider (G3, paid);
+  - (e) local commit of this work. It is uncommitted because five files also hold the previous
+    session's uncommitted vehicle-search changes.
+
+  Earlier: stop for owner review. Pending owner decisions:
   1. permission requests to importers (Union Motors, Champion, Colmobil, Talcar, Samelet, Geo Mobility), or a legal position on automated reading of official manuals;
   2. re-confirm SYM's owner-decision permissions under M-SOURCE;
   3. approve the proposed source systems as authorities;

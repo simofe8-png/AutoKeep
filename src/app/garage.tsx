@@ -8,7 +8,7 @@ import { ActionTypeBadge, dueAtText, DueStatusBadge } from '@/features/maintenan
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate, formatKm, joinParts } from '@/features/vehicles/format';
 import { vehicleDisplayName } from '@/features/vehicles/types';
-import { VehiclePhoto, vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
+import { vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -85,7 +85,6 @@ export default function GarageModeScreen() {
             </AppText>
             <PlateBadge number={activeVehicle.registration} size="sm" />
           </View>
-          <VehiclePhoto vehicle={activeVehicle} variant="card" />
         </View>
       </View>
 

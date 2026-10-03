@@ -1,0 +1,5455 @@
+{
+  "run": {
+    "runId": "matrix-M01",
+    "vehicleRef": "M01",
+    "fingerprintKey": "car|ford|focus|2016|998||petrol|",
+    "msourceVersion": "msource/1",
+    "startedAt": "2026-10-03T05:25:37.244Z",
+    "finishedAt": "2026-10-03T05:26:44.056Z",
+    "stages": [
+      {
+        "stage": "VEHICLE_VERIFIED",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:25:37.244Z",
+        "finishedAt": "2026-10-03T05:25:37.244Z",
+        "durationMs": 0,
+        "counts": {
+          "engineCodes": 0,
+          "displacementKnown": 1
+        },
+        "failures": [],
+        "notes": [
+          "class car|ford|focus|2016|998||petrol|"
+        ]
+      },
+      {
+        "stage": "DISCOVERY",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:25:37.244Z",
+        "finishedAt": "2026-10-03T05:25:37.249Z",
+        "durationMs": 5,
+        "counts": {
+          "fable": 15,
+          "registry": 0,
+          "knowledge": 1
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SOURCE_CANDIDATES",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:25:37.249Z",
+        "finishedAt": "2026-10-03T05:25:37.250Z",
+        "durationMs": 1,
+        "counts": {
+          "discovered": 16,
+          "unique": 15,
+          "duplicates": 1,
+          "kept": 15
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "ACQUISITION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:25:37.250Z",
+        "finishedAt": "2026-10-03T05:26:43.970Z",
+        "durationMs": 66720,
+        "counts": {
+          "duplicates": 1,
+          "acquired": 20
+        },
+        "failures": [
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-68436564dc07885a"
+          },
+          {
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
+            "sourceId": "src-40319571bc5e97fb"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt 429: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-c70f323d4897844f"
+          },
+          {
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
+            "sourceId": "src-60b2c4ffd7fe1921"
+          },
+          {
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
+            "sourceId": "src-ebc0b2adcfcf6e6f"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-5cdb350e86324a48"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-7a5bb36e02fd8b38"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-a00da0a5f94574bf"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "EXTRACTION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:26:43.970Z",
+        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "durationMs": 86,
+        "counts": {
+          "extracted": 24,
+          "grounded": 24
+        },
+        "failures": [
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service",
+            "sourceId": "src-271bf915c4e43187"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.auto-abc.eu/service/ford-focus",
+            "sourceId": "src-701f389ea9e11824"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced",
+            "sourceId": "src-e59779305ce3a2ea"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/",
+            "sourceId": "src-9cc4ba98d23f0dbe"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/ford-focus-inspektion",
+            "sourceId": "src-4eedac1bb3cce85d"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.auto-abc.lv/service/ford-focus",
+            "sourceId": "src-110299f2ac03557c"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://es.auto-abc.eu/servicio/ford-focus",
+            "sourceId": "src-189f4330a5a6b48a"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/",
+            "sourceId": "src-5add6ec5d7cf55ab"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/ford-focus",
+            "sourceId": "src-e26871ca73d9192c"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/ford-focus-inspektion-zuruecksetzen",
+            "sourceId": "src-163c91aab8a5b178"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.repareo.de/autobewertung/ford-focus-restwert/",
+            "sourceId": "src-7cc9dae8772ae08e"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.repareo.de/zahnriemenwechsel-ford-focus/",
+            "sourceId": "src-3516451b71999489"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.repareo.de/bremsen-wechseln-ford-focus/",
+            "sourceId": "src-0bb47887d9a85f09"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.repareo.de/kfz-steuer-ford-focus/",
+            "sourceId": "src-c7a2b8d3a0154ed1"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "VEHICLE_MATCHING",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:26:44.056Z",
+        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "durationMs": 0,
+        "counts": {
+          "INSUFFICIENT": 3,
+          "PARTIAL": 9,
+          "SUPPORTED": 2,
+          "NOT_APPLICABLE": 6
+        },
+        "failures": [
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "INSUFFICIENT: the document does not name \"Focus\"; the document does not state its model years; market stated: CA (not IL)",
+            "sourceId": "src-7f1664b789dfd12d"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: the document does not state its model years; engines named: 1500 cc — not 998 cc",
+            "sourceId": "src-93102d53fe884891"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 998 cc",
+            "sourceId": "src-fa7a022b4e429b09"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 998 cc",
+            "sourceId": "src-eb6a78d835e0d942"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 998 cc",
+            "sourceId": "src-32dfd8bff25dd769"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 998 cc",
+            "sourceId": "src-5c3dc646d1fb8848"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "CROSS_SOURCE_VALIDATION",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:26:44.056Z",
+        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "durationMs": 0,
+        "counts": {
+          "obligations": 0,
+          "corroborated": 0,
+          "conflicting": 0
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SCHEDULE_RESOLUTION",
+        "status": "failed",
+        "startedAt": "2026-10-03T05:26:44.056Z",
+        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "durationMs": 0,
+        "counts": {
+          "items": 0,
+          "unresolved": 0,
+          "exact": 0,
+          "strong": 0,
+          "supported": 0
+        },
+        "failures": [
+          {
+            "code": "INSUFFICIENT_EVIDENCE",
+            "detail": "INSUFFICIENT_EVIDENCE"
+          }
+        ],
+        "notes": [
+          "status INSUFFICIENT_EVIDENCE"
+        ]
+      },
+      {
+        "stage": "PERSISTENCE",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:26:44.056Z",
+        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "NEXT_SERVICE_CALCULATION",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:26:44.056Z",
+        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": [
+          "no schedule"
+        ]
+      }
+    ],
+    "queries": [
+      "Ford Focus 1.0 service intervals",
+      "פורד Focus 1.0 מרווחי טיפולים",
+      "Ford Focus 2016 maintenance manual",
+      "פורד Focus 2016 ספר רכב טיפולים",
+      "Ford Focus maintenance schedule",
+      "פורד Focus לוח טיפולים"
+    ],
+    "candidates": [
+      {
+        "url": "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/97mysmg1e.pdf",
+        "by": "fable",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "INSUFFICIENT: the document does not name \"Focus\"; the document does not state its model years; market stated: CA (not IL)"
+        }
+      },
+      {
+        "url": "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/service/ford-focus",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://uk.haynes.com/de/pages/maintenance-plans-car-ford-focus",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
+        }
+      },
+      {
+        "url": "https://club.autodoc.co.uk/manuals/maintenance/ford/focus",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://haynes.com/en-gb/tips-tutorials/ford-focus-routine-maintenance-guide-2014-2018-petrol-and-diesel-engines",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt 429: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://uk.haynes.com/blogs/tips-tutorials/ford-focus-mk3-routine-maintenance-guide-2014-to-2018-petrol-and-diesel-engines",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
+        }
+      },
+      {
+        "url": "https://www.completecar.ie/used-car-reviews/review/10041/Ford-Focus-Mk3-2011-2018-used-car-buying-guide/servicing-timing-belt-interval.html",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
+        }
+      },
+      {
+        "url": "https://vehicle.firestonecompleteautocare.com/ford/focus/2016/maintenance",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.manualslib.es/products/Ford-Focus-2016-86780.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://carwiki.de/ford-focus-inspektion",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/inspektion-ford-focus-mk3/",
+        "by": "fable",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: the document does not state its model years; engines named: 1500 cc — not 998 cc"
+        }
+      },
+      {
+        "url": "https://www.autonationparts.com/ford-focus-maintenance-schedule",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.lv/service/ford-focus",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://es.auto-abc.eu/servicio/ford-focus",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/ford-focus/v16151-2014/service",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 998 cc"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/ford-focus/v16152-2014/service",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 998 cc"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/ford-focus/v16186-2014/service",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 998 cc"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/ford-focus/v16187-2014/service",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: engines named: 1600 cc — not 998 cc"
+        }
+      },
+      {
+        "url": "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/ford-focus",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/ford-focus-inspektion-zuruecksetzen",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/inspektion-ford-focus/",
+        "by": "link",
+        "outcome": "duplicate",
+        "failure": {
+          "code": "DUPLICATE_CONTENT",
+          "detail": "same bytes as src-93102d53fe884891"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/autobewertung/ford-focus-restwert/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/zahnriemenwechsel-ford-focus-01/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/bremsen-wechseln-ford-focus/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/kfz-steuer-ford-focus/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      }
+    ],
+    "restricted": [
+      {
+        "url": "https://payhip.com/b/57IkY",
+        "reason": "paid download",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://flamingoautomotive.sellfy.store/p/ford-focus-mk3-c346-2011-2017-service-workshop-manual/",
+        "reason": "paid download",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://repair1.sellfy.store/p/ford-focus-2018-2019-2020-2021-2022-2023-factory-service-workshop-manual/",
+        "reason": "paid download; also wrong generation",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://www.portal.goodeyes.com/results/Resources/fetch.php/Focus%20Owners%20Manual.pdf",
+        "reason": "untrusted content-farm mirror; excluded",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://devfolio.co/projects/ford-focus-maintenance-schedule-pdf-3518",
+        "reason": "untrusted content-farm page; excluded",
+        "adapter": "fable"
+      }
+    ],
+    "schedule": {
+      "fingerprintKey": "car|ford|focus|2016|998||petrol|",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "items": [],
+      "unresolved": [],
+      "sources": [
+        {
+          "sourceId": "src-271bf915c4e43187",
+          "canonicalUrl": "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service",
+          "finalUrl": "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service",
+          "chain": [
+            "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service"
+          ],
+          "sourceName": "Ford Motor Company (UK)",
+          "sourceType": "oem_schedule",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:25:37.244Z",
+          "retrievedAt": "2026-10-03T05:25:38.343Z",
+          "format": "html",
+          "documentType": "warranty_maintenance_booklet",
+          "contentSha256": "9cd6edd7ab4e65b5dcb6aeb39b96bcf60a02a1923258410f8c7882edd2f1f07a",
+          "byteLength": 90951,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service",
+              "host": "www.ford.co.uk",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.ford.co.uk/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:25:37.852Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service",
+              "host": "www.ford.co.uk",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:25:38.343Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service",
+              "host": "www.ford.co.uk",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.ford.co.uk/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.ford.co.uk/owner/service-and-maintenance/servicing/ford-service/scheduled-service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:25:38.343Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": true,
+            "basis": "brand_domain",
+            "detail": "ford.co.uk is the ford brand domain; document type warranty_maintenance_booklet"
+          }
+        },
+        {
+          "sourceId": "src-7f1664b789dfd12d",
+          "canonicalUrl": "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/97mysmg1e.pdf",
+          "finalUrl": "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/97mysmg1e.pdf",
+          "chain": [
+            "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/97mysmg1e.pdf"
+          ],
+          "sourceName": "Ford Motor Company",
+          "sourceType": "oem_manual",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:25:37.244Z",
+          "retrievedAt": "2026-10-03T05:25:58.032Z",
+          "format": "pdf",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314",
+          "byteLength": 107640,
+          "locale": "en",
+          "markets": [
+            "CA"
+          ],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              2000,
+              2500
+            ],
+            "fuels": [],
+            "markets": [
+              "CA"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/97mysmg1e.pdf",
+              "host": "www.fordservicecontent.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.fordservicecontent.com/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:25:48.847Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/97mysmg1e.pdf",
+              "host": "www.fordservicecontent.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/97mysmg1e.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:25:58.032Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/97mysmg1e.pdf",
+              "host": "www.fordservicecontent.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.fordservicecontent.com/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/97mysmg1e.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:25:58.032Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.fordservicecontent.com"
+          }
+        },
+        {
+          "sourceId": "src-701f389ea9e11824",
+          "canonicalUrl": "https://www.auto-abc.eu/service/ford-focus",
+          "finalUrl": "https://www.auto-abc.eu/service/ford-focus",
+          "chain": [
+            "https://www.auto-abc.eu/service/ford-focus"
+          ],
+          "sourceName": "auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:25:37.244Z",
+          "retrievedAt": "2026-10-03T05:25:59.989Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "c163814fa7f5dd17f714c6b302ab9160abc1f960da385e500ca8c7adac91a2e0",
+          "byteLength": 27067,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "5"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1600,
+              1800
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/service/ford-focus",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:25:59.605Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/service/ford-focus",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/service/ford-focus",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:25:59.988Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/service/ford-focus",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/service/ford-focus",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:25:59.989Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-e59779305ce3a2ea",
+          "canonicalUrl": "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced",
+          "finalUrl": "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced",
+          "chain": [
+            "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced"
+          ],
+          "sourceName": "Ford Motor Company (US)",
+          "sourceType": "oem_schedule",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:25:37.244Z",
+          "retrievedAt": "2026-10-03T05:26:18.088Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "4d7728ca79d1cd21af21b2d5c3dabb58f0e0235c312610e77a1e41c8fa3b5c14",
+          "byteLength": 965879,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced",
+              "host": "www.ford.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.ford.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:09.618Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced",
+              "host": "www.ford.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:18.088Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced",
+              "host": "www.ford.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.ford.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.ford.com/support/how-tos/search/How%20often%20do%20I%20need%20to%20get%20my%20vehicle%20serviced",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:18.088Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": true,
+            "basis": "brand_domain",
+            "detail": "ford.com is the ford brand domain; document type maintenance_schedule"
+          }
+        },
+        {
+          "sourceId": "src-9cc4ba98d23f0dbe",
+          "canonicalUrl": "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/",
+          "finalUrl": "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/",
+          "chain": [
+            "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/"
+          ],
+          "sourceName": "Kfz-Meisterbetrieb Dietrich",
+          "sourceType": "service_document",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:25:37.244Z",
+          "retrievedAt": "2026-10-03T05:26:21.907Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "c99a8cce5849026e032e606de568c2a70daef84e5df0a3ff976771c6214abcde",
+          "byteLength": 214744,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [
+              1000
+            ],
+            "displacementsMentioned": [
+              1000
+            ],
+            "fuels": [
+              "petrol",
+              "diesel"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/",
+              "host": "kfz-dietrich.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://kfz-dietrich.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:21.582Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/",
+              "host": "kfz-dietrich.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:21.907Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/",
+              "host": "kfz-dietrich.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://kfz-dietrich.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://kfz-dietrich.com/blog/werkstatt-wartungs-plan-ford-modelle/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:21.907Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "kfz-dietrich.com"
+          }
+        },
+        {
+          "sourceId": "src-4eedac1bb3cce85d",
+          "canonicalUrl": "https://carwiki.de/ford-focus-inspektion",
+          "finalUrl": "https://carwiki.de/ford-focus-inspektion",
+          "chain": [
+            "https://carwiki.de/ford-focus-inspektion"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:25:37.244Z",
+          "retrievedAt": "2026-10-03T05:26:27.625Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "854a6c89052fc2881c4c96f4d6c2d3b4943bcc1654272b5d67a51ecb43eb970d",
+          "byteLength": 179184,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "6"
+            ],
+            "yearFrom": 1900,
+            "yearTo": 2100,
+            "yearBasis": "all_models_stated",
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": true,
+            "allEnginesPhrase": "Die Inspektion am Ford Focus | Intervalle, Umfang &amp; Kosten | Alle Modelle | Serviceplan: Was wird gemacht?"
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/ford-focus-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:27.439Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/ford-focus-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/ford-focus-inspektion",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:27.625Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/ford-focus-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/ford-focus-inspektion",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:27.625Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-93102d53fe884891",
+          "canonicalUrl": "https://www.repareo.de/inspektion-ford-focus-mk3/",
+          "finalUrl": "https://www.repareo.de/inspektion-ford-focus/",
+          "chain": [
+            "https://www.repareo.de/inspektion-ford-focus-mk3/",
+            "https://www.repareo.de/inspektion-ford-focus/"
+          ],
+          "sourceName": "repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:25:37.244Z",
+          "retrievedAt": "2026-10-03T05:26:29.323Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65",
+          "byteLength": 755756,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [
+              1500
+            ],
+            "displacementsMentioned": [
+              999,
+              1000,
+              1200,
+              1388,
+              1400,
+              1496,
+              1499,
+              1500,
+              1560,
+              1596,
+              1600,
+              1670,
+              1690,
+              1750,
+              1753,
+              1796,
+              1798,
+              1800,
+              1900,
+              1988,
+              1995,
+              1997,
+              1999,
+              2000,
+              2200,
+              2300,
+              2800,
+              3800,
+              3830,
+              3850,
+              4000,
+              4050,
+              4100,
+              4200,
+              4250,
+              4300,
+              4350,
+              4520,
+              4600,
+              4750,
+              5400,
+              5500,
+              5600,
+              5650,
+              6000,
+              6100
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/inspektion-ford-focus-mk3/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:27.622Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/inspektion-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:28.688Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/inspektion-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/inspektion-ford-focus/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:29.323Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/inspektion-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/inspektion-ford-focus/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:29.323Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-110299f2ac03557c",
+          "canonicalUrl": "https://www.auto-abc.lv/service/ford-focus",
+          "finalUrl": "https://www.auto-abc.lv/service/ford-focus",
+          "chain": [
+            "https://www.auto-abc.lv/service/ford-focus"
+          ],
+          "sourceName": "www.auto-abc.lv",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:25:59.990Z",
+          "retrievedAt": "2026-10-03T05:26:30.207Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "c08ccfaa99d3f8ebf590641ab48381f69b685d0b05a6af4c754aee52f2942236",
+          "byteLength": 27575,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "5"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1600,
+              1800
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.lv/service/ford-focus",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.lv/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:29.821Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.lv/service/ford-focus",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.lv/service/ford-focus",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:30.207Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.lv/service/ford-focus",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.lv/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.lv/service/ford-focus",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:30.207Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.lv"
+          }
+        },
+        {
+          "sourceId": "src-fa7a022b4e429b09",
+          "canonicalUrl": "https://www.auto-abc.eu/ford-focus/v16151-2014/service",
+          "finalUrl": "https://www.auto-abc.eu/ford-focus/v16151-2014/service",
+          "chain": [
+            "https://www.auto-abc.eu/ford-focus/v16151-2014/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:25:59.990Z",
+          "retrievedAt": "2026-10-03T05:26:30.365Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+          "byteLength": 37255,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2014,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [
+              1600
+            ],
+            "displacementsMentioned": [
+              1600
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/ford-focus/v16151-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:30.207Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/ford-focus/v16151-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/ford-focus/v16151-2014/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:30.365Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/ford-focus/v16151-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/ford-focus/v16151-2014/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:30.365Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-189f4330a5a6b48a",
+          "canonicalUrl": "https://es.auto-abc.eu/servicio/ford-focus",
+          "finalUrl": "https://es.auto-abc.eu/servicio/ford-focus",
+          "chain": [
+            "https://es.auto-abc.eu/servicio/ford-focus"
+          ],
+          "sourceName": "es.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:25:59.990Z",
+          "retrievedAt": "2026-10-03T05:26:32.728Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "7c4b746034b3bc3ae1edd49e90f5ce9f9fa4f8ba2ab47a9e75d283ac7f4836ed",
+          "byteLength": 27145,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "5"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1600,
+              1800
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://es.auto-abc.eu/servicio/ford-focus",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:32.317Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://es.auto-abc.eu/servicio/ford-focus",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/ford-focus",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:32.728Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://es.auto-abc.eu/servicio/ford-focus",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/ford-focus",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:32.728Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "es.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-eb6a78d835e0d942",
+          "canonicalUrl": "https://www.auto-abc.eu/ford-focus/v16152-2014/service",
+          "finalUrl": "https://www.auto-abc.eu/ford-focus/v16152-2014/service",
+          "chain": [
+            "https://www.auto-abc.eu/ford-focus/v16152-2014/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:25:59.990Z",
+          "retrievedAt": "2026-10-03T05:26:32.853Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+          "byteLength": 37242,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2014,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [
+              1600
+            ],
+            "displacementsMentioned": [
+              1600
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/ford-focus/v16152-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:32.729Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/ford-focus/v16152-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/ford-focus/v16152-2014/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:32.853Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/ford-focus/v16152-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/ford-focus/v16152-2014/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:32.853Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-32dfd8bff25dd769",
+          "canonicalUrl": "https://www.auto-abc.eu/ford-focus/v16186-2014/service",
+          "finalUrl": "https://www.auto-abc.eu/ford-focus/v16186-2014/service",
+          "chain": [
+            "https://www.auto-abc.eu/ford-focus/v16186-2014/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:25:59.990Z",
+          "retrievedAt": "2026-10-03T05:26:34.360Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+          "byteLength": 37222,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2014,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [
+              1600
+            ],
+            "displacementsMentioned": [
+              1600
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/ford-focus/v16186-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:32.729Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/ford-focus/v16186-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/ford-focus/v16186-2014/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:34.360Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/ford-focus/v16186-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/ford-focus/v16186-2014/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:34.360Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-5add6ec5d7cf55ab",
+          "canonicalUrl": "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/",
+          "finalUrl": "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/",
+          "chain": [
+            "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/"
+          ],
+          "sourceName": "kfz-dietrich.com",
+          "sourceType": "service_document",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:26:21.911Z",
+          "retrievedAt": "2026-10-03T05:26:34.610Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "1097dc48e71936aab1fbba35d064195a4912bf9d4da7366417c68b9b6af74ddf",
+          "byteLength": 242652,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "st"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [
+              1000
+            ],
+            "displacementsMentioned": [
+              1000,
+              1500,
+              2000,
+              2300
+            ],
+            "fuels": [
+              "petrol",
+              "diesel"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/",
+              "host": "kfz-dietrich.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://kfz-dietrich.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:34.361Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/",
+              "host": "kfz-dietrich.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:34.609Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/",
+              "host": "kfz-dietrich.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://kfz-dietrich.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://kfz-dietrich.com/blog/ford-focus-mk4-typische-probleme-diagnose/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:34.610Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "kfz-dietrich.com"
+          }
+        },
+        {
+          "sourceId": "src-5c3dc646d1fb8848",
+          "canonicalUrl": "https://www.auto-abc.eu/ford-focus/v16187-2014/service",
+          "finalUrl": "https://www.auto-abc.eu/ford-focus/v16187-2014/service",
+          "chain": [
+            "https://www.auto-abc.eu/ford-focus/v16187-2014/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:25:59.990Z",
+          "retrievedAt": "2026-10-03T05:26:35.860Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+          "byteLength": 37235,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2014,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [
+              1600
+            ],
+            "displacementsMentioned": [
+              1600
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/ford-focus/v16187-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:34.361Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/ford-focus/v16187-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/ford-focus/v16187-2014/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:35.860Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/ford-focus/v16187-2014/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/ford-focus/v16187-2014/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:35.860Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-e26871ca73d9192c",
+          "canonicalUrl": "https://carwiki.de/ford-focus",
+          "finalUrl": "https://carwiki.de/ford-focus",
+          "chain": [
+            "https://carwiki.de/ford-focus"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:26:27.630Z",
+          "retrievedAt": "2026-10-03T05:26:36.070Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "f60c503e1ce8710aa28ba5b55be6887a10a54c6450e47ac554b5d7866cb03e85",
+          "byteLength": 378784,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "rs",
+              "st",
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/ford-focus",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:35.860Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/ford-focus",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/ford-focus",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:36.069Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/ford-focus",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/ford-focus",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:36.070Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-163c91aab8a5b178",
+          "canonicalUrl": "https://carwiki.de/ford-focus-inspektion-zuruecksetzen",
+          "finalUrl": "https://carwiki.de/ford-focus-inspektion-zuruecksetzen",
+          "chain": [
+            "https://carwiki.de/ford-focus-inspektion-zuruecksetzen"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:26:27.631Z",
+          "retrievedAt": "2026-10-03T05:26:37.530Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "f42ca750b821c9b39ca6d6ea1914fbd88f2925ca2686e3fe4172a5bf12d66741",
+          "byteLength": 158094,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "1",
+              "4",
+              "2",
+              "3",
+              "rs",
+              "st"
+            ],
+            "yearFrom": 1998,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/ford-focus-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:35.861Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/ford-focus-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/ford-focus-inspektion-zuruecksetzen",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:37.530Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/ford-focus-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/ford-focus-inspektion-zuruecksetzen",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:37.530Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-7cc9dae8772ae08e",
+          "canonicalUrl": "https://www.repareo.de/autobewertung/ford-focus-restwert/",
+          "finalUrl": "https://www.repareo.de/autobewertung/ford-focus-restwert/",
+          "chain": [
+            "https://www.repareo.de/autobewertung/ford-focus-restwert/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:26:29.342Z",
+          "retrievedAt": "2026-10-03T05:26:39.221Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "5ab46195e2d60b1c453a1d5ebe16a6566c6fb706e837637ea0282fd5f14378c8",
+          "byteLength": 159735,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "30"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [
+              1000
+            ],
+            "displacementsMentioned": [
+              1000
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/autobewertung/ford-focus-restwert/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:37.535Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/autobewertung/ford-focus-restwert/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/autobewertung/ford-focus-restwert/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:39.221Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/autobewertung/ford-focus-restwert/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/autobewertung/ford-focus-restwert/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:39.221Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-3516451b71999489",
+          "canonicalUrl": "https://www.repareo.de/zahnriemenwechsel-ford-focus-01/",
+          "finalUrl": "https://www.repareo.de/zahnriemenwechsel-ford-focus/",
+          "chain": [
+            "https://www.repareo.de/zahnriemenwechsel-ford-focus-01/",
+            "https://www.repareo.de/zahnriemenwechsel-ford-focus/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:26:29.342Z",
+          "retrievedAt": "2026-10-03T05:26:41.040Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "85ec9f405617d4a0fc77cca20df16324be0da3b47535e2db57f102f4454e0111",
+          "byteLength": 221103,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "10"
+            ],
+            "yearFrom": 1999,
+            "yearTo": 2004,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1388,
+              1400,
+              1596,
+              1600,
+              1753,
+              1800,
+              1988,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/zahnriemenwechsel-ford-focus-01/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:39.224Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/zahnriemenwechsel-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:40.633Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/zahnriemenwechsel-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/zahnriemenwechsel-ford-focus/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:41.040Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/zahnriemenwechsel-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/zahnriemenwechsel-ford-focus/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:41.040Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-0bb47887d9a85f09",
+          "canonicalUrl": "https://www.repareo.de/bremsen-wechseln-ford-focus/",
+          "finalUrl": "https://www.repareo.de/bremsen-wechseln-ford-focus/",
+          "chain": [
+            "https://www.repareo.de/bremsen-wechseln-ford-focus/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:26:29.342Z",
+          "retrievedAt": "2026-10-03T05:26:42.290Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "c1864982e876361a3087c3b83eeae315269c5aaab2e7baca7beb3612f22bedc2",
+          "byteLength": 195984,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              998,
+              1000,
+              1496,
+              1500,
+              1560,
+              1596,
+              1600,
+              1796,
+              1798,
+              1800,
+              1988,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/bremsen-wechseln-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:39.224Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/bremsen-wechseln-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/bremsen-wechseln-ford-focus/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:42.290Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/bremsen-wechseln-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/bremsen-wechseln-ford-focus/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:42.290Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-c7a2b8d3a0154ed1",
+          "canonicalUrl": "https://www.repareo.de/kfz-steuer-ford-focus/",
+          "finalUrl": "https://www.repareo.de/kfz-steuer-ford-focus/",
+          "chain": [
+            "https://www.repareo.de/kfz-steuer-ford-focus/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:26:29.342Z",
+          "retrievedAt": "2026-10-03T05:26:43.965Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "940d29af20893498076166c5a3411186f76789e3b8e4fd16a6f7d62cabbbf03d",
+          "byteLength": 249830,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Focus"
+            ],
+            "modelVariants": [
+              "st"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [
+              1000,
+              1600,
+              1800,
+              2000
+            ],
+            "displacementsMentioned": [
+              1000,
+              1388,
+              1389,
+              1400,
+              1499,
+              1500,
+              1560,
+              1596,
+              1600,
+              1753,
+              1796,
+              1798,
+              1800,
+              1988,
+              1997,
+              1999,
+              2000
+            ],
+            "fuels": [
+              "petrol",
+              "diesel"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/kfz-steuer-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:42.293Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/kfz-steuer-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/kfz-steuer-ford-focus/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:43.964Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/kfz-steuer-ford-focus/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/kfz-steuer-ford-focus/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:43.965Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "src-7f1664b789dfd12d:f8de3bde3115-p7-oil_filter-replacement-0",
+          "sourceId": "src-7f1664b789dfd12d",
+          "operationKey": "oil_filter",
+          "task": "oil_filter",
+          "originalText": "Change engine oil and replace oil filter. Inspect engine cooling system, hoses, and clamps; and check coolant strength e",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 24140,
+          "intervalMiles": 15000,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "CA"
+          ],
+          "notes": [
+            "stated in miles: 15000 mi ≈ 24140 km"
+          ],
+          "sourceLocation": {
+            "page": 7,
+            "section": "(interval-dense page)",
+            "locator": "line \"Change engine oil and replace oil filter. Inspect engine cooling system, hoses, \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Focus\"",
+              "the document does not state its model years",
+              "market stated: CA (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "f8de3bde3115-p7-oil_filter-replacement-0",
+            "task": "oil_filter",
+            "taskText": "Change engine oil and replace oil filter. Inspect engine cooling system, hoses, and clamps; and check coolant strength e",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "mi"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "markets": [
+                "CA"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314",
+                "documentTitle": "Ford owner guide (fordservicecontent.com catalog PDF)",
+                "authority": "vehicle_document",
+                "markets": [
+                  "CA"
+                ],
+                "page": 7,
+                "table": "(interval-dense page)",
+                "locator": "line \"Change engine oil and replace oil filter. Inspect engine cooling system, hoses, \"",
+                "documentSha256": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-7f1664b789dfd12d:f8de3bde3115-p21-oil_filter-replacement-1",
+          "sourceId": "src-7f1664b789dfd12d",
+          "operationKey": "oil_filter",
+          "task": "oil_filter",
+          "originalText": "Change engine oil and replace oil filter. Inspect front and rear brakes. (1) Change engine oil and replace oil filter. C",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 24140,
+          "intervalMiles": 15000,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "2440–2560 cc"
+          ],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "CA"
+          ],
+          "notes": [
+            "stated in miles: 15000 mi ≈ 24140 km"
+          ],
+          "sourceLocation": {
+            "page": 21,
+            "section": "(interval-dense page)",
+            "locator": "line \"Change engine oil and replace oil filter. Inspect front and rear brakes. (1) Cha\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Focus\"",
+              "the document does not state its model years",
+              "market stated: CA (not IL)",
+              "row is for 2440–2560 cc engines"
+            ]
+          },
+          "requirement": {
+            "id": "f8de3bde3115-p21-oil_filter-replacement-1",
+            "task": "oil_filter",
+            "taskText": "Change engine oil and replace oil filter. Inspect front and rear brakes. (1) Change engine oil and replace oil filter. C",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "mi"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "markets": [
+                "CA"
+              ],
+              "displacementCc": {
+                "min": 2440,
+                "max": 2560
+              },
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314",
+                "documentTitle": "Ford owner guide (fordservicecontent.com catalog PDF)",
+                "authority": "vehicle_document",
+                "markets": [
+                  "CA"
+                ],
+                "page": 21,
+                "table": "(interval-dense page)",
+                "locator": "line \"Change engine oil and replace oil filter. Inspect front and rear brakes. (1) Cha\"",
+                "documentSha256": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-7f1664b789dfd12d:f8de3bde3115-p26-oil_filter-replacement-2",
+          "sourceId": "src-7f1664b789dfd12d",
+          "operationKey": "oil_filter",
+          "task": "oil_filter",
+          "originalText": "Change engine oil and replace oil filter. Replace spark plugs (2.0L only). Replace PCV valve (2.0L only). Inspect front",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 24140,
+          "intervalMiles": 15000,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "1940–2060 cc"
+          ],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "CA"
+          ],
+          "notes": [
+            "stated in miles: 15000 mi ≈ 24140 km"
+          ],
+          "sourceLocation": {
+            "page": 26,
+            "section": "(interval-dense page)",
+            "locator": "line \"Change engine oil and replace oil filter. Replace spark plugs (2.0L only). Repla\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Focus\"",
+              "the document does not state its model years",
+              "market stated: CA (not IL)",
+              "row is for 1940–2060 cc engines"
+            ]
+          },
+          "requirement": {
+            "id": "f8de3bde3115-p26-oil_filter-replacement-2",
+            "task": "oil_filter",
+            "taskText": "Change engine oil and replace oil filter. Replace spark plugs (2.0L only). Replace PCV valve (2.0L only). Inspect front ",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "mi"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "markets": [
+                "CA"
+              ],
+              "displacementCc": {
+                "min": 1940,
+                "max": 2060
+              },
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314",
+                "documentTitle": "Ford owner guide (fordservicecontent.com catalog PDF)",
+                "authority": "vehicle_document",
+                "markets": [
+                  "CA"
+                ],
+                "page": 26,
+                "table": "(interval-dense page)",
+                "locator": "line \"Change engine oil and replace oil filter. Replace spark plugs (2.0L only). Repla\"",
+                "documentSha256": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-7f1664b789dfd12d:f8de3bde3115-p27-oil_filter-replacement-3",
+          "sourceId": "src-7f1664b789dfd12d",
+          "operationKey": "oil_filter",
+          "task": "oil_filter",
+          "originalText": "Change engine oil and replace oil filter. Change engine coolant every 30,000 miles (50,000 km) or 36 months. Inspect fro",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 48280,
+          "intervalMiles": 30000,
+          "intervalMonths": 36,
+          "intervalYears": 3,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "CA"
+          ],
+          "notes": [
+            "stated in miles: 30000 mi ≈ 48280 km"
+          ],
+          "sourceLocation": {
+            "page": 27,
+            "section": "(interval-dense page)",
+            "locator": "line \"Change engine oil and replace oil filter. Change engine coolant every 30,000 mil\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Focus\"",
+              "the document does not state its model years",
+              "market stated: CA (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "f8de3bde3115-p27-oil_filter-replacement-3",
+            "task": "oil_filter",
+            "taskText": "Change engine oil and replace oil filter. Change engine coolant every 30,000 miles (50,000 km) or 36 months. Inspect fro",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "mi"
+              },
+              "everyMonths": 36,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "markets": [
+                "CA"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314",
+                "documentTitle": "Ford owner guide (fordservicecontent.com catalog PDF)",
+                "authority": "vehicle_document",
+                "markets": [
+                  "CA"
+                ],
+                "page": 27,
+                "table": "(interval-dense page)",
+                "locator": "line \"Change engine oil and replace oil filter. Change engine coolant every 30,000 mil\"",
+                "documentSha256": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-93102d53fe884891:b4fa8a928356-p5-s-periodic_service-other-0",
+          "sourceId": "src-93102d53fe884891",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "Aktuellere Focus schickt Ford alle 30.000 km oder alle 2 Jahre zur Inspektion.",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 1998,
+            "to": 1998
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Aktuellere Focus schickt Ford alle 30.000 km oder alle 2 Jahre zur Inspektion.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "mismatch",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document covers 1998–1998, not 2016",
+              "engines named: 1500 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "b4fa8a928356-p5-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "Aktuellere Focus schickt Ford alle 30.000 km oder alle 2 Jahre zur Inspektion.",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "everyMonths": 24,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65",
+                "documentTitle": "Inspektion Ford Focus Mk3: Kosten & Intervalle",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Wann schreibt Ford die Inspektion beim Focus vor?",
+                "locator": "column sentence \"Aktuellere Focus schickt Ford alle 30.000 km oder alle 2 Jahre zur Inspektion.\"",
+                "documentSha256": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 1998–1998",
+            "sufficient": false,
+            "years": {
+              "from": 1998,
+              "to": 1998
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-93102d53fe884891:b4fa8a928356-p5-s-brake_fluid-replacement-1",
+          "sourceId": "src-93102d53fe884891",
+          "operationKey": "brake_fluid",
+          "task": "brake_fluid",
+          "originalText": "Alle 24 Monate: Bremsflüssigkeit erneuern und ESP prüfen.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2004,
+            "to": 2010
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Alle 24 Monate: Bremsflüssigkeit erneuern und ESP prüfen.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "mismatch",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document covers 2004–2010, not 2016",
+              "engines named: 1500 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "b4fa8a928356-p5-s-brake_fluid-replacement-1",
+            "task": "brake_fluid",
+            "taskText": "Alle 24 Monate: Bremsflüssigkeit erneuern und ESP prüfen.",
+            "action": "replacement",
+            "interval": {
+              "everyMonths": 24,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65",
+                "documentTitle": "Inspektion Ford Focus Mk3: Kosten & Intervalle",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Wann schreibt Ford die Inspektion beim Focus vor?",
+                "locator": "column sentence \"Alle 24 Monate: Bremsflüssigkeit erneuern und ESP prüfen.\"",
+                "documentSha256": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 2004–2010",
+            "sufficient": true,
+            "years": {
+              "from": 2004,
+              "to": 2010
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-93102d53fe884891:b4fa8a928356-p5-s-coolant-replacement-2",
+          "sourceId": "src-93102d53fe884891",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Alle 10 Jahre: Motorkühlmittel erneuern und System spülen.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 120,
+          "intervalYears": 10,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2011,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Alle 10 Jahre: Motorkühlmittel erneuern und System spülen.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1500 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "b4fa8a928356-p5-s-coolant-replacement-2",
+            "task": "coolant",
+            "taskText": "Alle 10 Jahre: Motorkühlmittel erneuern und System spülen.",
+            "action": "replacement",
+            "interval": {
+              "everyMonths": 120,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65",
+                "documentTitle": "Inspektion Ford Focus Mk3: Kosten & Intervalle",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Wann schreibt Ford die Inspektion beim Focus vor?",
+                "locator": "column sentence \"Alle 10 Jahre: Motorkühlmittel erneuern und System spülen.\"",
+                "documentSha256": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 2011–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2011,
+              "to": 2018
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-93102d53fe884891:b4fa8a928356-p5-s-timing_belt-replacement-3",
+          "sourceId": "src-93102d53fe884891",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Alle 240.000 km oder 10 Jahre: Zahnriemenwechsel und Keilriemen erneuern.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 240000,
+          "intervalMiles": null,
+          "intervalMonths": 120,
+          "intervalYears": 10,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2018,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Alle 240.000 km oder 10 Jahre: Zahnriemenwechsel und Keilriemen erneuern.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "mismatch",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document covers 2018–2018, not 2016",
+              "engines named: 1500 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "b4fa8a928356-p5-s-timing_belt-replacement-3",
+            "task": "timing_belt",
+            "taskText": "Alle 240.000 km oder 10 Jahre: Zahnriemenwechsel und Keilriemen erneuern.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 240000,
+                "unit": "km"
+              },
+              "everyMonths": 120,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65",
+                "documentTitle": "Inspektion Ford Focus Mk3: Kosten & Intervalle",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Wann schreibt Ford die Inspektion beim Focus vor?",
+                "locator": "column sentence \"Alle 240.000 km oder 10 Jahre: Zahnriemenwechsel und Keilriemen erneuern.\"",
+                "documentSha256": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 2018–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2018,
+              "to": 2018
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-fa7a022b4e429b09:6f04d9c801d5-p9-coolant-replacement-0",
+          "sourceId": "src-fa7a022b4e429b09",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 150000,
+          "intervalMiles": null,
+          "intervalMonths": 120,
+          "intervalYears": 10,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 9,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "6f04d9c801d5-p9-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 150000,
+                "unit": "km"
+              },
+              "everyMonths": 120,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 9,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \"",
+                "documentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-fa7a022b4e429b09:6f04d9c801d5-p5-s-air_filter-replacement-0",
+          "sourceId": "src-fa7a022b4e429b09",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Replacement interval for the air filter is 15,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Replacement interval for the air filter is 15,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "6f04d9c801d5-p5-s-air_filter-replacement-0",
+            "task": "air_filter",
+            "taskText": "Replacement interval for the air filter is 15,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Air filter",
+                "locator": "column sentence \"Replacement interval for the air filter is 15,000 km .\"",
+                "documentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-fa7a022b4e429b09:6f04d9c801d5-p6-s-spark_plugs-replacement-1",
+          "sourceId": "src-fa7a022b4e429b09",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Recommended spark plugs change interval is 45,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "locator": "column sentence \"Recommended spark plugs change interval is 45,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "6f04d9c801d5-p6-s-spark_plugs-replacement-1",
+            "task": "spark_plugs",
+            "taskText": "Recommended spark plugs change interval is 45,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Recommended spark plugs change interval is 45,000 km .\"",
+                "documentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-fa7a022b4e429b09:6f04d9c801d5-p7-s-timing_belt-replacement-2",
+          "sourceId": "src-fa7a022b4e429b09",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 120000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 7,
+            "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "6f04d9c801d5-p7-s-timing_belt-replacement-2",
+            "task": "timing_belt",
+            "taskText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 120000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 7,
+                "section": "Timing belt",
+                "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\"",
+                "documentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-eb6a78d835e0d942:5a4daebfe9ee-p9-coolant-replacement-0",
+          "sourceId": "src-eb6a78d835e0d942",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 150000,
+          "intervalMiles": null,
+          "intervalMonths": 120,
+          "intervalYears": 10,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 9,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "5a4daebfe9ee-p9-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 150000,
+                "unit": "km"
+              },
+              "everyMonths": 120,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 9,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \"",
+                "documentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-eb6a78d835e0d942:5a4daebfe9ee-p5-s-air_filter-replacement-0",
+          "sourceId": "src-eb6a78d835e0d942",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Air filter change interval is 15,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Air filter change interval is 15,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "5a4daebfe9ee-p5-s-air_filter-replacement-0",
+            "task": "air_filter",
+            "taskText": "Air filter change interval is 15,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Air filter",
+                "locator": "column sentence \"Air filter change interval is 15,000 km .\"",
+                "documentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-eb6a78d835e0d942:5a4daebfe9ee-p6-s-spark_plugs-replacement-1",
+          "sourceId": "src-eb6a78d835e0d942",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Replacement interval for spark plugs is 45,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "locator": "column sentence \"Replacement interval for spark plugs is 45,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "5a4daebfe9ee-p6-s-spark_plugs-replacement-1",
+            "task": "spark_plugs",
+            "taskText": "Replacement interval for spark plugs is 45,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Replacement interval for spark plugs is 45,000 km .\"",
+                "documentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-eb6a78d835e0d942:5a4daebfe9ee-p7-s-timing_belt-replacement-2",
+          "sourceId": "src-eb6a78d835e0d942",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 120000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 7,
+            "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "5a4daebfe9ee-p7-s-timing_belt-replacement-2",
+            "task": "timing_belt",
+            "taskText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 120000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 7,
+                "section": "Timing belt",
+                "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\"",
+                "documentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-32dfd8bff25dd769:912f65f95368-p9-coolant-replacement-0",
+          "sourceId": "src-32dfd8bff25dd769",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 150000,
+          "intervalMiles": null,
+          "intervalMonths": 120,
+          "intervalYears": 10,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 9,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "912f65f95368-p9-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 150000,
+                "unit": "km"
+              },
+              "everyMonths": 120,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 9,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \"",
+                "documentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-32dfd8bff25dd769:912f65f95368-p5-s-air_filter-replacement-0",
+          "sourceId": "src-32dfd8bff25dd769",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Air filter change interval is 15,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Air filter change interval is 15,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "912f65f95368-p5-s-air_filter-replacement-0",
+            "task": "air_filter",
+            "taskText": "Air filter change interval is 15,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Air filter",
+                "locator": "column sentence \"Air filter change interval is 15,000 km .\"",
+                "documentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-32dfd8bff25dd769:912f65f95368-p6-s-spark_plugs-replacement-1",
+          "sourceId": "src-32dfd8bff25dd769",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Replacement interval for spark plugs is 45,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "locator": "column sentence \"Replacement interval for spark plugs is 45,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "912f65f95368-p6-s-spark_plugs-replacement-1",
+            "task": "spark_plugs",
+            "taskText": "Replacement interval for spark plugs is 45,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Replacement interval for spark plugs is 45,000 km .\"",
+                "documentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-32dfd8bff25dd769:912f65f95368-p7-s-timing_belt-replacement-2",
+          "sourceId": "src-32dfd8bff25dd769",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 120000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 7,
+            "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "912f65f95368-p7-s-timing_belt-replacement-2",
+            "task": "timing_belt",
+            "taskText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 120000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 7,
+                "section": "Timing belt",
+                "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\"",
+                "documentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-5c3dc646d1fb8848:1810e8e3ab2c-p9-coolant-replacement-0",
+          "sourceId": "src-5c3dc646d1fb8848",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 150000,
+          "intervalMiles": null,
+          "intervalMonths": 120,
+          "intervalYears": 10,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 9,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "1810e8e3ab2c-p9-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 150000,
+                "unit": "km"
+              },
+              "everyMonths": 120,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 9,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \"",
+                "documentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-5c3dc646d1fb8848:1810e8e3ab2c-p5-s-air_filter-replacement-0",
+          "sourceId": "src-5c3dc646d1fb8848",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Replacement interval for the air filter is 15,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Replacement interval for the air filter is 15,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "1810e8e3ab2c-p5-s-air_filter-replacement-0",
+            "task": "air_filter",
+            "taskText": "Replacement interval for the air filter is 15,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Air filter",
+                "locator": "column sentence \"Replacement interval for the air filter is 15,000 km .\"",
+                "documentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-5c3dc646d1fb8848:1810e8e3ab2c-p6-s-spark_plugs-replacement-1",
+          "sourceId": "src-5c3dc646d1fb8848",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Recommended spark plugs change interval is 45,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "locator": "column sentence \"Recommended spark plugs change interval is 45,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "1810e8e3ab2c-p6-s-spark_plugs-replacement-1",
+            "task": "spark_plugs",
+            "taskText": "Recommended spark plugs change interval is 45,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Recommended spark plugs change interval is 45,000 km .\"",
+                "documentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-5c3dc646d1fb8848:1810e8e3ab2c-p7-s-timing_belt-replacement-2",
+          "sourceId": "src-5c3dc646d1fb8848",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 120000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Focus"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2018
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 7,
+            "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1600 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "1810e8e3ab2c-p7-s-timing_belt-replacement-2",
+            "task": "timing_belt",
+            "taskText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 120000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "ford"
+              ],
+              "models": [
+                "Focus"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2018
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+                "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 7,
+                "section": "Timing belt",
+                "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\"",
+                "documentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2014–2018",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2018
+            },
+            "yearsBasis": "document"
+          }
+        }
+      ],
+      "resolvedAt": "2026-10-03T05:26:44.056Z",
+      "msourceVersion": "msource/1"
+    }
+  }
+}

@@ -1,0 +1,2814 @@
+{
+  "run": {
+    "runId": "matrix-M02",
+    "vehicleRef": "M02",
+    "fingerprintKey": "car|volkswagen|golf|2015|1598||diesel|",
+    "msourceVersion": "msource/1",
+    "startedAt": "2026-10-03T05:26:44.065Z",
+    "finishedAt": "2026-10-03T05:27:15.380Z",
+    "stages": [
+      {
+        "stage": "VEHICLE_VERIFIED",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:26:44.065Z",
+        "finishedAt": "2026-10-03T05:26:44.065Z",
+        "durationMs": 0,
+        "counts": {
+          "engineCodes": 0,
+          "displacementKnown": 1
+        },
+        "failures": [],
+        "notes": [
+          "class car|volkswagen|golf|2015|1598||diesel|"
+        ]
+      },
+      {
+        "stage": "DISCOVERY",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:26:44.065Z",
+        "finishedAt": "2026-10-03T05:26:44.069Z",
+        "durationMs": 4,
+        "counts": {
+          "fable": 14,
+          "registry": 0,
+          "knowledge": 1
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SOURCE_CANDIDATES",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:26:44.069Z",
+        "finishedAt": "2026-10-03T05:26:44.069Z",
+        "durationMs": 0,
+        "counts": {
+          "discovered": 15,
+          "unique": 15,
+          "duplicates": 0,
+          "kept": 15
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "ACQUISITION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:26:44.069Z",
+        "finishedAt": "2026-10-03T05:27:15.275Z",
+        "durationMs": 31206,
+        "counts": {
+          "acquired": 11
+        },
+        "failures": [
+          {
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
+            "sourceId": "src-a7fe322a48f848f4"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 401",
+            "sourceId": "src-63a1d729693bd9cb"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-42992d62caf61c24"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-f4b9b7f8151055b2"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-f25b88f26a4b7030"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-29887bc86f1e797a"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-83f387a58df5c027"
+          },
+          {
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
+            "sourceId": "src-12de73a97318162b"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "EXTRACTION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:27:15.275Z",
+        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "durationMs": 105,
+        "counts": {
+          "extracted": 11,
+          "grounded": 11
+        },
+        "failures": [
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+            "sourceId": "src-2ea1f8c6877070e4"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.repareo.de/oelwechsel-vw-golf-7/",
+            "sourceId": "src-56650334857cca5e"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat",
+            "sourceId": "src-7ed2b4b59d598103"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/golf-sportsvan-probleme",
+            "sourceId": "src-022aa88010b6f67a"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.motor-talk.de/forum/vw-golf-b60.html",
+            "sourceId": "src-553dc559ce724eb3"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html",
+            "sourceId": "src-9530b7e745ceeadd"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "VEHICLE_MATCHING",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:27:15.380Z",
+        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "durationMs": 0,
+        "counts": {
+          "PARTIAL": 8,
+          "NOT_APPLICABLE": 2,
+          "SUPPORTED": 1
+        },
+        "failures": [
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "PARTIAL: the document does not state its model years; market stated: US (not IL)",
+            "sourceId": "src-7d8e8bd15019a53f"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: the document covers 2023–2023, not 2015; engines named: 1400 cc — not 1598 cc; fuel: petrol only",
+            "sourceId": "src-b56ff453f1b51169"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "PARTIAL: the document does not state its model years",
+            "sourceId": "src-a89708f19c859927"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "PARTIAL: the document does not state its model years",
+            "sourceId": "src-e5182983c0037341"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "PARTIAL: the document does not state its model years",
+            "sourceId": "src-01ec088573de3653"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "CROSS_SOURCE_VALIDATION",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:27:15.380Z",
+        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "durationMs": 0,
+        "counts": {
+          "obligations": 0,
+          "corroborated": 0,
+          "conflicting": 0
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SCHEDULE_RESOLUTION",
+        "status": "failed",
+        "startedAt": "2026-10-03T05:27:15.380Z",
+        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "durationMs": 0,
+        "counts": {
+          "items": 0,
+          "unresolved": 0,
+          "exact": 0,
+          "strong": 0,
+          "supported": 0
+        },
+        "failures": [
+          {
+            "code": "INSUFFICIENT_EVIDENCE",
+            "detail": "INSUFFICIENT_EVIDENCE"
+          }
+        ],
+        "notes": [
+          "status INSUFFICIENT_EVIDENCE"
+        ]
+      },
+      {
+        "stage": "PERSISTENCE",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:27:15.380Z",
+        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "NEXT_SERVICE_CALCULATION",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:27:15.380Z",
+        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": [
+          "no schedule"
+        ]
+      }
+    ],
+    "queries": [
+      "Volkswagen Golf 1.6 service intervals",
+      "פולקסווגן Golf 1.6 מרווחי טיפולים",
+      "Volkswagen Golf 1.6 Wartungsintervalle",
+      "Volkswagen Golf 2015 maintenance manual",
+      "פולקסווגן Golf 2015 ספר רכב טיפולים",
+      "Volkswagen Golf 2015 Betriebsanleitung Wartung",
+      "Volkswagen Golf maintenance schedule",
+      "פולקסווגן Golf לוח טיפולים",
+      "Volkswagen Golf Wartungsplan"
+    ],
+    "candidates": [
+      {
+        "url": "https://ownersliterature.vw.com/owners-literature-service/v1/document/e6d745d2-dc65-41eb-89b8-843fdeacb5ab",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 401"
+        }
+      },
+      {
+        "url": "https://uk.haynes.com/pages/maintenance-plans-car-volkswagen-golf-mk7-2013-2021",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
+        }
+      },
+      {
+        "url": "https://club.autodoc.co.uk/manuals/maintenance/vw/golf",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://club.autodoc.de/manuals/wartung-inspektion/vw",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://vehicle.firestonecompleteautocare.com/volkswagen/golf/2015/maintenance/",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://static.nhtsa.gov/odi/tsbs/2014/MC-10240818-9999.pdf",
+        "by": "fable",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years; market stated: US (not IL)"
+        }
+      },
+      {
+        "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://carwiki.de/golf-7-inspektion",
+        "by": "fable",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: the document covers 2023–2023, not 2015; engines named: 1400 cc — not 1598 cc; fuel: petrol only"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/inspektion-vw-golf-7/",
+        "by": "fable",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/oelwechsel-vw-golf-7/",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://good-garage-guide.honestjohn.co.uk/askhj/answer/32829/when-should-i-service-my-golf-",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://autogreeknews.gr/?p=313893",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.manualslib.com/v/volkswagen+golf.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://carwiki.de/volkswagen-golf-inspektion",
+        "by": "knowledge",
+        "outcome": "failed",
+        "failure": {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+        "by": "fable",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years"
+        }
+      },
+      {
+        "url": "https://carwiki.de/golf-sportsvan-probleme",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/forum/vw-golf-b60.html",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/forum/aktion/Attachment.html?attachmentId=738344",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years"
+        }
+      }
+    ],
+    "restricted": [
+      {
+        "url": "https://txuxg6nv.sellfy.store/p/volkswagen-golf-2015-golf-variant-2015-repair-manual-pdf-download/",
+        "reason": "paid download",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://payhip.com/b/30mVc",
+        "reason": "paid download",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://tmbbooks.com/en/autom_Vwrep26.html",
+        "reason": "bookshop (paid printed manual)",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://www.trcn.gov.ng/registration-sub/volkswagen_golf_7_user_manual_pdf_download.pdf",
+        "reason": "untrusted content-farm mirror; excluded",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://www.championmotors.co.il/service-routine/",
+        "reason": "permission_required",
+        "adapter": "registry"
+      }
+    ],
+    "schedule": {
+      "fingerprintKey": "car|volkswagen|golf|2015|1598||diesel|",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "items": [],
+      "unresolved": [],
+      "sources": [
+        {
+          "sourceId": "src-7d8e8bd15019a53f",
+          "canonicalUrl": "https://static.nhtsa.gov/odi/tsbs/2014/MC-10240818-9999.pdf",
+          "finalUrl": "https://static.nhtsa.gov/odi/tsbs/2014/MC-10240818-9999.pdf",
+          "chain": [
+            "https://static.nhtsa.gov/odi/tsbs/2014/MC-10240818-9999.pdf"
+          ],
+          "sourceName": "NHTSA ODI",
+          "sourceType": "archive",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:26:44.065Z",
+          "retrievedAt": "2026-10-03T05:26:52.363Z",
+          "format": "pdf",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "3e83b009517ec015136a169ba8864e2a14be9a1c996bf4e4f2569eff3990ddc8",
+          "byteLength": 26436,
+          "locale": "en",
+          "markets": [
+            "US"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "US"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2014/MC-10240818-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://static.nhtsa.gov/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:52.283Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2014/MC-10240818-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://static.nhtsa.gov/odi/tsbs/2014/MC-10240818-9999.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:52.363Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://static.nhtsa.gov/odi/tsbs/2014/MC-10240818-9999.pdf",
+              "host": "static.nhtsa.gov",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://static.nhtsa.gov/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://static.nhtsa.gov/odi/tsbs/2014/MC-10240818-9999.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:52.363Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "static.nhtsa.gov"
+          }
+        },
+        {
+          "sourceId": "src-b56ff453f1b51169",
+          "canonicalUrl": "https://carwiki.de/golf-7-inspektion",
+          "finalUrl": "https://carwiki.de/golf-7-inspektion",
+          "chain": [
+            "https://carwiki.de/golf-7-inspektion"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:26:44.065Z",
+          "retrievedAt": "2026-10-03T05:26:53.575Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "2ecc3d4ee066b7767a93ef98c56def0433b368960298c532306850fa7c63b6dc",
+          "byteLength": 291815,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "7",
+              "6",
+              "sportvan"
+            ],
+            "yearFrom": 2023,
+            "yearTo": 2023,
+            "engineCodes": [],
+            "displacementsCc": [
+              1400
+            ],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1600,
+              2000
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/golf-7-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:53.326Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/golf-7-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/golf-7-inspektion",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:53.575Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/golf-7-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/golf-7-inspektion",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:53.575Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-2ea1f8c6877070e4",
+          "canonicalUrl": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+          "finalUrl": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+          "chain": [
+            "https://manualsnet.com/volkswagen/golf-sportwagen-2015"
+          ],
+          "sourceName": "ManualsNet",
+          "sourceType": "archive",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:26:44.065Z",
+          "retrievedAt": "2026-10-03T05:26:53.720Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "a0d6d17a186678451ec67270f4a6cf9f5cea203f421c21c988b2cf3d83126678",
+          "byteLength": 42741,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "8",
+              "7"
+            ],
+            "yearFrom": 2015,
+            "yearTo": 2015,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1800,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+              "host": "manualsnet.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://manualsnet.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:53.589Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+              "host": "manualsnet.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:53.720Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+              "host": "manualsnet.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://manualsnet.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:53.720Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "manualsnet.com"
+          }
+        },
+        {
+          "sourceId": "src-a89708f19c859927",
+          "canonicalUrl": "https://www.repareo.de/inspektion-vw-golf-7/",
+          "finalUrl": "https://www.repareo.de/inspektion-vw-golf-7/",
+          "chain": [
+            "https://www.repareo.de/inspektion-vw-golf-7/"
+          ],
+          "sourceName": "repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:26:44.065Z",
+          "retrievedAt": "2026-10-03T05:26:54.403Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "85311d5c98ba2d63e5153a2a5e668ad6afcfaf09f40f5a80eba29791f2b7ab8e",
+          "byteLength": 343450,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "7",
+              "8",
+              "6",
+              "5",
+              "4"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              999,
+              1000,
+              1498,
+              1600,
+              1700,
+              1968,
+              1984,
+              2000,
+              2300,
+              4000,
+              4700,
+              5700,
+              6000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/inspektion-vw-golf-7/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:53.980Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/inspektion-vw-golf-7/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/inspektion-vw-golf-7/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:54.402Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/inspektion-vw-golf-7/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/inspektion-vw-golf-7/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:54.403Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-56650334857cca5e",
+          "canonicalUrl": "https://www.repareo.de/oelwechsel-vw-golf-7/",
+          "finalUrl": "https://www.repareo.de/oelwechsel-vw-golf-7/",
+          "chain": [
+            "https://www.repareo.de/oelwechsel-vw-golf-7/"
+          ],
+          "sourceName": "repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:26:44.065Z",
+          "retrievedAt": "2026-10-03T05:26:55.905Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "f0458aa9318b6362c545e09f9db65a2365cb2ad4049d9a6eafdee75d4a1fe598",
+          "byteLength": 302473,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "7",
+              "85"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              800,
+              1000,
+              1200,
+              1395,
+              1400,
+              1598,
+              1600,
+              1700,
+              1900,
+              1968,
+              1984,
+              2000,
+              2100,
+              2150,
+              2200,
+              2300,
+              4000,
+              4700,
+              5200,
+              5500,
+              5700,
+              6000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/oelwechsel-vw-golf-7/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:53.980Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/oelwechsel-vw-golf-7/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/oelwechsel-vw-golf-7/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:55.905Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/oelwechsel-vw-golf-7/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/oelwechsel-vw-golf-7/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:55.905Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-7ed2b4b59d598103",
+          "canonicalUrl": "https://autogreeknews.gr/?p=313893",
+          "finalUrl": "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat",
+          "chain": [
+            "https://autogreeknews.gr/?p=313893",
+            "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat?p=313893",
+            "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat"
+          ],
+          "sourceName": "autogreeknews.gr",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:26:44.065Z",
+          "retrievedAt": "2026-10-03T05:26:58.348Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "ecd48d22093dfb2f000af73f0f2eddfdbdeaf6b4989bd8d12c680b082036cf56",
+          "byteLength": 394536,
+          "locale": "el",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1600
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://autogreeknews.gr/?p=313893",
+              "host": "autogreeknews.gr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://autogreeknews.gr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:56.158Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat?p=313893",
+              "host": "autogreeknews.gr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://autogreeknews.gr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:56.915Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat",
+              "host": "autogreeknews.gr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://autogreeknews.gr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:57.250Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat",
+              "host": "autogreeknews.gr",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:58.348Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat",
+              "host": "autogreeknews.gr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://autogreeknews.gr/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://autogreeknews.gr/kostos-kai-diastimata-service-se-dizel-aftokinita/6425-kostos-kai-diastimata-servis-sta-dizel-vw-polo-golf-kai-passat",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:26:58.348Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "autogreeknews.gr"
+          }
+        },
+        {
+          "sourceId": "src-022aa88010b6f67a",
+          "canonicalUrl": "https://carwiki.de/golf-sportsvan-probleme",
+          "finalUrl": "https://carwiki.de/golf-sportsvan-probleme",
+          "chain": [
+            "https://carwiki.de/golf-sportsvan-probleme"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:26:53.587Z",
+          "retrievedAt": "2026-10-03T05:27:09.453Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "2777206879e0eb7661187dc8de2f710773ee40101eb5c3bfcb264b50dd6b5351",
+          "byteLength": 176927,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "7"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600,
+              2000
+            ],
+            "fuels": [
+              "petrol",
+              "diesel"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/golf-sportsvan-probleme",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:09.245Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/golf-sportsvan-probleme",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/golf-sportsvan-probleme",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:09.452Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/golf-sportsvan-probleme",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/golf-sportsvan-probleme",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:09.453Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-e5182983c0037341",
+          "canonicalUrl": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+          "finalUrl": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+          "chain": [
+            "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html"
+          ],
+          "sourceName": "Motor-Talk",
+          "sourceType": "forum",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:26:44.065Z",
+          "retrievedAt": "2026-10-03T05:27:10.041Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e",
+          "byteLength": 440628,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "7"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200,
+              1600,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:09.591Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:10.040Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:10.041Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.motor-talk.de"
+          }
+        },
+        {
+          "sourceId": "src-553dc559ce724eb3",
+          "canonicalUrl": "https://www.motor-talk.de/forum/vw-golf-b60.html",
+          "finalUrl": "https://www.motor-talk.de/forum/vw-golf-b60.html",
+          "chain": [
+            "https://www.motor-talk.de/forum/vw-golf-b60.html"
+          ],
+          "sourceName": "www.motor-talk.de",
+          "sourceType": "forum",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:10.046Z",
+          "retrievedAt": "2026-10-03T05:27:11.622Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "55d3869322caee38d8fdece0864c073bc1b58bcaae868a70fbbdeed751feb756",
+          "byteLength": 545664,
+          "locale": null,
+          "markets": [
+            "US"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "805",
+              "1",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "1301",
+              "30",
+              "196",
+              "135",
+              "2",
+              "363",
+              "88",
+              "23",
+              "137",
+              "48",
+              "cabrio"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1400,
+              1500,
+              2000
+            ],
+            "fuels": [],
+            "markets": [
+              "US"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.motor-talk.de/forum/vw-golf-b60.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:10.047Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.motor-talk.de/forum/vw-golf-b60.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/vw-golf-b60.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:11.622Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.motor-talk.de/forum/vw-golf-b60.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/vw-golf-b60.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:11.622Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.motor-talk.de"
+          }
+        },
+        {
+          "sourceId": "src-9530b7e745ceeadd",
+          "canonicalUrl": "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html",
+          "finalUrl": "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html",
+          "chain": [
+            "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html"
+          ],
+          "sourceName": "www.motor-talk.de",
+          "sourceType": "forum",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:10.046Z",
+          "retrievedAt": "2026-10-03T05:27:13.048Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "e3273e47a067c25f7874ffc10874b2b18cda1af998c15b70149a4fc52e7f7b63",
+          "byteLength": 537750,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "7",
+              "8",
+              "17",
+              "3",
+              "39",
+              "9",
+              "23",
+              "41",
+              "4",
+              "54",
+              "35",
+              "6"
+            ],
+            "yearFrom": 2012,
+            "yearTo": 2012,
+            "engineCodes": [],
+            "displacementsCc": [
+              1600,
+              2000
+            ],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600,
+              2000
+            ],
+            "fuels": [
+              "diesel"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:10.047Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:13.048Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/vw-golf-7-golf-sportsvan-b848.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:13.048Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.motor-talk.de"
+          }
+        },
+        {
+          "sourceId": "src-01ec088573de3653",
+          "canonicalUrl": "https://www.motor-talk.de/forum/aktion/Attachment.html?attachmentId=738344",
+          "finalUrl": "https://www.motor-talk.de/forum/aktion/Attachment.html?attachmentId=738344",
+          "chain": [
+            "https://www.motor-talk.de/forum/aktion/Attachment.html?attachmentId=738344"
+          ],
+          "sourceName": "www.motor-talk.de",
+          "sourceType": "forum",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:10.046Z",
+          "retrievedAt": "2026-10-03T05:27:14.371Z",
+          "format": "pdf",
+          "documentType": "other",
+          "contentSha256": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d",
+          "byteLength": 75088,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.motor-talk.de/forum/aktion/Attachment.html?attachmentId=738344",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:13.052Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.motor-talk.de/forum/aktion/Attachment.html?attachmentId=738344",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/aktion/Attachment.html?attachmentId=738344",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:14.370Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.motor-talk.de/forum/aktion/Attachment.html?attachmentId=738344",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/aktion/Attachment.html?attachmentId=738344",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:14.371Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.motor-talk.de"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "src-7d8e8bd15019a53f:3e83b009517e-p3-cabin_filter-replacement-0",
+          "sourceId": "src-7d8e8bd15019a53f",
+          "operationKey": "cabin_filter",
+          "task": "cabin_filter",
+          "originalText": "2015 Volkswagen 1.8T Engine * Carefree Maintenance Program - Time dependent items will be included in scheduled maintena",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "US"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 3,
+            "section": "Maintenance Schedule For USA",
+            "locator": "line \"2015 Volkswagen 1.8T Engine * Carefree Maintenance Program - Time dependent item\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years",
+              "market stated: US (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "3e83b009517e-p3-cabin_filter-replacement-0",
+            "task": "cabin_filter",
+            "taskText": "2015 Volkswagen 1.8T Engine * Carefree Maintenance Program - Time dependent items will be included in scheduled maintena",
+            "action": "replacement",
+            "interval": {
+              "everyMonths": 12,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ],
+              "markets": [
+                "US"
+              ],
+              "coverageUnknown": [
+                "modelYear"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "3e83b009517ec015136a169ba8864e2a14be9a1c996bf4e4f2569eff3990ddc8",
+                "documentTitle": "MC-10240818-9999 (NHTSA TSB archive, Volkswagen 2014)",
+                "authority": "vehicle_document",
+                "markets": [
+                  "US"
+                ],
+                "page": 3,
+                "table": "Maintenance Schedule For USA",
+                "locator": "line \"2015 Volkswagen 1.8T Engine * Carefree Maintenance Program - Time dependent item\"",
+                "documentSha256": "3e83b009517ec015136a169ba8864e2a14be9a1c996bf4e4f2569eff3990ddc8"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-b56ff453f1b51169:2ecc3d4ee066-p9-s-air_filter-replacement-0",
+          "sourceId": "src-b56ff453f1b51169",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Der Luftfilter ist alle 90.000 km oder nach 6 Jahren(bei weniger als 90.000 km in 6 Jahren) zu wechseln.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 90000,
+          "intervalMiles": null,
+          "intervalMonths": 72,
+          "intervalYears": 6,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": {
+            "from": 2020,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 9,
+            "locator": "column sentence \"Der Luftfilter ist alle 90.000 km oder nach 6 Jahren(bei weniger als 90.000 km i\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "mismatch",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "mismatch",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document covers 2020–2020, not 2015",
+              "engines named: 1400 cc — not 1598 cc",
+              "fuel: petrol only",
+              "item section states 2020–2020"
+            ]
+          },
+          "requirement": {
+            "id": "2ecc3d4ee066-p9-s-air_filter-replacement-0",
+            "task": "air_filter",
+            "taskText": "Der Luftfilter ist alle 90.000 km oder nach 6 Jahren(bei weniger als 90.000 km in 6 Jahren) zu wechseln.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 90000,
+                "unit": "km"
+              },
+              "everyMonths": 72,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ],
+              "modelYears": {
+                "from": 2023,
+                "to": 2023
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "2ecc3d4ee066b7767a93ef98c56def0433b368960298c532306850fa7c63b6dc",
+                "documentTitle": "Golf 7 Inspektion: Was wird gemacht? Kosten, Intervalle, Serviceplan & Tipps zum Sparen",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 9,
+                "section": "Simek Miroslav",
+                "locator": "column sentence \"Der Luftfilter ist alle 90.000 km oder nach 6 Jahren(bei weniger als 90.000 km i\"",
+                "documentSha256": "2ecc3d4ee066b7767a93ef98c56def0433b368960298c532306850fa7c63b6dc"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 2020–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2020,
+              "to": 2020
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-a89708f19c859927:85311d5c98ba-p5-s-periodic_service-other-0",
+          "sourceId": "src-a89708f19c859927",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "Anschließend muss der Golf VII alle 30.000 km oder alle 12 Monate zur Wartung in die Werkstatt.",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Anschließend muss der Golf VII alle 30.000 km oder alle 12 Monate zur Wartung in\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "85311d5c98ba-p5-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "Anschließend muss der Golf VII alle 30.000 km oder alle 12 Monate zur Wartung in die Werkstatt.",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "85311d5c98ba2d63e5153a2a5e668ad6afcfaf09f40f5a80eba29791f2b7ab8e",
+                "documentTitle": "Inspektion VW Golf 7: Kosten, Intervalle & Terminbuchung",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "locator": "column sentence \"Anschließend muss der Golf VII alle 30.000 km oder alle 12 Monate zur Wartung in\"",
+                "documentSha256": "85311d5c98ba2d63e5153a2a5e668ad6afcfaf09f40f5a80eba29791f2b7ab8e"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-e5182983c0037341:2378246e5321-p2-s-periodic_service-other-0",
+          "sourceId": "src-e5182983c0037341",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "Jede weitere Inspektion ist nach 30.000 Kilometern oder einem Jahr faellig.",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 2,
+            "locator": "column sentence \"Jede weitere Inspektion ist nach 30.000 Kilometern oder einem Jahr faellig.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "2378246e5321-p2-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "Jede weitere Inspektion ist nach 30.000 Kilometern oder einem Jahr faellig.",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e",
+                "documentTitle": "Service- / Wartungsplan (Motor-Talk forum thread)",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 2,
+                "section": "Wo genau steht das auf der VW homepage?",
+                "locator": "column sentence \"Jede weitere Inspektion ist nach 30.000 Kilometern oder einem Jahr faellig.\"",
+                "documentSha256": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-e5182983c0037341:2378246e5321-p2-s-cabin_filter-replacement-1",
+          "sourceId": "src-e5182983c0037341",
+          "operationKey": "cabin_filter",
+          "task": "cabin_filter",
+          "originalText": "-Xenon einstellen -Staub- und Pollenfilter wechseln 3 Jahre(dann alle 2 Jahre)",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 2,
+            "locator": "column sentence \"-Xenon einstellen -Staub- und Pollenfilter wechseln 3 Jahre(dann alle 2 Jahre)\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "2378246e5321-p2-s-cabin_filter-replacement-1",
+            "task": "cabin_filter",
+            "taskText": "-Xenon einstellen -Staub- und Pollenfilter wechseln 3 Jahre(dann alle 2 Jahre)",
+            "action": "replacement",
+            "interval": {
+              "everyMonths": 24,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e",
+                "documentTitle": "Service- / Wartungsplan (Motor-Talk forum thread)",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 2,
+                "section": "Antworten",
+                "locator": "column sentence \"-Xenon einstellen -Staub- und Pollenfilter wechseln 3 Jahre(dann alle 2 Jahre)\"",
+                "documentSha256": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ALL_ENGINES",
+            "basis": "the source states all engines: \"Es gibt 1) Ölwechwel Service und 2) Inspektionsservice für alle Motoren\"",
+            "sufficient": true,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-01ec088573de3653:0eb37e042ddd-p2-s-periodic_service-other-0",
+          "sourceId": "src-01ec088573de3653",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "Auf jeden Fall alle 2 Jahre oder 30.000 km nach der lelzten Wartung die mit ● gekennzeichneten Wartungsarbeiten durchführen.",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 2,
+            "locator": "column sentence \"Auf jeden Fall alle 2 Jahre oder 30.000 km nach der lelzten Wartung die mit ● ge\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "0eb37e042ddd-p2-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "Auf jeden Fall alle 2 Jahre oder 30.000 km nach der lelzten Wartung die mit ● gekennzeichneten Wartungsarbeiten durchführen.",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "everyMonths": 24,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d",
+                "documentTitle": "Wartung_Golf_VII . pdf",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 2,
+                "section": "Wartungsplan",
+                "locator": "column sentence \"Auf jeden Fall alle 2 Jahre oder 30.000 km nach der lelzten Wartung die mit ● ge\"",
+                "documentSha256": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-01ec088573de3653:0eb37e042ddd-p3-s-brake_fluid-replacement-1",
+          "sourceId": "src-01ec088573de3653",
+          "operationKey": "brake_fluid",
+          "task": "brake_fluid",
+          "originalText": "Folgende Arbeiten zusätzlich durchführen: Erstmalig nach 3 Jahren, dann alle 2 Jahre ♦ Bremsflüssigkeit: Erneuern.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 3,
+            "locator": "column sentence \"Folgende Arbeiten zusätzlich durchführen: Erstmalig nach 3 Jahren, dann alle 2 J\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "0eb37e042ddd-p3-s-brake_fluid-replacement-1",
+            "task": "brake_fluid",
+            "taskText": "Folgende Arbeiten zusätzlich durchführen: Erstmalig nach 3 Jahren, dann alle 2 Jahre ♦ Bremsflüssigkeit: Erneuern.",
+            "action": "replacement",
+            "interval": {
+              "everyMonths": 24,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d",
+                "documentTitle": "Wartung_Golf_VII . pdf",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 3,
+                "section": "Elektrische Anlage",
+                "locator": "column sentence \"Folgende Arbeiten zusätzlich durchführen: Erstmalig nach 3 Jahren, dann alle 2 J\"",
+                "documentSha256": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-01ec088573de3653:0eb37e042ddd-p3-s-cabin_filter-replacement-2",
+          "sourceId": "src-01ec088573de3653",
+          "operationKey": "cabin_filter",
+          "task": "cabin_filter",
+          "originalText": "Alle 60.000 km oder 2 Jahre ♦ Lüftung / Heizung: Staub- / Pollenfilter-Einsatz erneuern, Gehäuse reinigen.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 3,
+            "locator": "column sentence \"Alle 60.000 km oder 2 Jahre ♦ Lüftung / Heizung: Staub- / Pollenfilter-Einsatz e\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "0eb37e042ddd-p3-s-cabin_filter-replacement-2",
+            "task": "cabin_filter",
+            "taskText": "Alle 60.000 km oder 2 Jahre ♦ Lüftung / Heizung: Staub- / Pollenfilter-Einsatz erneuern, Gehäuse reinigen.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "everyMonths": 24,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d",
+                "documentTitle": "Wartung_Golf_VII . pdf",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 3,
+                "section": "Elektrische Anlage",
+                "locator": "column sentence \"Alle 60.000 km oder 2 Jahre ♦ Lüftung / Heizung: Staub- / Pollenfilter-Einsatz e\"",
+                "documentSha256": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-01ec088573de3653:0eb37e042ddd-p3-s-spark_plugs-replacement-3",
+          "sourceId": "src-01ec088573de3653",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Alle 60.000 km oder 4 Jahre ♦ Benzinmotor: Zündkerzen erneuern.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": 48,
+          "intervalYears": 4,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 3,
+            "locator": "column sentence \"Alle 60.000 km oder 4 Jahre ♦ Benzinmotor: Zündkerzen erneuern.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "0eb37e042ddd-p3-s-spark_plugs-replacement-3",
+            "task": "spark_plugs",
+            "taskText": "Alle 60.000 km oder 4 Jahre ♦ Benzinmotor: Zündkerzen erneuern.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "everyMonths": 48,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d",
+                "documentTitle": "Wartung_Golf_VII . pdf",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 3,
+                "section": "Alle 3 Jahre",
+                "locator": "column sentence \"Alle 60.000 km oder 4 Jahre ♦ Benzinmotor: Zündkerzen erneuern.\"",
+                "documentSha256": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-01ec088573de3653:0eb37e042ddd-p3-s-fuel_filter-replacement-4",
+          "sourceId": "src-01ec088573de3653",
+          "operationKey": "fuel_filter",
+          "task": "fuel_filter",
+          "originalText": "Alle 90.000 km ♦ CR-Dieselmotor: Kraftstofffilter erneuern.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 90000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 3,
+            "locator": "column sentence \"Alle 90.000 km ♦ CR-Dieselmotor: Kraftstofffilter erneuern.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "0eb37e042ddd-p3-s-fuel_filter-replacement-4",
+            "task": "fuel_filter",
+            "taskText": "Alle 90.000 km ♦ CR-Dieselmotor: Kraftstofffilter erneuern.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 90000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d",
+                "documentTitle": "Wartung_Golf_VII . pdf",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 3,
+                "section": "Alle 3 Jahre",
+                "locator": "column sentence \"Alle 90.000 km ♦ CR-Dieselmotor: Kraftstofffilter erneuern.\"",
+                "documentSha256": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-01ec088573de3653:0eb37e042ddd-p4-s-timing_belt-replacement-5",
+          "sourceId": "src-01ec088573de3653",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Alle 210.000 km ♦ CR-Dieselmotor: Zahnriemen und Zahnriemen-Spannrolle ersetzen.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 210000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Golf"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 4,
+            "locator": "column sentence \"Alle 210.000 km ♦ CR-Dieselmotor: Zahnriemen und Zahnriemen-Spannrolle ersetzen.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "0eb37e042ddd-p4-s-timing_belt-replacement-5",
+            "task": "timing_belt",
+            "taskText": "Alle 210.000 km ♦ CR-Dieselmotor: Zahnriemen und Zahnriemen-Spannrolle ersetzen.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 210000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "volkswagen"
+              ],
+              "models": [
+                "Golf"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d",
+                "documentTitle": "Wartung_Golf_VII . pdf",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 4,
+                "locator": "column sentence \"Alle 210.000 km ♦ CR-Dieselmotor: Zahnriemen und Zahnriemen-Spannrolle ersetzen.\"",
+                "documentSha256": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        }
+      ],
+      "resolvedAt": "2026-10-03T05:27:15.380Z",
+      "msourceVersion": "msource/1"
+    }
+  }
+}

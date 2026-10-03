@@ -302,8 +302,9 @@ export function isVerifiedRequirement(r: MaintenanceRequirement): boolean {
  *       (engine, regime, usage, …) — technically relevant, never scheduled until resolved;
  *  - D: secondary / supporting evidence (press, forums, dealers, user reports) — never scheduled;
  *  - E: an unverified candidate (AI or unreviewed extraction) — never scheduled;
- *  - T: triangulated (2026-09-30): not individually verified, but grounded in and corroborated by
- *       independent sources (≥ 2, or one official document) with confidence high / medium, and
+ *  - T: triangulated (2026-09-30; 2026-10-02: one strongly applicable independent source may
+ *       suffice at medium confidence): not individually verified, but grounded in independent
+ *       source(s) with confidence high / medium, and
  *       applicable to the vehicle. Drives a plan below A and B, always labelled with confidence.
  * A, B and T drive a maintenance plan; A outranks B outranks T per atomic task.
  */
@@ -319,7 +320,9 @@ export function isTriangulated(r: MaintenanceRequirement): boolean {
     Boolean(r.extraction.grounded) &&
     c != null &&
     (c.confidence === 'high' || c.confidence === 'medium') &&
-    (c.independentSources >= 2 || c.officialSources >= 1)
+    // One independent source suffices when its confidence is medium/high: the source-specific
+    // rules that produce the confidence decide (owner correction 2026-10-02, M-SOURCE V1).
+    c.independentSources >= 1
   );
 }
 

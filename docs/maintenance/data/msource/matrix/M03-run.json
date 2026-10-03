@@ -1,0 +1,4972 @@
+{
+  "run": {
+    "runId": "matrix-M03",
+    "vehicleRef": "M03",
+    "fingerprintKey": "car|skoda|octavia|2018|1395||petrol|",
+    "msourceVersion": "msource/1",
+    "startedAt": "2026-10-03T05:27:15.387Z",
+    "finishedAt": "2026-10-03T05:27:50.320Z",
+    "stages": [
+      {
+        "stage": "VEHICLE_VERIFIED",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:27:15.387Z",
+        "finishedAt": "2026-10-03T05:27:15.387Z",
+        "durationMs": 0,
+        "counts": {
+          "engineCodes": 0,
+          "displacementKnown": 1
+        },
+        "failures": [],
+        "notes": [
+          "class car|skoda|octavia|2018|1395||petrol|"
+        ]
+      },
+      {
+        "stage": "DISCOVERY",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:27:15.387Z",
+        "finishedAt": "2026-10-03T05:27:15.391Z",
+        "durationMs": 4,
+        "counts": {
+          "fable": 15,
+          "registry": 0,
+          "knowledge": 1
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SOURCE_CANDIDATES",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:27:15.391Z",
+        "finishedAt": "2026-10-03T05:27:15.391Z",
+        "durationMs": 0,
+        "counts": {
+          "discovered": 16,
+          "unique": 15,
+          "duplicates": 1,
+          "kept": 15
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "ACQUISITION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:27:15.391Z",
+        "finishedAt": "2026-10-03T05:27:39.348Z",
+        "durationMs": 23957,
+        "counts": {
+          "acquired": 24
+        },
+        "failures": [
+          {
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
+            "sourceId": "src-819cbf3c640f41e6"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-b5ab1e30efb28c46"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-af1b5287feb518ad"
+          },
+          {
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
+            "sourceId": "src-1156965f179c86c9"
+          },
+          {
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
+            "sourceId": "src-e86a8e2bf54fa841"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-adf3044bc46bee1d"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "login / CAPTCHA / paywall page",
+            "sourceId": "src-8238ba99fdd84ddb"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "login / CAPTCHA / paywall page",
+            "sourceId": "src-24ebcc2178767293"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "login / CAPTCHA / paywall page",
+            "sourceId": "src-6f50ec0334fa23c1"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "login / CAPTCHA / paywall page",
+            "sourceId": "src-5e5d6df81cdcbec2"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "login / CAPTCHA / paywall page",
+            "sourceId": "src-322ea9bbbb96a351"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "EXTRACTION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:27:39.349Z",
+        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "durationMs": 10971,
+        "counts": {
+          "extracted": 13,
+          "grounded": 13
+        },
+        "failures": [
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.auto-abc.eu/service/Skoda-Octavia",
+            "sourceId": "src-8f36f5f84152014e"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership",
+            "sourceId": "src-eec3c4dae01cbe68"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.carsales.com.au/research/skoda/octavia/2018/",
+            "sourceId": "src-35befafcb0adbf96"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/skoda-octavia-inspektion",
+            "sourceId": "src-54a54245da0dd9ef"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.repareo.de/oelwechsel-skoda-octavia/",
+            "sourceId": "src-87f33b4c7041f376"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.auto-abc.lv/service/Skoda-Octavia",
+            "sourceId": "src-4aa5b48ce12996b6"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html",
+            "sourceId": "src-a87e6e420da63874"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
+            "sourceId": "src-1e30c65a99475214"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.carexpert.com.au/skoda/octavia/2018",
+            "sourceId": "src-8170ef21bd0aad83"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215",
+            "sourceId": "src-e5674780ba2dc4a6"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.carexpert.com.au/buy/skoda/octavia",
+            "sourceId": "src-89e9734e5cf811fc"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+            "sourceId": "src-baf08420380ad826"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/skoda-octavia",
+            "sourceId": "src-b1eb00d4e0688946"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+            "sourceId": "src-0263dc3074a5d18e"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+            "sourceId": "src-b19a7a247098594a"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
+            "sourceId": "src-adb2fc1de5b8ddab"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/",
+            "sourceId": "src-adc3c6d22d8782d8"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/",
+            "sourceId": "src-2e80d9a7e6dbbd7d"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.repareo.de/bremsen-wechseln-skoda-octavia/",
+            "sourceId": "src-91ded5794d4a0f7b"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
+            "sourceId": "src-a57a28e4ce512fb2"
+          }
+        ],
+        "notes": [
+          "additional acquisition: 8 more candidates"
+        ]
+      },
+      {
+        "stage": "VEHICLE_MATCHING",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:27:50.320Z",
+        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "durationMs": 0,
+        "counts": {
+          "PARTIAL": 13,
+          "STRONG": 6,
+          "SUPPORTED": 4,
+          "NOT_APPLICABLE": 4
+        },
+        "failures": [
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "PARTIAL: the document does not state its model years",
+            "sourceId": "src-83df2381b4fcaa7f"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "SUPPORTED: ",
+            "sourceId": "src-bd3867fc1d5eabe6"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "PARTIAL: the document does not state its model years; market stated: EU, AU (not IL)",
+            "sourceId": "src-ffe66cd93dc9ef3f"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "CROSS_SOURCE_VALIDATION",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:27:50.320Z",
+        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "durationMs": 0,
+        "counts": {
+          "obligations": 1,
+          "corroborated": 0,
+          "conflicting": 0
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SCHEDULE_RESOLUTION",
+        "status": "failed",
+        "startedAt": "2026-10-03T05:27:50.320Z",
+        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "durationMs": 0,
+        "counts": {
+          "items": 0,
+          "unresolved": 1,
+          "exact": 0,
+          "strong": 0,
+          "supported": 0
+        },
+        "failures": [
+          {
+            "code": "INSUFFICIENT_EVIDENCE",
+            "detail": "INSUFFICIENT_EVIDENCE"
+          }
+        ],
+        "notes": [
+          "status INSUFFICIENT_EVIDENCE"
+        ]
+      },
+      {
+        "stage": "PERSISTENCE",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:27:50.320Z",
+        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "NEXT_SERVICE_CALCULATION",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:27:50.320Z",
+        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": [
+          "no schedule"
+        ]
+      }
+    ],
+    "queries": [
+      "Skoda Octavia 1.4 service intervals",
+      "סקודה Octavia 1.4 מרווחי טיפולים",
+      "Skoda Octavia 1.4 servisní intervaly",
+      "Skoda Octavia 2018 maintenance manual",
+      "סקודה Octavia 2018 ספר רכב טיפולים",
+      "Skoda Octavia 2018 návod k obsluze údržba",
+      "Skoda Octavia maintenance schedule",
+      "סקודה Octavia לוח טיפולים",
+      "Skoda Octavia plán údržby"
+    ],
+    "candidates": [
+      {
+        "url": "https://uk.haynes.com/de/pages/maintenance-plans-car-skoda-superb-iii-2015-2025",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/service/Skoda-Octavia",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://club.autodoc.co.uk/manuals/skoda/octavia/octavia-5e3",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://mecazen.fr/carnet-entretien-auto/skoda/octavia/revision",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://uk.haynes.com/pages/maintenance-plans-car-skoda",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
+        }
+      },
+      {
+        "url": "https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
+        }
+      },
+      {
+        "url": "https://www.carsales.com.au/research/skoda/octavia/2018/",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/skoda-octavia-inspektion",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/inspektion-skoda-octavia/",
+        "by": "fable",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/oelwechsel-skoda-octavia/",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
+        "by": "fable",
+        "outcome": "extracted",
+        "failure": null
+      },
+      {
+        "url": "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service",
+        "by": "fable",
+        "outcome": "extracted",
+        "failure": null
+      },
+      {
+        "url": "https://good-garage-guide.honestjohn.co.uk/askhj/answer/50325/i-d-like-to-buy-a-new-skoda-octavia-but-does-the-cam-belt-really-need-changing-every-four-years-",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.lv/service/Skoda-Octavia",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service",
+        "by": "link",
+        "outcome": "extracted",
+        "failure": null
+      },
+      {
+        "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+        "by": "link",
+        "outcome": "extracted",
+        "failure": null
+      },
+      {
+        "url": "https://web.archive.org/web/20250830084232id_/https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+        "by": "archive",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "SUPPORTED: "
+        }
+      },
+      {
+        "url": "https://www.carexpert.com.au/skoda/octavia",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years; market stated: EU, AU (not IL)"
+        }
+      },
+      {
+        "url": "https://www.carexpert.com.au/skoda/octavia/2018",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://www.carexpert.com.au/buy/skoda/octavia",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://carwiki.de/skoda-octavia",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.repareo.de/bremsen-wechseln-skoda-octavia/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3",
+        "by": "link",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "login / CAPTCHA / paywall page"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/2-0-tdi-combi-ftId220795",
+        "by": "link",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "login / CAPTCHA / paywall page"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/1-5-tsi-act-ftId218632",
+        "by": "link",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "login / CAPTCHA / paywall page"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/2-0-tdi-combi-ftId261258",
+        "by": "link",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "login / CAPTCHA / paywall page"
+        }
+      },
+      {
+        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/2-0-tdi-combi-ftId170308",
+        "by": "link",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "login / CAPTCHA / paywall page"
+        }
+      }
+    ],
+    "restricted": [
+      {
+        "url": "https://uk.haynes.com/products/skoda-octavia-iii-2013-2020-haynes-repair-manual",
+        "reason": "paid product (Haynes Octavia III 2013-2020 manual; covers 1.4 TSI 140/150 PS)",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://www.manualslib.com/manual/2864095/Skoda-Octavia-Ii-2004.html",
+        "reason": "wrong generation (Octavia II 2004); excluded",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://sbrc2017.ufpa.br/trip/skoda-octavia-service-manual",
+        "reason": "untrusted content-farm page; excluded",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://www.championmotors.co.il/service-routine/",
+        "reason": "permission_required",
+        "adapter": "registry"
+      }
+    ],
+    "schedule": {
+      "fingerprintKey": "car|skoda|octavia|2018|1395||petrol|",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "items": [],
+      "unresolved": [
+        {
+          "operation": "timing_belt",
+          "task": "timing_belt",
+          "action": "replacement",
+          "condition": "normal",
+          "intervalKm": 60000,
+          "intervalMonths": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "rule": "DISTANCE_ONLY",
+          "quality": "INSUFFICIENT",
+          "evidenceIds": [
+            "src-4f56ef3fa1f1a171:8fca65205216-p5-timing_belt-replacement-0",
+            "src-202801063563b908:100705ae7304-p5-timing_belt-replacement-0",
+            "src-119b140da90c66f7:384aec0b66b3-p5-timing_belt-replacement-0",
+            "src-46b6f1768305011c:61d9486f0967-p5-timing_belt-replacement-0"
+          ],
+          "independentSources": 1,
+          "officialSources": 0,
+          "applicability": "STRONG",
+          "conflicts": [],
+          "applicabilityStatus": "APPLICABLE",
+          "scope": "ENGINE_FAMILY",
+          "notes": []
+        }
+      ],
+      "sources": [
+        {
+          "sourceId": "src-8f36f5f84152014e",
+          "canonicalUrl": "https://www.auto-abc.eu/service/Skoda-Octavia",
+          "finalUrl": "https://www.auto-abc.eu/service/Skoda-Octavia",
+          "chain": [
+            "https://www.auto-abc.eu/service/Skoda-Octavia"
+          ],
+          "sourceName": "auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:27:15.388Z",
+          "retrievedAt": "2026-10-03T05:27:15.730Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "0a580833fe9c116ec19adfe0ca4c8890a008920c6209a5c4a52bb9ae9bd276e5",
+          "byteLength": 30855,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/service/Skoda-Octavia",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:15.523Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/service/Skoda-Octavia",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/service/Skoda-Octavia",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:15.730Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/service/Skoda-Octavia",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/service/Skoda-Octavia",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:15.730Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-eec3c4dae01cbe68",
+          "canonicalUrl": "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership",
+          "finalUrl": "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership",
+          "chain": [
+            "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership"
+          ],
+          "sourceName": "CarExpert",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:27:15.388Z",
+          "retrievedAt": "2026-10-03T05:27:23.493Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "5c50dc5285904721ff2c7a7046132fe527ed46fc9e92ae74f3543e9008745352",
+          "byteLength": 317778,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2018,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:23.433Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:23.492Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia/2018/sport/cost-of-ownership",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:23.493Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.carexpert.com.au"
+          }
+        },
+        {
+          "sourceId": "src-35befafcb0adbf96",
+          "canonicalUrl": "https://www.carsales.com.au/research/skoda/octavia/2018/",
+          "finalUrl": "https://www.carsales.com.au/research/skoda/octavia/2018/",
+          "chain": [
+            "https://www.carsales.com.au/research/skoda/octavia/2018/"
+          ],
+          "sourceName": "carsales.com.au",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:27:15.388Z",
+          "retrievedAt": "2026-10-03T05:27:24.207Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "defcadda95e5f1b0b75491bd8bfe3fd77e557c0f23e3015b892c67b354e4db73",
+          "byteLength": 1261009,
+          "locale": "en",
+          "markets": [
+            "AU"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "rs"
+            ],
+            "yearFrom": 2018,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              5200,
+              5400,
+              5500,
+              6500
+            ],
+            "fuels": [],
+            "markets": [
+              "AU"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.carsales.com.au/research/skoda/octavia/2018/",
+              "host": "www.carsales.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carsales.com.au/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:22.186Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.carsales.com.au/research/skoda/octavia/2018/",
+              "host": "www.carsales.com.au",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carsales.com.au/research/skoda/octavia/2018/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:24.206Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.carsales.com.au/research/skoda/octavia/2018/",
+              "host": "www.carsales.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carsales.com.au/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carsales.com.au/research/skoda/octavia/2018/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:24.207Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.carsales.com.au"
+          }
+        },
+        {
+          "sourceId": "src-54a54245da0dd9ef",
+          "canonicalUrl": "https://carwiki.de/skoda-octavia-inspektion",
+          "finalUrl": "https://carwiki.de/skoda-octavia-inspektion",
+          "chain": [
+            "https://carwiki.de/skoda-octavia-inspektion"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:27:15.388Z",
+          "retrievedAt": "2026-10-03T05:27:24.482Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "3bab258d2f0680faecc919276735ac1329e34208ff05855681bba7859c792cd9",
+          "byteLength": 186304,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "3",
+              "rs"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200,
+              1400,
+              1600,
+              1800,
+              1900,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/skoda-octavia-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:24.307Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/skoda-octavia-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia-inspektion",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:24.481Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/skoda-octavia-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia-inspektion",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:24.482Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-83df2381b4fcaa7f",
+          "canonicalUrl": "https://www.repareo.de/inspektion-skoda-octavia/",
+          "finalUrl": "https://www.repareo.de/inspektion-skoda-octavia/",
+          "chain": [
+            "https://www.repareo.de/inspektion-skoda-octavia/"
+          ],
+          "sourceName": "repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:27:15.388Z",
+          "retrievedAt": "2026-10-03T05:27:25.095Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf",
+          "byteLength": 858265,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "rs"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              999,
+              1000,
+              1197,
+              1200,
+              1390,
+              1395,
+              1400,
+              1495,
+              1498,
+              1500,
+              1598,
+              1600,
+              1700,
+              1781,
+              1896,
+              1900,
+              1968,
+              1984,
+              2000,
+              2200,
+              2300,
+              2400,
+              2600,
+              3200,
+              3800,
+              4000,
+              4300,
+              4500,
+              4600,
+              5200,
+              5300,
+              5700,
+              6000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/inspektion-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:24.502Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/inspektion-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/inspektion-skoda-octavia/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:25.095Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/inspektion-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/inspektion-skoda-octavia/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:25.095Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-4f56ef3fa1f1a171",
+          "canonicalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
+          "finalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
+          "chain": [
+            "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service"
+          ],
+          "sourceName": "auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:27:15.388Z",
+          "retrievedAt": "2026-10-03T05:27:25.638Z",
+          "format": "html",
+          "documentType": "service_manual",
+          "contentSha256": "8fca6520521685e4683c22db74a242dd859223b4eb15b233a59a798a7b7fb91f",
+          "byteLength": 36235,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2017,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [
+              1400
+            ],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:25.117Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:25.638Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:25.638Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-87f33b4c7041f376",
+          "canonicalUrl": "https://www.repareo.de/oelwechsel-skoda-octavia/",
+          "finalUrl": "https://www.repareo.de/oelwechsel-skoda-octavia/",
+          "chain": [
+            "https://www.repareo.de/oelwechsel-skoda-octavia/"
+          ],
+          "sourceName": "repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:27:15.388Z",
+          "retrievedAt": "2026-10-03T05:27:26.357Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "3ab04de8acbefbaede5b4b794167735c46026fa668b2d58789cf8fd559ada329",
+          "byteLength": 792032,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "3"
+            ],
+            "yearFrom": 1959,
+            "yearTo": 1971,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1197,
+              1200,
+              1390,
+              1400,
+              1498,
+              1500,
+              1595,
+              1598,
+              1600,
+              1700,
+              1781,
+              1896,
+              1900,
+              1968,
+              1984,
+              2000,
+              2100,
+              2200,
+              2300,
+              2400,
+              2500,
+              3000,
+              3200,
+              3800,
+              3900,
+              4000,
+              4250,
+              4300,
+              4500,
+              4600,
+              4700,
+              5200,
+              5300,
+              5700,
+              6000
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/oelwechsel-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:25.117Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/oelwechsel-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/oelwechsel-skoda-octavia/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:26.357Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/oelwechsel-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/oelwechsel-skoda-octavia/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:26.357Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-202801063563b908",
+          "canonicalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service",
+          "finalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service",
+          "chain": [
+            "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service"
+          ],
+          "sourceName": "auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:27:15.388Z",
+          "retrievedAt": "2026-10-03T05:27:26.766Z",
+          "format": "html",
+          "documentType": "service_manual",
+          "contentSha256": "100705ae7304cf6aef647f820e5830e2ab2484e72a4fb049ae1587ebc386ae6a",
+          "byteLength": 36238,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2017,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [
+              1400
+            ],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:26.378Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:26.765Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16009-2017/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:26.766Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-4aa5b48ce12996b6",
+          "canonicalUrl": "https://www.auto-abc.lv/service/Skoda-Octavia",
+          "finalUrl": "https://www.auto-abc.lv/service/Skoda-Octavia",
+          "chain": [
+            "https://www.auto-abc.lv/service/Skoda-Octavia"
+          ],
+          "sourceName": "www.auto-abc.lv",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:15.732Z",
+          "retrievedAt": "2026-10-03T05:27:27.029Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "a6b09d06689d93aff2e4d994913dbbf9c2430fcd1875133c0d9a3823403ff7c1",
+          "byteLength": 31406,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.lv/service/Skoda-Octavia",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.lv/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:26.896Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.lv/service/Skoda-Octavia",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.lv/service/Skoda-Octavia",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:27.029Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.lv/service/Skoda-Octavia",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.lv/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.lv/service/Skoda-Octavia",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:27.029Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.lv"
+          }
+        },
+        {
+          "sourceId": "src-a87e6e420da63874",
+          "canonicalUrl": "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html",
+          "finalUrl": "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html",
+          "chain": [
+            "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html"
+          ],
+          "sourceName": "Motor-Talk",
+          "sourceType": "forum",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:27:15.388Z",
+          "retrievedAt": "2026-10-03T05:27:27.431Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "105eabe0f2eb9c9c1b07e53f9613cd7c13f512ac6f4ce045ef712ebc6231d86d",
+          "byteLength": 409976,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "3"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1500,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:26.995Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:27.431Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/codierfehler-serviceintervall-t5567786.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:27.431Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.motor-talk.de"
+          }
+        },
+        {
+          "sourceId": "src-1e30c65a99475214",
+          "canonicalUrl": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
+          "finalUrl": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
+          "chain": [
+            "https://es.auto-abc.eu/servicio/Skoda-Octavia"
+          ],
+          "sourceName": "es.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:15.732Z",
+          "retrievedAt": "2026-10-03T05:27:27.709Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "31da2fa58c30ed9f5667d1887ff178e4f3cd45736fe7effdabe8bccef8f7cb3c",
+          "byteLength": 30970,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:27.569Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:27.709Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:27.709Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "es.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-119b140da90c66f7",
+          "canonicalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service",
+          "finalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service",
+          "chain": [
+            "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:15.732Z",
+          "retrievedAt": "2026-10-03T05:27:28.262Z",
+          "format": "html",
+          "documentType": "service_manual",
+          "contentSha256": "384aec0b66b3f6f481f57bdd84f9106b0a5a4a76605860e39d1dca31209daa85",
+          "byteLength": 36217,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2017,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [
+              1400
+            ],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:27.437Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:28.262Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16033-2017/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:28.262Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-46b6f1768305011c",
+          "canonicalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+          "finalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+          "chain": [
+            "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:15.732Z",
+          "retrievedAt": "2026-10-03T05:27:29.781Z",
+          "format": "html",
+          "documentType": "service_manual",
+          "contentSha256": "61d9486f0967ff8fdfa5cdb8eb57807ce932757bb64f25c79f4018e6f8cd0cd8",
+          "byteLength": 36220,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2017,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [
+              1400
+            ],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:28.263Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:29.780Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:29.781Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-bd3867fc1d5eabe6",
+          "canonicalUrl": "https://web.archive.org/web/20250830084232id_/https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+          "finalUrl": "https://web.archive.org/web/20250830084232id_/https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+          "chain": [
+            "https://web.archive.org/web/20250830084232id_/https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html"
+          ],
+          "sourceName": "CompleteCar.ie",
+          "sourceType": "publication",
+          "discoveredBy": "archive",
+          "discoveredAt": "2026-10-03T05:27:17.796Z",
+          "retrievedAt": "2026-10-03T05:27:29.847Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8",
+          "byteLength": 43962,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "rs"
+            ],
+            "yearFrom": 2013,
+            "yearTo": 2020,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1800,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://web.archive.org/web/20250830084232id_/https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+              "host": "web.archive.org",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://web.archive.org/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:28.909Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://web.archive.org/web/20250830084232id_/https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+              "host": "web.archive.org",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://web.archive.org/web/20250830084232id_/https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:29.847Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://web.archive.org/web/20250830084232id_/https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+              "host": "web.archive.org",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://web.archive.org/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://web.archive.org/web/20250830084232id_/https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:29.847Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "archiveOf": "https://www.completecar.ie/used-car-reviews/review/10347/Skoda-Octavia-Mk3-2013-2020-used-car-buying-guide/servicing-timing-belt-interval.html",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "web.archive.org"
+          }
+        },
+        {
+          "sourceId": "src-ffe66cd93dc9ef3f",
+          "canonicalUrl": "https://www.carexpert.com.au/skoda/octavia",
+          "finalUrl": "https://www.carexpert.com.au/skoda/octavia",
+          "chain": [
+            "https://www.carexpert.com.au/skoda/octavia"
+          ],
+          "sourceName": "www.carexpert.com.au",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:23.496Z",
+          "retrievedAt": "2026-10-03T05:27:30.562Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "2ac81434c1536f21fc7f6b4be44c06c015c54699efb50804125e8bc2cc3b6924",
+          "byteLength": 1297616,
+          "locale": null,
+          "markets": [
+            "EU",
+            "AU"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              800
+            ],
+            "fuels": [],
+            "markets": [
+              "EU",
+              "AU"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.carexpert.com.au/skoda/octavia",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:29.848Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.carexpert.com.au/skoda/octavia",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:30.562Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.carexpert.com.au/skoda/octavia",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:30.562Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.carexpert.com.au"
+          }
+        },
+        {
+          "sourceId": "src-8170ef21bd0aad83",
+          "canonicalUrl": "https://www.carexpert.com.au/skoda/octavia/2018",
+          "finalUrl": "https://www.carexpert.com.au/skoda/octavia/2018",
+          "chain": [
+            "https://www.carexpert.com.au/skoda/octavia/2018"
+          ],
+          "sourceName": "www.carexpert.com.au",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:23.497Z",
+          "retrievedAt": "2026-10-03T05:27:31.960Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "3be530e65aed56cb2ee426e13c786ac2b6650435b98acec5889524c122705247",
+          "byteLength": 1034866,
+          "locale": null,
+          "markets": [
+            "AU"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2018,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [
+              1400,
+              2000
+            ],
+            "displacementsMentioned": [
+              1400,
+              2000,
+              4200
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [
+              "AU"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:29.848Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia/2018",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:31.960Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia/2018",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:31.960Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.carexpert.com.au"
+          }
+        },
+        {
+          "sourceId": "src-e5674780ba2dc4a6",
+          "canonicalUrl": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215",
+          "finalUrl": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215",
+          "chain": [
+            "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215"
+          ],
+          "sourceName": "www.carexpert.com.au",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:23.497Z",
+          "retrievedAt": "2026-10-03T05:27:32.914Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "8de4fb22cfdac2450fe3988355b7d5253a6560a90f2d9f938c13d1958d88e878",
+          "byteLength": 851921,
+          "locale": null,
+          "markets": [
+            "AU"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2018,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400,
+              4200,
+              5200
+            ],
+            "fuels": [],
+            "markets": [
+              "AU"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:31.966Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:32.914Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20180215",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:32.914Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.carexpert.com.au"
+          }
+        },
+        {
+          "sourceId": "src-89e9734e5cf811fc",
+          "canonicalUrl": "https://www.carexpert.com.au/buy/skoda/octavia",
+          "finalUrl": "https://www.carexpert.com.au/buy/skoda/octavia",
+          "chain": [
+            "https://www.carexpert.com.au/buy/skoda/octavia"
+          ],
+          "sourceName": "www.carexpert.com.au",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:23.497Z",
+          "retrievedAt": "2026-10-03T05:27:34.398Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "3a359fd0bd0073e62122f9f1161590bd018c481c6d8293cc3d19170e38563dbf",
+          "byteLength": 490309,
+          "locale": null,
+          "markets": [
+            "AU"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "rs",
+              "ev"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400,
+              1500,
+              2000,
+              6100,
+              6200
+            ],
+            "fuels": [],
+            "markets": [
+              "AU"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.carexpert.com.au/buy/skoda/octavia",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:31.966Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.carexpert.com.au/buy/skoda/octavia",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/buy/skoda/octavia",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:34.397Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.carexpert.com.au/buy/skoda/octavia",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/buy/skoda/octavia",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:34.398Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.carexpert.com.au"
+          }
+        },
+        {
+          "sourceId": "src-baf08420380ad826",
+          "canonicalUrl": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+          "finalUrl": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+          "chain": [
+            "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418"
+          ],
+          "sourceName": "www.carexpert.com.au",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:23.497Z",
+          "retrievedAt": "2026-10-03T05:27:35.951Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "37100fe5fb29917ada4b36cb176cb354b4ce45bce6e77c7bb501f3fa93e86014",
+          "byteLength": 854859,
+          "locale": null,
+          "markets": [
+            "AU"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2018,
+            "yearTo": 2018,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400,
+              4200,
+              5200
+            ],
+            "fuels": [],
+            "markets": [
+              "AU"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:34.401Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:35.951Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+              "host": "www.carexpert.com.au",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carexpert.com.au/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:35.951Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.carexpert.com.au"
+          }
+        },
+        {
+          "sourceId": "src-b1eb00d4e0688946",
+          "canonicalUrl": "https://carwiki.de/skoda-octavia",
+          "finalUrl": "https://carwiki.de/skoda-octavia",
+          "chain": [
+            "https://carwiki.de/skoda-octavia"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:24.491Z",
+          "retrievedAt": "2026-10-03T05:27:36.092Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "72d2039a8273db1dbc2ddb312b7fa5241154377c695d2b27324cd95bca8d5dbf",
+          "byteLength": 357504,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "rs",
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/skoda-octavia",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:34.401Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/skoda-octavia",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:36.092Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/skoda-octavia",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:36.092Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-0263dc3074a5d18e",
+          "canonicalUrl": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+          "finalUrl": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+          "chain": [
+            "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:24.491Z",
+          "retrievedAt": "2026-10-03T05:27:36.196Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "2f3bdf1a0834f67ca163257f4486db49511ffa2d00bab0d07100890462711ee6",
+          "byteLength": 158323,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:36.097Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:36.196Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:36.196Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-b19a7a247098594a",
+          "canonicalUrl": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+          "finalUrl": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+          "chain": [
+            "https://www.repareo.de/autobewertung/restwert-skoda-octavia/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:25.116Z",
+          "retrievedAt": "2026-10-03T05:27:37.568Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "fd53b0a3f316cdc9745a8ada6f020679696d6b8721b0c952f29137a28dee30ae",
+          "byteLength": 129632,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [
+              2000
+            ],
+            "displacementsMentioned": [
+              2000
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:36.098Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:37.568Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:37.568Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-adb2fc1de5b8ddab",
+          "canonicalUrl": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
+          "finalUrl": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
+          "chain": [
+            "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:25.116Z",
+          "retrievedAt": "2026-10-03T05:27:37.779Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "a1050369dd443f488f072532faf42ce8a94a02a4113b22e25c9a3f7c7540c569",
+          "byteLength": 189983,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "04"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1089,
+              1197,
+              1200,
+              1221,
+              1390,
+              1395,
+              1400,
+              1595,
+              1598,
+              1600,
+              1781,
+              1798,
+              1800,
+              1896,
+              1900,
+              1968,
+              1984,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:37.570Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:37.779Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:37.779Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-adc3c6d22d8782d8",
+          "canonicalUrl": "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/",
+          "finalUrl": "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/",
+          "chain": [
+            "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:25.117Z",
+          "retrievedAt": "2026-10-03T05:27:39.348Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "6ddededb41353b5afbb2e63c828a2c19c6034806a3f3d3a9a2e2502998925847",
+          "byteLength": 65943,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:37.570Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:39.348Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/radlager-wechseln-skoda-octavia-kosten-anleitung-vorne-hinten/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:39.348Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-2e80d9a7e6dbbd7d",
+          "canonicalUrl": "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/",
+          "finalUrl": "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/",
+          "chain": [
+            "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:25.117Z",
+          "retrievedAt": "2026-10-03T05:27:40.929Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "be1b1a617ede28cab5c38ec7b3ff1e2fabd60027343e642f480e09964235cae7",
+          "byteLength": 146273,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:39.522Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:40.929Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/zylinderkopfdichtung-skoda-octavia-wechseln-kosten-anleitung-stunden/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:40.929Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-91ded5794d4a0f7b",
+          "canonicalUrl": "https://www.repareo.de/bremsen-wechseln-skoda-octavia/",
+          "finalUrl": "https://www.repareo.de/bremsen-wechseln-skoda-octavia/",
+          "chain": [
+            "https://www.repareo.de/bremsen-wechseln-skoda-octavia/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:25.117Z",
+          "retrievedAt": "2026-10-03T05:27:42.606Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "580161eec490de4cc5df1dd463fc018fe323799efe0a5bdf310674b7751d765e",
+          "byteLength": 482556,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "04"
+            ],
+            "yearFrom": 1959,
+            "yearTo": 1971,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1089,
+              1197,
+              1200,
+              1221,
+              1390,
+              1395,
+              1400,
+              1595,
+              1598,
+              1600,
+              1781,
+              1798,
+              1800,
+              1896,
+              1900,
+              1968,
+              1984,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/bremsen-wechseln-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:39.522Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/bremsen-wechseln-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/bremsen-wechseln-skoda-octavia/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:42.606Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/bremsen-wechseln-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/bremsen-wechseln-skoda-octavia/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:42.606Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
+          "sourceId": "src-a57a28e4ce512fb2",
+          "canonicalUrl": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
+          "finalUrl": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
+          "chain": [
+            "https://www.motor-talk.de/forum/skoda-octavia-b850.html"
+          ],
+          "sourceName": "www.motor-talk.de",
+          "sourceType": "forum",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:27:27.437Z",
+          "retrievedAt": "2026-10-03T05:27:43.273Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "2b38ebc31c71c2fc1d157364f680da408ee2e67db8b1080efc857f044e7afdec",
+          "byteLength": 484308,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "30",
+              "1",
+              "2",
+              "3",
+              "4",
+              "440",
+              "rs",
+              "54",
+              "118",
+              "8"
+            ],
+            "yearFrom": 1996,
+            "yearTo": 1996,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1900,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:42.614Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:43.273Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:27:43.273Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.motor-talk.de"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "src-83df2381b4fcaa7f:e3dbd472e39d-p5-s-periodic_service-other-0",
+          "sourceId": "src-83df2381b4fcaa7f",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "Dabei wird die Inspektion nach Wartungsintervallanzeige in flexiblen Intervallen oder spätestens alle 24 Monate durchgeführt.",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Dabei wird die Inspektion nach Wartungsintervallanzeige in flexiblen Intervallen\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "e3dbd472e39d-p5-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "Dabei wird die Inspektion nach Wartungsintervallanzeige in flexiblen Intervallen oder spätestens alle 24 Monate durchgeführt.",
+            "action": "other",
+            "interval": {
+              "everyMonths": 24,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf",
+                "documentTitle": "Inspektion Skoda Octavia: Kosten & Intervalle",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Wann schreibt Skoda die Inspektion beim Octavia vor?",
+                "locator": "column sentence \"Dabei wird die Inspektion nach Wartungsintervallanzeige in flexiblen Intervallen\"",
+                "documentSha256": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-83df2381b4fcaa7f:e3dbd472e39d-p5-s-cabin_filter-replacement-1",
+          "sourceId": "src-83df2381b4fcaa7f",
+          "operationKey": "cabin_filter",
+          "task": "cabin_filter",
+          "originalText": "Alle 60.000 km/24 Monate: Innenraumfilter erneuern.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Alle 60.000 km/24 Monate: Innenraumfilter erneuern.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "e3dbd472e39d-p5-s-cabin_filter-replacement-1",
+            "task": "cabin_filter",
+            "taskText": "Alle 60.000 km/24 Monate: Innenraumfilter erneuern.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "everyMonths": 24,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf",
+                "documentTitle": "Inspektion Skoda Octavia: Kosten & Intervalle",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Wann schreibt Skoda die Inspektion beim Octavia vor?",
+                "locator": "column sentence \"Alle 60.000 km/24 Monate: Innenraumfilter erneuern.\"",
+                "documentSha256": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-83df2381b4fcaa7f:e3dbd472e39d-p5-s-spark_plugs-replacement-2",
+          "sourceId": "src-83df2381b4fcaa7f",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Alle 60.000 km/48 Monate: Zündkerzen erneuern.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": 48,
+          "intervalYears": 4,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Alle 60.000 km/48 Monate: Zündkerzen erneuern.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "e3dbd472e39d-p5-s-spark_plugs-replacement-2",
+            "task": "spark_plugs",
+            "taskText": "Alle 60.000 km/48 Monate: Zündkerzen erneuern.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "everyMonths": 48,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf",
+                "documentTitle": "Inspektion Skoda Octavia: Kosten & Intervalle",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Wann schreibt Skoda die Inspektion beim Octavia vor?",
+                "locator": "column sentence \"Alle 60.000 km/48 Monate: Zündkerzen erneuern.\"",
+                "documentSha256": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-83df2381b4fcaa7f:e3dbd472e39d-p5-s-timing_belt-inspection-3",
+          "sourceId": "src-83df2381b4fcaa7f",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Nach 240.000 km und dann alle 30.000 km: Zahnriemen und Wasserpumpenriemen prüfen.",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Nach 240.000 km und dann alle 30.000 km: Zahnriemen und Wasserpumpenriemen prüfe\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "e3dbd472e39d-p5-s-timing_belt-inspection-3",
+            "task": "timing_belt",
+            "taskText": "Nach 240.000 km und dann alle 30.000 km: Zahnriemen und Wasserpumpenriemen prüfen.",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf",
+                "documentTitle": "Inspektion Skoda Octavia: Kosten & Intervalle",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Wann schreibt Skoda die Inspektion beim Octavia vor?",
+                "locator": "column sentence \"Nach 240.000 km und dann alle 30.000 km: Zahnriemen und Wasserpumpenriemen prüfe\"",
+                "documentSha256": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-4f56ef3fa1f1a171:8fca65205216-p5-timing_belt-replacement-0",
+          "sourceId": "src-4f56ef3fa1f1a171",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "8fca65205216-p5-timing_belt-replacement-0",
+            "task": "timing_belt",
+            "taskText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "8fca6520521685e4683c22db74a242dd859223b4eb15b233a59a798a7b7fb91f",
+                "documentTitle": "Skoda Octavia 2017 1.4 petrol service and maintenance",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \"",
+                "documentSha256": "8fca6520521685e4683c22db74a242dd859223b4eb15b233a59a798a7b7fb91f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2017,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-202801063563b908:100705ae7304-p5-timing_belt-replacement-0",
+          "sourceId": "src-202801063563b908",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "100705ae7304-p5-timing_belt-replacement-0",
+            "task": "timing_belt",
+            "taskText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "100705ae7304cf6aef647f820e5830e2ab2484e72a4fb049ae1587ebc386ae6a",
+                "documentTitle": "Skoda Octavia 2017 1.4 petrol service and maintenance (variant 2)",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \"",
+                "documentSha256": "100705ae7304cf6aef647f820e5830e2ab2484e72a4fb049ae1587ebc386ae6a"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2017,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-119b140da90c66f7:384aec0b66b3-p5-timing_belt-replacement-0",
+          "sourceId": "src-119b140da90c66f7",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "384aec0b66b3-p5-timing_belt-replacement-0",
+            "task": "timing_belt",
+            "taskText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "384aec0b66b3f6f481f57bdd84f9106b0a5a4a76605860e39d1dca31209daa85",
+                "documentTitle": "Skoda Octavia 1.4 TSI (Petrol, 150 HP, MT) 2017 - 2019",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \"",
+                "documentSha256": "384aec0b66b3f6f481f57bdd84f9106b0a5a4a76605860e39d1dca31209daa85"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2017,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-46b6f1768305011c:61d9486f0967-p5-timing_belt-replacement-0",
+          "sourceId": "src-46b6f1768305011c",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "61d9486f0967-p5-timing_belt-replacement-0",
+            "task": "timing_belt",
+            "taskText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "61d9486f0967ff8fdfa5cdb8eb57807ce932757bb64f25c79f4018e6f8cd0cd8",
+                "documentTitle": "Skoda Octavia 1.4 TSI (Petrol, 150 HP, AT) 2017 - 2019",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \"",
+                "documentSha256": "61d9486f0967ff8fdfa5cdb8eb57807ce932757bb64f25c79f4018e6f8cd0cd8"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2017,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-bd3867fc1d5eabe6:d49c4e4529eb-p2-oil_filter-replacement-0",
+          "sourceId": "src-bd3867fc1d5eabe6",
+          "operationKey": "oil_filter",
+          "task": "oil_filter",
+          "originalText": "A quick oil service (oil, oil filter, check the brakes) is required every 15,000km or once a year, whichever comes first",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "diesel"
+          ],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": {
+            "from": 2013,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 2,
+            "section": "(interval-dense page)",
+            "locator": "line \"A quick oil service (oil, oil filter, check the brakes) is required every 15,000\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated",
+              "fuel": "mismatch"
+            },
+            "reasons": [
+              "item section states 2013–2020",
+              "row is for diesel"
+            ]
+          },
+          "requirement": {
+            "id": "d49c4e4529eb-p2-oil_filter-replacement-0",
+            "task": "oil_filter",
+            "taskText": "A quick oil service (oil, oil filter, check the brakes) is required every 15,000km or once a year, whichever comes first",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "modelYears": {
+                "from": 2013,
+                "to": 2020
+              },
+              "powertrains": [
+                "diesel"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8",
+                "documentTitle": "Skoda Octavia Mk3 (2013-2020) used car buying guide - servicing / timing belt interval",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 2,
+                "table": "(interval-dense page)",
+                "locator": "line \"A quick oil service (oil, oil filter, check the brakes) is required every 15,000\"",
+                "documentSha256": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 2013–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2013,
+              "to": 2020
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-bd3867fc1d5eabe6:d49c4e4529eb-p2-timing_belt-replacement-1",
+          "sourceId": "src-bd3867fc1d5eabe6",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "For all of the diesel engines, the recommended timing belt change interval is 210,000km, regardless of time.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 210000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "diesel"
+          ],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": {
+            "from": 2013,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 2,
+            "section": "(interval-dense page)",
+            "locator": "line \"For all of the diesel engines, the recommended timing belt change interval is 21\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated",
+              "fuel": "mismatch"
+            },
+            "reasons": [
+              "item section states 2013–2020",
+              "row is for diesel"
+            ]
+          },
+          "requirement": {
+            "id": "d49c4e4529eb-p2-timing_belt-replacement-1",
+            "task": "timing_belt",
+            "taskText": "For all of the diesel engines, the recommended timing belt change interval is 210,000km, regardless of time.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 210000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "modelYears": {
+                "from": 2013,
+                "to": 2020
+              },
+              "powertrains": [
+                "diesel"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8",
+                "documentTitle": "Skoda Octavia Mk3 (2013-2020) used car buying guide - servicing / timing belt interval",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 2,
+                "table": "(interval-dense page)",
+                "locator": "line \"For all of the diesel engines, the recommended timing belt change interval is 21\"",
+                "documentSha256": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 2013–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2013,
+              "to": 2020
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-bd3867fc1d5eabe6:d49c4e4529eb-p2-s-oil_filter-inspection-0",
+          "sourceId": "src-bd3867fc1d5eabe6",
+          "operationKey": "oil_filter",
+          "task": "oil_filter",
+          "originalText": "A quick oil service (oil, oil filter, check the brakes) is required every 15,000km or once a year, whichever comes first.",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": {
+            "from": 2013,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 2,
+            "locator": "column sentence \"A quick oil service (oil, oil filter, check the brakes) is required every 15,000\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "item section states 2013–2020",
+              "scope MODEL_YEAR_RANGE is not sufficient for the powertrain-dependent operation oil_filter"
+            ]
+          },
+          "requirement": {
+            "id": "d49c4e4529eb-p2-s-oil_filter-inspection-0",
+            "task": "oil_filter",
+            "taskText": "A quick oil service (oil, oil filter, check the brakes) is required every 15,000km or once a year, whichever comes first.",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "modelYears": {
+                "from": 2013,
+                "to": 2020
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8",
+                "documentTitle": "Skoda Octavia Mk3 (2013-2020) used car buying guide - servicing / timing belt interval",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 2,
+                "section": "Alternatives to the Skoda Octavia Mk3",
+                "locator": "column sentence \"A quick oil service (oil, oil filter, check the brakes) is required every 15,000\"",
+                "documentSha256": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 2013–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2013,
+              "to": 2020
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-bd3867fc1d5eabe6:d49c4e4529eb-p2-s-periodic_service-other-1",
+          "sourceId": "src-bd3867fc1d5eabe6",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "An inspection service is required every 30,000km or every year, checking a myriad of items in the car.",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": {
+            "from": 2013,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 2,
+            "locator": "column sentence \"An inspection service is required every 30,000km or every year, checking a myria\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "item section states 2013–2020",
+              "scope MODEL_YEAR_RANGE is not sufficient for the powertrain-dependent operation periodic_service"
+            ]
+          },
+          "requirement": {
+            "id": "d49c4e4529eb-p2-s-periodic_service-other-1",
+            "task": "periodic_service",
+            "taskText": "An inspection service is required every 30,000km or every year, checking a myriad of items in the car.",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "modelYears": {
+                "from": 2013,
+                "to": 2020
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8",
+                "documentTitle": "Skoda Octavia Mk3 (2013-2020) used car buying guide - servicing / timing belt interval",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 2,
+                "section": "Alternatives to the Skoda Octavia Mk3",
+                "locator": "column sentence \"An inspection service is required every 30,000km or every year, checking a myria\"",
+                "documentSha256": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 2013–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2013,
+              "to": 2020
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-ffe66cd93dc9ef3f:2ac81434c153-p23-s-periodic_service-other-0",
+          "sourceId": "src-ffe66cd93dc9ef3f",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "150,000 km Unlimited Years on Sale New this year - 2 years 3 years 2 years Service Interval 12 months 12 months",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU",
+            "AU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 23,
+            "locator": "column sentence \"150,000 km Unlimited Years on Sale New this year - 2 years 3 years 2 years Servi\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years",
+              "market stated: EU, AU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "2ac81434c153-p23-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "150,000 km Unlimited Years on Sale New this year - 2 years 3 years 2 years Service Interval 12 months 12 months",
+            "action": "other",
+            "interval": {
+              "everyMonths": 12,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "markets": [
+                "EU",
+                "AU"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "2ac81434c1536f21fc7f6b4be44c06c015c54699efb50804125e8bc2cc3b6924",
+                "documentTitle": "Octavia",
+                "authority": "vehicle_document",
+                "markets": [
+                  "EU",
+                  "AU"
+                ],
+                "page": 23,
+                "section": "Unlimited",
+                "locator": "column sentence \"150,000 km Unlimited Years on Sale New this year - 2 years 3 years 2 years Servi\"",
+                "documentSha256": "2ac81434c1536f21fc7f6b4be44c06c015c54699efb50804125e8bc2cc3b6924"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        }
+      ],
+      "resolvedAt": "2026-10-03T05:27:50.319Z",
+      "msourceVersion": "msource/1"
+    }
+  }
+}

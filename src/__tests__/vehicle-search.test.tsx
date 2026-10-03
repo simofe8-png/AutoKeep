@@ -180,17 +180,18 @@ describe('Add Vehicle = "חיפוש רכב"', () => {
     expect(details).toHaveTextContent(/סיאט IBIZA 2012/);
     expect(screen.getByTestId('vehicle-fact-commercialName')).toHaveTextContent(/IBIZA/);
     expect(screen.getByTestId('vehicle-fact-lastTest')).toHaveTextContent(/10\.9\.2026/);
-    expect(screen.getByTestId('vehicle-fact-horsepower')).toHaveTextContent(/85 כ״ס/);
+    expect(screen.getByTestId('vehicle-fact-horsepower')).toHaveTextContent(/^כוח סוס\s*‎?85‎?$/);
     expect(screen.getByTestId('vehicle-fact-abs')).toHaveTextContent(/קיים/);
     expect(screen.getByTestId('vehicle-fact-greenIndex')).toHaveTextContent(/298/);
-    expect(screen.getByTestId('vehicle-facts-environment')).toHaveTextContent(/139 גרם\/ק״מ/);
+    // No invented unit (the Ministry schema states none).
+    expect(screen.getByTestId('vehicle-fact-co2')).toHaveTextContent(/^פליטת CO2\s*‎?139‎?$/);
     // Negative safety features are neither stored nor shown.
     expect(screen.queryByTestId('vehicle-fact-reverseCamera')).toBeNull();
     // The VIN is never shown in full.
     expect(details).not.toHaveTextContent(new RegExp(VIN));
-    expect(screen.getByTestId('vehicle-fact-vin')).toHaveTextContent(/0001$/);
+    expect(screen.getByTestId('vehicle-fact-vin')).toHaveTextContent(/••••0001‎?$/);
     // One vehicle image in the app: the Home card — not here.
-    expect(screen.queryByTestId('vehicle-photo')).toBeNull();
+    expect(screen.queryAllByTestId(/^vehicle-photo-(art|reference|user)$/)).toHaveLength(0);
 
     await fireEvent.press(screen.getByTestId('vehicle-details-add'));
     await waitFor(() => expect(screen.getByTestId('screen-onboarding-odometer')).toBeOnTheScreen());
@@ -212,7 +213,20 @@ describe('Add Vehicle = "חיפוש רכב"', () => {
     const stored = await new VehicleRegistryRecordRepository(db).get(v.id as VehicleId);
     expect(stored?.facts.map((f) => f.key)).toEqual(ibiza.record!.facts.map((f) => f.key));
     expect(stored?.facts.some((f) => f.key === 'reverseCamera')).toBe(false);
-  }, 60000);
+
+    // After saving: the Vehicle Details screen shows the saved Ministry data in sections.
+    await renderRouter('./src/app', { initialUrl: `/vehicle/${v.id}` });
+    await waitFor(
+      () => expect(screen.getByTestId('vehicle-registry-facts')).toBeOnTheScreen(),
+      LONG,
+    );
+    expect(screen.getByTestId('vehicle-facts-safety')).toHaveTextContent(/ABS/);
+    expect(screen.getByTestId('vehicle-facts-environment')).toHaveTextContent(/298/);
+    expect(screen.queryByTestId('vehicle-fact-reverseCamera')).toBeNull();
+    expect(screen.getByTestId('screen-vehicle-manage')).not.toHaveTextContent(new RegExp(VIN));
+    // The only vehicle image is on Home: none here.
+    expect(screen.queryAllByTestId(/^vehicle-photo-(art|reference|user)$/)).toHaveLength(0);
+  }, 90000);
 });
 
 describe('Home vehicle-card image from the Ministry identity', () => {

@@ -5,6 +5,8 @@ import { Linking, StyleSheet, View } from 'react-native';
 import { newLocalId, useAppData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
 import type { MaintenancePlanVM, PlanItemVM, PlanRequestVM } from '@/features/data/types';
+import { discoveryPresentation } from '@/features/maintenance/knowledge/planVM';
+import { displayValue } from '@/features/vehicles/RegistryFacts';
 import { formatDate, formatKm, formatNumber } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
@@ -99,11 +101,13 @@ export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: stri
             {item.level === 'A'
               ? p.levelA
               : item.level === 'T'
-                ? [
-                    p.levelT,
-                    p.levelTNote(item.corroboratingSources ?? 0),
-                    p.confidence[item.confidence],
-                  ].join(' · ')
+                ? (item.corroboratingSources ?? 0) <= 1
+                  ? [p.levelTSingle, p.confidence[item.confidence]].join(' · ')
+                  : [
+                      p.levelT,
+                      p.levelTNote(item.corroboratingSources ?? 0),
+                      p.confidence[item.confidence],
+                    ].join(' · ')
                 : `${p.levelB} · ${p.levelBNote}`}
           </AppText>
           <AppText variant="caption" color="textSecondary">
@@ -190,9 +194,8 @@ function Request({
               setMaintenanceAnswers(vehicleId, { serviceRegime: v === 'unknown' ? null : v })
             }
             options={[
-              { value: 'QG0', label: 'QG0' },
-              { value: 'QG1', label: 'QG1' },
-              { value: 'QG2', label: 'QG2' },
+              // The codes the applicable sources name, plus "I don't know" — any manufacturer.
+              ...request.codes.map((c) => ({ value: c, label: c })),
               { value: 'unknown', label: p.unknownAnswer },
             ]}
           />
@@ -315,6 +318,106 @@ ${p.officialSourceUserStep}`
   }
 }
 
+/** M-SOURCE discovery status: progress, result, retry and the document-upload fallback. */
+function DiscoveryCard({
+  status,
+  identity,
+  vehicleId,
+  onUpload,
+}: {
+  status: NonNullable<MaintenancePlanVM['discovery']>;
+  identity: MaintenancePlanVM['verifiedIdentity'];
+  vehicleId: string;
+  onUpload: () => void;
+}) {
+  const { retryMaintenanceDiscovery } = useAppData();
+  const d = he.maintenancePlan.discovery;
+  const state = discoveryPresentation(status, identity);
+  const identityOnly = state === 'VERIFIED_IDENTITY_ONLY';
+  const progress = state in d.progress ? d.progress[state as keyof typeof d.progress] : null;
+  const summary = progress ? null : d.summary(status.sourcesFound, status.sourcesUsed);
+  const message = progress
+    ? progress
+    : status.error
+      ? d.error
+      : state === 'READY'
+        ? status.partial
+          ? d.readyPartial
+          : d.ready
+        : state === 'CONDITIONALLY_READY'
+          ? d.conditional
+          : state === 'CONFLICTING_EVIDENCE'
+            ? d.conflicting
+            : identityOnly
+              ? d.identityOnly
+              : d.notFound;
+  const tone: 'info' | 'success' | 'warning' | 'neutral' = progress
+    ? 'info'
+    : state === 'READY' && !status.partial
+      ? 'success'
+      : state === 'CONFLICTING_EVIDENCE' || state === 'CONDITIONALLY_READY' || status.partial
+        ? 'warning'
+        : 'neutral';
+  return (
+    <Card testID="plan-discovery" compact>
+      <Stack gap={spacing.sm}>
+        <InlineNotice
+          testID={`plan-discovery-${state}`}
+          tone={tone}
+          title={d.title}
+          message={
+            summary
+              ? `${message}
+${summary}`
+              : message
+          }
+        />
+        {identityOnly && identity ? (
+          <Stack gap={spacing.xxs} testID="plan-discovery-identity">
+            <AppText variant="smallStrong">{d.identityTitle}</AppText>
+            {identity.map((fact) => (
+              <View key={fact.key} style={styles.identityRow} testID={`plan-identity-${fact.key}`}>
+                <AppText variant="small" color="textSecondary" style={styles.flex}>
+                  {he.vehicleSearch.facts[fact.key] ?? fact.key}
+                </AppText>
+                <AppText variant="smallStrong">{displayValue(fact)}</AppText>
+              </View>
+            ))}
+          </Stack>
+        ) : null}
+        {status.retryAvailable && !progress ? (
+          <Button
+            testID="plan-discovery-retry"
+            label={d.retry}
+            icon="refresh"
+            variant="secondary"
+            fullWidth
+            onPress={() => retryMaintenanceDiscovery(vehicleId)}
+          />
+        ) : null}
+        {status.uploadDocumentAvailable && !progress ? (
+          <Stack gap={spacing.xs} testID="plan-discovery-upload">
+            <AppText variant="caption" color="textSecondary">
+              {identityOnly ? d.identityFallback : d.uploadTitle}
+            </AppText>
+            {[d.uploadManual, d.uploadBooklet, d.uploadDocument].map((label, i) => (
+              <Button
+                key={label}
+                testID={`plan-discovery-upload-${i}`}
+                label={label}
+                icon="file-upload-outline"
+                variant="secondary"
+                fullWidth
+                onPress={onUpload}
+              />
+            ))}
+          </Stack>
+        ) : null}
+      </Stack>
+    </Card>
+  );
+}
+
 /**
  * The evidence-based maintenance plan (Task 9): verified requirements as a useful schedule, or —
  * when the evidence is insufficient — no interval at all, only the exact next action.
@@ -328,6 +431,14 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
     const booklet = plan.requests.find((r) => r.kind === 'upload_booklet');
     return (
       <Stack testID="maintenance-plan">
+        {plan.discovery ? (
+          <DiscoveryCard
+            status={plan.discovery}
+            identity={plan.verifiedIdentity ?? null}
+            vehicleId={vehicleId}
+            onUpload={() => void upload()}
+          />
+        ) : null}
         <Card tone="warning" testID="plan-fallback">
           <Stack gap={spacing.sm}>
             <View style={styles.needHead}>
@@ -397,6 +508,14 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
   }
   return (
     <Stack testID="maintenance-plan">
+      {plan.discovery ? (
+        <DiscoveryCard
+          status={plan.discovery}
+          identity={plan.verifiedIdentity ?? null}
+          vehicleId={vehicleId}
+          onUpload={() => void upload()}
+        />
+      ) : null}
       {plan.requests.length > 0 ? (
         <Card tone="warning" testID="plan-needs-information">
           <Stack gap={spacing.sm}>
@@ -449,6 +568,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
+  identityRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   itemHead: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   whenRow: {
     flexDirection: 'row',

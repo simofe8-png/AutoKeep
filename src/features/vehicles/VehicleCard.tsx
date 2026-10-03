@@ -18,7 +18,7 @@ import {
 
 import { formatDate, formatKm } from './format';
 import { vehicleDisplayName, type VehicleSummary } from './types';
-import { VehiclePhoto, vehicleSpecLine } from './VehicleVisuals';
+import { vehicleSpecLine } from './VehicleVisuals';
 
 /**
  * Grounded maintenance state for the card (never "תקין"): the due status of a verified schedule,
@@ -90,7 +90,6 @@ export function VehicleCard({
         </AppText>
         <PlateBadge number={vehicle.registration} size="sm" />
       </View>
-      <VehiclePhoto vehicle={vehicle} variant="card" />
     </View>
   );
 

@@ -1,0 +1,1905 @@
+{
+  "classKey": "car|ford|fiesta|2015|1242|SNJB|petrol|manual",
+  "runId": "live-fiesta-2026-10-02",
+  "sources": [
+    {
+      "canonicalUrl": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+      "value": {
+        "provenance": {
+          "sourceId": "src-937fb1db3b01f6c1",
+          "canonicalUrl": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+          "finalUrl": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+          "chain": [
+            "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide"
+          ],
+          "sourceName": "WhoCanFixMyCar",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-02T21:16:01.490Z",
+          "retrievedAt": "2026-10-02T21:16:46.389Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6",
+          "byteLength": 410468,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Fiesta"
+            ],
+            "modelVariants": [
+              "st"
+            ],
+            "yearFrom": 2008,
+            "yearTo": 2017,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              957,
+              1000,
+              1100,
+              1250,
+              1300,
+              1400,
+              1500,
+              1600,
+              1800
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+              "host": "www.whocanfixmycar.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.whocanfixmycar.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:46.051Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+              "host": "www.whocanfixmycar.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:46.388Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+              "host": "www.whocanfixmycar.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.whocanfixmycar.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:46.389Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.whocanfixmycar.com"
+          }
+        },
+        "evidence": [
+          {
+            "id": "src-937fb1db3b01f6c1:bbac4f9db36b-p4-cabin_filter-replacement-0",
+            "sourceId": "src-937fb1db3b01f6c1",
+            "operationKey": "cabin_filter",
+            "task": "cabin_filter",
+            "originalText": "Replace cabin air filter Every 20,000 miles",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 32187,
+            "intervalMiles": 20000,
+            "intervalMonths": null,
+            "intervalYears": null,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": false,
+            "rule": "DISTANCE_ONLY",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": {
+              "from": 2019,
+              "to": 2019
+            },
+            "marketApplicability": [],
+            "notes": [
+              "stated in miles: 20000 mi ≈ 32187 km"
+            ],
+            "sourceLocation": {
+              "page": 4,
+              "section": "Service intervals",
+              "locator": "line \"Replace cabin air filter Every 20,000 miles\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "NOT_APPLICABLE",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "mismatch",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document covers 2019–2019, not 2015",
+                "item section states 2019–2019"
+              ]
+            },
+            "requirement": {
+              "id": "bbac4f9db36b-p4-cabin_filter-replacement-0",
+              "task": "cabin_filter",
+              "taskText": "Replace cabin air filter Every 20,000 miles",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 20000,
+                  "unit": "mi"
+                },
+                "first": null,
+                "rule": "distance_only",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "modelYears": {
+                  "from": 2008,
+                  "to": 2017
+                }
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6",
+                  "documentTitle": "Ford Fiesta Owners' Guide - WhoCanFixMyCar",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "edition": "version, the Fiesta Active, and the speedy 197b",
+                  "page": 4,
+                  "table": "Service intervals",
+                  "locator": "line \"Replace cabin air filter Every 20,000 miles\"",
+                  "documentSha256": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "autokeep-extractor/2",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_YEAR_RANGE",
+              "basis": "section years 2019–2019",
+              "sufficient": true,
+              "years": {
+                "from": 2019,
+                "to": 2019
+              },
+              "yearsBasis": "section"
+            }
+          },
+          {
+            "id": "src-937fb1db3b01f6c1:bbac4f9db36b-p4-air_filter-replacement-1",
+            "sourceId": "src-937fb1db3b01f6c1",
+            "operationKey": "air_filter",
+            "task": "air_filter",
+            "originalText": "Replace engine air filter Every 30,000 miles",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 48280,
+            "intervalMiles": 30000,
+            "intervalMonths": null,
+            "intervalYears": null,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": false,
+            "rule": "DISTANCE_ONLY",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": {
+              "from": 2019,
+              "to": 2019
+            },
+            "marketApplicability": [],
+            "notes": [
+              "stated in miles: 30000 mi ≈ 48280 km"
+            ],
+            "sourceLocation": {
+              "page": 4,
+              "section": "Service intervals",
+              "locator": "line \"Replace engine air filter Every 30,000 miles\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "NOT_APPLICABLE",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "mismatch",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document covers 2019–2019, not 2015",
+                "item section states 2019–2019"
+              ]
+            },
+            "requirement": {
+              "id": "bbac4f9db36b-p4-air_filter-replacement-1",
+              "task": "air_filter",
+              "taskText": "Replace engine air filter Every 30,000 miles",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 30000,
+                  "unit": "mi"
+                },
+                "first": null,
+                "rule": "distance_only",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "modelYears": {
+                  "from": 2008,
+                  "to": 2017
+                }
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6",
+                  "documentTitle": "Ford Fiesta Owners' Guide - WhoCanFixMyCar",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "edition": "version, the Fiesta Active, and the speedy 197b",
+                  "page": 4,
+                  "table": "Service intervals",
+                  "locator": "line \"Replace engine air filter Every 30,000 miles\"",
+                  "documentSha256": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "autokeep-extractor/2",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_YEAR_RANGE",
+              "basis": "section years 2019–2019",
+              "sufficient": false,
+              "years": {
+                "from": 2019,
+                "to": 2019
+              },
+              "yearsBasis": "section"
+            }
+          },
+          {
+            "id": "src-937fb1db3b01f6c1:bbac4f9db36b-p4-spark_plugs-replacement-2",
+            "sourceId": "src-937fb1db3b01f6c1",
+            "operationKey": "spark_plugs",
+            "task": "spark_plugs",
+            "originalText": "Replace spark plugs Every 100,000 miles",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 160934,
+            "intervalMiles": 100000,
+            "intervalMonths": null,
+            "intervalYears": null,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": false,
+            "rule": "DISTANCE_ONLY",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": {
+              "from": 2019,
+              "to": 2019
+            },
+            "marketApplicability": [],
+            "notes": [
+              "stated in miles: 100000 mi ≈ 160934 km"
+            ],
+            "sourceLocation": {
+              "page": 4,
+              "section": "Service intervals",
+              "locator": "line \"Replace spark plugs Every 100,000 miles\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "NOT_APPLICABLE",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "mismatch",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document covers 2019–2019, not 2015",
+                "item section states 2019–2019"
+              ]
+            },
+            "requirement": {
+              "id": "bbac4f9db36b-p4-spark_plugs-replacement-2",
+              "task": "spark_plugs",
+              "taskText": "Replace spark plugs Every 100,000 miles",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 100000,
+                  "unit": "mi"
+                },
+                "first": null,
+                "rule": "distance_only",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "modelYears": {
+                  "from": 2008,
+                  "to": 2017
+                }
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6",
+                  "documentTitle": "Ford Fiesta Owners' Guide - WhoCanFixMyCar",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "edition": "version, the Fiesta Active, and the speedy 197b",
+                  "page": 4,
+                  "table": "Service intervals",
+                  "locator": "line \"Replace spark plugs Every 100,000 miles\"",
+                  "documentSha256": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "autokeep-extractor/2",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_YEAR_RANGE",
+              "basis": "section years 2019–2019",
+              "sufficient": false,
+              "years": {
+                "from": 2019,
+                "to": 2019
+              },
+              "yearsBasis": "section"
+            }
+          },
+          {
+            "id": "src-937fb1db3b01f6c1:bbac4f9db36b-p4-auxiliary_belt-inspection-3",
+            "sourceId": "src-937fb1db3b01f6c1",
+            "operationKey": "accessory_belt",
+            "task": "auxiliary_belt",
+            "originalText": "Inspect accessory drive belt(s) Every 100,000 miles",
+            "action": "inspection",
+            "inspectionOrReplacement": "inspection",
+            "intervalKm": 160934,
+            "intervalMiles": 100000,
+            "intervalMonths": null,
+            "intervalYears": null,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": false,
+            "rule": "INSPECTION_AT_INTERVAL",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": {
+              "from": 2019,
+              "to": 2019
+            },
+            "marketApplicability": [],
+            "notes": [
+              "stated in miles: 100000 mi ≈ 160934 km"
+            ],
+            "sourceLocation": {
+              "page": 4,
+              "section": "Service intervals",
+              "locator": "line \"Inspect accessory drive belt(s) Every 100,000 miles\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "NOT_APPLICABLE",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "mismatch",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document covers 2019–2019, not 2015",
+                "item section states 2019–2019"
+              ]
+            },
+            "requirement": {
+              "id": "bbac4f9db36b-p4-auxiliary_belt-inspection-3",
+              "task": "auxiliary_belt",
+              "taskText": "Inspect accessory drive belt(s) Every 100,000 miles",
+              "action": "inspection",
+              "interval": {
+                "every": {
+                  "value": 100000,
+                  "unit": "mi"
+                },
+                "first": null,
+                "rule": "distance_only",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "modelYears": {
+                  "from": 2008,
+                  "to": 2017
+                }
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6",
+                  "documentTitle": "Ford Fiesta Owners' Guide - WhoCanFixMyCar",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "edition": "version, the Fiesta Active, and the speedy 197b",
+                  "page": 4,
+                  "table": "Service intervals",
+                  "locator": "line \"Inspect accessory drive belt(s) Every 100,000 miles\"",
+                  "documentSha256": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "autokeep-extractor/2",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_YEAR_RANGE",
+              "basis": "section years 2019–2019",
+              "sufficient": false,
+              "years": {
+                "from": 2019,
+                "to": 2019
+              },
+              "yearsBasis": "section"
+            }
+          },
+          {
+            "id": "src-937fb1db3b01f6c1:bbac4f9db36b-p4-auxiliary_belt-replacement-4",
+            "sourceId": "src-937fb1db3b01f6c1",
+            "operationKey": "accessory_belt",
+            "task": "auxiliary_belt",
+            "originalText": "Replace accessory drive belt(s) Every 150,000 miles",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 241402,
+            "intervalMiles": 150000,
+            "intervalMonths": null,
+            "intervalYears": null,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": false,
+            "rule": "DISTANCE_ONLY",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": {
+              "from": 2019,
+              "to": 2019
+            },
+            "marketApplicability": [],
+            "notes": [
+              "stated in miles: 150000 mi ≈ 241402 km"
+            ],
+            "sourceLocation": {
+              "page": 4,
+              "section": "Service intervals",
+              "locator": "line \"Replace accessory drive belt(s) Every 150,000 miles\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "NOT_APPLICABLE",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "mismatch",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document covers 2019–2019, not 2015",
+                "item section states 2019–2019"
+              ]
+            },
+            "requirement": {
+              "id": "bbac4f9db36b-p4-auxiliary_belt-replacement-4",
+              "task": "auxiliary_belt",
+              "taskText": "Replace accessory drive belt(s) Every 150,000 miles",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 150000,
+                  "unit": "mi"
+                },
+                "first": null,
+                "rule": "distance_only",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "modelYears": {
+                  "from": 2008,
+                  "to": 2017
+                }
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6",
+                  "documentTitle": "Ford Fiesta Owners' Guide - WhoCanFixMyCar",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "edition": "version, the Fiesta Active, and the speedy 197b",
+                  "page": 4,
+                  "table": "Service intervals",
+                  "locator": "line \"Replace accessory drive belt(s) Every 150,000 miles\"",
+                  "documentSha256": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "autokeep-extractor/2",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_YEAR_RANGE",
+              "basis": "section years 2019–2019",
+              "sufficient": false,
+              "years": {
+                "from": 2019,
+                "to": 2019
+              },
+              "yearsBasis": "section"
+            }
+          },
+          {
+            "id": "src-937fb1db3b01f6c1:bbac4f9db36b-p4-timing_belt-replacement-5",
+            "sourceId": "src-937fb1db3b01f6c1",
+            "operationKey": "timing_belt",
+            "task": "timing_belt",
+            "originalText": "Replace timing belt (1.0L & 1.6L engines) Every 150,000 miles",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 241402,
+            "intervalMiles": 150000,
+            "intervalMonths": null,
+            "intervalYears": null,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": false,
+            "rule": "DISTANCE_ONLY",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [
+              "940–1060 cc"
+            ],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": {
+              "from": 2019,
+              "to": 2019
+            },
+            "marketApplicability": [],
+            "notes": [
+              "stated in miles: 150000 mi ≈ 241402 km"
+            ],
+            "sourceLocation": {
+              "page": 4,
+              "section": "Service intervals",
+              "locator": "line \"Replace timing belt (1.0L & 1.6L engines) Every 150,000 miles\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "NOT_APPLICABLE",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "mismatch",
+                "displacement": "mismatch",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document covers 2019–2019, not 2015",
+                "item section states 2019–2019",
+                "row is for 940–1060 cc engines"
+              ]
+            },
+            "requirement": {
+              "id": "bbac4f9db36b-p4-timing_belt-replacement-5",
+              "task": "timing_belt",
+              "taskText": "Replace timing belt (1.0L & 1.6L engines) Every 150,000 miles",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 150000,
+                  "unit": "mi"
+                },
+                "first": null,
+                "rule": "distance_only",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "modelYears": {
+                  "from": 2008,
+                  "to": 2017
+                },
+                "displacementCc": {
+                  "min": 940,
+                  "max": 1060
+                }
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6",
+                  "documentTitle": "Ford Fiesta Owners' Guide - WhoCanFixMyCar",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "edition": "version, the Fiesta Active, and the speedy 197b",
+                  "page": 4,
+                  "table": "Service intervals",
+                  "locator": "line \"Replace timing belt (1.0L & 1.6L engines) Every 150,000 miles\"",
+                  "documentSha256": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "autokeep-extractor/2",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_YEAR_RANGE",
+              "basis": "section years 2019–2019",
+              "sufficient": false,
+              "years": {
+                "from": 2019,
+                "to": 2019
+              },
+              "yearsBasis": "section"
+            }
+          },
+          {
+            "id": "src-937fb1db3b01f6c1:bbac4f9db36b-p4-s-engine_oil-replacement-0",
+            "sourceId": "src-937fb1db3b01f6c1",
+            "operationKey": "engine_oil",
+            "task": "engine_oil",
+            "originalText": "Service every 10,000 miles or 12 months Change engine oil and filter Rotate tyres Perform multi-point inspection Check automatic transmission fluid level (if applicable)",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 16093,
+            "intervalMiles": 10000,
+            "intervalMonths": 12,
+            "intervalYears": 1,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": true,
+            "rule": "WHICHEVER_COMES_FIRST",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": {
+              "from": 2019,
+              "to": 2019
+            },
+            "marketApplicability": [],
+            "notes": [
+              "stated in miles: 10000 mi ≈ 16093 km"
+            ],
+            "sourceLocation": {
+              "page": 4,
+              "locator": "column sentence \"Service every 10,000 miles or 12 months Change engine oil and filter Rotate tyre\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "NOT_APPLICABLE",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "mismatch",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document covers 2019–2019, not 2015",
+                "item section states 2019–2019"
+              ]
+            },
+            "requirement": {
+              "id": "bbac4f9db36b-p4-s-engine_oil-replacement-0",
+              "task": "engine_oil",
+              "taskText": "Service every 10,000 miles or 12 months Change engine oil and filter Rotate tyres Perform multi-point inspection Check automatic transmission fluid level (if applicable)",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 10000,
+                  "unit": "mi"
+                },
+                "everyMonths": 12,
+                "first": null,
+                "rule": "whichever_first",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "modelYears": {
+                  "from": 2008,
+                  "to": 2017
+                }
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6",
+                  "documentTitle": "Ford Fiesta Owners' Guide - WhoCanFixMyCar",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "page": 4,
+                  "section": "Service intervals",
+                  "locator": "column sentence \"Service every 10,000 miles or 12 months Change engine oil and filter Rotate tyre\"",
+                  "documentSha256": "bbac4f9db36b8d084e058cbb751d6743126d2dae5c2a7662a71797407afb8eb6"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "msource-sentences/1",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_YEAR_RANGE",
+              "basis": "section years 2019–2019",
+              "sufficient": false,
+              "years": {
+                "from": 2019,
+                "to": 2019
+              },
+              "yearsBasis": "section"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "canonicalUrl": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+      "value": {
+        "provenance": {
+          "sourceId": "src-c7b05f9966d8da8b",
+          "canonicalUrl": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+          "finalUrl": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+          "chain": [
+            "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta"
+          ],
+          "sourceName": "MoneySavingExpert forums",
+          "sourceType": "forum",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-02T21:16:01.490Z",
+          "retrievedAt": "2026-10-02T21:16:46.983Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "07cd26d9022c9066582f64b6fca9eb10a7ab3c4a40fb5409e8747dc53353e453",
+          "byteLength": 779384,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Fiesta"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+              "host": "forums.moneysavingexpert.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://forums.moneysavingexpert.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:46.548Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+              "host": "forums.moneysavingexpert.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:46.983Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+              "host": "forums.moneysavingexpert.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://forums.moneysavingexpert.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:46.983Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "forums.moneysavingexpert.com"
+          }
+        },
+        "evidence": [
+          {
+            "id": "src-c7b05f9966d8da8b:07cd26d9022c-p3-cabin_filter-replacement-0",
+            "sourceId": "src-c7b05f9966d8da8b",
+            "operationKey": "cabin_filter",
+            "task": "cabin_filter",
+            "originalText": "Squadinho, for the avoidance of doubt, changing the air filter or plugs every 8,000 miles is hilariously ill-informed ad",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 12875,
+            "intervalMiles": 8000,
+            "intervalMonths": null,
+            "intervalYears": null,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": false,
+            "rule": "DISTANCE_ONLY",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": null,
+            "marketApplicability": [],
+            "notes": [
+              "stated in miles: 8000 mi ≈ 12875 km"
+            ],
+            "sourceLocation": {
+              "page": 3,
+              "locator": "line \"Squadinho, for the avoidance of doubt, changing the air filter or plugs every 8,\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "PARTIAL",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "unstated",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document does not state its model years"
+              ]
+            },
+            "requirement": {
+              "id": "07cd26d9022c-p3-cabin_filter-replacement-0",
+              "task": "cabin_filter",
+              "taskText": "Squadinho, for the avoidance of doubt, changing the air filter or plugs every 8,000 miles is hilariously ill-informed ad",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 8000,
+                  "unit": "mi"
+                },
+                "first": null,
+                "rule": "distance_only",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "07cd26d9022c9066582f64b6fca9eb10a7ab3c4a40fb5409e8747dc53353e453",
+                  "documentTitle": "service schedule for ford fiesta - MoneySavingExpert Forum",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "page": 3,
+                  "locator": "line \"Squadinho, for the avoidance of doubt, changing the air filter or plugs every 8,\"",
+                  "documentSha256": "07cd26d9022c9066582f64b6fca9eb10a7ab3c4a40fb5409e8747dc53353e453"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "autokeep-extractor/2",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_GENERIC",
+              "basis": "the source names the model only",
+              "sufficient": false,
+              "years": null,
+              "yearsBasis": "none"
+            }
+          },
+          {
+            "id": "src-c7b05f9966d8da8b:07cd26d9022c-p3-brake_fluid-replacement-1",
+            "sourceId": "src-c7b05f9966d8da8b",
+            "operationKey": "brake_fluid",
+            "task": "brake_fluid",
+            "originalText": "If you want to keep the car for a significant period of time you might want to change the coolant every few years, same",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": null,
+            "intervalMiles": null,
+            "intervalMonths": 120,
+            "intervalYears": 10,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": false,
+            "rule": "TIME_ONLY",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": null,
+            "marketApplicability": [],
+            "notes": [],
+            "sourceLocation": {
+              "page": 3,
+              "locator": "line \"If you want to keep the car for a significant period of time you might want to c\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "PARTIAL",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "unstated",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document does not state its model years"
+              ]
+            },
+            "requirement": {
+              "id": "07cd26d9022c-p3-brake_fluid-replacement-1",
+              "task": "brake_fluid",
+              "taskText": "If you want to keep the car for a significant period of time you might want to change the coolant every few years, same ",
+              "action": "replacement",
+              "interval": {
+                "everyMonths": 120,
+                "first": null,
+                "rule": "time_only",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "coverageUnknown": [
+                  "modelYear"
+                ]
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "07cd26d9022c9066582f64b6fca9eb10a7ab3c4a40fb5409e8747dc53353e453",
+                  "documentTitle": "service schedule for ford fiesta - MoneySavingExpert Forum",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "page": 3,
+                  "locator": "line \"If you want to keep the car for a significant period of time you might want to c\"",
+                  "documentSha256": "07cd26d9022c9066582f64b6fca9eb10a7ab3c4a40fb5409e8747dc53353e453"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "autokeep-extractor/2",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_GENERIC",
+              "basis": "the source names the model only",
+              "sufficient": false,
+              "years": null,
+              "yearsBasis": "none"
+            }
+          },
+          {
+            "id": "src-c7b05f9966d8da8b:07cd26d9022c-p3-s-periodic_service-other-0",
+            "sourceId": "src-c7b05f9966d8da8b",
+            "operationKey": "periodic_service",
+            "task": "periodic_service",
+            "originalText": "It is usually a number of miles or time with the added phrase \"whichever occurs sooner\" so if you have only done 4,000 miles in 12 months and the service …",
+            "action": "other",
+            "inspectionOrReplacement": "other",
+            "intervalKm": 19312,
+            "intervalMiles": 12000,
+            "intervalMonths": 12,
+            "intervalYears": 1,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": true,
+            "rule": "WHICHEVER_COMES_FIRST",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": null,
+            "marketApplicability": [],
+            "notes": [
+              "stated in miles: 12000 mi ≈ 19312 km"
+            ],
+            "sourceLocation": {
+              "page": 3,
+              "locator": "column sentence \"It is usually a number of miles or time with the added phrase \"whichever occurs \""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "PARTIAL",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "unstated",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document does not state its model years"
+              ]
+            },
+            "requirement": {
+              "id": "07cd26d9022c-p3-s-periodic_service-other-0",
+              "task": "periodic_service",
+              "taskText": "It is usually a number of miles or time with the added phrase \"whichever occurs sooner\" so if you have only done 4,000 miles in 12 months and the service interval is 12,000 miles or 12 months or \"whic",
+              "action": "other",
+              "interval": {
+                "every": {
+                  "value": 12000,
+                  "unit": "mi"
+                },
+                "everyMonths": 12,
+                "first": null,
+                "rule": "whichever_first",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ]
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "07cd26d9022c9066582f64b6fca9eb10a7ab3c4a40fb5409e8747dc53353e453",
+                  "documentTitle": "service schedule for ford fiesta - MoneySavingExpert Forum",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "page": 3,
+                  "section": "Comments",
+                  "locator": "column sentence \"It is usually a number of miles or time with the added phrase \"whichever occurs \"",
+                  "documentSha256": "07cd26d9022c9066582f64b6fca9eb10a7ab3c4a40fb5409e8747dc53353e453"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "msource-sentences/1",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "MODEL_GENERIC",
+              "basis": "the source names the model only",
+              "sufficient": false,
+              "years": null,
+              "yearsBasis": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "canonicalUrl": "https://carwiki.de/?p=46361",
+      "value": {
+        "provenance": {
+          "sourceId": "src-cf6e174efc98c2bc",
+          "canonicalUrl": "https://carwiki.de/?p=46361",
+          "finalUrl": "https://carwiki.de/ford-fiesta-inspektion",
+          "chain": [
+            "https://carwiki.de/?p=46361",
+            "https://carwiki.de/ford-fiesta-inspektion?p=46361",
+            "https://carwiki.de/ford-fiesta-inspektion"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-02T21:16:01.490Z",
+          "retrievedAt": "2026-10-02T21:16:48.600Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "f65660e9b66193efb418f5c18fb64891c21364e432643dcdafbe2884d6efd039",
+          "byteLength": 169190,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Fiesta"
+            ],
+            "modelVariants": [
+              "02",
+              "09",
+              "18",
+              "6"
+            ],
+            "yearFrom": 2008,
+            "yearTo": 2017,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": true,
+            "allEnginesPhrase": "Die Inspektion am Ford Fiesta | Kosten, Umfang &amp; Intervalle | Serviceplan: Alle Modelle &amp; Motoren | Was wird gem"
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/?p=46361",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:47.486Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/ford-fiesta-inspektion?p=46361",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:48.081Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/ford-fiesta-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:48.440Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/ford-fiesta-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/ford-fiesta-inspektion",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:48.598Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/ford-fiesta-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/ford-fiesta-inspektion",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:48.600Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        "evidence": [
+          {
+            "id": "src-cf6e174efc98c2bc:f65660e9b661-p6-s-brake_fluid-replacement-0",
+            "sourceId": "src-cf6e174efc98c2bc",
+            "operationKey": "brake_fluid",
+            "task": "brake_fluid",
+            "originalText": "Bremsflüssigkeit alle 2 Jahre wechseln (30.000 km)",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 30000,
+            "intervalMiles": null,
+            "intervalMonths": 24,
+            "intervalYears": 2,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": true,
+            "rule": "WHICHEVER_COMES_FIRST",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": {
+              "from": 2008,
+              "to": 2017
+            },
+            "marketApplicability": [],
+            "notes": [],
+            "sourceLocation": {
+              "page": 6,
+              "locator": "column sentence \"Bremsflüssigkeit alle 2 Jahre wechseln (30.000 km)\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "STRONG",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "match",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": []
+            },
+            "requirement": {
+              "id": "f65660e9b661-p6-s-brake_fluid-replacement-0",
+              "task": "brake_fluid",
+              "taskText": "Bremsflüssigkeit alle 2 Jahre wechseln (30.000 km)",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 30000,
+                  "unit": "km"
+                },
+                "everyMonths": 24,
+                "first": null,
+                "rule": "whichever_first",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "modelYears": {
+                  "from": 2008,
+                  "to": 2017
+                }
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "f65660e9b66193efb418f5c18fb64891c21364e432643dcdafbe2884d6efd039",
+                  "documentTitle": "Die Inspektion am Ford Fiesta | Kosten, Umfang & Intervalle | Serviceplan: Alle Modelle & Motoren",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "page": 6,
+                  "section": "Zusatzarbeiten, zusätzlich zur Grundwartung laut Serviceplan",
+                  "locator": "column sentence \"Bremsflüssigkeit alle 2 Jahre wechseln (30.000 km)\"",
+                  "documentSha256": "f65660e9b66193efb418f5c18fb64891c21364e432643dcdafbe2884d6efd039"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "msource-sentences/1",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "ALL_ENGINES",
+              "basis": "the source states all engines: \"Die Inspektion am Ford Fiesta | Kosten, Umfang &amp; Intervalle | Serviceplan: Alle Modelle &amp; Motoren | Was wird gem\"",
+              "sufficient": true,
+              "years": {
+                "from": 2008,
+                "to": 2017
+              },
+              "yearsBasis": "document"
+            }
+          },
+          {
+            "id": "src-cf6e174efc98c2bc:f65660e9b661-p6-s-cabin_filter-replacement-1",
+            "sourceId": "src-cf6e174efc98c2bc",
+            "operationKey": "cabin_filter",
+            "task": "cabin_filter",
+            "originalText": "Pollenfilter alle 2 Jahre wechseln (30.000 km)",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 30000,
+            "intervalMiles": null,
+            "intervalMonths": 24,
+            "intervalYears": 2,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": true,
+            "rule": "WHICHEVER_COMES_FIRST",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": {
+              "from": 2008,
+              "to": 2017
+            },
+            "marketApplicability": [],
+            "notes": [],
+            "sourceLocation": {
+              "page": 6,
+              "locator": "column sentence \"Pollenfilter alle 2 Jahre wechseln (30.000 km)\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "STRONG",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "match",
+                "displacement": "unstated",
+                "engineCode": "unstated",
+                "market": "unstated"
+              },
+              "reasons": []
+            },
+            "requirement": {
+              "id": "f65660e9b661-p6-s-cabin_filter-replacement-1",
+              "task": "cabin_filter",
+              "taskText": "Pollenfilter alle 2 Jahre wechseln (30.000 km)",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 30000,
+                  "unit": "km"
+                },
+                "everyMonths": 24,
+                "first": null,
+                "rule": "whichever_first",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ],
+                "modelYears": {
+                  "from": 2008,
+                  "to": 2017
+                }
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "f65660e9b66193efb418f5c18fb64891c21364e432643dcdafbe2884d6efd039",
+                  "documentTitle": "Die Inspektion am Ford Fiesta | Kosten, Umfang & Intervalle | Serviceplan: Alle Modelle & Motoren",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "page": 6,
+                  "section": "Zusatzarbeiten, zusätzlich zur Grundwartung laut Serviceplan",
+                  "locator": "column sentence \"Pollenfilter alle 2 Jahre wechseln (30.000 km)\"",
+                  "documentSha256": "f65660e9b66193efb418f5c18fb64891c21364e432643dcdafbe2884d6efd039"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "msource-sentences/1",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "ALL_ENGINES",
+              "basis": "the source states all engines: \"Die Inspektion am Ford Fiesta | Kosten, Umfang &amp; Intervalle | Serviceplan: Alle Modelle &amp; Motoren | Was wird gem\"",
+              "sufficient": true,
+              "years": {
+                "from": 2008,
+                "to": 2017
+              },
+              "yearsBasis": "document"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "canonicalUrl": "https://www.repareo.de/zahnriemenwechsel-ford-fiesta/",
+      "value": {
+        "provenance": {
+          "sourceId": "src-da3f0b557a5e544b",
+          "canonicalUrl": "https://www.repareo.de/zahnriemenwechsel-ford-fiesta/",
+          "finalUrl": "https://www.repareo.de/zahnriemenwechsel-ford-fiesta/",
+          "chain": [
+            "https://www.repareo.de/zahnriemenwechsel-ford-fiesta/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-02T21:16:41.223Z",
+          "retrievedAt": "2026-10-02T21:16:55.297Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "83b24fdfb0452692c282eaf64b873fd0ad688abf79798531ba2b02b991da8ca2",
+          "byteLength": 204497,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Fiesta"
+            ],
+            "modelVariants": [
+              "10"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [
+              "SNJA",
+              "SNJB"
+            ],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              998,
+              1000,
+              1399,
+              1400,
+              1499,
+              1500,
+              1596,
+              1753
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/zahnriemenwechsel-ford-fiesta/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:53.472Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/zahnriemenwechsel-ford-fiesta/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/zahnriemenwechsel-ford-fiesta/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:55.297Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/zahnriemenwechsel-ford-fiesta/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/zahnriemenwechsel-ford-fiesta/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-02T21:16:55.297Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        "evidence": [
+          {
+            "id": "src-da3f0b557a5e544b:83b24fdfb045-p21-s-timing_belt-replacement-0",
+            "sourceId": "src-da3f0b557a5e544b",
+            "operationKey": "timing_belt",
+            "task": "timing_belt",
+            "originalText": "Wechselintervall: alle 150.000 km/10 Jahre Arbeitsumfang in der Werkstatt: Schraubverbindungen lösen, Generator und Starter aus- und einbauen, Zahnriemen wechseln.",
+            "action": "replacement",
+            "inspectionOrReplacement": "replacement",
+            "intervalKm": 150000,
+            "intervalMiles": null,
+            "intervalMonths": 120,
+            "intervalYears": 10,
+            "firstKm": null,
+            "firstMonths": null,
+            "whicheverComesFirst": true,
+            "rule": "WHICHEVER_COMES_FIRST",
+            "normalConditions": true,
+            "severeConditions": false,
+            "engineApplicability": [],
+            "modelApplicability": [
+              "Fiesta"
+            ],
+            "yearApplicability": null,
+            "marketApplicability": [],
+            "notes": [],
+            "sourceLocation": {
+              "page": 21,
+              "locator": "column sentence \"Wechselintervall: alle 150.000 km/10 Jahre Arbeitsumfang in der Werkstatt: Schra\""
+            },
+            "extractionMethod": "sentence",
+            "grounded": true,
+            "match": {
+              "status": "PARTIAL",
+              "dimensions": {
+                "make": "match",
+                "model": "match",
+                "year": "unstated",
+                "displacement": "unstated",
+                "engineCode": "match",
+                "market": "unstated"
+              },
+              "reasons": [
+                "the document does not state its model years"
+              ]
+            },
+            "requirement": {
+              "id": "83b24fdfb045-p21-s-timing_belt-replacement-0",
+              "task": "timing_belt",
+              "taskText": "Wechselintervall: alle 150.000 km/10 Jahre Arbeitsumfang in der Werkstatt: Schraubverbindungen lösen, Generator und Starter aus- und einbauen, Zahnriemen wechseln.",
+              "action": "replacement",
+              "interval": {
+                "every": {
+                  "value": 150000,
+                  "unit": "km"
+                },
+                "everyMonths": 120,
+                "first": null,
+                "rule": "whichever_first",
+                "repeats": true
+              },
+              "applicability": {
+                "kinds": [
+                  "car"
+                ],
+                "makes": [
+                  "ford"
+                ],
+                "models": [
+                  "Fiesta"
+                ]
+              },
+              "authority": "vehicle_document",
+              "evidence": [
+                {
+                  "documentId": "83b24fdfb0452692c282eaf64b873fd0ad688abf79798531ba2b02b991da8ca2",
+                  "documentTitle": "hier",
+                  "authority": "vehicle_document",
+                  "markets": [],
+                  "page": 21,
+                  "section": "Zahnriemenwechsel Ford Fiesta 1.4 16V",
+                  "locator": "column sentence \"Wechselintervall: alle 150.000 km/10 Jahre Arbeitsumfang in der Werkstatt: Schra\"",
+                  "documentSha256": "83b24fdfb0452692c282eaf64b873fd0ad688abf79798531ba2b02b991da8ca2"
+                }
+              ],
+              "verification": "candidate",
+              "extraction": {
+                "method": "deterministic_parser",
+                "by": "msource-sentences/1",
+                "at": "2026-10-02",
+                "grounded": true
+              }
+            },
+            "itemApplicability": {
+              "scope": "EXACT_ENGINE",
+              "basis": "the document names the engine code",
+              "sufficient": true,
+              "years": null,
+              "yearsBasis": "none"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

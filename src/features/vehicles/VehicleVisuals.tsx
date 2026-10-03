@@ -274,7 +274,8 @@ export function vehicleSpecLine(v: VehicleSummary): string {
 
 /**
  * Vehicle header card of the references (alerts, recording): name, spec line and plate at the
- * reading start, the vehicle image at the end. Tapping switches vehicle when `onPress` is given.
+ * reading start (no vehicle image: the only vehicle image is the Home card). Tapping switches
+ * vehicle when `onPress` is given.
  */
 export function VehicleContextCard({
   vehicle,
@@ -305,7 +306,6 @@ export function VehicleContextCard({
         </AppText>
         <PlateBadge number={vehicle.registration} size="sm" />
       </View>
-      <VehiclePhoto vehicle={vehicle} variant="card" />
     </>
   );
   if (!onPress) {
@@ -331,7 +331,7 @@ export function VehicleContextCard({
 
 /**
  * Maintenance-plan vehicle card (reference "תוכנית הטיפולים"): plate at the reading start, name,
- * spec line and fact icons in the middle, the vehicle image at the end.
+ * spec line and fact icons (no vehicle image: the only vehicle image is the Home card).
  */
 export function PlanVehicleCard({
   vehicle,
@@ -366,12 +366,11 @@ export function PlanVehicleCard({
           <Icon name="layers-outline" size={18} color="textSecondary" />
         </View>
       </View>
-      <VehiclePhoto vehicle={vehicle} variant="thumb" />
     </Pressable>
   );
 }
 
-/** Active-vehicle selector of the Home reference: chevron, name + plate, small image. */
+/** Active-vehicle selector of the Home reference: chevron, name + plate (no image). */
 export function VehicleSelectorCard({
   vehicle,
   onPress,
@@ -403,7 +402,6 @@ export function VehicleSelectorCard({
           </AppText>
         ) : null}
       </View>
-      {vehicle ? <VehiclePhoto vehicle={vehicle} variant="thumb" /> : null}
     </Pressable>
   );
 }

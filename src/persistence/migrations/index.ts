@@ -314,4 +314,51 @@ CREATE TABLE vehicle_registry_records (
 );
 `,
   },
+  {
+    version: 10,
+    name: 'msource',
+    // M-SOURCE V1 (ADR-0020). LOCAL ONLY (not in SYNC_TABLES).
+    //  - msource_runs: vehicle-scoped run state and the structured run trace (stages, candidates,
+    //    access decisions per operation) — no document bytes, no document text beyond ≤ 30-word
+    //    evidence excerpts;
+    //  - msource_schedules: the latest resolved schedule per vehicle (provenance + evidence) and
+    //    the requirements derived from it;
+    //  - msource_evidence_cache: structured results per (vehicle CLASS, canonical URL) so an
+    //    unchanged source is not downloaded again; no vehicle, plate or VIN column.
+    up: `
+CREATE TABLE msource_runs (
+  run_id TEXT PRIMARY KEY,
+  vehicle_id TEXT NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
+  fingerprint_key TEXT NOT NULL,
+  state TEXT NOT NULL,
+  status_json TEXT NOT NULL,
+  run_json TEXT,
+  msource_version TEXT NOT NULL,
+  started_at TEXT NOT NULL,
+  finished_at TEXT,
+  updated_at TEXT NOT NULL
+);
+CREATE INDEX idx_msource_runs_vehicle ON msource_runs(vehicle_id, started_at);
+
+CREATE TABLE msource_schedules (
+  vehicle_id TEXT PRIMARY KEY REFERENCES vehicles(id) ON DELETE CASCADE,
+  run_id TEXT NOT NULL REFERENCES msource_runs(run_id) ON DELETE CASCADE,
+  fingerprint_key TEXT NOT NULL,
+  status TEXT NOT NULL,
+  schedule_json TEXT NOT NULL,
+  requirements_json TEXT NOT NULL,
+  resolved_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+
+CREATE TABLE msource_evidence_cache (
+  class_key TEXT NOT NULL,
+  canonical_url TEXT NOT NULL,
+  content_sha256 TEXT NOT NULL CHECK (length(content_sha256) = 64),
+  value_json TEXT NOT NULL,
+  retrieved_at TEXT NOT NULL,
+  PRIMARY KEY (class_key, canonical_url)
+);
+`,
+  },
 ];

@@ -170,7 +170,15 @@ export class DataGovIlRegistry implements VehicleRegistryProvider {
           ...extra.map((c) => c.rid),
           ...new Set(catalog.map((c) => String(c._resource))),
         ];
-        candidates.push({ ...mapCar(n.row), record: { sources, retrievedAt, facts } });
+        // The catalog's plain manufacturer name ("סיאט") when all catalog rows agree; the plate
+        // record carries the name with its country ("סיאט ספרד").
+        const maker = facts.find((f) => f.key === 'manufacturer' && f.group === 'identity');
+        const car = mapCar(n.row);
+        candidates.push({
+          ...car,
+          ...(typeof maker?.value === 'string' ? { manufacturer: maker.value } : {}),
+          record: { sources, retrievedAt, facts },
+        });
       }
       // Supplementary code-only rows are expanded through the model catalog only when no named
       // record exists — otherwise catalog variants of other years/trims would be offered.

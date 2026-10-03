@@ -1,0 +1,1890 @@
+{
+  "run": {
+    "runId": "matrix-M07",
+    "vehicleRef": "M07",
+    "fingerprintKey": "car|renault|megane|2016|1461||diesel|",
+    "msourceVersion": "msource/1",
+    "startedAt": "2026-10-03T05:29:07.585Z",
+    "finishedAt": "2026-10-03T05:29:30.530Z",
+    "stages": [
+      {
+        "stage": "VEHICLE_VERIFIED",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:29:07.585Z",
+        "finishedAt": "2026-10-03T05:29:07.585Z",
+        "durationMs": 0,
+        "counts": {
+          "engineCodes": 0,
+          "displacementKnown": 1
+        },
+        "failures": [],
+        "notes": [
+          "class car|renault|megane|2016|1461||diesel|"
+        ]
+      },
+      {
+        "stage": "DISCOVERY",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:29:07.585Z",
+        "finishedAt": "2026-10-03T05:29:07.588Z",
+        "durationMs": 3,
+        "counts": {
+          "fable": 13,
+          "registry": 0,
+          "knowledge": 1
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SOURCE_CANDIDATES",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:29:07.588Z",
+        "finishedAt": "2026-10-03T05:29:07.588Z",
+        "durationMs": 0,
+        "counts": {
+          "discovered": 14,
+          "unique": 14,
+          "duplicates": 0,
+          "kept": 14
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "ACQUISITION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:29:07.589Z",
+        "finishedAt": "2026-10-03T05:29:30.358Z",
+        "durationMs": 22769,
+        "counts": {
+          "acquired": 10
+        },
+        "failures": [
+          {
+            "code": "ACCESS_BLOCKED",
+            "detail": "automatedFetchAllowed=NOT_ALLOWED (basis r5-automatedFetch)",
+            "sourceId": "src-301bfd897d5d188f"
+          },
+          {
+            "code": "ACCESS_BLOCKED",
+            "detail": "automatedFetchAllowed=NOT_ALLOWED (basis r5-automatedFetch)",
+            "sourceId": "src-de90ed200b7dda5a"
+          },
+          {
+            "code": "ACCESS_BLOCKED",
+            "detail": "automatedFetchAllowed=NOT_ALLOWED (basis r5-automatedFetch)",
+            "sourceId": "src-619f6d4844c4550a"
+          },
+          {
+            "code": "ACCESS_BLOCKED",
+            "detail": "automatedFetchAllowed=NOT_ALLOWED (basis r5-automatedFetch)",
+            "sourceId": "src-00bb6c3882173252"
+          },
+          {
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
+            "sourceId": "src-cd5c1bea9fa0b1e0"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-55a6c8f27ec640f4"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
+            "sourceId": "src-60c88510b7ebb33e"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "EXTRACTION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:29:30.359Z",
+        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "durationMs": 171,
+        "counts": {
+          "extracted": 3,
+          "grounded": 3
+        },
+        "failures": [
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://images.auto.co.il/attachment/catalog/pdf/3866,.pdf",
+            "sourceId": "src-d40b7c8db00a54bb"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://images.auto.co.il/attachment/catalog/pdf/3336,.pdf",
+            "sourceId": "src-13339e3c505e7de2"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane",
+            "sourceId": "src-6ba3e213cc9f6559"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf",
+            "sourceId": "src-4d31db35236613af"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://carwiki.de/renault-megane-inspektion",
+            "sourceId": "src-2a3ccaf8275065ce"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
+            "sourceId": "src-c44c779c5f05d6ae"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic",
+            "sourceId": "src-be21319f0ff56549"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/renault-megane",
+            "sourceId": "src-9ee3edd3fc0c91d9"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
+            "sourceId": "src-2206d7c581628e3f"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "VEHICLE_MATCHING",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:29:30.530Z",
+        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "durationMs": 0,
+        "counts": {
+          "PARTIAL": 4,
+          "STRONG": 2,
+          "NOT_APPLICABLE": 3,
+          "INSUFFICIENT": 1
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "CROSS_SOURCE_VALIDATION",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:29:30.530Z",
+        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "durationMs": 0,
+        "counts": {
+          "obligations": 3,
+          "corroborated": 0,
+          "conflicting": 0
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SCHEDULE_RESOLUTION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:29:30.530Z",
+        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "durationMs": 0,
+        "counts": {
+          "items": 3,
+          "unresolved": 0,
+          "exact": 0,
+          "strong": 0,
+          "supported": 3
+        },
+        "failures": [],
+        "notes": [
+          "status READY_PARTIAL"
+        ]
+      },
+      {
+        "stage": "PERSISTENCE",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:29:30.530Z",
+        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "NEXT_SERVICE_CALCULATION",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:29:30.530Z",
+        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": [
+          "computed by the host from the stored schedule"
+        ]
+      }
+    ],
+    "queries": [
+      "Renault Megane 1.5 service intervals",
+      "Renault Megane 1.45 service intervals",
+      "רנו Megane 1.5 מרווחי טיפולים",
+      "רנו Megane 1.45 מרווחי טיפולים",
+      "Renault Megane 1.5 intervalles d'entretien",
+      "Renault Megane 1.45 intervalles d'entretien",
+      "Renault Megane 2016 maintenance manual",
+      "רנו Megane 2016 ספר רכב טיפולים",
+      "Renault Megane 2016 notice d'utilisation entretien",
+      "Renault Megane maintenance schedule",
+      "רנו Megane לוח טיפולים",
+      "Renault Megane plan d'entretien"
+    ],
+    "candidates": [
+      {
+        "url": "https://gb.e-guide.renault.com/sites/default/files/pdfs/eng/BFB/Megane-1163-9_ENG.pdf",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_BLOCKED",
+          "detail": "automatedFetchAllowed=NOT_ALLOWED (basis r5-automatedFetch)"
+        }
+      },
+      {
+        "url": "https://ie.e-guide.renault.com/sites/default/files/pdfs/eng/XFB-4PH2/Megane-1338-8_ENG.pdf",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_BLOCKED",
+          "detail": "automatedFetchAllowed=NOT_ALLOWED (basis r5-automatedFetch)"
+        }
+      },
+      {
+        "url": "https://fr.e-guide.renault.com/sites/default/files/pdfs/fra/XFB-4PH2/Megane-1338-8_FRA.pdf",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_BLOCKED",
+          "detail": "automatedFetchAllowed=NOT_ALLOWED (basis r5-automatedFetch)"
+        }
+      },
+      {
+        "url": "https://auto.co.il/Attachment/Catalog/pdf/3866,.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://m.auto.co.il/Attachment/Catalog/pdf/3336,.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://gb.e-guide.renault.com/sites/default/files/olds_pdfs/1116_4_BDK95_Megane_3_Ph2/Megane_3_Ph2_-_1116-4_ENG.pdf",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_BLOCKED",
+          "detail": "automatedFetchAllowed=NOT_ALLOWED (basis r5-automatedFetch)"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+        "by": "fable",
+        "outcome": "extracted",
+        "failure": null
+      },
+      {
+        "url": "https://uk.haynes.com/pages/maintenance-plans-car-renault-megane-iv-2016-2025",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
+        }
+      },
+      {
+        "url": "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://carwiki.de/renault-megane-inspektion",
+        "by": "knowledge",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
+      },
+      {
+        "url": "https://www.libble.eu/renault-megane---2015/online-manual-735615/",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
+        }
+      },
+      {
+        "url": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/renault-megane",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      }
+    ],
+    "restricted": [
+      {
+        "url": "https://www.manualslib.fr/products/Renault-Megane-1433.html",
+        "reason": "Result title shows 'Se connecter' (login prompt)",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://www.manualslib.fr/products/Renault-Megane-2002-12619301.html",
+        "reason": "Result title shows 'Se connecter' (login prompt)",
+        "adapter": "fable"
+      }
+    ],
+    "schedule": {
+      "fingerprintKey": "car|renault|megane|2016|1461||diesel|",
+      "status": "READY_PARTIAL",
+      "items": [
+        {
+          "operation": "air_filter",
+          "task": "air_filter",
+          "action": "replacement",
+          "condition": "normal",
+          "intervalKm": 10000,
+          "intervalMonths": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "rule": "DISTANCE_ONLY",
+          "quality": "SUPPORTED",
+          "evidenceIds": [
+            "src-30e86703c124d97d:06068739ab93-p5-s-air_filter-replacement-0"
+          ],
+          "independentSources": 1,
+          "officialSources": 0,
+          "applicability": "STRONG",
+          "conflicts": [],
+          "applicabilityStatus": "APPLICABLE",
+          "scope": "ENGINE_FAMILY",
+          "notes": []
+        },
+        {
+          "operation": "coolant",
+          "task": "coolant",
+          "action": "replacement",
+          "condition": "normal",
+          "intervalKm": 90000,
+          "intervalMonths": 60,
+          "firstKm": null,
+          "firstMonths": null,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "quality": "SUPPORTED",
+          "evidenceIds": [
+            "src-30e86703c124d97d:06068739ab93-p10-coolant-replacement-0"
+          ],
+          "independentSources": 1,
+          "officialSources": 0,
+          "applicability": "STRONG",
+          "conflicts": [],
+          "applicabilityStatus": "APPLICABLE",
+          "scope": "ENGINE_FAMILY",
+          "notes": []
+        },
+        {
+          "operation": "timing_belt",
+          "task": "timing_belt",
+          "action": "replacement",
+          "condition": "normal",
+          "intervalKm": 60000,
+          "intervalMonths": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "rule": "DISTANCE_ONLY",
+          "quality": "SUPPORTED",
+          "evidenceIds": [
+            "src-30e86703c124d97d:06068739ab93-p8-s-timing_belt-replacement-1"
+          ],
+          "independentSources": 1,
+          "officialSources": 0,
+          "applicability": "STRONG",
+          "conflicts": [],
+          "applicabilityStatus": "APPLICABLE",
+          "scope": "ENGINE_FAMILY",
+          "notes": []
+        }
+      ],
+      "unresolved": [],
+      "sources": [
+        {
+          "sourceId": "src-d40b7c8db00a54bb",
+          "canonicalUrl": "https://auto.co.il/Attachment/Catalog/pdf/3866,.pdf",
+          "finalUrl": "https://images.auto.co.il/attachment/catalog/pdf/3866,.pdf",
+          "chain": [
+            "https://auto.co.il/Attachment/Catalog/pdf/3866,.pdf",
+            "https://www.auto.co.il/Attachment/Catalog/pdf/3866,.pdf",
+            "https://images.auto.co.il/attachment/catalog/pdf/3866,.pdf"
+          ],
+          "sourceName": "auto.co.il (importer spec sheet)",
+          "sourceType": "importer",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:29:07.585Z",
+          "retrievedAt": "2026-10-03T05:29:08.096Z",
+          "format": "pdf",
+          "documentType": "warranty_maintenance_booklet",
+          "contentSha256": "001696a75cd1eee291f22afbedf950589ca7dc604ebc3ab03ea201a32ce88a86",
+          "byteLength": 928168,
+          "locale": "he",
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://auto.co.il/Attachment/Catalog/pdf/3866,.pdf",
+              "host": "auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://auto.co.il/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:07.812Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.auto.co.il/Attachment/Catalog/pdf/3866,.pdf",
+              "host": "www.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto.co.il/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:07.850Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://images.auto.co.il/attachment/catalog/pdf/3866,.pdf",
+              "host": "images.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://images.auto.co.il/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:07.920Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://images.auto.co.il/attachment/catalog/pdf/3866,.pdf",
+              "host": "images.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://images.auto.co.il/attachment/catalog/pdf/3866,.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:08.095Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://images.auto.co.il/attachment/catalog/pdf/3866,.pdf",
+              "host": "images.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://auto.co.il/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://images.auto.co.il/attachment/catalog/pdf/3866,.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:08.096Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "images.auto.co.il"
+          }
+        },
+        {
+          "sourceId": "src-13339e3c505e7de2",
+          "canonicalUrl": "https://m.auto.co.il/Attachment/Catalog/pdf/3336,.pdf",
+          "finalUrl": "https://images.auto.co.il/attachment/catalog/pdf/3336,.pdf",
+          "chain": [
+            "https://m.auto.co.il/Attachment/Catalog/pdf/3336,.pdf",
+            "https://www.auto.co.il/Attachment/Catalog/pdf/3336,.pdf",
+            "https://images.auto.co.il/attachment/catalog/pdf/3336,.pdf"
+          ],
+          "sourceName": "auto.co.il (importer spec sheet)",
+          "sourceType": "importer",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:29:07.585Z",
+          "retrievedAt": "2026-10-03T05:29:09.839Z",
+          "format": "pdf",
+          "documentType": "warranty_maintenance_booklet",
+          "contentSha256": "cab97b94fe9b3bec62b3b745493c92d284bed25c20b39bc66558a4fd905a80a2",
+          "byteLength": 490802,
+          "locale": "he",
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://m.auto.co.il/Attachment/Catalog/pdf/3336,.pdf",
+              "host": "m.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://m.auto.co.il/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:09.527Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.auto.co.il/Attachment/Catalog/pdf/3336,.pdf",
+              "host": "www.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto.co.il/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:09.555Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://images.auto.co.il/attachment/catalog/pdf/3336,.pdf",
+              "host": "images.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://images.auto.co.il/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:09.597Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://images.auto.co.il/attachment/catalog/pdf/3336,.pdf",
+              "host": "images.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://images.auto.co.il/attachment/catalog/pdf/3336,.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:09.839Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://images.auto.co.il/attachment/catalog/pdf/3336,.pdf",
+              "host": "images.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://m.auto.co.il/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://images.auto.co.il/attachment/catalog/pdf/3336,.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:09.839Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "images.auto.co.il"
+          }
+        },
+        {
+          "sourceId": "src-30e86703c124d97d",
+          "canonicalUrl": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+          "finalUrl": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+          "chain": [
+            "https://www.auto-abc.eu/renault-megane/v18693-2016/service"
+          ],
+          "sourceName": "auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:29:07.585Z",
+          "retrievedAt": "2026-10-03T05:29:11.307Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57",
+          "byteLength": 37700,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2016,
+            "yearTo": 2020,
+            "engineCodes": [],
+            "displacementsCc": [
+              1500
+            ],
+            "displacementsMentioned": [
+              1500
+            ],
+            "fuels": [
+              "diesel"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:11.155Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:11.307Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/renault-megane/v18693-2016/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:11.307Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-6ba3e213cc9f6559",
+          "canonicalUrl": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane",
+          "finalUrl": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane",
+          "chain": [
+            "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane"
+          ],
+          "sourceName": "idGarages",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:29:07.585Z",
+          "retrievedAt": "2026-10-03T05:29:13.206Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "fac8c2ebd4ceff4d66a24e0fd7bd5cd504bbaf66191ff8b26aec3d0e1cb38496",
+          "byteLength": 215017,
+          "locale": "fr",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "2",
+              "3"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane",
+              "host": "www.idgarages.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.idgarages.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:13.159Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane",
+              "host": "www.idgarages.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:13.206Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane",
+              "host": "www.idgarages.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.idgarages.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:13.206Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.idgarages.com"
+          }
+        },
+        {
+          "sourceId": "src-4d31db35236613af",
+          "canonicalUrl": "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf",
+          "finalUrl": "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf",
+          "chain": [
+            "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf"
+          ],
+          "sourceName": "AutoJM (dealer)",
+          "sourceType": "dealer",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:29:07.585Z",
+          "retrievedAt": "2026-10-03T05:29:14.956Z",
+          "format": "pdf",
+          "documentType": "other",
+          "contentSha256": "f4f02199c1dcdd6ba213296beea36a1bc0f998539d80eb1ec6b55300f8c05ba9",
+          "byteLength": 9845747,
+          "locale": "fr",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf",
+              "host": "www.autojm.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.autojm.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:13.446Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf",
+              "host": "www.autojm.fr",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:14.956Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf",
+              "host": "www.autojm.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.autojm.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.autojm.fr/pdf/notices/RENAULT/nouvelle-megane.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:14.956Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.autojm.fr"
+          }
+        },
+        {
+          "sourceId": "src-2a3ccaf8275065ce",
+          "canonicalUrl": "https://carwiki.de/renault-megane-inspektion",
+          "finalUrl": "https://carwiki.de/renault-megane-inspektion",
+          "chain": [
+            "https://carwiki.de/renault-megane-inspektion"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "knowledge",
+          "discoveredAt": "2026-10-03T05:29:07.588Z",
+          "retrievedAt": "2026-10-03T05:29:18.275Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "7019cb06a30a16beccce3c41141723d6d7c7b7bbdab8eec86712d21a5a347742",
+          "byteLength": 174576,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "4",
+              "6"
+            ],
+            "yearFrom": 2008,
+            "yearTo": 2016,
+            "engineCodes": [],
+            "displacementsCc": [
+              1900
+            ],
+            "displacementsMentioned": [
+              1900
+            ],
+            "fuels": [
+              "diesel"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/renault-megane-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:18.093Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/renault-megane-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/renault-megane-inspektion",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:18.275Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/renault-megane-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/renault-megane-inspektion",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:18.275Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-c44c779c5f05d6ae",
+          "canonicalUrl": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
+          "finalUrl": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
+          "chain": [
+            "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html"
+          ],
+          "sourceName": "PlaneteRenault forum",
+          "sourceType": "forum",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:29:07.585Z",
+          "retrievedAt": "2026-10-03T05:29:25.207Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "186e1bf3000e9afce17323f44e4eefd023ae2aaf7019b2e766a5cfb6c8e8bebb",
+          "byteLength": 107759,
+          "locale": "fr",
+          "markets": [],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [
+              "3",
+              "4"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
+              "host": "www.planeterenault.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.planeterenault.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:24.954Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
+              "host": "www.planeterenault.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:25.207Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
+              "host": "www.planeterenault.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.planeterenault.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:25.207Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.planeterenault.com"
+          }
+        },
+        {
+          "sourceId": "src-be21319f0ff56549",
+          "canonicalUrl": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic",
+          "finalUrl": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic",
+          "chain": [
+            "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic"
+          ],
+          "sourceName": "www.idgarages.com",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:29:13.218Z",
+          "retrievedAt": "2026-10-03T05:29:28.721Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "bef2aec228239b36f1772f5ac3f3d476943589aa1f19ad7497f7651de7096596",
+          "byteLength": 215247,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "2",
+              "3"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic",
+              "host": "www.idgarages.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.idgarages.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:28.651Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic",
+              "host": "www.idgarages.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:28.721Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic",
+              "host": "www.idgarages.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.idgarages.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.idgarages.com/fr-fr/entretien/renault/carnet-entretien-renault-megane-scenic",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:28.721Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.idgarages.com"
+          }
+        },
+        {
+          "sourceId": "src-9ee3edd3fc0c91d9",
+          "canonicalUrl": "https://carwiki.de/renault-megane",
+          "finalUrl": "https://carwiki.de/renault-megane",
+          "chain": [
+            "https://carwiki.de/renault-megane"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:29:18.283Z",
+          "retrievedAt": "2026-10-03T05:29:28.884Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "7b605dfb7c925053b2693d6a9754d3e2288fa5e6662eece318dd4d4a462027a2",
+          "byteLength": 318708,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/renault-megane",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:28.652Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/renault-megane",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/renault-megane",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:28.883Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/renault-megane",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/renault-megane",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:28.884Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-2206d7c581628e3f",
+          "canonicalUrl": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
+          "finalUrl": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
+          "chain": [
+            "https://carwiki.de/renault-megane-inspektion-zuruecksetzen"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:29:18.283Z",
+          "retrievedAt": "2026-10-03T05:29:30.356Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "257f060e97915ec535e30658b4a3e06f36b6ee92f844a852265117e32f1d454b",
+          "byteLength": 168631,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "1",
+              "3",
+              "4",
+              "2",
+              "5"
+            ],
+            "yearFrom": 2008,
+            "yearTo": 2016,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1500
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:28.893Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:30.356Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:30.356Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "src-30e86703c124d97d:06068739ab93-p10-coolant-replacement-0",
+          "sourceId": "src-30e86703c124d97d",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Renault Megane 1.5 diesel is 90,000 km or 5 years , whi",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 90000,
+          "intervalMiles": null,
+          "intervalMonths": 60,
+          "intervalYears": 5,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "diesel"
+          ],
+          "modelApplicability": [
+            "Megane"
+          ],
+          "yearApplicability": {
+            "from": 2016,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 10,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Renault Megane \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "06068739ab93-p10-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Renault Megane 1.5 diesel is 90,000 km or 5 years , whi",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 90000,
+                "unit": "km"
+              },
+              "everyMonths": 60,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "renault"
+              ],
+              "models": [
+                "Megane"
+              ],
+              "modelYears": {
+                "from": 2016,
+                "to": 2020
+              },
+              "powertrains": [
+                "diesel"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57",
+                "documentTitle": "Renault Megane 2016 1.5 diesel service and maintenance",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 10,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Renault Megane \"",
+                "documentSha256": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2016,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-30e86703c124d97d:06068739ab93-p5-s-air_filter-replacement-0",
+          "sourceId": "src-30e86703c124d97d",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Replacement interval for the air filter is 10,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 10000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Megane"
+          ],
+          "yearApplicability": {
+            "from": 2016,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Replacement interval for the air filter is 10,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "06068739ab93-p5-s-air_filter-replacement-0",
+            "task": "air_filter",
+            "taskText": "Replacement interval for the air filter is 10,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 10000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "renault"
+              ],
+              "models": [
+                "Megane"
+              ],
+              "modelYears": {
+                "from": 2016,
+                "to": 2020
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57",
+                "documentTitle": "Renault Megane 2016 1.5 diesel service and maintenance",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Air filter",
+                "locator": "column sentence \"Replacement interval for the air filter is 10,000 km .\"",
+                "documentSha256": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2016,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-30e86703c124d97d:06068739ab93-p8-s-timing_belt-replacement-1",
+          "sourceId": "src-30e86703c124d97d",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Manufacturers recommended timing belt replacement interval for Renault Megane 1.5 diesel is 60,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "diesel"
+          ],
+          "modelApplicability": [
+            "Megane"
+          ],
+          "yearApplicability": {
+            "from": 2016,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 8,
+            "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Renault Megane 1.\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "06068739ab93-p8-s-timing_belt-replacement-1",
+            "task": "timing_belt",
+            "taskText": "Manufacturers recommended timing belt replacement interval for Renault Megane 1.5 diesel is 60,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "renault"
+              ],
+              "models": [
+                "Megane"
+              ],
+              "modelYears": {
+                "from": 2016,
+                "to": 2020
+              },
+              "powertrains": [
+                "diesel"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57",
+                "documentTitle": "Renault Megane 2016 1.5 diesel service and maintenance",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 8,
+                "section": "Timing belt",
+                "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Renault Megane 1.\"",
+                "documentSha256": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2016,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        }
+      ],
+      "resolvedAt": "2026-10-03T05:29:30.530Z",
+      "msourceVersion": "msource/1"
+    }
+  }
+}

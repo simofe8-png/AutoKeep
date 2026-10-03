@@ -76,9 +76,9 @@ describe('maintenance knowledge persistence (migration v6)', () => {
       status: 'needs_information',
       items: [],
       requests: [
+        // (The acceptance vehicles' research claims are test fixtures, not production data.)
         { kind: 'official_source_pending' },
-        { kind: 'upload_booklet', hint: 'ford_service_plan' },
-        { kind: 'awaiting_verification' },
+        { kind: 'upload_booklet', hint: 'generic' },
       ],
     });
     expect(snap.bundles[IBIZA].plan).toMatchObject({
@@ -86,8 +86,7 @@ describe('maintenance knowledge persistence (migration v6)', () => {
       items: [],
       requests: [
         { kind: 'official_source', sources: [{ sourceSystemId: 'il-champion-service-routine' }] },
-        { kind: 'upload_booklet', hint: 'seat_maintenance_programme' },
-        { kind: 'awaiting_verification' },
+        { kind: 'upload_booklet', hint: 'generic' },
       ],
     });
   });

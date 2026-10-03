@@ -1,0 +1,2964 @@
+{
+  "run": {
+    "runId": "matrix-M06",
+    "vehicleRef": "M06",
+    "fingerprintKey": "car|kia|picanto|2018|998||petrol|",
+    "msourceVersion": "msource/1",
+    "startedAt": "2026-10-03T05:28:34.492Z",
+    "finishedAt": "2026-10-03T05:29:07.578Z",
+    "stages": [
+      {
+        "stage": "VEHICLE_VERIFIED",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:28:34.492Z",
+        "finishedAt": "2026-10-03T05:28:34.492Z",
+        "durationMs": 0,
+        "counts": {
+          "engineCodes": 0,
+          "displacementKnown": 1
+        },
+        "failures": [],
+        "notes": [
+          "class car|kia|picanto|2018|998||petrol|"
+        ]
+      },
+      {
+        "stage": "DISCOVERY",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:28:34.492Z",
+        "finishedAt": "2026-10-03T05:28:34.495Z",
+        "durationMs": 3,
+        "counts": {
+          "fable": 13,
+          "registry": 0,
+          "knowledge": 1
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SOURCE_CANDIDATES",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:28:34.495Z",
+        "finishedAt": "2026-10-03T05:28:34.495Z",
+        "durationMs": 0,
+        "counts": {
+          "discovered": 14,
+          "unique": 14,
+          "duplicates": 0,
+          "kept": 14
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "ACQUISITION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:28:34.495Z",
+        "finishedAt": "2026-10-03T05:29:07.549Z",
+        "durationMs": 33054,
+        "counts": {
+          "acquired": 13
+        },
+        "failures": [
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-003f2b20f4df067e"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-737875d3a8057e95"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-83e86e8904b77217"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-e3bc72424e433090"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-60279c568cf25b54"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-4ac170ce333dd854"
+          },
+          {
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
+            "sourceId": "src-ba09af1328c1543d"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "login / CAPTCHA / paywall page",
+            "sourceId": "src-30ec3900fee0a5d6"
+          },
+          {
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
+            "sourceId": "src-44fc6451b90b0ab3"
+          },
+          {
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "login / CAPTCHA / paywall page",
+            "sourceId": "src-e1e76e36d4c936b0"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "EXTRACTION",
+        "status": "partial",
+        "startedAt": "2026-10-03T05:29:07.549Z",
+        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "durationMs": 29,
+        "counts": {
+          "extracted": 10,
+          "grounded": 10
+        },
+        "failures": [
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf",
+            "sourceId": "src-104145c1b385a23f"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.auto-abc.eu/service/Kia-Picanto",
+            "sourceId": "src-52cd0e36b566e194"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.queenoftheroad.co.il/%d7%a7%d7%99%d7%94-%d7%a4%d7%99%d7%a7%d7%a0%d7%98%d7%95-%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/",
+            "sourceId": "src-75cfb23546604f6f"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+            "sourceId": "src-6aadb4d7a43855a5"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://es.auto-abc.eu/servicio/Kia-Picanto",
+            "sourceId": "src-e19d24900be38a32"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.auto-abc.lv/service/Kia-Picanto",
+            "sourceId": "src-26771cfac6fadcac"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/kia-picanto",
+            "sourceId": "src-3bc94ef25828965c"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen",
+            "sourceId": "src-de443d42cfe6fdc8"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/kia-picanto-batteriewechsel",
+            "sourceId": "src-93adb3062cc8d514"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/zahnriemenwechsel-kia-picanto",
+            "sourceId": "src-869951d7dbbff575"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "VEHICLE_MATCHING",
+        "status": "failed",
+        "startedAt": "2026-10-03T05:29:07.578Z",
+        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "durationMs": 0,
+        "counts": {
+          "INSUFFICIENT": 2,
+          "PARTIAL": 9,
+          "NOT_APPLICABLE": 2
+        },
+        "failures": [
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "PARTIAL: the document does not state its model years",
+            "sourceId": "src-7b7a81e30d878d8d"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: engines named: 1200 cc — not 998 cc",
+            "sourceId": "src-cbe38e86d0a697c0"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: engines named: 1200 cc — not 998 cc",
+            "sourceId": "src-a7b79ac97ea6b99f"
+          }
+        ],
+        "notes": []
+      },
+      {
+        "stage": "CROSS_SOURCE_VALIDATION",
+        "status": "ok",
+        "startedAt": "2026-10-03T05:29:07.578Z",
+        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "durationMs": 0,
+        "counts": {
+          "obligations": 0,
+          "corroborated": 0,
+          "conflicting": 0
+        },
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "SCHEDULE_RESOLUTION",
+        "status": "failed",
+        "startedAt": "2026-10-03T05:29:07.578Z",
+        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "durationMs": 0,
+        "counts": {
+          "items": 0,
+          "unresolved": 0,
+          "exact": 0,
+          "strong": 0,
+          "supported": 0
+        },
+        "failures": [
+          {
+            "code": "INSUFFICIENT_EVIDENCE",
+            "detail": "INSUFFICIENT_EVIDENCE"
+          }
+        ],
+        "notes": [
+          "status INSUFFICIENT_EVIDENCE"
+        ]
+      },
+      {
+        "stage": "PERSISTENCE",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:29:07.578Z",
+        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": []
+      },
+      {
+        "stage": "NEXT_SERVICE_CALCULATION",
+        "status": "skipped",
+        "startedAt": "2026-10-03T05:29:07.578Z",
+        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "durationMs": 0,
+        "counts": {},
+        "failures": [],
+        "notes": [
+          "no schedule"
+        ]
+      }
+    ],
+    "queries": [
+      "Kia Picanto 1.0 service intervals",
+      "קיה Picanto 1.0 מרווחי טיפולים",
+      "Kia Picanto 2018 maintenance manual",
+      "קיה Picanto 2018 ספר רכב טיפולים",
+      "Kia Picanto maintenance schedule",
+      "קיה Picanto לוח טיפולים"
+    ],
+    "candidates": [
+      {
+        "url": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://m.auto.co.il/Attachment/Catalog/pdf/1638,.pdf",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://ownersmanual.kia.com/docview/webhelp/doc/1e653121-4428-4a48-91bb-5179c409e82d/topics/chapter8_4_1.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://ownersmanual.kia.com/docview/webhelp/doc/e83e7a0d-ccee-4ea8-aee4-4f85bce163a6/topics/chapter8_4_1.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://ownersmanual.kia.com/docview/webhelp/doc/c983d192-c0bb-42cd-b59a-825ea904742d/topics/chapter8_4_1.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://ownersmanual.kia.com/docview/webhelp/doc/dc4a45ed-aed8-471b-b9bd-4c2f7422d133/topics/chapter8_4_2.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://www.kia.com/om/en/service/scheduled-servicing.html",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+        }
+      },
+      {
+        "url": "https://uk.haynes.com/pages/maintenance-plans-car-kia-picanto",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/service/Kia-Picanto",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.auto.co.il/articles/car-news/127811/",
+        "by": "fable",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "login / CAPTCHA / paywall page"
+        }
+      },
+      {
+        "url": "https://www.queenoftheroad.co.il/?p=77976",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.kwik-fit.com/servicing/information/vehicles/kia/picanto",
+        "by": "fable",
+        "outcome": "failed",
+        "failure": {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
+        }
+      },
+      {
+        "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+        "by": "fable",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/kia-picanto-inspektion",
+        "by": "knowledge",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.lv/service/Kia-Picanto",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://es.auto-abc.eu/servicio/Kia-Picanto",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/Kia-Picanto/v15446-2017/service",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: engines named: 1200 cc — not 998 cc"
+        }
+      },
+      {
+        "url": "https://www.auto-abc.eu/Kia-Picanto/v15445-2017/service",
+        "by": "link",
+        "outcome": "not_applicable",
+        "failure": {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: engines named: 1200 cc — not 998 cc"
+        }
+      },
+      {
+        "url": "https://web.archive.org/web/20260412022747id_/https://www.kwik-fit.com/servicing/information/vehicles/kia/picanto",
+        "by": "archive",
+        "outcome": "blocked",
+        "failure": {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "login / CAPTCHA / paywall page"
+        }
+      },
+      {
+        "url": "https://carwiki.de/kia-picanto",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/kia-picanto-batteriewechsel",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/zahnriemenwechsel-kia-picanto",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      }
+    ],
+    "restricted": [
+      {
+        "url": "https://apps.altnews.in/index.jsp/u2A07F/243164/Kia Picanto Owners Manual Pdf.pdf",
+        "reason": "Untrusted mirror/spam-style host (same file on many unrelated domains); not an official or reputable source",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://licm.mcgill.ca/ProductPdf/G-jjUI/448317/Kia Picanto City Owners Manual.pdf",
+        "reason": "Untrusted mirror/spam-style host on hijacked path; excluded",
+        "adapter": "fable"
+      },
+      {
+        "url": "https://kia-israel.co.il/קבל-ספר-רכב-למייל",
+        "reason": "policy_not_allowed",
+        "adapter": "registry"
+      }
+    ],
+    "schedule": {
+      "fingerprintKey": "car|kia|picanto|2018|998||petrol|",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "items": [],
+      "unresolved": [],
+      "sources": [
+        {
+          "sourceId": "src-104145c1b385a23f",
+          "canonicalUrl": "https://m.auto.co.il/Attachment/Catalog/pdf/1638,.pdf",
+          "finalUrl": "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf",
+          "chain": [
+            "https://m.auto.co.il/Attachment/Catalog/pdf/1638,.pdf",
+            "https://www.auto.co.il/Attachment/Catalog/pdf/1638,.pdf",
+            "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf"
+          ],
+          "sourceName": "auto.co.il",
+          "sourceType": "importer",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:28:34.492Z",
+          "retrievedAt": "2026-10-03T05:28:38.320Z",
+          "format": "pdf",
+          "documentType": "other",
+          "contentSha256": "1b04efe201d55e546042211adecb6b54d413defe32b4518d66e8bc2be1468e3b",
+          "byteLength": 26680215,
+          "locale": "he",
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://m.auto.co.il/Attachment/Catalog/pdf/1638,.pdf",
+              "host": "m.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://m.auto.co.il/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:34.660Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.auto.co.il/Attachment/Catalog/pdf/1638,.pdf",
+              "host": "www.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto.co.il/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:34.700Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf",
+              "host": "images.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://images.auto.co.il/robots.txt",
+                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:35.563Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf",
+              "host": "images.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:38.319Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf",
+              "host": "images.auto.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://m.auto.co.il/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:38.320Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "images.auto.co.il"
+          }
+        },
+        {
+          "sourceId": "src-52cd0e36b566e194",
+          "canonicalUrl": "https://www.auto-abc.eu/service/Kia-Picanto",
+          "finalUrl": "https://www.auto-abc.eu/service/Kia-Picanto",
+          "chain": [
+            "https://www.auto-abc.eu/service/Kia-Picanto"
+          ],
+          "sourceName": "auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:28:34.492Z",
+          "retrievedAt": "2026-10-03T05:28:56.027Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "2ca3675a4087f5387d94597af8e752746f837b6b8981d0328a2c6f5e29eef6a6",
+          "byteLength": 26308,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1100,
+              1200
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/service/Kia-Picanto",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:55.857Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/service/Kia-Picanto",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/service/Kia-Picanto",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:56.027Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/service/Kia-Picanto",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/service/Kia-Picanto",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:56.027Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-75cfb23546604f6f",
+          "canonicalUrl": "https://www.queenoftheroad.co.il/?p=77976",
+          "finalUrl": "https://www.queenoftheroad.co.il/%d7%a7%d7%99%d7%94-%d7%a4%d7%99%d7%a7%d7%a0%d7%98%d7%95-%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/",
+          "chain": [
+            "https://www.queenoftheroad.co.il/?p=77976",
+            "https://www.queenoftheroad.co.il/%d7%a7%d7%99%d7%94-%d7%a4%d7%99%d7%a7%d7%a0%d7%98%d7%95-%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/"
+          ],
+          "sourceName": "queenoftheroad.co.il",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:28:34.492Z",
+          "retrievedAt": "2026-10-03T05:28:57.208Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "629039a0e5a5979b1804fc3cbda2700c8913dfec5950a8e1a0a5cc8364a30332",
+          "byteLength": 181012,
+          "locale": "he",
+          "markets": [
+            "IL"
+          ],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "IL"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/?p=77976",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:56.082Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.queenoftheroad.co.il/%d7%a7%d7%99%d7%94-%d7%a4%d7%99%d7%a7%d7%a0%d7%98%d7%95-%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:57.175Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.queenoftheroad.co.il/%d7%a7%d7%99%d7%94-%d7%a4%d7%99%d7%a7%d7%a0%d7%98%d7%95-%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%a7%d7%99%d7%94-%d7%a4%d7%99%d7%a7%d7%a0%d7%98%d7%95-%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:57.207Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.queenoftheroad.co.il/%d7%a7%d7%99%d7%94-%d7%a4%d7%99%d7%a7%d7%a0%d7%98%d7%95-%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/",
+              "host": "www.queenoftheroad.co.il",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.queenoftheroad.co.il/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.queenoftheroad.co.il/%d7%a7%d7%99%d7%94-%d7%a4%d7%99%d7%a7%d7%a0%d7%98%d7%95-%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%94%d7%9e%d7%9c%d7%90-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:28:57.208Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.queenoftheroad.co.il"
+          }
+        },
+        {
+          "sourceId": "src-7b7a81e30d878d8d",
+          "canonicalUrl": "https://carwiki.de/kia-picanto-inspektion",
+          "finalUrl": "https://carwiki.de/kia-picanto-inspektion",
+          "chain": [
+            "https://carwiki.de/kia-picanto-inspektion"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "knowledge",
+          "discoveredAt": "2026-10-03T05:28:34.495Z",
+          "retrievedAt": "2026-10-03T05:29:00.515Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3",
+          "byteLength": 169117,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [
+              "6"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/kia-picanto-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:00.344Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/kia-picanto-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/kia-picanto-inspektion",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:00.515Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/kia-picanto-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/kia-picanto-inspektion",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:00.515Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-6aadb4d7a43855a5",
+          "canonicalUrl": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+          "finalUrl": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+          "chain": [
+            "https://www.servicingstop.co.uk/kia_picanto_service.html"
+          ],
+          "sourceName": "Servicing Stop",
+          "sourceType": "other",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T05:28:34.492Z",
+          "retrievedAt": "2026-10-03T05:29:00.945Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "252e8f031c4d97a71bfc7647a3355ee96d689d3e5607719b738745007fe072ee",
+          "byteLength": 149240,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+              "host": "www.servicingstop.co.uk",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.servicingstop.co.uk/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:00.524Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+              "host": "www.servicingstop.co.uk",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:00.945Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+              "host": "www.servicingstop.co.uk",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.servicingstop.co.uk/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:00.945Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.servicingstop.co.uk"
+          }
+        },
+        {
+          "sourceId": "src-e19d24900be38a32",
+          "canonicalUrl": "https://es.auto-abc.eu/servicio/Kia-Picanto",
+          "finalUrl": "https://es.auto-abc.eu/servicio/Kia-Picanto",
+          "chain": [
+            "https://es.auto-abc.eu/servicio/Kia-Picanto"
+          ],
+          "sourceName": "es.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:28:56.029Z",
+          "retrievedAt": "2026-10-03T05:29:01.242Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "a3c4c82c9f76552c7b28d02c90249eea275ddf822b804b4b32c9cb2b2c2e1ba0",
+          "byteLength": 26372,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1100,
+              1200
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://es.auto-abc.eu/servicio/Kia-Picanto",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.079Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://es.auto-abc.eu/servicio/Kia-Picanto",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/Kia-Picanto",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.242Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://es.auto-abc.eu/servicio/Kia-Picanto",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/Kia-Picanto",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.242Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "es.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-26771cfac6fadcac",
+          "canonicalUrl": "https://www.auto-abc.lv/service/Kia-Picanto",
+          "finalUrl": "https://www.auto-abc.lv/service/Kia-Picanto",
+          "chain": [
+            "https://www.auto-abc.lv/service/Kia-Picanto"
+          ],
+          "sourceName": "www.auto-abc.lv",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:28:56.029Z",
+          "retrievedAt": "2026-10-03T05:29:01.243Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "36900b5f12e0af927160dca28c526d1a2b8c4b32cce72a7e113fe64a326ac9ca",
+          "byteLength": 26812,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1100,
+              1200
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.lv/service/Kia-Picanto",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.lv/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.080Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.lv/service/Kia-Picanto",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.lv/service/Kia-Picanto",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.243Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.lv/service/Kia-Picanto",
+              "host": "www.auto-abc.lv",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.lv/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.lv/service/Kia-Picanto",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.243Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.lv"
+          }
+        },
+        {
+          "sourceId": "src-cbe38e86d0a697c0",
+          "canonicalUrl": "https://www.auto-abc.eu/Kia-Picanto/v15446-2017/service",
+          "finalUrl": "https://www.auto-abc.eu/Kia-Picanto/v15446-2017/service",
+          "chain": [
+            "https://www.auto-abc.eu/Kia-Picanto/v15446-2017/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:28:56.029Z",
+          "retrievedAt": "2026-10-03T05:29:01.473Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+          "byteLength": 37213,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2017,
+            "yearTo": 2020,
+            "engineCodes": [],
+            "displacementsCc": [
+              1200
+            ],
+            "displacementsMentioned": [
+              1200
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Kia-Picanto/v15446-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.244Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Kia-Picanto/v15446-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Kia-Picanto/v15446-2017/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.473Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Kia-Picanto/v15446-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Kia-Picanto/v15446-2017/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.473Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-a7b79ac97ea6b99f",
+          "canonicalUrl": "https://www.auto-abc.eu/Kia-Picanto/v15445-2017/service",
+          "finalUrl": "https://www.auto-abc.eu/Kia-Picanto/v15445-2017/service",
+          "chain": [
+            "https://www.auto-abc.eu/Kia-Picanto/v15445-2017/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:28:56.029Z",
+          "retrievedAt": "2026-10-03T05:29:02.875Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+          "byteLength": 37229,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2017,
+            "yearTo": 2020,
+            "engineCodes": [],
+            "displacementsCc": [
+              1200
+            ],
+            "displacementsMentioned": [
+              1200
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Kia-Picanto/v15445-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:01.244Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Kia-Picanto/v15445-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Kia-Picanto/v15445-2017/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:02.875Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Kia-Picanto/v15445-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Kia-Picanto/v15445-2017/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:02.875Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
+          "sourceId": "src-3bc94ef25828965c",
+          "canonicalUrl": "https://carwiki.de/kia-picanto",
+          "finalUrl": "https://carwiki.de/kia-picanto",
+          "chain": [
+            "https://carwiki.de/kia-picanto"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:29:00.522Z",
+          "retrievedAt": "2026-10-03T05:29:03.047Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "a0b5fbf65979c357b67826d3e26e5c35550b35f9669d07204ec0a77291d79bec",
+          "byteLength": 264561,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/kia-picanto",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:02.876Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/kia-picanto",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/kia-picanto",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:03.046Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/kia-picanto",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/kia-picanto",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:03.047Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-de443d42cfe6fdc8",
+          "canonicalUrl": "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen",
+          "finalUrl": "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen",
+          "chain": [
+            "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:29:00.522Z",
+          "retrievedAt": "2026-10-03T05:29:04.560Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "97e6bd5ebf6638ae9a0717a7ecdbee747a166aab5bf75d0ba16febaebb1d2ca7",
+          "byteLength": 156477,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:04.245Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:04.560Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/kia-picanto-inspektion-zuruecksetzen",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:04.560Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-93adb3062cc8d514",
+          "canonicalUrl": "https://carwiki.de/kia-picanto-batteriewechsel",
+          "finalUrl": "https://carwiki.de/kia-picanto-batteriewechsel",
+          "chain": [
+            "https://carwiki.de/kia-picanto-batteriewechsel"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:29:00.522Z",
+          "retrievedAt": "2026-10-03T05:29:06.054Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "dc02bc856143502205b14e566a80c81347acf578dcacf336085a049f7996c021",
+          "byteLength": 173269,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [
+              "3",
+              "4"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/kia-picanto-batteriewechsel",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:04.245Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/kia-picanto-batteriewechsel",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/kia-picanto-batteriewechsel",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:06.053Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/kia-picanto-batteriewechsel",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/kia-picanto-batteriewechsel",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:06.054Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-869951d7dbbff575",
+          "canonicalUrl": "https://carwiki.de/zahnriemenwechsel-kia-picanto",
+          "finalUrl": "https://carwiki.de/zahnriemenwechsel-kia-picanto",
+          "chain": [
+            "https://carwiki.de/zahnriemenwechsel-kia-picanto"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T05:29:00.523Z",
+          "retrievedAt": "2026-10-03T05:29:07.546Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "66c97323f37921ac723eaccad716204b80adcd61cf9a410e4a69e3db4a946a07",
+          "byteLength": 150843,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/zahnriemenwechsel-kia-picanto",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:06.056Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/zahnriemenwechsel-kia-picanto",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/zahnriemenwechsel-kia-picanto",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:07.545Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/zahnriemenwechsel-kia-picanto",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/zahnriemenwechsel-kia-picanto",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T05:29:07.546Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "src-7b7a81e30d878d8d:3beddbbab94d-p3-s-periodic_service-other-0",
+          "sourceId": "src-7b7a81e30d878d8d",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "Diese Intervalle sind gemäß Inspektionsplan für die Kia Picanto Wartung vorgeschrieben Für alle Kia Picanto Modelle, egal welche Baureihe und welches Baujahr, betragen die Intervalle für die Wartung 1",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 3,
+            "locator": "column sentence \"Diese Intervalle sind gemäß Inspektionsplan für die Kia Picanto Wartung vorgesch\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "3beddbbab94d-p3-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "Diese Intervalle sind gemäß Inspektionsplan für die Kia Picanto Wartung vorgeschrieben Für alle Kia Picanto Modelle, egal welche Baureihe und welches Baujahr, betragen die Intervalle für die Wartung 1",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3",
+                "documentTitle": "https://carwiki.de/kia-picanto-inspektion",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 3,
+                "locator": "column sentence \"Diese Intervalle sind gemäß Inspektionsplan für die Kia Picanto Wartung vorgesch\"",
+                "documentSha256": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-7b7a81e30d878d8d:3beddbbab94d-p4-s-periodic_service-other-1",
+          "sourceId": "src-7b7a81e30d878d8d",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "Abgesehen vom Diesel gilt für alle Kia Picanto Modelle gemäß Inspektionsplan ein Intervall von 15.000 Kilometern bzw. 12 Monate für die Inspektion (abhängig davon, was zuerst erreicht wird).",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "diesel"
+          ],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 4,
+            "locator": "column sentence \"Abgesehen vom Diesel gilt für alle Kia Picanto Modelle gemäß Inspektionsplan ein\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated",
+              "fuel": "mismatch"
+            },
+            "reasons": [
+              "the document does not state its model years",
+              "row is for diesel"
+            ]
+          },
+          "requirement": {
+            "id": "3beddbbab94d-p4-s-periodic_service-other-1",
+            "task": "periodic_service",
+            "taskText": "Abgesehen vom Diesel gilt für alle Kia Picanto Modelle gemäß Inspektionsplan ein Intervall von 15.000 Kilometern bzw. 12 Monate für die Inspektion (abhängig davon, was zuerst erreicht wird).",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ],
+              "powertrains": [
+                "diesel"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3",
+                "documentTitle": "https://carwiki.de/kia-picanto-inspektion",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 4,
+                "section": "Zusammenfassung der Intervalle bei der Kia Picanto Inspektion",
+                "locator": "column sentence \"Abgesehen vom Diesel gilt für alle Kia Picanto Modelle gemäß Inspektionsplan ein\"",
+                "documentSha256": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-cbe38e86d0a697c0:5f2ef079393f-p10-coolant-replacement-0",
+          "sourceId": "src-cbe38e86d0a697c0",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2 petrol is 45,000 km or 3 years , whiche",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": 36,
+          "intervalYears": 3,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 10,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1200 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "5f2ef079393f-p10-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2 petrol is 45,000 km or 3 years , whiche",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "everyMonths": 36,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2020
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+                "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, AT) 2017 - 2020",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 10,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2\"",
+                "documentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2017–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2017,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-cbe38e86d0a697c0:5f2ef079393f-p5-s-air_filter-replacement-0",
+          "sourceId": "src-cbe38e86d0a697c0",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Air filter change interval is 45,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Air filter change interval is 45,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1200 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "5f2ef079393f-p5-s-air_filter-replacement-0",
+            "task": "air_filter",
+            "taskText": "Air filter change interval is 45,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2020
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+                "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, AT) 2017 - 2020",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Air filter",
+                "locator": "column sentence \"Air filter change interval is 45,000 km .\"",
+                "documentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2017–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2017,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-cbe38e86d0a697c0:5f2ef079393f-p6-s-fuel_filter-replacement-1",
+          "sourceId": "src-cbe38e86d0a697c0",
+          "operationKey": "fuel_filter",
+          "task": "fuel_filter",
+          "originalText": "Kia Picanto 1.2 petrol fuel filter change interval is 60,000 km",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "locator": "column sentence \"Kia Picanto 1.2 petrol fuel filter change interval is 60,000 km\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1200 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "5f2ef079393f-p6-s-fuel_filter-replacement-1",
+            "task": "fuel_filter",
+            "taskText": "Kia Picanto 1.2 petrol fuel filter change interval is 60,000 km",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2020
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+                "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, AT) 2017 - 2020",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "section": "Fuel filter",
+                "locator": "column sentence \"Kia Picanto 1.2 petrol fuel filter change interval is 60,000 km\"",
+                "documentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2017–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2017,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-cbe38e86d0a697c0:5f2ef079393f-p7-s-spark_plugs-replacement-2",
+          "sourceId": "src-cbe38e86d0a697c0",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Replacement interval for spark plugs is 45,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 7,
+            "locator": "column sentence \"Replacement interval for spark plugs is 45,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1200 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "5f2ef079393f-p7-s-spark_plugs-replacement-2",
+            "task": "spark_plugs",
+            "taskText": "Replacement interval for spark plugs is 45,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2020
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+                "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, AT) 2017 - 2020",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 7,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Replacement interval for spark plugs is 45,000 km .\"",
+                "documentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2017–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2017,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-a7b79ac97ea6b99f:7225919b0b06-p10-coolant-replacement-0",
+          "sourceId": "src-a7b79ac97ea6b99f",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2 petrol is 45,000 km or 3 years , whiche",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": 36,
+          "intervalYears": 3,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 10,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1200 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "7225919b0b06-p10-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2 petrol is 45,000 km or 3 years , whiche",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "everyMonths": 36,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2020
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+                "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, MT) 2017 - 2020",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 10,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2\"",
+                "documentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2017–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2017,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-a7b79ac97ea6b99f:7225919b0b06-p5-s-air_filter-replacement-0",
+          "sourceId": "src-a7b79ac97ea6b99f",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Replacement interval for the air filter is 45,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Replacement interval for the air filter is 45,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1200 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "7225919b0b06-p5-s-air_filter-replacement-0",
+            "task": "air_filter",
+            "taskText": "Replacement interval for the air filter is 45,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2020
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+                "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, MT) 2017 - 2020",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Air filter",
+                "locator": "column sentence \"Replacement interval for the air filter is 45,000 km .\"",
+                "documentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2017–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2017,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-a7b79ac97ea6b99f:7225919b0b06-p6-s-fuel_filter-replacement-1",
+          "sourceId": "src-a7b79ac97ea6b99f",
+          "operationKey": "fuel_filter",
+          "task": "fuel_filter",
+          "originalText": "Kia Picanto 1.2 petrol fuel filter replacement interval: 60,000 km",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 6,
+            "locator": "column sentence \"Kia Picanto 1.2 petrol fuel filter replacement interval: 60,000 km\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1200 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "7225919b0b06-p6-s-fuel_filter-replacement-1",
+            "task": "fuel_filter",
+            "taskText": "Kia Picanto 1.2 petrol fuel filter replacement interval: 60,000 km",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2020
+              },
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+                "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, MT) 2017 - 2020",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 6,
+                "section": "Fuel filter",
+                "locator": "column sentence \"Kia Picanto 1.2 petrol fuel filter replacement interval: 60,000 km\"",
+                "documentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2017–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2017,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-a7b79ac97ea6b99f:7225919b0b06-p7-s-spark_plugs-replacement-2",
+          "sourceId": "src-a7b79ac97ea6b99f",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Recommended spark plugs change interval is 45,000 km .",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2020
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 7,
+            "locator": "column sentence \"Recommended spark plugs change interval is 45,000 km .\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "mismatch",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": [
+              "engines named: 1200 cc — not 998 cc"
+            ]
+          },
+          "requirement": {
+            "id": "7225919b0b06-p7-s-spark_plugs-replacement-2",
+            "task": "spark_plugs",
+            "taskText": "Recommended spark plugs change interval is 45,000 km .",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2020
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+                "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, MT) 2017 - 2020",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 7,
+                "section": "Spark plugs",
+                "locator": "column sentence \"Recommended spark plugs change interval is 45,000 km .\"",
+                "documentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2017–2020",
+            "sufficient": false,
+            "years": {
+              "from": 2017,
+              "to": 2020
+            },
+            "yearsBasis": "document"
+          }
+        }
+      ],
+      "resolvedAt": "2026-10-03T05:29:07.578Z",
+      "msourceVersion": "msource/1"
+    }
+  }
+}

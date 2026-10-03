@@ -1,11 +1,16 @@
 import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
 
-import { isoDate, type IsoDate, type Timestamp } from '@/domain';
+import { isoDate, type IsoDate, type Timestamp, type VehicleId } from '@/domain';
 import { sequentialIds } from '@/domain/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
-import { DiscoveryMissRepository, MaintenanceKnowledgeRepository } from '@/persistence';
+import {
+  DiscoveryMissRepository,
+  MaintenanceKnowledgeRepository,
+  MSourceRepository,
+  VehicleRegistryRecordRepository,
+} from '@/persistence';
 import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { MemoryFileStore } from '@/providers/storage/types';
 
@@ -122,7 +127,7 @@ async function open(url: string, testID: string) {
 }
 
 describe('Maintenance tab (Task 9)', () => {
-  it('insufficient evidence: no interval, the exact next action (Ford: booklet or importer plan)', async () => {
+  it('insufficient evidence: no interval, the exact next action (generic booklet request)', async () => {
     await seed(false);
     await open('/maintenance', 'screen-maintenance');
     await waitFor(() => expect(screen.getByTestId('plan-fallback')).toBeOnTheScreen(), LONG);
@@ -144,7 +149,7 @@ describe('Maintenance tab (Task 9)', () => {
     expect(misses).toEqual([
       expect.objectContaining({
         classKey: 'car|ford|fiesta|2015',
-        reasons: expect.arrayContaining(['awaiting_verification', 'official_source_pending']),
+        reasons: expect.arrayContaining(['official_source_pending']),
       }),
       expect.objectContaining({
         classKey: 'car|seat|ibiza|2012',
@@ -152,8 +157,9 @@ describe('Maintenance tab (Task 9)', () => {
       }),
     ]);
     expect(JSON.stringify(misses)).not.toMatch(new RegExp(`${FIESTA}|12-345-67|1234567`));
-    expect(screen.getByTestId('plan-booklet-hint')).toHaveTextContent(/תוכנית טיפול/);
-    expect(screen.getByTestId('plan-request-awaiting')).toHaveTextContent(/ford\.co\.il/);
+    // Generic for every make: no manufacturer-specific instructions in production.
+    expect(screen.getByTestId('plan-booklet-hint')).toHaveTextContent(/טבלת הטיפולים/);
+    expect(screen.queryByTestId('plan-request-awaiting')).toBeNull();
     // No interval anywhere, and no architecture terms.
     expect(screen.queryByTestId('plan-items')).toBeNull();
     expect(screen.getByTestId('screen-maintenance')).not.toHaveTextContent(/15,000|claim|resolver/);
@@ -274,4 +280,89 @@ describe('service journal (Task 10)', () => {
     );
     expect(screen.getByTestId('plan-item-brake_fluid')).toHaveTextContent(/טרם תועד ביצוע/);
   }, 90000);
+
+  describe('VERIFIED_IDENTITY_ONLY', () => {
+    /** A finished discovery run that matched no schedule (SYNTHETIC status). */
+    async function noSchedule() {
+      await new MSourceRepository(db).saveStatus(
+        FIESTA as VehicleId,
+        'run-test-1',
+        'car|ford|fiesta|2015|1242|SNJB|petrol|',
+        'msource/1',
+        {
+          state: 'INSUFFICIENT_EVIDENCE',
+          partial: false,
+          retryAvailable: true,
+          uploadDocumentAvailable: true,
+          sourcesFound: 12,
+          sourcesUsed: 0,
+          runId: 'run-test-1',
+          updatedAt: clock.now(),
+        },
+        clock.now(),
+      );
+    }
+
+    it('registry-identified vehicle without a matched schedule: its verified identity, no interval', async () => {
+      await seed(false);
+      // Ministry record facts as published (SYNTHETIC values; the VIN is altered).
+      await new VehicleRegistryRecordRepository(db).save(
+        FIESTA as VehicleId,
+        {
+          sources: ['test'],
+          retrievedAt: clock.now(),
+          facts: [
+            {
+              key: 'manufacturerRegistered',
+              group: 'identity',
+              kind: 'text',
+              value: 'פורד גרמניה',
+            },
+            { key: 'commercialName', group: 'identity', kind: 'text', value: 'FIESTA' },
+            { key: 'modelYear', group: 'identity', kind: 'number', value: 2015 },
+            { key: 'vin', group: 'identity', kind: 'text', value: 'WF0DXXGAKDF000001' },
+            { key: 'engineCode', group: 'technical', kind: 'text', value: 'SNJB' },
+            { key: 'displacement', group: 'technical', kind: 'number', value: 1242 },
+            { key: 'fuel', group: 'technical', kind: 'text', value: 'בנזין' },
+          ],
+        },
+        clock.now(),
+      );
+      await noSchedule();
+      await open('/maintenance', 'screen-maintenance');
+      await waitFor(
+        () => expect(screen.getByTestId('plan-discovery-VERIFIED_IDENTITY_ONLY')).toBeOnTheScreen(),
+        LONG,
+      );
+      expect(screen.getByTestId('plan-discovery-VERIFIED_IDENTITY_ONLY')).toHaveTextContent(
+        /פרטי הרכב אומתו מול משרד התחבורה. שגרת הטיפולים לדגם זה טרם אומתה./,
+      );
+      expect(screen.getByTestId('plan-identity-engineCode')).toHaveTextContent(/SNJB/);
+      expect(screen.getByTestId('plan-identity-commercialName')).toHaveTextContent(/FIESTA/);
+      expect(screen.getByTestId('plan-identity-modelYear')).toHaveTextContent(/2015/);
+      // The VIN is not part of the maintenance identity card (and never shown in full anywhere).
+      expect(screen.queryByTestId('plan-identity-vin')).toBeNull();
+      expect(screen.queryByText(/WF0DXXGAKDF000001/)).toBeNull();
+      // Fallback paths stay available; no interval is shown.
+      expect(screen.getByTestId('plan-discovery-retry')).toBeOnTheScreen();
+      expect(screen.getByTestId('plan-discovery-upload')).toBeOnTheScreen();
+      expect(screen.getByTestId('plan-discovery-upload')).toHaveTextContent(
+        /פרטי הרכב אומתו בהצלחה. לקבלת מפרט טיפולים מדויק לדגם זה, ניתן להעלות את ספר הרכב או להזין טיפולים ידנית./,
+      );
+      expect(screen.getByTestId('plan-fallback')).toBeOnTheScreen();
+      expect(screen.queryByTestId('plan-items')).toBeNull();
+    }, 60000);
+
+    it('a vehicle entered by hand (no registry record) keeps the plain not-found state', async () => {
+      await seed(false);
+      await noSchedule();
+      await open('/maintenance', 'screen-maintenance');
+      await waitFor(
+        () => expect(screen.getByTestId('plan-discovery-INSUFFICIENT_EVIDENCE')).toBeOnTheScreen(),
+        LONG,
+      );
+      expect(screen.queryByTestId('plan-discovery-VERIFIED_IDENTITY_ONLY')).toBeNull();
+      expect(screen.queryByTestId('plan-discovery-identity')).toBeNull();
+    }, 60000);
+  });
 });
