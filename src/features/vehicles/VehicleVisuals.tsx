@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -15,6 +16,7 @@ import {
   AppText,
   Button,
   colors,
+  Dialog,
   directionalIcons,
   elevation,
   Icon,
@@ -40,8 +42,12 @@ const ART: Record<VehicleKind, ImageSourcePropType> = {
 
 export type PhotoVariant = 'hero' | 'wide' | 'card' | 'thumb';
 
-const DIMS: Record<PhotoVariant, { height: number; width?: number; radius: number }> = {
-  hero: { height: 156, radius: radii.lg },
+const DIMS: Record<
+  PhotoVariant,
+  { height?: number; aspectRatio?: number; width?: number; radius: number }
+> = {
+  // Home banner: full width, 16:9 (owner decision 2026-10-03: edge to edge, no letterboxing).
+  hero: { aspectRatio: 16 / 9, radius: radii.lg },
   wide: { height: 210, radius: 0 },
   card: { height: 92, width: 150, radius: radii.md },
   thumb: { height: 64, width: 108, radius: radii.md },
@@ -66,7 +72,9 @@ export function VehiclePhoto({
   const large = variant === 'hero' || variant === 'wide';
   const frame = [
     styles.photo,
-    { height: d.height, borderRadius: d.radius },
+    d.aspectRatio
+      ? { aspectRatio: d.aspectRatio, borderRadius: d.radius }
+      : { height: d.height, borderRadius: d.radius },
     d.width ? { width: d.width } : styles.stretch,
   ];
 
@@ -214,23 +222,16 @@ export function VehiclePhoto({
         <Image
           source={{ uri: state.uri }}
           style={styles.image}
-          resizeMode={reference ? 'contain' : 'cover'}
+          // Photos fill the frame edge to edge (owner decision 2026-10-03); the approved
+          // references are background-removed cut-outs and keep their whole outline.
+          resizeMode={state.kind === 'reference' ? 'contain' : 'cover'}
           accessibilityIgnoresInvertColors
           accessibilityLabel={
             reference ? [vehicle.manufacturer, vehicle.model].filter(Boolean).join(' ') : undefined
           }
         />
-        {general && large ? (
-          <View style={styles.artLabel} testID="vehicle-photo-general-label">
-            <AppText variant="caption" color="textSecondary">
-              {he.vehicleImage.generalModelPhoto}
-            </AppText>
-          </View>
-        ) : null}
         {state.kind !== 'user' && large ? (
-          <View style={styles.creditOverlay}>
-            <ReferenceCredit record={state.record} />
-          </View>
+          <PhotoInfo record={state.record} general={general} />
         ) : null}
       </View>
     );
@@ -251,6 +252,43 @@ export function VehiclePhoto({
         </View>
       ) : null}
     </View>
+  );
+}
+
+/**
+ * The photo's attribution behind a small (i) in the corner (owner decision 2026-10-03: the photo
+ * stays unobstructed). Opens the author / license credit — and, for a general model photo, that it
+ * may show another generation or version — with a link to the source page.
+ */
+function PhotoInfo({ record, general }: { record: ReferenceImageRecord; general: boolean }) {
+  const [open, setOpen] = useState(false);
+  const t = he.vehicleImage;
+  return (
+    <>
+      <Pressable
+        testID="vehicle-photo-info"
+        accessibilityRole="button"
+        accessibilityLabel={t.infoA11y}
+        onPress={() => setOpen(true)}
+        hitSlop={12}
+        style={styles.infoButton}
+      >
+        <Icon name="information-outline" size={18} color="textSecondary" />
+      </Pressable>
+      <Dialog
+        visible={open}
+        testID="vehicle-photo-info-dialog"
+        title={t.infoTitle}
+        message={[general ? t.generalModelPhoto : null, record.credit].filter(Boolean).join('\n\n')}
+        confirmLabel={t.openSource}
+        onConfirm={() => {
+          setOpen(false);
+          void Linking.openURL(record.sourceUrl);
+        }}
+        cancelLabel={he.common.close}
+        onCancel={() => setOpen(false)}
+      />
+    </>
   );
 }
 
@@ -525,14 +563,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
   },
-  creditOverlay: {
+  infoButton: {
     position: 'absolute',
-    bottom: spacing.xs,
-    start: spacing.sm,
-    end: spacing.sm,
-    paddingHorizontal: spacing.xs,
-    borderRadius: radii.sm,
-    backgroundColor: 'rgba(255,255,255,0.85)',
+    top: spacing.xs,
+    end: spacing.xs,
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255,0.8)',
   },
   artLabel: {
     position: 'absolute',

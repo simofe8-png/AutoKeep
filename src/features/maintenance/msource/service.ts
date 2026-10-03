@@ -9,6 +9,7 @@ import {
   type ResearchProvider,
 } from '@/discovery/maintenance/msource/adapters';
 import { makeCandidate } from '@/discovery/maintenance/msource/candidates';
+import { ownerProposals } from '@/discovery/maintenance/msource/ownerReview';
 import {
   buildFingerprint,
   fingerprintKey,
@@ -31,6 +32,8 @@ import {
 import { MSOURCE_VERSION } from '@/discovery/maintenance/msource/types';
 import type { TextReader } from '@/discovery/maintenance/types';
 import type { IsoDate, MaintenanceRequirement } from '@/domain';
+
+import { uploadLog } from './devLog';
 
 /**
  * Application service for M-SOURCE (Phase 17): start / status / schedule / retry for one
@@ -85,6 +88,12 @@ export type DiscoveryOutcome =
   | { started: true; status: DiscoveryStatus };
 
 const running = new Set<string>();
+/**
+ * A start requested while a run is in progress (e.g. the owner uploaded a document right after
+ * adding the vehicle): that run loaded its inputs before the request, so exactly one follow-up
+ * run starts when it ends — the request is never lost.
+ */
+const rerun = new Set<string>();
 
 export async function startMaintenanceDiscovery(
   vehicleId: string,
@@ -92,10 +101,18 @@ export async function startMaintenanceDiscovery(
   host: MSourceHost,
   clock: { now: () => string; today: () => string },
 ): Promise<DiscoveryOutcome> {
-  if (running.has(vehicleId)) return { started: false, reason: 'already_running' };
+  if (running.has(vehicleId)) {
+    rerun.add(vehicleId);
+    uploadLog('discovery: queued after the current run', { reason: 'already_running' });
+    return { started: false, reason: 'already_running' };
+  }
   running.add(vehicleId);
   try {
     const data = await store.load(vehicleId);
+    uploadLog('discovery: loaded', {
+      uploads: data?.uploads.length ?? null,
+      uploadBytes: data?.uploads.map((u) => u.bytes.length) ?? [],
+    });
     if (!data) return { started: false, reason: 'not_found' };
     const built = buildFingerprint(data.input);
     if (!built.ok) return { started: false, reason: 'identity_incomplete' };
@@ -189,9 +206,31 @@ export async function startMaintenanceDiscovery(
       ? scheduleToRequirements(run.schedule, fp, clock.today() as IsoDate)
       : [];
     await store.complete(vehicleId, run, status, requirements, fresh);
+    if (data.uploads.length) {
+      uploadLog('discovery: uploads processed', {
+        traces: run.candidates
+          .filter((c) => c.candidate.upload)
+          .map((c) => ({
+            outcome: c.outcome,
+            failure: c.failure ? `${c.failure.code}: ${c.failure.detail.slice(0, 120)}` : null,
+          })),
+        uploadEvidence: run.schedule
+          ? run.schedule.evidence.filter((e) =>
+              run.schedule!.sources.some(
+                (s) => s.sourceId === e.sourceId && s.sourceType === 'user_upload',
+              ),
+            ).length
+          : 0,
+        proposals: run.schedule ? ownerProposals(run.schedule).length : 0,
+        state: status.state,
+      });
+    }
     return { started: true, status };
   } finally {
     running.delete(vehicleId);
+    if (rerun.delete(vehicleId)) {
+      void startMaintenanceDiscovery(vehicleId, store, host, clock).catch(() => undefined);
+    }
   }
 }
 

@@ -184,12 +184,13 @@ describe('vehicle image: search states', () => {
       expect(screen.getAllByTestId('vehicle-photo-reference').length).toBeGreaterThan(0),
     );
     expect(screen.queryByTestId('vehicle-image-searching')).toBeNull();
-    // Owner decision 2026-09-29: no visible model-image label; the credit stays.
+    // Owner decisions 2026-09-29 / 2026-10-03: no label and no text over the photo; the credit
+    // is one tap away behind the (i) in the corner.
     expect(screen.queryByTestId('vehicle-reference-label')).toBeNull();
     expect(screen.queryByText('תמונת דגם להמחשה')).toBeNull();
-    expect(screen.getAllByTestId('vehicle-reference-credit')[0]).toHaveTextContent(
-      /Makizox.*CC BY-SA 4\.0/,
-    );
+    expect(screen.queryByTestId('vehicle-reference-credit')).toBeNull();
+    await fireEvent.press(screen.getAllByTestId('vehicle-photo-info')[0]);
+    expect(screen.getByText(/Makizox.*CC BY-SA 4\.0/)).toBeOnTheScreen();
   }, 40000);
 
   it('ambiguous front → the visual question; the answer is a user-confirmed, persisted attribute', async () => {
@@ -246,7 +247,8 @@ describe('vehicle image: search states', () => {
     await waitFor(() =>
       expect(screen.getAllByTestId('vehicle-photo-reference').length).toBeGreaterThan(0),
     );
-    expect(screen.getAllByTestId('vehicle-reference-credit')[0]).toHaveTextContent(/Vauxford/);
+    await fireEvent.press(screen.getAllByTestId('vehicle-photo-info')[0]);
+    expect(screen.getByText(/Vauxford/)).toBeOnTheScreen();
   }, 40000);
 });
 
@@ -371,12 +373,17 @@ describe('general model photo (Wikimedia, license-checked; owner decision 2026-1
       () => expect(screen.getAllByTestId('vehicle-photo-general').length).toBeGreaterThan(0),
       LONG,
     );
-    expect(screen.getAllByTestId('vehicle-photo-general-label')[0]).toHaveTextContent(
-      'תמונת דגם כללית מוויקיפדיה · ייתכן שהדור או הגרסה שונים מהרכב שלך',
-    );
-    expect(screen.getAllByTestId('vehicle-reference-credit')[0]).toHaveTextContent(
-      /Example Photographer · CC BY-SA 4\.0 · Wikimedia Commons/,
-    );
+    // The photo is unobstructed (owner decision 2026-10-03): no text over it; the general-photo
+    // note and the license credit are behind the (i).
+    expect(screen.queryByTestId('vehicle-photo-general-label')).toBeNull();
+    expect(screen.queryByText(/תמונת דגם כללית מוויקיפדיה/)).toBeNull();
+    await fireEvent.press(screen.getAllByTestId('vehicle-photo-info')[0]);
+    expect(
+      screen.getByText(/תמונת דגם כללית מוויקיפדיה · ייתכן שהדור או הגרסה שונים מהרכב שלך/),
+    ).toBeOnTheScreen();
+    expect(
+      screen.getByText(/Example Photographer · CC BY-SA 4\.0 · Wikimedia Commons/),
+    ).toBeOnTheScreen();
     expect(screen.getByTestId('vehicle-color-badge')).toHaveTextContent('צבע: לבן שנהב');
     expect(screen.getByTestId('vehicle-color-swatch-white')).toBeOnTheScreen();
     // Only make + model were sent (no plate, VIN or identity).

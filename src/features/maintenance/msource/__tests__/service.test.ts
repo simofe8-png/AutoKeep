@@ -8,7 +8,12 @@ import { MemoryFileStore } from '@/providers/storage/types';
 
 import { catalogFor } from '../catalog';
 import { ownerReviewState } from '../ownerReview';
-import { startMaintenanceDiscovery, type DiscoveryStore, type MSourceHost } from '../service';
+import {
+  isDiscoveryRunning,
+  startMaintenanceDiscovery,
+  type DiscoveryStore,
+  type MSourceHost,
+} from '../service';
 
 /**
  * M-SOURCE application service through the REAL local store (sql.js) and the same runner as the
@@ -282,5 +287,46 @@ describe('M-SOURCE application service (local store, migration v10)', () => {
     // No document was downloaded: every catalog source was answered from the cache.
     expect(offline.requested.filter((u) => !u.endsWith('/robots.txt'))).toEqual([]);
     expect(out).toMatchObject({ started: true, status: { state: 'READY', partial: true } });
+  });
+
+  it('an upload made while a run is in progress is processed by one follow-up run (never lost)', async () => {
+    const { db, io } = await setup();
+    let release!: () => void;
+    const gate = new Promise<void>((r) => (release = r));
+    let loads = 0;
+    const booklet = new TextEncoder().encode(BOOKLET);
+    const store: DiscoveryStore = {
+      ...io,
+      load: async (id) => {
+        loads += 1;
+        const base = (await io.load(id))!;
+        if (loads === 1) {
+          await gate; // the first run is still loading when the owner uploads
+          return base;
+        }
+        return { ...base, uploads: [{ id: 'doc-late', name: 'late.html', bytes: booklet }] };
+      },
+    };
+    const web = new FakeWeb(WEB);
+    const first = startMaintenanceDiscovery(FIESTA, store, host(web), clock);
+    // The owner uploads now: this start is queued, not dropped.
+    expect(await startMaintenanceDiscovery(FIESTA, store, host(web), clock)).toEqual({
+      started: false,
+      reason: 'already_running',
+    });
+    release();
+    await first;
+    for (let i = 0; i < 200 && (loads < 2 || isDiscoveryRunning(FIESTA)); i++) {
+      await new Promise((r) => setTimeout(r, 5));
+    }
+    expect(loads).toBe(2);
+    const repo = new MSourceRepository(db);
+    const state = ownerReviewState(
+      await repo.latestRun(FIESTA as never),
+      await repo.ownerDecisions(FIESTA as never),
+    );
+    expect(state.proposals.map((x) => x.task)).toEqual(
+      expect.arrayContaining(['engine_oil', 'brake_fluid']),
+    );
   });
 });

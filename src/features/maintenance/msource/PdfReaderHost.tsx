@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
+import { uploadLog } from './devLog';
 import { pdfBridge } from './pdfBridge';
 
 /**
@@ -39,8 +40,14 @@ export function PdfReaderHost() {
     if (!active || html) return;
     let live = true;
     readerHtml().then(
-      (h) => live && setHtml(h),
-      (e: unknown) => pdfBridge.fail(String(e)),
+      (h) => {
+        uploadLog('pdf reader: page loaded', { chars: h.length });
+        if (live) setHtml(h);
+      },
+      (e: unknown) => {
+        uploadLog('pdf reader: page load failed', { error: String(e).slice(0, 160) });
+        pdfBridge.fail(String(e));
+      },
     );
     return () => {
       live = false;

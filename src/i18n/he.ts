@@ -81,6 +81,9 @@ export const he = {
     /** A general model photo (Wikimedia): may show another generation / body / color. */
     generalModelPhoto: 'תמונת דגם כללית מוויקיפדיה · ייתכן שהדור או הגרסה שונים מהרכב שלך',
     color: (c: string) => `צבע: ${c}`,
+    infoA11y: 'פרטי התמונה והרישיון',
+    infoTitle: 'פרטי התמונה',
+    openSource: 'לדף המקור',
   },
   vehicles: {
     genericIllustration: 'איור כללי · לא תמונת הרכב שלך',

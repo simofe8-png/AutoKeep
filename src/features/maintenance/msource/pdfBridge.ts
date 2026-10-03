@@ -2,6 +2,8 @@ import { z } from 'zod';
 
 import type { PageText, TextReader } from '@/discovery/maintenance/types';
 
+import { uploadLog } from './devLog';
+
 /**
  * Bridge to the on-device PDF text reader (owner decision D-A1, 2026-10-03): pdf.js inside a
  * hidden WebView (`PdfReaderHost`, assets/pdfjs/pdf-reader.html). The page has no network access
@@ -148,8 +150,11 @@ export class PdfBridge {
       throw new Error('the document is too large for the on-device PDF reader');
     }
     this.setActive(true);
+    const started = Date.now();
+    uploadLog('pdf reader: start', { bytes: bytes.length });
     try {
       await this.waitReady();
+      uploadLog('pdf reader: page ready', { ms: Date.now() - started });
       const id = `r${++this.seq}`;
       const done = new Promise<PageText[]>((resolve, reject) => {
         const timer = setTimeout(() => {
@@ -167,7 +172,19 @@ export class PdfBridge {
         );
         if (last) break;
       }
-      return await done;
+      const pages = await done;
+      uploadLog('pdf reader: done', {
+        ms: Date.now() - started,
+        pages: pages.length,
+        pagesWithText: pages.filter((p) => p.text.trim()).length,
+      });
+      return pages;
+    } catch (e) {
+      uploadLog('pdf reader: failed', {
+        ms: Date.now() - started,
+        error: String((e as Error)?.message ?? e).slice(0, 160),
+      });
+      throw e;
     } finally {
       this.scheduleIdle();
     }
