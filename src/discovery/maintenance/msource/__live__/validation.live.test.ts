@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { htmlTextReader } from '../../htmlText';
@@ -23,7 +23,13 @@ import { terminalStatus } from '../status';
 
 const DATA = join(ROOT, 'docs', 'maintenance', 'data', 'msource');
 
-const VEHICLES: { key: string; input: FingerprintInput; regime?: string }[] = [
+const VEHICLES: {
+  key: string;
+  input: FingerprintInput;
+  regime?: string;
+  /** Recorded research to use (default: the key's own). */
+  research?: string;
+}[] = [
   {
     key: 'fiesta',
     input: {
@@ -50,7 +56,42 @@ const VEHICLES: { key: string; input: FingerprintInput; regime?: string }[] = [
       fuel: 'בנזין',
     },
   },
+  {
+    // The Fiesta as a registry-only identity yields it (device-observed 2026-10-03): no
+    // displacement and no transmission in the record. Its own vehicle class needs its own
+    // class-level results — cached evidence is never reused across classes.
+    key: 'fiesta-registry',
+    research: 'fiesta',
+    input: {
+      kind: 'car',
+      manufacturer: 'פורד',
+      model: 'FIESTA',
+      year: 2015,
+      engineCode: 'SNJB',
+      fuel: 'בנזין',
+    },
+  },
 ];
+
+/** Recorded discovery: the research assistant's candidates + the targeted research URLs. */
+function researchOf(name: string): unknown {
+  const fable = JSON.parse(readFileSync(join(DATA, 'fable', `fable-${name}.json`), 'utf8'));
+  const candidates = [...fable.candidates];
+  const file = join(DATA, 'research', `research-${name}.json`);
+  if (existsSync(file)) {
+    // URLs only: their quoted values are NOT used — every value is re-read from the page.
+    for (const e of JSON.parse(readFileSync(file, 'utf8')).evidence ?? []) {
+      candidates.push({
+        url: e.url,
+        title: e.location ?? null,
+        publisher: e.sourceIdentity ?? null,
+        sourceType: 'other',
+        documentFormat: /\.pdf($|\?)/i.test(e.url) ? 'pdf' : 'unknown',
+      });
+    }
+  }
+  return { ...fable, candidates };
+}
 
 function summarize(run: MSourceRun) {
   const s = run.schedule;
@@ -95,11 +136,11 @@ function summarize(run: MSourceRun) {
   };
 }
 
-describe.each(VEHICLES)('M-SOURCE live validation: $key', ({ key, input }) => {
+describe.each(VEHICLES)('M-SOURCE live validation: $key', ({ key, input, research: rk }) => {
   it('runs every stage, decides access per operation, and fabricates nothing', async () => {
     const fp = buildFingerprint(input);
     if (!fp.ok) throw new Error(fp.missing.join(','));
-    const research = JSON.parse(readFileSync(join(DATA, 'fable', `fable-${key}.json`), 'utf8'));
+    const research = researchOf(rk ?? key);
     const requested: string[] = [];
     const events: MSourceEvent[] = [];
     const net = nodeNet(requested);
@@ -107,7 +148,9 @@ describe.each(VEHICLES)('M-SOURCE live validation: $key', ({ key, input }) => {
       runId: `live-${key}-${new Date().toISOString().slice(0, 10)}`,
       vehicleRef: `acceptance-${key}`,
       adapters: [
-        new FableDiscoveryAdapter(recordedResearch(`fable-research-${key}-2026-10-02`, research)),
+        new FableDiscoveryAdapter(
+          recordedResearch(`fable-research-${rk ?? key}-2026-10-02`, research as never),
+        ),
         new RegistryDiscoveryAdapter(SOURCE_SYSTEMS, net),
       ],
       access: {

@@ -28,6 +28,7 @@ import {
   sectionContextOf,
   statesAllEngines,
 } from './matcher';
+import { extractIntervalMatrix } from './intervalMatrix';
 import { guardedFetch, type GuardedFetchDeps } from './netGuard';
 import { generateQueries } from './queries';
 import { resolveSchedule } from './resolver';
@@ -810,9 +811,21 @@ export async function runMSource(fp: VehicleFingerprint, deps: RunnerDeps): Prom
           e.requirement.interval.everyMonths,
         ]);
       const seenSig = new Set(tableExtracted.map(sig));
+      // Interval-overview matrices (a row per model and production window): each item carries its
+      // row's window as its years.
+      const { extracted: matrixExtracted } = extractIntervalMatrix({
+        doc,
+        pages,
+        fp,
+        authorityHint: profile.authority,
+        markets: docApp.markets,
+        today: deps.today,
+      });
+      const rowYears = new Map(matrixExtracted.map((m) => [m.extracted, m.rowYears]));
       const extracted = [
         ...tableExtracted,
         ...sentenceExtracted.filter((e) => !seenSig.has(sig(e))),
+        ...matrixExtracted.map((m) => m.extracted),
       ];
       ex.counts.extracted = (ex.counts.extracted ?? 0) + extracted.length;
       if (!extracted.length) {
@@ -842,7 +855,7 @@ export async function runMSource(fp: VehicleFingerprint, deps: RunnerDeps): Prom
           official: authority.official,
           documentType: profile.type,
           manufacturerDocument: authority.basis === 'brand_domain',
-          sectionYears: section.sectionYears,
+          sectionYears: rowYears.get(e) ?? section.sectionYears,
           sectionText: section.sectionText,
           facts: deps.facts,
         });

@@ -139,6 +139,20 @@ function displacementsIn(text: string): number[] {
   return [...out].sort((a, b) => a - b);
 }
 
+/** Engine facts a line states itself: displacements (cc) and petrol / diesel engine words. */
+export function engineFactsOf(text: string): {
+  displacementsCc: number[];
+  fuels: ('petrol' | 'diesel')[];
+} {
+  return {
+    displacementsCc: displacementsIn(text),
+    fuels: [
+      ...(PETROL_RE.test(text) ? (['petrol'] as const) : []),
+      ...(DIESEL_RE.test(text) ? (['diesel'] as const) : []),
+    ],
+  };
+}
+
 /** Year ranges stated next to the model (title, headings, front matter lines). */
 function yearRanges(
   lines: string[],

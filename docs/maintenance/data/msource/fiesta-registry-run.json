@@ -1,0 +1,4695 @@
+{
+  "runId": "live-fiesta-registry-2026-10-03",
+  "fingerprintKey": "car|ford|fiesta|2015||SNJB|petrol|",
+  "msourceVersion": "msource/1",
+  "startedAt": "2026-10-03T18:42:11.007Z",
+  "finishedAt": "2026-10-03T18:43:27.621Z",
+  "crawlerToken": "AutoKeepBot",
+  "status": {
+    "sourcesFound": 39,
+    "sourcesUsed": 2,
+    "runId": "live-fiesta-registry-2026-10-03",
+    "updatedAt": "2026-10-03T18:43:27.621Z",
+    "state": "READY",
+    "partial": false,
+    "retryAvailable": false,
+    "uploadDocumentAvailable": false
+  },
+  "stages": [
+    {
+      "stage": "VEHICLE_VERIFIED",
+      "status": "ok",
+      "counts": {
+        "engineCodes": 1,
+        "displacementKnown": 0
+      },
+      "failures": [],
+      "notes": [
+        "class car|ford|fiesta|2015||SNJB|petrol|"
+      ]
+    },
+    {
+      "stage": "DISCOVERY",
+      "status": "ok",
+      "counts": {
+        "fable": 64,
+        "registry": 0
+      },
+      "failures": [],
+      "notes": []
+    },
+    {
+      "stage": "SOURCE_CANDIDATES",
+      "status": "ok",
+      "counts": {
+        "discovered": 64,
+        "unique": 29,
+        "duplicates": 35,
+        "kept": 29
+      },
+      "failures": [],
+      "notes": []
+    },
+    {
+      "stage": "ACQUISITION",
+      "status": "partial",
+      "counts": {
+        "acquired": 21
+      },
+      "failures": [
+        {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403",
+          "sourceId": "src-485ee01acdeab26c"
+        },
+        {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403",
+          "sourceId": "src-dfa9d2f0d20d358a"
+        },
+        {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429",
+          "sourceId": "src-9e68e3699c846327"
+        },
+        {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+          "sourceId": "src-ac44490111be2493"
+        },
+        {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429",
+          "sourceId": "src-8abc7047641be1e9"
+        },
+        {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403",
+          "sourceId": "src-97483c3906270d13"
+        },
+        {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403",
+          "sourceId": "src-57984ef6f2091ce4"
+        },
+        {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+          "sourceId": "src-1b15a232eff9b5c8"
+        },
+        {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+          "sourceId": "src-e38621a79450d6e1"
+        },
+        {
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404",
+          "sourceId": "src-86fe33a284fac42c"
+        },
+        {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt 429: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+          "sourceId": "src-a482e3209daa5202"
+        },
+        {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403",
+          "sourceId": "src-a90f2e32b363dbe4"
+        },
+        {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429",
+          "sourceId": "src-d01fdaabcb88453d"
+        },
+        {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403",
+          "sourceId": "src-ded36ef80094348e"
+        },
+        {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+          "sourceId": "src-a18a0cf7386b6d99"
+        },
+        {
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429",
+          "sourceId": "src-7fd72f4085a15a26"
+        },
+        {
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+          "sourceId": "src-63fa70580a34f546"
+        },
+        {
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "login / CAPTCHA / paywall page",
+          "sourceId": "src-2671f8f954b96807"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "stage": "EXTRACTION",
+      "status": "partial",
+      "counts": {
+        "extracted": 27,
+        "grounded": 27
+      },
+      "failures": [
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html",
+          "sourceId": "src-04baca1625eb1298"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://www.ford.com/support/how-tos/search/owner-manuals/",
+          "sourceId": "src-03fc86e8a494b7fa"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://www.manualsdir.com/manuals/602015/ford-2014-fiesta-v2.html",
+          "sourceId": "src-798982125d462974"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://www.queenoftheroad.co.il/%D7%A4%D7%95%D7%A8%D7%93-%D7%A4%D7%99%D7%90%D7%A1%D7%98%D7%94-%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95%D7%98%D7%A4%D7%99%D7%9D-%D7%A2%D7%9C%D7%95%D7%99/",
+          "sourceId": "src-55301adb8b3ab2d1"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://www.ford.fr/content/dam/guxeu/fr/owners/service-and-maintenance/entreiten-reparations/Annexe-1-ST-2022-012-Intervalles-d%E2%80%99entretien-gamme-Ford%E2%80%93D%C3%A9cembre-2022.pdf",
+          "sourceId": "src-143ebd3d2ea1553f"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://www.manualsdir.com/models/ford/2015-fiesta.html",
+          "sourceId": "src-4142d0e6a66edb0c"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?original=1",
+          "sourceId": "src-dd656692016cfda4"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=2",
+          "sourceId": "src-c286adefab6dbbb9"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://theautoinsiderblog.com/ford/fiesta/",
+          "sourceId": "src-6ddc3575ac3a6b7b"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=3",
+          "sourceId": "src-c186ac5caa6dba26"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://theautoinsiderblog.com/ford-fiesta-insurance-cost-breakdown/",
+          "sourceId": "src-6979412eb8ecba1c"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://carwiki.de/ford-fiesta",
+          "sourceId": "src-550132342d5fd04a"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://carwiki.de/ford-fiesta-inspektion-zuruecksetzen",
+          "sourceId": "src-595744104b3f252a"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://carwiki.de/ford-fiesta-welches-oel-nachfuellen",
+          "sourceId": "src-b4e04d5f94bfce1d"
+        },
+        {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "https://carwiki.de/ford-fiesta-batterie-wechseln",
+          "sourceId": "src-3a7b51135263b351"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "stage": "VEHICLE_MATCHING",
+      "status": "partial",
+      "counts": {
+        "SUPPORTED": 6,
+        "INSUFFICIENT": 2,
+        "NOT_APPLICABLE": 3,
+        "PARTIAL": 10
+      },
+      "failures": [
+        {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years",
+          "sourceId": "src-81ff7e32f40b8c98"
+        },
+        {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years",
+          "sourceId": "src-937fb1db3b01f6c1"
+        },
+        {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years; market stated: US, UK, EU (not IL)",
+          "sourceId": "src-9e50cb0dabd8aec3"
+        },
+        {
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years",
+          "sourceId": "src-c7b05f9966d8da8b"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "stage": "CROSS_SOURCE_VALIDATION",
+      "status": "ok",
+      "counts": {
+        "obligations": 3,
+        "corroborated": 0,
+        "conflicting": 0
+      },
+      "failures": [],
+      "notes": []
+    },
+    {
+      "stage": "SCHEDULE_RESOLUTION",
+      "status": "ok",
+      "counts": {
+        "items": 3,
+        "unresolved": 0,
+        "exact": 0,
+        "strong": 1,
+        "supported": 2
+      },
+      "failures": [],
+      "notes": [
+        "status READY"
+      ]
+    },
+    {
+      "stage": "PERSISTENCE",
+      "status": "skipped",
+      "counts": {},
+      "failures": [],
+      "notes": []
+    },
+    {
+      "stage": "NEXT_SERVICE_CALCULATION",
+      "status": "skipped",
+      "counts": {},
+      "failures": [],
+      "notes": [
+        "computed by the host from the stored schedule"
+      ]
+    }
+  ],
+  "queries": [
+    "Ford Fiesta 2015 SNJB maintenance schedule",
+    "פורד Fiesta 2015 SNJB לוח טיפולים",
+    "Ford Fiesta SNJB service intervals",
+    "פורד Fiesta SNJB מרווחי טיפולים",
+    "Ford Fiesta 2015 maintenance manual",
+    "פורד Fiesta 2015 ספר רכב טיפולים",
+    "Ford Fiesta maintenance schedule",
+    "פורד Fiesta לוח טיפולים"
+  ],
+  "restricted": [
+    {
+      "url": "https://repair1.sellfy.store/p/ford-fiesta-2014-2015-2016-2017-factory-service-workshop-repair-manual/",
+      "reason": "paywall",
+      "adapter": "fable"
+    },
+    {
+      "url": "https://us.haynes.com/products/haynes-diy-ford-fiesta-mk-vi-from-2014-to-2017",
+      "reason": "paywall",
+      "adapter": "fable"
+    },
+    {
+      "url": "https://haynes.com/en-au/ford/fiesta/2013-2017",
+      "reason": "paywall",
+      "adapter": "fable"
+    }
+  ],
+  "candidates": [
+    {
+      "url": "https://www.manualslib.com/products/Ford-Fiesta-St-2015-13464878.html",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_CONTROL_DETECTED",
+        "detail": "HTTP 403"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.manualslib.com/products/Ford-Fiesta-St-2015-13464878.html — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.122Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_unavailable",
+          "evidence": [
+            "robots: https://www.manualslib.com/robots.txt — robots.txt 403: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.807Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "access_control_detected",
+          "evidence": [
+            "response: https://www.manualslib.com/products/Ford-Fiesta-St-2015-13464878.html — HTTP 403"
+          ],
+          "decidedAt": "2026-10-03T18:42:12.047Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.123Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.857Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:42:12.238Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /",
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:42:12.239Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.manualslib.de/products/Ford-Fiesta-101811.html",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_CONTROL_DETECTED",
+        "detail": "HTTP 403"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.manualslib.de/products/Ford-Fiesta-101811.html — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.123Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_unavailable",
+          "evidence": [
+            "robots: https://www.manualslib.de/robots.txt — robots.txt 403: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+          ],
+          "decidedAt": "2026-10-03T18:42:12.607Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "access_control_detected",
+          "evidence": [
+            "response: https://www.manualslib.de/products/Ford-Fiesta-101811.html — HTTP 403"
+          ],
+          "decidedAt": "2026-10-03T18:42:12.809Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ford.com/support/how-tos/owner-manuals/",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.ford.com/support/how-tos/owner-manuals/ — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.123Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://www.ford.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:42:21.310Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://www.ford.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:42:29.573Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.ford.com/support/how-tos/search/owner-manuals/ — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:42:37.866Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.ford.com/robots.txt — group *; no matching rule",
+            "operation_scope: https://www.ford.com/support/how-tos/search/owner-manuals/ — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:42:37.868Z"
+        }
+      ]
+    },
+    {
+      "url": "https://uk.haynes.com/pages/maintenance-plans-car-ford-fiesta",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "independent_database",
+      "outcome": "failed",
+      "failure": {
+        "code": "HTTP_ERROR",
+        "detail": "HTTP 429"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://uk.haynes.com/pages/maintenance-plans-car-ford-fiesta — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.123Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://uk.haynes.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:42:38.433Z"
+        }
+      ]
+    },
+    {
+      "url": "https://manuall.de/ford-fiesta-2014/",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+        "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://manuall.de/ford-fiesta-2014/ — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.124Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "robots_unreachable",
+          "evidence": [
+            "robots: https://manuall.de/robots.txt — robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          ],
+          "decidedAt": "2026-10-03T18:42:45.559Z"
+        }
+      ]
+    },
+    {
+      "url": "https://vehicle.firestonecompleteautocare.com/ford/fiesta/2015/maintenance",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "independent_database",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_CONTROL_DETECTED",
+        "detail": "HTTP 403"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://vehicle.firestonecompleteautocare.com/ford/fiesta/2015/maintenance — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.124Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://vehicle.firestonecompleteautocare.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:42:46.301Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://vehicle.firestonecompleteautocare.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:42:46.703Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_unavailable",
+          "evidence": [
+            "robots: https://www.firestonecompleteautocare.com/robots.txt — robots.txt 403: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+          ],
+          "decidedAt": "2026-10-03T18:42:47.214Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "access_control_detected",
+          "evidence": [
+            "response: https://vehicle.firestonecompleteautocare.com/ford/fiesta/2015/maintenance — HTTP 403"
+          ],
+          "decidedAt": "2026-10-03T18:42:47.449Z"
+        }
+      ]
+    },
+    {
+      "url": "https://uk.haynes.com/de/pages/maintenance-plans-car-ford-fiesta-mk-vi-2008-2012",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "independent_database",
+      "outcome": "failed",
+      "failure": {
+        "code": "HTTP_ERROR",
+        "detail": "HTTP 429"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://uk.haynes.com/de/pages/maintenance-plans-car-ford-fiesta-mk-vi-2008-2012 — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.124Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://uk.haynes.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:42:45.564Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.repareo.de/inspektion-ford-fiesta-vii/",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "independent_database",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+        "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.repareo.de/inspektion-ford-fiesta-vii/ — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.124Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "robots_unreachable",
+          "evidence": [
+            "robots: https://www.repareo.de/robots.txt — robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          ],
+          "decidedAt": "2026-10-03T18:42:52.993Z"
+        }
+      ]
+    },
+    {
+      "url": "https://club.autodoc.de/manuals/wartung-inspektion/ford",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "independent_database",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_CONTROL_DETECTED",
+        "detail": "HTTP 403"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://club.autodoc.de/manuals/wartung-inspektion/ford — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.124Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_unavailable",
+          "evidence": [
+            "robots: https://club.autodoc.de/robots.txt — robots.txt 403: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+          ],
+          "decidedAt": "2026-10-03T18:42:47.518Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "access_control_detected",
+          "evidence": [
+            "response: https://club.autodoc.de/manuals/wartung-inspektion/ford — HTTP 403"
+          ],
+          "decidedAt": "2026-10-03T18:42:47.570Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.repareo.de/inspektion-ford-fiesta-mk6",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "independent_database",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+        "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.repareo.de/inspektion-ford-fiesta-mk6 — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.124Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "robots_unreachable",
+          "evidence": [
+            "robots: https://www.repareo.de/robots.txt — robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          ],
+          "decidedAt": "2026-10-03T18:42:52.994Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.manualsdir.com/manuals/602015/ford-2014-fiesta-v2.html",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/602015/ford-2014-fiesta-v2.html — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.125Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:42:52.994Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/602015/ford-2014-fiesta-v2.html — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:42:53.533Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /",
+            "operation_scope: https://www.manualsdir.com/manuals/602015/ford-2014-fiesta-v2.html — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:42:53.534Z"
+        }
+      ]
+    },
+    {
+      "url": "https://haynes.com/en-gb/tips-tutorials/ford-fiesta-routine-maintenance-guide-2013-2017-models",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "publication",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+        "detail": "robots.txt 429: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://haynes.com/en-gb/tips-tutorials/ford-fiesta-routine-maintenance-guide-2013-2017-models — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.125Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "robots_unreachable",
+          "evidence": [
+            "robots: https://haynes.com/robots.txt — robots.txt 429: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          ],
+          "decidedAt": "2026-10-03T18:42:56.215Z"
+        }
+      ]
+    },
+    {
+      "url": "https://uk.haynes.com/blogs/tips-tutorials/ford-fiesta-mk7-routine-maintenance-guide-2013-to-2017-models",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "publication",
+      "outcome": "failed",
+      "failure": {
+        "code": "SOURCE_GONE",
+        "detail": "HTTP 404"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://uk.haynes.com/blogs/tips-tutorials/ford-fiesta-mk7-routine-maintenance-guide-2013-to-2017-models — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.125Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://uk.haynes.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:42:53.570Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.queenoftheroad.co.il/%D7%A4%D7%95%D7%A8%D7%93-%D7%A4%D7%99%D7%90%D7%A1%D7%98%D7%94-%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95%D7%98%D7%A4%D7%99%D7%9D-%D7%A2%D7%9C%D7%95%D7%99/",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "publication",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.queenoftheroad.co.il/פורד-פיאסטה-מדריך-טיפולים-שוטפים-עלוי/ — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.125Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://www.queenoftheroad.co.il/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:42:56.449Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.queenoftheroad.co.il/%D7%A4%D7%95%D7%A8%D7%93-%D7%A4%D7%99%D7%90%D7%A1%D7%98%D7%94-%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95%D7%98%D7%A4%D7%99%D7%9D-%D7%A2%D7%9C%D7%95%D7%99/ — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:42:56.809Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.queenoftheroad.co.il/robots.txt — group *; no matching rule",
+            "operation_scope: https://www.queenoftheroad.co.il/%D7%A4%D7%95%D7%A8%D7%93-%D7%A4%D7%99%D7%90%D7%A1%D7%98%D7%94-%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95%D7%98%D7%A4%D7%99%D7%9D-%D7%A2%D7%9C%D7%95%D7%99/ — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:42:56.810Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ford.co.uk/content/dam/guxeu/uk/owners/service-and-maintenance/service-and-repair/documents/Interval_Overview_Miles_20191108.pdf",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "other",
+      "outcome": "extracted",
+      "failure": null,
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.ford.co.uk/content/dam/guxeu/uk/owners/service-and-maintenance/service-and-repair/documents/Interval_Overview_Miles_20191108.pdf — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.125Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.ford.co.uk/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:42:57.164Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.ford.co.uk/content/dam/guxeu/uk/owners/service-and-maintenance/service-and-repair/documents/Interval_Overview_Miles_20191108.pdf — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:42:57.331Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.ford.co.uk/robots.txt — group *; Allow: /",
+            "operation_scope: https://www.ford.co.uk/content/dam/guxeu/uk/owners/service-and-maintenance/service-and-repair/documents/Interval_Overview_Miles_20191108.pdf — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:42:57.331Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ford.fr/content/dam/guxeu/fr/owners/service-and-maintenance/entreiten-reparations/Annexe-1-ST-2022-012-Intervalles-d%E2%80%99entretien-gamme-Ford%E2%80%93D%C3%A9cembre-2022.pdf",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "other",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.ford.fr/content/dam/guxeu/fr/owners/service-and-maintenance/entreiten-reparations/Annexe-1-ST-2022-012-Intervalles-d%E2%80%99entretien-gamme-Ford%E2%80%93D%C3%A9cembre-2022.pdf — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.125Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.ford.fr/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:43:02.436Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.ford.fr/content/dam/guxeu/fr/owners/service-and-maintenance/entreiten-reparations/Annexe-1-ST-2022-012-Intervalles-d%E2%80%99entretien-gamme-Ford%E2%80%93D%C3%A9cembre-2022.pdf — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:02.687Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.ford.fr/robots.txt — group *; Allow: /",
+            "operation_scope: https://www.ford.fr/content/dam/guxeu/fr/owners/service-and-maintenance/entreiten-reparations/Annexe-1-ST-2022-012-Intervalles-d%E2%80%99entretien-gamme-Ford%E2%80%93D%C3%A9cembre-2022.pdf — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:02.687Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.newtonnet.co.uk/fiesta/serviceschedule-1yr12500mi.pdf",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "other",
+      "outcome": "not_applicable",
+      "failure": {
+        "code": "SOURCE_NOT_APPLICABLE",
+        "detail": "PARTIAL: the document does not state its model years"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.newtonnet.co.uk/fiesta/serviceschedule-1yr12500mi.pdf — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.125Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://www.newtonnet.co.uk/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:06.703Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.newtonnet.co.uk/fiesta/serviceschedule-1yr12500mi.pdf — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:06.791Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.newtonnet.co.uk/robots.txt — group *; no matching rule",
+            "operation_scope: https://www.newtonnet.co.uk/fiesta/serviceschedule-1yr12500mi.pdf — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:06.792Z"
+        }
+      ]
+    },
+    {
+      "url": "https://uk.haynes.com/de/pages/maintenance-plans-car-ford-fiesta-mk-vii-2016-2025",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "independent_database",
+      "outcome": "failed",
+      "failure": {
+        "code": "HTTP_ERROR",
+        "detail": "HTTP 429"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://uk.haynes.com/de/pages/maintenance-plans-car-ford-fiesta-mk-vii-2016-2025 — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.125Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://uk.haynes.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:08.327Z"
+        }
+      ]
+    },
+    {
+      "url": "https://club.autodoc.co.uk/manuals/maintenance/ford/fiesta",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "independent_database",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_CONTROL_DETECTED",
+        "detail": "HTTP 403"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://club.autodoc.co.uk/manuals/maintenance/ford/fiesta — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.125Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_unavailable",
+          "evidence": [
+            "robots: https://club.autodoc.co.uk/robots.txt — robots.txt 403: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+          ],
+          "decidedAt": "2026-10-03T18:43:08.450Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "access_control_detected",
+          "evidence": [
+            "response: https://club.autodoc.co.uk/manuals/maintenance/ford/fiesta — HTTP 403"
+          ],
+          "decidedAt": "2026-10-03T18:43:08.495Z"
+        }
+      ]
+    },
+    {
+      "url": "https://good-garage-guide.honestjohn.co.uk/askhj/answer/52170/what-is-the-servicing-schedule-for-the-ford-fiesta-",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "publication",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_CONTROL_DETECTED",
+        "detail": "HTTP 403"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://good-garage-guide.honestjohn.co.uk/askhj/answer/52170/what-is-the-servicing-schedule-for-the-ford-fiesta- — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.126Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_unavailable",
+          "evidence": [
+            "robots: https://good-garage-guide.honestjohn.co.uk/robots.txt — robots.txt 403: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+          ],
+          "decidedAt": "2026-10-03T18:43:12.147Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "access_control_detected",
+          "evidence": [
+            "response: https://good-garage-guide.honestjohn.co.uk/askhj/answer/52170/what-is-the-servicing-schedule-for-the-ford-fiesta- — HTTP 403"
+          ],
+          "decidedAt": "2026-10-03T18:43:12.159Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "publication",
+      "outcome": "not_applicable",
+      "failure": {
+        "code": "SOURCE_NOT_APPLICABLE",
+        "detail": "PARTIAL: the document does not state its model years"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.126Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.whocanfixmycar.com/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:43:12.840Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:13.329Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.whocanfixmycar.com/robots.txt — group *; Allow: /",
+            "operation_scope: https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:13.330Z"
+        }
+      ]
+    },
+    {
+      "url": "https://app.commaoil.com/products/results/91053175/1/print:true",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "other",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+        "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://app.commaoil.com/products/results/91053175/1/print:true — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.126Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "robots_unreachable",
+          "evidence": [
+            "robots: https://app.commaoil.com/robots.txt — robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          ],
+          "decidedAt": "2026-10-03T18:43:13.359Z"
+        }
+      ]
+    },
+    {
+      "url": "https://uk.haynes.com/pages/maintenance-plans-car-ford-fiesta-mk-vi-2011-2019",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "other",
+      "outcome": "failed",
+      "failure": {
+        "code": "HTTP_ERROR",
+        "detail": "HTTP 429"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://uk.haynes.com/pages/maintenance-plans-car-ford-fiesta-mk-vi-2011-2019 — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.126Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://uk.haynes.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:13.339Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.repareo.de/zahnriemenwechsel-ford-fiesta",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "other",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+        "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.repareo.de/zahnriemenwechsel-ford-fiesta — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.126Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "robots_unreachable",
+          "evidence": [
+            "robots: https://www.repareo.de/robots.txt — robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          ],
+          "decidedAt": "2026-10-03T18:43:15.147Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.whocanfixmycar.com/services/ford/fiesta/common-questions-answered",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "other",
+      "outcome": "blocked",
+      "failure": {
+        "code": "ACCESS_CONTROL_DETECTED",
+        "detail": "login / CAPTCHA / paywall page"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.whocanfixmycar.com/services/ford/fiesta/common-questions-answered — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.126Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.whocanfixmycar.com/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:43:15.148Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "BLOCKED",
+          "reason": "access_control_detected",
+          "evidence": [
+            "response: https://www.whocanfixmycar.com/services/ford/fiesta/common-questions-answered — login / CAPTCHA / paywall page"
+          ],
+          "decidedAt": "2026-10-03T18:43:15.490Z"
+        }
+      ]
+    },
+    {
+      "url": "https://theautoinsiderblog.com/does-the-ford-fiesta-have-a-timing-belt-or-chain/",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "other",
+      "outcome": "not_applicable",
+      "failure": {
+        "code": "SOURCE_NOT_APPLICABLE",
+        "detail": "PARTIAL: the document does not state its model years; market stated: US, UK, EU (not IL)"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://theautoinsiderblog.com/does-the-ford-fiesta-have-a-timing-belt-or-chain/ — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.126Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://theautoinsiderblog.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:16.729Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://theautoinsiderblog.com/does-the-ford-fiesta-have-a-timing-belt-or-chain/ — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.361Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://theautoinsiderblog.com/robots.txt — group *; no matching rule",
+            "operation_scope: https://theautoinsiderblog.com/does-the-ford-fiesta-have-a-timing-belt-or-chain/ — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.361Z"
+        }
+      ]
+    },
+    {
+      "url": "https://carwiki.de/?p=46361",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "publication",
+      "outcome": "extracted",
+      "failure": null,
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://carwiki.de/?p=46361 — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.126Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:15.770Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:16.384Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:16.774Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://carwiki.de/ford-fiesta-inspektion — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.382Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule",
+            "operation_scope: https://carwiki.de/ford-fiesta-inspektion — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.383Z"
+        }
+      ]
+    },
+    {
+      "url": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+      "discoveredBy": "fable",
+      "sourceTypeClaimed": "forum",
+      "outcome": "not_applicable",
+      "failure": {
+        "code": "SOURCE_NOT_APPLICABLE",
+        "detail": "PARTIAL: the document does not state its model years"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:11.126Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://forums.moneysavingexpert.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.587Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:18.051Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://forums.moneysavingexpert.com/robots.txt — group *; no matching rule",
+            "operation_scope: https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:18.052Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.manualsdir.com/models/ford/2015-fiesta.html",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/models/ford/2015-fiesta.html — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:12.282Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.390Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/models/ford/2015-fiesta.html — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.873Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /",
+            "operation_scope: https://www.manualsdir.com/models/ford/2015-fiesta.html — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.874Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?original=1",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?original=1 — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:12.283Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:43:18.059Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?original=1 — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:19.229Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /",
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?original=1 — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:19.229Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=2",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=2 — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:12.283Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:43:18.059Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=2 — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:20.721Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /",
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=2 — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:20.722Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=3",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "oem_manual",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=3 — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:42:12.283Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_allows",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /"
+          ],
+          "decidedAt": "2026-10-03T18:43:20.726Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=3 — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:22.266Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://www.manualsdir.com/robots.txt — group *; Allow: /",
+            "operation_scope: https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=3 — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:22.266Z"
+        }
+      ]
+    },
+    {
+      "url": "https://theautoinsiderblog.com/ford/fiesta/",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "other",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://theautoinsiderblog.com/ford/fiesta/ — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.367Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://theautoinsiderblog.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:20.726Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://theautoinsiderblog.com/ford/fiesta/ — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:20.995Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://theautoinsiderblog.com/robots.txt — group *; no matching rule",
+            "operation_scope: https://theautoinsiderblog.com/ford/fiesta/ — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:20.996Z"
+        }
+      ]
+    },
+    {
+      "url": "https://theautoinsiderblog.com/ford-fiesta-insurance-cost-breakdown/",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "other",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://theautoinsiderblog.com/ford-fiesta-insurance-cost-breakdown/ — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.367Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://theautoinsiderblog.com/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:22.268Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://theautoinsiderblog.com/ford-fiesta-insurance-cost-breakdown/ — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:22.882Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://theautoinsiderblog.com/robots.txt — group *; no matching rule",
+            "operation_scope: https://theautoinsiderblog.com/ford-fiesta-insurance-cost-breakdown/ — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:22.882Z"
+        }
+      ]
+    },
+    {
+      "url": "https://carwiki.de/ford-fiesta",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "publication",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://carwiki.de/ford-fiesta — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.389Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:22.268Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://carwiki.de/ford-fiesta — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:24.329Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule",
+            "operation_scope: https://carwiki.de/ford-fiesta — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:24.330Z"
+        }
+      ]
+    },
+    {
+      "url": "https://carwiki.de/ford-fiesta-inspektion-zuruecksetzen",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "publication",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://carwiki.de/ford-fiesta-inspektion-zuruecksetzen — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.390Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:24.341Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://carwiki.de/ford-fiesta-inspektion-zuruecksetzen — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:25.490Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule",
+            "operation_scope: https://carwiki.de/ford-fiesta-inspektion-zuruecksetzen — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:25.490Z"
+        }
+      ]
+    },
+    {
+      "url": "https://carwiki.de/ford-fiesta-welches-oel-nachfuellen",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "publication",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://carwiki.de/ford-fiesta-welches-oel-nachfuellen — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.390Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:24.341Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://carwiki.de/ford-fiesta-welches-oel-nachfuellen — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:27.182Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule",
+            "operation_scope: https://carwiki.de/ford-fiesta-welches-oel-nachfuellen — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:27.182Z"
+        }
+      ]
+    },
+    {
+      "url": "https://carwiki.de/ford-fiesta-batterie-wechseln",
+      "discoveredBy": "link",
+      "sourceTypeClaimed": "publication",
+      "outcome": "no_evidence",
+      "failure": {
+        "code": "NO_SCHEDULE_SECTION",
+        "detail": "no maintenance schedule section"
+      },
+      "decisions": [
+        {
+          "operation": "DISCOVERY",
+          "status": "ALLOWED",
+          "reason": "metadata_only",
+          "evidence": [
+            "operation_scope: https://carwiki.de/ford-fiesta-batterie-wechseln — candidate metadata recorded; no request made"
+          ],
+          "decidedAt": "2026-10-03T18:43:17.390Z"
+        },
+        {
+          "operation": "FETCH",
+          "status": "ALLOWED",
+          "reason": "robots_no_matching_rule",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule"
+          ],
+          "decidedAt": "2026-10-03T18:43:27.184Z"
+        },
+        {
+          "operation": "STORAGE",
+          "status": "UNKNOWN",
+          "reason": "no_storage_permission",
+          "evidence": [
+            "operation_scope: https://carwiki.de/ford-fiesta-batterie-wechseln — bytes discarded after extraction; sha256 kept"
+          ],
+          "decidedAt": "2026-10-03T18:43:27.466Z"
+        },
+        {
+          "operation": "EXTRACTION",
+          "status": "ALLOWED",
+          "reason": "facts_only_after_permitted_fetch",
+          "evidence": [
+            "robots: https://carwiki.de/robots.txt — group *; no matching rule",
+            "operation_scope: https://carwiki.de/ford-fiesta-batterie-wechseln — structured interval facts + short locators only; the document is not reproduced"
+          ],
+          "decidedAt": "2026-10-03T18:43:27.466Z"
+        }
+      ]
+    }
+  ],
+  "schedule": {
+    "status": "READY",
+    "items": [
+      {
+        "operation": "brake_fluid",
+        "task": "brake_fluid",
+        "action": "replacement",
+        "condition": "normal",
+        "intervalKm": 30000,
+        "intervalMonths": 24,
+        "firstKm": null,
+        "firstMonths": null,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "quality": "SUPPORTED",
+        "evidenceIds": [
+          "src-cf6e174efc98c2bc:3103ca4a729a-p6-s-brake_fluid-replacement-0"
+        ],
+        "independentSources": 1,
+        "officialSources": 0,
+        "applicability": "STRONG",
+        "conflicts": [],
+        "applicabilityStatus": "APPLICABLE",
+        "scope": "ALL_ENGINES",
+        "notes": []
+      },
+      {
+        "operation": "cabin_filter",
+        "task": "cabin_filter",
+        "action": "replacement",
+        "condition": "normal",
+        "intervalKm": 30000,
+        "intervalMonths": 24,
+        "firstKm": null,
+        "firstMonths": null,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "quality": "SUPPORTED",
+        "evidenceIds": [
+          "src-cf6e174efc98c2bc:3103ca4a729a-p6-s-cabin_filter-replacement-1"
+        ],
+        "independentSources": 1,
+        "officialSources": 0,
+        "applicability": "STRONG",
+        "conflicts": [],
+        "applicabilityStatus": "APPLICABLE",
+        "scope": "ALL_ENGINES",
+        "notes": []
+      },
+      {
+        "operation": "periodic_service",
+        "task": "periodic_service",
+        "action": "other",
+        "condition": "normal",
+        "intervalKm": 20117,
+        "intervalMonths": 12,
+        "firstKm": null,
+        "firstMonths": null,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "quality": "STRONG",
+        "evidenceIds": [
+          "src-9530ef03ffe45669:3777cab47a26-p1-m-3"
+        ],
+        "independentSources": 1,
+        "officialSources": 1,
+        "applicability": "STRONG",
+        "conflicts": [],
+        "applicabilityStatus": "APPLICABLE",
+        "scope": "ALL_ENGINES",
+        "notes": []
+      }
+    ],
+    "unresolved": [],
+    "sources": [
+      {
+        "sourceId": "src-04baca1625eb1298",
+        "canonicalUrl": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html",
+        "finalUrl": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html",
+        "chain": [
+          "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html"
+        ],
+        "sourceName": "ManualsDir (hosting Ford owner's manual)",
+        "sourceType": "oem_manual",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:42:12.239Z",
+        "format": "html",
+        "documentType": "maintenance_schedule",
+        "contentSha256": "64ff25b34fafbf6eea5dfec0f7a977de1f8b333191807da2644fa047869ff579",
+        "byteLength": 330309,
+        "locale": "en",
+        "markets": [
+          "US",
+          "CA"
+        ],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": 2015,
+          "yearTo": 2015,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [
+            "US",
+            "CA"
+          ],
+          "yearBasis": "document_text",
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "www.manualsdir.com"
+        }
+      },
+      {
+        "sourceId": "src-03fc86e8a494b7fa",
+        "canonicalUrl": "https://www.ford.com/support/how-tos/owner-manuals/",
+        "finalUrl": "https://www.ford.com/support/how-tos/search/owner-manuals/",
+        "chain": [
+          "https://www.ford.com/support/how-tos/owner-manuals/",
+          "https://www.ford.com/support/how-tos/search/owner-manuals/"
+        ],
+        "sourceName": "Ford Motor Company (ford.com)",
+        "sourceType": "oem_manual",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:42:37.868Z",
+        "format": "html",
+        "documentType": "owners_manual",
+        "contentSha256": "076be8e938fd6a98e42d7ad3649a39ee443d75a0a690749fcce25f5edcbd1ebe",
+        "byteLength": 1011281,
+        "locale": "en",
+        "markets": [],
+        "statedApplicability": {
+          "models": [],
+          "modelVariants": [],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": true,
+          "basis": "brand_domain",
+          "detail": "ford.com is the ford brand domain; document type owners_manual"
+        }
+      },
+      {
+        "sourceId": "src-798982125d462974",
+        "canonicalUrl": "https://www.manualsdir.com/manuals/602015/ford-2014-fiesta-v2.html",
+        "finalUrl": "https://www.manualsdir.com/manuals/602015/ford-2014-fiesta-v2.html",
+        "chain": [
+          "https://www.manualsdir.com/manuals/602015/ford-2014-fiesta-v2.html"
+        ],
+        "sourceName": "ManualsDir (hosting Ford owner's manual)",
+        "sourceType": "oem_manual",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:42:53.534Z",
+        "format": "html",
+        "documentType": "maintenance_schedule",
+        "contentSha256": "2f95c4a3a68f52813faf5ef3a9e77c19584695620f307e8be683d47869463076",
+        "byteLength": 318585,
+        "locale": "en",
+        "markets": [
+          "US",
+          "CA"
+        ],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": 2014,
+          "yearTo": 2014,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [
+            "US",
+            "CA"
+          ],
+          "yearBasis": "document_text",
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "www.manualsdir.com"
+        }
+      },
+      {
+        "sourceId": "src-55301adb8b3ab2d1",
+        "canonicalUrl": "https://www.queenoftheroad.co.il/%D7%A4%D7%95%D7%A8%D7%93-%D7%A4%D7%99%D7%90%D7%A1%D7%98%D7%94-%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95%D7%98%D7%A4%D7%99%D7%9D-%D7%A2%D7%9C%D7%95%D7%99/",
+        "finalUrl": "https://www.queenoftheroad.co.il/%D7%A4%D7%95%D7%A8%D7%93-%D7%A4%D7%99%D7%90%D7%A1%D7%98%D7%94-%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95%D7%98%D7%A4%D7%99%D7%9D-%D7%A2%D7%9C%D7%95%D7%99/",
+        "chain": [
+          "https://www.queenoftheroad.co.il/%D7%A4%D7%95%D7%A8%D7%93-%D7%A4%D7%99%D7%90%D7%A1%D7%98%D7%94-%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%9D-%D7%A9%D7%95%D7%98%D7%A4%D7%99%D7%9D-%D7%A2%D7%9C%D7%95%D7%99/"
+        ],
+        "sourceName": "Queen of the Road (queenoftheroad.co.il)",
+        "sourceType": "publication",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:42:56.810Z",
+        "format": "html",
+        "documentType": "other",
+        "contentSha256": "4c736844e1e3cceb3f5ca7d12201ae82f0bb5f085d90442ebb5f79fe9ae706d9",
+        "byteLength": 177581,
+        "locale": "he",
+        "markets": [
+          "IL"
+        ],
+        "statedApplicability": {
+          "models": [],
+          "modelVariants": [],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [
+            "IL"
+          ],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "www.queenoftheroad.co.il"
+        }
+      },
+      {
+        "sourceId": "src-9530ef03ffe45669",
+        "canonicalUrl": "https://www.ford.co.uk/content/dam/guxeu/uk/owners/service-and-maintenance/service-and-repair/documents/Interval_Overview_Miles_20191108.pdf",
+        "finalUrl": "https://www.ford.co.uk/content/dam/guxeu/uk/owners/service-and-maintenance/service-and-repair/documents/Interval_Overview_Miles_20191108.pdf",
+        "chain": [
+          "https://www.ford.co.uk/content/dam/guxeu/uk/owners/service-and-maintenance/service-and-repair/documents/Interval_Overview_Miles_20191108.pdf"
+        ],
+        "sourceName": "Ford Motor Company Limited (Ford UK) - 'Service Interval Overview' PDF, dated August 2020 in the footer",
+        "sourceType": "other",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:42:57.331Z",
+        "format": "pdf",
+        "documentType": "other",
+        "contentSha256": "3777cab47a26260a11c9e09beab7f8b78268b4941507b7332409962b472641dc",
+        "byteLength": 22599,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [
+            "st",
+            "van"
+          ],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [
+            1000,
+            1100,
+            1200,
+            1500,
+            1600,
+            1800,
+            2000,
+            2200,
+            2300,
+            2400,
+            2500,
+            3200,
+            5000
+          ],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": true,
+          "basis": "brand_domain",
+          "detail": "ford.co.uk is the ford brand domain; document type other"
+        }
+      },
+      {
+        "sourceId": "src-143ebd3d2ea1553f",
+        "canonicalUrl": "https://www.ford.fr/content/dam/guxeu/fr/owners/service-and-maintenance/entreiten-reparations/Annexe-1-ST-2022-012-Intervalles-d%E2%80%99entretien-gamme-Ford%E2%80%93D%C3%A9cembre-2022.pdf",
+        "finalUrl": "https://www.ford.fr/content/dam/guxeu/fr/owners/service-and-maintenance/entreiten-reparations/Annexe-1-ST-2022-012-Intervalles-d%E2%80%99entretien-gamme-Ford%E2%80%93D%C3%A9cembre-2022.pdf",
+        "chain": [
+          "https://www.ford.fr/content/dam/guxeu/fr/owners/service-and-maintenance/entreiten-reparations/Annexe-1-ST-2022-012-Intervalles-d%E2%80%99entretien-gamme-Ford%E2%80%93D%C3%A9cembre-2022.pdf"
+        ],
+        "sourceName": "Ford France - 'Récapitulatif des intervalles d'entretien', Décembre 2022 (Annexe 1 ST 2022 012)",
+        "sourceType": "other",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:43:02.687Z",
+        "format": "pdf",
+        "documentType": "other",
+        "contentSha256": "e5d91e09c2f1aa182c697281320004b0f67eddc6420e63158805c70a0ed3e265",
+        "byteLength": 167675,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [
+            "st",
+            "van"
+          ],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [
+            1000,
+            1100,
+            1200,
+            1400,
+            1500,
+            1600,
+            1800,
+            2000,
+            2200,
+            2300,
+            2400,
+            2500,
+            3000,
+            3200,
+            5000
+          ],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": true,
+          "basis": "brand_domain",
+          "detail": "ford.fr is the ford brand domain; document type other"
+        }
+      },
+      {
+        "sourceId": "src-81ff7e32f40b8c98",
+        "canonicalUrl": "https://www.newtonnet.co.uk/fiesta/serviceschedule-1yr12500mi.pdf",
+        "finalUrl": "https://www.newtonnet.co.uk/fiesta/serviceschedule-1yr12500mi.pdf",
+        "chain": [
+          "https://www.newtonnet.co.uk/fiesta/serviceschedule-1yr12500mi.pdf"
+        ],
+        "sourceName": "Ford Motor Company service schedule sheet 'Interim Service & Convenience Checks' (Independent Operator Version), hosted on newtonnet.co.uk",
+        "sourceType": "other",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:43:06.792Z",
+        "format": "pdf",
+        "documentType": "warranty_maintenance_booklet",
+        "contentSha256": "8df11c3e86b7f640e05e09a7d4e4630ea0d9938b0286f0a4e9569f7a8f49f95f",
+        "byteLength": 9730,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [
+            1000
+          ],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "www.newtonnet.co.uk"
+        }
+      },
+      {
+        "sourceId": "src-937fb1db3b01f6c1",
+        "canonicalUrl": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+        "finalUrl": "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide",
+        "chain": [
+          "https://www.whocanfixmycar.com/advice/ford-fiesta-owners-guide"
+        ],
+        "sourceName": "WhoCanFixMyCar",
+        "sourceType": "publication",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:43:13.330Z",
+        "format": "html",
+        "documentType": "other",
+        "contentSha256": "ab8e9f52352a81f5d1b5dd51e1d165eea32066dcb3af670f847a5bf6370a1845",
+        "byteLength": 410469,
+        "locale": "en",
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [
+            "st"
+          ],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [
+            957,
+            1000,
+            1100,
+            1250,
+            1300,
+            1400,
+            1500,
+            1600,
+            1800
+          ],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "www.whocanfixmycar.com"
+        }
+      },
+      {
+        "sourceId": "src-9e50cb0dabd8aec3",
+        "canonicalUrl": "https://theautoinsiderblog.com/does-the-ford-fiesta-have-a-timing-belt-or-chain/",
+        "finalUrl": "https://theautoinsiderblog.com/does-the-ford-fiesta-have-a-timing-belt-or-chain/",
+        "chain": [
+          "https://theautoinsiderblog.com/does-the-ford-fiesta-have-a-timing-belt-or-chain/"
+        ],
+        "sourceName": "The Auto Insider Blog - 'Does the Ford Fiesta Have a Timing Belt or Chain? [Full Model Guide]'",
+        "sourceType": "other",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:43:17.361Z",
+        "format": "html",
+        "documentType": "maintenance_schedule",
+        "contentSha256": "2e3a2e16cad97bf3b2ac229a616344441f14fbc828ff52b9eaf5e5c23ea3a7ab",
+        "byteLength": 140286,
+        "locale": null,
+        "markets": [
+          "US",
+          "UK",
+          "EU"
+        ],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [
+            1000,
+            1250,
+            1300,
+            1400,
+            1500,
+            1600
+          ],
+          "fuels": [],
+          "markets": [
+            "US",
+            "UK",
+            "EU"
+          ],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "theautoinsiderblog.com"
+        }
+      },
+      {
+        "sourceId": "src-cf6e174efc98c2bc",
+        "canonicalUrl": "https://carwiki.de/?p=46361",
+        "finalUrl": "https://carwiki.de/ford-fiesta-inspektion",
+        "chain": [
+          "https://carwiki.de/?p=46361",
+          "https://carwiki.de/ford-fiesta-inspektion?p=46361",
+          "https://carwiki.de/ford-fiesta-inspektion"
+        ],
+        "sourceName": "carwiki.de",
+        "sourceType": "publication",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:43:17.383Z",
+        "format": "html",
+        "documentType": "other",
+        "contentSha256": "3103ca4a729a89a7f18178f3b743b91abde87be59f404711654ea6daa8540d62",
+        "byteLength": 169474,
+        "locale": "de",
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [
+            "02",
+            "09",
+            "18",
+            "6"
+          ],
+          "yearFrom": 1900,
+          "yearTo": 2100,
+          "yearBasis": "all_models_stated",
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": true,
+          "allEnginesPhrase": "Die Inspektion am Ford Fiesta | Kosten, Umfang &amp; Intervalle | Serviceplan: Alle Modelle &amp; Motoren | Was wird gem"
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "carwiki.de"
+        }
+      },
+      {
+        "sourceId": "src-4142d0e6a66edb0c",
+        "canonicalUrl": "https://www.manualsdir.com/models/ford/2015-fiesta.html",
+        "finalUrl": "https://www.manualsdir.com/models/ford/2015-fiesta.html",
+        "chain": [
+          "https://www.manualsdir.com/models/ford/2015-fiesta.html"
+        ],
+        "sourceName": "www.manualsdir.com",
+        "sourceType": "oem_manual",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:42:12.282Z",
+        "retrievedAt": "2026-10-03T18:43:17.874Z",
+        "format": "html",
+        "documentType": "maintenance_schedule",
+        "contentSha256": "4831013875ceaa4a4f0a104b5cbbb31a0f690cfe48834067ee574da85331875f",
+        "byteLength": 62938,
+        "locale": null,
+        "markets": [
+          "CA"
+        ],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": 2015,
+          "yearTo": 2015,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [
+            "CA"
+          ],
+          "yearBasis": "document_text",
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "www.manualsdir.com"
+        }
+      },
+      {
+        "sourceId": "src-c7b05f9966d8da8b",
+        "canonicalUrl": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+        "finalUrl": "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta",
+        "chain": [
+          "https://forums.moneysavingexpert.com/discussion/5363439/service-schedule-for-ford-fiesta"
+        ],
+        "sourceName": "MoneySavingExpert forums",
+        "sourceType": "forum",
+        "discoveredBy": "fable",
+        "discoveredAt": "2026-10-03T18:42:11.009Z",
+        "retrievedAt": "2026-10-03T18:43:18.052Z",
+        "format": "html",
+        "documentType": "maintenance_schedule",
+        "contentSha256": "9e9f3bea0429f009dc83c54fef3bce6b0bcd3e595578129454954b6a70854cf9",
+        "byteLength": 779384,
+        "locale": "en",
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "forums.moneysavingexpert.com"
+        }
+      },
+      {
+        "sourceId": "src-dd656692016cfda4",
+        "canonicalUrl": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?original=1",
+        "finalUrl": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?original=1",
+        "chain": [
+          "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?original=1"
+        ],
+        "sourceName": "www.manualsdir.com",
+        "sourceType": "oem_manual",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:42:12.282Z",
+        "retrievedAt": "2026-10-03T18:43:19.229Z",
+        "format": "html",
+        "documentType": "maintenance_schedule",
+        "contentSha256": "d3678b96ac6b1f06643c7c1a5caa79f851ccc301833f5d72047ca54d445c3a56",
+        "byteLength": 327407,
+        "locale": null,
+        "markets": [
+          "CA"
+        ],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": 2015,
+          "yearTo": 2015,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [
+            "CA"
+          ],
+          "yearBasis": "document_text",
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "www.manualsdir.com"
+        }
+      },
+      {
+        "sourceId": "src-c286adefab6dbbb9",
+        "canonicalUrl": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=2",
+        "finalUrl": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=2",
+        "chain": [
+          "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=2"
+        ],
+        "sourceName": "www.manualsdir.com",
+        "sourceType": "oem_manual",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:42:12.283Z",
+        "retrievedAt": "2026-10-03T18:43:20.722Z",
+        "format": "html",
+        "documentType": "owners_manual",
+        "contentSha256": "32a0cc272cb426dec4481b570c096837d9ac8d5dfc5db46b9f577d3760445c41",
+        "byteLength": 298546,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "www.manualsdir.com"
+        }
+      },
+      {
+        "sourceId": "src-6ddc3575ac3a6b7b",
+        "canonicalUrl": "https://theautoinsiderblog.com/ford/fiesta/",
+        "finalUrl": "https://theautoinsiderblog.com/ford/fiesta/",
+        "chain": [
+          "https://theautoinsiderblog.com/ford/fiesta/"
+        ],
+        "sourceName": "theautoinsiderblog.com",
+        "sourceType": "other",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:43:17.367Z",
+        "retrievedAt": "2026-10-03T18:43:20.996Z",
+        "format": "html",
+        "documentType": "other",
+        "contentSha256": "fd3c751cc52c31a53311219630d64c51d6c9c0580631bf0881c81b2f64f2e4e2",
+        "byteLength": 129443,
+        "locale": null,
+        "markets": [
+          "US"
+        ],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": 2025,
+          "yearTo": 2025,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [
+            2000
+          ],
+          "fuels": [],
+          "markets": [
+            "US"
+          ],
+          "yearBasis": "document_text",
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "theautoinsiderblog.com"
+        }
+      },
+      {
+        "sourceId": "src-c186ac5caa6dba26",
+        "canonicalUrl": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=3",
+        "finalUrl": "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=3",
+        "chain": [
+          "https://www.manualsdir.com/manuals/601984/ford-2015-fiesta.html?page=3"
+        ],
+        "sourceName": "www.manualsdir.com",
+        "sourceType": "oem_manual",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:42:12.283Z",
+        "retrievedAt": "2026-10-03T18:43:22.266Z",
+        "format": "html",
+        "documentType": "owners_manual",
+        "contentSha256": "b3960ca9c8fa85dc39bf0a7298ef2a96d67452510d960b4b9a91b2cda1c29e61",
+        "byteLength": 297557,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [],
+          "yearFrom": 2015,
+          "yearTo": 2015,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [],
+          "yearBasis": "document_text",
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "www.manualsdir.com"
+        }
+      },
+      {
+        "sourceId": "src-6979412eb8ecba1c",
+        "canonicalUrl": "https://theautoinsiderblog.com/ford-fiesta-insurance-cost-breakdown/",
+        "finalUrl": "https://theautoinsiderblog.com/ford-fiesta-insurance-cost-breakdown/",
+        "chain": [
+          "https://theautoinsiderblog.com/ford-fiesta-insurance-cost-breakdown/"
+        ],
+        "sourceName": "theautoinsiderblog.com",
+        "sourceType": "other",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:43:17.367Z",
+        "retrievedAt": "2026-10-03T18:43:22.882Z",
+        "format": "html",
+        "documentType": "other",
+        "contentSha256": "06c8f0a908af3e8dfacd8f7a57953b39501f644758b89157acadbff506672b18",
+        "byteLength": 134959,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [
+            "st"
+          ],
+          "yearFrom": 2025,
+          "yearTo": 2025,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [],
+          "yearBasis": "document_text",
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "theautoinsiderblog.com"
+        }
+      },
+      {
+        "sourceId": "src-550132342d5fd04a",
+        "canonicalUrl": "https://carwiki.de/ford-fiesta",
+        "finalUrl": "https://carwiki.de/ford-fiesta",
+        "chain": [
+          "https://carwiki.de/ford-fiesta"
+        ],
+        "sourceName": "carwiki.de",
+        "sourceType": "publication",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:43:17.389Z",
+        "retrievedAt": "2026-10-03T18:43:24.330Z",
+        "format": "html",
+        "documentType": "other",
+        "contentSha256": "4902ee87afac2d716f492eaf0f690ce95a956bf70689ca75150c61d7c8fdce85",
+        "byteLength": 353148,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [
+            "st",
+            "rs",
+            "e"
+          ],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "carwiki.de"
+        }
+      },
+      {
+        "sourceId": "src-595744104b3f252a",
+        "canonicalUrl": "https://carwiki.de/ford-fiesta-inspektion-zuruecksetzen",
+        "finalUrl": "https://carwiki.de/ford-fiesta-inspektion-zuruecksetzen",
+        "chain": [
+          "https://carwiki.de/ford-fiesta-inspektion-zuruecksetzen"
+        ],
+        "sourceName": "carwiki.de",
+        "sourceType": "publication",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:43:17.389Z",
+        "retrievedAt": "2026-10-03T18:43:25.490Z",
+        "format": "html",
+        "documentType": "other",
+        "contentSha256": "a223b2944d531c58ac9995b0f4649bdfb38b9d3ad847277af8b467250aa4f619",
+        "byteLength": 156857,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [
+            "st"
+          ],
+          "yearFrom": 2001,
+          "yearTo": 2017,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [],
+          "fuels": [],
+          "markets": [],
+          "yearBasis": "document_text",
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "carwiki.de"
+        }
+      },
+      {
+        "sourceId": "src-b4e04d5f94bfce1d",
+        "canonicalUrl": "https://carwiki.de/ford-fiesta-welches-oel-nachfuellen",
+        "finalUrl": "https://carwiki.de/ford-fiesta-welches-oel-nachfuellen",
+        "chain": [
+          "https://carwiki.de/ford-fiesta-welches-oel-nachfuellen"
+        ],
+        "sourceName": "carwiki.de",
+        "sourceType": "publication",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:43:17.390Z",
+        "retrievedAt": "2026-10-03T18:43:27.182Z",
+        "format": "html",
+        "documentType": "other",
+        "contentSha256": "5a2e939e15e98f2679c26147a6a29a31bcb3745be96cace606779dddd55d9948",
+        "byteLength": 165275,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [
+            "st"
+          ],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [
+            1000
+          ],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "carwiki.de"
+        }
+      },
+      {
+        "sourceId": "src-3a7b51135263b351",
+        "canonicalUrl": "https://carwiki.de/ford-fiesta-batterie-wechseln",
+        "finalUrl": "https://carwiki.de/ford-fiesta-batterie-wechseln",
+        "chain": [
+          "https://carwiki.de/ford-fiesta-batterie-wechseln"
+        ],
+        "sourceName": "carwiki.de",
+        "sourceType": "publication",
+        "discoveredBy": "link",
+        "discoveredAt": "2026-10-03T18:43:17.390Z",
+        "retrievedAt": "2026-10-03T18:43:27.466Z",
+        "format": "html",
+        "documentType": "other",
+        "contentSha256": "2aac4ea219ded95785fc27cef5c486853da2de2bdfea02fab98c2d8892f88bab",
+        "byteLength": 168046,
+        "locale": null,
+        "markets": [],
+        "statedApplicability": {
+          "models": [
+            "Fiesta"
+          ],
+          "modelVariants": [
+            "2",
+            "3",
+            "5",
+            "6",
+            "st"
+          ],
+          "yearFrom": null,
+          "yearTo": null,
+          "engineCodes": [],
+          "displacementsCc": [],
+          "displacementsMentioned": [
+            1400
+          ],
+          "fuels": [],
+          "markets": [],
+          "allEnginesStated": false
+        },
+        "extractorVersion": "autokeep-extractor/2",
+        "msourceVersion": "msource/1",
+        "authority": {
+          "official": false,
+          "basis": "none",
+          "detail": "carwiki.de"
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "id": "src-9530ef03ffe45669:3777cab47a26-p1-m-0",
+        "sourceId": "src-9530ef03ffe45669",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "Fiesta 1996 (08/1995-02/2002) — service (10k ml) 1 Year",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 16093,
+        "intervalMiles": 10000,
+        "intervalMonths": 12,
+        "intervalYears": 1,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [],
+        "yearApplicability": {
+          "from": 1995,
+          "to": 2002
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 10000 mi ≈ 16093 km"
+        ],
+        "sourceLocation": {
+          "page": 1,
+          "locator": "matrix row \"Fiesta 1996 (08/1995-02/2002)\" × (10k ml) 1 Year"
+        },
+        "extractionMethod": "table",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 1995–2002, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 1995–2002",
+          "sufficient": false,
+          "years": {
+            "from": 1995,
+            "to": 2002
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9530ef03ffe45669:3777cab47a26-p1-m-1",
+        "sourceId": "src-9530ef03ffe45669",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "Fiesta 2002.25 (11/2001-10/2008) — service (12,5k ml) 1 Year",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 20117,
+        "intervalMiles": 12500,
+        "intervalMonths": 12,
+        "intervalYears": 1,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [],
+        "yearApplicability": {
+          "from": 2001,
+          "to": 2008
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 12500 mi ≈ 20117 km"
+        ],
+        "sourceLocation": {
+          "page": 1,
+          "locator": "matrix row \"Fiesta 2002.25 (11/2001-10/2008)\" × (12,5k ml) 1 Year"
+        },
+        "extractionMethod": "table",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2001–2008, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2001–2008",
+          "sufficient": false,
+          "years": {
+            "from": 2001,
+            "to": 2008
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9530ef03ffe45669:3777cab47a26-p1-m-2",
+        "sourceId": "src-9530ef03ffe45669",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "Fiesta (07/2008-10/2012) — service (12,5k ml) 1 Year",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 20117,
+        "intervalMiles": 12500,
+        "intervalMonths": 12,
+        "intervalYears": 1,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [],
+        "yearApplicability": {
+          "from": 2008,
+          "to": 2012
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 12500 mi ≈ 20117 km"
+        ],
+        "sourceLocation": {
+          "page": 1,
+          "locator": "matrix row \"Fiesta (07/2008-10/2012)\" × (12,5k ml) 1 Year"
+        },
+        "extractionMethod": "table",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2008–2012, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2008–2012",
+          "sufficient": false,
+          "years": {
+            "from": 2008,
+            "to": 2012
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9530ef03ffe45669:3777cab47a26-p1-m-3",
+        "sourceId": "src-9530ef03ffe45669",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "Fiesta (10/2012-04.2017) — service (12,5k ml) 1 Year",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 20117,
+        "intervalMiles": 12500,
+        "intervalMonths": 12,
+        "intervalYears": 1,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [],
+        "yearApplicability": {
+          "from": 2012,
+          "to": 2017
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 12500 mi ≈ 20117 km"
+        ],
+        "sourceLocation": {
+          "page": 1,
+          "locator": "matrix row \"Fiesta (10/2012-04.2017)\" × (12,5k ml) 1 Year"
+        },
+        "extractionMethod": "table",
+        "grounded": true,
+        "match": {
+          "status": "STRONG",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "match",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": []
+        },
+        "itemApplicability": {
+          "scope": "ALL_ENGINES",
+          "basis": "the manufacturer's own other for this model year; the item is not engine-qualified",
+          "sufficient": true,
+          "years": {
+            "from": 2012,
+            "to": 2017
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9530ef03ffe45669:3777cab47a26-p1-m-4",
+        "sourceId": "src-9530ef03ffe45669",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "Fiesta 1.0L EcoBoost, 1.1L Duratec Ti-VCT (12/2016-) — service (18k ml) 2 Year",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 28968,
+        "intervalMiles": 18000,
+        "intervalMonths": 24,
+        "intervalYears": 2,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [
+          "950–1049 cc",
+          "petrol"
+        ],
+        "modelApplicability": [],
+        "yearApplicability": {
+          "from": 2016,
+          "to": 2027
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 18000 mi ≈ 28968 km"
+        ],
+        "sourceLocation": {
+          "page": 1,
+          "locator": "matrix row \"Fiesta 1.0L EcoBoost, 1.1L Duratec Ti-VCT (12/2016-)\" × (18k ml) 2 Year"
+        },
+        "extractionMethod": "table",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "vehicle_unknown",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2016–2027, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2016–2027",
+          "sufficient": false,
+          "years": {
+            "from": 2016,
+            "to": 2027
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9530ef03ffe45669:3777cab47a26-p1-m-5",
+        "sourceId": "src-9530ef03ffe45669",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "Fiesta 1.0L EcoBoost, 1.1L Duratec Ti-VCT (12/2016-) — service (18k ml) 2 Year",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 28968,
+        "intervalMiles": 18000,
+        "intervalMonths": 24,
+        "intervalYears": 2,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [
+          "1050–1149 cc",
+          "petrol"
+        ],
+        "modelApplicability": [],
+        "yearApplicability": {
+          "from": 2016,
+          "to": 2027
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 18000 mi ≈ 28968 km"
+        ],
+        "sourceLocation": {
+          "page": 1,
+          "locator": "matrix row \"Fiesta 1.0L EcoBoost, 1.1L Duratec Ti-VCT (12/2016-)\" × (18k ml) 2 Year"
+        },
+        "extractionMethod": "table",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "vehicle_unknown",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2016–2027, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2016–2027",
+          "sufficient": false,
+          "years": {
+            "from": 2016,
+            "to": 2027
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9530ef03ffe45669:3777cab47a26-p1-m-6",
+        "sourceId": "src-9530ef03ffe45669",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "Fiesta 1.0L EcoBoost m/HEV (10/2019) — service (18k ml) 2 Year",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 28968,
+        "intervalMiles": 18000,
+        "intervalMonths": 24,
+        "intervalYears": 2,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [
+          "950–1049 cc",
+          "hybrid"
+        ],
+        "modelApplicability": [],
+        "yearApplicability": {
+          "from": 2019,
+          "to": 2027
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 18000 mi ≈ 28968 km"
+        ],
+        "sourceLocation": {
+          "page": 1,
+          "locator": "matrix row \"Fiesta 1.0L EcoBoost m/HEV (10/2019)\" × (18k ml) 2 Year"
+        },
+        "extractionMethod": "table",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "vehicle_unknown",
+            "engineCode": "unstated",
+            "market": "unstated",
+            "fuel": "mismatch"
+          },
+          "reasons": [
+            "the document covers 2019–2027, not 2015",
+            "row is for hybrid"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2019–2027",
+          "sufficient": false,
+          "years": {
+            "from": 2019,
+            "to": 2027
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9530ef03ffe45669:3777cab47a26-p1-m-7",
+        "sourceId": "src-9530ef03ffe45669",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "Fiesta 1.5L Duratorq TDCi (12/2016-19/08/2018) — service (18k ml) 2 Year",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 28968,
+        "intervalMiles": 18000,
+        "intervalMonths": 24,
+        "intervalYears": 2,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [
+          "1450–1549 cc",
+          "diesel"
+        ],
+        "modelApplicability": [],
+        "yearApplicability": {
+          "from": 2016,
+          "to": 2018
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 18000 mi ≈ 28968 km"
+        ],
+        "sourceLocation": {
+          "page": 1,
+          "locator": "matrix row \"Fiesta 1.5L Duratorq TDCi (12/2016-19/08/2018)\" × (18k ml) 2 Year"
+        },
+        "extractionMethod": "table",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "vehicle_unknown",
+            "engineCode": "unstated",
+            "market": "unstated",
+            "fuel": "mismatch"
+          },
+          "reasons": [
+            "the document covers 2016–2018, not 2015",
+            "row is for diesel"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2016–2018",
+          "sufficient": false,
+          "years": {
+            "from": 2016,
+            "to": 2018
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9530ef03ffe45669:3777cab47a26-p1-m-8",
+        "sourceId": "src-9530ef03ffe45669",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "Fiesta 1.5L Duratorq TDCi (20/08/2018-) — service (20k mi) 2 Year",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 32187,
+        "intervalMiles": 20000,
+        "intervalMonths": 24,
+        "intervalYears": 2,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [
+          "1450–1549 cc",
+          "diesel"
+        ],
+        "modelApplicability": [],
+        "yearApplicability": {
+          "from": 2018,
+          "to": 2027
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 20000 mi ≈ 32187 km"
+        ],
+        "sourceLocation": {
+          "page": 1,
+          "locator": "matrix row \"Fiesta 1.5L Duratorq TDCi (20/08/2018-)\" × (20k mi) 2 Year"
+        },
+        "extractionMethod": "table",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "vehicle_unknown",
+            "engineCode": "unstated",
+            "market": "unstated",
+            "fuel": "mismatch"
+          },
+          "reasons": [
+            "the document covers 2018–2027, not 2015",
+            "row is for diesel"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2018–2027",
+          "sufficient": false,
+          "years": {
+            "from": 2018,
+            "to": 2027
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-81ff7e32f40b8c98:8df11c3e86b7-p2-brake_fluid-replacement-0",
+        "sourceId": "src-81ff7e32f40b8c98",
+        "operationKey": "brake_fluid",
+        "task": "brake_fluid",
+        "originalText": "Brake system Every 2 years - Renew brake fluid (LTS 12 154 4) L",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": null,
+        "intervalMiles": null,
+        "intervalMonths": 24,
+        "intervalYears": 2,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": false,
+        "rule": "TIME_ONLY",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": null,
+        "marketApplicability": [],
+        "notes": [],
+        "sourceLocation": {
+          "page": 2,
+          "section": "(interval-dense page)",
+          "locator": "line \"Brake system Every 2 years - Renew brake fluid (LTS 12 154 4) L\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "PARTIAL",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "unstated",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document does not state its model years"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_GENERIC",
+          "basis": "the source names the model only",
+          "sufficient": false,
+          "years": null,
+          "yearsBasis": "none"
+        }
+      },
+      {
+        "id": "src-81ff7e32f40b8c98:8df11c3e86b7-p2-auxiliary_belt-replacement-1",
+        "sourceId": "src-81ff7e32f40b8c98",
+        "operationKey": "accessory_belt",
+        "task": "auxiliary_belt",
+        "originalText": "Camshaft drive belt, tensioner and idlers Every 150 000 miles/10 years - Renew (LTS 21 304 9 / 21 306 5) L",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 241402,
+        "intervalMiles": 150000,
+        "intervalMonths": 120,
+        "intervalYears": 10,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": null,
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 150000 mi ≈ 241402 km"
+        ],
+        "sourceLocation": {
+          "page": 2,
+          "section": "(interval-dense page)",
+          "locator": "line \"Camshaft drive belt, tensioner and idlers Every 150 000 miles/10 years - Renew (\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "PARTIAL",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "unstated",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document does not state its model years"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_GENERIC",
+          "basis": "the source names the model only",
+          "sufficient": false,
+          "years": null,
+          "yearsBasis": "none"
+        }
+      },
+      {
+        "id": "src-81ff7e32f40b8c98:8df11c3e86b7-p2-valve_clearance-inspection-2",
+        "sourceId": "src-81ff7e32f40b8c98",
+        "operationKey": "OTHER",
+        "task": "valve_clearance",
+        "originalText": "Valve clearances Every 150 000 miles/10 years - Check. If adjustment is necessary, a separate order is L",
+        "action": "inspection",
+        "inspectionOrReplacement": "inspection",
+        "intervalKm": 241402,
+        "intervalMiles": 150000,
+        "intervalMonths": 120,
+        "intervalYears": 10,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": null,
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 150000 mi ≈ 241402 km"
+        ],
+        "sourceLocation": {
+          "page": 2,
+          "section": "(interval-dense page)",
+          "locator": "line \"Valve clearances Every 150 000 miles/10 years - Check. If adjustment is necessar\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "PARTIAL",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "unstated",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document does not state its model years"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_GENERIC",
+          "basis": "the source names the model only",
+          "sufficient": false,
+          "years": null,
+          "yearsBasis": "none"
+        }
+      },
+      {
+        "id": "src-937fb1db3b01f6c1:ab8e9f52352a-p4-cabin_filter-replacement-0",
+        "sourceId": "src-937fb1db3b01f6c1",
+        "operationKey": "cabin_filter",
+        "task": "cabin_filter",
+        "originalText": "Replace cabin air filter Every 20,000 miles",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 32187,
+        "intervalMiles": 20000,
+        "intervalMonths": null,
+        "intervalYears": null,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": false,
+        "rule": "DISTANCE_ONLY",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 2019,
+          "to": 2019
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 20000 mi ≈ 32187 km"
+        ],
+        "sourceLocation": {
+          "page": 4,
+          "section": "Service intervals",
+          "locator": "line \"Replace cabin air filter Every 20,000 miles\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2019–2019, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2019–2019",
+          "sufficient": true,
+          "years": {
+            "from": 2019,
+            "to": 2019
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-937fb1db3b01f6c1:ab8e9f52352a-p4-air_filter-replacement-1",
+        "sourceId": "src-937fb1db3b01f6c1",
+        "operationKey": "air_filter",
+        "task": "air_filter",
+        "originalText": "Replace engine air filter Every 30,000 miles",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 48280,
+        "intervalMiles": 30000,
+        "intervalMonths": null,
+        "intervalYears": null,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": false,
+        "rule": "DISTANCE_ONLY",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 2019,
+          "to": 2019
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 30000 mi ≈ 48280 km"
+        ],
+        "sourceLocation": {
+          "page": 4,
+          "section": "Service intervals",
+          "locator": "line \"Replace engine air filter Every 30,000 miles\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2019–2019, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2019–2019",
+          "sufficient": false,
+          "years": {
+            "from": 2019,
+            "to": 2019
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-937fb1db3b01f6c1:ab8e9f52352a-p4-spark_plugs-replacement-2",
+        "sourceId": "src-937fb1db3b01f6c1",
+        "operationKey": "spark_plugs",
+        "task": "spark_plugs",
+        "originalText": "Replace spark plugs Every 100,000 miles",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 160934,
+        "intervalMiles": 100000,
+        "intervalMonths": null,
+        "intervalYears": null,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": false,
+        "rule": "DISTANCE_ONLY",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 2019,
+          "to": 2019
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 100000 mi ≈ 160934 km"
+        ],
+        "sourceLocation": {
+          "page": 4,
+          "section": "Service intervals",
+          "locator": "line \"Replace spark plugs Every 100,000 miles\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2019–2019, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2019–2019",
+          "sufficient": false,
+          "years": {
+            "from": 2019,
+            "to": 2019
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-937fb1db3b01f6c1:ab8e9f52352a-p4-auxiliary_belt-inspection-3",
+        "sourceId": "src-937fb1db3b01f6c1",
+        "operationKey": "accessory_belt",
+        "task": "auxiliary_belt",
+        "originalText": "Inspect accessory drive belt(s) Every 100,000 miles",
+        "action": "inspection",
+        "inspectionOrReplacement": "inspection",
+        "intervalKm": 160934,
+        "intervalMiles": 100000,
+        "intervalMonths": null,
+        "intervalYears": null,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": false,
+        "rule": "INSPECTION_AT_INTERVAL",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 2019,
+          "to": 2019
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 100000 mi ≈ 160934 km"
+        ],
+        "sourceLocation": {
+          "page": 4,
+          "section": "Service intervals",
+          "locator": "line \"Inspect accessory drive belt(s) Every 100,000 miles\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2019–2019, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2019–2019",
+          "sufficient": false,
+          "years": {
+            "from": 2019,
+            "to": 2019
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-937fb1db3b01f6c1:ab8e9f52352a-p4-auxiliary_belt-replacement-4",
+        "sourceId": "src-937fb1db3b01f6c1",
+        "operationKey": "accessory_belt",
+        "task": "auxiliary_belt",
+        "originalText": "Replace accessory drive belt(s) Every 150,000 miles",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 241402,
+        "intervalMiles": 150000,
+        "intervalMonths": null,
+        "intervalYears": null,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": false,
+        "rule": "DISTANCE_ONLY",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 2019,
+          "to": 2019
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 150000 mi ≈ 241402 km"
+        ],
+        "sourceLocation": {
+          "page": 4,
+          "section": "Service intervals",
+          "locator": "line \"Replace accessory drive belt(s) Every 150,000 miles\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2019–2019, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2019–2019",
+          "sufficient": false,
+          "years": {
+            "from": 2019,
+            "to": 2019
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-937fb1db3b01f6c1:ab8e9f52352a-p4-timing_belt-replacement-5",
+        "sourceId": "src-937fb1db3b01f6c1",
+        "operationKey": "timing_belt",
+        "task": "timing_belt",
+        "originalText": "Replace timing belt (1.0L & 1.6L engines) Every 150,000 miles",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 241402,
+        "intervalMiles": 150000,
+        "intervalMonths": null,
+        "intervalYears": null,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": false,
+        "rule": "DISTANCE_ONLY",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [
+          "940–1060 cc"
+        ],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 2019,
+          "to": 2019
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 150000 mi ≈ 241402 km"
+        ],
+        "sourceLocation": {
+          "page": 4,
+          "section": "Service intervals",
+          "locator": "line \"Replace timing belt (1.0L & 1.6L engines) Every 150,000 miles\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "vehicle_unknown",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2019–2019, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2019–2019",
+          "sufficient": false,
+          "years": {
+            "from": 2019,
+            "to": 2019
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-937fb1db3b01f6c1:ab8e9f52352a-p4-s-engine_oil-replacement-0",
+        "sourceId": "src-937fb1db3b01f6c1",
+        "operationKey": "engine_oil",
+        "task": "engine_oil",
+        "originalText": "Service every 10,000 miles or 12 months Change engine oil and filter Rotate tyres Perform multi-point inspection Check automatic transmission fluid level (if applicable)",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 16093,
+        "intervalMiles": 10000,
+        "intervalMonths": 12,
+        "intervalYears": 1,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 2019,
+          "to": 2019
+        },
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 10000 mi ≈ 16093 km"
+        ],
+        "sourceLocation": {
+          "page": 4,
+          "locator": "column sentence \"Service every 10,000 miles or 12 months Change engine oil and filter Rotate tyre\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2019–2019, not 2015"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2019–2019",
+          "sufficient": false,
+          "years": {
+            "from": 2019,
+            "to": 2019
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9e50cb0dabd8aec3:2e3a2e16cad9-p3-timing_belt-replacement-0",
+        "sourceId": "src-9e50cb0dabd8aec3",
+        "operationKey": "timing_belt",
+        "task": "timing_belt",
+        "originalText": "This generation used engines like the 1.3L Endura-E and 1.25L Zetec-SE . Both relied on a timing belt system. The recomm",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 96561,
+        "intervalMiles": 60000,
+        "intervalMonths": 60,
+        "intervalYears": 5,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [
+          "1240–1360 cc"
+        ],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 1995,
+          "to": 2002
+        },
+        "marketApplicability": [
+          "US",
+          "UK",
+          "EU"
+        ],
+        "notes": [
+          "stated in miles: 60000 mi ≈ 96561 km"
+        ],
+        "sourceLocation": {
+          "page": 3,
+          "section": "(interval-dense page)",
+          "locator": "line \"This generation used engines like the 1.3L Endura-E and 1.25L Zetec-SE . Both re\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "vehicle_unknown",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 1995–2002, not 2015",
+            "market stated: US, UK, EU (not IL)"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 1995–2002",
+          "sufficient": false,
+          "years": {
+            "from": 1995,
+            "to": 2002
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9e50cb0dabd8aec3:2e3a2e16cad9-p3-timing_belt-replacement-1",
+        "sourceId": "src-9e50cb0dabd8aec3",
+        "operationKey": "timing_belt",
+        "task": "timing_belt",
+        "originalText": "The Mk5 introduced Duratec petrol engines ranging from 1.25L to 1.6L , all using rubber timing belts . The recommended c",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 160934,
+        "intervalMiles": 100000,
+        "intervalMonths": 96,
+        "intervalYears": 8,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [
+          "1540–1660 cc",
+          "petrol",
+          "hybrid",
+          "plugin_hybrid"
+        ],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 2002,
+          "to": 2008
+        },
+        "marketApplicability": [
+          "US",
+          "UK",
+          "EU"
+        ],
+        "notes": [
+          "stated in miles: 100000 mi ≈ 160934 km"
+        ],
+        "sourceLocation": {
+          "page": 3,
+          "section": "(interval-dense page)",
+          "locator": "line \"The Mk5 introduced Duratec petrol engines ranging from 1.25L to 1.6L , all using\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "NOT_APPLICABLE",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "mismatch",
+            "displacement": "vehicle_unknown",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document covers 2002–2008, not 2015",
+            "market stated: US, UK, EU (not IL)"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2002–2008",
+          "sufficient": false,
+          "years": {
+            "from": 2002,
+            "to": 2008
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-9e50cb0dabd8aec3:2e3a2e16cad9-p3-s-periodic_service-other-1",
+        "sourceId": "src-9e50cb0dabd8aec3",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "The recommended service interval is 150,000 miles or 10 years under ideal conditions.",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 241402,
+        "intervalMiles": 150000,
+        "intervalMonths": 120,
+        "intervalYears": 10,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 2013,
+          "to": 2023
+        },
+        "marketApplicability": [
+          "US",
+          "UK",
+          "EU"
+        ],
+        "notes": [
+          "stated in miles: 150000 mi ≈ 241402 km"
+        ],
+        "sourceLocation": {
+          "page": 3,
+          "locator": "column sentence \"The recommended service interval is 150,000 miles or 10 years under ideal condit\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "PARTIAL",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "match",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "market stated: US, UK, EU (not IL)",
+            "scope MODEL_YEAR_RANGE is not sufficient for the powertrain-dependent operation periodic_service"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_YEAR_RANGE",
+          "basis": "section years 2013–2023",
+          "sufficient": false,
+          "years": {
+            "from": 2013,
+            "to": 2023
+          },
+          "yearsBasis": "section"
+        }
+      },
+      {
+        "id": "src-cf6e174efc98c2bc:3103ca4a729a-p6-s-brake_fluid-replacement-0",
+        "sourceId": "src-cf6e174efc98c2bc",
+        "operationKey": "brake_fluid",
+        "task": "brake_fluid",
+        "originalText": "Bremsflüssigkeit alle 2 Jahre wechseln (30.000 km)",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 30000,
+        "intervalMiles": null,
+        "intervalMonths": 24,
+        "intervalYears": 2,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 1900,
+          "to": 2100
+        },
+        "marketApplicability": [],
+        "notes": [],
+        "sourceLocation": {
+          "page": 6,
+          "locator": "column sentence \"Bremsflüssigkeit alle 2 Jahre wechseln (30.000 km)\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "STRONG",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "match",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": []
+        },
+        "itemApplicability": {
+          "scope": "ALL_ENGINES",
+          "basis": "the source states all engines: \"Die Inspektion am Ford Fiesta | Kosten, Umfang &amp; Intervalle | Serviceplan: Alle Modelle &amp; Motoren | Was wird gem\"",
+          "sufficient": true,
+          "years": {
+            "from": 1900,
+            "to": 2100
+          },
+          "yearsBasis": "document"
+        }
+      },
+      {
+        "id": "src-cf6e174efc98c2bc:3103ca4a729a-p6-s-cabin_filter-replacement-1",
+        "sourceId": "src-cf6e174efc98c2bc",
+        "operationKey": "cabin_filter",
+        "task": "cabin_filter",
+        "originalText": "Pollenfilter alle 2 Jahre wechseln (30.000 km)",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 30000,
+        "intervalMiles": null,
+        "intervalMonths": 24,
+        "intervalYears": 2,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": {
+          "from": 1900,
+          "to": 2100
+        },
+        "marketApplicability": [],
+        "notes": [],
+        "sourceLocation": {
+          "page": 6,
+          "locator": "column sentence \"Pollenfilter alle 2 Jahre wechseln (30.000 km)\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "STRONG",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "match",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": []
+        },
+        "itemApplicability": {
+          "scope": "ALL_ENGINES",
+          "basis": "the source states all engines: \"Die Inspektion am Ford Fiesta | Kosten, Umfang &amp; Intervalle | Serviceplan: Alle Modelle &amp; Motoren | Was wird gem\"",
+          "sufficient": true,
+          "years": {
+            "from": 1900,
+            "to": 2100
+          },
+          "yearsBasis": "document"
+        }
+      },
+      {
+        "id": "src-c7b05f9966d8da8b:9e9f3bea0429-p3-cabin_filter-replacement-0",
+        "sourceId": "src-c7b05f9966d8da8b",
+        "operationKey": "cabin_filter",
+        "task": "cabin_filter",
+        "originalText": "Squadinho, for the avoidance of doubt, changing the air filter or plugs every 8,000 miles is hilariously ill-informed ad",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": 12875,
+        "intervalMiles": 8000,
+        "intervalMonths": null,
+        "intervalYears": null,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": false,
+        "rule": "DISTANCE_ONLY",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": null,
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 8000 mi ≈ 12875 km"
+        ],
+        "sourceLocation": {
+          "page": 3,
+          "locator": "line \"Squadinho, for the avoidance of doubt, changing the air filter or plugs every 8,\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "PARTIAL",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "unstated",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document does not state its model years"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_GENERIC",
+          "basis": "the source names the model only",
+          "sufficient": false,
+          "years": null,
+          "yearsBasis": "none"
+        }
+      },
+      {
+        "id": "src-c7b05f9966d8da8b:9e9f3bea0429-p3-brake_fluid-replacement-1",
+        "sourceId": "src-c7b05f9966d8da8b",
+        "operationKey": "brake_fluid",
+        "task": "brake_fluid",
+        "originalText": "If you want to keep the car for a significant period of time you might want to change the coolant every few years, same",
+        "action": "replacement",
+        "inspectionOrReplacement": "replacement",
+        "intervalKm": null,
+        "intervalMiles": null,
+        "intervalMonths": 120,
+        "intervalYears": 10,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": false,
+        "rule": "TIME_ONLY",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": null,
+        "marketApplicability": [],
+        "notes": [],
+        "sourceLocation": {
+          "page": 3,
+          "locator": "line \"If you want to keep the car for a significant period of time you might want to c\""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "PARTIAL",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "unstated",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document does not state its model years"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_GENERIC",
+          "basis": "the source names the model only",
+          "sufficient": false,
+          "years": null,
+          "yearsBasis": "none"
+        }
+      },
+      {
+        "id": "src-c7b05f9966d8da8b:9e9f3bea0429-p3-s-periodic_service-other-0",
+        "sourceId": "src-c7b05f9966d8da8b",
+        "operationKey": "periodic_service",
+        "task": "periodic_service",
+        "originalText": "It is usually a number of miles or time with the added phrase \"whichever occurs sooner\" so if you have only done 4,000 miles in 12 months and the service …",
+        "action": "other",
+        "inspectionOrReplacement": "other",
+        "intervalKm": 19312,
+        "intervalMiles": 12000,
+        "intervalMonths": 12,
+        "intervalYears": 1,
+        "firstKm": null,
+        "firstMonths": null,
+        "whicheverComesFirst": true,
+        "rule": "WHICHEVER_COMES_FIRST",
+        "normalConditions": true,
+        "severeConditions": false,
+        "engineApplicability": [],
+        "modelApplicability": [
+          "Fiesta"
+        ],
+        "yearApplicability": null,
+        "marketApplicability": [],
+        "notes": [
+          "stated in miles: 12000 mi ≈ 19312 km"
+        ],
+        "sourceLocation": {
+          "page": 3,
+          "locator": "column sentence \"It is usually a number of miles or time with the added phrase \"whichever occurs \""
+        },
+        "extractionMethod": "sentence",
+        "grounded": true,
+        "match": {
+          "status": "PARTIAL",
+          "dimensions": {
+            "make": "match",
+            "model": "match",
+            "year": "unstated",
+            "displacement": "unstated",
+            "engineCode": "unstated",
+            "market": "unstated"
+          },
+          "reasons": [
+            "the document does not state its model years"
+          ]
+        },
+        "itemApplicability": {
+          "scope": "MODEL_GENERIC",
+          "basis": "the source names the model only",
+          "sufficient": false,
+          "years": null,
+          "yearsBasis": "none"
+        }
+      }
+    ]
+  }
+}
