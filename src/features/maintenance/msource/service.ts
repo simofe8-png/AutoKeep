@@ -33,7 +33,7 @@ import { MSOURCE_VERSION } from '@/discovery/maintenance/msource/types';
 import type { TextReader } from '@/discovery/maintenance/types';
 import type { IsoDate, MaintenanceRequirement } from '@/domain';
 
-import { uploadLog } from './devLog';
+import { discoveryLog, uploadLog } from './devLog';
 
 /**
  * Application service for M-SOURCE (Phase 17): start / status / schedule / retry for one
@@ -115,9 +115,13 @@ export async function startMaintenanceDiscovery(
     });
     if (!data) return { started: false, reason: 'not_found' };
     const built = buildFingerprint(data.input);
-    if (!built.ok) return { started: false, reason: 'identity_incomplete' };
+    if (!built.ok) {
+      discoveryLog('not started', { reason: 'identity_incomplete', missing: built.missing });
+      return { started: false, reason: 'identity_incomplete' };
+    }
     const fp = built.fingerprint;
     const classKey = fingerprintKey(fp);
+    discoveryLog('start', { classKey, catalogSources: host.catalog(classKey).length });
     const runId = `run-${vehicleId.slice(0, 8)}-${clock.now().replace(/[^0-9]/g, '')}`;
     let last: DiscoveryStatus['state'] | null = null;
     const report = async (state: DiscoveryStatus['state']) => {
@@ -202,6 +206,16 @@ export async function startMaintenanceDiscovery(
     }
     await Promise.all(pending);
     const status = terminalStatus(run, clock.now());
+    discoveryLog('done', {
+      classKey,
+      state: status.state,
+      partial: status.partial,
+      candidates: run.candidates.length,
+      items:
+        run.schedule?.items.map(
+          (i) => `${i.task} ${i.intervalKm ?? '-'}km/${i.intervalMonths ?? '-'}m ${i.quality}`,
+        ) ?? [],
+    });
     const requirements = run.schedule
       ? scheduleToRequirements(run.schedule, fp, clock.today() as IsoDate)
       : [];

@@ -386,6 +386,13 @@ describe('general model photo (Wikimedia, license-checked; owner decision 2026-1
     ).toBeOnTheScreen();
     expect(screen.getByTestId('vehicle-color-badge')).toHaveTextContent('צבע: לבן שנהב');
     expect(screen.getByTestId('vehicle-color-swatch-white')).toBeOnTheScreen();
+    // The registered color, prominently: a toggle to the silhouette filled with that color.
+    await fireEvent.press(screen.getByTestId('vehicle-hero-view-color'));
+    expect(screen.getByTestId('vehicle-color-silhouette')).toHaveTextContent(
+      'איור בצבע הרישוי: לבן שנהב',
+    );
+    await fireEvent.press(screen.getByTestId('vehicle-hero-view-photo'));
+    expect(screen.queryByTestId('vehicle-color-silhouette')).toBeNull();
     // Only make + model were sent (no plate, VIN or identity).
     expect(photos.asked.join(' ')).not.toMatch(/12-345-67|1234567/);
     expect(decodeURIComponent(photos.asked[0])).toContain('titles=Toyota Corolla');

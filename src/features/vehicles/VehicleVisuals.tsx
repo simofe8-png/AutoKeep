@@ -21,6 +21,7 @@ import {
   elevation,
   Icon,
   PlateBadge,
+  SegmentedControl,
   radii,
   spacing,
   touchTarget,
@@ -464,9 +465,27 @@ export function VehicleSelectorCard({
 
 /** Home hero: wide vehicle image, then the name, spec line and plate, centred (Home reference). */
 export function VehicleHero({ vehicle }: { vehicle: VehicleSummary }) {
+  const family = colorFamily(vehicle.color);
+  const [view, setView] = useState<'photo' | 'color'>('photo');
   return (
     <View style={styles.hero} testID="vehicle-hero">
-      <VehiclePhoto vehicle={vehicle} variant="hero" />
+      {view === 'color' && family ? (
+        <ColorSilhouette kind={vehicle.kind} family={family} color={vehicle.color!} />
+      ) : (
+        <VehiclePhoto vehicle={vehicle} variant="hero" />
+      )}
+      {family ? (
+        <SegmentedControl
+          testID="vehicle-hero-view"
+          accessibilityLabel={he.vehicleImage.viewToggle}
+          options={[
+            { value: 'photo', label: he.vehicleImage.viewPhoto },
+            { value: 'color', label: he.vehicleImage.viewColor },
+          ]}
+          value={view}
+          onChange={setView}
+        />
+      ) : null}
       <View style={styles.heroText}>
         <AppText variant="title" align="center">
           {`${vehicle.manufacturer} ${vehicle.model}`}
@@ -476,6 +495,47 @@ export function VehicleHero({ vehicle }: { vehicle: VehicleSummary }) {
         </AppText>
         <PlateBadge number={vehicle.registration} size="md" />
         {vehicle.color ? <ColorBadge color={vehicle.color} /> : null}
+      </View>
+    </View>
+  );
+}
+
+/** Light colors are drawn on a dark backdrop so the silhouette stays visible. */
+const LIGHT: readonly ColorFamily[] = ['white', 'silver', 'beige', 'yellow'];
+
+/**
+ * The vehicle in its REGISTERED color (`tzeva_rechev`): the neutral silhouette of its kind,
+ * filled with the color family's swatch. An illustration, labelled as such — not a photo.
+ */
+function ColorSilhouette({
+  kind,
+  family,
+  color,
+}: {
+  kind: VehicleKind;
+  family: ColorFamily;
+  color: string;
+}) {
+  return (
+    <View
+      testID="vehicle-color-silhouette"
+      style={[
+        styles.photo,
+        styles.stretch,
+        { aspectRatio: 16 / 9, borderRadius: radii.lg },
+        { backgroundColor: LIGHT.includes(family) ? '#2B2F36' : '#E3E8EF' },
+      ]}
+    >
+      <Image
+        source={ART[kind]}
+        style={[styles.image, { tintColor: SWATCH[family] }]}
+        resizeMode="contain"
+        accessibilityLabel={he.vehicleImage.colorIllustration(color)}
+      />
+      <View style={styles.artLabel}>
+        <AppText variant="caption" color="textSecondary">
+          {he.vehicleImage.colorIllustration(color)}
+        </AppText>
       </View>
     </View>
   );
@@ -507,9 +567,7 @@ export function ColorBadge({ color }: { color: string }) {
           style={[styles.swatch, { backgroundColor: SWATCH[family] }]}
         />
       ) : null}
-      <AppText variant="small" color="textSecondary">
-        {he.vehicleImage.color(color)}
-      </AppText>
+      <AppText variant="bodyStrong">{he.vehicleImage.color(color)}</AppText>
     </View>
   );
 }
@@ -548,18 +606,18 @@ const styles = StyleSheet.create({
   colorBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.xs,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: 2,
+    gap: spacing.sm,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs,
     borderRadius: radii.pill,
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
   },
   swatch: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
     borderWidth: 1,
     borderColor: colors.border,
   },

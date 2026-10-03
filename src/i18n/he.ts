@@ -84,6 +84,10 @@ export const he = {
     infoA11y: 'פרטי התמונה והרישיון',
     infoTitle: 'פרטי התמונה',
     openSource: 'לדף המקור',
+    viewToggle: 'תצוגת הרכב',
+    viewPhoto: 'תמונה',
+    viewColor: 'הצבע שלי',
+    colorIllustration: (c: string) => `איור בצבע הרישוי: ${c}`,
   },
   vehicles: {
     genericIllustration: 'איור כללי · לא תמונת הרכב שלך',
