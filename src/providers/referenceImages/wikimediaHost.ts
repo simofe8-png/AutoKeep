@@ -17,8 +17,13 @@ export interface ModelPhotoHost {
 const API_PREFIX = 'https://en.wikipedia.org/w/api.php?';
 const TIMEOUT_MS = 10_000;
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
-/** Wikimedia asks API clients to identify themselves. */
-const HEADERS = { 'Api-User-Agent': 'AutoKeep/1.0 (vehicle model photo lookup)' };
+/**
+ * Wikimedia's User-Agent policy: a client must identify itself. The platform default on Android
+ * ("okhttp/x") is rejected with HTTP 403 even with Api-User-Agent (device-verified 2026-10-03),
+ * so both headers are set explicitly.
+ */
+const AGENT = 'AutoKeep/1.0 (vehicle model photo lookup)';
+const HEADERS = { 'User-Agent': AGENT, 'Api-User-Agent': AGENT };
 
 async function withTimeout<T>(work: (signal: AbortSignal) => Promise<T>): Promise<T> {
   const ctl = new AbortController();

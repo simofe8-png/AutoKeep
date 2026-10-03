@@ -172,3 +172,13 @@ Display priority becomes: user photo → approved reference → **general model 
   families.
 - **Live check (2026-10-03):** found, with free licenses, for Toyota Corolla, Honda XR650L, Hyundai
   Ioniq, Kia Picanto and Suzuki Swift.
+
+**Device check, Galaxy A54 / Expo Go (2026-10-03):**
+
+- The first lookups failed with **HTTP 403**. Wikimedia rejects Android's default `okhttp` User-Agent,
+  even with `Api-User-Agent`.
+- Fix: an explicit `User-Agent` on both the API and image requests.
+- After the fix, the phone found and showed both vehicles' photos:
+  - Honda XR650L (CC BY-SA 2.0);
+  - Ford Fiesta (CC BY-SA 3.0 de).
+- Development builds log each lookup step under `[vehicle-image]` (make and model only).

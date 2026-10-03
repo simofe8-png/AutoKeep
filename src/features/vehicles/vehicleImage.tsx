@@ -99,11 +99,24 @@ export function VehicleImageProvider({ children }: { children: ReactNode }) {
       if (!force && current.current.get(vehicleId) === sig) return;
       current.current.set(vehicleId, sig);
       setEntries((e) => ({ ...e, [vehicleId]: { sig, state: { kind: 'searching' } } }));
+      // Development builds only: make / model and each step (never a plate, VIN or owner data).
+      const log =
+        __DEV__ && process.env.NODE_ENV !== 'test'
+          ? (step: string, detail: Record<string, unknown>) =>
+              // eslint-disable-next-line no-console -- development-only diagnostics (Metro log)
+              console.info(`[vehicle-image] ${step}`, JSON.stringify(detail))
+          : undefined;
       const resolve = async (): Promise<Resolved> => {
+        log?.('start', {
+          approvedCatalog: Boolean(catalog),
+          classSupported: cls.kind !== 'unsupported',
+          generalPhotos: Boolean(photos && modelPhotoCache),
+        });
         const approved: ReferenceResolution =
           catalog && cls.kind !== 'unsupported'
             ? await resolveReferenceImage(cls, catalog)
             : { kind: 'not_found' };
+        log?.('approved reference', { kind: approved.kind });
         // The approved reference wins; a general model photo only when there is none.
         if (approved.kind !== 'not_found' || !photos || !modelPhotoCache) return approved;
         return withTimeout<Resolved>(
@@ -111,12 +124,14 @@ export function VehicleImageProvider({ children }: { children: ReactNode }) {
             ...photos,
             cache: modelPhotoCache,
             now: () => new Date().toISOString(),
+            log,
           }),
           { kind: 'unavailable' },
           IMAGE_SEARCH_TIMEOUT_MS,
         );
       };
       void resolve().then((state) => {
+        log?.('shown', { kind: state.kind });
         if (current.current.get(vehicleId) !== sig) return; // superseded
         setEntries((e) => ({ ...e, [vehicleId]: { sig, state } }));
       });

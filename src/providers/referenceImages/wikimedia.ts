@@ -26,9 +26,9 @@ export interface ModelPhotoRecord extends ReferenceImageRecord {
 export type ModelPhotoLookup =
   | { status: 'found'; record: ModelPhotoRecord }
   /** Nothing suitable (no article, no free image): remembered, not retried every time. */
-  | { status: 'none' }
+  | { status: 'none'; reason: string }
   /** Network / service failure — NOT "no image exists". */
-  | { status: 'unavailable' };
+  | { status: 'unavailable'; reason: string };
 
 const API = 'https://en.wikipedia.org/w/api.php';
 /** Wikimedia's image hosts (thumbnails are currently served from thumb.wikimedia.org). */
@@ -171,7 +171,7 @@ export async function lookupModelPhoto(
       );
       page = pageImageOf(hit, (t) => plausibleTitle(t, q));
     }
-    if (!page) return { status: 'none' };
+    if (!page) return { status: 'none', reason: 'no article with a lead image' };
     const info = await getJson(
       `${API}?${qs({
         action: 'query',
@@ -201,12 +201,12 @@ export async function lookupModelPhoto(
       }
     )?.query?.pages?.[0]?.imageinfo?.[0];
     if (!file?.thumburl || !/^image\/(jpeg|png|webp)$/.test(file.mime ?? '')) {
-      return { status: 'none' };
+      return { status: 'none', reason: `no usable image (${file?.mime ?? 'no file info'})` };
     }
     const imageUrl = wikimediaImageUrl(file.thumburl);
-    if (!imageUrl) return { status: 'none' };
+    if (!imageUrl) return { status: 'none', reason: 'image host not allowed' };
     const lic = licenseVerdict(file.extmetadata);
-    if (!lic.ok) return { status: 'none' };
+    if (!lic.ok) return { status: 'none', reason: lic.reason };
     const sourceUrl =
       file.descriptionurl && file.descriptionurl.startsWith('https://')
         ? file.descriptionurl
@@ -231,7 +231,7 @@ export async function lookupModelPhoto(
         retrievedAt: now(),
       },
     };
-  } catch {
-    return { status: 'unavailable' };
+  } catch (e) {
+    return { status: 'unavailable', reason: String((e as Error)?.message ?? e).slice(0, 120) };
   }
 }

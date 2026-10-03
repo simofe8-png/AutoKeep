@@ -150,7 +150,7 @@ describe('lookupModelPhoto', () => {
       record: { articleTitle: 'Toyota Corolla (E170)' },
     });
     const wrong = api({ search: pageAnswer('Toyota Camry', 'Camry.jpg'), file: fileAnswer(BY_SA) });
-    expect(await lookupModelPhoto(COROLLA, wrong.getJson, NOW)).toEqual({ status: 'none' });
+    expect(await lookupModelPhoto(COROLLA, wrong.getJson, NOW)).toMatchObject({ status: 'none' });
     expect(wrong.asked.some((u) => u.includes('imageinfo'))).toBe(false);
   });
 
@@ -159,12 +159,12 @@ describe('lookupModelPhoto', () => {
       title: pageAnswer('Toyota Corolla', 'Car.jpg'),
       file: fileAnswer({ License: 'cc-by-nc-2.0', LicenseShortName: 'CC BY-NC 2.0' }),
     });
-    expect(await lookupModelPhoto(COROLLA, nc.getJson, NOW)).toEqual({ status: 'none' });
+    expect(await lookupModelPhoto(COROLLA, nc.getJson, NOW)).toMatchObject({ status: 'none' });
     const host = api({
       title: pageAnswer('Toyota Corolla', 'Car.jpg'),
       file: fileAnswer(BY_SA, 'https://evil.example/800px-Car.jpg'),
     });
-    expect(await lookupModelPhoto(COROLLA, host.getJson, NOW)).toEqual({ status: 'none' });
+    expect(await lookupModelPhoto(COROLLA, host.getJson, NOW)).toMatchObject({ status: 'none' });
   });
 
   it('thumbnails from thumb.wikimedia.org are accepted, without tracking parameters', async () => {
@@ -192,7 +192,7 @@ describe('lookupModelPhoto', () => {
       },
       NOW,
     );
-    expect(r).toEqual({ status: 'unavailable' });
+    expect(r).toMatchObject({ status: 'unavailable', reason: 'offline' });
   });
 
   it('image URLs: HTTPS Wikimedia hosts only, tracking parameters dropped', () => {
