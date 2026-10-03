@@ -377,4 +377,11 @@ CREATE TABLE msource_owner_reviews (
 );
 `,
   },
+  {
+    version: 12,
+    name: 'msource_owner_review_edit',
+    // The owner's correction of an item read from their own document, saved with the decision
+    // (owner review). LOCAL ONLY. NULL = accepted as read.
+    up: `ALTER TABLE msource_owner_reviews ADD COLUMN edit_json TEXT;`,
+  },
 ];

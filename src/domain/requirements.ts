@@ -205,6 +205,13 @@ export interface ExtractionProvenance {
    * found again on the cited page of the pinned document edition. Required for parser output.
    */
   grounded?: boolean;
+  /**
+   * The owner corrected the value read from their own document before accepting it (owner review):
+   * the document's original reading is kept here for the audit trail.
+   */
+  ownerEdit?: {
+    original: { intervalKm: number | null; intervalMonths: number | null; text: string };
+  };
 }
 
 /** Where a requirement is written: an exact location in an identified document edition. */

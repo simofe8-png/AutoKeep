@@ -1,4 +1,10 @@
-import type { IsoDate, MaintenanceRequirement, RequirementAction, TaskCode } from '@/domain';
+import type {
+  IsoDate,
+  MaintenanceRequirement,
+  RequirementAction,
+  RequirementInterval,
+  TaskCode,
+} from '@/domain';
 
 import type {
   EvidenceRecord,
@@ -96,20 +102,64 @@ export function ownerProposals(schedule: ResolvedSchedule): OwnerProposal[] {
   return [...out.values()];
 }
 
-/** The requirement an ACCEPTED proposal becomes (verified for this vehicle, page cited). */
+/**
+ * The owner's correction of a proposed item before accepting it: interval values and/or the
+ * item's description. The document's own reading stays in the evidence and the audit trail.
+ */
+export interface OwnerEdit {
+  intervalKm: number | null;
+  intervalMonths: number | null;
+  text: string;
+}
+
+/** The edit differs from what was read (otherwise it is no edit). */
+export function isRealEdit(
+  p: OwnerProposal,
+  edit: OwnerEdit | null | undefined,
+): edit is OwnerEdit {
+  return (
+    !!edit &&
+    (edit.intervalKm !== p.intervalKm ||
+      edit.intervalMonths !== p.intervalMonths ||
+      edit.text.trim() !== p.excerpt.trim())
+  );
+}
+
+function editedInterval(base: RequirementInterval, edit: OwnerEdit): RequirementInterval {
+  const km = edit.intervalKm;
+  const months = edit.intervalMonths;
+  const rest = { ...base };
+  delete rest.every;
+  delete rest.everyMonths;
+  return {
+    ...rest,
+    ...(km != null ? { every: { value: km, unit: 'km' as const } } : {}),
+    ...(months != null ? { everyMonths: months } : {}),
+    rule:
+      km != null && months != null ? 'whichever_first' : km != null ? 'distance_only' : 'time_only',
+  };
+}
+
+/**
+ * The requirement an ACCEPTED proposal becomes (verified for this vehicle, page cited). With the
+ * owner's correction it is recorded as entered by the owner ("owner document, edited by user"),
+ * the document's original reading kept in `extraction.ownerEdit`.
+ */
 export function ownerDocumentRequirement(
   p: OwnerProposal,
   e: EvidenceRecord,
   msourceVersion: string,
   reviewedAt: IsoDate,
+  edit: OwnerEdit | null = null,
 ): MaintenanceRequirement {
   const base = e.requirement;
+  const edited = isRealEdit(p, edit) ? edit : null;
   return {
     id: `owner-doc-${p.key}`,
     task: p.task,
-    taskText: p.excerpt,
+    taskText: edited ? edited.text.trim() || p.excerpt : p.excerpt,
     action: p.action,
-    interval: base.interval,
+    interval: edited ? editedInterval(base.interval, edited) : base.interval,
     applicability: {
       ...base.applicability,
       ...(p.serviceRegimes ? { serviceRegimes: p.serviceRegimes } : {}),
@@ -128,13 +178,48 @@ export function ownerDocumentRequirement(
       },
     ],
     verification: 'verified',
-    extraction: {
-      method: 'deterministic_parser',
-      by: msourceVersion,
-      at: reviewedAt,
-      grounded: true,
-      reviewedBy: 'owner',
-      reviewedAt,
-    },
+    extraction: edited
+      ? {
+          method: 'user_entered',
+          by: 'owner',
+          at: reviewedAt,
+          reviewedBy: 'owner',
+          reviewedAt,
+          ownerEdit: {
+            original: {
+              intervalKm: p.intervalKm,
+              intervalMonths: p.intervalMonths,
+              text: p.excerpt,
+            },
+          },
+        }
+      : {
+          method: 'deterministic_parser',
+          by: msourceVersion,
+          at: reviewedAt,
+          grounded: true,
+          reviewedBy: 'owner',
+          reviewedAt,
+        },
   };
+}
+
+/** An uploaded document that could not be read, by reason (shown to the owner, never silent). */
+export interface UploadIssue {
+  documentName: string;
+  reason: 'no_text';
+}
+
+/** Uploads whose PDF has no selectable text (scanned / image-only), from the run trace. */
+export function uploadIssues(
+  candidates: readonly {
+    candidate: { upload?: { name: string } };
+    failure?: { code: string };
+  }[],
+): UploadIssue[] {
+  return candidates.flatMap((c) =>
+    c.candidate.upload && c.failure?.code === 'NO_TEXT_LAYER'
+      ? [{ documentName: c.candidate.upload.name, reason: 'no_text' as const }]
+      : [],
+  );
 }

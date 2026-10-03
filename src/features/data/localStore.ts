@@ -71,6 +71,7 @@ import { buildFingerprint, fingerprintKey } from '@/discovery/maintenance/msourc
 import type { CachedSource, MSourceRun } from '@/discovery/maintenance/msource/run';
 import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 import { MSOURCE_VERSION } from '@/discovery/maintenance/msource/types';
+import type { OwnerEdit } from '@/discovery/maintenance/msource/ownerReview';
 import { ownerReviewState } from '@/features/maintenance/msource/ownerReview';
 import type { DiscoveryInput } from '@/features/maintenance/msource/service';
 
@@ -976,12 +977,14 @@ export class LocalStore {
    */
   /**
    * The owner's decision on one item read from their own document (owner review, D-A3). Only an
-   * accepted item becomes a requirement; the decision is local to this device.
+   * accepted item becomes a requirement — with the owner's correction, if any (recorded as
+   * edited by the owner); the decision is local to this device.
    */
   async decideOwnerProposal(
     vehicleId: string,
     proposalKey: string,
     decision: 'accepted' | 'rejected',
+    edit: OwnerEdit | null = null,
   ): Promise<void> {
     const vehicle = await new VehicleRepository(this.db).get(vehicleId as VehicleId);
     if (!vehicle) return;
@@ -990,6 +993,7 @@ export class LocalStore {
       proposalKey,
       decision,
       this.clock.now(),
+      edit,
     );
   }
 

@@ -479,7 +479,10 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
     (rec.knowledgeDocuments ?? []).length > 0,
     rec.msource?.status ?? null,
     verifiedIdentity(rec.msource?.registry),
-    rec.msource?.owner?.proposals ?? [],
+    {
+      proposals: rec.msource?.owner?.proposals ?? [],
+      issues: rec.msource?.owner?.issues ?? [],
+    },
   );
 }
 

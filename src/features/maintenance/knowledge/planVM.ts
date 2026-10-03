@@ -61,7 +61,10 @@ function itemVM(item: PlanItem): PlanItemVM | null {
       : undefined,
     source: {
       sourceTitle: e?.documentTitle ?? '',
-      authority: AUTHORITY[item.requirement.authority],
+      // The owner corrected the value read from their own document: said so on every display.
+      authority: item.requirement.extraction.ownerEdit
+        ? 'vehicle_document_edited'
+        : AUTHORITY[item.requirement.authority],
       locator: [e?.page != null ? `עמ׳ ${e.page}` : null, e?.section, e?.table, e?.locator]
         .filter(Boolean)
         .join(' · '),
@@ -121,7 +124,7 @@ export function toPlanVM(
   bookletUploaded: boolean,
   discovery: DiscoveryStatus | null = null,
   identity: MaintenancePlanVM['verifiedIdentity'] = null,
-  ownerProposals: NonNullable<MaintenancePlanVM['ownerReview']>['proposals'] = [],
+  ownerReview: NonNullable<MaintenancePlanVM['ownerReview']> = { proposals: [], issues: [] },
 ): MaintenancePlanVM {
   const items = plan.items.map(itemVM).filter((x): x is PlanItemVM => x !== null);
   const next = plan.next.map(itemVM).filter((x): x is PlanItemVM => x !== null);
@@ -134,6 +137,6 @@ export function toPlanVM(
     bookletUploaded,
     discovery,
     verifiedIdentity: identity,
-    ownerReview: { proposals: ownerProposals },
+    ownerReview,
   };
 }

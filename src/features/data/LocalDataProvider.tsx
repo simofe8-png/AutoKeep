@@ -425,8 +425,8 @@ export function LocalDataProvider({
         discover(vid);
       },
       retryMaintenanceDiscovery: (vid) => discover(vid),
-      reviewOwnerDocumentItem: (vid, key, decision) =>
-        write((s) => s.decideOwnerProposal(vid, key, decision)),
+      reviewOwnerDocumentItem: (vid, key, decision, edit) =>
+        write((s) => s.decideOwnerProposal(vid, key, decision, edit ?? null)),
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
       // Reads of the original go straight to the store (no snapshot change).
       getOriginal: (vid, did) =>

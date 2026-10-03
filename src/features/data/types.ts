@@ -1,4 +1,8 @@
-import type { OwnerProposal } from '@/discovery/maintenance/msource/ownerReview';
+import type {
+  OwnerEdit,
+  OwnerProposal,
+  UploadIssue,
+} from '@/discovery/maintenance/msource/ownerReview';
 import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 /**
  * UI view-models consumed by screens. They are shaped for display, not persistence. The domain
@@ -10,7 +14,13 @@ import type { VerificationState } from '@/ui';
 export type ActionType = 'inspection' | 'replacement' | 'other';
 
 export type SourceAuthority =
-  'manufacturer' | 'official_importer' | 'vehicle_document' | 'garage_document' | 'user_report';
+  | 'manufacturer'
+  | 'official_importer'
+  | 'vehicle_document'
+  /** The owner's own document, with a value the owner corrected before accepting it. */
+  | 'vehicle_document_edited'
+  | 'garage_document'
+  | 'user_report';
 
 export interface SourceRefVM {
   sourceTitle: string;
@@ -242,10 +252,13 @@ export interface MaintenancePlanVM {
    */
   verifiedIdentity?: RegistryFact[] | null;
   /** Items read from the owner's own documents, awaiting or carrying the owner's decision. */
-  ownerReview?: { proposals: OwnerProposalVM[] };
+  ownerReview?: { proposals: OwnerProposalVM[]; issues: UploadIssue[] };
 }
 
-export type OwnerProposalVM = OwnerProposal & { decision: 'accepted' | 'rejected' | null };
+export type OwnerProposalVM = OwnerProposal & {
+  decision: 'accepted' | 'rejected' | null;
+  edit: OwnerEdit | null;
+};
 
 export interface VehicleDataBundle {
   /** Evidence-based plan from the requirement engine (absent in prototype bundles). */

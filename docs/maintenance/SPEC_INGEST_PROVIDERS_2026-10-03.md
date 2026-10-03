@@ -300,5 +300,15 @@ contract check in the core.
   on its main-thread fallback because the browser refused the blob worker; it still extracted
   correctly.
 
-**Not yet:** editing a proposed value (A2.3), photo OCR (D-A2), upload outcome messages for scanned
-documents (`NO_TEXT_LAYER`).
+**Step 2 (2026-10-03, owner directive):**
+
+- **Scanned PDFs:** an upload whose PDF has no text layer now shows the owner's explanatory notice, on
+  the plan card and on the review screen. It never fails silently.
+- **Editing before approval:**
+  - The owner can correct the km, months or description of an item before approving it.
+  - Migration v12 adds `edit_json`.
+  - An edited item is recorded as `user_entered` by the owner, with the document's original reading
+    kept in `extraction.ownerEdit`. It is labelled "מסמך הבעלים (נערך על ידי המשתמש)".
+  - The document reference (page, the document's own words) is unchanged.
+
+**Not yet:** photo OCR (D-A2).

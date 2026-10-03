@@ -440,7 +440,10 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
             onUpload={() => void upload()}
           />
         ) : null}
-        <OwnerReviewCard proposals={plan.ownerReview?.proposals ?? []} />
+        <OwnerReviewCard
+          proposals={plan.ownerReview?.proposals ?? []}
+          issues={plan.ownerReview?.issues ?? []}
+        />
         <Card tone="warning" testID="plan-fallback">
           <Stack gap={spacing.sm}>
             <View style={styles.needHead}>
@@ -518,7 +521,10 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
           onUpload={() => void upload()}
         />
       ) : null}
-      <OwnerReviewCard proposals={plan.ownerReview?.proposals ?? []} />
+      <OwnerReviewCard
+        proposals={plan.ownerReview?.proposals ?? []}
+        issues={plan.ownerReview?.issues ?? []}
+      />
       {plan.requests.length > 0 ? (
         <Card tone="warning" testID="plan-needs-information">
           <Stack gap={spacing.sm}>

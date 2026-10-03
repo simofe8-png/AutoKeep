@@ -100,8 +100,9 @@ _Last updated: 2026-10-03_
   - Text PDFs are read on the device: pdf.js in a hidden WebView with no network (D-A1).
   - Owner review: upload items are held until the owner accepts them, then become
     `vehicle_document` requirements, page cited, local only (migration v11).
-  - `npm run verify`: 94 suites / 774 tests.
-  - Next: the Expo Go check on the phone, then editing a proposed value and photo OCR (D-A2).
+  - Step 2: a notice for scanned PDFs, and owner edits before approval, labelled as edited
+    (migration v12). `npm run verify`: 95 suites / 782 tests.
+  - Next: the Expo Go check on the phone, then photo OCR (D-A2).
   - See `SPEC_INGEST_PROVIDERS_2026-10-03.md` → Implementation log.
 - **Owner backlog (recorded, not started):** Home shortcut tiles duplicate the bottom navigation
   (history / documents / maintenance). Keep the bottom navigation, and keep only unique Home

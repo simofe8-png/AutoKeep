@@ -14,6 +14,7 @@ import {
 import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { MemoryFileStore } from '@/providers/storage/types';
 import { FakeWeb } from '@/discovery/maintenance/msource/testing';
+import type { TextReader } from '@/discovery/maintenance/types';
 import {
   startMaintenanceDiscovery,
   type DiscoveryStore,
@@ -129,6 +130,41 @@ afterEach(() => configureDataSource({ kind: 'demo' }));
 async function open(url: string, testID: string) {
   await renderRouter('./src/app', { initialUrl: url });
   await waitFor(() => expect(screen.getByTestId(testID)).toBeOnTheScreen(), LONG);
+}
+
+// The owner's booklet (SYNTHETIC): states the vehicle; two items.
+const BOOKLET = new TextEncoder().encode(
+  '<html><head><title>Ford Fiesta 2013-2017 1.25 maintenance schedule</title></head><body>' +
+    '<h1>Ford Fiesta 2013-2017 1.25 maintenance schedule</h1>' +
+    '<p>Engine oil: replace every 20,000 km or 12 months, whichever comes first.</p>' +
+    '<p>Brake fluid: replace every 24 months.</p></body></html>',
+);
+
+/** One discovery run for FIESTA with the owner's upload (offline: no web sources). */
+async function discoverWithUpload(name: string, bytes: Uint8Array, uploadPdf?: TextReader) {
+  const store = await LocalStore.open(db, sequentialIds(9000), clock, new MemoryFileStore());
+  const io: DiscoveryStore = {
+    load: async (id) => ({
+      ...(await store.msourceLoad(id))!,
+      uploads: [{ id: 'doc-owner-1', name, bytes }],
+    }),
+    progress: (id, run, key, status) => store.msourceProgress(id, run, key, status),
+    complete: (id, run, status, reqs, cache) => store.msourceComplete(id, run, status, reqs, cache),
+  };
+  const web = new FakeWeb({});
+  await startMaintenanceDiscovery(
+    FIESTA,
+    io,
+    {
+      net: web.net(),
+      sha256: async () => 'c'.repeat(64),
+      registry: [],
+      catalog: () => [],
+      research: null,
+      uploadPdf: uploadPdf ?? null,
+    },
+    clock,
+  );
 }
 
 describe('Maintenance tab (Task 9)', () => {
@@ -373,36 +409,7 @@ describe('service journal (Task 10)', () => {
 
   it("owner review: items from the owner's own document enter the plan only once accepted", async () => {
     await seed(false);
-    const store = await LocalStore.open(db, sequentialIds(9000), clock, new MemoryFileStore());
-    // The owner's booklet (SYNTHETIC): states the vehicle; two items.
-    const booklet = new TextEncoder().encode(
-      '<html><head><title>Ford Fiesta 2013-2017 1.25 maintenance schedule</title></head><body>' +
-        '<h1>Ford Fiesta 2013-2017 1.25 maintenance schedule</h1>' +
-        '<p>Engine oil: replace every 20,000 km or 12 months, whichever comes first.</p>' +
-        '<p>Brake fluid: replace every 24 months.</p></body></html>',
-    );
-    const io: DiscoveryStore = {
-      load: async (id) => ({
-        ...(await store.msourceLoad(id))!,
-        uploads: [{ id: 'doc-owner-1', name: 'booklet.html', bytes: booklet }],
-      }),
-      progress: (id, run, key, status) => store.msourceProgress(id, run, key, status),
-      complete: (id, run, status, reqs, cache) =>
-        store.msourceComplete(id, run, status, reqs, cache),
-    };
-    const web = new FakeWeb({});
-    await startMaintenanceDiscovery(
-      FIESTA,
-      io,
-      {
-        net: web.net(),
-        sha256: async () => 'c'.repeat(64),
-        registry: [],
-        catalog: () => [],
-        research: null,
-      },
-      clock,
-    );
+    await discoverWithUpload('booklet.html', BOOKLET);
 
     await open('/maintenance', 'screen-maintenance');
     await waitFor(() => expect(screen.getByTestId('plan-owner-review')).toBeOnTheScreen(), LONG);
@@ -434,5 +441,60 @@ describe('service journal (Task 10)', () => {
     await waitFor(() => expect(screen.getByTestId('plan-item-engine_oil')).toBeOnTheScreen(), LONG);
     expect(screen.queryByTestId('plan-item-brake_fluid')).toBeNull();
     expect(screen.getByTestId('plan-owner-review')).toHaveTextContent(/כל הפריטים מהמסמך נבדקו/);
+  }, 90000);
+
+  it('a scanned (image-only) PDF upload is explained, never silent', async () => {
+    await seed(false);
+    // SYNTHETIC: a PDF whose pages carry no text layer (what the on-device reader returns).
+    const scan = new TextEncoder().encode('%PDF-1.4\n% scanned pages only\n');
+    await discoverWithUpload('scan.pdf', scan, {
+      read: async () => [{ n: 1, lines: [], text: '' }],
+    });
+    await open('/maintenance', 'screen-maintenance');
+    await waitFor(
+      () => expect(screen.getByTestId('plan-owner-review-no-text')).toBeOnTheScreen(),
+      LONG,
+    );
+    const NO_TEXT =
+      /המסמך שהועלה הוא קובץ תמונה\/סריקה ללא טקסט קריא. כרגע נתמכים ספרי רכב דיגיטליים מקוריים בלבד. באפשרותך להזין את הטיפולים ידנית./;
+    expect(screen.getByTestId('plan-owner-review-no-text')).toHaveTextContent(NO_TEXT);
+    await fireEvent.press(screen.getByTestId('plan-owner-review-open'));
+    await waitFor(() => expect(screen.getByTestId('owner-review-no-text')).toBeOnTheScreen(), LONG);
+    expect(screen.getByTestId('owner-review-no-text')).toHaveTextContent(/scan\.pdf/);
+    expect(screen.getByTestId('owner-review-no-text')).toHaveTextContent(NO_TEXT);
+  }, 90000);
+
+  it('owner review: an item corrected before approval is scheduled as edited, labelled so', async () => {
+    await seed(false);
+    await discoverWithUpload('booklet.html', BOOKLET);
+    await open('/maintenance-review', 'screen-maintenance-review');
+    await waitFor(
+      () => expect(screen.getByTestId('owner-proposal-engine_oil-edit')).toBeOnTheScreen(),
+      LONG,
+    );
+    await fireEvent.press(screen.getByTestId('owner-proposal-engine_oil-edit'));
+    // Invalid first: no interval at all is refused.
+    await fireEvent.changeText(screen.getByTestId('owner-proposal-engine_oil-edit-km'), '');
+    await fireEvent.changeText(screen.getByTestId('owner-proposal-engine_oil-edit-months'), '');
+    await fireEvent.press(screen.getByTestId('owner-proposal-engine_oil-edit-save'));
+    expect(screen.getByTestId('owner-proposal-engine_oil-edit-error')).toBeOnTheScreen();
+    await fireEvent.changeText(screen.getByTestId('owner-proposal-engine_oil-edit-km'), '15000');
+    await fireEvent.changeText(screen.getByTestId('owner-proposal-engine_oil-edit-months'), '12');
+    await fireEvent.press(screen.getByTestId('owner-proposal-engine_oil-edit-save'));
+    await waitFor(
+      () => expect(screen.getByTestId('owner-proposal-engine_oil-edited')).toBeOnTheScreen(),
+      LONG,
+    );
+    expect(screen.getByTestId('owner-proposal-engine_oil-decision')).toHaveTextContent(/אושר/);
+    expect(screen.getByTestId('owner-proposal-engine_oil-interval')).toHaveTextContent(/15,000/);
+    // The document's own reading stays visible beside the correction.
+    expect(screen.getByTestId('owner-proposal-engine_oil')).toHaveTextContent(/במסמך:.*20,000/);
+
+    await open('/maintenance', 'screen-maintenance');
+    await waitFor(() => expect(screen.getByTestId('plan-item-engine_oil')).toBeOnTheScreen(), LONG);
+    expect(screen.getByTestId('plan-item-engine_oil')).toHaveTextContent(/15,000/);
+    expect(screen.getByTestId('plan-item-engine_oil-source')).toHaveTextContent(
+      /מסמך הבעלים \(נערך על ידי המשתמש\)/,
+    );
   }, 90000);
 });

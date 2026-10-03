@@ -17,6 +17,7 @@ export default function MaintenanceReviewScreen() {
       {activeVehicle ? (
         <OwnerReviewList
           proposals={plan?.ownerReview?.proposals ?? []}
+          issues={plan?.ownerReview?.issues ?? []}
           vehicleId={activeVehicle.id}
         />
       ) : null}

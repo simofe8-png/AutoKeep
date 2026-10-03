@@ -1,3 +1,4 @@
+import type { OwnerEdit } from '@/discovery/maintenance/msource/ownerReview';
 import type { CachedSource, MSourceRun } from '@/discovery/maintenance/msource/run';
 import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 import type { ResolvedSchedule } from '@/discovery/maintenance/msource/types';
@@ -6,7 +7,7 @@ import type { MaintenanceRequirement, Timestamp, VehicleId } from '@/domain';
 import { fromJson, toJson, type Executor } from './base';
 
 /**
- * M-SOURCE persistence (local-only, migrations v10–v11). Runs and schedules are vehicle-scoped and
+ * M-SOURCE persistence (local-only, migrations v10–v12). Runs and schedules are vehicle-scoped and
  * every query filters by vehicle_id; the evidence cache is keyed by vehicle CLASS only.
  */
 
@@ -23,35 +24,51 @@ export type OwnerDecision = 'accepted' | 'rejected';
 export class MSourceRepository {
   constructor(private readonly db: Executor) {}
 
-  /** The owner's decisions on proposals from their own documents, by proposal key. */
+  /** The owner's decisions (and corrections) on proposals from their own documents, by key. */
   async ownerDecisions(
     vehicleId: VehicleId,
-  ): Promise<Map<string, { decision: OwnerDecision; decidedAt: string }>> {
+  ): Promise<Map<string, { decision: OwnerDecision; decidedAt: string; edit: OwnerEdit | null }>> {
     const rows = await this.db.all<{
       proposal_key: string;
       decision: OwnerDecision;
       decided_at: string;
+      edit_json: string | null;
     }>(
-      'SELECT proposal_key, decision, decided_at FROM msource_owner_reviews WHERE vehicle_id = ?',
+      'SELECT proposal_key, decision, decided_at, edit_json FROM msource_owner_reviews WHERE vehicle_id = ?',
       [vehicleId],
     );
     return new Map(
-      rows.map((r) => [r.proposal_key, { decision: r.decision, decidedAt: r.decided_at }]),
+      rows.map((r) => [
+        r.proposal_key,
+        {
+          decision: r.decision,
+          decidedAt: r.decided_at,
+          edit: r.edit_json ? fromJson<OwnerEdit>(r.edit_json) : null,
+        },
+      ]),
     );
   }
 
+  /** Saves a decision; an accepted item may carry the owner's correction (a rejection never). */
   async saveOwnerDecision(
     vehicleId: VehicleId,
     proposalKey: string,
     decision: OwnerDecision,
     now: Timestamp,
+    edit: OwnerEdit | null = null,
   ): Promise<void> {
     await this.db.run(
-      `INSERT INTO msource_owner_reviews (vehicle_id, proposal_key, decision, decided_at)
-       VALUES (?, ?, ?, ?)
+      `INSERT INTO msource_owner_reviews (vehicle_id, proposal_key, decision, decided_at, edit_json)
+       VALUES (?, ?, ?, ?, ?)
        ON CONFLICT(vehicle_id, proposal_key) DO UPDATE SET decision = excluded.decision,
-         decided_at = excluded.decided_at`,
-      [vehicleId, proposalKey, decision, now],
+         decided_at = excluded.decided_at, edit_json = excluded.edit_json`,
+      [
+        vehicleId,
+        proposalKey,
+        decision,
+        now,
+        decision === 'accepted' && edit ? toJson(edit) : null,
+      ],
     );
   }
 
