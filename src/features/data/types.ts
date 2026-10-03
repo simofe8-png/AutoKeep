@@ -253,6 +253,11 @@ export interface MaintenancePlanVM {
   verifiedIdentity?: RegistryFact[] | null;
   /** Items read from the owner's own documents, awaiting or carrying the owner's decision. */
   ownerReview?: { proposals: OwnerProposalVM[]; issues: UploadIssue[] };
+  /**
+   * General guidance by propulsion type, ONLY while the plan has no schedule item (never part of
+   * the schedule, dues or reminders).
+   */
+  standardGuidance?: { key: string; label: string; interval: string }[] | null;
 }
 
 export type OwnerProposalVM = OwnerProposal & {

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { needsDiscovery } from '@/discovery/maintenance/msource/status';
 import { safeErrorText } from '@/security/redact';
 import { AppState, StyleSheet, View } from 'react-native';
 
@@ -41,15 +42,6 @@ export interface LocalDataProviderProps {
 }
 
 type Phase = { kind: 'loading' } | { kind: 'ready'; snapshot: Snapshot } | { kind: 'failed' };
-
-const PROGRESS = [
-  'IDENTIFYING_VEHICLE',
-  'DISCOVERING_SOURCES',
-  'FOUND_SOURCES',
-  'VERIFYING_MATCH',
-  'BUILDING_SCHEDULE',
-];
-const isProgress = (state: string) => PROGRESS.includes(state);
 
 /** Holds the open store and serializes writes so they apply in the user's order. */
 class StoreRuntime {
@@ -307,7 +299,9 @@ export function LocalDataProvider({
     });
   });
 
-  // Vehicles confirmed before M-SOURCE existed (or whose run never finished) are picked up once.
+  // Automatic (no "search again" needed): on app start each vehicle whose schedule is missing,
+  // interrupted, incomplete and stale, or searched against an older bundled catalog is searched
+  // again — once per app session.
   const [resumed] = useState(() => new Set<string>());
   useEffect(() => {
     if (phase.kind !== 'ready' || !msource) return;
@@ -315,7 +309,7 @@ export function LocalDataProvider({
       if (v.archived || resumed.has(v.id)) continue;
       resumed.add(v.id);
       const d = phase.snapshot.bundles[v.id]?.plan?.discovery;
-      if (!d || !d.updatedAt || isProgress(d.state)) discover(v.id);
+      if (needsDiscovery(d, msource.catalogVersion, Date.now())) discover(v.id);
     }
   }, [phase, msource, resumed, discover]);
 

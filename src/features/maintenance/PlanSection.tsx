@@ -420,6 +420,33 @@ ${summary}`
 }
 
 /**
+ * General guidance by propulsion type (owner decision 2026-10-03): its own card, clearly not the
+ * manufacturer's schedule; never part of the plan, dues or reminders.
+ */
+function StandardGuidanceCard({ rows }: { rows: MaintenancePlanVM['standardGuidance'] | null }) {
+  if (!rows?.length) return null;
+  const g = he.maintenancePlan.standard;
+  return (
+    <Card testID="plan-standard-guidance">
+      <Stack gap={spacing.sm}>
+        <AppText variant="heading" accessibilityRole="header">
+          {g.title}
+        </AppText>
+        <InlineNotice tone="info" message={g.note} />
+        {rows.map((r) => (
+          <View key={r.key} style={styles.whenRow} testID={`plan-standard-${r.key}`}>
+            <AppText variant="body" style={styles.flex}>
+              {r.label}
+            </AppText>
+            <AppText variant="bodyStrong">{r.interval}</AppText>
+          </View>
+        ))}
+      </Stack>
+    </Card>
+  );
+}
+
+/**
  * The evidence-based maintenance plan (Task 9): verified requirements as a useful schedule, or —
  * when the evidence is insufficient — no interval at all, only the exact next action.
  */
@@ -444,6 +471,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
           proposals={plan.ownerReview?.proposals ?? []}
           issues={plan.ownerReview?.issues ?? []}
         />
+        <StandardGuidanceCard rows={plan.standardGuidance ?? null} />
         <Card tone="warning" testID="plan-fallback">
           <Stack gap={spacing.sm}>
             <View style={styles.needHead}>
@@ -525,6 +553,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
         proposals={plan.ownerReview?.proposals ?? []}
         issues={plan.ownerReview?.issues ?? []}
       />
+      <StandardGuidanceCard rows={plan.standardGuidance ?? null} />
       {plan.requests.length > 0 ? (
         <Card tone="warning" testID="plan-needs-information">
           <Stack gap={spacing.sm}>

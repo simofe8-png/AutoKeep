@@ -505,6 +505,24 @@ export const he = {
     actions: { inspection: 'בדיקה', replacement: 'החלפה', adjustment: 'כיוון', other: 'טיפול' },
     recordTitle: 'פעולות מלוח הטיפולים',
     recordHint: 'סמנו רק מה שבוצע בפועל. פריט שלא סומן לא יסומן כבוצע.',
+    /** Standard guidance by propulsion type (owner decision 2026-10-03): never a schedule. */
+    standard: {
+      title: 'שגרת טיפולים סטנדרטית (לפי סוג הנעה)',
+      note: 'הנחיות כלליות לפי סוג ההנעה — לא שגרת היצרן לרכב שלך. הן אינן נכנסות ללוח הטיפולים ולתזכורות. מומלץ לבדוק מול ספר הרכב או המוסך.',
+      oilAndFilter: 'שמן מנוע ומסנן שמן',
+      engineOil: 'שמן מנוע',
+      airFilter: 'מסנן אוויר',
+      cabinFilter: 'מסנן מזגן',
+      brakeFluid: 'נוזל בלמים',
+      sparkPlugs: 'מצתים',
+      sparkPlug: 'מצת',
+      valveClearance: 'בדיקת מרווח שסתומים',
+      every15kOrYear: 'כל 15,000 ק״מ או שנה',
+      every30k: 'כל 30,000 ק״מ',
+      every60k: 'כל 60,000 ק״מ',
+      every2Years: 'כל שנתיים',
+      moto: 'כל 3,000–6,000 ק״מ',
+    },
     /** Owner review of items read from the owner's own document (spec Part A, D-A3). */
     ownerReview: {
       cardTitle: 'פריטים מהמסמך שהעלית',

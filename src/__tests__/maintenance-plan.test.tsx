@@ -172,6 +172,16 @@ describe('Maintenance tab (Task 9)', () => {
     await seed(false);
     await open('/maintenance', 'screen-maintenance');
     await waitFor(() => expect(screen.getByTestId('plan-fallback')).toBeOnTheScreen(), LONG);
+    // Never an empty screen: general guidance by propulsion type, in its own labelled card —
+    // never a schedule item (owner decision 2026-10-03).
+    expect(screen.getByTestId('plan-standard-guidance')).toBeOnTheScreen();
+    expect(screen.getByText('שגרת טיפולים סטנדרטית (לפי סוג הנעה)')).toBeOnTheScreen();
+    expect(screen.getByTestId('plan-standard-engine_oil')).toHaveTextContent(
+      /כל 15,000 ק״מ או שנה/,
+    );
+    expect(screen.getByTestId('plan-standard-spark_plugs')).toBeOnTheScreen();
+    expect(screen.queryByTestId('plan-items')).toBeNull();
+    expect(screen.queryByTestId('plan-item-engine_oil')).toBeNull();
     // §24: the owner-approved fallback message, verbatim, with a direct private upload action.
     expect(screen.getByTestId('plan-fallback-message-0')).toHaveTextContent(
       'חיפשתי לוח טיפולים מתאים לרכב שלך, אך לא מצאתי מידע מספיק מדויק כדי לבנות לוח טיפולים אמין.',
@@ -203,7 +213,10 @@ describe('Maintenance tab (Task 9)', () => {
     expect(screen.queryByTestId('plan-request-awaiting')).toBeNull();
     // No interval anywhere, and no architecture terms.
     expect(screen.queryByTestId('plan-items')).toBeNull();
-    expect(screen.getByTestId('screen-maintenance')).not.toHaveTextContent(/15,000|claim|resolver/);
+    // (The only numbers on the screen are the labelled general-guidance card's — owner decision
+    // 2026-10-03 — never in the plan, its fallback or its requests.)
+    expect(screen.getByTestId('plan-fallback')).not.toHaveTextContent(/15,000|claim|resolver/);
+    expect(screen.getByTestId('screen-maintenance')).not.toHaveTextContent(/claim|resolver/);
     // The precise reason, never a generic "not found": Delek's Ford source is identified but not
     // yet approved as a trusted source.
     expect(screen.getByTestId('plan-request-official-pending')).toHaveTextContent(/עדיין בבדיקה/);
@@ -214,6 +227,8 @@ describe('Maintenance tab (Task 9)', () => {
     await seed(true);
     await open('/maintenance', 'screen-maintenance');
     await waitFor(() => expect(screen.getByTestId('plan-items')).toBeOnTheScreen(), LONG);
+    // A real schedule exists: no general guidance card.
+    expect(screen.queryByTestId('plan-standard-guidance')).toBeNull();
     const service = screen.getByTestId('plan-item-periodic_service');
     expect(service).toHaveTextContent(/טיפול תקופתי/);
     expect(service).toHaveTextContent(/11,111 ק״מ או כל 12 חודשים, המוקדם מביניהם/);

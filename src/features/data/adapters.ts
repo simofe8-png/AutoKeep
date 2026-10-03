@@ -25,6 +25,7 @@ import type { AlertCandidate } from '@/engine/alerts';
 import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 import { buildMaintenancePlan } from '@/features/maintenance/knowledge/plan';
 import { toPlanVM, verifiedIdentity } from '@/features/maintenance/knowledge/planVM';
+import { standardGuidance } from '@/features/maintenance/knowledge/standardGuidance';
 import { triangulatedRequirements } from '@/features/maintenance/knowledge/triangulated';
 import { syntheticDemoRequirements } from '@/features/maintenance/knowledge/syntheticDemo';
 import type { MaintenanceProfile, StoredKnowledgeDocument } from '@/persistence';
@@ -474,7 +475,7 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
     readings: rec.readings.map((r) => ({ date: r.measuredAt, km: r.valueKm })),
     today,
   });
-  return toPlanVM(
+  const vm = toPlanVM(
     plan,
     (rec.knowledgeDocuments ?? []).length > 0,
     rec.msource?.status ?? null,
@@ -484,6 +485,11 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
       issues: rec.msource?.owner?.issues ?? [],
     },
   );
+  // Standard guidance only while there is no schedule item at all (owner decision 2026-10-03).
+  return {
+    ...vm,
+    standardGuidance: vm.items.length === 0 ? standardGuidance(v.type, v.identity.fuel) : null,
+  };
 }
 
 // ---------- the full bundle ----------

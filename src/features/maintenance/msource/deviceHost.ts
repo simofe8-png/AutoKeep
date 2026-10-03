@@ -4,6 +4,7 @@ import { SOURCE_SYSTEMS } from '@/discovery/maintenance/registry/israelSources';
 import { toHex } from '@/providers/storage/types';
 
 import { catalogFor } from './catalog';
+import { MSOURCE_CATALOG_VERSION } from './catalogData';
 import { uploadPdfReader } from './pdfBridge';
 import type { MSourceHost } from './service';
 
@@ -23,6 +24,7 @@ export function deviceMSourceHost(): MSourceHost {
       toHex(await Crypto.digest(Crypto.CryptoDigestAlgorithm.SHA256, new Uint8Array(b))),
     registry: SOURCE_SYSTEMS,
     catalog: catalogFor,
+    catalogVersion: MSOURCE_CATALOG_VERSION,
     research: null,
     // The owner's own PDFs only, read on the device (WebView pdf.js, no network).
     uploadPdf: uploadPdfReader(),

@@ -54,6 +54,8 @@ export interface MSourceHost {
   research?: ResearchProvider | null;
   /** Reads the owner's own uploaded PDFs on the device (WebView pdf.js, D-A1); never web PDFs. */
   uploadPdf?: TextReader | null;
+  /** Version of the bundled class catalog (recorded with each result). */
+  catalogVersion?: string;
   log?: MSourceLogger;
 }
 
@@ -205,7 +207,7 @@ export async function startMaintenanceDiscovery(
       return { started: true, status };
     }
     await Promise.all(pending);
-    const status = terminalStatus(run, clock.now());
+    const status = { ...terminalStatus(run, clock.now()), catalogVersion: host.catalogVersion };
     discoveryLog('done', {
       classKey,
       state: status.state,

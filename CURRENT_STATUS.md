@@ -112,6 +112,16 @@ _Last updated: 2026-10-03_
   - See VEHICLE_IMAGE_IMPLEMENTATION.md, amendment 2026-10-03.
   - Owner decisions: the XR650L schedule comes only from the owner uploading the manual; no
     community schedules (D-A4 kept).
+- **Owner decisions 2026-10-03 (late):**
+  - **Automatic re-search, no "חפש שוב" needed:** on app start, a vehicle whose result is
+    incomplete is searched again if it was searched against an older bundled catalog
+    (`MSOURCE_CATALOG_VERSION`) or more than 12 h ago.
+  - **Standard guidance, chosen option "separate guidance":** generic intervals by propulsion
+    type, in their own labelled card "שגרת טיפולים סטנדרטית (לפי סוג הנעה)". It is shown only
+    while the vehicle has no schedule item, never enters the plan, dues or reminders, and is never
+    verified. The no-fabrication rule for schedules is unchanged.
+  - **Ford interval-overview matrix extractor:** the official Fiesta service interval
+    (12,500 mi / 1 yr) is in the catalog for the registry-only class.
 - **Owner backlog (recorded, not started):** Home shortcut tiles duplicate the bottom navigation
   (history / documents / maintenance). Keep the bottom navigation, and keep only unique Home
   shortcuts such as Garage Mode.
