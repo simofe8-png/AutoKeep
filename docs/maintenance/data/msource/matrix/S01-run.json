@@ -4,14 +4,14 @@
     "vehicleRef": "S01",
     "fingerprintKey": "car|seat|ibiza|2012|1390|CGG|petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:24:32.376Z",
-    "finishedAt": "2026-10-03T05:25:37.230Z",
+    "startedAt": "2026-10-03T09:51:06.163Z",
+    "finishedAt": "2026-10-03T09:52:36.110Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:24:32.376Z",
-        "finishedAt": "2026-10-03T05:24:32.376Z",
+        "startedAt": "2026-10-03T09:51:06.163Z",
+        "finishedAt": "2026-10-03T09:51:06.163Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 1,
@@ -25,9 +25,9 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:24:32.376Z",
-        "finishedAt": "2026-10-03T05:24:32.385Z",
-        "durationMs": 9,
+        "startedAt": "2026-10-03T09:51:06.163Z",
+        "finishedAt": "2026-10-03T09:51:06.183Z",
+        "durationMs": 20,
         "counts": {
           "fable": 47,
           "registry": 0,
@@ -39,9 +39,9 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:24:32.385Z",
-        "finishedAt": "2026-10-03T05:24:32.387Z",
-        "durationMs": 2,
+        "startedAt": "2026-10-03T09:51:06.183Z",
+        "finishedAt": "2026-10-03T09:51:06.186Z",
+        "durationMs": 3,
         "counts": {
           "discovered": 48,
           "unique": 34,
@@ -54,27 +54,22 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:24:32.387Z",
-        "finishedAt": "2026-10-03T05:25:28.296Z",
-        "durationMs": 55909,
+        "startedAt": "2026-10-03T09:51:06.186Z",
+        "finishedAt": "2026-10-03T09:52:21.530Z",
+        "durationMs": 75344,
         "counts": {
-          "acquired": 21
+          "acquired": 22
         },
         "failures": [
           {
-            "code": "HTTP_ERROR",
-            "detail": "HTTP 429",
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
             "sourceId": "src-7221a43203ab2754"
           },
           {
             "code": "HTTP_ERROR",
             "detail": "HTTP 500",
             "sourceId": "src-3bf4a66c4c2ea6ae"
-          },
-          {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-1908507ebf002c98"
           },
           {
             "code": "ACCESS_CONTROL_DETECTED",
@@ -112,9 +107,9 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:25:28.296Z",
-        "finishedAt": "2026-10-03T05:25:37.230Z",
-        "durationMs": 8934,
+        "startedAt": "2026-10-03T09:52:21.530Z",
+        "finishedAt": "2026-10-03T09:52:36.109Z",
+        "durationMs": 14579,
         "counts": {
           "extracted": 3,
           "grounded": 3
@@ -141,6 +136,11 @@
             "sourceId": "src-eb378fbf0f7edd0d"
           },
           {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+            "sourceId": "src-1908507ebf002c98"
+          },
+          {
             "code": "NO_SCHEDULE_SECTION",
             "detail": "https://www.idgarages.com/fr-fr/entretien/seat/carnet-entretien-seat-ibiza-4",
             "sourceId": "src-f0121024213016ce"
@@ -162,23 +162,23 @@
           },
           {
             "code": "NO_REQUIREMENTS_EXTRACTED",
-            "detail": "https://carwiki.de/seat-ibiza-inspektion",
-            "sourceId": "src-0b046ae65acf0160"
-          },
-          {
-            "code": "NO_REQUIREMENTS_EXTRACTED",
             "detail": "https://www.seatcupra.net/forums/threads/timing-belt-change-interval.459635/",
             "sourceId": "src-05ab60d693c25774"
           },
           {
-            "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
-            "sourceId": "src-737b8162089095dc"
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://carwiki.de/seat-ibiza-inspektion",
+            "sourceId": "src-0b046ae65acf0160"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
             "detail": "https://carwiki.de/seat-ibiza-zuendkerzen-wechseln",
             "sourceId": "src-60a0431ddb7653e3"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+            "sourceId": "src-737b8162089095dc"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
@@ -237,23 +237,23 @@
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://carwiki.de/seat-ibiza",
-            "sourceId": "src-6f00d231c3797a3b"
-          },
-          {
-            "code": "NO_SCHEDULE_SECTION",
             "detail": "https://www.seatcupra.net/forums/tags/seat-ibiza/",
             "sourceId": "src-3ae4a45a98ff2da8"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://carwiki.de/seat-ibiza-inspektion-zuruecksetzen",
-            "sourceId": "src-4fbbc3a75d22157d"
+            "detail": "https://www.seatcupra.net/forums/categories/ibiza.381/",
+            "sourceId": "src-050f27b908e493ab"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://www.seatcupra.net/forums/categories/ibiza.381/",
-            "sourceId": "src-050f27b908e493ab"
+            "detail": "https://carwiki.de/seat-ibiza",
+            "sourceId": "src-6f00d231c3797a3b"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/seat-ibiza-inspektion-zuruecksetzen",
+            "sourceId": "src-4fbbc3a75d22157d"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
@@ -269,13 +269,13 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:25:37.230Z",
-        "finishedAt": "2026-10-03T05:25:37.230Z",
-        "durationMs": 0,
+        "startedAt": "2026-10-03T09:52:36.109Z",
+        "finishedAt": "2026-10-03T09:52:36.110Z",
+        "durationMs": 1,
         "counts": {
           "PARTIAL": 13,
           "SUPPORTED": 4,
-          "NOT_APPLICABLE": 11,
+          "NOT_APPLICABLE": 12,
           "INSUFFICIENT": 1,
           "EXACT": 1,
           "STRONG": 1
@@ -292,8 +292,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:25:37.230Z",
-        "finishedAt": "2026-10-03T05:25:37.230Z",
+        "startedAt": "2026-10-03T09:52:36.110Z",
+        "finishedAt": "2026-10-03T09:52:36.110Z",
         "durationMs": 0,
         "counts": {
           "obligations": 1,
@@ -306,8 +306,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:25:37.230Z",
-        "finishedAt": "2026-10-03T05:25:37.230Z",
+        "startedAt": "2026-10-03T09:52:36.110Z",
+        "finishedAt": "2026-10-03T09:52:36.110Z",
         "durationMs": 0,
         "counts": {
           "items": 1,
@@ -324,8 +324,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:25:37.230Z",
-        "finishedAt": "2026-10-03T05:25:37.230Z",
+        "startedAt": "2026-10-03T09:52:36.110Z",
+        "finishedAt": "2026-10-03T09:52:36.110Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -334,8 +334,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:25:37.230Z",
-        "finishedAt": "2026-10-03T05:25:37.230Z",
+        "startedAt": "2026-10-03T09:52:36.110Z",
+        "finishedAt": "2026-10-03T09:52:36.110Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -394,8 +394,8 @@
         "by": "fable",
         "outcome": "failed",
         "failure": {
-          "code": "HTTP_ERROR",
-          "detail": "HTTP 429"
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
         }
       },
       {
@@ -428,10 +428,10 @@
       {
         "url": "https://seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "no_evidence",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
         }
       },
       {
@@ -672,24 +672,6 @@
         }
       },
       {
-        "url": "https://carwiki.de/seat-ibiza",
-        "by": "link",
-        "outcome": "no_evidence",
-        "failure": {
-          "code": "NO_SCHEDULE_SECTION",
-          "detail": "no maintenance schedule section"
-        }
-      },
-      {
-        "url": "https://carwiki.de/seat-ibiza-inspektion-zuruecksetzen",
-        "by": "link",
-        "outcome": "no_evidence",
-        "failure": {
-          "code": "NO_SCHEDULE_SECTION",
-          "detail": "no maintenance schedule section"
-        }
-      },
-      {
         "url": "https://www.seatcupra.net/forums/tags/seat-ibiza/",
         "by": "link",
         "outcome": "no_evidence",
@@ -700,6 +682,24 @@
       },
       {
         "url": "https://www.seatcupra.net/forums/categories/ibiza.381/",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/seat-ibiza",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/seat-ibiza-inspektion-zuruecksetzen",
         "by": "link",
         "outcome": "no_evidence",
         "failure": {
@@ -876,8 +876,8 @@
           "sourceName": "Glinicke (SEAT dealer group, Germany) hosting an official SEAT booklet",
           "sourceType": "oem_booklet",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:24:33.438Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:06.946Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "1b5d2f1288ee3656d724f96c84e4e376860e10a1167029021dbad352244c2b61",
@@ -912,7 +912,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:33.307Z",
+              "decidedAt": "2026-10-03T09:51:06.558Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -928,7 +928,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:33.438Z",
+              "decidedAt": "2026-10-03T09:51:06.946Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -949,7 +949,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:33.438Z",
+              "decidedAt": "2026-10-03T09:51:06.946Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -971,8 +971,8 @@
           "sourceName": "SEAT UK (seat.co.uk datamanual)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:24:35.372Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:09.122Z",
           "format": "pdf",
           "documentType": "owners_manual",
           "contentSha256": "419bf3322a868916d47fc7b9f3707ca9cd7615f31e6272e73a5c458369fc4568",
@@ -1014,7 +1014,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:34.589Z",
+              "decidedAt": "2026-10-03T09:51:08.205Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1030,7 +1030,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:35.371Z",
+              "decidedAt": "2026-10-03T09:51:09.122Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1051,7 +1051,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:35.372Z",
+              "decidedAt": "2026-10-03T09:51:09.122Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1073,8 +1073,8 @@
           "sourceName": "SEAT UK (seat.co.uk datamanual)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:24:42.411Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:17.884Z",
           "format": "pdf",
           "documentType": "owners_manual",
           "contentSha256": "85373618427b74fc1be42f6f89eb47d5613c5a6912d904407c4c7986b11862f1",
@@ -1115,7 +1115,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:41.068Z",
+              "decidedAt": "2026-10-03T09:51:16.418Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1131,7 +1131,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:42.411Z",
+              "decidedAt": "2026-10-03T09:51:17.884Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1152,7 +1152,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:42.411Z",
+              "decidedAt": "2026-10-03T09:51:17.884Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1174,8 +1174,8 @@
           "sourceName": "SEAT S.A. (seat.com datamanual)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:24:44.173Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:19.104Z",
           "format": "pdf",
           "documentType": "owners_manual",
           "contentSha256": "3251c49538ba59609edbb0f0cde5981c736a64856ae4e3965b5d1ff0d1030b1c",
@@ -1217,7 +1217,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:43.292Z",
+              "decidedAt": "2026-10-03T09:51:16.925Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1233,7 +1233,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:44.172Z",
+              "decidedAt": "2026-10-03T09:51:19.104Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1254,7 +1254,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:44.173Z",
+              "decidedAt": "2026-10-03T09:51:19.104Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1276,8 +1276,8 @@
           "sourceName": "SEAT UK (seat.co.uk datamanual)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:24:49.660Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:28.765Z",
           "format": "pdf",
           "documentType": "owners_manual",
           "contentSha256": "8bf4206fb3b2508d27c47d4a4192d6b5eca3cb4bd84a3b5f6211effeba32953e",
@@ -1319,7 +1319,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:48.301Z",
+              "decidedAt": "2026-10-03T09:51:27.385Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1335,7 +1335,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:49.660Z",
+              "decidedAt": "2026-10-03T09:51:28.764Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1356,7 +1356,126 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:49.660Z",
+              "decidedAt": "2026-10-03T09:51:28.765Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": true,
+            "basis": "brand_domain",
+            "detail": "seat.co.uk is the seat brand domain; document type owners_manual"
+          }
+        },
+        {
+          "sourceId": "src-1908507ebf002c98",
+          "canonicalUrl": "https://seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+          "finalUrl": "https://www.seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+          "chain": [
+            "https://seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+            "https://www.seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf"
+          ],
+          "sourceName": "SEAT UK (seat.co.uk datamanual)",
+          "sourceType": "oem_manual",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:29.483Z",
+          "format": "pdf",
+          "documentType": "owners_manual",
+          "contentSha256": "c909c3ce7ac2d627a6f22de6d04cfd1e768b59712f412945ee0b96992d8060a9",
+          "byteLength": 4110321,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Ibiza"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2015,
+            "yearTo": 2015,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200,
+              1400,
+              1600,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "official_metadata",
+            "yearDesignation": "my15",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+              "host": "seat.co.uk",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://seat.co.uk/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:51:27.986Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+              "host": "www.seat.co.uk",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.seat.co.uk/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:51:28.138Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+              "host": "www.seat.co.uk",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:51:29.481Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+              "host": "www.seat.co.uk",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://seat.co.uk/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.seat.co.uk/datamanual-manual/ibiza/my15_w22/en-uk/Gama%20Ibiza_EN.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:51:29.483Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1378,8 +1497,8 @@
           "sourceName": "iDGARAGES",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:24:57.646Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:41.814Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "d565708da9bfad2bfca0774fa491c2f5f00162e7e3ad81ef2cb8a0b47dcb3997",
@@ -1423,7 +1542,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:57.622Z",
+              "decidedAt": "2026-10-03T09:51:41.784Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1439,7 +1558,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:57.645Z",
+              "decidedAt": "2026-10-03T09:51:41.813Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1460,7 +1579,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:57.646Z",
+              "decidedAt": "2026-10-03T09:51:41.814Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1482,8 +1601,8 @@
           "sourceName": "SEAT España (seat.es datamanual)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:24:58.892Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:41.588Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "9ce7423f752374b3355d9a24a073a0af3629583c9b29a29f18579364827f3335",
@@ -1520,7 +1639,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:57.881Z",
+              "decidedAt": "2026-10-03T09:51:40.412Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1536,7 +1655,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:58.892Z",
+              "decidedAt": "2026-10-03T09:51:41.588Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1557,7 +1676,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:24:58.892Z",
+              "decidedAt": "2026-10-03T09:51:41.588Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1579,8 +1698,8 @@
           "sourceName": "SEAT S.A. (SEAT UK datamanual library), MY12 IBIZA owner's manual 6J4012003DC (12.11)",
           "sourceType": "other",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:04.507Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:51.710Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "05e3aef11f15c91099e443f4dd3736201a49dc0cad5a9e0f817a52f4cc2f7fa1",
@@ -1621,7 +1740,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:03.060Z",
+              "decidedAt": "2026-10-03T09:51:49.603Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1637,7 +1756,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:04.507Z",
+              "decidedAt": "2026-10-03T09:51:51.710Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1658,7 +1777,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:04.507Z",
+              "decidedAt": "2026-10-03T09:51:51.710Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1680,8 +1799,8 @@
           "sourceName": "SEAT S.A., MY13 IBIZA owner's manual 6J4012003DL (07.12)",
           "sourceType": "other",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:08.429Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:51:58.998Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "f7ced1d453d311b1394e97750f908c5bca188467d3855b1f7db9881cfb9050c5",
@@ -1722,7 +1841,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:07.947Z",
+              "decidedAt": "2026-10-03T09:51:57.899Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1738,7 +1857,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:08.429Z",
+              "decidedAt": "2026-10-03T09:51:58.998Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1759,7 +1878,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:08.429Z",
+              "decidedAt": "2026-10-03T09:51:58.998Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1781,8 +1900,8 @@
           "sourceName": "SEAT S.A., MY11 IBIZA owner's manual 6J4012003BQ (07.10)",
           "sourceType": "other",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:10.363Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:00.307Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "cc94868b76234a56a3809cced1f86f6280297362ff433147b64053d79dc79f37",
@@ -1824,7 +1943,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:07.947Z",
+              "decidedAt": "2026-10-03T09:51:57.899Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1840,7 +1959,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:10.363Z",
+              "decidedAt": "2026-10-03T09:52:00.306Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1861,7 +1980,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:10.363Z",
+              "decidedAt": "2026-10-03T09:52:00.307Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1874,104 +1993,6 @@
           }
         },
         {
-          "sourceId": "src-0b046ae65acf0160",
-          "canonicalUrl": "https://carwiki.de/seat-ibiza-inspektion",
-          "finalUrl": "https://carwiki.de/seat-ibiza-inspektion",
-          "chain": [
-            "https://carwiki.de/seat-ibiza-inspektion"
-          ],
-          "sourceName": "carwiki.de",
-          "sourceType": "publication",
-          "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:15.143Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "1f3c5b64cd7d21aeeb0fcb688466512bae2fafb1c3cae05d0382f061db93d466",
-          "byteLength": 172057,
-          "locale": "de",
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Ibiza"
-            ],
-            "modelVariants": [
-              "4",
-              "400"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://carwiki.de/seat-ibiza-inspektion",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:25:14.817Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://carwiki.de/seat-ibiza-inspektion",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/seat-ibiza-inspektion",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:25:15.142Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://carwiki.de/seat-ibiza-inspektion",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/seat-ibiza-inspektion",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:25:15.143Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "carwiki.de"
-          }
-        },
-        {
           "sourceId": "src-05ab60d693c25774",
           "canonicalUrl": "https://www.seatcupra.net/forums/threads/timing-belt-change-interval.459635/",
           "finalUrl": "https://www.seatcupra.net/forums/threads/timing-belt-change-interval.459635/",
@@ -1981,12 +2002,12 @@
           "sourceName": "SEATCupra.net forum",
           "sourceType": "forum",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:15.383Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:08.237Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "0c213c5c1962391d91fa01d237818672f65e9b1018c8d983e539e919ea73664a",
-          "byteLength": 123544,
+          "contentSha256": "c58e945e9758486d4d2ae28f6089c6bac6ef8b2c2e0587618f2da5428013cd93",
+          "byteLength": 123507,
           "locale": "en",
           "markets": [],
           "statedApplicability": {
@@ -2021,7 +2042,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:15.211Z",
+              "decidedAt": "2026-10-03T09:52:08.092Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2037,7 +2058,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:15.382Z",
+              "decidedAt": "2026-10-03T09:52:08.237Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2058,7 +2079,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:15.383Z",
+              "decidedAt": "2026-10-03T09:52:08.237Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2071,28 +2092,31 @@
           }
         },
         {
-          "sourceId": "src-737b8162089095dc",
-          "canonicalUrl": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
-          "finalUrl": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+          "sourceId": "src-0b046ae65acf0160",
+          "canonicalUrl": "https://carwiki.de/seat-ibiza-inspektion",
+          "finalUrl": "https://carwiki.de/seat-ibiza-inspektion",
           "chain": [
-            "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/"
+            "https://carwiki.de/seat-ibiza-inspektion"
           ],
-          "sourceName": "Total Renting (ES)",
+          "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:16.045Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:11.352Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "8b5e56eb4bfafb1f89cc9e9e79064d51bf3e56989aa76cff9092cc0c11d0d9ab",
-          "byteLength": 360341,
-          "locale": "es",
+          "contentSha256": "3535b3ffa0f3791ca70bbcf9a2493f33c14ba835b781d799707fc0ffa99a48b4",
+          "byteLength": 172235,
+          "locale": "de",
           "markets": [],
           "statedApplicability": {
             "models": [
               "Ibiza"
             ],
-            "modelVariants": [],
+            "modelVariants": [
+              "4",
+              "400"
+            ],
             "yearFrom": null,
             "yearTo": null,
             "engineCodes": [],
@@ -2106,54 +2130,54 @@
             {
               "operation": "FETCH",
               "status": "ALLOWED",
-              "reason": "robots_allows",
-              "url": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
-              "host": "totalrenting.es",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/seat-ibiza-inspektion",
+              "host": "carwiki.de",
               "evidence": [
                 {
                   "kind": "robots",
-                  "ref": "https://totalrenting.es/robots.txt",
-                  "detail": "group *; Allow: /"
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:15.739Z",
+              "decidedAt": "2026-10-03T09:52:07.999Z",
               "policyVersion": "msource-access/2"
             },
             {
               "operation": "STORAGE",
               "status": "UNKNOWN",
               "reason": "no_storage_permission",
-              "url": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
-              "host": "totalrenting.es",
+              "url": "https://carwiki.de/seat-ibiza-inspektion",
+              "host": "carwiki.de",
               "evidence": [
                 {
                   "kind": "operation_scope",
-                  "ref": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+                  "ref": "https://carwiki.de/seat-ibiza-inspektion",
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:16.044Z",
+              "decidedAt": "2026-10-03T09:52:11.352Z",
               "policyVersion": "msource-access/2"
             },
             {
               "operation": "EXTRACTION",
               "status": "ALLOWED",
               "reason": "facts_only_after_permitted_fetch",
-              "url": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
-              "host": "totalrenting.es",
+              "url": "https://carwiki.de/seat-ibiza-inspektion",
+              "host": "carwiki.de",
               "evidence": [
                 {
                   "kind": "robots",
-                  "ref": "https://totalrenting.es/robots.txt",
-                  "detail": "group *; Allow: /"
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
                 },
                 {
                   "kind": "operation_scope",
-                  "ref": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+                  "ref": "https://carwiki.de/seat-ibiza-inspektion",
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:16.045Z",
+              "decidedAt": "2026-10-03T09:52:11.352Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2162,7 +2186,7 @@
           "authority": {
             "official": false,
             "basis": "none",
-            "detail": "totalrenting.es"
+            "detail": "carwiki.de"
           }
         },
         {
@@ -2175,12 +2199,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:16.502Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:11.482Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "09d0a0e3cbef64fae785641911c278ed7929f2c71ea619f5ad0884d35dbcd567",
-          "byteLength": 176927,
+          "contentSha256": "663031885493da3802cf830ae4ef78e810f98e5ca29f1a5f10948e8e0371020a",
+          "byteLength": 177417,
           "locale": "de",
           "markets": [],
           "statedApplicability": {
@@ -2215,7 +2239,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:15.389Z",
+              "decidedAt": "2026-10-03T09:52:11.361Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2231,7 +2255,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:16.502Z",
+              "decidedAt": "2026-10-03T09:52:11.482Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2252,7 +2276,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:16.502Z",
+              "decidedAt": "2026-10-03T09:52:11.482Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2262,6 +2286,101 @@
             "official": false,
             "basis": "none",
             "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-737b8162089095dc",
+          "canonicalUrl": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+          "finalUrl": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+          "chain": [
+            "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/"
+          ],
+          "sourceName": "Total Renting (ES)",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:12.058Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "8b5e56eb4bfafb1f89cc9e9e79064d51bf3e56989aa76cff9092cc0c11d0d9ab",
+          "byteLength": 360341,
+          "locale": "es",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Ibiza"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+              "host": "totalrenting.es",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://totalrenting.es/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:52:11.712Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+              "host": "totalrenting.es",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:52:12.058Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+              "host": "totalrenting.es",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://totalrenting.es/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://totalrenting.es/reparacion/mantenimiento/mantenimiento-seat/mantenimiento-seat-ibiza/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:52:12.058Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "totalrenting.es"
           }
         },
         {
@@ -2275,11 +2394,11 @@
           "sourceName": "queenoftheroad.co.il",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:17.468Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:13.662Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "8efcd798093dd9579a043db9fadf4a6cbd5faa557c89be7f7f46143e7795b9b5",
+          "contentSha256": "d86ed0091feafc7e09da270de40569cbdcf1dfe10a56f0a6a48287c30fe68763",
           "byteLength": 172620,
           "locale": "he",
           "markets": [
@@ -2313,7 +2432,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:16.569Z",
+              "decidedAt": "2026-10-03T09:52:12.272Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2329,7 +2448,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:17.434Z",
+              "decidedAt": "2026-10-03T09:52:13.450Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2345,7 +2464,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:17.468Z",
+              "decidedAt": "2026-10-03T09:52:13.661Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2366,7 +2485,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:17.468Z",
+              "decidedAt": "2026-10-03T09:52:13.661Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2388,11 +2507,11 @@
           "sourceName": "WhoCanFixMyCar",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:17.976Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:14.426Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "69a5fc6e4990b8f0b9328ecacf2a5ae1497457466c698e3d4805616d8e4a88d5",
+          "contentSha256": "a387e655c44aedae0942ebb881b15821311434504b85f366a3debcdf65e69b1e",
           "byteLength": 412527,
           "locale": "en",
           "markets": [],
@@ -2436,7 +2555,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:17.514Z",
+              "decidedAt": "2026-10-03T09:52:13.886Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2452,7 +2571,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:17.975Z",
+              "decidedAt": "2026-10-03T09:52:14.426Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2473,7 +2592,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:17.976Z",
+              "decidedAt": "2026-10-03T09:52:14.426Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2496,12 +2615,12 @@
           "sourceName": "ADAC Autokatalog",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:18.425Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:15.919Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "e7ca78160df988a48681a156ad4f55e0a5772f098e0094411aa13d8596f3f452",
-          "byteLength": 946786,
+          "contentSha256": "18bd697b7fa81c9fecff49b49e66da9b56f7b664aa46243bdbc8837cc8f4a425",
+          "byteLength": 946603,
           "locale": "de",
           "markets": [],
           "statedApplicability": {
@@ -2549,7 +2668,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:17.682Z",
+              "decidedAt": "2026-10-03T09:52:15.042Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2565,7 +2684,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:17.755Z",
+              "decidedAt": "2026-10-03T09:52:15.119Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2581,7 +2700,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:18.424Z",
+              "decidedAt": "2026-10-03T09:52:15.918Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2602,7 +2721,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:18.425Z",
+              "decidedAt": "2026-10-03T09:52:15.919Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2625,12 +2744,12 @@
           "sourceName": "Internet Archive (seat.com)",
           "sourceType": "archive",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:20.967Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:18.276Z",
           "format": "html",
           "documentType": "owners_manual",
-          "contentSha256": "d6fce72b0eb81fed42ce3a61fadea672122bba3ed917af041900256349099f8c",
-          "byteLength": 236537,
+          "contentSha256": "9c65c2faefb6ef45d62bd98c227d3608e2ee92321125cb797807e33ec33d29fa",
+          "byteLength": 236539,
           "locale": "en",
           "markets": [],
           "statedApplicability": {
@@ -2664,7 +2783,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:19.129Z",
+              "decidedAt": "2026-10-03T09:52:16.597Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2680,7 +2799,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:20.190Z",
+              "decidedAt": "2026-10-03T09:52:17.497Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2696,7 +2815,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:20.967Z",
+              "decidedAt": "2026-10-03T09:52:18.276Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2717,7 +2836,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:20.967Z",
+              "decidedAt": "2026-10-03T09:52:18.276Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2739,12 +2858,12 @@
           "sourceName": "cararac.com (vehicle fluid/capacity database)",
           "sourceType": "other",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:25.573Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:19.174Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "e16d2bb4011df22575be66192ff34bce4b149ecf3fca9d201943e7b4bab503f5",
-          "byteLength": 120527,
+          "contentSha256": "f28834948a155f4bdfd8507d0dc1ee675d38f7f53c45f31657d69b3b85748412",
+          "byteLength": 120476,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2800,7 +2919,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:24.874Z",
+              "decidedAt": "2026-10-03T09:52:18.573Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2816,7 +2935,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:25.572Z",
+              "decidedAt": "2026-10-03T09:52:19.174Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2837,7 +2956,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:25.573Z",
+              "decidedAt": "2026-10-03T09:52:19.174Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2859,12 +2978,12 @@
           "sourceName": "cararac.com",
           "sourceType": "other",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:26.636Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:20.679Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "85c92077300bb6eb6ba2f57af346449bff7345d609f17d5ccf868b9e4a78cc5c",
-          "byteLength": 107657,
+          "contentSha256": "35faf2f98558062e8eeaaf84e8252d10c31f3e88d5fe947fb12052551cac0533",
+          "byteLength": 107652,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2906,7 +3025,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:24.874Z",
+              "decidedAt": "2026-10-03T09:52:18.573Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2922,7 +3041,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:26.636Z",
+              "decidedAt": "2026-10-03T09:52:20.678Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2943,7 +3062,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:26.636Z",
+              "decidedAt": "2026-10-03T09:52:20.679Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2965,8 +3084,8 @@
           "sourceName": "repareo.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:28.290Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:21.524Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "dd3bd77f1d3a03ae79b894c13c33b3577dc6e13392e6303febf33a25dac6d0b9",
@@ -3022,7 +3141,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:27.891Z",
+              "decidedAt": "2026-10-03T09:52:21.084Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3038,7 +3157,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:28.290Z",
+              "decidedAt": "2026-10-03T09:52:21.524Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3059,7 +3178,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:28.290Z",
+              "decidedAt": "2026-10-03T09:52:21.524Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3082,12 +3201,12 @@
           "sourceName": "SEATCupra.net forum",
           "sourceType": "forum",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:29.579Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:23.218Z",
           "format": "html",
           "documentType": "warranty_maintenance_booklet",
-          "contentSha256": "e343169783370830ccfae33c346517d9edb2876a0981edb86064a9ff5deba8dd",
-          "byteLength": 165122,
+          "contentSha256": "178b9b45be298cdb63c77c54d6a905872629ade8d0e641fbc5aa5d3155095247",
+          "byteLength": 165222,
           "locale": "en",
           "markets": [],
           "statedApplicability": {
@@ -3125,7 +3244,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:29.322Z",
+              "decidedAt": "2026-10-03T09:52:22.814Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3141,7 +3260,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:29.459Z",
+              "decidedAt": "2026-10-03T09:52:23.076Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3157,7 +3276,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:29.579Z",
+              "decidedAt": "2026-10-03T09:52:23.217Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3178,7 +3297,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:29.579Z",
+              "decidedAt": "2026-10-03T09:52:23.218Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3201,12 +3320,12 @@
           "sourceName": "SEATCupra.net owners' forum, thread 'Cambelt Advice', post by yozza1987, Nov 6, 2013",
           "sourceType": "forum",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:31.025Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:24.554Z",
           "format": "html",
           "documentType": "warranty_maintenance_booklet",
-          "contentSha256": "c70172e739796504b2c96386e9db2203385ecc6943339b639045cab40634aef5",
-          "byteLength": 239929,
+          "contentSha256": "64916340f07f21ff21a7cafb573f4aa06c8396dc5f3b453a02458e47aabcef4d",
+          "byteLength": 239895,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -3244,7 +3363,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:29.322Z",
+              "decidedAt": "2026-10-03T09:52:22.814Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3260,7 +3379,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:30.905Z",
+              "decidedAt": "2026-10-03T09:52:24.422Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3276,7 +3395,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:31.025Z",
+              "decidedAt": "2026-10-03T09:52:24.554Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3297,7 +3416,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:31.025Z",
+              "decidedAt": "2026-10-03T09:52:24.554Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3320,12 +3439,12 @@
           "sourceName": "SEATCupra.net forum, thread 'Timing belt 1.4 16V BXW engine', post by RUM4MO, Nov 18, 2021",
           "sourceType": "forum",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:32.512Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:26.070Z",
           "format": "html",
           "documentType": "service_manual",
-          "contentSha256": "028a986ceb246bf5ef33bf34105659ea4102f97b088e555241deb2b65d21de50",
-          "byteLength": 159648,
+          "contentSha256": "61373f8e52eac49bd5b81bc00d251e8653fb4a3f2e98075c369148a8a108f454",
+          "byteLength": 159657,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -3367,7 +3486,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:31.034Z",
+              "decidedAt": "2026-10-03T09:52:24.563Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3383,7 +3502,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:32.402Z",
+              "decidedAt": "2026-10-03T09:52:25.941Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3399,7 +3518,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:32.511Z",
+              "decidedAt": "2026-10-03T09:52:26.070Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3420,7 +3539,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:32.512Z",
+              "decidedAt": "2026-10-03T09:52:26.070Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3443,12 +3562,12 @@
           "sourceName": "SEATCupra.net forum",
           "sourceType": "forum",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:24:32.376Z",
-          "retrievedAt": "2026-10-03T05:25:34.014Z",
+          "discoveredAt": "2026-10-03T09:51:06.164Z",
+          "retrievedAt": "2026-10-03T09:52:27.534Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "8570d50a9f099a094f18dd6436055a7af301e7e2d7af501b99d15a4386fa14f5",
-          "byteLength": 121225,
+          "contentSha256": "f37f66ce481a2d0df01269da656462057891600579d4269509b71b41651e93be",
+          "byteLength": 121265,
           "locale": "en",
           "markets": [],
           "statedApplicability": {
@@ -3482,7 +3601,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:31.034Z",
+              "decidedAt": "2026-10-03T09:52:24.563Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3498,7 +3617,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:33.912Z",
+              "decidedAt": "2026-10-03T09:52:27.419Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3514,7 +3633,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:34.013Z",
+              "decidedAt": "2026-10-03T09:52:27.534Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3535,7 +3654,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:34.014Z",
+              "decidedAt": "2026-10-03T09:52:27.534Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3557,8 +3676,8 @@
           "sourceName": "www.idgarages.com",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:24:57.658Z",
-          "retrievedAt": "2026-10-03T05:25:34.089Z",
+          "discoveredAt": "2026-10-03T09:51:41.837Z",
+          "retrievedAt": "2026-10-03T09:52:27.618Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "f8371271d2ca2eef7efb120683a2770dd49930f43eb85e6326b963e1b1afcb81",
@@ -3598,7 +3717,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:34.026Z",
+              "decidedAt": "2026-10-03T09:52:27.549Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3614,7 +3733,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:34.088Z",
+              "decidedAt": "2026-10-03T09:52:27.618Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3635,7 +3754,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:34.089Z",
+              "decidedAt": "2026-10-03T09:52:27.618Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3648,104 +3767,6 @@
           }
         },
         {
-          "sourceId": "src-6f00d231c3797a3b",
-          "canonicalUrl": "https://carwiki.de/seat-ibiza",
-          "finalUrl": "https://carwiki.de/seat-ibiza",
-          "chain": [
-            "https://carwiki.de/seat-ibiza"
-          ],
-          "sourceName": "carwiki.de",
-          "sourceType": "publication",
-          "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:15.151Z",
-          "retrievedAt": "2026-10-03T05:25:34.236Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "9fe1eaaabe674905b803c6cd7e21736f29842dba3e4622ef645f41e5f0c0e994",
-          "byteLength": 330860,
-          "locale": null,
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Ibiza"
-            ],
-            "modelVariants": [
-              "021",
-              "e"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://carwiki.de/seat-ibiza",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:25:34.026Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://carwiki.de/seat-ibiza",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/seat-ibiza",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:25:34.235Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://carwiki.de/seat-ibiza",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/seat-ibiza",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:25:34.236Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "carwiki.de"
-          }
-        },
-        {
           "sourceId": "src-3ae4a45a98ff2da8",
           "canonicalUrl": "https://www.seatcupra.net/forums/tags/seat-ibiza/",
           "finalUrl": "https://www.seatcupra.net/forums/tags/seat-ibiza/",
@@ -3755,12 +3776,12 @@
           "sourceName": "www.seatcupra.net",
           "sourceType": "forum",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:15.388Z",
-          "retrievedAt": "2026-10-03T05:25:35.431Z",
+          "discoveredAt": "2026-10-03T09:52:08.247Z",
+          "retrievedAt": "2026-10-03T09:52:28.949Z",
           "format": "html",
           "documentType": "owners_manual",
-          "contentSha256": "2c29d88ba20b056f493ccd309f6f2d40969d59b563a4ba3661669e8d28532352",
-          "byteLength": 116240,
+          "contentSha256": "0458b5ba1e8dd6ff75f7f01e9c6738d4460e5a69e2b07f17909d0d8333cfaae9",
+          "byteLength": 116293,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -3799,7 +3820,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:34.241Z",
+              "decidedAt": "2026-10-03T09:52:27.549Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3815,7 +3836,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:35.431Z",
+              "decidedAt": "2026-10-03T09:52:28.948Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3836,7 +3857,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:35.431Z",
+              "decidedAt": "2026-10-03T09:52:28.949Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3849,6 +3870,201 @@
           }
         },
         {
+          "sourceId": "src-050f27b908e493ab",
+          "canonicalUrl": "https://www.seatcupra.net/forums/categories/ibiza.381/",
+          "finalUrl": "https://www.seatcupra.net/forums/categories/ibiza.381/",
+          "chain": [
+            "https://www.seatcupra.net/forums/categories/ibiza.381/"
+          ],
+          "sourceName": "www.seatcupra.net",
+          "sourceType": "forum",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:52:08.247Z",
+          "retrievedAt": "2026-10-03T09:52:30.448Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "9cbbb18a3f1136255b2d3846ae52acbce84325edf16cdb07c1590c54f4a6e155",
+          "byteLength": 93747,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Ibiza"
+            ],
+            "modelVariants": [
+              "cupra"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.seatcupra.net/forums/categories/ibiza.381/",
+              "host": "www.seatcupra.net",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.seatcupra.net/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:52:28.955Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.seatcupra.net/forums/categories/ibiza.381/",
+              "host": "www.seatcupra.net",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.seatcupra.net/forums/categories/ibiza.381/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:52:30.448Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.seatcupra.net/forums/categories/ibiza.381/",
+              "host": "www.seatcupra.net",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.seatcupra.net/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.seatcupra.net/forums/categories/ibiza.381/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:52:30.448Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.seatcupra.net"
+          }
+        },
+        {
+          "sourceId": "src-6f00d231c3797a3b",
+          "canonicalUrl": "https://carwiki.de/seat-ibiza",
+          "finalUrl": "https://carwiki.de/seat-ibiza",
+          "chain": [
+            "https://carwiki.de/seat-ibiza"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:52:11.360Z",
+          "retrievedAt": "2026-10-03T09:52:31.773Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "025c3e17185e710d5d16e67ccef559540a49e016c2123b5433cf8189820d6525",
+          "byteLength": 330860,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Ibiza"
+            ],
+            "modelVariants": [
+              "021",
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/seat-ibiza",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:52:28.955Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/seat-ibiza",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/seat-ibiza",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:52:31.773Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/seat-ibiza",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/seat-ibiza",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:52:31.773Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
           "sourceId": "src-4fbbc3a75d22157d",
           "canonicalUrl": "https://carwiki.de/seat-ibiza-inspektion-zuruecksetzen",
           "finalUrl": "https://carwiki.de/seat-ibiza-inspektion-zuruecksetzen",
@@ -3858,12 +4074,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:15.151Z",
-          "retrievedAt": "2026-10-03T05:25:35.712Z",
+          "discoveredAt": "2026-10-03T09:52:11.360Z",
+          "retrievedAt": "2026-10-03T09:52:33.558Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "0718a772e89c0e27e66f2da15eba24af016770d768304381fdd9054359ffee9d",
-          "byteLength": 159411,
+          "contentSha256": "c2417e16329daf03beb5d95ab168ac8bafa07ba386a4df002e765d12607d559f",
+          "byteLength": 159972,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -3899,7 +4115,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:34.241Z",
+              "decidedAt": "2026-10-03T09:52:31.779Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3915,7 +4131,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:35.711Z",
+              "decidedAt": "2026-10-03T09:52:33.558Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3936,7 +4152,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:35.712Z",
+              "decidedAt": "2026-10-03T09:52:33.558Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3949,103 +4165,6 @@
           }
         },
         {
-          "sourceId": "src-050f27b908e493ab",
-          "canonicalUrl": "https://www.seatcupra.net/forums/categories/ibiza.381/",
-          "finalUrl": "https://www.seatcupra.net/forums/categories/ibiza.381/",
-          "chain": [
-            "https://www.seatcupra.net/forums/categories/ibiza.381/"
-          ],
-          "sourceName": "www.seatcupra.net",
-          "sourceType": "forum",
-          "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:15.388Z",
-          "retrievedAt": "2026-10-03T05:25:36.933Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "92d3fea98a868f55a8763a9212872a5c16d1e5b356a4d224f29bbc401849ecc3",
-          "byteLength": 93710,
-          "locale": null,
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Ibiza"
-            ],
-            "modelVariants": [
-              "cupra"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://www.seatcupra.net/forums/categories/ibiza.381/",
-              "host": "www.seatcupra.net",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.seatcupra.net/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:25:35.714Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://www.seatcupra.net/forums/categories/ibiza.381/",
-              "host": "www.seatcupra.net",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.seatcupra.net/forums/categories/ibiza.381/",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:25:36.933Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://www.seatcupra.net/forums/categories/ibiza.381/",
-              "host": "www.seatcupra.net",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.seatcupra.net/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.seatcupra.net/forums/categories/ibiza.381/",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:25:36.933Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "www.seatcupra.net"
-          }
-        },
-        {
           "sourceId": "src-e0a682c41e4e906a",
           "canonicalUrl": "https://carwiki.de/seat-ibiza-verbrauch",
           "finalUrl": "https://carwiki.de/seat-ibiza-verbrauch",
@@ -4055,12 +4174,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:16.508Z",
-          "retrievedAt": "2026-10-03T05:25:37.203Z",
+          "discoveredAt": "2026-10-03T09:52:11.492Z",
+          "retrievedAt": "2026-10-03T09:52:36.061Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "88b9e7f57f47d7ab1c7e589fc86208061e443fcd9cca2fda05958b09d91e46dd",
-          "byteLength": 184236,
+          "contentSha256": "df257d1e5c8c80c734a3e65d069c58a73f1ca20525509de7c2ba01a3693d0755",
+          "byteLength": 184779,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -4094,7 +4213,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:35.714Z",
+              "decidedAt": "2026-10-03T09:52:31.779Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -4110,7 +4229,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:37.203Z",
+              "decidedAt": "2026-10-03T09:52:36.060Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -4131,7 +4250,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:37.203Z",
+              "decidedAt": "2026-10-03T09:52:36.061Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -4394,7 +4513,7 @@
           }
         },
         {
-          "id": "src-84482f64ba53179e:028a986ceb24-p2-timing_belt-replacement-0",
+          "id": "src-84482f64ba53179e:61373f8e52ea-p2-timing_belt-replacement-0",
           "sourceId": "src-84482f64ba53179e",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -4448,7 +4567,7 @@
             ]
           },
           "requirement": {
-            "id": "028a986ceb24-p2-timing_belt-replacement-0",
+            "id": "61373f8e52ea-p2-timing_belt-replacement-0",
             "task": "timing_belt",
             "taskText": "As far as I know, the timing belts of these 1.4 16V indirect injection petrol engines were, as far as VW Group in UK wer",
             "action": "replacement",
@@ -4481,14 +4600,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "028a986ceb246bf5ef33bf34105659ea4102f97b088e555241deb2b65d21de50",
+                "documentId": "61373f8e52eac49bd5b81bc00d251e8653fb4a3f2e98075c369148a8a108f454",
                 "documentTitle": "reply post, Nov 18, 2021",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 2,
                 "table": "(interval-dense page)",
                 "locator": "line \"As far as I know, the timing belts of these 1.4 16V indirect injection petrol en\"",
-                "documentSha256": "028a986ceb246bf5ef33bf34105659ea4102f97b088e555241deb2b65d21de50"
+                "documentSha256": "61373f8e52eac49bd5b81bc00d251e8653fb4a3f2e98075c369148a8a108f454"
               }
             ],
             "verification": "candidate",
@@ -4511,7 +4630,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:25:37.230Z",
+      "resolvedAt": "2026-10-03T09:52:36.109Z",
       "msourceVersion": "msource/1"
     }
   }

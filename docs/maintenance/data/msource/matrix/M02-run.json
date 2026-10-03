@@ -4,14 +4,14 @@
     "vehicleRef": "M02",
     "fingerprintKey": "car|volkswagen|golf|2015|1598||diesel|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:26:44.065Z",
-    "finishedAt": "2026-10-03T05:27:15.380Z",
+    "startedAt": "2026-10-03T09:53:52.583Z",
+    "finishedAt": "2026-10-03T09:54:19.966Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:26:44.065Z",
-        "finishedAt": "2026-10-03T05:26:44.065Z",
+        "startedAt": "2026-10-03T09:53:52.583Z",
+        "finishedAt": "2026-10-03T09:53:52.583Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,8 +25,8 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:26:44.065Z",
-        "finishedAt": "2026-10-03T05:26:44.069Z",
+        "startedAt": "2026-10-03T09:53:52.583Z",
+        "finishedAt": "2026-10-03T09:53:52.587Z",
         "durationMs": 4,
         "counts": {
           "fable": 14,
@@ -39,8 +39,8 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:26:44.069Z",
-        "finishedAt": "2026-10-03T05:26:44.069Z",
+        "startedAt": "2026-10-03T09:53:52.587Z",
+        "finishedAt": "2026-10-03T09:53:52.587Z",
         "durationMs": 0,
         "counts": {
           "discovered": 15,
@@ -54,16 +54,16 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:26:44.069Z",
-        "finishedAt": "2026-10-03T05:27:15.275Z",
-        "durationMs": 31206,
+        "startedAt": "2026-10-03T09:53:52.587Z",
+        "finishedAt": "2026-10-03T09:54:19.864Z",
+        "durationMs": 27277,
         "counts": {
           "acquired": 11
         },
         "failures": [
           {
-            "code": "HTTP_ERROR",
-            "detail": "HTTP 429",
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
             "sourceId": "src-a7fe322a48f848f4"
           },
           {
@@ -87,8 +87,8 @@
             "sourceId": "src-f25b88f26a4b7030"
           },
           {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "code": "ACCESS_CONTROL_DETECTED",
+            "detail": "HTTP 403",
             "sourceId": "src-29887bc86f1e797a"
           },
           {
@@ -107,9 +107,9 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:27:15.275Z",
-        "finishedAt": "2026-10-03T05:27:15.380Z",
-        "durationMs": 105,
+        "startedAt": "2026-10-03T09:54:19.864Z",
+        "finishedAt": "2026-10-03T09:54:19.966Z",
+        "durationMs": 102,
         "counts": {
           "extracted": 11,
           "grounded": 11
@@ -151,13 +151,13 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:27:15.380Z",
-        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "startedAt": "2026-10-03T09:54:19.966Z",
+        "finishedAt": "2026-10-03T09:54:19.966Z",
         "durationMs": 0,
         "counts": {
           "PARTIAL": 8,
-          "NOT_APPLICABLE": 2,
-          "SUPPORTED": 1
+          "SUPPORTED": 1,
+          "NOT_APPLICABLE": 2
         },
         "failures": [
           {
@@ -191,8 +191,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:27:15.380Z",
-        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "startedAt": "2026-10-03T09:54:19.966Z",
+        "finishedAt": "2026-10-03T09:54:19.966Z",
         "durationMs": 0,
         "counts": {
           "obligations": 0,
@@ -205,8 +205,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "failed",
-        "startedAt": "2026-10-03T05:27:15.380Z",
-        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "startedAt": "2026-10-03T09:54:19.966Z",
+        "finishedAt": "2026-10-03T09:54:19.966Z",
         "durationMs": 0,
         "counts": {
           "items": 0,
@@ -228,8 +228,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:27:15.380Z",
-        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "startedAt": "2026-10-03T09:54:19.966Z",
+        "finishedAt": "2026-10-03T09:54:19.966Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -238,8 +238,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:27:15.380Z",
-        "finishedAt": "2026-10-03T05:27:15.380Z",
+        "startedAt": "2026-10-03T09:54:19.966Z",
+        "finishedAt": "2026-10-03T09:54:19.966Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -274,8 +274,8 @@
         "by": "fable",
         "outcome": "failed",
         "failure": {
-          "code": "HTTP_ERROR",
-          "detail": "HTTP 429"
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
         }
       },
       {
@@ -355,8 +355,8 @@
         "by": "fable",
         "outcome": "blocked",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
         }
       },
       {
@@ -475,8 +475,8 @@
           "sourceName": "NHTSA ODI",
           "sourceType": "archive",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:26:44.065Z",
-          "retrievedAt": "2026-10-03T05:26:52.363Z",
+          "discoveredAt": "2026-10-03T09:53:52.583Z",
+          "retrievedAt": "2026-10-03T09:53:58.620Z",
           "format": "pdf",
           "documentType": "maintenance_schedule",
           "contentSha256": "3e83b009517ec015136a169ba8864e2a14be9a1c996bf4e4f2569eff3990ddc8",
@@ -515,7 +515,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:52.283Z",
+              "decidedAt": "2026-10-03T09:53:58.408Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -531,7 +531,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:52.363Z",
+              "decidedAt": "2026-10-03T09:53:58.620Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -552,7 +552,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:52.363Z",
+              "decidedAt": "2026-10-03T09:53:58.620Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -565,6 +565,108 @@
           }
         },
         {
+          "sourceId": "src-2ea1f8c6877070e4",
+          "canonicalUrl": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+          "finalUrl": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+          "chain": [
+            "https://manualsnet.com/volkswagen/golf-sportwagen-2015"
+          ],
+          "sourceName": "ManualsNet",
+          "sourceType": "archive",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:53:52.583Z",
+          "retrievedAt": "2026-10-03T09:54:00.035Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "41bf449e3261dab4263ed809682539a6ce497a7910026c37a6eb7a8da5cbd983",
+          "byteLength": 42741,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "8",
+              "7"
+            ],
+            "yearFrom": 2015,
+            "yearTo": 2015,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1800,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+              "host": "manualsnet.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://manualsnet.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:53:59.921Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+              "host": "manualsnet.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:00.035Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+              "host": "manualsnet.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://manualsnet.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:00.035Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "manualsnet.com"
+          }
+        },
+        {
           "sourceId": "src-b56ff453f1b51169",
           "canonicalUrl": "https://carwiki.de/golf-7-inspektion",
           "finalUrl": "https://carwiki.de/golf-7-inspektion",
@@ -574,12 +676,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:26:44.065Z",
-          "retrievedAt": "2026-10-03T05:26:53.575Z",
+          "discoveredAt": "2026-10-03T09:53:52.583Z",
+          "retrievedAt": "2026-10-03T09:54:06.036Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "2ecc3d4ee066b7767a93ef98c56def0433b368960298c532306850fa7c63b6dc",
-          "byteLength": 291815,
+          "contentSha256": "8596a1c1ca10eb398ab689d8ff3bc6718586ad20d15976d6d9729049fff11639",
+          "byteLength": 291337,
           "locale": "de",
           "markets": [],
           "statedApplicability": {
@@ -625,7 +727,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:53.326Z",
+              "decidedAt": "2026-10-03T09:53:59.787Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -641,7 +743,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:53.575Z",
+              "decidedAt": "2026-10-03T09:54:06.036Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -662,7 +764,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:53.575Z",
+              "decidedAt": "2026-10-03T09:54:06.036Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -675,108 +777,6 @@
           }
         },
         {
-          "sourceId": "src-2ea1f8c6877070e4",
-          "canonicalUrl": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
-          "finalUrl": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
-          "chain": [
-            "https://manualsnet.com/volkswagen/golf-sportwagen-2015"
-          ],
-          "sourceName": "ManualsNet",
-          "sourceType": "archive",
-          "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:26:44.065Z",
-          "retrievedAt": "2026-10-03T05:26:53.720Z",
-          "format": "html",
-          "documentType": "maintenance_schedule",
-          "contentSha256": "a0d6d17a186678451ec67270f4a6cf9f5cea203f421c21c988b2cf3d83126678",
-          "byteLength": 42741,
-          "locale": "en",
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Golf"
-            ],
-            "modelVariants": [
-              "8",
-              "7"
-            ],
-            "yearFrom": 2015,
-            "yearTo": 2015,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [
-              1800,
-              2000
-            ],
-            "fuels": [],
-            "markets": [],
-            "yearBasis": "document_text",
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_allows",
-              "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
-              "host": "manualsnet.com",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://manualsnet.com/robots.txt",
-                  "detail": "group *; Allow: /"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:26:53.589Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
-              "host": "manualsnet.com",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:26:53.720Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
-              "host": "manualsnet.com",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://manualsnet.com/robots.txt",
-                  "detail": "group *; Allow: /"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://manualsnet.com/volkswagen/golf-sportwagen-2015",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:26:53.720Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "manualsnet.com"
-          }
-        },
-        {
           "sourceId": "src-a89708f19c859927",
           "canonicalUrl": "https://www.repareo.de/inspektion-vw-golf-7/",
           "finalUrl": "https://www.repareo.de/inspektion-vw-golf-7/",
@@ -786,8 +786,8 @@
           "sourceName": "repareo.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:26:44.065Z",
-          "retrievedAt": "2026-10-03T05:26:54.403Z",
+          "discoveredAt": "2026-10-03T09:53:52.583Z",
+          "retrievedAt": "2026-10-03T09:54:06.695Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "85311d5c98ba2d63e5153a2a5e668ad6afcfaf09f40f5a80eba29791f2b7ab8e",
@@ -842,7 +842,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:53.980Z",
+              "decidedAt": "2026-10-03T09:54:06.279Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -858,7 +858,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:54.402Z",
+              "decidedAt": "2026-10-03T09:54:06.694Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -879,7 +879,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:54.403Z",
+              "decidedAt": "2026-10-03T09:54:06.695Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -901,8 +901,8 @@
           "sourceName": "repareo.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:26:44.065Z",
-          "retrievedAt": "2026-10-03T05:26:55.905Z",
+          "discoveredAt": "2026-10-03T09:53:52.583Z",
+          "retrievedAt": "2026-10-03T09:54:08.163Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "f0458aa9318b6362c545e09f9db65a2365cb2ad4049d9a6eafdee75d4a1fe598",
@@ -963,7 +963,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:53.980Z",
+              "decidedAt": "2026-10-03T09:54:06.279Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -979,7 +979,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:55.905Z",
+              "decidedAt": "2026-10-03T09:54:08.163Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1000,7 +1000,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:55.905Z",
+              "decidedAt": "2026-10-03T09:54:08.163Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1024,12 +1024,12 @@
           "sourceName": "autogreeknews.gr",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:26:44.065Z",
-          "retrievedAt": "2026-10-03T05:26:58.348Z",
+          "discoveredAt": "2026-10-03T09:53:52.583Z",
+          "retrievedAt": "2026-10-03T09:54:11.563Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "ecd48d22093dfb2f000af73f0f2eddfdbdeaf6b4989bd8d12c680b082036cf56",
-          "byteLength": 394536,
+          "contentSha256": "6f5cb1570633fca8611a04dc83f787e31c534e8969461c938c1187a437d4e140",
+          "byteLength": 394382,
           "locale": "el",
           "markets": [],
           "statedApplicability": {
@@ -1065,7 +1065,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:56.158Z",
+              "decidedAt": "2026-10-03T09:54:09.250Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1081,7 +1081,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:56.915Z",
+              "decidedAt": "2026-10-03T09:54:10.011Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1097,7 +1097,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:57.250Z",
+              "decidedAt": "2026-10-03T09:54:10.340Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1113,7 +1113,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:58.348Z",
+              "decidedAt": "2026-10-03T09:54:11.563Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1134,7 +1134,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:58.348Z",
+              "decidedAt": "2026-10-03T09:54:11.563Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1147,6 +1147,107 @@
           }
         },
         {
+          "sourceId": "src-e5182983c0037341",
+          "canonicalUrl": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+          "finalUrl": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+          "chain": [
+            "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html"
+          ],
+          "sourceName": "Motor-Talk",
+          "sourceType": "forum",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:53:52.583Z",
+          "retrievedAt": "2026-10-03T09:54:14.697Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "152796ccf4599c7190a739f24ae69e4191f96fe209d10ecd12b2db3227fbc418",
+          "byteLength": 440010,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Golf"
+            ],
+            "modelVariants": [
+              "7"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200,
+              1600,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:14.210Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:14.697Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+              "host": "www.motor-talk.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.motor-talk.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:14.697Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.motor-talk.de"
+          }
+        },
+        {
           "sourceId": "src-022aa88010b6f67a",
           "canonicalUrl": "https://carwiki.de/golf-sportsvan-probleme",
           "finalUrl": "https://carwiki.de/golf-sportsvan-probleme",
@@ -1156,12 +1257,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:26:53.587Z",
-          "retrievedAt": "2026-10-03T05:27:09.453Z",
+          "discoveredAt": "2026-10-03T09:54:06.048Z",
+          "retrievedAt": "2026-10-03T09:54:15.137Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "2777206879e0eb7661187dc8de2f710773ee40101eb5c3bfcb264b50dd6b5351",
-          "byteLength": 176927,
+          "contentSha256": "df3e63ab2bdbce4502ebf9efa704e324e4c5918b107ae496fa83754607b9237d",
+          "byteLength": 176240,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1204,7 +1305,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:09.245Z",
+              "decidedAt": "2026-10-03T09:54:13.871Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1220,7 +1321,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:09.452Z",
+              "decidedAt": "2026-10-03T09:54:15.137Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1241,7 +1342,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:09.453Z",
+              "decidedAt": "2026-10-03T09:54:15.137Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1254,107 +1355,6 @@
           }
         },
         {
-          "sourceId": "src-e5182983c0037341",
-          "canonicalUrl": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
-          "finalUrl": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
-          "chain": [
-            "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html"
-          ],
-          "sourceName": "Motor-Talk",
-          "sourceType": "forum",
-          "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:26:44.065Z",
-          "retrievedAt": "2026-10-03T05:27:10.041Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e",
-          "byteLength": 440628,
-          "locale": "de",
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Golf"
-            ],
-            "modelVariants": [
-              "7"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [
-              1200,
-              1600,
-              2000
-            ],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
-              "host": "www.motor-talk.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.motor-talk.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:09.591Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
-              "host": "www.motor-talk.de",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:10.040Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
-              "host": "www.motor-talk.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.motor-talk.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.motor-talk.de/forum/service-wartungsplan-t5166110.html",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:10.041Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "www.motor-talk.de"
-          }
-        },
-        {
           "sourceId": "src-553dc559ce724eb3",
           "canonicalUrl": "https://www.motor-talk.de/forum/vw-golf-b60.html",
           "finalUrl": "https://www.motor-talk.de/forum/vw-golf-b60.html",
@@ -1364,12 +1364,12 @@
           "sourceName": "www.motor-talk.de",
           "sourceType": "forum",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:10.046Z",
-          "retrievedAt": "2026-10-03T05:27:11.622Z",
+          "discoveredAt": "2026-10-03T09:54:14.705Z",
+          "retrievedAt": "2026-10-03T09:54:16.264Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "55d3869322caee38d8fdece0864c073bc1b58bcaae868a70fbbdeed751feb756",
-          "byteLength": 545664,
+          "contentSha256": "f5c6c6d756efc065969570d0affe6e6e21c5011c1f1b5a18b42248d24c9a66ce",
+          "byteLength": 545827,
           "locale": null,
           "markets": [
             "US"
@@ -1429,7 +1429,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:10.047Z",
+              "decidedAt": "2026-10-03T09:54:15.141Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1445,7 +1445,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:11.622Z",
+              "decidedAt": "2026-10-03T09:54:16.263Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1466,7 +1466,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:11.622Z",
+              "decidedAt": "2026-10-03T09:54:16.264Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1488,12 +1488,12 @@
           "sourceName": "www.motor-talk.de",
           "sourceType": "forum",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:10.046Z",
-          "retrievedAt": "2026-10-03T05:27:13.048Z",
+          "discoveredAt": "2026-10-03T09:54:14.705Z",
+          "retrievedAt": "2026-10-03T09:54:17.706Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "e3273e47a067c25f7874ffc10874b2b18cda1af998c15b70149a4fc52e7f7b63",
-          "byteLength": 537750,
+          "contentSha256": "d0a4ec337c7b82b84cc315261a7ed448671c42fcb1eff85ab93b9856391a4801",
+          "byteLength": 537959,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1550,7 +1550,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:10.047Z",
+              "decidedAt": "2026-10-03T09:54:15.141Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1566,7 +1566,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:13.048Z",
+              "decidedAt": "2026-10-03T09:54:17.706Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1587,7 +1587,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:13.048Z",
+              "decidedAt": "2026-10-03T09:54:17.706Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1609,8 +1609,8 @@
           "sourceName": "www.motor-talk.de",
           "sourceType": "forum",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:10.046Z",
-          "retrievedAt": "2026-10-03T05:27:14.371Z",
+          "discoveredAt": "2026-10-03T09:54:14.705Z",
+          "retrievedAt": "2026-10-03T09:54:18.944Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "0eb37e042ddd1f73dca7d328aff154efa30b114f03c04bda846aced4624a7e3d",
@@ -1645,7 +1645,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:13.052Z",
+              "decidedAt": "2026-10-03T09:54:17.712Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1661,7 +1661,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:14.370Z",
+              "decidedAt": "2026-10-03T09:54:18.944Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1682,7 +1682,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:14.371Z",
+              "decidedAt": "2026-10-03T09:54:18.944Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1805,7 +1805,7 @@
           }
         },
         {
-          "id": "src-b56ff453f1b51169:2ecc3d4ee066-p9-s-air_filter-replacement-0",
+          "id": "src-b56ff453f1b51169:8596a1c1ca10-p9-s-air_filter-replacement-0",
           "sourceId": "src-b56ff453f1b51169",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -1857,7 +1857,7 @@
             ]
           },
           "requirement": {
-            "id": "2ecc3d4ee066-p9-s-air_filter-replacement-0",
+            "id": "8596a1c1ca10-p9-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Der Luftfilter ist alle 90.000 km oder nach 6 Jahren(bei weniger als 90.000 km in 6 Jahren) zu wechseln.",
             "action": "replacement",
@@ -1889,14 +1889,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "2ecc3d4ee066b7767a93ef98c56def0433b368960298c532306850fa7c63b6dc",
+                "documentId": "8596a1c1ca10eb398ab689d8ff3bc6718586ad20d15976d6d9729049fff11639",
                 "documentTitle": "Golf 7 Inspektion: Was wird gemacht? Kosten, Intervalle, Serviceplan & Tipps zum Sparen",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 9,
                 "section": "Simek Miroslav",
                 "locator": "column sentence \"Der Luftfilter ist alle 90.000 km oder nach 6 Jahren(bei weniger als 90.000 km i\"",
-                "documentSha256": "2ecc3d4ee066b7767a93ef98c56def0433b368960298c532306850fa7c63b6dc"
+                "documentSha256": "8596a1c1ca10eb398ab689d8ff3bc6718586ad20d15976d6d9729049fff11639"
               }
             ],
             "verification": "candidate",
@@ -2018,7 +2018,7 @@
           }
         },
         {
-          "id": "src-e5182983c0037341:2378246e5321-p2-s-periodic_service-other-0",
+          "id": "src-e5182983c0037341:152796ccf459-p2-s-periodic_service-other-0",
           "sourceId": "src-e5182983c0037341",
           "operationKey": "periodic_service",
           "task": "periodic_service",
@@ -2063,7 +2063,7 @@
             ]
           },
           "requirement": {
-            "id": "2378246e5321-p2-s-periodic_service-other-0",
+            "id": "152796ccf459-p2-s-periodic_service-other-0",
             "task": "periodic_service",
             "taskText": "Jede weitere Inspektion ist nach 30.000 Kilometern oder einem Jahr faellig.",
             "action": "other",
@@ -2091,14 +2091,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e",
+                "documentId": "152796ccf4599c7190a739f24ae69e4191f96fe209d10ecd12b2db3227fbc418",
                 "documentTitle": "Service- / Wartungsplan (Motor-Talk forum thread)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 2,
                 "section": "Wo genau steht das auf der VW homepage?",
                 "locator": "column sentence \"Jede weitere Inspektion ist nach 30.000 Kilometern oder einem Jahr faellig.\"",
-                "documentSha256": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e"
+                "documentSha256": "152796ccf4599c7190a739f24ae69e4191f96fe209d10ecd12b2db3227fbc418"
               }
             ],
             "verification": "candidate",
@@ -2118,7 +2118,7 @@
           }
         },
         {
-          "id": "src-e5182983c0037341:2378246e5321-p2-s-cabin_filter-replacement-1",
+          "id": "src-e5182983c0037341:152796ccf459-p2-s-cabin_filter-replacement-1",
           "sourceId": "src-e5182983c0037341",
           "operationKey": "cabin_filter",
           "task": "cabin_filter",
@@ -2163,7 +2163,7 @@
             ]
           },
           "requirement": {
-            "id": "2378246e5321-p2-s-cabin_filter-replacement-1",
+            "id": "152796ccf459-p2-s-cabin_filter-replacement-1",
             "task": "cabin_filter",
             "taskText": "-Xenon einstellen -Staub- und Pollenfilter wechseln 3 Jahre(dann alle 2 Jahre)",
             "action": "replacement",
@@ -2187,14 +2187,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e",
+                "documentId": "152796ccf4599c7190a739f24ae69e4191f96fe209d10ecd12b2db3227fbc418",
                 "documentTitle": "Service- / Wartungsplan (Motor-Talk forum thread)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 2,
                 "section": "Antworten",
                 "locator": "column sentence \"-Xenon einstellen -Staub- und Pollenfilter wechseln 3 Jahre(dann alle 2 Jahre)\"",
-                "documentSha256": "2378246e53215eb02cde97ae19072ade8d9950bd27a47b95ebb70a9b90b10a5e"
+                "documentSha256": "152796ccf4599c7190a739f24ae69e4191f96fe209d10ecd12b2db3227fbc418"
               }
             ],
             "verification": "candidate",
@@ -2807,7 +2807,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:27:15.380Z",
+      "resolvedAt": "2026-10-03T09:54:19.966Z",
       "msourceVersion": "msource/1"
     }
   }

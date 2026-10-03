@@ -4,14 +4,14 @@
     "vehicleRef": "M10",
     "fingerprintKey": "car|citroen|c3|2017|1199||petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:33:13.944Z",
-    "finishedAt": "2026-10-03T05:34:46.028Z",
+    "startedAt": "2026-10-03T09:59:36.041Z",
+    "finishedAt": "2026-10-03T10:00:57.826Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:33:13.944Z",
-        "finishedAt": "2026-10-03T05:33:13.944Z",
+        "startedAt": "2026-10-03T09:59:36.041Z",
+        "finishedAt": "2026-10-03T09:59:36.041Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,9 +25,9 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:33:13.944Z",
-        "finishedAt": "2026-10-03T05:33:13.950Z",
-        "durationMs": 6,
+        "startedAt": "2026-10-03T09:59:36.041Z",
+        "finishedAt": "2026-10-03T09:59:36.046Z",
+        "durationMs": 5,
         "counts": {
           "fable": 15,
           "registry": 0,
@@ -39,9 +39,9 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:33:13.950Z",
-        "finishedAt": "2026-10-03T05:33:13.950Z",
-        "durationMs": 0,
+        "startedAt": "2026-10-03T09:59:36.046Z",
+        "finishedAt": "2026-10-03T09:59:36.048Z",
+        "durationMs": 2,
         "counts": {
           "discovered": 17,
           "unique": 17,
@@ -54,11 +54,11 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:33:13.950Z",
-        "finishedAt": "2026-10-03T05:34:24.180Z",
-        "durationMs": 70230,
+        "startedAt": "2026-10-03T09:59:36.048Z",
+        "finishedAt": "2026-10-03T10:00:42.265Z",
+        "durationMs": 66217,
         "counts": {
-          "acquired": 23
+          "acquired": 24
         },
         "failures": [
           {
@@ -72,14 +72,9 @@
             "sourceId": "src-125ca1e084179036"
           },
           {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-3ef7608c20b6fcee"
-          },
-          {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "HTTP 403",
-            "sourceId": "src-eb8c13e49202655a"
+            "sourceId": "src-3ef7608c20b6fcee"
           },
           {
             "code": "HTTP_ERROR",
@@ -89,7 +84,7 @@
           {
             "code": "ACCESS_TEMPORARILY_UNREACHABLE",
             "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-9dec194579091383"
+            "sourceId": "src-eb8c13e49202655a"
           },
           {
             "code": "SOURCE_GONE",
@@ -102,12 +97,12 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:34:24.180Z",
-        "finishedAt": "2026-10-03T05:34:46.028Z",
-        "durationMs": 21848,
+        "startedAt": "2026-10-03T10:00:42.265Z",
+        "finishedAt": "2026-10-03T10:00:57.826Z",
+        "durationMs": 15561,
         "counts": {
-          "extracted": 3,
-          "grounded": 3
+          "extracted": 4,
+          "grounded": 4
         },
         "failures": [
           {
@@ -132,13 +127,13 @@
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://manualsnet.com/citroen/c3-2017",
-            "sourceId": "src-747cad548994edd6"
+            "detail": "https://www.idgarages.com/fr-fr/entretien/citroen/carnet-entretien-citroen-c3-2",
+            "sourceId": "src-ca372423d48fb385"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://www.idgarages.com/fr-fr/entretien/citroen/carnet-entretien-citroen-c3-2",
-            "sourceId": "src-ca372423d48fb385"
+            "detail": "https://manualsnet.com/citroen/c3-2017",
+            "sourceId": "src-747cad548994edd6"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
@@ -182,23 +177,53 @@
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock",
-            "sourceId": "src-9404cec02b6b7d96"
-          },
-          {
-            "code": "NO_SCHEDULE_SECTION",
             "detail": "https://www.carcarekiosk.com/videos/Citroen/C3/2017",
             "sourceId": "src-d3a19634d9e2ecfa"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running",
-            "sourceId": "src-40b2e8681259fcb2"
+            "detail": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery",
+            "sourceId": "src-a06bd50877100bfa"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light",
-            "sourceId": "src-9a655f639f876cf5"
+            "detail": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil",
+            "sourceId": "src-f4926d3b3a5b3e1d"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks",
+            "sourceId": "src-14c4e90f8e3982c5"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3",
+            "sourceId": "src-606cc1eaf6b092a0"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534",
+            "sourceId": "src-548d4b154099844f"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522",
+            "sourceId": "src-c03ca30ae1761b7c"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64",
+            "sourceId": "src-314bdc2ad3bd9b9c"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266",
+            "sourceId": "src-0e3854d2ff940094"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762",
+            "sourceId": "src-c2c4acadb716da0b"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
@@ -217,11 +242,6 @@
           },
           {
             "code": "NO_REQUIREMENTS_EXTRACTED",
-            "detail": "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide",
-            "sourceId": "src-59d1f2109429b67a"
-          },
-          {
-            "code": "NO_REQUIREMENTS_EXTRACTED",
             "detail": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-91062-citroen-c3-iii-12-puretech-82-ch-boite-mecanique-45000km-2017-finition-feel-surequipee-radar-de-recul-ecran-multimedia.php",
             "sourceId": "src-8bc131753b6f0043"
           },
@@ -232,32 +252,33 @@
           },
           {
             "code": "NO_REQUIREMENTS_EXTRACTED",
-            "detail": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php",
-            "sourceId": "src-e7c893ee7fa53344"
-          },
-          {
-            "code": "NO_REQUIREMENTS_EXTRACTED",
             "detail": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-75322-citroen-c3-iii-12-puretech-82-ch-feel-30000km.php",
             "sourceId": "src-691e7d55fce99427"
           }
         ],
         "notes": [
-          "additional acquisition: 6 more candidates"
+          "additional acquisition: 10 more candidates",
+          "1 candidates not read (document budget)"
         ]
       },
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:34:46.028Z",
-        "finishedAt": "2026-10-03T05:34:46.028Z",
+        "startedAt": "2026-10-03T10:00:57.826Z",
+        "finishedAt": "2026-10-03T10:00:57.826Z",
         "durationMs": 0,
         "counts": {
-          "NOT_APPLICABLE": 10,
+          "NOT_APPLICABLE": 16,
           "PARTIAL": 7,
-          "STRONG": 9,
+          "STRONG": 8,
           "SUPPORTED": 3
         },
         "failures": [
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "NOT_APPLICABLE: the document covers 2026–2026, not 2017; market stated: US (not IL)",
+            "sourceId": "src-9dec194579091383"
+          },
           {
             "code": "SOURCE_NOT_APPLICABLE",
             "detail": "SUPPORTED: ",
@@ -269,8 +290,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:34:46.028Z",
-        "finishedAt": "2026-10-03T05:34:46.028Z",
+        "startedAt": "2026-10-03T10:00:57.826Z",
+        "finishedAt": "2026-10-03T10:00:57.826Z",
         "durationMs": 0,
         "counts": {
           "obligations": 1,
@@ -283,8 +304,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "failed",
-        "startedAt": "2026-10-03T05:34:46.028Z",
-        "finishedAt": "2026-10-03T05:34:46.028Z",
+        "startedAt": "2026-10-03T10:00:57.826Z",
+        "finishedAt": "2026-10-03T10:00:57.826Z",
         "durationMs": 0,
         "counts": {
           "items": 0,
@@ -306,8 +327,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:34:46.028Z",
-        "finishedAt": "2026-10-03T05:34:46.028Z",
+        "startedAt": "2026-10-03T10:00:57.826Z",
+        "finishedAt": "2026-10-03T10:00:57.826Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -316,8 +337,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:34:46.028Z",
-        "finishedAt": "2026-10-03T05:34:46.028Z",
+        "startedAt": "2026-10-03T10:00:57.826Z",
+        "finishedAt": "2026-10-03T10:00:57.826Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -415,8 +436,8 @@
         "by": "fable",
         "outcome": "blocked",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "ACCESS_CONTROL_DETECTED",
+          "detail": "HTTP 403"
         }
       },
       {
@@ -433,8 +454,8 @@
         "by": "fable",
         "outcome": "blocked",
         "failure": {
-          "code": "ACCESS_CONTROL_DETECTED",
-          "detail": "HTTP 403"
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
         }
       },
       {
@@ -458,10 +479,10 @@
       {
         "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/revision-generale-26",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "not_applicable",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "NOT_APPLICABLE: the document covers 2026–2026, not 2017; market stated: US (not IL)"
         }
       },
       {
@@ -558,7 +579,7 @@
         }
       },
       {
-        "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock",
+        "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery",
         "by": "link",
         "outcome": "no_evidence",
         "failure": {
@@ -567,7 +588,7 @@
         }
       },
       {
-        "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running",
+        "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil",
         "by": "link",
         "outcome": "no_evidence",
         "failure": {
@@ -576,7 +597,61 @@
         }
       },
       {
-        "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light",
+        "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762",
         "by": "link",
         "outcome": "no_evidence",
         "failure": {
@@ -600,15 +675,6 @@
         "failure": {
           "code": "NO_SCHEDULE_SECTION",
           "detail": "no maintenance schedule section"
-        }
-      },
-      {
-        "url": "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide",
-        "by": "archive",
-        "outcome": "no_evidence",
-        "failure": {
-          "code": "NO_REQUIREMENTS_EXTRACTED",
-          "detail": "schedule section without readable intervals"
         }
       },
       {
@@ -650,11 +716,8 @@
       {
         "url": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php",
         "by": "link",
-        "outcome": "no_evidence",
-        "failure": {
-          "code": "NO_REQUIREMENTS_EXTRACTED",
-          "detail": "schedule section without readable intervals"
-        }
+        "outcome": "not_attempted",
+        "failure": null
       }
     ],
     "restricted": [
@@ -686,8 +749,8 @@
           "rule": "DISTANCE_ONLY",
           "quality": "INSUFFICIENT",
           "evidenceIds": [
-            "src-4598bf4fcde5024d:d9e5d896de61-p5-timing_belt-replacement-0",
-            "src-a5323772545d26c0:6dc2996f859c-p5-timing_belt-replacement-0"
+            "src-4598bf4fcde5024d:4b2cd5ba57dd-p5-timing_belt-replacement-0",
+            "src-a5323772545d26c0:259bbcd2e8a1-p5-timing_belt-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -709,8 +772,8 @@
           "sourceName": "Citroen (service.citroen.com)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:33:13.945Z",
-          "retrievedAt": "2026-10-03T05:33:42.137Z",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:03.835Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "65ad564745463e79b6cdfc0afcb59562d976917f6739a0102cea6abcd3b649ea",
@@ -746,7 +809,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:16.980Z",
+              "decidedAt": "2026-10-03T09:59:38.387Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -762,7 +825,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:42.137Z",
+              "decidedAt": "2026-10-03T10:00:03.835Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -783,7 +846,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:42.137Z",
+              "decidedAt": "2026-10-03T10:00:03.835Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -805,8 +868,8 @@
           "sourceName": "Citroen (service.citroen.com)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:33:13.945Z",
-          "retrievedAt": "2026-10-03T05:33:42.661Z",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:04.119Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "1342c75c1877d6fd1a851e1f08b3cc68cee57742e320acee2a0f4d6b68080003",
@@ -842,7 +905,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:16.980Z",
+              "decidedAt": "2026-10-03T09:59:38.387Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -858,7 +921,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:42.661Z",
+              "decidedAt": "2026-10-03T10:00:04.119Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -879,7 +942,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:42.661Z",
+              "decidedAt": "2026-10-03T10:00:04.119Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -901,11 +964,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:33:13.945Z",
-          "retrievedAt": "2026-10-03T05:33:46.970Z",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:11.113Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "793da82de5b4a77c193b48e0d262d1313f546894d706568c68e9f0b0b5429814",
+          "contentSha256": "58d54a5a56cb1606274fb932cbef7979ec3a10e581607c3a999e5bf9298219fb",
           "byteLength": 27050,
           "locale": "en",
           "markets": [],
@@ -943,7 +1006,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:46.819Z",
+              "decidedAt": "2026-10-03T10:00:10.851Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -959,7 +1022,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:46.970Z",
+              "decidedAt": "2026-10-03T10:00:11.113Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -980,7 +1043,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:46.970Z",
+              "decidedAt": "2026-10-03T10:00:11.113Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1002,8 +1065,8 @@
           "sourceName": "idGarages",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:33:13.945Z",
-          "retrievedAt": "2026-10-03T05:33:52.227Z",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:12.850Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "d89432e423535eeab8ffde55e98935ff99cf559e5c20a4845d423f031632944d",
@@ -1044,7 +1107,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:52.203Z",
+              "decidedAt": "2026-10-03T10:00:12.822Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1060,7 +1123,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:52.227Z",
+              "decidedAt": "2026-10-03T10:00:12.849Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1081,7 +1144,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:52.227Z",
+              "decidedAt": "2026-10-03T10:00:12.850Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1094,105 +1157,6 @@
           }
         },
         {
-          "sourceId": "src-747cad548994edd6",
-          "canonicalUrl": "https://manualsnet.com/citroen/c3-2017",
-          "finalUrl": "https://manualsnet.com/citroen/c3-2017",
-          "chain": [
-            "https://manualsnet.com/citroen/c3-2017"
-          ],
-          "sourceName": "ManualsNet",
-          "sourceType": "archive",
-          "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:33:13.945Z",
-          "retrievedAt": "2026-10-03T05:33:53.499Z",
-          "format": "html",
-          "documentType": "owners_manual",
-          "contentSha256": "b7e732e5e77a63816861046c2ad6a85a31d11e4cec18d4734e42e8aa44582429",
-          "byteLength": 51067,
-          "locale": "en",
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "C3"
-            ],
-            "modelVariants": [],
-            "yearFrom": 2017,
-            "yearTo": 2017,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [
-              1200,
-              1600
-            ],
-            "fuels": [],
-            "markets": [],
-            "yearBasis": "document_text",
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_allows",
-              "url": "https://manualsnet.com/citroen/c3-2017",
-              "host": "manualsnet.com",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://manualsnet.com/robots.txt",
-                  "detail": "group *; Allow: /"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:33:53.393Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://manualsnet.com/citroen/c3-2017",
-              "host": "manualsnet.com",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://manualsnet.com/citroen/c3-2017",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:33:53.499Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://manualsnet.com/citroen/c3-2017",
-              "host": "manualsnet.com",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://manualsnet.com/robots.txt",
-                  "detail": "group *; Allow: /"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://manualsnet.com/citroen/c3-2017",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:33:53.499Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "manualsnet.com"
-          }
-        },
-        {
           "sourceId": "src-ca372423d48fb385",
           "canonicalUrl": "https://www.idgarages.com/fr-fr/entretien/citroen/carnet-entretien-citroen-c3-2",
           "finalUrl": "https://www.idgarages.com/fr-fr/entretien/citroen/carnet-entretien-citroen-c3-2",
@@ -1202,8 +1166,8 @@
           "sourceName": "idGarages",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:33:13.945Z",
-          "retrievedAt": "2026-10-03T05:33:53.737Z",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:14.633Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "a4995bd905d8943eb30b29fc458d19557b9263dbeeb5e2f04c3065b7e88171ac",
@@ -1246,7 +1210,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:52.243Z",
+              "decidedAt": "2026-10-03T10:00:14.600Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1262,7 +1226,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:53.736Z",
+              "decidedAt": "2026-10-03T10:00:14.633Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1283,7 +1247,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:53.737Z",
+              "decidedAt": "2026-10-03T10:00:14.633Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1293,6 +1257,105 @@
             "official": false,
             "basis": "none",
             "detail": "www.idgarages.com"
+          }
+        },
+        {
+          "sourceId": "src-747cad548994edd6",
+          "canonicalUrl": "https://manualsnet.com/citroen/c3-2017",
+          "finalUrl": "https://manualsnet.com/citroen/c3-2017",
+          "chain": [
+            "https://manualsnet.com/citroen/c3-2017"
+          ],
+          "sourceName": "ManualsNet",
+          "sourceType": "archive",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:15.110Z",
+          "format": "html",
+          "documentType": "owners_manual",
+          "contentSha256": "ce07f388fd759ab2aa12b52435065ec1047adc9fcdeaf2436954042ac864e068",
+          "byteLength": 51067,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "C3"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2017,
+            "yearTo": 2017,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200,
+              1600
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://manualsnet.com/citroen/c3-2017",
+              "host": "manualsnet.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://manualsnet.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:14.997Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://manualsnet.com/citroen/c3-2017",
+              "host": "manualsnet.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://manualsnet.com/citroen/c3-2017",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:15.110Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://manualsnet.com/citroen/c3-2017",
+              "host": "manualsnet.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://manualsnet.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://manualsnet.com/citroen/c3-2017",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:15.110Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "manualsnet.com"
           }
         },
         {
@@ -1306,12 +1369,12 @@
           "sourceName": "CarCareKiosk",
           "sourceType": "other",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:33:13.945Z",
-          "retrievedAt": "2026-10-03T05:33:55.222Z",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:18.352Z",
           "format": "html",
           "documentType": "owners_manual",
-          "contentSha256": "033328acba82a8031fb4b1135d69e1db496299cc847d78a9c114932184aedf6a",
-          "byteLength": 17650,
+          "contentSha256": "8afa2ad579b3e068727d5227f55478f727b2b8c2d38f34b35ece8003598ccd2a",
+          "byteLength": 17607,
           "locale": "en",
           "markets": [],
           "statedApplicability": {
@@ -1349,7 +1412,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:54.757Z",
+              "decidedAt": "2026-10-03T10:00:17.881Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1365,7 +1428,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:55.063Z",
+              "decidedAt": "2026-10-03T10:00:18.189Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1381,7 +1444,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:55.222Z",
+              "decidedAt": "2026-10-03T10:00:18.352Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1402,7 +1465,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:55.222Z",
+              "decidedAt": "2026-10-03T10:00:18.352Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1424,12 +1487,12 @@
           "sourceName": "WhoCanFixMyCar",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:33:13.945Z",
-          "retrievedAt": "2026-10-03T05:34:04.896Z",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:25.845Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "5c616576321729f83734154b20bd70033d5b4f72a10490c761333b6a995c71d5",
-          "byteLength": 383216,
+          "contentSha256": "319bfb64798c3eb77585b67558568ac66e5869473a10f0dd5af34d83a006b772",
+          "byteLength": 383217,
           "locale": "en",
           "markets": [],
           "statedApplicability": {
@@ -1467,7 +1530,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:04.420Z",
+              "decidedAt": "2026-10-03T10:00:25.486Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1483,7 +1546,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:04.896Z",
+              "decidedAt": "2026-10-03T10:00:25.845Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1504,7 +1567,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:04.896Z",
+              "decidedAt": "2026-10-03T10:00:25.845Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1517,6 +1580,112 @@
           }
         },
         {
+          "sourceId": "src-9dec194579091383",
+          "canonicalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/revision-generale-26",
+          "finalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/revision-generale-26",
+          "chain": [
+            "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/revision-generale-26"
+          ],
+          "sourceName": "GoodMecano",
+          "sourceType": "other",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:27.045Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "0537d8dca4c5e7f8614fed06d37467eb89c41188fd2391b129fe9911409ce46c",
+          "byteLength": 992139,
+          "locale": "fr",
+          "markets": [
+            "US"
+          ],
+          "statedApplicability": {
+            "models": [
+              "C3"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2026,
+            "yearTo": 2026,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [
+              "US"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/revision-generale-26",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:25.482Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/revision-generale-26",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/revision-generale-26",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:27.045Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/revision-generale-26",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/revision-generale-26",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:27.045Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.goodmecano.com"
+          }
+        },
+        {
           "sourceId": "src-83e77afc29597aca",
           "canonicalUrl": "https://carwiki.de/citroen-c3-inspektion",
           "finalUrl": "https://carwiki.de/citroen-c3-inspektion",
@@ -1526,12 +1695,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "knowledge",
-          "discoveredAt": "2026-10-03T05:33:13.950Z",
-          "retrievedAt": "2026-10-03T05:34:08.960Z",
+          "discoveredAt": "2026-10-03T09:59:36.046Z",
+          "retrievedAt": "2026-10-03T10:00:31.591Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "f1d29f279328b8d58513795fc1ff886496798dd5f9e155c53972cfd6609a7e1c",
-          "byteLength": 176745,
+          "contentSha256": "62a2a069ed0cd47aed9ea03497146df8db35d0a857c7996fc7765c290f4f8503",
+          "byteLength": 176683,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1564,7 +1733,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:08.338Z",
+              "decidedAt": "2026-10-03T10:00:27.305Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1580,7 +1749,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:08.960Z",
+              "decidedAt": "2026-10-03T10:00:31.591Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1601,7 +1770,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:08.960Z",
+              "decidedAt": "2026-10-03T10:00:31.591Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1623,11 +1792,11 @@
           "sourceName": "www.auto-abc.lv",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:46.972Z",
-          "retrievedAt": "2026-10-03T05:34:10.544Z",
+          "discoveredAt": "2026-10-03T10:00:11.116Z",
+          "retrievedAt": "2026-10-03T10:00:32.086Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "7c9dc6a3d5debdb7f8d2fd4c6737c212abe5f293fe47ea6a70c4f684404b9b82",
+          "contentSha256": "671254741b5e640eb83a5c1135c3b184cf6f171997543d8d48541835425b25ae",
           "byteLength": 27558,
           "locale": null,
           "markets": [],
@@ -1665,7 +1834,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:10.420Z",
+              "decidedAt": "2026-10-03T10:00:31.845Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1681,7 +1850,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:10.544Z",
+              "decidedAt": "2026-10-03T10:00:32.086Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1702,7 +1871,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:10.544Z",
+              "decidedAt": "2026-10-03T10:00:32.086Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1724,8 +1893,8 @@
           "sourceName": "Fiches-auto.fr",
           "sourceType": "forum",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:33:13.945Z",
-          "retrievedAt": "2026-10-03T05:34:10.853Z",
+          "discoveredAt": "2026-10-03T09:59:36.041Z",
+          "retrievedAt": "2026-10-03T10:00:32.245Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "496323b8dac2c4206a12cf0542c83da60c7b921c7639da5dd52ff35adb2c260f",
@@ -1774,7 +1943,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:10.693Z",
+              "decidedAt": "2026-10-03T10:00:32.076Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1790,7 +1959,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:10.853Z",
+              "decidedAt": "2026-10-03T10:00:32.245Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1811,7 +1980,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:10.853Z",
+              "decidedAt": "2026-10-03T10:00:32.245Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1833,11 +2002,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:46.972Z",
-          "retrievedAt": "2026-10-03T05:34:11.043Z",
+          "discoveredAt": "2026-10-03T10:00:11.116Z",
+          "retrievedAt": "2026-10-03T10:00:32.554Z",
           "format": "html",
           "documentType": "service_manual",
-          "contentSha256": "d9e5d896de617130b09ee22ff008eb074eda4dc240d1a518f53f61f4062d9c5a",
+          "contentSha256": "4b2cd5ba57ddf66f68cf6c208e8cda19d2294a630ce27bb0ea2163de9d3add22",
           "byteLength": 35642,
           "locale": null,
           "markets": [],
@@ -1876,7 +2045,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:10.860Z",
+              "decidedAt": "2026-10-03T10:00:32.251Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1892,7 +2061,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:11.042Z",
+              "decidedAt": "2026-10-03T10:00:32.554Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1913,7 +2082,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:11.043Z",
+              "decidedAt": "2026-10-03T10:00:32.554Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1935,11 +2104,11 @@
           "sourceName": "es.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:46.972Z",
-          "retrievedAt": "2026-10-03T05:34:11.135Z",
+          "discoveredAt": "2026-10-03T10:00:11.116Z",
+          "retrievedAt": "2026-10-03T10:00:32.712Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "59253957d5a30f6fea4544db39c4d1ebf8947a5e300ff64d57b3f75dc73fd730",
+          "contentSha256": "7dd9e1a9ff3d7631bce896b399268e074fd9b1e27e2d037b1ff7cd943c29e000",
           "byteLength": 27118,
           "locale": null,
           "markets": [],
@@ -1967,17 +2136,17 @@
             {
               "operation": "FETCH",
               "status": "ALLOWED",
-              "reason": "robots_unavailable",
+              "reason": "robots_allows",
               "url": "https://es.auto-abc.eu/servicio/Citroen-C3",
               "host": "es.auto-abc.eu",
               "evidence": [
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:10.998Z",
+              "decidedAt": "2026-10-03T10:00:32.459Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1993,7 +2162,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:11.135Z",
+              "decidedAt": "2026-10-03T10:00:32.712Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2006,7 +2175,7 @@
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 },
                 {
                   "kind": "operation_scope",
@@ -2014,7 +2183,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:11.135Z",
+              "decidedAt": "2026-10-03T10:00:32.712Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2036,8 +2205,8 @@
           "sourceName": "www.idgarages.com",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:52.238Z",
-          "retrievedAt": "2026-10-03T05:34:11.201Z",
+          "discoveredAt": "2026-10-03T10:00:12.865Z",
+          "retrievedAt": "2026-10-03T10:00:32.777Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "3118559d59efa263f0d28d3bc68630a44e08720c507b4622e954261be80e8537",
@@ -2078,7 +2247,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:11.136Z",
+              "decidedAt": "2026-10-03T10:00:32.714Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2094,7 +2263,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:11.201Z",
+              "decidedAt": "2026-10-03T10:00:32.776Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2115,7 +2284,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:11.201Z",
+              "decidedAt": "2026-10-03T10:00:32.777Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2137,11 +2306,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:46.972Z",
-          "retrievedAt": "2026-10-03T05:34:12.490Z",
+          "discoveredAt": "2026-10-03T10:00:11.116Z",
+          "retrievedAt": "2026-10-03T10:00:33.908Z",
           "format": "html",
           "documentType": "service_manual",
-          "contentSha256": "6dc2996f859c4aa1f9af31300d34bf9244229b0b921754e16869444544a07ebf",
+          "contentSha256": "259bbcd2e8a10b0e2d797ac217e789e46bca7c127af3976ac09e07c3774642d0",
           "byteLength": 35621,
           "locale": null,
           "markets": [],
@@ -2180,7 +2349,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:11.135Z",
+              "decidedAt": "2026-10-03T10:00:32.713Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2196,7 +2365,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:12.490Z",
+              "decidedAt": "2026-10-03T10:00:33.908Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2217,7 +2386,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:12.490Z",
+              "decidedAt": "2026-10-03T10:00:33.908Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2239,11 +2408,11 @@
           "sourceName": "manualsnet.com",
           "sourceType": "archive",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:53.501Z",
-          "retrievedAt": "2026-10-03T05:34:12.645Z",
+          "discoveredAt": "2026-10-03T10:00:15.111Z",
+          "retrievedAt": "2026-10-03T10:00:34.217Z",
           "format": "html",
           "documentType": "maintenance_schedule",
-          "contentSha256": "8a26aa7dedb9747461f45d47fae0f16fe83622a44fed75f21da8b3a95da9d40e",
+          "contentSha256": "150a3c39b45673d7ff531ea607fec7f58300adbeeca7b0a695bd5f7eb43c0329",
           "byteLength": 51841,
           "locale": null,
           "markets": [],
@@ -2276,7 +2445,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:12.492Z",
+              "decidedAt": "2026-10-03T10:00:33.910Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2292,7 +2461,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:12.644Z",
+              "decidedAt": "2026-10-03T10:00:34.216Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2313,7 +2482,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:12.645Z",
+              "decidedAt": "2026-10-03T10:00:34.217Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2335,8 +2504,8 @@
           "sourceName": "www.idgarages.com",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:52.238Z",
-          "retrievedAt": "2026-10-03T05:34:12.667Z",
+          "discoveredAt": "2026-10-03T10:00:12.865Z",
+          "retrievedAt": "2026-10-03T10:00:34.244Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "713945738e64042c451862df1116b11b36c8dca5936c2403e8f6151087005479",
@@ -2377,7 +2546,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:12.492Z",
+              "decidedAt": "2026-10-03T10:00:33.910Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2393,7 +2562,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:12.666Z",
+              "decidedAt": "2026-10-03T10:00:34.243Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2414,7 +2583,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:12.667Z",
+              "decidedAt": "2026-10-03T10:00:34.244Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2427,109 +2596,6 @@
           }
         },
         {
-          "sourceId": "src-9404cec02b6b7d96",
-          "canonicalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock",
-          "finalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock",
-          "chain": [
-            "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock"
-          ],
-          "sourceName": "www.carcarekiosk.com",
-          "sourceType": "other",
-          "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:55.223Z",
-          "retrievedAt": "2026-10-03T05:34:14.845Z",
-          "format": "html",
-          "documentType": "owners_manual",
-          "contentSha256": "5242b857312be59032d51749e187f0ac79b8025d21aaf2b30b43cf068f9ed18e",
-          "byteLength": 27831,
-          "locale": null,
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "C3"
-            ],
-            "modelVariants": [],
-            "yearFrom": 2017,
-            "yearTo": 2017,
-            "engineCodes": [],
-            "displacementsCc": [
-              1200
-            ],
-            "displacementsMentioned": [
-              1200,
-              1400
-            ],
-            "fuels": [
-              "petrol"
-            ],
-            "markets": [],
-            "yearBasis": "document_text",
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock",
-              "host": "www.carcarekiosk.com",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.carcarekiosk.com/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:34:12.671Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock",
-              "host": "www.carcarekiosk.com",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:34:14.845Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock",
-              "host": "www.carcarekiosk.com",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.carcarekiosk.com/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./clock/set_clock",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:34:14.845Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "www.carcarekiosk.com"
-          }
-        },
-        {
           "sourceId": "src-d3a19634d9e2ecfa",
           "canonicalUrl": "https://www.carcarekiosk.com/videos/Citroen/C3/2017",
           "finalUrl": "https://www.carcarekiosk.com/videos/Citroen/C3/2017",
@@ -2539,12 +2605,12 @@
           "sourceName": "www.carcarekiosk.com",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:55.223Z",
-          "retrievedAt": "2026-10-03T05:34:14.847Z",
+          "discoveredAt": "2026-10-03T10:00:18.353Z",
+          "retrievedAt": "2026-10-03T10:00:34.777Z",
           "format": "html",
           "documentType": "owners_manual",
-          "contentSha256": "90a462726a0749c47776828c305fc94a22c7a18006fc630faca2b395eb31cc80",
-          "byteLength": 40146,
+          "contentSha256": "02ae89153bf437c5cf792434dde6b4b2ca5183be58971e18e5c0ddd00a783e91",
+          "byteLength": 40434,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2578,7 +2644,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:12.671Z",
+              "decidedAt": "2026-10-03T10:00:34.253Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2594,7 +2660,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:14.847Z",
+              "decidedAt": "2026-10-03T10:00:34.777Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2615,7 +2681,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:14.847Z",
+              "decidedAt": "2026-10-03T10:00:34.777Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2628,21 +2694,124 @@
           }
         },
         {
-          "sourceId": "src-40b2e8681259fcb2",
-          "canonicalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running",
-          "finalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running",
+          "sourceId": "src-a06bd50877100bfa",
+          "canonicalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery",
+          "finalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery",
           "chain": [
-            "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running"
+            "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery"
           ],
           "sourceName": "www.carcarekiosk.com",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:55.223Z",
-          "retrievedAt": "2026-10-03T05:34:15.858Z",
+          "discoveredAt": "2026-10-03T10:00:18.353Z",
+          "retrievedAt": "2026-10-03T10:00:35.932Z",
           "format": "html",
           "documentType": "owners_manual",
-          "contentSha256": "e4f745d6b24f4a980216d835642f7a2720a450770fb352d77d5aa92168ee82f3",
-          "byteLength": 31463,
+          "contentSha256": "e86307ddd9173eb3b255948d140dccd81fba6045b9f2c99d2618db2721986532",
+          "byteLength": 29281,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "C3"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2017,
+            "yearTo": 2017,
+            "engineCodes": [],
+            "displacementsCc": [
+              1200
+            ],
+            "displacementsMentioned": [
+              1200,
+              1600
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery",
+              "host": "www.carcarekiosk.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carcarekiosk.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:34.253Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery",
+              "host": "www.carcarekiosk.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:35.931Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery",
+              "host": "www.carcarekiosk.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.carcarekiosk.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./battery/replace_battery",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:35.932Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.carcarekiosk.com"
+          }
+        },
+        {
+          "sourceId": "src-f4926d3b3a5b3e1d",
+          "canonicalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil",
+          "finalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil",
+          "chain": [
+            "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil"
+          ],
+          "sourceName": "www.carcarekiosk.com",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T10:00:18.354Z",
+          "retrievedAt": "2026-10-03T10:00:37.423Z",
+          "format": "html",
+          "documentType": "owners_manual",
+          "contentSha256": "b29a9413a259b50fa1527ca81be73d3dee756f7f4109c7f4c8766d057236e6bc",
+          "byteLength": 27809,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2671,7 +2840,7 @@
               "operation": "FETCH",
               "status": "ALLOWED",
               "reason": "robots_no_matching_rule",
-              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running",
+              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil",
               "host": "www.carcarekiosk.com",
               "evidence": [
                 {
@@ -2680,30 +2849,30 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:14.848Z",
+              "decidedAt": "2026-10-03T10:00:35.934Z",
               "policyVersion": "msource-access/2"
             },
             {
               "operation": "STORAGE",
               "status": "UNKNOWN",
               "reason": "no_storage_permission",
-              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running",
+              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil",
               "host": "www.carcarekiosk.com",
               "evidence": [
                 {
                   "kind": "operation_scope",
-                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running",
+                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil",
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:15.858Z",
+              "decidedAt": "2026-10-03T10:00:37.422Z",
               "policyVersion": "msource-access/2"
             },
             {
               "operation": "EXTRACTION",
               "status": "ALLOWED",
               "reason": "facts_only_after_permitted_fetch",
-              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running",
+              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil",
               "host": "www.carcarekiosk.com",
               "evidence": [
                 {
@@ -2713,11 +2882,11 @@
                 },
                 {
                   "kind": "operation_scope",
-                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/daylight_running",
+                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./oil/add_oil",
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:15.858Z",
+              "decidedAt": "2026-10-03T10:00:37.423Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2730,21 +2899,21 @@
           }
         },
         {
-          "sourceId": "src-9a655f639f876cf5",
-          "canonicalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light",
-          "finalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light",
+          "sourceId": "src-14c4e90f8e3982c5",
+          "canonicalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks",
+          "finalUrl": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks",
           "chain": [
-            "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light"
+            "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks"
           ],
           "sourceName": "www.carcarekiosk.com",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:33:55.223Z",
-          "retrievedAt": "2026-10-03T05:34:17.381Z",
+          "discoveredAt": "2026-10-03T10:00:18.354Z",
+          "retrievedAt": "2026-10-03T10:00:38.918Z",
           "format": "html",
           "documentType": "owners_manual",
-          "contentSha256": "39dbafa7721b91ed5078a218e104ad1e8c0c16795dbdc03cddf1376f7d30ee9e",
-          "byteLength": 30997,
+          "contentSha256": "1133b1b14aefcfec2175c91d39e4b610510c008f7c190626cb251f557a8a5417",
+          "byteLength": 28443,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2759,7 +2928,8 @@
               1200
             ],
             "displacementsMentioned": [
-              1200
+              1200,
+              1400
             ],
             "fuels": [
               "petrol"
@@ -2773,7 +2943,7 @@
               "operation": "FETCH",
               "status": "ALLOWED",
               "reason": "robots_no_matching_rule",
-              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light",
+              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks",
               "host": "www.carcarekiosk.com",
               "evidence": [
                 {
@@ -2782,30 +2952,30 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:14.848Z",
+              "decidedAt": "2026-10-03T10:00:35.934Z",
               "policyVersion": "msource-access/2"
             },
             {
               "operation": "STORAGE",
               "status": "UNKNOWN",
               "reason": "no_storage_permission",
-              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light",
+              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks",
               "host": "www.carcarekiosk.com",
               "evidence": [
                 {
                   "kind": "operation_scope",
-                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light",
+                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks",
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:17.381Z",
+              "decidedAt": "2026-10-03T10:00:38.918Z",
               "policyVersion": "msource-access/2"
             },
             {
               "operation": "EXTRACTION",
               "status": "ALLOWED",
               "reason": "facts_only_after_permitted_fetch",
-              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light",
+              "url": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks",
               "host": "www.carcarekiosk.com",
               "evidence": [
                 {
@@ -2815,11 +2985,11 @@
                 },
                 {
                   "kind": "operation_scope",
-                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./lights/reverse_light",
+                  "ref": "https://www.carcarekiosk.com/video/2017_Citroen_C3_PureTech_1.2L_3_Cyl./coolant_antifreeze/fix_leaks",
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:17.381Z",
+              "decidedAt": "2026-10-03T10:00:38.918Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2829,6 +2999,635 @@
             "official": false,
             "basis": "none",
             "detail": "www.carcarekiosk.com"
+          }
+        },
+        {
+          "sourceId": "src-606cc1eaf6b092a0",
+          "canonicalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3",
+          "finalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3",
+          "chain": [
+            "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3"
+          ],
+          "sourceName": "www.goodmecano.com",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T10:00:27.070Z",
+          "retrievedAt": "2026-10-03T10:00:40.232Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "fba26a3643255839605caa2753e072c40787a3378a21b98fb0ffd19e549ee455",
+          "byteLength": 1229883,
+          "locale": null,
+          "markets": [
+            "US"
+          ],
+          "statedApplicability": {
+            "models": [
+              "C3"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "US"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:38.919Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:40.231Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:40.232Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.goodmecano.com"
+          }
+        },
+        {
+          "sourceId": "src-548d4b154099844f",
+          "canonicalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534",
+          "finalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534",
+          "chain": [
+            "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534"
+          ],
+          "sourceName": "www.goodmecano.com",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T10:00:27.071Z",
+          "retrievedAt": "2026-10-03T10:00:42.222Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "6f743d4673eb7e621dcfd656c7f5da45d55a0c2388689e53a1a2ba24fa3d3f25",
+          "byteLength": 1015220,
+          "locale": null,
+          "markets": [
+            "US"
+          ],
+          "statedApplicability": {
+            "models": [
+              "C3"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2026,
+            "yearTo": 2026,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [
+              "US"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:38.919Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:42.221Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-ma-voiture-manque-de-puissance-4337534",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:42.222Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.goodmecano.com"
+          }
+        },
+        {
+          "sourceId": "src-c03ca30ae1761b7c",
+          "canonicalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522",
+          "finalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522",
+          "chain": [
+            "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522"
+          ],
+          "sourceName": "www.goodmecano.com",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T10:00:27.071Z",
+          "retrievedAt": "2026-10-03T10:00:44.144Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "4fe980a167c63fe88744ca6c378a5a272d7ff7baebe62750aa4b0099a543746e",
+          "byteLength": 1010439,
+          "locale": null,
+          "markets": [
+            "US"
+          ],
+          "statedApplicability": {
+            "models": [
+              "C3"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2026,
+            "yearTo": 2026,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [
+              "US"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:42.880Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:44.143Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/diagnostic-moteur-la-consommation-de-carburant-du-vehicule-augmente-4337522",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:44.144Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.goodmecano.com"
+          }
+        },
+        {
+          "sourceId": "src-314bdc2ad3bd9b9c",
+          "canonicalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64",
+          "finalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64",
+          "chain": [
+            "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64"
+          ],
+          "sourceName": "www.goodmecano.com",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T10:00:27.071Z",
+          "retrievedAt": "2026-10-03T10:00:46.289Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "46e570c3bb4e3f3e21e2c18d8eb9fa33519e33c0413c5b146ca05c9ce6cd56c1",
+          "byteLength": 1017599,
+          "locale": null,
+          "markets": [
+            "US"
+          ],
+          "statedApplicability": {
+            "models": [
+              "C3"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2026,
+            "yearTo": 2026,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [
+              "US"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:42.880Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:46.289Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-roulement-roue-arriere-gauche-64",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:46.289Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.goodmecano.com"
+          }
+        },
+        {
+          "sourceId": "src-0e3854d2ff940094",
+          "canonicalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266",
+          "finalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266",
+          "chain": [
+            "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266"
+          ],
+          "sourceName": "www.goodmecano.com",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T10:00:27.071Z",
+          "retrievedAt": "2026-10-03T10:00:47.589Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "b4c257afeb0596b4be14daef57ea4f762c2973ed1b4f111a3d58952162191482",
+          "byteLength": 1014619,
+          "locale": null,
+          "markets": [
+            "US"
+          ],
+          "statedApplicability": {
+            "models": [
+              "C3"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2026,
+            "yearTo": 2026,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [
+              "US"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:46.310Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:47.588Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/remplacement-pare-brise-1409266",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:47.589Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.goodmecano.com"
+          }
+        },
+        {
+          "sourceId": "src-c2c4acadb716da0b",
+          "canonicalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762",
+          "finalUrl": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762",
+          "chain": [
+            "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762"
+          ],
+          "sourceName": "www.goodmecano.com",
+          "sourceType": "other",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T10:00:27.071Z",
+          "retrievedAt": "2026-10-03T10:00:49.431Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "f5761b4e91e798d96ba6069dd65adc2d67f2c1b043fc83a723cb47a38c2f3bf0",
+          "byteLength": 993193,
+          "locale": null,
+          "markets": [
+            "US"
+          ],
+          "statedApplicability": {
+            "models": [
+              "C3"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2026,
+            "yearTo": 2026,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [
+              "US"
+            ],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:46.310Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:49.431Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762",
+              "host": "www.goodmecano.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.goodmecano.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.goodmecano.com/reparation-automobile-par-marque/citroen/c3/peinture-porte-avant-gauche-22762",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T10:00:49.431Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.goodmecano.com"
           }
         },
         {
@@ -2841,11 +3640,11 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:34:08.965Z",
-          "retrievedAt": "2026-10-03T05:34:18.758Z",
+          "discoveredAt": "2026-10-03T10:00:31.597Z",
+          "retrievedAt": "2026-10-03T10:00:52.215Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "259b210308f19dd52dccdda8db26ee772bf0b1c3eb8aae85b3d5d49bf2fc54c3",
+          "contentSha256": "d412b43df649d176f941631dcbc6ae0bb291b8b762d1c086db39cad8e74d75c6",
           "byteLength": 294456,
           "locale": null,
           "markets": [],
@@ -2879,7 +3678,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:17.382Z",
+              "decidedAt": "2026-10-03T10:00:49.451Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2895,7 +3694,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:18.758Z",
+              "decidedAt": "2026-10-03T10:00:52.214Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2916,7 +3715,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:18.758Z",
+              "decidedAt": "2026-10-03T10:00:52.215Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2938,12 +3737,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:34:08.966Z",
-          "retrievedAt": "2026-10-03T05:34:24.177Z",
+          "discoveredAt": "2026-10-03T10:00:31.597Z",
+          "retrievedAt": "2026-10-03T10:00:53.033Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "70ef83c8d84b5e3d805c0aa3c003d2d82f4e30b820ec81f14f66af0ff154a5a3",
-          "byteLength": 176172,
+          "contentSha256": "b42f9d1af93d36f86b9e5f6fbe9317f99dc5e5ccb0f9b546f4e47fc6eb86eab7",
+          "byteLength": 176078,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2987,7 +3786,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:17.382Z",
+              "decidedAt": "2026-10-03T10:00:49.451Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3003,7 +3802,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:24.177Z",
+              "decidedAt": "2026-10-03T10:00:53.033Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3024,7 +3823,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:24.177Z",
+              "decidedAt": "2026-10-03T10:00:53.033Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3046,8 +3845,8 @@
           "sourceName": "www.fiches-auto.fr",
           "sourceType": "forum",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:34:10.858Z",
-          "retrievedAt": "2026-10-03T05:34:24.923Z",
+          "discoveredAt": "2026-10-03T10:00:32.250Z",
+          "retrievedAt": "2026-10-03T10:00:53.478Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "77f4d11e824438bd48a867fcad66f2be1bac0baa715e019e33bef88df2346e63",
@@ -3095,7 +3894,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:24.459Z",
+              "decidedAt": "2026-10-03T10:00:53.038Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3111,7 +3910,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:24.923Z",
+              "decidedAt": "2026-10-03T10:00:53.477Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3132,7 +3931,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:24.923Z",
+              "decidedAt": "2026-10-03T10:00:53.478Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3145,109 +3944,6 @@
           }
         },
         {
-          "sourceId": "src-59d1f2109429b67a",
-          "canonicalUrl": "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide",
-          "finalUrl": "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide",
-          "chain": [
-            "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide"
-          ],
-          "sourceName": "web.archive.org",
-          "sourceType": "other",
-          "discoveredBy": "archive",
-          "discoveredAt": "2026-10-03T05:34:08.382Z",
-          "retrievedAt": "2026-10-03T05:34:37.481Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "7d61c10f919be3feb3cc59173f5e3dac3e38e9b04712021e664d186bfb2e7a50",
-          "byteLength": 370285,
-          "locale": null,
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "C3"
-            ],
-            "modelVariants": [],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [
-              1000,
-              1100,
-              1200,
-              1400,
-              1500,
-              1600
-            ],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_unavailable",
-              "url": "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide",
-              "host": "web.archive.org",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://web.archive.org/robots.txt",
-                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:34:36.027Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide",
-              "host": "web.archive.org",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:34:37.481Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide",
-              "host": "web.archive.org",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://web.archive.org/robots.txt",
-                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://web.archive.org/web/20260511063019id_/https://www.whocanfixmycar.com/advice/citroen-c3-owners-guide",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:34:37.481Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "archiveOf": "https://www.whocanfixmycar.com/advice/citroen-C3-owners-guide",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "web.archive.org"
-          }
-        },
-        {
           "sourceId": "src-8bc131753b6f0043",
           "canonicalUrl": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-91062-citroen-c3-iii-12-puretech-82-ch-boite-mecanique-45000km-2017-finition-feel-surequipee-radar-de-recul-ecran-multimedia.php",
           "finalUrl": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-91062-citroen-c3-iii-12-puretech-82-ch-boite-mecanique-45000km-2017-finition-feel-surequipee-radar-de-recul-ecran-multimedia.php",
@@ -3257,8 +3953,8 @@
           "sourceName": "www.fiches-auto.fr",
           "sourceType": "forum",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:34:10.859Z",
-          "retrievedAt": "2026-10-03T05:34:37.888Z",
+          "discoveredAt": "2026-10-03T10:00:32.250Z",
+          "retrievedAt": "2026-10-03T10:00:54.699Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "73b1b8e45448ab4571f2f53e452a93ab3af7361f9fc382336d235237670ffa0e",
@@ -3305,7 +4001,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:37.484Z",
+              "decidedAt": "2026-10-03T10:00:53.038Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3321,7 +4017,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:37.888Z",
+              "decidedAt": "2026-10-03T10:00:54.699Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3342,7 +4038,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:37.888Z",
+              "decidedAt": "2026-10-03T10:00:54.699Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3364,8 +4060,8 @@
           "sourceName": "www.fiches-auto.fr",
           "sourceType": "forum",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:34:10.859Z",
-          "retrievedAt": "2026-10-03T05:34:39.162Z",
+          "discoveredAt": "2026-10-03T10:00:32.251Z",
+          "retrievedAt": "2026-10-03T10:00:56.205Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "4113a9643011c574893cfa4b096ef000ee7bbce46a4aa123c6759e37230f352c",
@@ -3413,7 +4109,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:37.484Z",
+              "decidedAt": "2026-10-03T10:00:54.707Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3429,7 +4125,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:39.162Z",
+              "decidedAt": "2026-10-03T10:00:56.205Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3450,116 +4146,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:39.162Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "www.fiches-auto.fr"
-          }
-        },
-        {
-          "sourceId": "src-e7c893ee7fa53344",
-          "canonicalUrl": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php",
-          "finalUrl": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php",
-          "chain": [
-            "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php"
-          ],
-          "sourceName": "www.fiches-auto.fr",
-          "sourceType": "forum",
-          "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:34:10.860Z",
-          "retrievedAt": "2026-10-03T05:34:42.785Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "852fd43469b2e3c822de83440cf16ec4321ba7dbaafb24a7fd1082a5f3d68616",
-          "byteLength": 107789,
-          "locale": null,
-          "markets": [
-            "EU"
-          ],
-          "statedApplicability": {
-            "models": [
-              "C3"
-            ],
-            "modelVariants": [],
-            "yearFrom": 2017,
-            "yearTo": 2017,
-            "engineCodes": [],
-            "displacementsCc": [
-              1200
-            ],
-            "displacementsMentioned": [
-              1200,
-              1500,
-              1600,
-              4700
-            ],
-            "fuels": [
-              "petrol"
-            ],
-            "markets": [
-              "EU"
-            ],
-            "yearBasis": "document_text",
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_allows",
-              "url": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php",
-              "host": "www.fiches-auto.fr",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.fiches-auto.fr/robots.txt",
-                  "detail": "group *; Allow: /"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:34:39.166Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php",
-              "host": "www.fiches-auto.fr",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:34:42.784Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php",
-              "host": "www.fiches-auto.fr",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.fiches-auto.fr/robots.txt",
-                  "detail": "group *; Allow: /"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.fiches-auto.fr/avis-citroen/avis-unique-566-73301-citroen-c3-iii-12-puretech-82-ch-boite-manuel-2000kms-dec-2017-finition-feel.php",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:34:42.785Z",
+              "decidedAt": "2026-10-03T10:00:56.205Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3581,8 +4168,8 @@
           "sourceName": "www.fiches-auto.fr",
           "sourceType": "forum",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:34:10.859Z",
-          "retrievedAt": "2026-10-03T05:34:45.990Z",
+          "discoveredAt": "2026-10-03T10:00:32.251Z",
+          "retrievedAt": "2026-10-03T10:00:57.710Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "a98468ffbb66a6ba6bab3ca6987341632e5966ea692d0e99716584c280957150",
@@ -3631,7 +4218,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:39.165Z",
+              "decidedAt": "2026-10-03T10:00:54.707Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3647,7 +4234,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:45.990Z",
+              "decidedAt": "2026-10-03T10:00:57.710Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3668,7 +4255,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:45.990Z",
+              "decidedAt": "2026-10-03T10:00:57.710Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3683,7 +4270,133 @@
       ],
       "evidence": [
         {
-          "id": "src-83e77afc29597aca:f1d29f279328-p4-s-periodic_service-other-0",
+          "id": "src-9dec194579091383:0537d8dca4c5-p5-s-spark_plugs-replacement-0",
+          "sourceId": "src-9dec194579091383",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Sur les moteurs essence, le remplacement des bougies d'allumage est généralement prévu tous les 60 000 km environ.",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [
+            "C3"
+          ],
+          "yearApplicability": {
+            "from": 2026,
+            "to": 2026
+          },
+          "marketApplicability": [
+            "US"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Sur les moteurs essence, le remplacement des bougies d'allumage est généralement\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "mismatch",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document covers 2026–2026, not 2017",
+              "market stated: US (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "0537d8dca4c5-p5-s-spark_plugs-replacement-0",
+            "task": "spark_plugs",
+            "taskText": "Sur les moteurs essence, le remplacement des bougies d'allumage est généralement prévu tous les 60 000 km environ.",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "citroen"
+              ],
+              "models": [
+                "C3"
+              ],
+              "modelYears": {
+                "from": 2026,
+                "to": 2026
+              },
+              "markets": [
+                "US"
+              ],
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "0537d8dca4c5e7f8614fed06d37467eb89c41188fd2391b129fe9911409ce46c",
+                "documentTitle": "Révision générale sur CITROËN C3",
+                "authority": "vehicle_document",
+                "markets": [
+                  "US"
+                ],
+                "page": 5,
+                "section": "Conseil de nos experts",
+                "locator": "column sentence \"Sur les moteurs essence, le remplacement des bougies d'allumage est généralement\"",
+                "documentSha256": "0537d8dca4c5e7f8614fed06d37467eb89c41188fd2391b129fe9911409ce46c"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "document years 2026–2026",
+            "sufficient": false,
+            "years": {
+              "from": 2026,
+              "to": 2026
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
+          "id": "src-83e77afc29597aca:62a2a069ed0c-p4-s-periodic_service-other-0",
           "sourceId": "src-83e77afc29597aca",
           "operationKey": "periodic_service",
           "task": "periodic_service",
@@ -3734,7 +4447,7 @@
             ]
           },
           "requirement": {
-            "id": "f1d29f279328-p4-s-periodic_service-other-0",
+            "id": "62a2a069ed0c-p4-s-periodic_service-other-0",
             "task": "periodic_service",
             "taskText": "Egal, ob Benziner oder Diesel, jeder Citroen C3 muss entweder nach 12 oder 24 Monaten bzw. nach 15.000, 20.000 oder 25.000 Kilometern (abhängig davon, was zuerst eintritt) zur Inspektion in die Werkst",
             "action": "other",
@@ -3769,14 +4482,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "f1d29f279328b8d58513795fc1ff886496798dd5f9e155c53972cfd6609a7e1c",
+                "documentId": "62a2a069ed0cd47aed9ea03497146df8db35d0a857c7996fc7765c290f4f8503",
                 "documentTitle": "https://carwiki.de/citroen-c3-inspektion",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 4,
                 "section": "Zusammenfassung der Intervalle bei der Citroen C3 Inspektion",
                 "locator": "column sentence \"Egal, ob Benziner oder Diesel, jeder Citroen C3 muss entweder nach 12 oder 24 Mo\"",
-                "documentSha256": "f1d29f279328b8d58513795fc1ff886496798dd5f9e155c53972cfd6609a7e1c"
+                "documentSha256": "62a2a069ed0cd47aed9ea03497146df8db35d0a857c7996fc7765c290f4f8503"
               }
             ],
             "verification": "candidate",
@@ -3799,7 +4512,7 @@
           }
         },
         {
-          "id": "src-4598bf4fcde5024d:d9e5d896de61-p5-timing_belt-replacement-0",
+          "id": "src-4598bf4fcde5024d:4b2cd5ba57dd-p5-timing_belt-replacement-0",
           "sourceId": "src-4598bf4fcde5024d",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -3851,7 +4564,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "d9e5d896de61-p5-timing_belt-replacement-0",
+            "id": "4b2cd5ba57dd-p5-timing_belt-replacement-0",
             "task": "timing_belt",
             "taskText": "Manufacturers recommended timing belt replacement interval for Citroen C3 1.2 petrol is 180,000 km .",
             "action": "replacement",
@@ -3887,14 +4600,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "d9e5d896de617130b09ee22ff008eb074eda4dc240d1a518f53f61f4062d9c5a",
+                "documentId": "4b2cd5ba57ddf66f68cf6c208e8cda19d2294a630ce27bb0ea2163de9d3add22",
                 "documentTitle": "Citroen C3 1.2 (Petrol, 110 HP, MT) 2016 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Manufacturers recommended timing belt replacement interval for Citroen C3 1.2 pe\"",
-                "documentSha256": "d9e5d896de617130b09ee22ff008eb074eda4dc240d1a518f53f61f4062d9c5a"
+                "documentSha256": "4b2cd5ba57ddf66f68cf6c208e8cda19d2294a630ce27bb0ea2163de9d3add22"
               }
             ],
             "verification": "candidate",
@@ -3917,7 +4630,7 @@
           }
         },
         {
-          "id": "src-a5323772545d26c0:6dc2996f859c-p5-timing_belt-replacement-0",
+          "id": "src-a5323772545d26c0:259bbcd2e8a1-p5-timing_belt-replacement-0",
           "sourceId": "src-a5323772545d26c0",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -3969,7 +4682,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "6dc2996f859c-p5-timing_belt-replacement-0",
+            "id": "259bbcd2e8a1-p5-timing_belt-replacement-0",
             "task": "timing_belt",
             "taskText": "Manufacturers recommended timing belt replacement interval for Citroen C3 1.2 petrol is 180,000 km .",
             "action": "replacement",
@@ -4005,14 +4718,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "6dc2996f859c4aa1f9af31300d34bf9244229b0b921754e16869444544a07ebf",
+                "documentId": "259bbcd2e8a10b0e2d797ac217e789e46bca7c127af3976ac09e07c3774642d0",
                 "documentTitle": "Citroen C3 1.2 (Petrol, 110 HP, AT) 2016 - 2020",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Manufacturers recommended timing belt replacement interval for Citroen C3 1.2 pe\"",
-                "documentSha256": "6dc2996f859c4aa1f9af31300d34bf9244229b0b921754e16869444544a07ebf"
+                "documentSha256": "259bbcd2e8a10b0e2d797ac217e789e46bca7c127af3976ac09e07c3774642d0"
               }
             ],
             "verification": "candidate",
@@ -4035,7 +4748,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:34:46.027Z",
+      "resolvedAt": "2026-10-03T10:00:57.825Z",
       "msourceVersion": "msource/1"
     }
   }

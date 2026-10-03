@@ -4,14 +4,14 @@
     "vehicleRef": "M03",
     "fingerprintKey": "car|skoda|octavia|2018|1395||petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:27:15.387Z",
-    "finishedAt": "2026-10-03T05:27:50.320Z",
+    "startedAt": "2026-10-03T09:54:19.974Z",
+    "finishedAt": "2026-10-03T09:54:56.741Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:27:15.387Z",
-        "finishedAt": "2026-10-03T05:27:15.387Z",
+        "startedAt": "2026-10-03T09:54:19.974Z",
+        "finishedAt": "2026-10-03T09:54:19.974Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,9 +25,9 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:27:15.387Z",
-        "finishedAt": "2026-10-03T05:27:15.391Z",
-        "durationMs": 4,
+        "startedAt": "2026-10-03T09:54:19.974Z",
+        "finishedAt": "2026-10-03T09:54:19.977Z",
+        "durationMs": 3,
         "counts": {
           "fable": 15,
           "registry": 0,
@@ -39,9 +39,9 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:27:15.391Z",
-        "finishedAt": "2026-10-03T05:27:15.391Z",
-        "durationMs": 0,
+        "startedAt": "2026-10-03T09:54:19.977Z",
+        "finishedAt": "2026-10-03T09:54:19.978Z",
+        "durationMs": 1,
         "counts": {
           "discovered": 16,
           "unique": 15,
@@ -54,16 +54,16 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:27:15.391Z",
-        "finishedAt": "2026-10-03T05:27:39.348Z",
-        "durationMs": 23957,
+        "startedAt": "2026-10-03T09:54:19.978Z",
+        "finishedAt": "2026-10-03T09:54:46.787Z",
+        "durationMs": 26809,
         "counts": {
           "acquired": 24
         },
         "failures": [
           {
-            "code": "HTTP_ERROR",
-            "detail": "HTTP 429",
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
             "sourceId": "src-819cbf3c640f41e6"
           },
           {
@@ -99,22 +99,22 @@
           {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "login / CAPTCHA / paywall page",
-            "sourceId": "src-24ebcc2178767293"
+            "sourceId": "src-335168c24ba980f0"
           },
           {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "login / CAPTCHA / paywall page",
-            "sourceId": "src-6f50ec0334fa23c1"
+            "sourceId": "src-a90f1027177ac755"
           },
           {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "login / CAPTCHA / paywall page",
-            "sourceId": "src-5e5d6df81cdcbec2"
+            "sourceId": "src-aca08a5cde78dd32"
           },
           {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "login / CAPTCHA / paywall page",
-            "sourceId": "src-322ea9bbbb96a351"
+            "sourceId": "src-e5b1f44a4f0f7a7c"
           }
         ],
         "notes": []
@@ -122,9 +122,9 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:27:39.349Z",
-        "finishedAt": "2026-10-03T05:27:50.320Z",
-        "durationMs": 10971,
+        "startedAt": "2026-10-03T09:54:46.787Z",
+        "finishedAt": "2026-10-03T09:54:56.741Z",
+        "durationMs": 9954,
         "counts": {
           "extracted": 13,
           "grounded": 13
@@ -186,24 +186,14 @@
             "sourceId": "src-89e9734e5cf811fc"
           },
           {
-            "code": "NO_REQUIREMENTS_EXTRACTED",
-            "detail": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
-            "sourceId": "src-baf08420380ad826"
-          },
-          {
-            "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://carwiki.de/skoda-octavia",
-            "sourceId": "src-b1eb00d4e0688946"
-          },
-          {
-            "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
-            "sourceId": "src-0263dc3074a5d18e"
-          },
-          {
             "code": "NO_SCHEDULE_SECTION",
             "detail": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
             "sourceId": "src-b19a7a247098594a"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
+            "sourceId": "src-baf08420380ad826"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
@@ -227,6 +217,16 @@
           },
           {
             "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+            "sourceId": "src-0263dc3074a5d18e"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://carwiki.de/skoda-octavia",
+            "sourceId": "src-b1eb00d4e0688946"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
             "detail": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
             "sourceId": "src-a57a28e4ce512fb2"
           }
@@ -238,8 +238,8 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:27:50.320Z",
-        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "startedAt": "2026-10-03T09:54:56.741Z",
+        "finishedAt": "2026-10-03T09:54:56.741Z",
         "durationMs": 0,
         "counts": {
           "PARTIAL": 13,
@@ -269,8 +269,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:27:50.320Z",
-        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "startedAt": "2026-10-03T09:54:56.741Z",
+        "finishedAt": "2026-10-03T09:54:56.741Z",
         "durationMs": 0,
         "counts": {
           "obligations": 1,
@@ -283,8 +283,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "failed",
-        "startedAt": "2026-10-03T05:27:50.320Z",
-        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "startedAt": "2026-10-03T09:54:56.741Z",
+        "finishedAt": "2026-10-03T09:54:56.741Z",
         "durationMs": 0,
         "counts": {
           "items": 0,
@@ -306,8 +306,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:27:50.320Z",
-        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "startedAt": "2026-10-03T09:54:56.741Z",
+        "finishedAt": "2026-10-03T09:54:56.741Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -316,8 +316,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:27:50.320Z",
-        "finishedAt": "2026-10-03T05:27:50.320Z",
+        "startedAt": "2026-10-03T09:54:56.741Z",
+        "finishedAt": "2026-10-03T09:54:56.741Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -343,8 +343,8 @@
         "by": "fable",
         "outcome": "failed",
         "failure": {
-          "code": "HTTP_ERROR",
-          "detail": "HTTP 429"
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
         }
       },
       {
@@ -552,24 +552,6 @@
         }
       },
       {
-        "url": "https://carwiki.de/skoda-octavia",
-        "by": "link",
-        "outcome": "no_evidence",
-        "failure": {
-          "code": "NO_SCHEDULE_SECTION",
-          "detail": "no maintenance schedule section"
-        }
-      },
-      {
-        "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
-        "by": "link",
-        "outcome": "no_evidence",
-        "failure": {
-          "code": "NO_SCHEDULE_SECTION",
-          "detail": "no maintenance schedule section"
-        }
-      },
-      {
         "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
         "by": "link",
         "outcome": "no_evidence",
@@ -615,6 +597,24 @@
         }
       },
       {
+        "url": "https://carwiki.de/skoda-octavia",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
         "url": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
         "by": "link",
         "outcome": "no_evidence",
@@ -633,7 +633,7 @@
         }
       },
       {
-        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/2-0-tdi-combi-ftId220795",
+        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/1-4-tsi-ftId113123",
         "by": "link",
         "outcome": "blocked",
         "failure": {
@@ -642,7 +642,7 @@
         }
       },
       {
-        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/1-5-tsi-act-ftId218632",
+        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/2-0-tdi-combi-ftId192689",
         "by": "link",
         "outcome": "blocked",
         "failure": {
@@ -651,7 +651,7 @@
         }
       },
       {
-        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/2-0-tdi-combi-ftId261258",
+        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/2-0-tsi-4x4-ftId221231",
         "by": "link",
         "outcome": "blocked",
         "failure": {
@@ -660,7 +660,7 @@
         }
       },
       {
-        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/2-0-tdi-combi-ftId170308",
+        "url": "https://www.motor-talk.de/tests/auto/skoda/octavia/3/1-8-tsi-ftId231287",
         "by": "link",
         "outcome": "blocked",
         "failure": {
@@ -708,10 +708,10 @@
           "rule": "DISTANCE_ONLY",
           "quality": "INSUFFICIENT",
           "evidenceIds": [
-            "src-4f56ef3fa1f1a171:8fca65205216-p5-timing_belt-replacement-0",
-            "src-202801063563b908:100705ae7304-p5-timing_belt-replacement-0",
-            "src-119b140da90c66f7:384aec0b66b3-p5-timing_belt-replacement-0",
-            "src-46b6f1768305011c:61d9486f0967-p5-timing_belt-replacement-0"
+            "src-4f56ef3fa1f1a171:61d87bbad90e-p5-timing_belt-replacement-0",
+            "src-202801063563b908:78f0e9574dd7-p5-timing_belt-replacement-0",
+            "src-119b140da90c66f7:3b0963996019-p5-timing_belt-replacement-0",
+            "src-46b6f1768305011c:2b682fd51aed-p5-timing_belt-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -733,11 +733,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:15.388Z",
-          "retrievedAt": "2026-10-03T05:27:15.730Z",
+          "discoveredAt": "2026-10-03T09:54:19.974Z",
+          "retrievedAt": "2026-10-03T09:54:20.426Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "0a580833fe9c116ec19adfe0ca4c8890a008920c6209a5c4a52bb9ae9bd276e5",
+          "contentSha256": "761cd39784ef011619f1e0a78a8810c4e8371398bae26cca8dcab6e75df48f4e",
           "byteLength": 30855,
           "locale": "en",
           "markets": [],
@@ -771,7 +771,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:15.523Z",
+              "decidedAt": "2026-10-03T09:54:20.269Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -787,7 +787,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:15.730Z",
+              "decidedAt": "2026-10-03T09:54:20.426Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -808,7 +808,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:15.730Z",
+              "decidedAt": "2026-10-03T09:54:20.426Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -830,8 +830,8 @@
           "sourceName": "CarExpert",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:15.388Z",
-          "retrievedAt": "2026-10-03T05:27:23.493Z",
+          "discoveredAt": "2026-10-03T09:54:19.974Z",
+          "retrievedAt": "2026-10-03T09:54:26.864Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "5c50dc5285904721ff2c7a7046132fe527ed46fc9e92ae74f3543e9008745352",
@@ -869,7 +869,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:23.433Z",
+              "decidedAt": "2026-10-03T09:54:26.391Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -885,7 +885,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:23.492Z",
+              "decidedAt": "2026-10-03T09:54:26.863Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -906,7 +906,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:23.493Z",
+              "decidedAt": "2026-10-03T09:54:26.864Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -928,12 +928,12 @@
           "sourceName": "carsales.com.au",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:15.388Z",
-          "retrievedAt": "2026-10-03T05:27:24.207Z",
+          "discoveredAt": "2026-10-03T09:54:19.974Z",
+          "retrievedAt": "2026-10-03T09:54:27.868Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "defcadda95e5f1b0b75491bd8bfe3fd77e557c0f23e3015b892c67b354e4db73",
-          "byteLength": 1261009,
+          "contentSha256": "1a41036238329d86aad042210a72e5906fc3409624f6bfd9e649ac9c10dec318",
+          "byteLength": 1287094,
           "locale": "en",
           "markets": [
             "AU"
@@ -976,7 +976,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:22.186Z",
+              "decidedAt": "2026-10-03T09:54:26.391Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -992,7 +992,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:24.206Z",
+              "decidedAt": "2026-10-03T09:54:27.867Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1013,7 +1013,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:24.207Z",
+              "decidedAt": "2026-10-03T09:54:27.868Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1026,111 +1026,6 @@
           }
         },
         {
-          "sourceId": "src-54a54245da0dd9ef",
-          "canonicalUrl": "https://carwiki.de/skoda-octavia-inspektion",
-          "finalUrl": "https://carwiki.de/skoda-octavia-inspektion",
-          "chain": [
-            "https://carwiki.de/skoda-octavia-inspektion"
-          ],
-          "sourceName": "carwiki.de",
-          "sourceType": "publication",
-          "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:15.388Z",
-          "retrievedAt": "2026-10-03T05:27:24.482Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "3bab258d2f0680faecc919276735ac1329e34208ff05855681bba7859c792cd9",
-          "byteLength": 186304,
-          "locale": "de",
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Octavia"
-            ],
-            "modelVariants": [
-              "3",
-              "rs"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [
-              1200,
-              1400,
-              1600,
-              1800,
-              1900,
-              2000
-            ],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://carwiki.de/skoda-octavia-inspektion",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:24.307Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://carwiki.de/skoda-octavia-inspektion",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/skoda-octavia-inspektion",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:24.481Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://carwiki.de/skoda-octavia-inspektion",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/skoda-octavia-inspektion",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:24.482Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "carwiki.de"
-          }
-        },
-        {
           "sourceId": "src-83df2381b4fcaa7f",
           "canonicalUrl": "https://www.repareo.de/inspektion-skoda-octavia/",
           "finalUrl": "https://www.repareo.de/inspektion-skoda-octavia/",
@@ -1140,8 +1035,8 @@
           "sourceName": "repareo.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:15.388Z",
-          "retrievedAt": "2026-10-03T05:27:25.095Z",
+          "discoveredAt": "2026-10-03T09:54:19.974Z",
+          "retrievedAt": "2026-10-03T09:54:28.746Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "e3dbd472e39d0965075365ed07123790802e81a8e1258278bd93fcaaa05703bf",
@@ -1212,7 +1107,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:24.502Z",
+              "decidedAt": "2026-10-03T09:54:28.149Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1228,7 +1123,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:25.095Z",
+              "decidedAt": "2026-10-03T09:54:28.746Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1249,7 +1144,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:25.095Z",
+              "decidedAt": "2026-10-03T09:54:28.746Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1262,6 +1157,111 @@
           }
         },
         {
+          "sourceId": "src-54a54245da0dd9ef",
+          "canonicalUrl": "https://carwiki.de/skoda-octavia-inspektion",
+          "finalUrl": "https://carwiki.de/skoda-octavia-inspektion",
+          "chain": [
+            "https://carwiki.de/skoda-octavia-inspektion"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:54:19.974Z",
+          "retrievedAt": "2026-10-03T09:54:30.193Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "adcfc591a249db9bf2c07ca0866e58af206aafba3668914389d8b2460c5a16c2",
+          "byteLength": 187056,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "3",
+              "rs"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200,
+              1400,
+              1600,
+              1800,
+              1900,
+              2000
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/skoda-octavia-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:28.128Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/skoda-octavia-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia-inspektion",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:30.192Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/skoda-octavia-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia-inspektion",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:30.193Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
           "sourceId": "src-4f56ef3fa1f1a171",
           "canonicalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
           "finalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16008-2017/service",
@@ -1271,11 +1271,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:15.388Z",
-          "retrievedAt": "2026-10-03T05:27:25.638Z",
+          "discoveredAt": "2026-10-03T09:54:19.974Z",
+          "retrievedAt": "2026-10-03T09:54:30.471Z",
           "format": "html",
           "documentType": "service_manual",
-          "contentSha256": "8fca6520521685e4683c22db74a242dd859223b4eb15b233a59a798a7b7fb91f",
+          "contentSha256": "61d87bbad90e7c7c1687343eb14786c234bf6b061dc8e4a3cd3cca4048376e37",
           "byteLength": 36235,
           "locale": "en",
           "markets": [],
@@ -1314,7 +1314,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:25.117Z",
+              "decidedAt": "2026-10-03T09:54:30.200Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1330,7 +1330,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:25.638Z",
+              "decidedAt": "2026-10-03T09:54:30.470Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1351,7 +1351,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:25.638Z",
+              "decidedAt": "2026-10-03T09:54:30.471Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1373,8 +1373,8 @@
           "sourceName": "repareo.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:15.388Z",
-          "retrievedAt": "2026-10-03T05:27:26.357Z",
+          "discoveredAt": "2026-10-03T09:54:19.974Z",
+          "retrievedAt": "2026-10-03T09:54:30.705Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "3ab04de8acbefbaede5b4b794167735c46026fa668b2d58789cf8fd559ada329",
@@ -1448,7 +1448,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:25.117Z",
+              "decidedAt": "2026-10-03T09:54:30.199Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1464,7 +1464,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:26.357Z",
+              "decidedAt": "2026-10-03T09:54:30.705Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1485,7 +1485,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:26.357Z",
+              "decidedAt": "2026-10-03T09:54:30.705Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1507,11 +1507,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:15.388Z",
-          "retrievedAt": "2026-10-03T05:27:26.766Z",
+          "discoveredAt": "2026-10-03T09:54:19.974Z",
+          "retrievedAt": "2026-10-03T09:54:31.840Z",
           "format": "html",
           "documentType": "service_manual",
-          "contentSha256": "100705ae7304cf6aef647f820e5830e2ab2484e72a4fb049ae1587ebc386ae6a",
+          "contentSha256": "78f0e9574dd79515022f4085cbc7eefd2393f582c30a47dcaf18aed52857154f",
           "byteLength": 36238,
           "locale": "en",
           "markets": [],
@@ -1550,7 +1550,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:26.378Z",
+              "decidedAt": "2026-10-03T09:54:30.726Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1566,7 +1566,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:26.765Z",
+              "decidedAt": "2026-10-03T09:54:31.840Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1587,7 +1587,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:26.766Z",
+              "decidedAt": "2026-10-03T09:54:31.840Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1609,11 +1609,11 @@
           "sourceName": "www.auto-abc.lv",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:15.732Z",
-          "retrievedAt": "2026-10-03T05:27:27.029Z",
+          "discoveredAt": "2026-10-03T09:54:20.428Z",
+          "retrievedAt": "2026-10-03T09:54:32.364Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "a6b09d06689d93aff2e4d994913dbbf9c2430fcd1875133c0d9a3823403ff7c1",
+          "contentSha256": "08bde8ff200c61ff96782353d546666e79c9db8f38fe7127a2931d563b68ee33",
           "byteLength": 31406,
           "locale": null,
           "markets": [],
@@ -1647,7 +1647,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:26.896Z",
+              "decidedAt": "2026-10-03T09:54:32.114Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1663,7 +1663,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:27.029Z",
+              "decidedAt": "2026-10-03T09:54:32.364Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1684,7 +1684,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:27.029Z",
+              "decidedAt": "2026-10-03T09:54:32.364Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1706,12 +1706,12 @@
           "sourceName": "Motor-Talk",
           "sourceType": "forum",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:15.388Z",
-          "retrievedAt": "2026-10-03T05:27:27.431Z",
+          "discoveredAt": "2026-10-03T09:54:19.974Z",
+          "retrievedAt": "2026-10-03T09:54:32.553Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "105eabe0f2eb9c9c1b07e53f9613cd7c13f512ac6f4ce045ef712ebc6231d86d",
-          "byteLength": 409976,
+          "contentSha256": "e3ac0535f49e090e092fc0df8a45c0ab68f772b0ee1af2a32a9a3111d811b6fa",
+          "byteLength": 410247,
           "locale": "de",
           "markets": [],
           "statedApplicability": {
@@ -1726,7 +1726,8 @@
             "engineCodes": [],
             "displacementsCc": [],
             "displacementsMentioned": [
-              1500,
+              1400,
+              1800,
               2000
             ],
             "fuels": [],
@@ -1747,7 +1748,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:26.995Z",
+              "decidedAt": "2026-10-03T09:54:32.100Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1763,7 +1764,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:27.431Z",
+              "decidedAt": "2026-10-03T09:54:32.552Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1784,7 +1785,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:27.431Z",
+              "decidedAt": "2026-10-03T09:54:32.553Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1806,11 +1807,11 @@
           "sourceName": "es.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:15.732Z",
-          "retrievedAt": "2026-10-03T05:27:27.709Z",
+          "discoveredAt": "2026-10-03T09:54:20.428Z",
+          "retrievedAt": "2026-10-03T09:54:32.963Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "31da2fa58c30ed9f5667d1887ff178e4f3cd45736fe7effdabe8bccef8f7cb3c",
+          "contentSha256": "5b7860a69e2de628d46aad62d781306038dac2f76067df228b7caa8442705588",
           "byteLength": 30970,
           "locale": null,
           "markets": [],
@@ -1834,17 +1835,17 @@
             {
               "operation": "FETCH",
               "status": "ALLOWED",
-              "reason": "robots_unavailable",
+              "reason": "robots_allows",
               "url": "https://es.auto-abc.eu/servicio/Skoda-Octavia",
               "host": "es.auto-abc.eu",
               "evidence": [
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:27.569Z",
+              "decidedAt": "2026-10-03T09:54:32.814Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1860,7 +1861,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:27.709Z",
+              "decidedAt": "2026-10-03T09:54:32.963Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1873,7 +1874,7 @@
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 },
                 {
                   "kind": "operation_scope",
@@ -1881,7 +1882,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:27.709Z",
+              "decidedAt": "2026-10-03T09:54:32.963Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1903,11 +1904,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:15.732Z",
-          "retrievedAt": "2026-10-03T05:27:28.262Z",
+          "discoveredAt": "2026-10-03T09:54:20.428Z",
+          "retrievedAt": "2026-10-03T09:54:33.352Z",
           "format": "html",
           "documentType": "service_manual",
-          "contentSha256": "384aec0b66b3f6f481f57bdd84f9106b0a5a4a76605860e39d1dca31209daa85",
+          "contentSha256": "3b09639960196ee10f69279c6acc0e64df5d67e37f391fd47d6dfc5177be9625",
           "byteLength": 36217,
           "locale": null,
           "markets": [],
@@ -1946,7 +1947,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:27.437Z",
+              "decidedAt": "2026-10-03T09:54:32.564Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1962,7 +1963,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:28.262Z",
+              "decidedAt": "2026-10-03T09:54:33.352Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1983,109 +1984,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:28.262Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "www.auto-abc.eu"
-          }
-        },
-        {
-          "sourceId": "src-46b6f1768305011c",
-          "canonicalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
-          "finalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
-          "chain": [
-            "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service"
-          ],
-          "sourceName": "www.auto-abc.eu",
-          "sourceType": "independent_database",
-          "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:15.732Z",
-          "retrievedAt": "2026-10-03T05:27:29.781Z",
-          "format": "html",
-          "documentType": "service_manual",
-          "contentSha256": "61d9486f0967ff8fdfa5cdb8eb57807ce932757bb64f25c79f4018e6f8cd0cd8",
-          "byteLength": 36220,
-          "locale": null,
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Octavia"
-            ],
-            "modelVariants": [],
-            "yearFrom": 2017,
-            "yearTo": 2019,
-            "engineCodes": [],
-            "displacementsCc": [
-              1400
-            ],
-            "displacementsMentioned": [
-              1400
-            ],
-            "fuels": [
-              "petrol"
-            ],
-            "markets": [],
-            "yearBasis": "document_text",
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_unavailable",
-              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
-              "host": "www.auto-abc.eu",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:28.263Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
-              "host": "www.auto-abc.eu",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:29.780Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
-              "host": "www.auto-abc.eu",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:29.781Z",
+              "decidedAt": "2026-10-03T09:54:33.352Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2107,8 +2006,8 @@
           "sourceName": "CompleteCar.ie",
           "sourceType": "publication",
           "discoveredBy": "archive",
-          "discoveredAt": "2026-10-03T05:27:17.796Z",
-          "retrievedAt": "2026-10-03T05:27:29.847Z",
+          "discoveredAt": "2026-10-03T09:54:24.225Z",
+          "retrievedAt": "2026-10-03T09:54:34.706Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "d49c4e4529ebd4146cf7305f0b2395843df3aec806ed89774506c619cd048ee8",
@@ -2149,7 +2048,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:28.909Z",
+              "decidedAt": "2026-10-03T09:54:33.993Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2165,7 +2064,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:29.847Z",
+              "decidedAt": "2026-10-03T09:54:34.706Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2186,7 +2085,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:29.847Z",
+              "decidedAt": "2026-10-03T09:54:34.706Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2200,6 +2099,108 @@
           }
         },
         {
+          "sourceId": "src-46b6f1768305011c",
+          "canonicalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+          "finalUrl": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+          "chain": [
+            "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service"
+          ],
+          "sourceName": "www.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:54:20.428Z",
+          "retrievedAt": "2026-10-03T09:54:34.838Z",
+          "format": "html",
+          "documentType": "service_manual",
+          "contentSha256": "2b682fd51aedf1d1d26b94e5704cedb240eab4aad1b1bc6a7bbfaead10a16361",
+          "byteLength": 36220,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2017,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [
+              1400
+            ],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_unavailable",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:33.353Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:34.838Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+              "host": "www.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.auto-abc.eu/robots.txt",
+                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.auto-abc.eu/Skoda-Octavia/v16034-2017/service",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:34.838Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.auto-abc.eu"
+          }
+        },
+        {
           "sourceId": "src-ffe66cd93dc9ef3f",
           "canonicalUrl": "https://www.carexpert.com.au/skoda/octavia",
           "finalUrl": "https://www.carexpert.com.au/skoda/octavia",
@@ -2209,8 +2210,8 @@
           "sourceName": "www.carexpert.com.au",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:23.496Z",
-          "retrievedAt": "2026-10-03T05:27:30.562Z",
+          "discoveredAt": "2026-10-03T09:54:26.868Z",
+          "retrievedAt": "2026-10-03T09:54:35.523Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "2ac81434c1536f21fc7f6b4be44c06c015c54699efb50804125e8bc2cc3b6924",
@@ -2253,7 +2254,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:29.848Z",
+              "decidedAt": "2026-10-03T09:54:34.839Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2269,7 +2270,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:30.562Z",
+              "decidedAt": "2026-10-03T09:54:35.523Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2290,7 +2291,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:30.562Z",
+              "decidedAt": "2026-10-03T09:54:35.523Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2312,8 +2313,8 @@
           "sourceName": "www.carexpert.com.au",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:23.497Z",
-          "retrievedAt": "2026-10-03T05:27:31.960Z",
+          "discoveredAt": "2026-10-03T09:54:26.868Z",
+          "retrievedAt": "2026-10-03T09:54:36.846Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "3be530e65aed56cb2ee426e13c786ac2b6650435b98acec5889524c122705247",
@@ -2362,7 +2363,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:29.848Z",
+              "decidedAt": "2026-10-03T09:54:34.839Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2378,7 +2379,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:31.960Z",
+              "decidedAt": "2026-10-03T09:54:36.846Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2399,7 +2400,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:31.960Z",
+              "decidedAt": "2026-10-03T09:54:36.846Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2421,8 +2422,8 @@
           "sourceName": "www.carexpert.com.au",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:23.497Z",
-          "retrievedAt": "2026-10-03T05:27:32.914Z",
+          "discoveredAt": "2026-10-03T09:54:26.868Z",
+          "retrievedAt": "2026-10-03T09:54:38.338Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "8de4fb22cfdac2450fe3988355b7d5253a6560a90f2d9f938c13d1958d88e878",
@@ -2466,7 +2467,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:31.966Z",
+              "decidedAt": "2026-10-03T09:54:36.852Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2482,7 +2483,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:32.914Z",
+              "decidedAt": "2026-10-03T09:54:38.337Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2503,7 +2504,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:32.914Z",
+              "decidedAt": "2026-10-03T09:54:38.338Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2525,8 +2526,8 @@
           "sourceName": "www.carexpert.com.au",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:23.497Z",
-          "retrievedAt": "2026-10-03T05:27:34.398Z",
+          "discoveredAt": "2026-10-03T09:54:26.869Z",
+          "retrievedAt": "2026-10-03T09:54:39.832Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "3a359fd0bd0073e62122f9f1161590bd018c481c6d8293cc3d19170e38563dbf",
@@ -2574,7 +2575,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:31.966Z",
+              "decidedAt": "2026-10-03T09:54:36.852Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2590,7 +2591,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:34.397Z",
+              "decidedAt": "2026-10-03T09:54:39.831Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2611,7 +2612,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:34.398Z",
+              "decidedAt": "2026-10-03T09:54:39.832Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2624,6 +2625,107 @@
           }
         },
         {
+          "sourceId": "src-b19a7a247098594a",
+          "canonicalUrl": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+          "finalUrl": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+          "chain": [
+            "https://www.repareo.de/autobewertung/restwert-skoda-octavia/"
+          ],
+          "sourceName": "www.repareo.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:54:28.767Z",
+          "retrievedAt": "2026-10-03T09:54:41.327Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "fd53b0a3f316cdc9745a8ada6f020679696d6b8721b0c952f29137a28dee30ae",
+          "byteLength": 129632,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [
+              2000
+            ],
+            "displacementsMentioned": [
+              2000
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:39.835Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:41.327Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+              "host": "www.repareo.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.repareo.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:41.327Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.repareo.de"
+          }
+        },
+        {
           "sourceId": "src-baf08420380ad826",
           "canonicalUrl": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
           "finalUrl": "https://www.carexpert.com.au/skoda/octavia/2018-sport-1-4l-hatchback-fwd-petrol-manual-joakgogw20170418",
@@ -2633,8 +2735,8 @@
           "sourceName": "www.carexpert.com.au",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:23.497Z",
-          "retrievedAt": "2026-10-03T05:27:35.951Z",
+          "discoveredAt": "2026-10-03T09:54:26.869Z",
+          "retrievedAt": "2026-10-03T09:54:41.388Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "37100fe5fb29917ada4b36cb176cb354b4ce45bce6e77c7bb501f3fa93e86014",
@@ -2678,7 +2780,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:34.401Z",
+              "decidedAt": "2026-10-03T09:54:39.835Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2694,7 +2796,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:35.951Z",
+              "decidedAt": "2026-10-03T09:54:41.387Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2715,7 +2817,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:35.951Z",
+              "decidedAt": "2026-10-03T09:54:41.388Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2728,309 +2830,6 @@
           }
         },
         {
-          "sourceId": "src-b1eb00d4e0688946",
-          "canonicalUrl": "https://carwiki.de/skoda-octavia",
-          "finalUrl": "https://carwiki.de/skoda-octavia",
-          "chain": [
-            "https://carwiki.de/skoda-octavia"
-          ],
-          "sourceName": "carwiki.de",
-          "sourceType": "publication",
-          "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:24.491Z",
-          "retrievedAt": "2026-10-03T05:27:36.092Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "72d2039a8273db1dbc2ddb312b7fa5241154377c695d2b27324cd95bca8d5dbf",
-          "byteLength": 357504,
-          "locale": null,
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Octavia"
-            ],
-            "modelVariants": [
-              "1",
-              "2",
-              "3",
-              "4",
-              "rs",
-              "e"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://carwiki.de/skoda-octavia",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:34.401Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://carwiki.de/skoda-octavia",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/skoda-octavia",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:36.092Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://carwiki.de/skoda-octavia",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/skoda-octavia",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:36.092Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "carwiki.de"
-          }
-        },
-        {
-          "sourceId": "src-0263dc3074a5d18e",
-          "canonicalUrl": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
-          "finalUrl": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
-          "chain": [
-            "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen"
-          ],
-          "sourceName": "carwiki.de",
-          "sourceType": "publication",
-          "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:24.491Z",
-          "retrievedAt": "2026-10-03T05:27:36.196Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "2f3bdf1a0834f67ca163257f4486db49511ffa2d00bab0d07100890462711ee6",
-          "byteLength": 158323,
-          "locale": null,
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Octavia"
-            ],
-            "modelVariants": [
-              "1",
-              "2",
-              "3",
-              "4"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:36.097Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:36.196Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:36.196Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "carwiki.de"
-          }
-        },
-        {
-          "sourceId": "src-b19a7a247098594a",
-          "canonicalUrl": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
-          "finalUrl": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
-          "chain": [
-            "https://www.repareo.de/autobewertung/restwert-skoda-octavia/"
-          ],
-          "sourceName": "www.repareo.de",
-          "sourceType": "publication",
-          "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:25.116Z",
-          "retrievedAt": "2026-10-03T05:27:37.568Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "fd53b0a3f316cdc9745a8ada6f020679696d6b8721b0c952f29137a28dee30ae",
-          "byteLength": 129632,
-          "locale": null,
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Octavia"
-            ],
-            "modelVariants": [],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [
-              2000
-            ],
-            "displacementsMentioned": [
-              2000
-            ],
-            "fuels": [
-              "petrol"
-            ],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
-              "host": "www.repareo.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.repareo.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:36.098Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
-              "host": "www.repareo.de",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:37.568Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
-              "host": "www.repareo.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.repareo.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.repareo.de/autobewertung/restwert-skoda-octavia/",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:37.568Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "www.repareo.de"
-          }
-        },
-        {
           "sourceId": "src-adb2fc1de5b8ddab",
           "canonicalUrl": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
           "finalUrl": "https://www.repareo.de/anhaengerkupplung-skoda-octavia-nachruesten/",
@@ -3040,8 +2839,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:25.116Z",
-          "retrievedAt": "2026-10-03T05:27:37.779Z",
+          "discoveredAt": "2026-10-03T09:54:28.767Z",
+          "retrievedAt": "2026-10-03T09:54:41.570Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "a1050369dd443f488f072532faf42ce8a94a02a4113b22e25c9a3f7c7540c569",
@@ -3097,7 +2896,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:37.570Z",
+              "decidedAt": "2026-10-03T09:54:41.394Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3113,7 +2912,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:37.779Z",
+              "decidedAt": "2026-10-03T09:54:41.569Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3134,7 +2933,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:37.779Z",
+              "decidedAt": "2026-10-03T09:54:41.570Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3156,8 +2955,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:25.117Z",
-          "retrievedAt": "2026-10-03T05:27:39.348Z",
+          "discoveredAt": "2026-10-03T09:54:28.768Z",
+          "retrievedAt": "2026-10-03T09:54:43.148Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "6ddededb41353b5afbb2e63c828a2c19c6034806a3f3d3a9a2e2502998925847",
@@ -3194,7 +2993,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:37.570Z",
+              "decidedAt": "2026-10-03T09:54:41.394Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3210,7 +3009,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:39.348Z",
+              "decidedAt": "2026-10-03T09:54:43.147Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3231,7 +3030,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:39.348Z",
+              "decidedAt": "2026-10-03T09:54:43.148Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3253,8 +3052,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:25.117Z",
-          "retrievedAt": "2026-10-03T05:27:40.929Z",
+          "discoveredAt": "2026-10-03T09:54:28.768Z",
+          "retrievedAt": "2026-10-03T09:54:44.855Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "be1b1a617ede28cab5c38ec7b3ff1e2fabd60027343e642f480e09964235cae7",
@@ -3291,7 +3090,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:39.522Z",
+              "decidedAt": "2026-10-03T09:54:43.149Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3307,7 +3106,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:40.929Z",
+              "decidedAt": "2026-10-03T09:54:44.855Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3328,7 +3127,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:40.929Z",
+              "decidedAt": "2026-10-03T09:54:44.855Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3350,8 +3149,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:25.117Z",
-          "retrievedAt": "2026-10-03T05:27:42.606Z",
+          "discoveredAt": "2026-10-03T09:54:28.768Z",
+          "retrievedAt": "2026-10-03T09:54:46.780Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "580161eec490de4cc5df1dd463fc018fe323799efe0a5bdf310674b7751d765e",
@@ -3408,7 +3207,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:39.522Z",
+              "decidedAt": "2026-10-03T09:54:43.149Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3424,7 +3223,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:42.606Z",
+              "decidedAt": "2026-10-03T09:54:46.779Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3445,7 +3244,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:42.606Z",
+              "decidedAt": "2026-10-03T09:54:46.780Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3458,6 +3257,208 @@
           }
         },
         {
+          "sourceId": "src-0263dc3074a5d18e",
+          "canonicalUrl": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+          "finalUrl": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+          "chain": [
+            "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:54:30.199Z",
+          "retrievedAt": "2026-10-03T09:54:48.780Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "1177e717ef368c661035073952fdd7766aefca3d8f0954f19b477ed754c20c20",
+          "byteLength": 158257,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:46.972Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:48.779Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia-inspektion-zuruecksetzen",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:48.780Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
+          "sourceId": "src-b1eb00d4e0688946",
+          "canonicalUrl": "https://carwiki.de/skoda-octavia",
+          "finalUrl": "https://carwiki.de/skoda-octavia",
+          "chain": [
+            "https://carwiki.de/skoda-octavia"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:54:30.199Z",
+          "retrievedAt": "2026-10-03T09:54:49.038Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "a822aa4e149ae3dd2b47ac80c7959e582ea36cc0255462e71469d00124a82cde",
+          "byteLength": 357504,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Octavia"
+            ],
+            "modelVariants": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "rs",
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/skoda-octavia",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:46.972Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/skoda-octavia",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:49.037Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/skoda-octavia",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/skoda-octavia",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:49.038Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
           "sourceId": "src-a57a28e4ce512fb2",
           "canonicalUrl": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
           "finalUrl": "https://www.motor-talk.de/forum/skoda-octavia-b850.html",
@@ -3467,12 +3468,12 @@
           "sourceName": "www.motor-talk.de",
           "sourceType": "forum",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:27.437Z",
-          "retrievedAt": "2026-10-03T05:27:43.273Z",
+          "discoveredAt": "2026-10-03T09:54:32.562Z",
+          "retrievedAt": "2026-10-03T09:54:49.744Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "2b38ebc31c71c2fc1d157364f680da408ee2e67db8b1080efc857f044e7afdec",
-          "byteLength": 484308,
+          "contentSha256": "e6339f014f3b8023c42e1c81508a8962a1d3fe7be7f01199358f14d78d1ff6a9",
+          "byteLength": 484561,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -3497,6 +3498,7 @@
             "displacementsCc": [],
             "displacementsMentioned": [
               1000,
+              1800,
               1900,
               2000
             ],
@@ -3519,7 +3521,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:42.614Z",
+              "decidedAt": "2026-10-03T09:54:49.043Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3535,7 +3537,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:43.273Z",
+              "decidedAt": "2026-10-03T09:54:49.743Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3556,7 +3558,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:43.273Z",
+              "decidedAt": "2026-10-03T09:54:49.744Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3966,7 +3968,7 @@
           }
         },
         {
-          "id": "src-4f56ef3fa1f1a171:8fca65205216-p5-timing_belt-replacement-0",
+          "id": "src-4f56ef3fa1f1a171:61d87bbad90e-p5-timing_belt-replacement-0",
           "sourceId": "src-4f56ef3fa1f1a171",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -4014,7 +4016,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "8fca65205216-p5-timing_belt-replacement-0",
+            "id": "61d87bbad90e-p5-timing_belt-replacement-0",
             "task": "timing_belt",
             "taskText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
             "action": "replacement",
@@ -4045,14 +4047,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "8fca6520521685e4683c22db74a242dd859223b4eb15b233a59a798a7b7fb91f",
+                "documentId": "61d87bbad90e7c7c1687343eb14786c234bf6b061dc8e4a3cd3cca4048376e37",
                 "documentTitle": "Skoda Octavia 2017 1.4 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \"",
-                "documentSha256": "8fca6520521685e4683c22db74a242dd859223b4eb15b233a59a798a7b7fb91f"
+                "documentSha256": "61d87bbad90e7c7c1687343eb14786c234bf6b061dc8e4a3cd3cca4048376e37"
               }
             ],
             "verification": "candidate",
@@ -4075,7 +4077,7 @@
           }
         },
         {
-          "id": "src-202801063563b908:100705ae7304-p5-timing_belt-replacement-0",
+          "id": "src-202801063563b908:78f0e9574dd7-p5-timing_belt-replacement-0",
           "sourceId": "src-202801063563b908",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -4123,7 +4125,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "100705ae7304-p5-timing_belt-replacement-0",
+            "id": "78f0e9574dd7-p5-timing_belt-replacement-0",
             "task": "timing_belt",
             "taskText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
             "action": "replacement",
@@ -4154,14 +4156,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "100705ae7304cf6aef647f820e5830e2ab2484e72a4fb049ae1587ebc386ae6a",
+                "documentId": "78f0e9574dd79515022f4085cbc7eefd2393f582c30a47dcaf18aed52857154f",
                 "documentTitle": "Skoda Octavia 2017 1.4 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \"",
-                "documentSha256": "100705ae7304cf6aef647f820e5830e2ab2484e72a4fb049ae1587ebc386ae6a"
+                "documentSha256": "78f0e9574dd79515022f4085cbc7eefd2393f582c30a47dcaf18aed52857154f"
               }
             ],
             "verification": "candidate",
@@ -4184,7 +4186,7 @@
           }
         },
         {
-          "id": "src-119b140da90c66f7:384aec0b66b3-p5-timing_belt-replacement-0",
+          "id": "src-119b140da90c66f7:3b0963996019-p5-timing_belt-replacement-0",
           "sourceId": "src-119b140da90c66f7",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -4232,7 +4234,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "384aec0b66b3-p5-timing_belt-replacement-0",
+            "id": "3b0963996019-p5-timing_belt-replacement-0",
             "task": "timing_belt",
             "taskText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
             "action": "replacement",
@@ -4263,123 +4265,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "384aec0b66b3f6f481f57bdd84f9106b0a5a4a76605860e39d1dca31209daa85",
+                "documentId": "3b09639960196ee10f69279c6acc0e64df5d67e37f391fd47d6dfc5177be9625",
                 "documentTitle": "Skoda Octavia 1.4 TSI (Petrol, 150 HP, MT) 2017 - 2019",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \"",
-                "documentSha256": "384aec0b66b3f6f481f57bdd84f9106b0a5a4a76605860e39d1dca31209daa85"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "ENGINE_FAMILY",
-            "basis": "the document states the engine family / displacement",
-            "sufficient": true,
-            "years": {
-              "from": 2017,
-              "to": 2019
-            },
-            "yearsBasis": "document"
-          }
-        },
-        {
-          "id": "src-46b6f1768305011c:61d9486f0967-p5-timing_belt-replacement-0",
-          "sourceId": "src-46b6f1768305011c",
-          "operationKey": "timing_belt",
-          "task": "timing_belt",
-          "originalText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 60000,
-          "intervalMiles": null,
-          "intervalMonths": null,
-          "intervalYears": null,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": false,
-          "rule": "DISTANCE_ONLY",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Octavia"
-          ],
-          "yearApplicability": {
-            "from": 2017,
-            "to": 2019
-          },
-          "marketApplicability": [],
-          "notes": [],
-          "sourceLocation": {
-            "page": 5,
-            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
-            "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "STRONG",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "match",
-              "displacement": "match",
-              "engineCode": "unstated",
-              "fuel": "match",
-              "market": "unstated"
-            },
-            "reasons": []
-          },
-          "requirement": {
-            "id": "61d9486f0967-p5-timing_belt-replacement-0",
-            "task": "timing_belt",
-            "taskText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 60000,
-                "unit": "km"
-              },
-              "first": null,
-              "rule": "distance_only",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "skoda"
-              ],
-              "models": [
-                "Octavia"
-              ],
-              "modelYears": {
-                "from": 2017,
-                "to": 2019
-              }
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "61d9486f0967ff8fdfa5cdb8eb57807ce932757bb64f25c79f4018e6f8cd0cd8",
-                "documentTitle": "Skoda Octavia 1.4 TSI (Petrol, 150 HP, AT) 2017 - 2019",
-                "authority": "vehicle_document",
-                "markets": [],
-                "page": 5,
-                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
-                "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \"",
-                "documentSha256": "61d9486f0967ff8fdfa5cdb8eb57807ce932757bb64f25c79f4018e6f8cd0cd8"
+                "documentSha256": "3b09639960196ee10f69279c6acc0e64df5d67e37f391fd47d6dfc5177be9625"
               }
             ],
             "verification": "candidate",
@@ -4858,6 +4751,115 @@
           }
         },
         {
+          "id": "src-46b6f1768305011c:2b682fd51aed-p5-timing_belt-replacement-0",
+          "sourceId": "src-46b6f1768305011c",
+          "operationKey": "timing_belt",
+          "task": "timing_belt",
+          "originalText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Octavia"
+          ],
+          "yearApplicability": {
+            "from": 2017,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "section": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+            "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "STRONG",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "match",
+              "engineCode": "unstated",
+              "fuel": "match",
+              "market": "unstated"
+            },
+            "reasons": []
+          },
+          "requirement": {
+            "id": "2b682fd51aed-p5-timing_belt-replacement-0",
+            "task": "timing_belt",
+            "taskText": "Based on practical experience, recommended Skoda Octavia 1.4 timing belt change interval is 60,000 km when belt should b",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "skoda"
+              ],
+              "models": [
+                "Octavia"
+              ],
+              "modelYears": {
+                "from": 2017,
+                "to": 2019
+              }
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "2b682fd51aedf1d1d26b94e5704cedb240eab4aad1b1bc6a7bbfaead10a16361",
+                "documentTitle": "Skoda Octavia 1.4 TSI (Petrol, 150 HP, AT) 2017 - 2019",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
+                "locator": "line \"Based on practical experience, recommended Skoda Octavia 1.4 timing belt change \"",
+                "documentSha256": "2b682fd51aedf1d1d26b94e5704cedb240eab4aad1b1bc6a7bbfaead10a16361"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "ENGINE_FAMILY",
+            "basis": "the document states the engine family / displacement",
+            "sufficient": true,
+            "years": {
+              "from": 2017,
+              "to": 2019
+            },
+            "yearsBasis": "document"
+          }
+        },
+        {
           "id": "src-ffe66cd93dc9ef3f:2ac81434c153-p23-s-periodic_service-other-0",
           "sourceId": "src-ffe66cd93dc9ef3f",
           "operationKey": "periodic_service",
@@ -4965,7 +4967,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:27:50.319Z",
+      "resolvedAt": "2026-10-03T09:54:56.741Z",
       "msourceVersion": "msource/1"
     }
   }

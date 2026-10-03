@@ -91,3 +91,40 @@ corroborated by a second source.
 **Official sources acquired:** documents from manufacturer domains were acquired for 9 of the 16
 vehicles. Their schedules are mostly in separate maintenance booklets that are not published, or
 in tables the extractor cannot yet read.
+
+## Re-run after removing engine-code prefix matching (2026-10-03, later the same day)
+
+The owner decided that engine codes match only when identical or listed in `explicitAliases`
+(empty), never by prefix. The 16-vehicle matrix was re-run on the same pipeline and research
+inputs.
+
+**Attribution check (deterministic, on the committed baseline traces):** no baseline evidence record
+had an engine-code verdict of `family`. In this matrix only F01 (SNJB) and S01 (CGG) carry an engine
+code, and neither relied on a prefix match. The rule change therefore cannot move any baseline
+result. **No vehicle transitioned to `VERIFIED_IDENTITY_ONLY` because of it.**
+
+**Live result:** the resolved items are identical for all 16 vehicles (same operations, values and
+statuses). Totals:
+
+|                  | Baseline | Re-run |
+| ---------------- | -------- | ------ |
+| Candidates       | 449      | 463    |
+| Acquired         | 293      | 311    |
+| Evidence records | 304      | 266    |
+| Usable           | 48       | 48     |
+
+The differences in candidates, acquisitions and evidence come from the network and the sources, not
+the matcher:
+
+- M08 had 4 network failures.
+- M13 and M12 retrieved fewer pages.
+- Several HTTP errors became `SOURCE_GONE`.
+- M06 reached 6 previously unreachable hosts, which were then judged not applicable.
+
+**`VERIFIED_IDENTITY_ONLY` (presentation) in the app.** On a registry-identified vehicle, the
+vehicles whose run ends `INSUFFICIENT_EVIDENCE` would show this state:
+
+- M01 Focus, M02 Golf, M03 Octavia, M06 Picanto, M10 C3, M11 Mazda 3, M12 Civic, M13 Qashqai,
+  M14 BMW 318i: 9 of 16.
+- That was already true before the rule change.
+- F01 and M04–M09 show partial schedules. S01 shows its conditional (QG0 / QG2) schedule.

@@ -10,7 +10,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:32:08.905Z"
+    "lastSeen": "2026-10-03T09:58:23.791Z"
   },
   {
     "domain": "adac.de",
@@ -23,7 +23,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:25:37.230Z"
+    "lastSeen": "2026-10-03T09:52:36.110Z"
   },
   {
     "domain": "amazon.de",
@@ -36,7 +36,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:36:29.573Z"
+    "lastSeen": "2026-10-03T10:02:46.010Z"
   },
   {
     "domain": "amzn.to",
@@ -47,23 +47,21 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:36:29.573Z"
+    "lastSeen": "2026-10-03T10:02:46.010Z"
   },
   {
     "domain": "archive.org",
     "identity": "independent",
-    "lastAccess": "allowed",
+    "lastAccess": "unknown",
     "documentTypes": [
       "owners_manual",
-      "other",
-      "maintenance_schedule",
-      "warranty_maintenance_booklet"
+      "other"
     ],
     "extraction": [],
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T09:58:23.791Z"
   },
   {
     "domain": "auto-abc.eu",
@@ -79,7 +77,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 42,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "auto-abc.lv",
@@ -92,7 +90,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "auto.co.il",
@@ -106,7 +104,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:00.261Z"
+    "lastSeen": "2026-10-03T10:01:16.553Z"
   },
   {
     "domain": "autodoc.co.uk",
@@ -117,7 +115,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "autodoc.de",
@@ -128,7 +126,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "autogreeknews.gr",
@@ -141,7 +139,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:27:15.380Z"
+    "lastSeen": "2026-10-03T09:54:19.966Z"
   },
   {
     "domain": "autoguru.com.au",
@@ -154,7 +152,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:36:29.573Z"
+    "lastSeen": "2026-10-03T10:02:46.010Z"
   },
   {
     "domain": "autojm.fr",
@@ -167,7 +165,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:33:13.932Z"
+    "lastSeen": "2026-10-03T09:59:36.015Z"
   },
   {
     "domain": "autonationparts.com",
@@ -178,7 +176,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:26:44.056Z"
+    "lastSeen": "2026-10-03T09:53:52.571Z"
   },
   {
     "domain": "autority.co.il",
@@ -191,7 +189,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:33:13.932Z"
+    "lastSeen": "2026-10-03T09:59:36.015Z"
   },
   {
     "domain": "autoscout24.de",
@@ -202,7 +200,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:28:07.425Z"
+    "lastSeen": "2026-10-03T09:55:18.059Z"
   },
   {
     "domain": "bimmerpost.com",
@@ -213,7 +211,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "bmwgroup.com",
@@ -224,7 +222,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "bobistheoilguy.com",
@@ -235,7 +233,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "cararac.com",
@@ -248,7 +246,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:25:37.230Z"
+    "lastSeen": "2026-10-03T09:52:36.110Z"
   },
   {
     "domain": "carcarekiosk.com",
@@ -261,7 +259,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "carchecker.pro",
@@ -272,7 +270,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:28:34.481Z"
+    "lastSeen": "2026-10-03T09:55:45.918Z"
   },
   {
     "domain": "carexpert.com.au",
@@ -285,7 +283,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:27:50.320Z"
+    "lastSeen": "2026-10-03T09:54:56.741Z"
   },
   {
     "domain": "cars.com",
@@ -296,7 +294,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "carsales.com.au",
@@ -309,7 +307,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:36:29.573Z"
+    "lastSeen": "2026-10-03T10:02:46.010Z"
   },
   {
     "domain": "carsguide.com.au",
@@ -322,7 +320,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "carverif.fr",
@@ -333,7 +331,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "carwiki.de",
@@ -350,7 +348,7 @@
     ],
     "applicabilityPatterns": [],
     "usableEvidence": 2,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "carzone.co.il",
@@ -361,7 +359,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "citroen.com",
@@ -374,7 +372,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "civicx.com",
@@ -389,7 +387,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 1,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "commaoil.com",
@@ -400,7 +398,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:25:37.230Z"
+    "lastSeen": "2026-10-03T09:52:36.110Z"
   },
   {
     "domain": "completecar.ie",
@@ -411,7 +409,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:36:29.573Z"
+    "lastSeen": "2026-10-03T10:02:46.010Z"
   },
   {
     "domain": "dacia.com",
@@ -426,7 +424,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:32:08.905Z"
+    "lastSeen": "2026-10-03T09:58:23.791Z"
   },
   {
     "domain": "dacia.ie",
@@ -437,18 +435,20 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:32:08.905Z"
+    "lastSeen": "2026-10-03T09:58:23.791Z"
   },
   {
     "domain": "elite-auto.fr",
     "identity": "independent",
-    "lastAccess": "blocked",
-    "documentTypes": [],
+    "lastAccess": "allowed",
+    "documentTypes": [
+      "other"
+    ],
     "extraction": [],
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:29:30.530Z"
+    "lastSeen": "2026-10-03T09:56:45.879Z"
   },
   {
     "domain": "fairgarage.com",
@@ -459,7 +459,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:28:34.481Z"
+    "lastSeen": "2026-10-03T09:55:45.918Z"
   },
   {
     "domain": "fiches-auto.fr",
@@ -472,7 +472,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "firestonecompleteautocare.com",
@@ -483,7 +483,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "ford.co.uk",
@@ -498,7 +498,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:26:44.056Z"
+    "lastSeen": "2026-10-03T09:53:52.571Z"
   },
   {
     "domain": "ford.com",
@@ -513,7 +513,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:26:44.056Z"
+    "lastSeen": "2026-10-03T09:53:52.571Z"
   },
   {
     "domain": "ford.fr",
@@ -527,7 +527,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:24:32.353Z"
+    "lastSeen": "2026-10-03T09:51:05.975Z"
   },
   {
     "domain": "fordservicecontent.com",
@@ -540,7 +540,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:26:44.056Z"
+    "lastSeen": "2026-10-03T09:53:52.571Z"
   },
   {
     "domain": "forum-peugeot.com",
@@ -553,7 +553,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:33:13.932Z"
+    "lastSeen": "2026-10-03T09:59:36.015Z"
   },
   {
     "domain": "glinicke.de",
@@ -566,18 +566,20 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:25:37.230Z"
+    "lastSeen": "2026-10-03T09:52:36.110Z"
   },
   {
     "domain": "goodmecano.com",
     "identity": "independent",
-    "lastAccess": "blocked",
-    "documentTypes": [],
+    "lastAccess": "allowed",
+    "documentTypes": [
+      "other"
+    ],
     "extraction": [],
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "haynes.com",
@@ -588,7 +590,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "honda.co.uk",
@@ -603,7 +605,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "honda.com",
@@ -614,7 +616,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "honda.com.sg",
@@ -628,7 +630,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "honestjohn.co.uk",
@@ -639,7 +641,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:27:50.320Z"
+    "lastSeen": "2026-10-03T09:54:56.741Z"
   },
   {
     "domain": "hyundai.com",
@@ -652,7 +654,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:28:34.481Z"
+    "lastSeen": "2026-10-03T09:55:45.918Z"
   },
   {
     "domain": "idgarages.com",
@@ -665,7 +667,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "kfz-dietrich.com",
@@ -678,18 +680,21 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:26:44.056Z"
+    "lastSeen": "2026-10-03T09:53:52.571Z"
   },
   {
     "domain": "kia.com",
-    "identity": "independent",
-    "lastAccess": "blocked",
-    "documentTypes": [],
+    "identity": "brand_domain",
+    "make": "kia",
+    "lastAccess": "allowed",
+    "documentTypes": [
+      "maintenance_schedule"
+    ],
     "extraction": [],
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:29:07.578Z"
+    "lastSeen": "2026-10-03T09:56:13.130Z"
   },
   {
     "domain": "kwik-fit.com",
@@ -700,7 +705,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:32:08.905Z"
+    "lastSeen": "2026-10-03T09:58:23.791Z"
   },
   {
     "domain": "libble.de",
@@ -711,7 +716,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:28:34.481Z"
+    "lastSeen": "2026-10-03T09:55:45.918Z"
   },
   {
     "domain": "libble.eu",
@@ -722,7 +727,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:29:30.530Z"
+    "lastSeen": "2026-10-03T09:56:45.879Z"
   },
   {
     "domain": "magnetisauto.com",
@@ -733,18 +738,20 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "maintenanceschedule.com",
     "identity": "independent",
-    "lastAccess": "blocked",
-    "documentTypes": [],
+    "lastAccess": "allowed",
+    "documentTypes": [
+      "maintenance_schedule"
+    ],
     "extraction": [],
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:28:07.425Z"
+    "lastSeen": "2026-10-03T09:55:18.059Z"
   },
   {
     "domain": "manuall.co.uk",
@@ -755,7 +762,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:28:34.481Z"
+    "lastSeen": "2026-10-03T09:55:45.918Z"
   },
   {
     "domain": "manuall.de",
@@ -766,7 +773,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:24:32.353Z"
+    "lastSeen": "2026-10-03T09:51:05.975Z"
   },
   {
     "domain": "manualsdir.com",
@@ -780,7 +787,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:24:32.353Z"
+    "lastSeen": "2026-10-03T09:51:05.975Z"
   },
   {
     "domain": "manualsfile.com",
@@ -791,7 +798,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "manualslib.com",
@@ -802,7 +809,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:40.011Z"
+    "lastSeen": "2026-10-03T10:02:09.684Z"
   },
   {
     "domain": "manualslib.de",
@@ -813,7 +820,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "manualslib.es",
@@ -824,7 +831,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:26:44.056Z"
+    "lastSeen": "2026-10-03T09:53:52.571Z"
   },
   {
     "domain": "manualslib.fr",
@@ -835,7 +842,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:33:13.932Z"
+    "lastSeen": "2026-10-03T09:59:36.015Z"
   },
   {
     "domain": "manualsnet.com",
@@ -849,7 +856,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:00.261Z"
+    "lastSeen": "2026-10-03T10:01:16.553Z"
   },
   {
     "domain": "mazda.com",
@@ -864,7 +871,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:00.261Z"
+    "lastSeen": "2026-10-03T10:01:16.553Z"
   },
   {
     "domain": "mazdas247.com",
@@ -875,7 +882,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:00.261Z"
+    "lastSeen": "2026-10-03T10:01:16.553Z"
   },
   {
     "domain": "mazdausa.com",
@@ -888,7 +895,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:35:00.261Z"
+    "lastSeen": "2026-10-03T10:01:16.553Z"
   },
   {
     "domain": "mecazen.fr",
@@ -899,7 +906,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:34:46.028Z"
+    "lastSeen": "2026-10-03T10:00:57.826Z"
   },
   {
     "domain": "moneysavingexpert.com",
@@ -912,7 +919,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:24:32.353Z"
+    "lastSeen": "2026-10-03T09:51:05.975Z"
   },
   {
     "domain": "motor-talk.de",
@@ -925,7 +932,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:27:50.320Z"
+    "lastSeen": "2026-10-03T09:54:56.741Z"
   },
   {
     "domain": "newtonnet.co.uk",
@@ -938,7 +945,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:24:32.353Z"
+    "lastSeen": "2026-10-03T09:51:05.975Z"
   },
   {
     "domain": "nhtsa.gov",
@@ -951,21 +958,10 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "nissan.co.nz",
-    "identity": "independent",
-    "lastAccess": "blocked",
-    "documentTypes": [],
-    "extraction": [],
-    "urlPatterns": [],
-    "applicabilityPatterns": [],
-    "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:36:29.573Z"
-  },
-  {
-    "domain": "nissan.co.za",
     "identity": "brand_domain",
     "make": "nissan",
     "lastAccess": "allowed",
@@ -976,7 +972,18 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:36:29.573Z"
+    "lastSeen": "2026-10-03T10:02:46.010Z"
+  },
+  {
+    "domain": "nissan.co.za",
+    "identity": "independent",
+    "lastAccess": "blocked",
+    "documentTypes": [],
+    "extraction": [],
+    "urlPatterns": [],
+    "applicabilityPatterns": [],
+    "usableEvidence": 0,
+    "lastSeen": "2026-10-03T10:02:46.010Z"
   },
   {
     "domain": "nissan.ie",
@@ -991,7 +998,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:36:29.573Z"
+    "lastSeen": "2026-10-03T10:02:46.010Z"
   },
   {
     "domain": "pakwheels.com",
@@ -1004,7 +1011,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:28:07.425Z"
+    "lastSeen": "2026-10-03T09:55:18.059Z"
   },
   {
     "domain": "peugeot.com",
@@ -1015,7 +1022,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:33:13.932Z"
+    "lastSeen": "2026-10-03T09:59:36.015Z"
   },
   {
     "domain": "planeterenault.com",
@@ -1028,7 +1035,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:29:30.530Z"
+    "lastSeen": "2026-10-03T09:56:45.879Z"
   },
   {
     "domain": "queenoftheroad.co.il",
@@ -1041,20 +1048,18 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:33:13.932Z"
+    "lastSeen": "2026-10-03T09:59:36.015Z"
   },
   {
     "domain": "renault.com",
     "identity": "independent",
-    "lastAccess": "allowed",
-    "documentTypes": [
-      "other"
-    ],
+    "lastAccess": "blocked",
+    "documentTypes": [],
     "extraction": [],
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:32:08.905Z"
+    "lastSeen": "2026-10-03T09:58:23.791Z"
   },
   {
     "domain": "repareo.de",
@@ -1067,7 +1072,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "seat.co.uk",
@@ -1088,7 +1093,7 @@
       "official_metadata:my{yy}"
     ],
     "usableEvidence": 1,
-    "lastSeen": "2026-10-03T05:25:37.230Z"
+    "lastSeen": "2026-10-03T09:52:36.110Z"
   },
   {
     "domain": "seat.com",
@@ -1102,7 +1107,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:25:37.230Z"
+    "lastSeen": "2026-10-03T09:52:36.110Z"
   },
   {
     "domain": "seat.es",
@@ -1116,7 +1121,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:25:37.230Z"
+    "lastSeen": "2026-10-03T09:52:36.110Z"
   },
   {
     "domain": "seatcupra.net",
@@ -1134,7 +1139,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 1,
-    "lastSeen": "2026-10-03T05:25:37.230Z"
+    "lastSeen": "2026-10-03T09:52:36.110Z"
   },
   {
     "domain": "servicingstop.co.uk",
@@ -1147,7 +1152,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:29:07.578Z"
+    "lastSeen": "2026-10-03T09:56:13.130Z"
   },
   {
     "domain": "theautoinsiderblog.com",
@@ -1161,7 +1166,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:24:32.353Z"
+    "lastSeen": "2026-10-03T09:51:05.975Z"
   },
   {
     "domain": "totalrenting.es",
@@ -1174,7 +1179,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:25:37.230Z"
+    "lastSeen": "2026-10-03T09:52:36.110Z"
   },
   {
     "domain": "underhoodservice.com",
@@ -1185,7 +1190,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   },
   {
     "domain": "vw.com",
@@ -1196,7 +1201,7 @@
     "urlPatterns": [],
     "applicabilityPatterns": [],
     "usableEvidence": 0,
-    "lastSeen": "2026-10-03T05:27:15.380Z"
+    "lastSeen": "2026-10-03T09:54:19.966Z"
   },
   {
     "domain": "whocanfixmycar.com",
@@ -1215,6 +1220,6 @@
     ],
     "applicabilityPatterns": [],
     "usableEvidence": 1,
-    "lastSeen": "2026-10-03T05:37:18.572Z"
+    "lastSeen": "2026-10-03T10:03:27.048Z"
   }
 ]

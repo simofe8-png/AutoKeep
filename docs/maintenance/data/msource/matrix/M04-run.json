@@ -4,14 +4,14 @@
     "vehicleRef": "M04",
     "fingerprintKey": "car|toyota|corolla|2017|1598||petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:27:50.333Z",
-    "finishedAt": "2026-10-03T05:28:07.425Z",
+    "startedAt": "2026-10-03T09:54:56.755Z",
+    "finishedAt": "2026-10-03T09:55:18.059Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:27:50.333Z",
-        "finishedAt": "2026-10-03T05:27:50.333Z",
+        "startedAt": "2026-10-03T09:54:56.755Z",
+        "finishedAt": "2026-10-03T09:54:56.755Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,8 +25,8 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:27:50.333Z",
-        "finishedAt": "2026-10-03T05:27:50.338Z",
+        "startedAt": "2026-10-03T09:54:56.755Z",
+        "finishedAt": "2026-10-03T09:54:56.760Z",
         "durationMs": 5,
         "counts": {
           "fable": 11,
@@ -39,8 +39,8 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:27:50.338Z",
-        "finishedAt": "2026-10-03T05:27:50.339Z",
+        "startedAt": "2026-10-03T09:54:56.760Z",
+        "finishedAt": "2026-10-03T09:54:56.761Z",
         "durationMs": 1,
         "counts": {
           "discovered": 12,
@@ -54,18 +54,13 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:27:50.339Z",
-        "finishedAt": "2026-10-03T05:28:07.384Z",
-        "durationMs": 17045,
+        "startedAt": "2026-10-03T09:54:56.761Z",
+        "finishedAt": "2026-10-03T09:55:18.003Z",
+        "durationMs": 21242,
         "counts": {
-          "acquired": 14
+          "acquired": 15
         },
         "failures": [
-          {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-10f984234b2fc81d"
-          },
           {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "HTTP 403",
@@ -82,12 +77,12 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:28:07.384Z",
-        "finishedAt": "2026-10-03T05:28:07.425Z",
-        "durationMs": 41,
+        "startedAt": "2026-10-03T09:55:18.003Z",
+        "finishedAt": "2026-10-03T09:55:18.059Z",
+        "durationMs": 56,
         "counts": {
-          "extracted": 37,
-          "grounded": 37
+          "extracted": 38,
+          "grounded": 38
         },
         "failures": [
           {
@@ -131,17 +126,22 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:28:07.425Z",
-        "finishedAt": "2026-10-03T05:28:07.425Z",
+        "startedAt": "2026-10-03T09:55:18.059Z",
+        "finishedAt": "2026-10-03T09:55:18.059Z",
         "durationMs": 0,
         "counts": {
           "PARTIAL": 5,
+          "SUPPORTED": 3,
           "STRONG": 2,
           "NOT_APPLICABLE": 4,
-          "INSUFFICIENT": 1,
-          "SUPPORTED": 2
+          "INSUFFICIENT": 1
         },
         "failures": [
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "SUPPORTED: ",
+            "sourceId": "src-10f984234b2fc81d"
+          },
           {
             "code": "SOURCE_NOT_APPLICABLE",
             "detail": "PARTIAL: the document does not state its model years",
@@ -154,13 +154,13 @@
           },
           {
             "code": "SOURCE_NOT_APPLICABLE",
-            "detail": "NOT_APPLICABLE: the document does not state its model years; fuel: diesel only",
-            "sourceId": "src-99d5d68625642784"
+            "detail": "NOT_APPLICABLE: the document covers 2018–2022, not 2017",
+            "sourceId": "src-eaf65f54f668c14a"
           },
           {
             "code": "SOURCE_NOT_APPLICABLE",
-            "detail": "NOT_APPLICABLE: the document covers 2018–2022, not 2017",
-            "sourceId": "src-eaf65f54f668c14a"
+            "detail": "NOT_APPLICABLE: the document does not state its model years; fuel: diesel only",
+            "sourceId": "src-99d5d68625642784"
           },
           {
             "code": "SOURCE_NOT_APPLICABLE",
@@ -173,8 +173,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:28:07.425Z",
-        "finishedAt": "2026-10-03T05:28:07.425Z",
+        "startedAt": "2026-10-03T09:55:18.059Z",
+        "finishedAt": "2026-10-03T09:55:18.059Z",
         "durationMs": 0,
         "counts": {
           "obligations": 4,
@@ -187,8 +187,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:28:07.425Z",
-        "finishedAt": "2026-10-03T05:28:07.425Z",
+        "startedAt": "2026-10-03T09:55:18.059Z",
+        "finishedAt": "2026-10-03T09:55:18.059Z",
         "durationMs": 0,
         "counts": {
           "items": 4,
@@ -205,8 +205,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:28:07.425Z",
-        "finishedAt": "2026-10-03T05:28:07.425Z",
+        "startedAt": "2026-10-03T09:55:18.059Z",
+        "finishedAt": "2026-10-03T09:55:18.059Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -215,8 +215,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:28:07.425Z",
-        "finishedAt": "2026-10-03T05:28:07.425Z",
+        "startedAt": "2026-10-03T09:55:18.059Z",
+        "finishedAt": "2026-10-03T09:55:18.059Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -237,10 +237,10 @@
       {
         "url": "https://maintenanceschedule.com/toyota-corolla-2014-2019-maintenance/",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "not_applicable",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "SUPPORTED: "
         }
       },
       {
@@ -425,8 +425,8 @@
           "rule": "DISTANCE_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-244c00c56ce59ff7:9ab5d88f00a1-p5-s-air_filter-replacement-0",
-            "src-ca19feb6bae732c4:733b11f910af-p5-s-air_filter-replacement-0"
+            "src-244c00c56ce59ff7:9227b43f990d-p5-s-air_filter-replacement-0",
+            "src-ca19feb6bae732c4:586cb89986e9-p5-s-air_filter-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -448,8 +448,8 @@
           "rule": "WHICHEVER_COMES_FIRST",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-244c00c56ce59ff7:9ab5d88f00a1-p10-coolant-replacement-0",
-            "src-ca19feb6bae732c4:733b11f910af-p10-coolant-replacement-0"
+            "src-244c00c56ce59ff7:9227b43f990d-p10-coolant-replacement-0",
+            "src-ca19feb6bae732c4:586cb89986e9-p10-coolant-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -471,8 +471,8 @@
           "rule": "DISTANCE_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-244c00c56ce59ff7:9ab5d88f00a1-p6-s-fuel_filter-replacement-1",
-            "src-ca19feb6bae732c4:733b11f910af-p6-s-fuel_filter-replacement-1"
+            "src-244c00c56ce59ff7:9227b43f990d-p6-s-fuel_filter-replacement-1",
+            "src-ca19feb6bae732c4:586cb89986e9-p6-s-fuel_filter-replacement-1"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -494,8 +494,8 @@
           "rule": "DISTANCE_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-244c00c56ce59ff7:9ab5d88f00a1-p7-s-spark_plugs-replacement-2",
-            "src-ca19feb6bae732c4:733b11f910af-p7-s-spark_plugs-replacement-2"
+            "src-244c00c56ce59ff7:9227b43f990d-p7-s-spark_plugs-replacement-2",
+            "src-ca19feb6bae732c4:586cb89986e9-p7-s-spark_plugs-replacement-2"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -518,11 +518,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:50.334Z",
-          "retrievedAt": "2026-10-03T05:27:50.636Z",
+          "discoveredAt": "2026-10-03T09:54:56.756Z",
+          "retrievedAt": "2026-10-03T09:54:57.155Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "cb896b14e567dd181a39f5e790769b064f68147f41bacab75cffa3da899bdcdd",
+          "contentSha256": "955cc976569f5fb398855b81a2bcffff2ba49544625294e016e1663eeea76f45",
           "byteLength": 40120,
           "locale": "en",
           "markets": [],
@@ -559,7 +559,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:50.475Z",
+              "decidedAt": "2026-10-03T09:54:57.017Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -575,7 +575,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:50.636Z",
+              "decidedAt": "2026-10-03T09:54:57.155Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -596,7 +596,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:50.636Z",
+              "decidedAt": "2026-10-03T09:54:57.155Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -609,6 +609,106 @@
           }
         },
         {
+          "sourceId": "src-10f984234b2fc81d",
+          "canonicalUrl": "https://maintenanceschedule.com/toyota-corolla-2014-2019-maintenance/",
+          "finalUrl": "https://maintenanceschedule.com/toyota-corolla-2014-2019-maintenance/",
+          "chain": [
+            "https://maintenanceschedule.com/toyota-corolla-2014-2019-maintenance/"
+          ],
+          "sourceName": "maintenanceschedule.com",
+          "sourceType": "independent_database",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:54:56.756Z",
+          "retrievedAt": "2026-10-03T09:54:58.559Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "e7fbe5780bba54bdeef862a33e407560f0b2bfc5a396fbb78a3c1609a460a421",
+          "byteLength": 316165,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Corolla"
+            ],
+            "modelVariants": [],
+            "yearFrom": 2014,
+            "yearTo": 2019,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1500,
+              1800,
+              5700
+            ],
+            "fuels": [],
+            "markets": [],
+            "yearBasis": "document_text",
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://maintenanceschedule.com/toyota-corolla-2014-2019-maintenance/",
+              "host": "maintenanceschedule.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://maintenanceschedule.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:57.923Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://maintenanceschedule.com/toyota-corolla-2014-2019-maintenance/",
+              "host": "maintenanceschedule.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://maintenanceschedule.com/toyota-corolla-2014-2019-maintenance/",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:58.558Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://maintenanceschedule.com/toyota-corolla-2014-2019-maintenance/",
+              "host": "maintenanceschedule.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://maintenanceschedule.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://maintenanceschedule.com/toyota-corolla-2014-2019-maintenance/",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:54:58.559Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "maintenanceschedule.com"
+          }
+        },
+        {
           "sourceId": "src-244c00c56ce59ff7",
           "canonicalUrl": "https://www.auto-abc.eu/toyota-corolla/v15728-2016/service",
           "finalUrl": "https://www.auto-abc.eu/toyota-corolla/v15728-2016/service",
@@ -618,11 +718,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:50.334Z",
-          "retrievedAt": "2026-10-03T05:27:56.653Z",
+          "discoveredAt": "2026-10-03T09:54:56.756Z",
+          "retrievedAt": "2026-10-03T09:54:58.691Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "9ab5d88f00a159cb98243628af721d10400fa7ca011884795e4805dd61cc2254",
+          "contentSha256": "9227b43f990deaf334226d5ddb67ae2e8ca0b2d3d6e97083efba45920caefad8",
           "byteLength": 37342,
           "locale": "en",
           "markets": [],
@@ -661,7 +761,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:56.493Z",
+              "decidedAt": "2026-10-03T09:54:58.564Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -677,7 +777,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:56.653Z",
+              "decidedAt": "2026-10-03T09:54:58.691Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -698,7 +798,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:56.653Z",
+              "decidedAt": "2026-10-03T09:54:58.691Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -720,8 +820,8 @@
           "sourceName": "PakWheels (user upload)",
           "sourceType": "archive",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:50.334Z",
-          "retrievedAt": "2026-10-03T05:27:56.616Z",
+          "discoveredAt": "2026-10-03T09:54:56.756Z",
+          "retrievedAt": "2026-10-03T09:54:59.578Z",
           "format": "pdf",
           "documentType": "maintenance_schedule",
           "contentSha256": "83e02fd100bc04921668cc457f6da3369b6920c6c0bf9abe7879fc4a86df0315",
@@ -756,7 +856,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:56.563Z",
+              "decidedAt": "2026-10-03T09:54:59.239Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -772,7 +872,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:56.616Z",
+              "decidedAt": "2026-10-03T09:54:59.578Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -793,7 +893,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:56.616Z",
+              "decidedAt": "2026-10-03T09:54:59.578Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -815,11 +915,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:50.334Z",
-          "retrievedAt": "2026-10-03T05:27:58.254Z",
+          "discoveredAt": "2026-10-03T09:54:56.756Z",
+          "retrievedAt": "2026-10-03T09:55:00.573Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "d9d8c3299de48664d69a9a7f92be86314cadb927b00f5e31be84debd2c06a087",
+          "contentSha256": "7ce753bf5425ed4b6695bb2ce31b2fb8af98a8e1eef60b582fffacef98b3e686",
           "byteLength": 37668,
           "locale": "en",
           "markets": [],
@@ -858,7 +958,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:57.481Z",
+              "decidedAt": "2026-10-03T09:55:00.442Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -874,7 +974,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:58.254Z",
+              "decidedAt": "2026-10-03T09:55:00.573Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -895,7 +995,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:58.254Z",
+              "decidedAt": "2026-10-03T09:55:00.573Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -917,11 +1017,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:50.334Z",
-          "retrievedAt": "2026-10-03T05:27:59.624Z",
+          "discoveredAt": "2026-10-03T09:54:56.756Z",
+          "retrievedAt": "2026-10-03T09:55:02.072Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "733b11f910af3101922ce638d0895fce97159d9809e0144c2356861bb18107c8",
+          "contentSha256": "586cb89986e9db9fdaa81279073eaece601da4850882ca68e6715348964f5842",
           "byteLength": 37361,
           "locale": "en",
           "markets": [],
@@ -960,7 +1060,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:57.482Z",
+              "decidedAt": "2026-10-03T09:55:00.442Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -976,7 +1076,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:59.624Z",
+              "decidedAt": "2026-10-03T09:55:02.072Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -997,7 +1097,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:59.624Z",
+              "decidedAt": "2026-10-03T09:55:02.072Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1010,106 +1110,6 @@
           }
         },
         {
-          "sourceId": "src-99d5d68625642784",
-          "canonicalUrl": "https://carwiki.de/toyota-corolla-inspektion",
-          "finalUrl": "https://carwiki.de/toyota-corolla-inspektion",
-          "chain": [
-            "https://carwiki.de/toyota-corolla-inspektion"
-          ],
-          "sourceName": "carwiki.de",
-          "sourceType": "publication",
-          "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:50.334Z",
-          "retrievedAt": "2026-10-03T05:27:59.865Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "2352b6ed61c1591ba3c8dfc4c78bfb347f4f3e06a86fd4614bff68d8d11d6064",
-          "byteLength": 169498,
-          "locale": "de",
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Corolla"
-            ],
-            "modelVariants": [
-              "e",
-              "5"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [],
-            "fuels": [
-              "diesel"
-            ],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_no_matching_rule",
-              "url": "https://carwiki.de/toyota-corolla-inspektion",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:59.681Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://carwiki.de/toyota-corolla-inspektion",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/toyota-corolla-inspektion",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:59.865Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://carwiki.de/toyota-corolla-inspektion",
-              "host": "carwiki.de",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://carwiki.de/robots.txt",
-                  "detail": "group *; no matching rule"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://carwiki.de/toyota-corolla-inspektion",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:27:59.865Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "carwiki.de"
-          }
-        },
-        {
           "sourceId": "src-eaf65f54f668c14a",
           "canonicalUrl": "https://www.auto-abc.eu/toyota-corolla/v15730-2018/service",
           "finalUrl": "https://www.auto-abc.eu/toyota-corolla/v15730-2018/service",
@@ -1119,11 +1119,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:50.334Z",
-          "retrievedAt": "2026-10-03T05:28:01.171Z",
+          "discoveredAt": "2026-10-03T09:54:56.756Z",
+          "retrievedAt": "2026-10-03T09:55:03.584Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "c07832a961e3cec0262019b145392b272c162ba8f496c5be4ebbf16ee77a7cf1",
+          "contentSha256": "c3e00213837fee842d8fe3085b851e49fbfffb8e717ddc4d87fe9f1fb82ecc1b",
           "byteLength": 37649,
           "locale": "en",
           "markets": [],
@@ -1162,7 +1162,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:27:59.625Z",
+              "decidedAt": "2026-10-03T09:55:02.074Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1178,7 +1178,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:01.171Z",
+              "decidedAt": "2026-10-03T09:55:03.584Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1199,7 +1199,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:01.171Z",
+              "decidedAt": "2026-10-03T09:55:03.584Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1212,6 +1212,106 @@
           }
         },
         {
+          "sourceId": "src-99d5d68625642784",
+          "canonicalUrl": "https://carwiki.de/toyota-corolla-inspektion",
+          "finalUrl": "https://carwiki.de/toyota-corolla-inspektion",
+          "chain": [
+            "https://carwiki.de/toyota-corolla-inspektion"
+          ],
+          "sourceName": "carwiki.de",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:54:56.756Z",
+          "retrievedAt": "2026-10-03T09:55:04.775Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "36ded65199773fa1f318f4f185c7446571e41c570ea4799363043ef518a73f98",
+          "byteLength": 169405,
+          "locale": "de",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Corolla"
+            ],
+            "modelVariants": [
+              "e",
+              "5"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [
+              "diesel"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://carwiki.de/toyota-corolla-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:02.292Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://carwiki.de/toyota-corolla-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/toyota-corolla-inspektion",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:04.775Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://carwiki.de/toyota-corolla-inspektion",
+              "host": "carwiki.de",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://carwiki.de/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://carwiki.de/toyota-corolla-inspektion",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:04.775Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "carwiki.de"
+          }
+        },
+        {
           "sourceId": "src-6317365f673fcc89",
           "canonicalUrl": "https://www.queenoftheroad.co.il/%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%9c%d7%98%d7%95%d7%99%d7%95%d7%98%d7%94-%d7%a7%d7%95%d7%a8%d7%95%d7%9c%d7%94-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/",
           "finalUrl": "https://www.queenoftheroad.co.il/%d7%94%d7%9e%d7%93%d7%a8%d7%99%d7%9a-%d7%9c%d7%98%d7%95%d7%99%d7%95%d7%98%d7%94-%d7%a7%d7%95%d7%a8%d7%95%d7%9c%d7%94-%d7%98%d7%99%d7%a4%d7%95%d7%9c%d7%99%d7%9d-%d7%a9%d7%95%d7%98%d7%a4%d7%99%d7%9d/",
@@ -1221,11 +1321,11 @@
           "sourceName": "Queen of the Road (queenoftheroad.co.il)",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:27:50.334Z",
-          "retrievedAt": "2026-10-03T05:28:01.270Z",
+          "discoveredAt": "2026-10-03T09:54:56.756Z",
+          "retrievedAt": "2026-10-03T09:55:05.262Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "482dbfb5af33969be3214b0f8f424e444ddb90f82dc3d00c310aa5d5b1aa3ad1",
+          "contentSha256": "c060070369a088cf4601bf77159ff9f32e3ac37210b15ecd4203ceab5784bc70",
           "byteLength": 181085,
           "locale": "he",
           "markets": [
@@ -1259,7 +1359,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:01.212Z",
+              "decidedAt": "2026-10-03T09:55:05.041Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1275,7 +1375,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:01.270Z",
+              "decidedAt": "2026-10-03T09:55:05.262Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1296,7 +1396,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:01.270Z",
+              "decidedAt": "2026-10-03T09:55:05.262Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1318,11 +1418,11 @@
           "sourceName": "www.auto-abc.lv",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:50.639Z",
-          "retrievedAt": "2026-10-03T05:28:02.708Z",
+          "discoveredAt": "2026-10-03T09:54:57.159Z",
+          "retrievedAt": "2026-10-03T09:55:05.649Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "caf030dd417dbb099b863ffb677b2955ed590b6df9f22e9d26ced789a200c953",
+          "contentSha256": "ef335adca0457d23f0409490efcdebdf4d91732b1660237cd7daad5e9ca6ec31",
           "byteLength": 40769,
           "locale": null,
           "markets": [],
@@ -1359,7 +1459,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:02.546Z",
+              "decidedAt": "2026-10-03T09:55:05.515Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1375,7 +1475,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:02.708Z",
+              "decidedAt": "2026-10-03T09:55:05.648Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1396,7 +1496,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:02.708Z",
+              "decidedAt": "2026-10-03T09:55:05.649Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1418,11 +1518,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:50.639Z",
-          "retrievedAt": "2026-10-03T05:28:04.026Z",
+          "discoveredAt": "2026-10-03T09:54:57.159Z",
+          "retrievedAt": "2026-10-03T09:55:07.672Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "dea0d9ea3bf65f51ce9cf47d12530abc74976f805a5ece535ff81d282b903d51",
+          "contentSha256": "71e07ff101ebca2f12b2512f1474d1dbed78b019e1db18fe5d712540dedd572c",
           "byteLength": 36045,
           "locale": null,
           "markets": [],
@@ -1461,7 +1561,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:03.883Z",
+              "decidedAt": "2026-10-03T09:55:07.493Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1477,7 +1577,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:04.026Z",
+              "decidedAt": "2026-10-03T09:55:07.672Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1498,7 +1598,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:04.026Z",
+              "decidedAt": "2026-10-03T09:55:07.672Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1520,11 +1620,11 @@
           "sourceName": "es.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:50.639Z",
-          "retrievedAt": "2026-10-03T05:28:04.188Z",
+          "discoveredAt": "2026-10-03T09:54:57.159Z",
+          "retrievedAt": "2026-10-03T09:55:08.003Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "6065c74207ff25ab0f21e1abb2f2ecf380157afbbe75d21f684508a3b660c945",
+          "contentSha256": "148e01c98368f936dc83a7308d8a91510d04a4cc5a6c40177a07081140320531",
           "byteLength": 40335,
           "locale": null,
           "markets": [],
@@ -1551,17 +1651,17 @@
             {
               "operation": "FETCH",
               "status": "ALLOWED",
-              "reason": "robots_unavailable",
+              "reason": "robots_allows",
               "url": "https://es.auto-abc.eu/servicio/toyota-corolla",
               "host": "es.auto-abc.eu",
               "evidence": [
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:04.023Z",
+              "decidedAt": "2026-10-03T09:55:07.711Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1577,7 +1677,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:04.188Z",
+              "decidedAt": "2026-10-03T09:55:08.003Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1590,7 +1690,7 @@
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 },
                 {
                   "kind": "operation_scope",
@@ -1598,7 +1698,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:04.188Z",
+              "decidedAt": "2026-10-03T09:55:08.003Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1620,11 +1720,11 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:59.870Z",
-          "retrievedAt": "2026-10-03T05:28:04.399Z",
+          "discoveredAt": "2026-10-03T09:55:04.780Z",
+          "retrievedAt": "2026-10-03T09:55:11.376Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "0350920f19fd1275201a9f424ba6b98b3a95db56f9ba7ad73f66356f697b7a34",
+          "contentSha256": "bb9d026529f6298420d996df7c5abab5c2b07b1497cc5029b8ac772ccb415d3b",
           "byteLength": 279444,
           "locale": null,
           "markets": [],
@@ -1658,7 +1758,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:04.189Z",
+              "decidedAt": "2026-10-03T09:55:08.004Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1674,7 +1774,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:04.399Z",
+              "decidedAt": "2026-10-03T09:55:11.375Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1695,7 +1795,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:04.399Z",
+              "decidedAt": "2026-10-03T09:55:11.376Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1717,12 +1817,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:59.871Z",
-          "retrievedAt": "2026-10-03T05:28:05.866Z",
+          "discoveredAt": "2026-10-03T09:55:04.781Z",
+          "retrievedAt": "2026-10-03T09:55:12.935Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "b2c14e346d93841b807d586953b0fcd8338d9fc60a5a8620a49f1f6567659eb4",
-          "byteLength": 275282,
+          "contentSha256": "d031a9478acfcf1076da4c3de2fbbdcb68e6a29998dfcbd61440010e94067fcd",
+          "byteLength": 275102,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1755,7 +1855,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:04.189Z",
+              "decidedAt": "2026-10-03T09:55:08.005Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1771,7 +1871,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:05.865Z",
+              "decidedAt": "2026-10-03T09:55:12.935Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1792,7 +1892,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:05.866Z",
+              "decidedAt": "2026-10-03T09:55:12.935Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1814,12 +1914,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:27:59.871Z",
-          "retrievedAt": "2026-10-03T05:28:07.382Z",
+          "discoveredAt": "2026-10-03T09:55:04.781Z",
+          "retrievedAt": "2026-10-03T09:55:18.001Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "78f55c8b2b123908f30140b7c4eb09bb241ca7f905d2824d6db6a52695f3ef66",
-          "byteLength": 169710,
+          "contentSha256": "41cfe31a5b31cfeb76bca3f6af84402a4062d6d0555e205f14a24adee2cd2f0a",
+          "byteLength": 170241,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1863,7 +1963,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:05.868Z",
+              "decidedAt": "2026-10-03T09:55:12.937Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1879,7 +1979,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:07.382Z",
+              "decidedAt": "2026-10-03T09:55:18.000Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1900,7 +2000,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:07.382Z",
+              "decidedAt": "2026-10-03T09:55:18.001Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1915,7 +2015,123 @@
       ],
       "evidence": [
         {
-          "id": "src-244c00c56ce59ff7:9ab5d88f00a1-p10-coolant-replacement-0",
+          "id": "src-10f984234b2fc81d:e7fbe5780bba-p3-engine_oil-replacement-0",
+          "sourceId": "src-10f984234b2fc81d",
+          "operationKey": "engine_oil",
+          "task": "engine_oil",
+          "originalText": "Special note: If 0W-16 oil is used, the engine oil and filter are replaced every 10,000 miles or 12 months . If 0W-16 wa",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 16093,
+          "intervalMiles": 10000,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Corolla"
+          ],
+          "yearApplicability": {
+            "from": 2014,
+            "to": 2019
+          },
+          "marketApplicability": [],
+          "notes": [
+            "stated in miles: 10000 mi ≈ 16093 km"
+          ],
+          "sourceLocation": {
+            "page": 3,
+            "section": "Maintenance schedule for the Toyota Corolla 11th Gen (2014-2019)",
+            "locator": "line \"Special note: If 0W-16 oil is used, the engine oil and filter are replaced every\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "match",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "item section states 2014–2019",
+              "scope MODEL_YEAR_RANGE is not sufficient for the powertrain-dependent operation engine_oil"
+            ]
+          },
+          "requirement": {
+            "id": "e7fbe5780bba-p3-engine_oil-replacement-0",
+            "task": "engine_oil",
+            "taskText": "Special note: If 0W-16 oil is used, the engine oil and filter are replaced every 10,000 miles or 12 months . If 0W-16 wa",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 10000,
+                "unit": "mi"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "toyota"
+              ],
+              "models": [
+                "Corolla"
+              ],
+              "modelYears": {
+                "from": 2014,
+                "to": 2019
+              },
+              "usage": "normal"
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "e7fbe5780bba54bdeef862a33e407560f0b2bfc5a396fbb78a3c1609a460a421",
+                "documentTitle": "Toyota Corolla 11th Gen (2014-2019) Maintenance Schedule and Service Intervals",
+                "authority": "vehicle_document",
+                "markets": [],
+                "edition": "versions use Toyota’s familiar 1.8 litre inline",
+                "page": 3,
+                "table": "Maintenance schedule for the Toyota Corolla 11th Gen (2014-2019)",
+                "locator": "line \"Special note: If 0W-16 oil is used, the engine oil and filter are replaced every\"",
+                "documentSha256": "e7fbe5780bba54bdeef862a33e407560f0b2bfc5a396fbb78a3c1609a460a421"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_YEAR_RANGE",
+            "basis": "section years 2014–2019",
+            "sufficient": false,
+            "years": {
+              "from": 2014,
+              "to": 2019
+            },
+            "yearsBasis": "section"
+          }
+        },
+        {
+          "id": "src-244c00c56ce59ff7:9227b43f990d-p10-coolant-replacement-0",
           "sourceId": "src-244c00c56ce59ff7",
           "operationKey": "coolant",
           "task": "coolant",
@@ -1967,7 +2183,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "9ab5d88f00a1-p10-coolant-replacement-0",
+            "id": "9227b43f990d-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla 1.6 petrol is 100,000 km or 5 years , wh",
             "action": "replacement",
@@ -2004,14 +2220,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "9ab5d88f00a159cb98243628af721d10400fa7ca011884795e4805dd61cc2254",
+                "documentId": "9227b43f990deaf334226d5ddb67ae2e8ca0b2d3d6e97083efba45920caefad8",
                 "documentTitle": "Toyota Corolla 2016 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla \"",
-                "documentSha256": "9ab5d88f00a159cb98243628af721d10400fa7ca011884795e4805dd61cc2254"
+                "documentSha256": "9227b43f990deaf334226d5ddb67ae2e8ca0b2d3d6e97083efba45920caefad8"
               }
             ],
             "verification": "candidate",
@@ -2034,7 +2250,7 @@
           }
         },
         {
-          "id": "src-244c00c56ce59ff7:9ab5d88f00a1-p5-s-air_filter-replacement-0",
+          "id": "src-244c00c56ce59ff7:9227b43f990d-p5-s-air_filter-replacement-0",
           "sourceId": "src-244c00c56ce59ff7",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -2081,7 +2297,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "9ab5d88f00a1-p5-s-air_filter-replacement-0",
+            "id": "9227b43f990d-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Air filter change interval is 30,000 km .",
             "action": "replacement",
@@ -2112,14 +2328,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "9ab5d88f00a159cb98243628af721d10400fa7ca011884795e4805dd61cc2254",
+                "documentId": "9227b43f990deaf334226d5ddb67ae2e8ca0b2d3d6e97083efba45920caefad8",
                 "documentTitle": "Toyota Corolla 2016 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Air filter change interval is 30,000 km .\"",
-                "documentSha256": "9ab5d88f00a159cb98243628af721d10400fa7ca011884795e4805dd61cc2254"
+                "documentSha256": "9227b43f990deaf334226d5ddb67ae2e8ca0b2d3d6e97083efba45920caefad8"
               }
             ],
             "verification": "candidate",
@@ -2142,7 +2358,7 @@
           }
         },
         {
-          "id": "src-244c00c56ce59ff7:9ab5d88f00a1-p6-s-fuel_filter-replacement-1",
+          "id": "src-244c00c56ce59ff7:9227b43f990d-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-244c00c56ce59ff7",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -2193,7 +2409,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "9ab5d88f00a1-p6-s-fuel_filter-replacement-1",
+            "id": "9227b43f990d-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Toyota Corolla 1.6 petrol fuel filter change interval is 80,000 km Replacement interval for the fuel filter in the fuel tank: 80,000 km",
             "action": "replacement",
@@ -2229,14 +2445,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "9ab5d88f00a159cb98243628af721d10400fa7ca011884795e4805dd61cc2254",
+                "documentId": "9227b43f990deaf334226d5ddb67ae2e8ca0b2d3d6e97083efba45920caefad8",
                 "documentTitle": "Toyota Corolla 2016 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Toyota Corolla 1.6 petrol fuel filter change interval is 80,000 km Replacement i\"",
-                "documentSha256": "9ab5d88f00a159cb98243628af721d10400fa7ca011884795e4805dd61cc2254"
+                "documentSha256": "9227b43f990deaf334226d5ddb67ae2e8ca0b2d3d6e97083efba45920caefad8"
               }
             ],
             "verification": "candidate",
@@ -2259,7 +2475,7 @@
           }
         },
         {
-          "id": "src-244c00c56ce59ff7:9ab5d88f00a1-p7-s-spark_plugs-replacement-2",
+          "id": "src-244c00c56ce59ff7:9227b43f990d-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-244c00c56ce59ff7",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -2306,7 +2522,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "9ab5d88f00a1-p7-s-spark_plugs-replacement-2",
+            "id": "9227b43f990d-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 40,000 km .",
             "action": "replacement",
@@ -2337,14 +2553,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "9ab5d88f00a159cb98243628af721d10400fa7ca011884795e4805dd61cc2254",
+                "documentId": "9227b43f990deaf334226d5ddb67ae2e8ca0b2d3d6e97083efba45920caefad8",
                 "documentTitle": "Toyota Corolla 2016 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Replacement interval for spark plugs is 40,000 km .\"",
-                "documentSha256": "9ab5d88f00a159cb98243628af721d10400fa7ca011884795e4805dd61cc2254"
+                "documentSha256": "9227b43f990deaf334226d5ddb67ae2e8ca0b2d3d6e97083efba45920caefad8"
               }
             ],
             "verification": "candidate",
@@ -3813,7 +4029,7 @@
           }
         },
         {
-          "id": "src-dc746a6d4028d4c3:d9d8c3299de4-p10-coolant-replacement-0",
+          "id": "src-dc746a6d4028d4c3:7ce753bf5425-p10-coolant-replacement-0",
           "sourceId": "src-dc746a6d4028d4c3",
           "operationKey": "coolant",
           "task": "coolant",
@@ -3867,7 +4083,7 @@
             ]
           },
           "requirement": {
-            "id": "d9d8c3299de4-p10-coolant-replacement-0",
+            "id": "7ce753bf5425-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla 1.6 petrol is 100,000 km or 5 years , wh",
             "action": "replacement",
@@ -3904,14 +4120,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "d9d8c3299de48664d69a9a7f92be86314cadb927b00f5e31be84debd2c06a087",
+                "documentId": "7ce753bf5425ed4b6695bb2ce31b2fb8af98a8e1eef60b582fffacef98b3e686",
                 "documentTitle": "Toyota Corolla 2018 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla \"",
-                "documentSha256": "d9d8c3299de48664d69a9a7f92be86314cadb927b00f5e31be84debd2c06a087"
+                "documentSha256": "7ce753bf5425ed4b6695bb2ce31b2fb8af98a8e1eef60b582fffacef98b3e686"
               }
             ],
             "verification": "candidate",
@@ -3934,7 +4150,7 @@
           }
         },
         {
-          "id": "src-dc746a6d4028d4c3:d9d8c3299de4-p5-s-air_filter-replacement-0",
+          "id": "src-dc746a6d4028d4c3:7ce753bf5425-p5-s-air_filter-replacement-0",
           "sourceId": "src-dc746a6d4028d4c3",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -3983,7 +4199,7 @@
             ]
           },
           "requirement": {
-            "id": "d9d8c3299de4-p5-s-air_filter-replacement-0",
+            "id": "7ce753bf5425-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Replacement interval for the air filter is 30,000 km .",
             "action": "replacement",
@@ -4014,14 +4230,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "d9d8c3299de48664d69a9a7f92be86314cadb927b00f5e31be84debd2c06a087",
+                "documentId": "7ce753bf5425ed4b6695bb2ce31b2fb8af98a8e1eef60b582fffacef98b3e686",
                 "documentTitle": "Toyota Corolla 2018 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Replacement interval for the air filter is 30,000 km .\"",
-                "documentSha256": "d9d8c3299de48664d69a9a7f92be86314cadb927b00f5e31be84debd2c06a087"
+                "documentSha256": "7ce753bf5425ed4b6695bb2ce31b2fb8af98a8e1eef60b582fffacef98b3e686"
               }
             ],
             "verification": "candidate",
@@ -4044,7 +4260,7 @@
           }
         },
         {
-          "id": "src-dc746a6d4028d4c3:d9d8c3299de4-p6-s-fuel_filter-replacement-1",
+          "id": "src-dc746a6d4028d4c3:7ce753bf5425-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-dc746a6d4028d4c3",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -4097,7 +4313,7 @@
             ]
           },
           "requirement": {
-            "id": "d9d8c3299de4-p6-s-fuel_filter-replacement-1",
+            "id": "7ce753bf5425-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Toyota Corolla 1.6 petrol fuel filter replacement interval: 80,000 km Change interval for the fuel filter in the fuel tank is 80,000 km",
             "action": "replacement",
@@ -4133,14 +4349,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "d9d8c3299de48664d69a9a7f92be86314cadb927b00f5e31be84debd2c06a087",
+                "documentId": "7ce753bf5425ed4b6695bb2ce31b2fb8af98a8e1eef60b582fffacef98b3e686",
                 "documentTitle": "Toyota Corolla 2018 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Toyota Corolla 1.6 petrol fuel filter replacement interval: 80,000 km Change int\"",
-                "documentSha256": "d9d8c3299de48664d69a9a7f92be86314cadb927b00f5e31be84debd2c06a087"
+                "documentSha256": "7ce753bf5425ed4b6695bb2ce31b2fb8af98a8e1eef60b582fffacef98b3e686"
               }
             ],
             "verification": "candidate",
@@ -4163,7 +4379,7 @@
           }
         },
         {
-          "id": "src-dc746a6d4028d4c3:d9d8c3299de4-p7-s-spark_plugs-replacement-2",
+          "id": "src-dc746a6d4028d4c3:7ce753bf5425-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-dc746a6d4028d4c3",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -4212,7 +4428,7 @@
             ]
           },
           "requirement": {
-            "id": "d9d8c3299de4-p7-s-spark_plugs-replacement-2",
+            "id": "7ce753bf5425-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 40,000 km .",
             "action": "replacement",
@@ -4243,14 +4459,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "d9d8c3299de48664d69a9a7f92be86314cadb927b00f5e31be84debd2c06a087",
+                "documentId": "7ce753bf5425ed4b6695bb2ce31b2fb8af98a8e1eef60b582fffacef98b3e686",
                 "documentTitle": "Toyota Corolla 2018 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 40,000 km .\"",
-                "documentSha256": "d9d8c3299de48664d69a9a7f92be86314cadb927b00f5e31be84debd2c06a087"
+                "documentSha256": "7ce753bf5425ed4b6695bb2ce31b2fb8af98a8e1eef60b582fffacef98b3e686"
               }
             ],
             "verification": "candidate",
@@ -4273,7 +4489,7 @@
           }
         },
         {
-          "id": "src-ca19feb6bae732c4:733b11f910af-p10-coolant-replacement-0",
+          "id": "src-ca19feb6bae732c4:586cb89986e9-p10-coolant-replacement-0",
           "sourceId": "src-ca19feb6bae732c4",
           "operationKey": "coolant",
           "task": "coolant",
@@ -4325,7 +4541,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "733b11f910af-p10-coolant-replacement-0",
+            "id": "586cb89986e9-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla 1.6 petrol is 100,000 km or 5 years , wh",
             "action": "replacement",
@@ -4362,14 +4578,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "733b11f910af3101922ce638d0895fce97159d9809e0144c2356861bb18107c8",
+                "documentId": "586cb89986e9db9fdaa81279073eaece601da4850882ca68e6715348964f5842",
                 "documentTitle": "Toyota Corolla 2016 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla \"",
-                "documentSha256": "733b11f910af3101922ce638d0895fce97159d9809e0144c2356861bb18107c8"
+                "documentSha256": "586cb89986e9db9fdaa81279073eaece601da4850882ca68e6715348964f5842"
               }
             ],
             "verification": "candidate",
@@ -4392,7 +4608,7 @@
           }
         },
         {
-          "id": "src-ca19feb6bae732c4:733b11f910af-p5-s-air_filter-replacement-0",
+          "id": "src-ca19feb6bae732c4:586cb89986e9-p5-s-air_filter-replacement-0",
           "sourceId": "src-ca19feb6bae732c4",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -4439,7 +4655,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "733b11f910af-p5-s-air_filter-replacement-0",
+            "id": "586cb89986e9-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Replacement interval for the air filter is 30,000 km .",
             "action": "replacement",
@@ -4470,14 +4686,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "733b11f910af3101922ce638d0895fce97159d9809e0144c2356861bb18107c8",
+                "documentId": "586cb89986e9db9fdaa81279073eaece601da4850882ca68e6715348964f5842",
                 "documentTitle": "Toyota Corolla 2016 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Replacement interval for the air filter is 30,000 km .\"",
-                "documentSha256": "733b11f910af3101922ce638d0895fce97159d9809e0144c2356861bb18107c8"
+                "documentSha256": "586cb89986e9db9fdaa81279073eaece601da4850882ca68e6715348964f5842"
               }
             ],
             "verification": "candidate",
@@ -4500,7 +4716,7 @@
           }
         },
         {
-          "id": "src-ca19feb6bae732c4:733b11f910af-p6-s-fuel_filter-replacement-1",
+          "id": "src-ca19feb6bae732c4:586cb89986e9-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-ca19feb6bae732c4",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -4551,7 +4767,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "733b11f910af-p6-s-fuel_filter-replacement-1",
+            "id": "586cb89986e9-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Toyota Corolla 1.6 petrol fuel filter replacement interval: 80,000 km Change interval for the fuel filter in the fuel tank is 80,000 km",
             "action": "replacement",
@@ -4587,14 +4803,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "733b11f910af3101922ce638d0895fce97159d9809e0144c2356861bb18107c8",
+                "documentId": "586cb89986e9db9fdaa81279073eaece601da4850882ca68e6715348964f5842",
                 "documentTitle": "Toyota Corolla 2016 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Toyota Corolla 1.6 petrol fuel filter replacement interval: 80,000 km Change int\"",
-                "documentSha256": "733b11f910af3101922ce638d0895fce97159d9809e0144c2356861bb18107c8"
+                "documentSha256": "586cb89986e9db9fdaa81279073eaece601da4850882ca68e6715348964f5842"
               }
             ],
             "verification": "candidate",
@@ -4617,7 +4833,7 @@
           }
         },
         {
-          "id": "src-ca19feb6bae732c4:733b11f910af-p7-s-spark_plugs-replacement-2",
+          "id": "src-ca19feb6bae732c4:586cb89986e9-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-ca19feb6bae732c4",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -4664,7 +4880,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "733b11f910af-p7-s-spark_plugs-replacement-2",
+            "id": "586cb89986e9-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 40,000 km .",
             "action": "replacement",
@@ -4695,14 +4911,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "733b11f910af3101922ce638d0895fce97159d9809e0144c2356861bb18107c8",
+                "documentId": "586cb89986e9db9fdaa81279073eaece601da4850882ca68e6715348964f5842",
                 "documentTitle": "Toyota Corolla 2016 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 40,000 km .\"",
-                "documentSha256": "733b11f910af3101922ce638d0895fce97159d9809e0144c2356861bb18107c8"
+                "documentSha256": "586cb89986e9db9fdaa81279073eaece601da4850882ca68e6715348964f5842"
               }
             ],
             "verification": "candidate",
@@ -4725,414 +4941,7 @@
           }
         },
         {
-          "id": "src-99d5d68625642784:2352b6ed61c1-p4-s-periodic_service-other-0",
-          "sourceId": "src-99d5d68625642784",
-          "operationKey": "periodic_service",
-          "task": "periodic_service",
-          "originalText": "Jeder Toyota Corolla muss nach 15.000 km Fahrleistung zur Wartung gemäß Inspektionsplan in den Fachbetrieb gebracht werden.",
-          "action": "other",
-          "inspectionOrReplacement": "other",
-          "intervalKm": 15000,
-          "intervalMiles": null,
-          "intervalMonths": null,
-          "intervalYears": null,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": false,
-          "rule": "DISTANCE_ONLY",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Corolla"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [],
-          "notes": [],
-          "sourceLocation": {
-            "page": 4,
-            "locator": "column sentence \"Jeder Toyota Corolla muss nach 15.000 km Fahrleistung zur Wartung gemäß Inspekti\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "NOT_APPLICABLE",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "fuel": "mismatch",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "fuel: diesel only"
-            ]
-          },
-          "requirement": {
-            "id": "2352b6ed61c1-p4-s-periodic_service-other-0",
-            "task": "periodic_service",
-            "taskText": "Jeder Toyota Corolla muss nach 15.000 km Fahrleistung zur Wartung gemäß Inspektionsplan in den Fachbetrieb gebracht werden.",
-            "action": "other",
-            "interval": {
-              "every": {
-                "value": 15000,
-                "unit": "km"
-              },
-              "first": null,
-              "rule": "distance_only",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "toyota"
-              ],
-              "models": [
-                "Corolla"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "2352b6ed61c1591ba3c8dfc4c78bfb347f4f3e06a86fd4614bff68d8d11d6064",
-                "documentTitle": "Die Inspektion beim Toyota Corolla | Intervalle & Umfang | Serviceplan samt Wartungskosten | Benziner, Diesel & Hybrid",
-                "authority": "vehicle_document",
-                "markets": [],
-                "page": 4,
-                "section": "Zusammenfassung der Intervalle bei der Toyota Corolla Inspektion",
-                "locator": "column sentence \"Jeder Toyota Corolla muss nach 15.000 km Fahrleistung zur Wartung gemäß Inspekti\"",
-                "documentSha256": "2352b6ed61c1591ba3c8dfc4c78bfb347f4f3e06a86fd4614bff68d8d11d6064"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "msource-sentences/1",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-99d5d68625642784:2352b6ed61c1-p5-s-coolant-replacement-1",
-          "sourceId": "src-99d5d68625642784",
-          "operationKey": "coolant",
-          "task": "coolant",
-          "originalText": "Kühlflüssigkeit wechseln und das Kühlsystem spülen, alle 3 Jahre (45.000 km)",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 45000,
-          "intervalMiles": null,
-          "intervalMonths": 36,
-          "intervalYears": 3,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": true,
-          "rule": "WHICHEVER_COMES_FIRST",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Corolla"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [],
-          "notes": [],
-          "sourceLocation": {
-            "page": 5,
-            "locator": "column sentence \"Kühlflüssigkeit wechseln und das Kühlsystem spülen, alle 3 Jahre (45.000 km)\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "NOT_APPLICABLE",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "fuel": "mismatch",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "fuel: diesel only"
-            ]
-          },
-          "requirement": {
-            "id": "2352b6ed61c1-p5-s-coolant-replacement-1",
-            "task": "coolant",
-            "taskText": "Kühlflüssigkeit wechseln und das Kühlsystem spülen, alle 3 Jahre (45.000 km)",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 45000,
-                "unit": "km"
-              },
-              "everyMonths": 36,
-              "first": null,
-              "rule": "whichever_first",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "toyota"
-              ],
-              "models": [
-                "Corolla"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "2352b6ed61c1591ba3c8dfc4c78bfb347f4f3e06a86fd4614bff68d8d11d6064",
-                "documentTitle": "Die Inspektion beim Toyota Corolla | Intervalle & Umfang | Serviceplan samt Wartungskosten | Benziner, Diesel & Hybrid",
-                "authority": "vehicle_document",
-                "markets": [],
-                "page": 5,
-                "section": "Zustand der Reifen kontrollieren (Beschädigung, Luftdruck, Profil)",
-                "locator": "column sentence \"Kühlflüssigkeit wechseln und das Kühlsystem spülen, alle 3 Jahre (45.000 km)\"",
-                "documentSha256": "2352b6ed61c1591ba3c8dfc4c78bfb347f4f3e06a86fd4614bff68d8d11d6064"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "msource-sentences/1",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-99d5d68625642784:2352b6ed61c1-p5-s-fuel_filter-replacement-2",
-          "sourceId": "src-99d5d68625642784",
-          "operationKey": "fuel_filter",
-          "task": "fuel_filter",
-          "originalText": "Kraftstofffilter ersetzen, alle 6 Jahre (90.000 km)",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 90000,
-          "intervalMiles": null,
-          "intervalMonths": 72,
-          "intervalYears": 6,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": true,
-          "rule": "WHICHEVER_COMES_FIRST",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Corolla"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [],
-          "notes": [],
-          "sourceLocation": {
-            "page": 5,
-            "locator": "column sentence \"Kraftstofffilter ersetzen, alle 6 Jahre (90.000 km)\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "NOT_APPLICABLE",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "fuel": "mismatch",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "fuel: diesel only"
-            ]
-          },
-          "requirement": {
-            "id": "2352b6ed61c1-p5-s-fuel_filter-replacement-2",
-            "task": "fuel_filter",
-            "taskText": "Kraftstofffilter ersetzen, alle 6 Jahre (90.000 km)",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 90000,
-                "unit": "km"
-              },
-              "everyMonths": 72,
-              "first": null,
-              "rule": "whichever_first",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "toyota"
-              ],
-              "models": [
-                "Corolla"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "2352b6ed61c1591ba3c8dfc4c78bfb347f4f3e06a86fd4614bff68d8d11d6064",
-                "documentTitle": "Die Inspektion beim Toyota Corolla | Intervalle & Umfang | Serviceplan samt Wartungskosten | Benziner, Diesel & Hybrid",
-                "authority": "vehicle_document",
-                "markets": [],
-                "page": 5,
-                "section": "Zustand der Reifen kontrollieren (Beschädigung, Luftdruck, Profil)",
-                "locator": "column sentence \"Kraftstofffilter ersetzen, alle 6 Jahre (90.000 km)\"",
-                "documentSha256": "2352b6ed61c1591ba3c8dfc4c78bfb347f4f3e06a86fd4614bff68d8d11d6064"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "msource-sentences/1",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-99d5d68625642784:2352b6ed61c1-p5-s-cabin_filter-replacement-3",
-          "sourceId": "src-99d5d68625642784",
-          "operationKey": "cabin_filter",
-          "task": "cabin_filter",
-          "originalText": "Innenraumfilter wechseln, spätestens alle 3 Jahre (45.000 km)",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 45000,
-          "intervalMiles": null,
-          "intervalMonths": 36,
-          "intervalYears": 3,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": true,
-          "rule": "WHICHEVER_COMES_FIRST",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Corolla"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [],
-          "notes": [],
-          "sourceLocation": {
-            "page": 5,
-            "locator": "column sentence \"Innenraumfilter wechseln, spätestens alle 3 Jahre (45.000 km)\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "NOT_APPLICABLE",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "fuel": "mismatch",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "fuel: diesel only"
-            ]
-          },
-          "requirement": {
-            "id": "2352b6ed61c1-p5-s-cabin_filter-replacement-3",
-            "task": "cabin_filter",
-            "taskText": "Innenraumfilter wechseln, spätestens alle 3 Jahre (45.000 km)",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 45000,
-                "unit": "km"
-              },
-              "everyMonths": 36,
-              "first": null,
-              "rule": "whichever_first",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "toyota"
-              ],
-              "models": [
-                "Corolla"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "2352b6ed61c1591ba3c8dfc4c78bfb347f4f3e06a86fd4614bff68d8d11d6064",
-                "documentTitle": "Die Inspektion beim Toyota Corolla | Intervalle & Umfang | Serviceplan samt Wartungskosten | Benziner, Diesel & Hybrid",
-                "authority": "vehicle_document",
-                "markets": [],
-                "page": 5,
-                "section": "Zustand der Reifen kontrollieren (Beschädigung, Luftdruck, Profil)",
-                "locator": "column sentence \"Innenraumfilter wechseln, spätestens alle 3 Jahre (45.000 km)\"",
-                "documentSha256": "2352b6ed61c1591ba3c8dfc4c78bfb347f4f3e06a86fd4614bff68d8d11d6064"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "msource-sentences/1",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-eaf65f54f668c14a:c07832a961e3-p10-coolant-replacement-0",
+          "id": "src-eaf65f54f668c14a:c3e00213837f-p10-coolant-replacement-0",
           "sourceId": "src-eaf65f54f668c14a",
           "operationKey": "coolant",
           "task": "coolant",
@@ -5186,7 +4995,7 @@
             ]
           },
           "requirement": {
-            "id": "c07832a961e3-p10-coolant-replacement-0",
+            "id": "c3e00213837f-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla 1.6 petrol is 100,000 km or 5 years , wh",
             "action": "replacement",
@@ -5223,14 +5032,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "c07832a961e3cec0262019b145392b272c162ba8f496c5be4ebbf16ee77a7cf1",
+                "documentId": "c3e00213837fee842d8fe3085b851e49fbfffb8e717ddc4d87fe9f1fb82ecc1b",
                 "documentTitle": "Toyota Corolla 2018 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Toyota Corolla \"",
-                "documentSha256": "c07832a961e3cec0262019b145392b272c162ba8f496c5be4ebbf16ee77a7cf1"
+                "documentSha256": "c3e00213837fee842d8fe3085b851e49fbfffb8e717ddc4d87fe9f1fb82ecc1b"
               }
             ],
             "verification": "candidate",
@@ -5253,7 +5062,7 @@
           }
         },
         {
-          "id": "src-eaf65f54f668c14a:c07832a961e3-p5-s-air_filter-replacement-0",
+          "id": "src-eaf65f54f668c14a:c3e00213837f-p5-s-air_filter-replacement-0",
           "sourceId": "src-eaf65f54f668c14a",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -5302,7 +5111,7 @@
             ]
           },
           "requirement": {
-            "id": "c07832a961e3-p5-s-air_filter-replacement-0",
+            "id": "c3e00213837f-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Air filter change interval is 30,000 km .",
             "action": "replacement",
@@ -5333,14 +5142,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "c07832a961e3cec0262019b145392b272c162ba8f496c5be4ebbf16ee77a7cf1",
+                "documentId": "c3e00213837fee842d8fe3085b851e49fbfffb8e717ddc4d87fe9f1fb82ecc1b",
                 "documentTitle": "Toyota Corolla 2018 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Air filter change interval is 30,000 km .\"",
-                "documentSha256": "c07832a961e3cec0262019b145392b272c162ba8f496c5be4ebbf16ee77a7cf1"
+                "documentSha256": "c3e00213837fee842d8fe3085b851e49fbfffb8e717ddc4d87fe9f1fb82ecc1b"
               }
             ],
             "verification": "candidate",
@@ -5363,7 +5172,7 @@
           }
         },
         {
-          "id": "src-eaf65f54f668c14a:c07832a961e3-p6-s-fuel_filter-replacement-1",
+          "id": "src-eaf65f54f668c14a:c3e00213837f-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-eaf65f54f668c14a",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -5416,7 +5225,7 @@
             ]
           },
           "requirement": {
-            "id": "c07832a961e3-p6-s-fuel_filter-replacement-1",
+            "id": "c3e00213837f-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Toyota Corolla 1.6 petrol fuel filter change interval is 80,000 km Replacement interval for the fuel filter in the fuel tank: 80,000 km",
             "action": "replacement",
@@ -5452,14 +5261,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "c07832a961e3cec0262019b145392b272c162ba8f496c5be4ebbf16ee77a7cf1",
+                "documentId": "c3e00213837fee842d8fe3085b851e49fbfffb8e717ddc4d87fe9f1fb82ecc1b",
                 "documentTitle": "Toyota Corolla 2018 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Toyota Corolla 1.6 petrol fuel filter change interval is 80,000 km Replacement i\"",
-                "documentSha256": "c07832a961e3cec0262019b145392b272c162ba8f496c5be4ebbf16ee77a7cf1"
+                "documentSha256": "c3e00213837fee842d8fe3085b851e49fbfffb8e717ddc4d87fe9f1fb82ecc1b"
               }
             ],
             "verification": "candidate",
@@ -5482,7 +5291,7 @@
           }
         },
         {
-          "id": "src-eaf65f54f668c14a:c07832a961e3-p7-s-spark_plugs-replacement-2",
+          "id": "src-eaf65f54f668c14a:c3e00213837f-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-eaf65f54f668c14a",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -5531,7 +5340,7 @@
             ]
           },
           "requirement": {
-            "id": "c07832a961e3-p7-s-spark_plugs-replacement-2",
+            "id": "c3e00213837f-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 40,000 km .",
             "action": "replacement",
@@ -5562,14 +5371,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "c07832a961e3cec0262019b145392b272c162ba8f496c5be4ebbf16ee77a7cf1",
+                "documentId": "c3e00213837fee842d8fe3085b851e49fbfffb8e717ddc4d87fe9f1fb82ecc1b",
                 "documentTitle": "Toyota Corolla 2018 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Replacement interval for spark plugs is 40,000 km .\"",
-                "documentSha256": "c07832a961e3cec0262019b145392b272c162ba8f496c5be4ebbf16ee77a7cf1"
+                "documentSha256": "c3e00213837fee842d8fe3085b851e49fbfffb8e717ddc4d87fe9f1fb82ecc1b"
               }
             ],
             "verification": "candidate",
@@ -5592,7 +5401,414 @@
           }
         },
         {
-          "id": "src-77137063cc904c91:dea0d9ea3bf6-p7-spark_plugs-replacement-0",
+          "id": "src-99d5d68625642784:36ded6519977-p4-s-periodic_service-other-0",
+          "sourceId": "src-99d5d68625642784",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "Jeder Toyota Corolla muss nach 15.000 km Fahrleistung zur Wartung gemäß Inspektionsplan in den Fachbetrieb gebracht werden.",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Corolla"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 4,
+            "locator": "column sentence \"Jeder Toyota Corolla muss nach 15.000 km Fahrleistung zur Wartung gemäß Inspekti\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "fuel": "mismatch",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years",
+              "fuel: diesel only"
+            ]
+          },
+          "requirement": {
+            "id": "36ded6519977-p4-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "Jeder Toyota Corolla muss nach 15.000 km Fahrleistung zur Wartung gemäß Inspektionsplan in den Fachbetrieb gebracht werden.",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "toyota"
+              ],
+              "models": [
+                "Corolla"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "36ded65199773fa1f318f4f185c7446571e41c570ea4799363043ef518a73f98",
+                "documentTitle": "Die Inspektion beim Toyota Corolla | Intervalle & Umfang | Serviceplan samt Wartungskosten | Benziner, Diesel & Hybrid",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 4,
+                "section": "Zusammenfassung der Intervalle bei der Toyota Corolla Inspektion",
+                "locator": "column sentence \"Jeder Toyota Corolla muss nach 15.000 km Fahrleistung zur Wartung gemäß Inspekti\"",
+                "documentSha256": "36ded65199773fa1f318f4f185c7446571e41c570ea4799363043ef518a73f98"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-99d5d68625642784:36ded6519977-p5-s-coolant-replacement-1",
+          "sourceId": "src-99d5d68625642784",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Kühlflüssigkeit wechseln und das Kühlsystem spülen, alle 3 Jahre (45.000 km)",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": 36,
+          "intervalYears": 3,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Corolla"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Kühlflüssigkeit wechseln und das Kühlsystem spülen, alle 3 Jahre (45.000 km)\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "fuel": "mismatch",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years",
+              "fuel: diesel only"
+            ]
+          },
+          "requirement": {
+            "id": "36ded6519977-p5-s-coolant-replacement-1",
+            "task": "coolant",
+            "taskText": "Kühlflüssigkeit wechseln und das Kühlsystem spülen, alle 3 Jahre (45.000 km)",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "everyMonths": 36,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "toyota"
+              ],
+              "models": [
+                "Corolla"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "36ded65199773fa1f318f4f185c7446571e41c570ea4799363043ef518a73f98",
+                "documentTitle": "Die Inspektion beim Toyota Corolla | Intervalle & Umfang | Serviceplan samt Wartungskosten | Benziner, Diesel & Hybrid",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Zustand der Reifen kontrollieren (Beschädigung, Luftdruck, Profil)",
+                "locator": "column sentence \"Kühlflüssigkeit wechseln und das Kühlsystem spülen, alle 3 Jahre (45.000 km)\"",
+                "documentSha256": "36ded65199773fa1f318f4f185c7446571e41c570ea4799363043ef518a73f98"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-99d5d68625642784:36ded6519977-p5-s-fuel_filter-replacement-2",
+          "sourceId": "src-99d5d68625642784",
+          "operationKey": "fuel_filter",
+          "task": "fuel_filter",
+          "originalText": "Kraftstofffilter ersetzen, alle 6 Jahre (90.000 km)",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 90000,
+          "intervalMiles": null,
+          "intervalMonths": 72,
+          "intervalYears": 6,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Corolla"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Kraftstofffilter ersetzen, alle 6 Jahre (90.000 km)\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "fuel": "mismatch",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years",
+              "fuel: diesel only"
+            ]
+          },
+          "requirement": {
+            "id": "36ded6519977-p5-s-fuel_filter-replacement-2",
+            "task": "fuel_filter",
+            "taskText": "Kraftstofffilter ersetzen, alle 6 Jahre (90.000 km)",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 90000,
+                "unit": "km"
+              },
+              "everyMonths": 72,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "toyota"
+              ],
+              "models": [
+                "Corolla"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "36ded65199773fa1f318f4f185c7446571e41c570ea4799363043ef518a73f98",
+                "documentTitle": "Die Inspektion beim Toyota Corolla | Intervalle & Umfang | Serviceplan samt Wartungskosten | Benziner, Diesel & Hybrid",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Zustand der Reifen kontrollieren (Beschädigung, Luftdruck, Profil)",
+                "locator": "column sentence \"Kraftstofffilter ersetzen, alle 6 Jahre (90.000 km)\"",
+                "documentSha256": "36ded65199773fa1f318f4f185c7446571e41c570ea4799363043ef518a73f98"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-99d5d68625642784:36ded6519977-p5-s-cabin_filter-replacement-3",
+          "sourceId": "src-99d5d68625642784",
+          "operationKey": "cabin_filter",
+          "task": "cabin_filter",
+          "originalText": "Innenraumfilter wechseln, spätestens alle 3 Jahre (45.000 km)",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 45000,
+          "intervalMiles": null,
+          "intervalMonths": 36,
+          "intervalYears": 3,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Corolla"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 5,
+            "locator": "column sentence \"Innenraumfilter wechseln, spätestens alle 3 Jahre (45.000 km)\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "NOT_APPLICABLE",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "fuel": "mismatch",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years",
+              "fuel: diesel only"
+            ]
+          },
+          "requirement": {
+            "id": "36ded6519977-p5-s-cabin_filter-replacement-3",
+            "task": "cabin_filter",
+            "taskText": "Innenraumfilter wechseln, spätestens alle 3 Jahre (45.000 km)",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 45000,
+                "unit": "km"
+              },
+              "everyMonths": 36,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "toyota"
+              ],
+              "models": [
+                "Corolla"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "36ded65199773fa1f318f4f185c7446571e41c570ea4799363043ef518a73f98",
+                "documentTitle": "Die Inspektion beim Toyota Corolla | Intervalle & Umfang | Serviceplan samt Wartungskosten | Benziner, Diesel & Hybrid",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 5,
+                "section": "Zustand der Reifen kontrollieren (Beschädigung, Luftdruck, Profil)",
+                "locator": "column sentence \"Innenraumfilter wechseln, spätestens alle 3 Jahre (45.000 km)\"",
+                "documentSha256": "36ded65199773fa1f318f4f185c7446571e41c570ea4799363043ef518a73f98"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-77137063cc904c91:71e07ff101eb-p7-spark_plugs-replacement-0",
           "sourceId": "src-77137063cc904c91",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -5642,7 +5858,7 @@
             ]
           },
           "requirement": {
-            "id": "dea0d9ea3bf6-p7-spark_plugs-replacement-0",
+            "id": "71e07ff101eb-p7-spark_plugs-replacement-0",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 100,000 km .",
             "action": "replacement",
@@ -5673,14 +5889,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "dea0d9ea3bf65f51ce9cf47d12530abc74976f805a5ece535ff81d282b903d51",
+                "documentId": "71e07ff101ebca2f12b2512f1474d1dbed78b019e1db18fe5d712540dedd572c",
                 "documentTitle": "Toyota Corolla 1.33 (Petrol, 99 HP, MT) 2016 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Replacement interval for spark plugs is 100,000 km .\"",
-                "documentSha256": "dea0d9ea3bf65f51ce9cf47d12530abc74976f805a5ece535ff81d282b903d51"
+                "documentSha256": "71e07ff101ebca2f12b2512f1474d1dbed78b019e1db18fe5d712540dedd572c"
               }
             ],
             "verification": "candidate",
@@ -5703,7 +5919,7 @@
           }
         },
         {
-          "id": "src-77137063cc904c91:dea0d9ea3bf6-p5-s-air_filter-replacement-0",
+          "id": "src-77137063cc904c91:71e07ff101eb-p5-s-air_filter-replacement-0",
           "sourceId": "src-77137063cc904c91",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -5752,7 +5968,7 @@
             ]
           },
           "requirement": {
-            "id": "dea0d9ea3bf6-p5-s-air_filter-replacement-0",
+            "id": "71e07ff101eb-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Air filter change interval is 40,000 km .",
             "action": "replacement",
@@ -5783,14 +5999,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "dea0d9ea3bf65f51ce9cf47d12530abc74976f805a5ece535ff81d282b903d51",
+                "documentId": "71e07ff101ebca2f12b2512f1474d1dbed78b019e1db18fe5d712540dedd572c",
                 "documentTitle": "Toyota Corolla 1.33 (Petrol, 99 HP, MT) 2016 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Air filter change interval is 40,000 km .\"",
-                "documentSha256": "dea0d9ea3bf65f51ce9cf47d12530abc74976f805a5ece535ff81d282b903d51"
+                "documentSha256": "71e07ff101ebca2f12b2512f1474d1dbed78b019e1db18fe5d712540dedd572c"
               }
             ],
             "verification": "candidate",
@@ -5813,7 +6029,7 @@
           }
         },
         {
-          "id": "src-77137063cc904c91:dea0d9ea3bf6-p6-s-fuel_filter-replacement-1",
+          "id": "src-77137063cc904c91:71e07ff101eb-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-77137063cc904c91",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -5866,7 +6082,7 @@
             ]
           },
           "requirement": {
-            "id": "dea0d9ea3bf6-p6-s-fuel_filter-replacement-1",
+            "id": "71e07ff101eb-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Toyota Corolla 1.3 petrol fuel filter change interval is 80,000 km",
             "action": "replacement",
@@ -5902,14 +6118,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "dea0d9ea3bf65f51ce9cf47d12530abc74976f805a5ece535ff81d282b903d51",
+                "documentId": "71e07ff101ebca2f12b2512f1474d1dbed78b019e1db18fe5d712540dedd572c",
                 "documentTitle": "Toyota Corolla 1.33 (Petrol, 99 HP, MT) 2016 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Toyota Corolla 1.3 petrol fuel filter change interval is 80,000 km\"",
-                "documentSha256": "dea0d9ea3bf65f51ce9cf47d12530abc74976f805a5ece535ff81d282b903d51"
+                "documentSha256": "71e07ff101ebca2f12b2512f1474d1dbed78b019e1db18fe5d712540dedd572c"
               }
             ],
             "verification": "candidate",
@@ -5932,7 +6148,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:28:07.424Z",
+      "resolvedAt": "2026-10-03T09:55:18.058Z",
       "msourceVersion": "msource/1"
     }
   }

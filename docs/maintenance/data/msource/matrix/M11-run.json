@@ -4,14 +4,14 @@
     "vehicleRef": "M11",
     "fingerprintKey": "car|mazda|3|2015|1998||petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:34:46.038Z",
-    "finishedAt": "2026-10-03T05:35:00.261Z",
+    "startedAt": "2026-10-03T10:00:57.837Z",
+    "finishedAt": "2026-10-03T10:01:16.553Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:34:46.038Z",
-        "finishedAt": "2026-10-03T05:34:46.038Z",
+        "startedAt": "2026-10-03T10:00:57.837Z",
+        "finishedAt": "2026-10-03T10:00:57.837Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,9 +25,9 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:34:46.038Z",
-        "finishedAt": "2026-10-03T05:34:46.042Z",
-        "durationMs": 4,
+        "startedAt": "2026-10-03T10:00:57.838Z",
+        "finishedAt": "2026-10-03T10:00:57.843Z",
+        "durationMs": 5,
         "counts": {
           "fable": 11,
           "registry": 0,
@@ -39,9 +39,9 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:34:46.042Z",
-        "finishedAt": "2026-10-03T05:34:46.042Z",
-        "durationMs": 0,
+        "startedAt": "2026-10-03T10:00:57.843Z",
+        "finishedAt": "2026-10-03T10:00:57.844Z",
+        "durationMs": 1,
         "counts": {
           "discovered": 13,
           "unique": 13,
@@ -54,9 +54,9 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:34:46.042Z",
-        "finishedAt": "2026-10-03T05:35:00.232Z",
-        "durationMs": 14190,
+        "startedAt": "2026-10-03T10:00:57.844Z",
+        "finishedAt": "2026-10-03T10:01:16.507Z",
+        "durationMs": 18663,
         "counts": {
           "acquired": 8
         },
@@ -74,12 +74,12 @@
           {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "HTTP 403",
-            "sourceId": "src-191a981aa812aaa4"
+            "sourceId": "src-de78f3bd978eb19b"
           },
           {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "HTTP 403",
-            "sourceId": "src-de78f3bd978eb19b"
+            "sourceId": "src-191a981aa812aaa4"
           },
           {
             "code": "HTTP_ERROR",
@@ -102,9 +102,9 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:35:00.232Z",
-        "finishedAt": "2026-10-03T05:35:00.261Z",
-        "durationMs": 29,
+        "startedAt": "2026-10-03T10:01:16.507Z",
+        "finishedAt": "2026-10-03T10:01:16.553Z",
+        "durationMs": 46,
         "counts": {
           "extracted": 17,
           "grounded": 17
@@ -146,8 +146,8 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:35:00.261Z",
-        "finishedAt": "2026-10-03T05:35:00.261Z",
+        "startedAt": "2026-10-03T10:01:16.553Z",
+        "finishedAt": "2026-10-03T10:01:16.553Z",
         "durationMs": 0,
         "counts": {
           "INSUFFICIENT": 1,
@@ -172,8 +172,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:35:00.261Z",
-        "finishedAt": "2026-10-03T05:35:00.261Z",
+        "startedAt": "2026-10-03T10:01:16.553Z",
+        "finishedAt": "2026-10-03T10:01:16.553Z",
         "durationMs": 0,
         "counts": {
           "obligations": 0,
@@ -186,8 +186,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "failed",
-        "startedAt": "2026-10-03T05:35:00.261Z",
-        "finishedAt": "2026-10-03T05:35:00.261Z",
+        "startedAt": "2026-10-03T10:01:16.553Z",
+        "finishedAt": "2026-10-03T10:01:16.553Z",
         "durationMs": 0,
         "counts": {
           "items": 0,
@@ -209,8 +209,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:35:00.261Z",
-        "finishedAt": "2026-10-03T05:35:00.261Z",
+        "startedAt": "2026-10-03T10:01:16.553Z",
+        "finishedAt": "2026-10-03T10:01:16.553Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -219,8 +219,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:35:00.261Z",
-        "finishedAt": "2026-10-03T05:35:00.261Z",
+        "startedAt": "2026-10-03T10:01:16.553Z",
+        "finishedAt": "2026-10-03T10:01:16.553Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -427,8 +427,8 @@
           "sourceName": "Mazda Motor Corporation (owners-manual.mazda.com)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:34:46.038Z",
-          "retrievedAt": "2026-10-03T05:34:47.357Z",
+          "discoveredAt": "2026-10-03T10:00:57.838Z",
+          "retrievedAt": "2026-10-03T10:00:59.406Z",
           "format": "html",
           "documentType": "owners_manual",
           "contentSha256": "f6092ac427850ac53aa31b4b25c0cffc289b2d7ab114150b57e0c6ff71d2c2d8",
@@ -465,7 +465,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:47.293Z",
+              "decidedAt": "2026-10-03T10:00:59.068Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -481,7 +481,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:47.356Z",
+              "decidedAt": "2026-10-03T10:00:59.405Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -502,7 +502,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:47.357Z",
+              "decidedAt": "2026-10-03T10:00:59.406Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -526,8 +526,8 @@
           "sourceName": "auto.co.il (Israeli importer catalog attachment)",
           "sourceType": "importer",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:34:46.038Z",
-          "retrievedAt": "2026-10-03T05:34:46.886Z",
+          "discoveredAt": "2026-10-03T10:00:57.838Z",
+          "retrievedAt": "2026-10-03T10:01:01.651Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "c8e3f5baf4b2c4b590a2b6cee15368e7ec3fefe78388302910c326007fc39ae4",
@@ -569,7 +569,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:46.257Z",
+              "decidedAt": "2026-10-03T10:00:58.936Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -585,7 +585,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:46.297Z",
+              "decidedAt": "2026-10-03T10:00:59.352Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -601,7 +601,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:46.394Z",
+              "decidedAt": "2026-10-03T10:01:00.233Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -617,7 +617,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:46.885Z",
+              "decidedAt": "2026-10-03T10:01:01.651Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -638,7 +638,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:46.886Z",
+              "decidedAt": "2026-10-03T10:01:01.651Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -660,8 +660,8 @@
           "sourceName": "Mazda Motor Corporation (owners-manual.mazda.com)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:34:46.038Z",
-          "retrievedAt": "2026-10-03T05:34:48.873Z",
+          "discoveredAt": "2026-10-03T10:00:57.838Z",
+          "retrievedAt": "2026-10-03T10:01:03.197Z",
           "format": "html",
           "documentType": "maintenance_schedule",
           "contentSha256": "a61f54a30017daa739330f79ea05a845af4b46d92cb3e21b80edcc2496004129",
@@ -700,7 +700,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:48.098Z",
+              "decidedAt": "2026-10-03T10:01:02.886Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -716,7 +716,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:48.873Z",
+              "decidedAt": "2026-10-03T10:01:03.197Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -737,7 +737,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:48.873Z",
+              "decidedAt": "2026-10-03T10:01:03.197Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -759,11 +759,11 @@
           "sourceName": "Mazda North American Operations (mazdausa.com)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:34:46.038Z",
-          "retrievedAt": "2026-10-03T05:34:50.780Z",
+          "discoveredAt": "2026-10-03T10:00:57.838Z",
+          "retrievedAt": "2026-10-03T10:01:05.469Z",
           "format": "html",
           "documentType": "maintenance_schedule",
-          "contentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+          "contentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
           "byteLength": 133344,
           "locale": "en",
           "markets": [
@@ -801,7 +801,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:50.583Z",
+              "decidedAt": "2026-10-03T10:01:05.240Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -817,7 +817,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:50.780Z",
+              "decidedAt": "2026-10-03T10:01:05.469Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -838,7 +838,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:50.780Z",
+              "decidedAt": "2026-10-03T10:01:05.469Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -860,11 +860,11 @@
           "sourceName": "manualsnet.com",
           "sourceType": "archive",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:34:46.038Z",
-          "retrievedAt": "2026-10-03T05:34:51.200Z",
+          "discoveredAt": "2026-10-03T10:00:57.838Z",
+          "retrievedAt": "2026-10-03T10:01:06.777Z",
           "format": "html",
           "documentType": "maintenance_schedule",
-          "contentSha256": "05e65689fd5cf3589fe0ca0e572b5d17d66733636119a404bc1585ccc59f439b",
+          "contentSha256": "f7526c4acc5ce07d2e5586b2de3340da0446297b1fd62f67e2d7fd4cee2bfdf4",
           "byteLength": 48367,
           "locale": "en",
           "markets": [],
@@ -899,7 +899,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:51.089Z",
+              "decidedAt": "2026-10-03T10:01:06.662Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -915,7 +915,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:51.200Z",
+              "decidedAt": "2026-10-03T10:01:06.777Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -936,7 +936,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:51.200Z",
+              "decidedAt": "2026-10-03T10:01:06.777Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -958,12 +958,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "knowledge",
-          "discoveredAt": "2026-10-03T05:34:46.041Z",
-          "retrievedAt": "2026-10-03T05:34:53.775Z",
+          "discoveredAt": "2026-10-03T10:00:57.843Z",
+          "retrievedAt": "2026-10-03T10:01:13.487Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "9d613ca4dc91dc44a485f5d4f1f12c0c52557fe4732b451a1ec5a6c225854cb4",
-          "byteLength": 171169,
+          "contentSha256": "e4139e9a2170644fe5c5b33217211b74792310e414089ab1388f42d354efa0b0",
+          "byteLength": 171244,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -996,7 +996,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:53.117Z",
+              "decidedAt": "2026-10-03T10:01:12.851Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1012,7 +1012,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:53.774Z",
+              "decidedAt": "2026-10-03T10:01:13.486Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1033,7 +1033,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:53.775Z",
+              "decidedAt": "2026-10-03T10:01:13.487Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1055,11 +1055,11 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:34:53.780Z",
-          "retrievedAt": "2026-10-03T05:34:59.397Z",
+          "discoveredAt": "2026-10-03T10:01:13.492Z",
+          "retrievedAt": "2026-10-03T10:01:15.318Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "9be6d93468e889c1397c0e4478255c7326505831a7210ade1ad2ad4b995c9351",
+          "contentSha256": "63e9ccaa39de91c6ff5332e1e87a95a4150fe5a9274e1860bb4137323193c459",
           "byteLength": 280420,
           "locale": null,
           "markets": [],
@@ -1093,7 +1093,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:57.956Z",
+              "decidedAt": "2026-10-03T10:01:13.493Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1109,7 +1109,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:59.397Z",
+              "decidedAt": "2026-10-03T10:01:15.318Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1130,7 +1130,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:59.397Z",
+              "decidedAt": "2026-10-03T10:01:15.318Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1152,12 +1152,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:34:53.781Z",
-          "retrievedAt": "2026-10-03T05:35:00.230Z",
+          "discoveredAt": "2026-10-03T10:01:13.492Z",
+          "retrievedAt": "2026-10-03T10:01:16.504Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "1f26ba48fb42fd58f4001a71761892cde3a889e13bd64764d91acd0680fe9434",
-          "byteLength": 158835,
+          "contentSha256": "a5988fbc288892325703ac5a3efc742e2125f09ccde0dc486460ae980a4a1658",
+          "byteLength": 158896,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1189,7 +1189,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:34:59.400Z",
+              "decidedAt": "2026-10-03T10:01:15.322Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1205,7 +1205,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:00.230Z",
+              "decidedAt": "2026-10-03T10:01:16.504Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1226,7 +1226,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:00.230Z",
+              "decidedAt": "2026-10-03T10:01:16.504Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1910,7 +1910,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-engine_oil-replacement-0",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-engine_oil-replacement-0",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "engine_oil",
           "task": "engine_oil",
@@ -1960,7 +1960,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-engine_oil-replacement-0",
+            "id": "34d717631d4f-p1-engine_oil-replacement-0",
             "task": "engine_oil",
             "taskText": "Engine oil & filter",
             "action": "replacement",
@@ -1994,7 +1994,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2004,7 +2004,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Engine oil & filter\", R at 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -2024,7 +2024,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-coolant-inspection-1",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-coolant-inspection-1",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "coolant",
           "task": "coolant",
@@ -2074,7 +2074,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-coolant-inspection-1",
+            "id": "34d717631d4f-p1-coolant-inspection-1",
             "task": "coolant",
             "taskText": "Engine coolant level",
             "action": "inspection",
@@ -2108,7 +2108,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2118,7 +2118,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Engine coolant level\", I at 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -2138,7 +2138,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-air_filter-other-2",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-air_filter-other-2",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -2188,7 +2188,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-air_filter-other-2",
+            "id": "34d717631d4f-p1-air_filter-other-2",
             "task": "air_filter",
             "taskText": "Air filter",
             "action": "other",
@@ -2225,7 +2225,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2235,7 +2235,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Air filter\", C at 10, 30, 50",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -2255,7 +2255,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-air_filter-replacement-3",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-air_filter-replacement-3",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -2305,7 +2305,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-air_filter-replacement-3",
+            "id": "34d717631d4f-p1-air_filter-replacement-3",
             "task": "air_filter",
             "taskText": "Air filter",
             "action": "replacement",
@@ -2339,7 +2339,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2349,7 +2349,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Air filter\", R at 20, 40, 60",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -2369,7 +2369,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-fuel_filter-replacement-4",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-fuel_filter-replacement-4",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -2419,7 +2419,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-fuel_filter-replacement-4",
+            "id": "34d717631d4f-p1-fuel_filter-replacement-4",
             "task": "fuel_filter",
             "taskText": "Fuel filter",
             "action": "replacement",
@@ -2453,7 +2453,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2463,7 +2463,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Fuel filter\", note \"Replace every 60,000 km\"",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -2483,7 +2483,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-spark_plugs-inspection-5",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-spark_plugs-inspection-5",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -2533,7 +2533,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-spark_plugs-inspection-5",
+            "id": "34d717631d4f-p1-spark_plugs-inspection-5",
             "task": "spark_plugs",
             "taskText": "Spark plugs",
             "action": "inspection",
@@ -2567,7 +2567,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2577,7 +2577,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Spark plugs\", I at 10, 20, 30, 40, 50, 60",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -2597,7 +2597,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-brake_system-inspection-6",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-brake_system-inspection-6",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "brakes_inspection",
           "task": "brake_system",
@@ -2647,7 +2647,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-brake_system-inspection-6",
+            "id": "34d717631d4f-p1-brake_system-inspection-6",
             "task": "brake_system",
             "taskText": "Disc brakes",
             "action": "inspection",
@@ -2681,7 +2681,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2691,7 +2691,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Disc brakes\", I at 10, 20, 30, 40, 50, 60",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -2711,7 +2711,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-cabin_filter-replacement-7",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-cabin_filter-replacement-7",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "cabin_filter",
           "task": "cabin_filter",
@@ -2761,7 +2761,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-cabin_filter-replacement-7",
+            "id": "34d717631d4f-p1-cabin_filter-replacement-7",
             "task": "cabin_filter",
             "taskText": "Cabin air filter",
             "action": "replacement",
@@ -2795,7 +2795,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2805,7 +2805,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Cabin air filter\", R at 20, 40, 60",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -2825,7 +2825,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-auxiliary_belt-inspection-8",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-auxiliary_belt-inspection-8",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "accessory_belt",
           "task": "auxiliary_belt",
@@ -2875,7 +2875,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-auxiliary_belt-inspection-8",
+            "id": "34d717631d4f-p1-auxiliary_belt-inspection-8",
             "task": "auxiliary_belt",
             "taskText": "Drive belts",
             "action": "inspection",
@@ -2912,7 +2912,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2922,7 +2922,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Drive belts\", I at 80, 120",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -2942,7 +2942,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-brake_fluid-inspection-9",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-brake_fluid-inspection-9",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "brake_fluid",
           "task": "brake_fluid",
@@ -2992,7 +2992,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-brake_fluid-inspection-9",
+            "id": "34d717631d4f-p1-brake_fluid-inspection-9",
             "task": "brake_fluid",
             "taskText": "Brake and clutch fluid level",
             "action": "inspection",
@@ -3029,7 +3029,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3039,7 +3039,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Brake and clutch fluid level\", I at 70, 90, 100, 110",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -3059,7 +3059,7 @@
           }
         },
         {
-          "id": "src-e3670e6ff8f37ef1:b1164f37dfaf-p1-brake_fluid-replacement-10",
+          "id": "src-e3670e6ff8f37ef1:34d717631d4f-p1-brake_fluid-replacement-10",
           "sourceId": "src-e3670e6ff8f37ef1",
           "operationKey": "brake_fluid",
           "task": "brake_fluid",
@@ -3109,7 +3109,7 @@
             ]
           },
           "requirement": {
-            "id": "b1164f37dfaf-p1-brake_fluid-replacement-10",
+            "id": "34d717631d4f-p1-brake_fluid-replacement-10",
             "task": "brake_fluid",
             "taskText": "Brake fluid",
             "action": "replacement",
@@ -3146,7 +3146,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a",
+                "documentId": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d",
                 "documentTitle": "Scheduled Maintenance — 2018 Mazda3 owner's manual (Mazda USA)",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3156,7 +3156,7 @@
                 "page": 1,
                 "table": "Scheduled Maintenance",
                 "locator": "table row \"Brake fluid\", R at 80, 120",
-                "documentSha256": "b1164f37dfaf6cdf280df55fd5ed62c8c9e3a2fa3c33b13f7af836df5e1da06a"
+                "documentSha256": "34d717631d4fd0b1909786a978026403da04e4269857d2a4cac43c8576cf635d"
               }
             ],
             "verification": "candidate",
@@ -3176,7 +3176,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:35:00.261Z",
+      "resolvedAt": "2026-10-03T10:01:16.553Z",
       "msourceVersion": "msource/1"
     }
   }

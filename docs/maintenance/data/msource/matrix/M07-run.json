@@ -4,14 +4,14 @@
     "vehicleRef": "M07",
     "fingerprintKey": "car|renault|megane|2016|1461||diesel|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:29:07.585Z",
-    "finishedAt": "2026-10-03T05:29:30.530Z",
+    "startedAt": "2026-10-03T09:56:13.142Z",
+    "finishedAt": "2026-10-03T09:56:45.879Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:29:07.585Z",
-        "finishedAt": "2026-10-03T05:29:07.585Z",
+        "startedAt": "2026-10-03T09:56:13.142Z",
+        "finishedAt": "2026-10-03T09:56:13.142Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,9 +25,9 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:29:07.585Z",
-        "finishedAt": "2026-10-03T05:29:07.588Z",
-        "durationMs": 3,
+        "startedAt": "2026-10-03T09:56:13.142Z",
+        "finishedAt": "2026-10-03T09:56:13.146Z",
+        "durationMs": 4,
         "counts": {
           "fable": 13,
           "registry": 0,
@@ -39,9 +39,9 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:29:07.588Z",
-        "finishedAt": "2026-10-03T05:29:07.588Z",
-        "durationMs": 0,
+        "startedAt": "2026-10-03T09:56:13.146Z",
+        "finishedAt": "2026-10-03T09:56:13.147Z",
+        "durationMs": 1,
         "counts": {
           "discovered": 14,
           "unique": 14,
@@ -54,11 +54,11 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:29:07.589Z",
-        "finishedAt": "2026-10-03T05:29:30.358Z",
-        "durationMs": 22769,
+        "startedAt": "2026-10-03T09:56:13.147Z",
+        "finishedAt": "2026-10-03T09:56:45.618Z",
+        "durationMs": 32471,
         "counts": {
-          "acquired": 10
+          "acquired": 16
         },
         "failures": [
           {
@@ -87,11 +87,6 @@
             "sourceId": "src-cd5c1bea9fa0b1e0"
           },
           {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-55a6c8f27ec640f4"
-          },
-          {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "HTTP 403",
             "sourceId": "src-60c88510b7ebb33e"
@@ -102,9 +97,9 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:29:30.359Z",
-        "finishedAt": "2026-10-03T05:29:30.530Z",
-        "durationMs": 171,
+        "startedAt": "2026-10-03T09:56:45.618Z",
+        "finishedAt": "2026-10-03T09:56:45.879Z",
+        "durationMs": 261,
         "counts": {
           "extracted": 3,
           "grounded": 3
@@ -137,6 +132,11 @@
           },
           {
             "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
+            "sourceId": "src-55a6c8f27ec640f4"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
             "detail": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
             "sourceId": "src-c44c779c5f05d6ae"
           },
@@ -152,8 +152,33 @@
           },
           {
             "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html",
+            "sourceId": "src-c9447e8d1d99b90b"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
             "detail": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
             "sourceId": "src-2206d7c581628e3f"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html",
+            "sourceId": "src-0d4374b271d38984"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html",
+            "sourceId": "src-ad99913d1a3f612b"
+          },
+          {
+            "code": "NO_SCHEDULE_SECTION",
+            "detail": "https://www.elite-auto.fr/occasion/guide/renault-megane.html",
+            "sourceId": "src-d00b18e879f7f94e"
+          },
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.elite-auto.fr/occasion/renault/megane",
+            "sourceId": "src-52561f5e645a8a60"
           }
         ],
         "notes": []
@@ -161,11 +186,11 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "ok",
-        "startedAt": "2026-10-03T05:29:30.530Z",
-        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "startedAt": "2026-10-03T09:56:45.879Z",
+        "finishedAt": "2026-10-03T09:56:45.879Z",
         "durationMs": 0,
         "counts": {
-          "PARTIAL": 4,
+          "PARTIAL": 10,
           "STRONG": 2,
           "NOT_APPLICABLE": 3,
           "INSUFFICIENT": 1
@@ -176,8 +201,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:29:30.530Z",
-        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "startedAt": "2026-10-03T09:56:45.879Z",
+        "finishedAt": "2026-10-03T09:56:45.879Z",
         "durationMs": 0,
         "counts": {
           "obligations": 3,
@@ -190,8 +215,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:29:30.530Z",
-        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "startedAt": "2026-10-03T09:56:45.879Z",
+        "finishedAt": "2026-10-03T09:56:45.879Z",
         "durationMs": 0,
         "counts": {
           "items": 3,
@@ -208,8 +233,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:29:30.530Z",
-        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "startedAt": "2026-10-03T09:56:45.879Z",
+        "finishedAt": "2026-10-03T09:56:45.879Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -218,8 +243,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:29:30.530Z",
-        "finishedAt": "2026-10-03T05:29:30.530Z",
+        "startedAt": "2026-10-03T09:56:45.879Z",
+        "finishedAt": "2026-10-03T09:56:45.879Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -333,10 +358,10 @@
       {
         "url": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "no_evidence",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
         }
       },
       {
@@ -392,6 +417,51 @@
           "code": "NO_SCHEDULE_SECTION",
           "detail": "no maintenance schedule section"
         }
+      },
+      {
+        "url": "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.elite-auto.fr/occasion/guide/renault-megane.html",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_SCHEDULE_SECTION",
+          "detail": "no maintenance schedule section"
+        }
+      },
+      {
+        "url": "https://www.elite-auto.fr/occasion/renault/megane",
+        "by": "link",
+        "outcome": "no_evidence",
+        "failure": {
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
+        }
       }
     ],
     "restricted": [
@@ -422,7 +492,7 @@
           "rule": "DISTANCE_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-30e86703c124d97d:06068739ab93-p5-s-air_filter-replacement-0"
+            "src-30e86703c124d97d:9a8327e68328-p5-s-air_filter-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -444,7 +514,7 @@
           "rule": "WHICHEVER_COMES_FIRST",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-30e86703c124d97d:06068739ab93-p10-coolant-replacement-0"
+            "src-30e86703c124d97d:9a8327e68328-p10-coolant-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -466,7 +536,7 @@
           "rule": "DISTANCE_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-30e86703c124d97d:06068739ab93-p8-s-timing_belt-replacement-1"
+            "src-30e86703c124d97d:9a8327e68328-p8-s-timing_belt-replacement-1"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -491,8 +561,8 @@
           "sourceName": "auto.co.il (importer spec sheet)",
           "sourceType": "importer",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:29:07.585Z",
-          "retrievedAt": "2026-10-03T05:29:08.096Z",
+          "discoveredAt": "2026-10-03T09:56:13.143Z",
+          "retrievedAt": "2026-10-03T09:56:16.120Z",
           "format": "pdf",
           "documentType": "warranty_maintenance_booklet",
           "contentSha256": "001696a75cd1eee291f22afbedf950589ca7dc604ebc3ab03ea201a32ce88a86",
@@ -531,7 +601,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:07.812Z",
+              "decidedAt": "2026-10-03T09:56:14.098Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -547,7 +617,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:07.850Z",
+              "decidedAt": "2026-10-03T09:56:14.500Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -563,7 +633,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:07.920Z",
+              "decidedAt": "2026-10-03T09:56:15.176Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -579,7 +649,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:08.095Z",
+              "decidedAt": "2026-10-03T09:56:16.120Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -600,7 +670,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:08.096Z",
+              "decidedAt": "2026-10-03T09:56:16.120Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -624,8 +694,8 @@
           "sourceName": "auto.co.il (importer spec sheet)",
           "sourceType": "importer",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:29:07.585Z",
-          "retrievedAt": "2026-10-03T05:29:09.839Z",
+          "discoveredAt": "2026-10-03T09:56:13.143Z",
+          "retrievedAt": "2026-10-03T09:56:19.636Z",
           "format": "pdf",
           "documentType": "warranty_maintenance_booklet",
           "contentSha256": "cab97b94fe9b3bec62b3b745493c92d284bed25c20b39bc66558a4fd905a80a2",
@@ -664,7 +734,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:09.527Z",
+              "decidedAt": "2026-10-03T09:56:18.107Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -680,7 +750,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:09.555Z",
+              "decidedAt": "2026-10-03T09:56:18.493Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -696,7 +766,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:09.597Z",
+              "decidedAt": "2026-10-03T09:56:18.803Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -712,7 +782,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:09.839Z",
+              "decidedAt": "2026-10-03T09:56:19.636Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -733,7 +803,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:09.839Z",
+              "decidedAt": "2026-10-03T09:56:19.636Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -755,11 +825,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:29:07.585Z",
-          "retrievedAt": "2026-10-03T05:29:11.307Z",
+          "discoveredAt": "2026-10-03T09:56:13.143Z",
+          "retrievedAt": "2026-10-03T09:56:21.131Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57",
+          "contentSha256": "9a8327e68328b7e99972a24f43012c4f28f5c74d87a684ef154d47d106938dcf",
           "byteLength": 37700,
           "locale": "en",
           "markets": [],
@@ -798,7 +868,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:11.155Z",
+              "decidedAt": "2026-10-03T09:56:20.991Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -814,7 +884,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:11.307Z",
+              "decidedAt": "2026-10-03T09:56:21.131Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -835,7 +905,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:11.307Z",
+              "decidedAt": "2026-10-03T09:56:21.131Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -857,8 +927,8 @@
           "sourceName": "idGarages",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:29:07.585Z",
-          "retrievedAt": "2026-10-03T05:29:13.206Z",
+          "discoveredAt": "2026-10-03T09:56:13.143Z",
+          "retrievedAt": "2026-10-03T09:56:22.902Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "fac8c2ebd4ceff4d66a24e0fd7bd5cd504bbaf66191ff8b26aec3d0e1cb38496",
@@ -898,7 +968,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:13.159Z",
+              "decidedAt": "2026-10-03T09:56:22.877Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -914,7 +984,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:13.206Z",
+              "decidedAt": "2026-10-03T09:56:22.902Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -935,7 +1005,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:13.206Z",
+              "decidedAt": "2026-10-03T09:56:22.902Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -957,8 +1027,8 @@
           "sourceName": "AutoJM (dealer)",
           "sourceType": "dealer",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:29:07.585Z",
-          "retrievedAt": "2026-10-03T05:29:14.956Z",
+          "discoveredAt": "2026-10-03T09:56:13.143Z",
+          "retrievedAt": "2026-10-03T09:56:27.472Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "f4f02199c1dcdd6ba213296beea36a1bc0f998539d80eb1ec6b55300f8c05ba9",
@@ -993,7 +1063,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:13.446Z",
+              "decidedAt": "2026-10-03T09:56:25.592Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1009,7 +1079,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:14.956Z",
+              "decidedAt": "2026-10-03T09:56:27.471Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1030,7 +1100,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:14.956Z",
+              "decidedAt": "2026-10-03T09:56:27.472Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1052,12 +1122,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "knowledge",
-          "discoveredAt": "2026-10-03T05:29:07.588Z",
-          "retrievedAt": "2026-10-03T05:29:18.275Z",
+          "discoveredAt": "2026-10-03T09:56:13.146Z",
+          "retrievedAt": "2026-10-03T09:56:32.368Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "7019cb06a30a16beccce3c41141723d6d7c7b7bbdab8eec86712d21a5a347742",
-          "byteLength": 174576,
+          "contentSha256": "fd5bc681520ddb5158a570e0ad05543e73c8f9a1a71593ed9b15713120f6a12c",
+          "byteLength": 174924,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1098,7 +1168,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:18.093Z",
+              "decidedAt": "2026-10-03T09:56:31.158Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1114,7 +1184,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:18.275Z",
+              "decidedAt": "2026-10-03T09:56:32.368Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1135,7 +1205,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:18.275Z",
+              "decidedAt": "2026-10-03T09:56:32.368Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1148,6 +1218,104 @@
           }
         },
         {
+          "sourceId": "src-55a6c8f27ec640f4",
+          "canonicalUrl": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
+          "finalUrl": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
+          "chain": [
+            "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html"
+          ],
+          "sourceName": "Elite Auto",
+          "sourceType": "publication",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:56:13.143Z",
+          "retrievedAt": "2026-10-03T09:56:33.176Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "e6c2d33477eca1490d6ccb97d89992c7b14864b2822455f205f87f083442e7bb",
+          "byteLength": 29810,
+          "locale": "fr",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [
+              "petrol",
+              "diesel"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:33.105Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:33.176Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/tout-savoir-sur-la-revision-d-une-renault-megane-4.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:33.176Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.elite-auto.fr"
+          }
+        },
+        {
           "sourceId": "src-c44c779c5f05d6ae",
           "canonicalUrl": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
           "finalUrl": "https://www.planeterenault.com/forum/megane-iv-comment-changer-le-temps-et-le-km-entre-2-vidanges-t56087.html",
@@ -1157,11 +1325,11 @@
           "sourceName": "PlaneteRenault forum",
           "sourceType": "forum",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:29:07.585Z",
-          "retrievedAt": "2026-10-03T05:29:25.207Z",
+          "discoveredAt": "2026-10-03T09:56:13.143Z",
+          "retrievedAt": "2026-10-03T09:56:33.684Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "186e1bf3000e9afce17323f44e4eefd023ae2aaf7019b2e766a5cfb6c8e8bebb",
+          "contentSha256": "c987decc0c2b448b85af488ab0b473874548e873498b2231c702a2fd3486720e",
           "byteLength": 107759,
           "locale": "fr",
           "markets": [],
@@ -1194,7 +1362,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:24.954Z",
+              "decidedAt": "2026-10-03T09:56:33.419Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1210,7 +1378,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:25.207Z",
+              "decidedAt": "2026-10-03T09:56:33.684Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1231,7 +1399,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:25.207Z",
+              "decidedAt": "2026-10-03T09:56:33.684Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1253,8 +1421,8 @@
           "sourceName": "www.idgarages.com",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:29:13.218Z",
-          "retrievedAt": "2026-10-03T05:29:28.721Z",
+          "discoveredAt": "2026-10-03T09:56:22.912Z",
+          "retrievedAt": "2026-10-03T09:56:34.473Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "bef2aec228239b36f1772f5ac3f3d476943589aa1f19ad7497f7651de7096596",
@@ -1294,7 +1462,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:28.651Z",
+              "decidedAt": "2026-10-03T09:56:34.342Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1310,7 +1478,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:28.721Z",
+              "decidedAt": "2026-10-03T09:56:34.472Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1331,7 +1499,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:28.721Z",
+              "decidedAt": "2026-10-03T09:56:34.473Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1353,11 +1521,11 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:29:18.283Z",
-          "retrievedAt": "2026-10-03T05:29:28.884Z",
+          "discoveredAt": "2026-10-03T09:56:32.376Z",
+          "retrievedAt": "2026-10-03T09:56:35.401Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "7b605dfb7c925053b2693d6a9754d3e2288fa5e6662eece318dd4d4a462027a2",
+          "contentSha256": "3fe65febb44af787d6355b8d22fe166e487dab21e3cd18b6f1a19b64b1662fe0",
           "byteLength": 318708,
           "locale": null,
           "markets": [],
@@ -1391,7 +1559,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:28.652Z",
+              "decidedAt": "2026-10-03T09:56:34.342Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1407,7 +1575,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:28.883Z",
+              "decidedAt": "2026-10-03T09:56:35.401Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1428,7 +1596,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:28.884Z",
+              "decidedAt": "2026-10-03T09:56:35.401Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1441,6 +1609,104 @@
           }
         },
         {
+          "sourceId": "src-c9447e8d1d99b90b",
+          "canonicalUrl": "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html",
+          "finalUrl": "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html",
+          "chain": [
+            "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html"
+          ],
+          "sourceName": "www.elite-auto.fr",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:56:33.178Z",
+          "retrievedAt": "2026-10-03T09:56:35.494Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "197919e1066a7fb2e2a2901a55a5764200f9a2242d219088c01dd913e8240c98",
+          "byteLength": 30706,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "4",
+              "3"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:35.411Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:35.493Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/quelle-renault-megane-d-occasion-acheter.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:35.494Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.elite-auto.fr"
+          }
+        },
+        {
           "sourceId": "src-2206d7c581628e3f",
           "canonicalUrl": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
           "finalUrl": "https://carwiki.de/renault-megane-inspektion-zuruecksetzen",
@@ -1450,12 +1716,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:29:18.283Z",
-          "retrievedAt": "2026-10-03T05:29:30.356Z",
+          "discoveredAt": "2026-10-03T09:56:32.377Z",
+          "retrievedAt": "2026-10-03T09:56:36.565Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "257f060e97915ec535e30658b4a3e06f36b6ee92f844a852265117e32f1d454b",
-          "byteLength": 168631,
+          "contentSha256": "7f0a19e829b61497f874a1b1e973eed7d20fbec308b6cd9034d87da5b0c9ae05",
+          "byteLength": 168731,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1495,7 +1761,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:28.893Z",
+              "decidedAt": "2026-10-03T09:56:35.410Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1511,7 +1777,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:30.356Z",
+              "decidedAt": "2026-10-03T09:56:36.564Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1532,7 +1798,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:30.356Z",
+              "decidedAt": "2026-10-03T09:56:36.565Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1543,11 +1809,412 @@
             "basis": "none",
             "detail": "carwiki.de"
           }
+        },
+        {
+          "sourceId": "src-0d4374b271d38984",
+          "canonicalUrl": "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html",
+          "finalUrl": "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html",
+          "chain": [
+            "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html"
+          ],
+          "sourceName": "www.elite-auto.fr",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:56:33.178Z",
+          "retrievedAt": "2026-10-03T09:56:36.994Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "9a1c8964d6f3287f5d0711231b0e11e966ae1afdf7f37fb9652349776ed77446",
+          "byteLength": 29526,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "3",
+              "4",
+              "rs",
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1200,
+              1300,
+              1500,
+              1600,
+              1700
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:36.568Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:36.992Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/renault-megane-quelle-est-la-fiabilite.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:36.994Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.elite-auto.fr"
+          }
+        },
+        {
+          "sourceId": "src-ad99913d1a3f612b",
+          "canonicalUrl": "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html",
+          "finalUrl": "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html",
+          "chain": [
+            "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html"
+          ],
+          "sourceName": "www.elite-auto.fr",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:56:33.178Z",
+          "retrievedAt": "2026-10-03T09:56:38.884Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "68d0db5b1939ff854898c2b812d7e31d2d612897028cc224ee9d5eefbe576123",
+          "byteLength": 29606,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "4",
+              "3"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:36.569Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:38.884Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/quelle-est-la-meilleure-renault-megane-d-occasion-pour-20000-euros.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:38.884Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.elite-auto.fr"
+          }
+        },
+        {
+          "sourceId": "src-d00b18e879f7f94e",
+          "canonicalUrl": "https://www.elite-auto.fr/occasion/guide/renault-megane.html",
+          "finalUrl": "https://www.elite-auto.fr/occasion/guide/renault-megane.html",
+          "chain": [
+            "https://www.elite-auto.fr/occasion/guide/renault-megane.html"
+          ],
+          "sourceName": "www.elite-auto.fr",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:56:33.178Z",
+          "retrievedAt": "2026-10-03T09:56:39.998Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "064ee428d8055094fc44ea5ca4c33c6860eae69d27e5c8e73c8b3bc2f87a24b2",
+          "byteLength": 38579,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "4",
+              "3",
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.elite-auto.fr/occasion/guide/renault-megane.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:38.887Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.elite-auto.fr/occasion/guide/renault-megane.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/renault-megane.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:39.998Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.elite-auto.fr/occasion/guide/renault-megane.html",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/guide/renault-megane.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:39.998Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.elite-auto.fr"
+          }
+        },
+        {
+          "sourceId": "src-52561f5e645a8a60",
+          "canonicalUrl": "https://www.elite-auto.fr/occasion/renault/megane",
+          "finalUrl": "https://www.elite-auto.fr/occasion/renault/megane",
+          "chain": [
+            "https://www.elite-auto.fr/occasion/renault/megane"
+          ],
+          "sourceName": "www.elite-auto.fr",
+          "sourceType": "publication",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:56:33.178Z",
+          "retrievedAt": "2026-10-03T09:56:45.605Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "2006a47feb2842978e9f953f1ea50560403daa283209d7ee742ef672ad127be1",
+          "byteLength": 566860,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Megane"
+            ],
+            "modelVariants": [
+              "31",
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.elite-auto.fr/occasion/renault/megane",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:38.888Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.elite-auto.fr/occasion/renault/megane",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/renault/megane",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:45.604Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.elite-auto.fr/occasion/renault/megane",
+              "host": "www.elite-auto.fr",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.elite-auto.fr/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.elite-auto.fr/occasion/renault/megane",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:45.605Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.elite-auto.fr"
+          }
         }
       ],
       "evidence": [
         {
-          "id": "src-30e86703c124d97d:06068739ab93-p10-coolant-replacement-0",
+          "id": "src-30e86703c124d97d:9a8327e68328-p10-coolant-replacement-0",
           "sourceId": "src-30e86703c124d97d",
           "operationKey": "coolant",
           "task": "coolant",
@@ -1597,7 +2264,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "06068739ab93-p10-coolant-replacement-0",
+            "id": "9a8327e68328-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Renault Megane 1.5 diesel is 90,000 km or 5 years , whi",
             "action": "replacement",
@@ -1632,14 +2299,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57",
+                "documentId": "9a8327e68328b7e99972a24f43012c4f28f5c74d87a684ef154d47d106938dcf",
                 "documentTitle": "Renault Megane 2016 1.5 diesel service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Renault Megane \"",
-                "documentSha256": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57"
+                "documentSha256": "9a8327e68328b7e99972a24f43012c4f28f5c74d87a684ef154d47d106938dcf"
               }
             ],
             "verification": "candidate",
@@ -1662,7 +2329,7 @@
           }
         },
         {
-          "id": "src-30e86703c124d97d:06068739ab93-p5-s-air_filter-replacement-0",
+          "id": "src-30e86703c124d97d:9a8327e68328-p5-s-air_filter-replacement-0",
           "sourceId": "src-30e86703c124d97d",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -1709,7 +2376,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "06068739ab93-p5-s-air_filter-replacement-0",
+            "id": "9a8327e68328-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Replacement interval for the air filter is 10,000 km .",
             "action": "replacement",
@@ -1740,14 +2407,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57",
+                "documentId": "9a8327e68328b7e99972a24f43012c4f28f5c74d87a684ef154d47d106938dcf",
                 "documentTitle": "Renault Megane 2016 1.5 diesel service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Replacement interval for the air filter is 10,000 km .\"",
-                "documentSha256": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57"
+                "documentSha256": "9a8327e68328b7e99972a24f43012c4f28f5c74d87a684ef154d47d106938dcf"
               }
             ],
             "verification": "candidate",
@@ -1770,7 +2437,7 @@
           }
         },
         {
-          "id": "src-30e86703c124d97d:06068739ab93-p8-s-timing_belt-replacement-1",
+          "id": "src-30e86703c124d97d:9a8327e68328-p8-s-timing_belt-replacement-1",
           "sourceId": "src-30e86703c124d97d",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -1819,7 +2486,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "06068739ab93-p8-s-timing_belt-replacement-1",
+            "id": "9a8327e68328-p8-s-timing_belt-replacement-1",
             "task": "timing_belt",
             "taskText": "Manufacturers recommended timing belt replacement interval for Renault Megane 1.5 diesel is 60,000 km .",
             "action": "replacement",
@@ -1853,14 +2520,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57",
+                "documentId": "9a8327e68328b7e99972a24f43012c4f28f5c74d87a684ef154d47d106938dcf",
                 "documentTitle": "Renault Megane 2016 1.5 diesel service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 8,
                 "section": "Timing belt",
                 "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Renault Megane 1.\"",
-                "documentSha256": "06068739ab938a0cc9a0279b1d709c814ea348a638a21edde7c62e51d4704f57"
+                "documentSha256": "9a8327e68328b7e99972a24f43012c4f28f5c74d87a684ef154d47d106938dcf"
               }
             ],
             "verification": "candidate",
@@ -1883,7 +2550,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:29:30.530Z",
+      "resolvedAt": "2026-10-03T09:56:45.878Z",
       "msourceVersion": "msource/1"
     }
   }

@@ -4,14 +4,14 @@
     "vehicleRef": "M09",
     "fingerprintKey": "car|peugeot|208|2016|1199||petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:32:08.918Z",
-    "finishedAt": "2026-10-03T05:33:13.932Z",
+    "startedAt": "2026-10-03T09:58:23.808Z",
+    "finishedAt": "2026-10-03T09:59:36.015Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:32:08.918Z",
-        "finishedAt": "2026-10-03T05:32:08.918Z",
+        "startedAt": "2026-10-03T09:58:23.808Z",
+        "finishedAt": "2026-10-03T09:58:23.808Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,9 +25,9 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:32:08.918Z",
-        "finishedAt": "2026-10-03T05:32:08.923Z",
-        "durationMs": 5,
+        "startedAt": "2026-10-03T09:58:23.808Z",
+        "finishedAt": "2026-10-03T09:58:23.819Z",
+        "durationMs": 11,
         "counts": {
           "fable": 15,
           "registry": 0,
@@ -39,9 +39,9 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:32:08.923Z",
-        "finishedAt": "2026-10-03T05:32:08.923Z",
-        "durationMs": 0,
+        "startedAt": "2026-10-03T09:58:23.819Z",
+        "finishedAt": "2026-10-03T09:58:23.820Z",
+        "durationMs": 1,
         "counts": {
           "discovered": 16,
           "unique": 16,
@@ -54,16 +54,16 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:32:08.924Z",
-        "finishedAt": "2026-10-03T05:33:13.764Z",
-        "durationMs": 64840,
+        "startedAt": "2026-10-03T09:58:23.820Z",
+        "finishedAt": "2026-10-03T09:59:35.792Z",
+        "durationMs": 71972,
         "counts": {
           "acquired": 24
         },
         "failures": [
           {
-            "code": "HTTP_ERROR",
-            "detail": "HTTP 429",
+            "code": "SOURCE_GONE",
+            "detail": "HTTP 404",
             "sourceId": "src-939202115104ef57"
           },
           {
@@ -97,9 +97,9 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:33:13.764Z",
-        "finishedAt": "2026-10-03T05:33:13.932Z",
-        "durationMs": 168,
+        "startedAt": "2026-10-03T09:59:35.792Z",
+        "finishedAt": "2026-10-03T09:59:36.015Z",
+        "durationMs": 223,
         "counts": {
           "extracted": 16,
           "grounded": 16
@@ -142,13 +142,13 @@
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://www.auto-abc.lv/service/Peugeot-208",
-            "sourceId": "src-6d8fee5c4692ddfa"
+            "detail": "https://es.auto-abc.eu/servicio/Peugeot-208",
+            "sourceId": "src-b795d6d61e5c7ca4"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
-            "detail": "https://es.auto-abc.eu/servicio/Peugeot-208",
-            "sourceId": "src-b795d6d61e5c7ca4"
+            "detail": "https://www.auto-abc.lv/service/Peugeot-208",
+            "sourceId": "src-6d8fee5c4692ddfa"
           },
           {
             "code": "NO_SCHEDULE_SECTION",
@@ -201,8 +201,8 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:33:13.932Z",
-        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "startedAt": "2026-10-03T09:59:36.015Z",
+        "finishedAt": "2026-10-03T09:59:36.015Z",
         "durationMs": 0,
         "counts": {
           "PARTIAL": 10,
@@ -233,8 +233,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:33:13.932Z",
-        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "startedAt": "2026-10-03T09:59:36.015Z",
+        "finishedAt": "2026-10-03T09:59:36.015Z",
         "durationMs": 0,
         "counts": {
           "obligations": 4,
@@ -247,8 +247,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:33:13.932Z",
-        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "startedAt": "2026-10-03T09:59:36.015Z",
+        "finishedAt": "2026-10-03T09:59:36.015Z",
         "durationMs": 0,
         "counts": {
           "items": 4,
@@ -265,8 +265,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:33:13.932Z",
-        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "startedAt": "2026-10-03T09:59:36.015Z",
+        "finishedAt": "2026-10-03T09:59:36.015Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -275,8 +275,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:33:13.932Z",
-        "finishedAt": "2026-10-03T05:33:13.932Z",
+        "startedAt": "2026-10-03T09:59:36.015Z",
+        "finishedAt": "2026-10-03T09:59:36.015Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -338,8 +338,8 @@
         "by": "fable",
         "outcome": "failed",
         "failure": {
-          "code": "HTTP_ERROR",
-          "detail": "HTTP 429"
+          "code": "SOURCE_GONE",
+          "detail": "HTTP 404"
         }
       },
       {
@@ -582,7 +582,7 @@
           "rule": "TIME_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-db226a7bee2c8ad9:717e54274d19-p4-brake_fluid-replacement-0"
+            "src-db226a7bee2c8ad9:fb225e940cd8-p4-brake_fluid-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -604,8 +604,8 @@
           "rule": "WHICHEVER_COMES_FIRST",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-d87e8d1a6f55fdf4:4a48cb919784-p7-coolant-replacement-0",
-            "src-f7bfa35ff52b6bc1:15d218a78e7c-p7-coolant-replacement-0"
+            "src-d87e8d1a6f55fdf4:cd6f18a9f376-p7-coolant-replacement-0",
+            "src-f7bfa35ff52b6bc1:38e07d46bf64-p7-coolant-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -627,8 +627,8 @@
           "rule": "DISTANCE_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-d87e8d1a6f55fdf4:4a48cb919784-p5-s-spark_plugs-replacement-0",
-            "src-f7bfa35ff52b6bc1:15d218a78e7c-p5-s-spark_plugs-replacement-0"
+            "src-d87e8d1a6f55fdf4:cd6f18a9f376-p5-s-spark_plugs-replacement-0",
+            "src-f7bfa35ff52b6bc1:38e07d46bf64-p5-s-spark_plugs-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -650,8 +650,8 @@
           "rule": "DISTANCE_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-d87e8d1a6f55fdf4:4a48cb919784-p6-s-timing_belt-replacement-1",
-            "src-f7bfa35ff52b6bc1:15d218a78e7c-p6-s-timing_belt-replacement-1"
+            "src-d87e8d1a6f55fdf4:cd6f18a9f376-p6-s-timing_belt-replacement-1",
+            "src-f7bfa35ff52b6bc1:38e07d46bf64-p6-s-timing_belt-replacement-1"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -674,8 +674,8 @@
           "sourceName": "Forum-Peugeot (hosted Peugeot document)",
           "sourceType": "service_document",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:32:08.918Z",
-          "retrievedAt": "2026-10-03T05:32:11.376Z",
+          "discoveredAt": "2026-10-03T09:58:23.808Z",
+          "retrievedAt": "2026-10-03T09:58:27.521Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "6078f35ae5220fea69e0777a944999ae2a153525accd6fc0dd801aadbe55dae6",
@@ -714,7 +714,7 @@
                   "detail": "group *; Allow: /wp-content/uploads"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:11.334Z",
+              "decidedAt": "2026-10-03T09:58:27.289Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -730,7 +730,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:11.376Z",
+              "decidedAt": "2026-10-03T09:58:27.520Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -751,7 +751,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:11.376Z",
+              "decidedAt": "2026-10-03T09:58:27.521Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -773,8 +773,8 @@
           "sourceName": "Forum-Peugeot (hosted Peugeot document)",
           "sourceType": "service_document",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:32:08.918Z",
-          "retrievedAt": "2026-10-03T05:32:12.888Z",
+          "discoveredAt": "2026-10-03T09:58:23.808Z",
+          "retrievedAt": "2026-10-03T09:58:29.000Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "b616fcf1f814907d1ef3bf2ee964e41338734fed7050268faa7d617f8c49d365",
@@ -813,7 +813,7 @@
                   "detail": "group *; Allow: /wp-content/uploads"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:11.335Z",
+              "decidedAt": "2026-10-03T09:58:27.289Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -829,7 +829,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:12.888Z",
+              "decidedAt": "2026-10-03T09:58:29.000Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -850,7 +850,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:12.888Z",
+              "decidedAt": "2026-10-03T09:58:29.000Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -872,8 +872,8 @@
           "sourceName": "Forum-Peugeot (hosted Peugeot document)",
           "sourceType": "service_document",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:32:08.918Z",
-          "retrievedAt": "2026-10-03T05:32:14.368Z",
+          "discoveredAt": "2026-10-03T09:58:23.808Z",
+          "retrievedAt": "2026-10-03T09:58:30.534Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "53b72f541b950bf6fdeddac253eae74663aab6679dd36d1cd8ff2ed568c23efe",
@@ -912,7 +912,7 @@
                   "detail": "group *; Allow: /wp-content/uploads"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:13.763Z",
+              "decidedAt": "2026-10-03T09:58:30.234Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -928,7 +928,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:14.367Z",
+              "decidedAt": "2026-10-03T09:58:30.534Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -949,7 +949,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:14.368Z",
+              "decidedAt": "2026-10-03T09:58:30.534Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -971,8 +971,8 @@
           "sourceName": "Forum-Peugeot (hosted Peugeot document)",
           "sourceType": "service_document",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:32:08.918Z",
-          "retrievedAt": "2026-10-03T05:32:15.864Z",
+          "discoveredAt": "2026-10-03T09:58:23.808Z",
+          "retrievedAt": "2026-10-03T09:58:31.927Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "e1c4849a344e38986fbaa3cdc5cde4f3f0a7b5e19ebe70bafe5b7a620a682964",
@@ -1011,7 +1011,7 @@
                   "detail": "group *; Allow: /wp-content/uploads"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:13.764Z",
+              "decidedAt": "2026-10-03T09:58:30.234Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1027,7 +1027,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:15.864Z",
+              "decidedAt": "2026-10-03T09:58:31.927Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1048,7 +1048,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:15.864Z",
+              "decidedAt": "2026-10-03T09:58:31.927Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1070,11 +1070,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:32:08.918Z",
-          "retrievedAt": "2026-10-03T05:32:49.835Z",
+          "discoveredAt": "2026-10-03T09:58:23.808Z",
+          "retrievedAt": "2026-10-03T09:59:05.663Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "3fe821e78b1396dca4214a971d4e42af067d1bc10cc62a09324ec81a9ff07447",
+          "contentSha256": "cb1f9c2c7257d609cf0f0da43da52d34a012ff1f642e47ac17ec9bf24c614c70",
           "byteLength": 31681,
           "locale": "en",
           "markets": [],
@@ -1114,7 +1114,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:49.674Z",
+              "decidedAt": "2026-10-03T09:59:05.514Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1130,7 +1130,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:49.835Z",
+              "decidedAt": "2026-10-03T09:59:05.663Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1151,7 +1151,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:49.835Z",
+              "decidedAt": "2026-10-03T09:59:05.663Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1173,11 +1173,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:32:08.918Z",
-          "retrievedAt": "2026-10-03T05:32:51.319Z",
+          "discoveredAt": "2026-10-03T09:58:23.808Z",
+          "retrievedAt": "2026-10-03T09:59:07.182Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e",
+          "contentSha256": "cd6f18a9f37642d5c6d46963862e198223fcf5d365c9e4d287a4f28a1e40ca76",
           "byteLength": 36179,
           "locale": "en",
           "markets": [],
@@ -1216,7 +1216,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:49.674Z",
+              "decidedAt": "2026-10-03T09:59:05.514Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1232,7 +1232,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:51.319Z",
+              "decidedAt": "2026-10-03T09:59:07.182Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1253,7 +1253,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:51.319Z",
+              "decidedAt": "2026-10-03T09:59:07.182Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1275,12 +1275,12 @@
           "sourceName": "WhoCanFixMyCar",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:32:08.918Z",
-          "retrievedAt": "2026-10-03T05:32:52.086Z",
+          "discoveredAt": "2026-10-03T09:58:23.808Z",
+          "retrievedAt": "2026-10-03T09:59:08.732Z",
           "format": "html",
           "documentType": "warranty_maintenance_booklet",
-          "contentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
-          "byteLength": 395368,
+          "contentSha256": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7",
+          "byteLength": 395367,
           "locale": "en",
           "markets": [
             "EU"
@@ -1322,7 +1322,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:51.591Z",
+              "decidedAt": "2026-10-03T09:59:08.295Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1338,7 +1338,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:52.085Z",
+              "decidedAt": "2026-10-03T09:59:08.731Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1359,7 +1359,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:52.086Z",
+              "decidedAt": "2026-10-03T09:59:08.732Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1382,11 +1382,11 @@
           "sourceName": "queenoftheroad.co.il",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:32:08.918Z",
-          "retrievedAt": "2026-10-03T05:32:52.457Z",
+          "discoveredAt": "2026-10-03T09:58:23.808Z",
+          "retrievedAt": "2026-10-03T09:59:08.792Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "71a526cfcea2f9984b19776fb7d16498e195a684f5cabb802073fe5efbdff582",
+          "contentSha256": "3aa0ffac03581a4ba6256b077d78d14530f64e21d5a8c8c5c062c29438173d7e",
           "byteLength": 176939,
           "locale": "he",
           "markets": [
@@ -1423,7 +1423,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:51.373Z",
+              "decidedAt": "2026-10-03T09:59:07.391Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1439,7 +1439,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:52.422Z",
+              "decidedAt": "2026-10-03T09:59:08.587Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1455,7 +1455,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:52.457Z",
+              "decidedAt": "2026-10-03T09:59:08.792Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1476,7 +1476,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:52.457Z",
+              "decidedAt": "2026-10-03T09:59:08.792Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1498,21 +1498,19 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "knowledge",
-          "discoveredAt": "2026-10-03T05:32:08.923Z",
-          "retrievedAt": "2026-10-03T05:32:53.278Z",
+          "discoveredAt": "2026-10-03T09:58:23.819Z",
+          "retrievedAt": "2026-10-03T09:59:10.377Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "d59c2a8e8d4d67c98360275ce97dcf4307ec977a2b68f5edd680f7d26b3e0938",
-          "byteLength": 169591,
+          "contentSha256": "b6eb3e71bc0ee54862fa5ac3728d6f1bd4cd503f77c076c6449524fcded42097",
+          "byteLength": 169479,
           "locale": null,
           "markets": [],
           "statedApplicability": {
             "models": [
               "208"
             ],
-            "modelVariants": [
-              "e"
-            ],
+            "modelVariants": [],
             "yearFrom": 2012,
             "yearTo": 2019,
             "engineCodes": [],
@@ -1537,7 +1535,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:52.518Z",
+              "decidedAt": "2026-10-03T09:59:09.029Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1553,7 +1551,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:53.277Z",
+              "decidedAt": "2026-10-03T09:59:10.376Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1574,7 +1572,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:53.278Z",
+              "decidedAt": "2026-10-03T09:59:10.377Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1596,8 +1594,8 @@
           "sourceName": "AutoJM (dealer)",
           "sourceType": "dealer",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:32:08.918Z",
-          "retrievedAt": "2026-10-03T05:32:55.209Z",
+          "discoveredAt": "2026-10-03T09:58:23.808Z",
+          "retrievedAt": "2026-10-03T09:59:12.296Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "8903463ca6aa8d9e047a3fed046ce4ae528d4cc0ee1a30de515e51b951072915",
@@ -1633,7 +1631,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:53.609Z",
+              "decidedAt": "2026-10-03T09:59:10.682Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1649,7 +1647,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:55.209Z",
+              "decidedAt": "2026-10-03T09:59:12.295Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1670,7 +1668,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:32:55.209Z",
+              "decidedAt": "2026-10-03T09:59:12.296Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1683,6 +1681,109 @@
           }
         },
         {
+          "sourceId": "src-b795d6d61e5c7ca4",
+          "canonicalUrl": "https://es.auto-abc.eu/servicio/Peugeot-208",
+          "finalUrl": "https://es.auto-abc.eu/servicio/Peugeot-208",
+          "chain": [
+            "https://es.auto-abc.eu/servicio/Peugeot-208"
+          ],
+          "sourceName": "es.auto-abc.eu",
+          "sourceType": "independent_database",
+          "discoveredBy": "link",
+          "discoveredAt": "2026-10-03T09:59:05.665Z",
+          "retrievedAt": "2026-10-03T09:59:19.476Z",
+          "format": "html",
+          "documentType": "other",
+          "contentSha256": "1f73ebab2f1b69f7fc22f18e0d4d29f6987a8689a9f40384ad8ed38779de72b0",
+          "byteLength": 31797,
+          "locale": null,
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "208"
+            ],
+            "modelVariants": [
+              "e"
+            ],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:59:19.205Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/Peugeot-208",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:59:19.476Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
+              "host": "es.auto-abc.eu",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://es.auto-abc.eu/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://es.auto-abc.eu/servicio/Peugeot-208",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:59:19.476Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "es.auto-abc.eu"
+          }
+        },
+        {
           "sourceId": "src-6d8fee5c4692ddfa",
           "canonicalUrl": "https://www.auto-abc.lv/service/Peugeot-208",
           "finalUrl": "https://www.auto-abc.lv/service/Peugeot-208",
@@ -1692,11 +1793,11 @@
           "sourceName": "www.auto-abc.lv",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:49.838Z",
-          "retrievedAt": "2026-10-03T05:33:00.785Z",
+          "discoveredAt": "2026-10-03T09:59:05.665Z",
+          "retrievedAt": "2026-10-03T09:59:20.303Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "0f1a959c56654eb183a572b8986e52a8f0fccefd286be83b05ab428a3792d2a2",
+          "contentSha256": "ee22913cb6f5378f57c1c5a977e4027fbcd7ad2cccd62170017a776fd6e2f7e3",
           "byteLength": 32238,
           "locale": null,
           "markets": [],
@@ -1736,7 +1837,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:00.597Z",
+              "decidedAt": "2026-10-03T09:59:20.063Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1752,7 +1853,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:00.785Z",
+              "decidedAt": "2026-10-03T09:59:20.302Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1773,7 +1874,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:00.785Z",
+              "decidedAt": "2026-10-03T09:59:20.302Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1786,109 +1887,6 @@
           }
         },
         {
-          "sourceId": "src-b795d6d61e5c7ca4",
-          "canonicalUrl": "https://es.auto-abc.eu/servicio/Peugeot-208",
-          "finalUrl": "https://es.auto-abc.eu/servicio/Peugeot-208",
-          "chain": [
-            "https://es.auto-abc.eu/servicio/Peugeot-208"
-          ],
-          "sourceName": "es.auto-abc.eu",
-          "sourceType": "independent_database",
-          "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:49.838Z",
-          "retrievedAt": "2026-10-03T05:33:00.787Z",
-          "format": "html",
-          "documentType": "other",
-          "contentSha256": "0d29eb9b5ce102fc2f4157b457147ec0690c3e447d7b9f04cf668485a39c2e81",
-          "byteLength": 31797,
-          "locale": null,
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "208"
-            ],
-            "modelVariants": [
-              "e"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [
-              1000,
-              1200,
-              1400,
-              1500,
-              1600
-            ],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_unavailable",
-              "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
-              "host": "es.auto-abc.eu",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:33:00.598Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
-              "host": "es.auto-abc.eu",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://es.auto-abc.eu/servicio/Peugeot-208",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:33:00.787Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://es.auto-abc.eu/servicio/Peugeot-208",
-              "host": "es.auto-abc.eu",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://es.auto-abc.eu/servicio/Peugeot-208",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:33:00.787Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "es.auto-abc.eu"
-          }
-        },
-        {
           "sourceId": "src-a036621b24004fc9",
           "canonicalUrl": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
           "finalUrl": "https://www.auto-abc.eu/Peugeot-208/v20429-2015/service",
@@ -1898,11 +1896,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:49.838Z",
-          "retrievedAt": "2026-10-03T05:33:01.000Z",
+          "discoveredAt": "2026-10-03T09:59:05.665Z",
+          "retrievedAt": "2026-10-03T09:59:20.723Z",
           "format": "html",
           "documentType": "service_manual",
-          "contentSha256": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c",
+          "contentSha256": "5ccfea427ed3bbdff9c0909165abea891ef58eca30d186e1acd8e3cbe2f6b2a3",
           "byteLength": 35750,
           "locale": null,
           "markets": [],
@@ -1941,7 +1939,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:00.788Z",
+              "decidedAt": "2026-10-03T09:59:20.303Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1957,7 +1955,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:00.999Z",
+              "decidedAt": "2026-10-03T09:59:20.723Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1978,7 +1976,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:01.000Z",
+              "decidedAt": "2026-10-03T09:59:20.723Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2000,11 +1998,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:49.838Z",
-          "retrievedAt": "2026-10-03T05:33:02.426Z",
+          "discoveredAt": "2026-10-03T09:59:05.665Z",
+          "retrievedAt": "2026-10-03T09:59:21.950Z",
           "format": "html",
           "documentType": "service_manual",
-          "contentSha256": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9",
+          "contentSha256": "efe0f42f5d9013799a77da85257c8a7ffae5857c3bfd5fcd6ec247f57ef2e37b",
           "byteLength": 35700,
           "locale": null,
           "markets": [],
@@ -2043,7 +2041,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:00.788Z",
+              "decidedAt": "2026-10-03T09:59:20.303Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2059,7 +2057,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:02.426Z",
+              "decidedAt": "2026-10-03T09:59:21.950Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2080,7 +2078,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:02.426Z",
+              "decidedAt": "2026-10-03T09:59:21.950Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2102,8 +2100,8 @@
           "sourceName": "www.autority.co.il",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:52.463Z",
-          "retrievedAt": "2026-10-03T05:33:03.096Z",
+          "discoveredAt": "2026-10-03T09:59:08.797Z",
+          "retrievedAt": "2026-10-03T09:59:23.128Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "067447785f93f5ae5289f5d86300a33331f31669708fca5e4a44fbafdf9299c4",
@@ -2140,7 +2138,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:02.509Z",
+              "decidedAt": "2026-10-03T09:59:22.368Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2156,7 +2154,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:03.096Z",
+              "decidedAt": "2026-10-03T09:59:23.127Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2177,7 +2175,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:03.096Z",
+              "decidedAt": "2026-10-03T09:59:23.128Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2199,11 +2197,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:49.838Z",
-          "retrievedAt": "2026-10-03T05:33:03.927Z",
+          "discoveredAt": "2026-10-03T09:59:05.665Z",
+          "retrievedAt": "2026-10-03T09:59:23.747Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e",
+          "contentSha256": "38e07d46bf644f7c8fe752f58fd47c3d3372f59ce8887bf0f79ee21dfd4728cf",
           "byteLength": 36193,
           "locale": null,
           "markets": [],
@@ -2242,7 +2240,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:02.427Z",
+              "decidedAt": "2026-10-03T09:59:21.951Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2258,7 +2256,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:03.926Z",
+              "decidedAt": "2026-10-03T09:59:23.747Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2279,7 +2277,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:03.927Z",
+              "decidedAt": "2026-10-03T09:59:23.747Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2301,11 +2299,11 @@
           "sourceName": "www.queenoftheroad.co.il",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:52.463Z",
-          "retrievedAt": "2026-10-03T05:33:04.017Z",
+          "discoveredAt": "2026-10-03T09:59:08.797Z",
+          "retrievedAt": "2026-10-03T09:59:24.252Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "0b1b7b2958dbf2375b35b562280eacd46d6bf8c60c17dcd847dde290cd341fd9",
+          "contentSha256": "00a808aa7ac7fcb7202334bfc45d8c726536ef771374be552faac7c9afba98f8",
           "byteLength": 176939,
           "locale": null,
           "markets": [
@@ -2342,7 +2340,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:03.927Z",
+              "decidedAt": "2026-10-03T09:59:23.748Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2358,7 +2356,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:04.016Z",
+              "decidedAt": "2026-10-03T09:59:24.251Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2379,7 +2377,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:04.017Z",
+              "decidedAt": "2026-10-03T09:59:24.252Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2402,11 +2400,11 @@
           "sourceName": "www.queenoftheroad.co.il",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:52.463Z",
-          "retrievedAt": "2026-10-03T05:33:05.506Z",
+          "discoveredAt": "2026-10-03T09:59:08.798Z",
+          "retrievedAt": "2026-10-03T09:59:26.526Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "b4891ac82f3d2b52580dba4fa03b9783eab9dc796d72a2c0218b2a1ad5e15965",
+          "contentSha256": "774f4f2c93ba4f4ccfc36bc118536f905ea0d7a20c5b83f807dedb11dba28af3",
           "byteLength": 176939,
           "locale": null,
           "markets": [
@@ -2443,7 +2441,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:03.927Z",
+              "decidedAt": "2026-10-03T09:59:23.749Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2459,7 +2457,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:05.469Z",
+              "decidedAt": "2026-10-03T09:59:26.339Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2475,7 +2473,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:05.506Z",
+              "decidedAt": "2026-10-03T09:59:26.526Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2496,7 +2494,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:05.506Z",
+              "decidedAt": "2026-10-03T09:59:26.526Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2519,11 +2517,11 @@
           "sourceName": "www.queenoftheroad.co.il",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:52.463Z",
-          "retrievedAt": "2026-10-03T05:33:07.090Z",
+          "discoveredAt": "2026-10-03T09:59:08.798Z",
+          "retrievedAt": "2026-10-03T09:59:28.128Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "71a457b3b853931e706b3572b798ae58cbf6d7656ee44b83a7a90d4e755a220c",
+          "contentSha256": "21a49a23e8786a30b26288af5f0a3bb7066dd0aaf35211f0e828d3b8e1bda8c6",
           "byteLength": 176939,
           "locale": null,
           "markets": [
@@ -2560,7 +2558,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:05.508Z",
+              "decidedAt": "2026-10-03T09:59:26.529Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2576,7 +2574,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:07.055Z",
+              "decidedAt": "2026-10-03T09:59:27.941Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2592,7 +2590,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:07.090Z",
+              "decidedAt": "2026-10-03T09:59:28.127Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2613,7 +2611,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:07.090Z",
+              "decidedAt": "2026-10-03T09:59:28.128Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2636,11 +2634,11 @@
           "sourceName": "www.queenoftheroad.co.il",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:52.463Z",
-          "retrievedAt": "2026-10-03T05:33:08.508Z",
+          "discoveredAt": "2026-10-03T09:59:08.798Z",
+          "retrievedAt": "2026-10-03T09:59:29.508Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "e74548b1038402923129019df4825dc3c7edf3b02db0faa2b972730ecb4ec63b",
+          "contentSha256": "c01f3caa8df05a348adba2c78f3bd405f7bcfb363619eea250b01861a0287a28",
           "byteLength": 176939,
           "locale": null,
           "markets": [
@@ -2677,7 +2675,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:05.508Z",
+              "decidedAt": "2026-10-03T09:59:26.529Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2693,7 +2691,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:08.469Z",
+              "decidedAt": "2026-10-03T09:59:29.316Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2709,7 +2707,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:08.508Z",
+              "decidedAt": "2026-10-03T09:59:29.508Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2730,7 +2728,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:08.508Z",
+              "decidedAt": "2026-10-03T09:59:29.508Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2752,11 +2750,11 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:53.283Z",
-          "retrievedAt": "2026-10-03T05:33:10.141Z",
+          "discoveredAt": "2026-10-03T09:59:10.385Z",
+          "retrievedAt": "2026-10-03T09:59:31.266Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "890868538a3e69c4eb088bd6144da7067d6233132661c6192ad2c0011931bcea",
+          "contentSha256": "482f65450072d0a0b1b90122b174114c5e7d320aa004d63c5583d933473e128d",
           "byteLength": 296208,
           "locale": null,
           "markets": [],
@@ -2790,7 +2788,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:08.511Z",
+              "decidedAt": "2026-10-03T09:59:29.511Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2806,7 +2804,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:10.141Z",
+              "decidedAt": "2026-10-03T09:59:31.266Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2827,7 +2825,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:10.141Z",
+              "decidedAt": "2026-10-03T09:59:31.266Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2849,12 +2847,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:53.283Z",
-          "retrievedAt": "2026-10-03T05:33:11.523Z",
+          "discoveredAt": "2026-10-03T09:59:10.386Z",
+          "retrievedAt": "2026-10-03T09:59:31.863Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "5a381cabc3f570085eb446b977d6cd9bc8d289626a36eb32dc2b38d14a55f91e",
-          "byteLength": 157234,
+          "contentSha256": "20ce2577e2f5837e73ca5ffc8e452f80d15f9b41cc98da16406b82a90478f3bd",
+          "byteLength": 157582,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2887,7 +2885,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:08.511Z",
+              "decidedAt": "2026-10-03T09:59:29.511Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2903,7 +2901,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:11.523Z",
+              "decidedAt": "2026-10-03T09:59:31.862Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2924,7 +2922,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:11.523Z",
+              "decidedAt": "2026-10-03T09:59:31.863Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2946,12 +2944,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:53.284Z",
-          "retrievedAt": "2026-10-03T05:33:12.726Z",
+          "discoveredAt": "2026-10-03T09:59:10.386Z",
+          "retrievedAt": "2026-10-03T09:59:34.067Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "9b981e785bf768e487fa127980f2b151dd38ce5d6d5915e400f144048e735a18",
-          "byteLength": 274168,
+          "contentSha256": "deeb62b5505f35866c85719caf7983b2b9ab8727e963c3e9fb60e233feacbda5",
+          "byteLength": 274350,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2982,7 +2980,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:11.525Z",
+              "decidedAt": "2026-10-03T09:59:31.865Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2998,7 +2996,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:12.725Z",
+              "decidedAt": "2026-10-03T09:59:34.066Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3019,7 +3017,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:12.726Z",
+              "decidedAt": "2026-10-03T09:59:34.067Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3041,12 +3039,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:32:53.284Z",
-          "retrievedAt": "2026-10-03T05:33:13.761Z",
+          "discoveredAt": "2026-10-03T09:59:10.386Z",
+          "retrievedAt": "2026-10-03T09:59:35.789Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "17d822a17263aa369dcbe46e69478b678b0aaca2c51362f6a50cb707b688f346",
-          "byteLength": 175873,
+          "contentSha256": "a7f9c09518970a9cc4d6869691599efb4119c0ce303e19a3d3171d3eec245aeb",
+          "byteLength": 175501,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -3077,7 +3075,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:11.525Z",
+              "decidedAt": "2026-10-03T09:59:31.865Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3093,7 +3091,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:13.761Z",
+              "decidedAt": "2026-10-03T09:59:35.788Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -3114,7 +3112,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:33:13.761Z",
+              "decidedAt": "2026-10-03T09:59:35.789Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3129,7 +3127,7 @@
       ],
       "evidence": [
         {
-          "id": "src-d87e8d1a6f55fdf4:4a48cb919784-p7-coolant-replacement-0",
+          "id": "src-d87e8d1a6f55fdf4:cd6f18a9f376-p7-coolant-replacement-0",
           "sourceId": "src-d87e8d1a6f55fdf4",
           "operationKey": "coolant",
           "task": "coolant",
@@ -3181,7 +3179,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "4a48cb919784-p7-coolant-replacement-0",
+            "id": "cd6f18a9f376-p7-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2 petrol is 120,000 km or 5 years , which",
             "action": "replacement",
@@ -3218,14 +3216,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e",
+                "documentId": "cd6f18a9f37642d5c6d46963862e198223fcf5d365c9e4d287a4f28a1e40ca76",
                 "documentTitle": "Peugeot 208 2015 1.2 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2\"",
-                "documentSha256": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e"
+                "documentSha256": "cd6f18a9f37642d5c6d46963862e198223fcf5d365c9e4d287a4f28a1e40ca76"
               }
             ],
             "verification": "candidate",
@@ -3248,7 +3246,7 @@
           }
         },
         {
-          "id": "src-d87e8d1a6f55fdf4:4a48cb919784-p5-s-spark_plugs-replacement-0",
+          "id": "src-d87e8d1a6f55fdf4:cd6f18a9f376-p5-s-spark_plugs-replacement-0",
           "sourceId": "src-d87e8d1a6f55fdf4",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -3295,7 +3293,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "4a48cb919784-p5-s-spark_plugs-replacement-0",
+            "id": "cd6f18a9f376-p5-s-spark_plugs-replacement-0",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 40,000 km .",
             "action": "replacement",
@@ -3326,14 +3324,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e",
+                "documentId": "cd6f18a9f37642d5c6d46963862e198223fcf5d365c9e4d287a4f28a1e40ca76",
                 "documentTitle": "Peugeot 208 2015 1.2 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 40,000 km .\"",
-                "documentSha256": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e"
+                "documentSha256": "cd6f18a9f37642d5c6d46963862e198223fcf5d365c9e4d287a4f28a1e40ca76"
               }
             ],
             "verification": "candidate",
@@ -3356,7 +3354,7 @@
           }
         },
         {
-          "id": "src-d87e8d1a6f55fdf4:4a48cb919784-p6-s-timing_belt-replacement-1",
+          "id": "src-d87e8d1a6f55fdf4:cd6f18a9f376-p6-s-timing_belt-replacement-1",
           "sourceId": "src-d87e8d1a6f55fdf4",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -3407,7 +3405,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "4a48cb919784-p6-s-timing_belt-replacement-1",
+            "id": "cd6f18a9f376-p6-s-timing_belt-replacement-1",
             "task": "timing_belt",
             "taskText": "Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 petrol is 180,000 km .",
             "action": "replacement",
@@ -3443,14 +3441,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e",
+                "documentId": "cd6f18a9f37642d5c6d46963862e198223fcf5d365c9e4d287a4f28a1e40ca76",
                 "documentTitle": "Peugeot 208 2015 1.2 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Timing belt",
                 "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 p\"",
-                "documentSha256": "4a48cb9197842a165cfa8a682984ee8f2db644be39d7c9eb1a94b9f8fce65b6e"
+                "documentSha256": "cd6f18a9f37642d5c6d46963862e198223fcf5d365c9e4d287a4f28a1e40ca76"
               }
             ],
             "verification": "candidate",
@@ -3473,7 +3471,7 @@
           }
         },
         {
-          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-brake_fluid-replacement-0",
+          "id": "src-db226a7bee2c8ad9:fb225e940cd8-p4-brake_fluid-replacement-0",
           "sourceId": "src-db226a7bee2c8ad9",
           "operationKey": "brake_fluid",
           "task": "brake_fluid",
@@ -3524,7 +3522,7 @@
             ]
           },
           "requirement": {
-            "id": "717e54274d19-p4-brake_fluid-replacement-0",
+            "id": "fb225e940cd8-p4-brake_fluid-replacement-0",
             "task": "brake_fluid",
             "taskText": "Replace brake fluid Every 2 years",
             "action": "replacement",
@@ -3555,7 +3553,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentId": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7",
                 "documentTitle": "Peugeot 208 Owners' Guide",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3565,7 +3563,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace brake fluid Every 2 years\"",
-                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+                "documentSha256": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7"
               }
             ],
             "verification": "candidate",
@@ -3588,7 +3586,7 @@
           }
         },
         {
-          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-air_filter-replacement-1",
+          "id": "src-db226a7bee2c8ad9:fb225e940cd8-p4-air_filter-replacement-1",
           "sourceId": "src-db226a7bee2c8ad9",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -3642,7 +3640,7 @@
             ]
           },
           "requirement": {
-            "id": "717e54274d19-p4-air_filter-replacement-1",
+            "id": "fb225e940cd8-p4-air_filter-replacement-1",
             "task": "air_filter",
             "taskText": "Replace air filter Every 12,000 miles/4 years",
             "action": "replacement",
@@ -3677,7 +3675,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentId": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7",
                 "documentTitle": "Peugeot 208 Owners' Guide",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3687,7 +3685,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace air filter Every 12,000 miles/4 years\"",
-                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+                "documentSha256": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7"
               }
             ],
             "verification": "candidate",
@@ -3710,7 +3708,7 @@
           }
         },
         {
-          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-fuel_filter-replacement-2",
+          "id": "src-db226a7bee2c8ad9:fb225e940cd8-p4-fuel_filter-replacement-2",
           "sourceId": "src-db226a7bee2c8ad9",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -3768,7 +3766,7 @@
             ]
           },
           "requirement": {
-            "id": "717e54274d19-p4-fuel_filter-replacement-2",
+            "id": "fb225e940cd8-p4-fuel_filter-replacement-2",
             "task": "fuel_filter",
             "taskText": "Replace fuel filter (petrol) Every 25,000 miles",
             "action": "replacement",
@@ -3807,7 +3805,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentId": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7",
                 "documentTitle": "Peugeot 208 Owners' Guide",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3817,7 +3815,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace fuel filter (petrol) Every 25,000 miles\"",
-                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+                "documentSha256": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7"
               }
             ],
             "verification": "candidate",
@@ -3840,7 +3838,7 @@
           }
         },
         {
-          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-spark_plugs-replacement-3",
+          "id": "src-db226a7bee2c8ad9:fb225e940cd8-p4-spark_plugs-replacement-3",
           "sourceId": "src-db226a7bee2c8ad9",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -3894,7 +3892,7 @@
             ]
           },
           "requirement": {
-            "id": "717e54274d19-p4-spark_plugs-replacement-3",
+            "id": "fb225e940cd8-p4-spark_plugs-replacement-3",
             "task": "spark_plugs",
             "taskText": "Replace spark plugs Every 12,000 miles/4 years",
             "action": "replacement",
@@ -3929,7 +3927,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentId": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7",
                 "documentTitle": "Peugeot 208 Owners' Guide",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3939,7 +3937,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace spark plugs Every 12,000 miles/4 years\"",
-                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+                "documentSha256": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7"
               }
             ],
             "verification": "candidate",
@@ -3962,7 +3960,7 @@
           }
         },
         {
-          "id": "src-db226a7bee2c8ad9:717e54274d19-p4-coolant-inspection-4",
+          "id": "src-db226a7bee2c8ad9:fb225e940cd8-p4-coolant-inspection-4",
           "sourceId": "src-db226a7bee2c8ad9",
           "operationKey": "coolant",
           "task": "coolant",
@@ -4016,7 +4014,7 @@
             ]
           },
           "requirement": {
-            "id": "717e54274d19-p4-coolant-inspection-4",
+            "id": "fb225e940cd8-p4-coolant-inspection-4",
             "task": "coolant",
             "taskText": "Check coolant pH 75,000 miles/4 years, then every 12,000/1 year",
             "action": "inspection",
@@ -4051,7 +4049,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28",
+                "documentId": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7",
                 "documentTitle": "Peugeot 208 Owners' Guide",
                 "authority": "vehicle_document",
                 "markets": [
@@ -4061,7 +4059,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Check coolant pH 75,000 miles/4 years, then every 12,000/1 year\"",
-                "documentSha256": "717e54274d193abfa78639ff573e48d00d70288014dea9a516ae6001d329bf28"
+                "documentSha256": "fb225e940cd874659876ae9666cd6aa37bc0c0878238ae45858585517422e9c7"
               }
             ],
             "verification": "candidate",
@@ -4084,7 +4082,7 @@
           }
         },
         {
-          "id": "src-f7e55eb5ed501f5b:d59c2a8e8d4d-p4-s-periodic_service-other-0",
+          "id": "src-f7e55eb5ed501f5b:b6eb3e71bc0e-p4-s-periodic_service-other-0",
           "sourceId": "src-f7e55eb5ed501f5b",
           "operationKey": "periodic_service",
           "task": "periodic_service",
@@ -4132,7 +4130,7 @@
             ]
           },
           "requirement": {
-            "id": "d59c2a8e8d4d-p4-s-periodic_service-other-0",
+            "id": "b6eb3e71bc0e-p4-s-periodic_service-other-0",
             "task": "periodic_service",
             "taskText": "Zusammenfassung der Intervalle bei der Peugeot 208 Inspektion Alle Fahrzeuge vom Typ Peugeot 208 I und 208 II müssen nach 20.000, 25.000 oder 30.000 Kilometer bzw. spätestens nach 12 Monaten zur Inspe",
             "action": "other",
@@ -4164,13 +4162,13 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "d59c2a8e8d4d67c98360275ce97dcf4307ec977a2b68f5edd680f7d26b3e0938",
+                "documentId": "b6eb3e71bc0ee54862fa5ac3728d6f1bd4cd503f77c076c6449524fcded42097",
                 "documentTitle": "https://carwiki.de/peugeot-208-inspektion",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 4,
                 "locator": "column sentence \"Zusammenfassung der Intervalle bei der Peugeot 208 Inspektion Alle Fahrzeuge vom\"",
-                "documentSha256": "d59c2a8e8d4d67c98360275ce97dcf4307ec977a2b68f5edd680f7d26b3e0938"
+                "documentSha256": "b6eb3e71bc0ee54862fa5ac3728d6f1bd4cd503f77c076c6449524fcded42097"
               }
             ],
             "verification": "candidate",
@@ -4193,7 +4191,7 @@
           }
         },
         {
-          "id": "src-a036621b24004fc9:6fe4c5ce901c-p6-coolant-replacement-0",
+          "id": "src-a036621b24004fc9:5ccfea427ed3-p6-coolant-replacement-0",
           "sourceId": "src-a036621b24004fc9",
           "operationKey": "coolant",
           "task": "coolant",
@@ -4247,7 +4245,7 @@
             ]
           },
           "requirement": {
-            "id": "6fe4c5ce901c-p6-coolant-replacement-0",
+            "id": "5ccfea427ed3-p6-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.0 petrol is 120,000 km or 5 years , which",
             "action": "replacement",
@@ -4284,14 +4282,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c",
+                "documentId": "5ccfea427ed3bbdff9c0909165abea891ef58eca30d186e1acd8e3cbe2f6b2a3",
                 "documentTitle": "Peugeot 208 1.0 (Petrol, 68 HP, MT) 2015 - 2016",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.0\"",
-                "documentSha256": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c"
+                "documentSha256": "5ccfea427ed3bbdff9c0909165abea891ef58eca30d186e1acd8e3cbe2f6b2a3"
               }
             ],
             "verification": "candidate",
@@ -4314,7 +4312,7 @@
           }
         },
         {
-          "id": "src-a036621b24004fc9:6fe4c5ce901c-p5-s-spark_plugs-replacement-0",
+          "id": "src-a036621b24004fc9:5ccfea427ed3-p5-s-spark_plugs-replacement-0",
           "sourceId": "src-a036621b24004fc9",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -4363,7 +4361,7 @@
             ]
           },
           "requirement": {
-            "id": "6fe4c5ce901c-p5-s-spark_plugs-replacement-0",
+            "id": "5ccfea427ed3-p5-s-spark_plugs-replacement-0",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 40,000 km .",
             "action": "replacement",
@@ -4394,14 +4392,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c",
+                "documentId": "5ccfea427ed3bbdff9c0909165abea891ef58eca30d186e1acd8e3cbe2f6b2a3",
                 "documentTitle": "Peugeot 208 1.0 (Petrol, 68 HP, MT) 2015 - 2016",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 40,000 km .\"",
-                "documentSha256": "6fe4c5ce901c7c001fb27ac1a7009d0f0a79d58b4d1710a3d8ecf86cfcba1d5c"
+                "documentSha256": "5ccfea427ed3bbdff9c0909165abea891ef58eca30d186e1acd8e3cbe2f6b2a3"
               }
             ],
             "verification": "candidate",
@@ -4424,7 +4422,7 @@
           }
         },
         {
-          "id": "src-47b8af0d9acb1eab:b60a7338b965-p6-coolant-replacement-0",
+          "id": "src-47b8af0d9acb1eab:efe0f42f5d90-p6-coolant-replacement-0",
           "sourceId": "src-47b8af0d9acb1eab",
           "operationKey": "coolant",
           "task": "coolant",
@@ -4478,7 +4476,7 @@
             ]
           },
           "requirement": {
-            "id": "b60a7338b965-p6-coolant-replacement-0",
+            "id": "efe0f42f5d90-p6-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.6 petrol is 120,000 km or 5 years , which",
             "action": "replacement",
@@ -4515,14 +4513,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9",
+                "documentId": "efe0f42f5d9013799a77da85257c8a7ffae5857c3bfd5fcd6ec247f57ef2e37b",
                 "documentTitle": "Peugeot 208 1.6 (Petrol, 165 HP, MT) 2015 - 2019",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.6\"",
-                "documentSha256": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9"
+                "documentSha256": "efe0f42f5d9013799a77da85257c8a7ffae5857c3bfd5fcd6ec247f57ef2e37b"
               }
             ],
             "verification": "candidate",
@@ -4545,7 +4543,7 @@
           }
         },
         {
-          "id": "src-47b8af0d9acb1eab:b60a7338b965-p5-s-spark_plugs-replacement-0",
+          "id": "src-47b8af0d9acb1eab:efe0f42f5d90-p5-s-spark_plugs-replacement-0",
           "sourceId": "src-47b8af0d9acb1eab",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -4594,7 +4592,7 @@
             ]
           },
           "requirement": {
-            "id": "b60a7338b965-p5-s-spark_plugs-replacement-0",
+            "id": "efe0f42f5d90-p5-s-spark_plugs-replacement-0",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 40,000 km .",
             "action": "replacement",
@@ -4625,14 +4623,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9",
+                "documentId": "efe0f42f5d9013799a77da85257c8a7ffae5857c3bfd5fcd6ec247f57ef2e37b",
                 "documentTitle": "Peugeot 208 1.6 (Petrol, 165 HP, MT) 2015 - 2019",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Replacement interval for spark plugs is 40,000 km .\"",
-                "documentSha256": "b60a7338b965cfc8eafefed5df9809fe71e21c066cd9933b50fbbcfe0a3b4ac9"
+                "documentSha256": "efe0f42f5d9013799a77da85257c8a7ffae5857c3bfd5fcd6ec247f57ef2e37b"
               }
             ],
             "verification": "candidate",
@@ -4655,7 +4653,7 @@
           }
         },
         {
-          "id": "src-f7bfa35ff52b6bc1:15d218a78e7c-p7-coolant-replacement-0",
+          "id": "src-f7bfa35ff52b6bc1:38e07d46bf64-p7-coolant-replacement-0",
           "sourceId": "src-f7bfa35ff52b6bc1",
           "operationKey": "coolant",
           "task": "coolant",
@@ -4707,7 +4705,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "15d218a78e7c-p7-coolant-replacement-0",
+            "id": "38e07d46bf64-p7-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2 petrol is 120,000 km or 5 years , which",
             "action": "replacement",
@@ -4744,14 +4742,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e",
+                "documentId": "38e07d46bf644f7c8fe752f58fd47c3d3372f59ce8887bf0f79ee21dfd4728cf",
                 "documentTitle": "Peugeot 208 1.2 110 Hp (Petrol, 110 HP, MT) 2015 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Peugeot 208 1.2\"",
-                "documentSha256": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e"
+                "documentSha256": "38e07d46bf644f7c8fe752f58fd47c3d3372f59ce8887bf0f79ee21dfd4728cf"
               }
             ],
             "verification": "candidate",
@@ -4774,7 +4772,7 @@
           }
         },
         {
-          "id": "src-f7bfa35ff52b6bc1:15d218a78e7c-p5-s-spark_plugs-replacement-0",
+          "id": "src-f7bfa35ff52b6bc1:38e07d46bf64-p5-s-spark_plugs-replacement-0",
           "sourceId": "src-f7bfa35ff52b6bc1",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -4821,7 +4819,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "15d218a78e7c-p5-s-spark_plugs-replacement-0",
+            "id": "38e07d46bf64-p5-s-spark_plugs-replacement-0",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 40,000 km .",
             "action": "replacement",
@@ -4852,14 +4850,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e",
+                "documentId": "38e07d46bf644f7c8fe752f58fd47c3d3372f59ce8887bf0f79ee21dfd4728cf",
                 "documentTitle": "Peugeot 208 1.2 110 Hp (Petrol, 110 HP, MT) 2015 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Replacement interval for spark plugs is 40,000 km .\"",
-                "documentSha256": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e"
+                "documentSha256": "38e07d46bf644f7c8fe752f58fd47c3d3372f59ce8887bf0f79ee21dfd4728cf"
               }
             ],
             "verification": "candidate",
@@ -4882,7 +4880,7 @@
           }
         },
         {
-          "id": "src-f7bfa35ff52b6bc1:15d218a78e7c-p6-s-timing_belt-replacement-1",
+          "id": "src-f7bfa35ff52b6bc1:38e07d46bf64-p6-s-timing_belt-replacement-1",
           "sourceId": "src-f7bfa35ff52b6bc1",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -4933,7 +4931,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "15d218a78e7c-p6-s-timing_belt-replacement-1",
+            "id": "38e07d46bf64-p6-s-timing_belt-replacement-1",
             "task": "timing_belt",
             "taskText": "Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 petrol is 180,000 km .",
             "action": "replacement",
@@ -4969,14 +4967,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e",
+                "documentId": "38e07d46bf644f7c8fe752f58fd47c3d3372f59ce8887bf0f79ee21dfd4728cf",
                 "documentTitle": "Peugeot 208 1.2 110 Hp (Petrol, 110 HP, MT) 2015 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Timing belt",
                 "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Peugeot 208 1.2 p\"",
-                "documentSha256": "15d218a78e7c605fd669fff910ecde962282e938cfef6f78c3197143a52b079e"
+                "documentSha256": "38e07d46bf644f7c8fe752f58fd47c3d3372f59ce8887bf0f79ee21dfd4728cf"
               }
             ],
             "verification": "candidate",
@@ -4999,7 +4997,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:33:13.932Z",
+      "resolvedAt": "2026-10-03T09:59:36.014Z",
       "msourceVersion": "msource/1"
     }
   }

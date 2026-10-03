@@ -4,14 +4,14 @@
     "vehicleRef": "M01",
     "fingerprintKey": "car|ford|focus|2016|998||petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:25:37.244Z",
-    "finishedAt": "2026-10-03T05:26:44.056Z",
+    "startedAt": "2026-10-03T09:52:36.147Z",
+    "finishedAt": "2026-10-03T09:53:52.571Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:25:37.244Z",
-        "finishedAt": "2026-10-03T05:25:37.244Z",
+        "startedAt": "2026-10-03T09:52:36.147Z",
+        "finishedAt": "2026-10-03T09:52:36.147Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,9 +25,9 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:25:37.244Z",
-        "finishedAt": "2026-10-03T05:25:37.249Z",
-        "durationMs": 5,
+        "startedAt": "2026-10-03T09:52:36.147Z",
+        "finishedAt": "2026-10-03T09:52:36.181Z",
+        "durationMs": 34,
         "counts": {
           "fable": 15,
           "registry": 0,
@@ -39,8 +39,8 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:25:37.249Z",
-        "finishedAt": "2026-10-03T05:25:37.250Z",
+        "startedAt": "2026-10-03T09:52:36.181Z",
+        "finishedAt": "2026-10-03T09:52:36.182Z",
         "durationMs": 1,
         "counts": {
           "discovered": 16,
@@ -54,9 +54,9 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:25:37.250Z",
-        "finishedAt": "2026-10-03T05:26:43.970Z",
-        "durationMs": 66720,
+        "startedAt": "2026-10-03T09:52:36.182Z",
+        "finishedAt": "2026-10-03T09:53:52.479Z",
+        "durationMs": 76297,
         "counts": {
           "duplicates": 1,
           "acquired": 20
@@ -90,12 +90,12 @@
           {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "HTTP 403",
-            "sourceId": "src-5cdb350e86324a48"
+            "sourceId": "src-7a5bb36e02fd8b38"
           },
           {
-            "code": "ACCESS_CONTROL_DETECTED",
-            "detail": "HTTP 403",
-            "sourceId": "src-7a5bb36e02fd8b38"
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-5cdb350e86324a48"
           },
           {
             "code": "ACCESS_CONTROL_DETECTED",
@@ -108,9 +108,9 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:26:43.970Z",
-        "finishedAt": "2026-10-03T05:26:44.056Z",
-        "durationMs": 86,
+        "startedAt": "2026-10-03T09:53:52.479Z",
+        "finishedAt": "2026-10-03T09:53:52.571Z",
+        "durationMs": 92,
         "counts": {
           "extracted": 24,
           "grounded": 24
@@ -192,8 +192,8 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:26:44.056Z",
-        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "startedAt": "2026-10-03T09:53:52.571Z",
+        "finishedAt": "2026-10-03T09:53:52.571Z",
         "durationMs": 0,
         "counts": {
           "INSUFFICIENT": 3,
@@ -238,8 +238,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:26:44.056Z",
-        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "startedAt": "2026-10-03T09:53:52.571Z",
+        "finishedAt": "2026-10-03T09:53:52.571Z",
         "durationMs": 0,
         "counts": {
           "obligations": 0,
@@ -252,8 +252,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "failed",
-        "startedAt": "2026-10-03T05:26:44.056Z",
-        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "startedAt": "2026-10-03T09:53:52.571Z",
+        "finishedAt": "2026-10-03T09:53:52.571Z",
         "durationMs": 0,
         "counts": {
           "items": 0,
@@ -275,8 +275,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:26:44.056Z",
-        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "startedAt": "2026-10-03T09:53:52.571Z",
+        "finishedAt": "2026-10-03T09:53:52.571Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -285,8 +285,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:26:44.056Z",
-        "finishedAt": "2026-10-03T05:26:44.056Z",
+        "startedAt": "2026-10-03T09:53:52.571Z",
+        "finishedAt": "2026-10-03T09:53:52.571Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -408,8 +408,8 @@
         "by": "fable",
         "outcome": "blocked",
         "failure": {
-          "code": "ACCESS_CONTROL_DETECTED",
-          "detail": "HTTP 403"
+          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
         }
       },
       {
@@ -609,11 +609,11 @@
           "sourceName": "Ford Motor Company (UK)",
           "sourceType": "oem_schedule",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:25:37.244Z",
-          "retrievedAt": "2026-10-03T05:25:38.343Z",
+          "discoveredAt": "2026-10-03T09:52:36.147Z",
+          "retrievedAt": "2026-10-03T09:52:38.078Z",
           "format": "html",
           "documentType": "warranty_maintenance_booklet",
-          "contentSha256": "9cd6edd7ab4e65b5dcb6aeb39b96bcf60a02a1923258410f8c7882edd2f1f07a",
+          "contentSha256": "d2b95077d2938ea306622326bb792703f9609fbcdf9687ffd4d9123695e11c14",
           "byteLength": 90951,
           "locale": "en",
           "markets": [],
@@ -643,7 +643,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:37.852Z",
+              "decidedAt": "2026-10-03T09:52:37.556Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -659,7 +659,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:38.343Z",
+              "decidedAt": "2026-10-03T09:52:38.078Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -680,7 +680,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:38.343Z",
+              "decidedAt": "2026-10-03T09:52:38.078Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -702,8 +702,8 @@
           "sourceName": "Ford Motor Company",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:25:37.244Z",
-          "retrievedAt": "2026-10-03T05:25:58.032Z",
+          "discoveredAt": "2026-10-03T09:52:36.147Z",
+          "retrievedAt": "2026-10-03T09:52:56.024Z",
           "format": "pdf",
           "documentType": "maintenance_schedule",
           "contentSha256": "f8de3bde3115fbae503527e49a7773486bb3a0e25dd3292dda37f9bef450b314",
@@ -743,7 +743,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:48.847Z",
+              "decidedAt": "2026-10-03T09:52:46.830Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -759,7 +759,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:58.032Z",
+              "decidedAt": "2026-10-03T09:52:56.024Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -780,7 +780,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:58.032Z",
+              "decidedAt": "2026-10-03T09:52:56.024Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -802,11 +802,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:25:37.244Z",
-          "retrievedAt": "2026-10-03T05:25:59.989Z",
+          "discoveredAt": "2026-10-03T09:52:36.147Z",
+          "retrievedAt": "2026-10-03T09:52:58.197Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "c163814fa7f5dd17f714c6b302ab9160abc1f960da385e500ca8c7adac91a2e0",
+          "contentSha256": "20d17d6c133fe9e918f3a6f03deadf689c6df6d3e6ad8f07cd5ba99cfe592074",
           "byteLength": 27067,
           "locale": "en",
           "markets": [],
@@ -843,7 +843,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:59.605Z",
+              "decidedAt": "2026-10-03T09:52:57.938Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -859,7 +859,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:59.988Z",
+              "decidedAt": "2026-10-03T09:52:58.197Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -880,7 +880,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:25:59.989Z",
+              "decidedAt": "2026-10-03T09:52:58.197Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -902,12 +902,12 @@
           "sourceName": "Ford Motor Company (US)",
           "sourceType": "oem_schedule",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:25:37.244Z",
-          "retrievedAt": "2026-10-03T05:26:18.088Z",
+          "discoveredAt": "2026-10-03T09:52:36.147Z",
+          "retrievedAt": "2026-10-03T09:53:15.842Z",
           "format": "html",
           "documentType": "maintenance_schedule",
-          "contentSha256": "4d7728ca79d1cd21af21b2d5c3dabb58f0e0235c312610e77a1e41c8fa3b5c14",
-          "byteLength": 965879,
+          "contentSha256": "4384536e0fb5c4dbf99a36e1a736d14d0c9310192d4b7a9b68d48891101f5912",
+          "byteLength": 965881,
           "locale": "en",
           "markets": [],
           "statedApplicability": {
@@ -936,7 +936,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:09.618Z",
+              "decidedAt": "2026-10-03T09:53:07.586Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -952,7 +952,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:18.088Z",
+              "decidedAt": "2026-10-03T09:53:15.841Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -973,7 +973,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:18.088Z",
+              "decidedAt": "2026-10-03T09:53:15.842Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -995,11 +995,11 @@
           "sourceName": "Kfz-Meisterbetrieb Dietrich",
           "sourceType": "service_document",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:25:37.244Z",
-          "retrievedAt": "2026-10-03T05:26:21.907Z",
+          "discoveredAt": "2026-10-03T09:52:36.147Z",
+          "retrievedAt": "2026-10-03T09:53:19.364Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "c99a8cce5849026e032e606de568c2a70daef84e5df0a3ff976771c6214abcde",
+          "contentSha256": "1fdc797ed74a31127427c58cf8a69e0ae8e59e7c33ff524241e63fe42c6f760f",
           "byteLength": 214744,
           "locale": "de",
           "markets": [],
@@ -1038,7 +1038,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:21.582Z",
+              "decidedAt": "2026-10-03T09:53:19.197Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1054,7 +1054,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:21.907Z",
+              "decidedAt": "2026-10-03T09:53:19.364Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1075,7 +1075,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:21.907Z",
+              "decidedAt": "2026-10-03T09:53:19.364Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1097,12 +1097,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:25:37.244Z",
-          "retrievedAt": "2026-10-03T05:26:27.625Z",
+          "discoveredAt": "2026-10-03T09:52:36.147Z",
+          "retrievedAt": "2026-10-03T09:53:29.189Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "854a6c89052fc2881c4c96f4d6c2d3b4943bcc1654272b5d67a51ecb43eb970d",
-          "byteLength": 179184,
+          "contentSha256": "1b2cd01c5df528def6050641d237aa55fefecdbfab590cfb017b1b1c76eb2582",
+          "byteLength": 178816,
           "locale": "de",
           "markets": [],
           "statedApplicability": {
@@ -1137,7 +1137,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:27.439Z",
+              "decidedAt": "2026-10-03T09:53:28.200Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1153,7 +1153,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:27.625Z",
+              "decidedAt": "2026-10-03T09:53:29.188Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1174,7 +1174,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:27.625Z",
+              "decidedAt": "2026-10-03T09:53:29.189Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1197,8 +1197,8 @@
           "sourceName": "repareo.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:25:37.244Z",
-          "retrievedAt": "2026-10-03T05:26:29.323Z",
+          "discoveredAt": "2026-10-03T09:52:36.147Z",
+          "retrievedAt": "2026-10-03T09:53:32.837Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "b4fa8a928356f51427719c1af4b614bc0fb0b486306bffcd4ef44ae38f999f65",
@@ -1284,7 +1284,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:27.622Z",
+              "decidedAt": "2026-10-03T09:53:32.119Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1300,7 +1300,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:28.688Z",
+              "decidedAt": "2026-10-03T09:53:32.195Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1316,7 +1316,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:29.323Z",
+              "decidedAt": "2026-10-03T09:53:32.836Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1337,7 +1337,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:29.323Z",
+              "decidedAt": "2026-10-03T09:53:32.837Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1359,11 +1359,11 @@
           "sourceName": "www.auto-abc.lv",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:59.990Z",
-          "retrievedAt": "2026-10-03T05:26:30.207Z",
+          "discoveredAt": "2026-10-03T09:52:58.199Z",
+          "retrievedAt": "2026-10-03T09:53:35.093Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "c08ccfaa99d3f8ebf590641ab48381f69b685d0b05a6af4c754aee52f2942236",
+          "contentSha256": "15bbcdef52470e70321cb79b42efb198b553c19d8b6d0f6e26e02cf1e2ef4078",
           "byteLength": 27575,
           "locale": null,
           "markets": [],
@@ -1400,7 +1400,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:29.821Z",
+              "decidedAt": "2026-10-03T09:53:34.856Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1416,7 +1416,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:30.207Z",
+              "decidedAt": "2026-10-03T09:53:35.093Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1437,7 +1437,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:30.207Z",
+              "decidedAt": "2026-10-03T09:53:35.093Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1459,11 +1459,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:59.990Z",
-          "retrievedAt": "2026-10-03T05:26:30.365Z",
+          "discoveredAt": "2026-10-03T09:52:58.199Z",
+          "retrievedAt": "2026-10-03T09:53:35.534Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+          "contentSha256": "590d5fa86afc8fc08f06804b342fafc3618b547eb5b266ffd33d1c7d37b0be29",
           "byteLength": 37255,
           "locale": null,
           "markets": [],
@@ -1502,7 +1502,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:30.207Z",
+              "decidedAt": "2026-10-03T09:53:35.094Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1518,7 +1518,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:30.365Z",
+              "decidedAt": "2026-10-03T09:53:35.533Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1539,7 +1539,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:30.365Z",
+              "decidedAt": "2026-10-03T09:53:35.534Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1561,11 +1561,11 @@
           "sourceName": "es.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:59.990Z",
-          "retrievedAt": "2026-10-03T05:26:32.728Z",
+          "discoveredAt": "2026-10-03T09:52:58.199Z",
+          "retrievedAt": "2026-10-03T09:53:38.045Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "7c4b746034b3bc3ae1edd49e90f5ce9f9fa4f8ba2ab47a9e75d283ac7f4836ed",
+          "contentSha256": "35787c67750e0677d74cc78f7aa045cfe4c070bd7bacb3509c6c5fb571399631",
           "byteLength": 27145,
           "locale": null,
           "markets": [],
@@ -1592,17 +1592,17 @@
             {
               "operation": "FETCH",
               "status": "ALLOWED",
-              "reason": "robots_unavailable",
+              "reason": "robots_allows",
               "url": "https://es.auto-abc.eu/servicio/ford-focus",
               "host": "es.auto-abc.eu",
               "evidence": [
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:32.317Z",
+              "decidedAt": "2026-10-03T09:53:37.782Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1618,7 +1618,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:32.728Z",
+              "decidedAt": "2026-10-03T09:53:38.045Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1631,7 +1631,7 @@
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 },
                 {
                   "kind": "operation_scope",
@@ -1639,7 +1639,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:32.728Z",
+              "decidedAt": "2026-10-03T09:53:38.045Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1661,11 +1661,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:59.990Z",
-          "retrievedAt": "2026-10-03T05:26:32.853Z",
+          "discoveredAt": "2026-10-03T09:52:58.199Z",
+          "retrievedAt": "2026-10-03T09:53:38.210Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+          "contentSha256": "c62721fa202f0e374432fb72ffe9525c229e68efdc64511c88aacb9076d5620b",
           "byteLength": 37242,
           "locale": null,
           "markets": [],
@@ -1704,7 +1704,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:32.729Z",
+              "decidedAt": "2026-10-03T09:53:38.046Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1720,7 +1720,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:32.853Z",
+              "decidedAt": "2026-10-03T09:53:38.210Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1741,7 +1741,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:32.853Z",
+              "decidedAt": "2026-10-03T09:53:38.210Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1763,11 +1763,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:59.990Z",
-          "retrievedAt": "2026-10-03T05:26:34.360Z",
+          "discoveredAt": "2026-10-03T09:52:58.199Z",
+          "retrievedAt": "2026-10-03T09:53:39.696Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+          "contentSha256": "0025bb0179a02c89c74b64f5fefb1a623490c9f511b180ec8976f4942f2cac62",
           "byteLength": 37222,
           "locale": null,
           "markets": [],
@@ -1806,7 +1806,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:32.729Z",
+              "decidedAt": "2026-10-03T09:53:38.046Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1822,7 +1822,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:34.360Z",
+              "decidedAt": "2026-10-03T09:53:39.696Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1843,7 +1843,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:34.360Z",
+              "decidedAt": "2026-10-03T09:53:39.696Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1865,11 +1865,11 @@
           "sourceName": "kfz-dietrich.com",
           "sourceType": "service_document",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:26:21.911Z",
-          "retrievedAt": "2026-10-03T05:26:34.610Z",
+          "discoveredAt": "2026-10-03T09:53:19.372Z",
+          "retrievedAt": "2026-10-03T09:53:40.012Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "1097dc48e71936aab1fbba35d064195a4912bf9d4da7366417c68b9b6af74ddf",
+          "contentSha256": "469d75a53b853318566e4922ad2aaec46a1a7684480c8bbe928c735af41b8c54",
           "byteLength": 242652,
           "locale": null,
           "markets": [],
@@ -1913,7 +1913,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:34.361Z",
+              "decidedAt": "2026-10-03T09:53:39.698Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1929,7 +1929,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:34.609Z",
+              "decidedAt": "2026-10-03T09:53:40.012Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1950,7 +1950,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:34.610Z",
+              "decidedAt": "2026-10-03T09:53:40.012Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1972,11 +1972,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:25:59.990Z",
-          "retrievedAt": "2026-10-03T05:26:35.860Z",
+          "discoveredAt": "2026-10-03T09:52:58.199Z",
+          "retrievedAt": "2026-10-03T09:53:41.192Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+          "contentSha256": "463759e86934210358634c50780a75b4297579671638a7f2fdf7989b33971e3b",
           "byteLength": 37235,
           "locale": null,
           "markets": [],
@@ -2015,7 +2015,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:34.361Z",
+              "decidedAt": "2026-10-03T09:53:39.698Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2031,7 +2031,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:35.860Z",
+              "decidedAt": "2026-10-03T09:53:41.192Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2052,7 +2052,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:35.860Z",
+              "decidedAt": "2026-10-03T09:53:41.192Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2074,11 +2074,11 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:26:27.630Z",
-          "retrievedAt": "2026-10-03T05:26:36.070Z",
+          "discoveredAt": "2026-10-03T09:53:29.194Z",
+          "retrievedAt": "2026-10-03T09:53:44.666Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "f60c503e1ce8710aa28ba5b55be6887a10a54c6450e47ac554b5d7866cb03e85",
+          "contentSha256": "ae8e28fa22e883cc0f8b370693fb3599592380c98d7394b60b65946635ee16d6",
           "byteLength": 378784,
           "locale": null,
           "markets": [],
@@ -2114,7 +2114,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:35.860Z",
+              "decidedAt": "2026-10-03T09:53:41.193Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2130,7 +2130,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:36.069Z",
+              "decidedAt": "2026-10-03T09:53:44.665Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2151,7 +2151,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:36.070Z",
+              "decidedAt": "2026-10-03T09:53:44.666Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2173,12 +2173,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:26:27.631Z",
-          "retrievedAt": "2026-10-03T05:26:37.530Z",
+          "discoveredAt": "2026-10-03T09:53:29.194Z",
+          "retrievedAt": "2026-10-03T09:53:46.060Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "f42ca750b821c9b39ca6d6ea1914fbd88f2925ca2686e3fe4172a5bf12d66741",
-          "byteLength": 158094,
+          "contentSha256": "ea383ddd6ab640ba6e1c24cfd1b45dff5d3a46a4a31ea3c5c18f139ad445de62",
+          "byteLength": 158009,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2217,7 +2217,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:35.861Z",
+              "decidedAt": "2026-10-03T09:53:41.193Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2233,7 +2233,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:37.530Z",
+              "decidedAt": "2026-10-03T09:53:46.060Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2254,7 +2254,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:37.530Z",
+              "decidedAt": "2026-10-03T09:53:46.060Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2276,8 +2276,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:26:29.342Z",
-          "retrievedAt": "2026-10-03T05:26:39.221Z",
+          "discoveredAt": "2026-10-03T09:53:32.855Z",
+          "retrievedAt": "2026-10-03T09:53:47.807Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "5ab46195e2d60b1c453a1d5ebe16a6566c6fb706e837637ea0282fd5f14378c8",
@@ -2320,7 +2320,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:37.535Z",
+              "decidedAt": "2026-10-03T09:53:46.063Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2336,7 +2336,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:39.221Z",
+              "decidedAt": "2026-10-03T09:53:47.806Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2357,7 +2357,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:39.221Z",
+              "decidedAt": "2026-10-03T09:53:47.807Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2380,8 +2380,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:26:29.342Z",
-          "retrievedAt": "2026-10-03T05:26:41.040Z",
+          "discoveredAt": "2026-10-03T09:53:32.855Z",
+          "retrievedAt": "2026-10-03T09:53:49.553Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "85ec9f405617d4a0fc77cca20df16324be0da3b47535e2db57f102f4454e0111",
@@ -2428,7 +2428,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:39.224Z",
+              "decidedAt": "2026-10-03T09:53:47.810Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2444,7 +2444,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:40.633Z",
+              "decidedAt": "2026-10-03T09:53:49.160Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2460,7 +2460,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:41.040Z",
+              "decidedAt": "2026-10-03T09:53:49.552Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2481,7 +2481,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:41.040Z",
+              "decidedAt": "2026-10-03T09:53:49.552Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2503,8 +2503,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:26:29.342Z",
-          "retrievedAt": "2026-10-03T05:26:42.290Z",
+          "discoveredAt": "2026-10-03T09:53:32.855Z",
+          "retrievedAt": "2026-10-03T09:53:50.890Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "c1864982e876361a3087c3b83eeae315269c5aaab2e7baca7beb3612f22bedc2",
@@ -2552,7 +2552,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:39.224Z",
+              "decidedAt": "2026-10-03T09:53:47.810Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2568,7 +2568,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:42.290Z",
+              "decidedAt": "2026-10-03T09:53:50.889Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2589,7 +2589,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:42.290Z",
+              "decidedAt": "2026-10-03T09:53:50.890Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2611,8 +2611,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:26:29.342Z",
-          "retrievedAt": "2026-10-03T05:26:43.965Z",
+          "discoveredAt": "2026-10-03T09:53:32.855Z",
+          "retrievedAt": "2026-10-03T09:53:52.474Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "940d29af20893498076166c5a3411186f76789e3b8e4fd16a6f7d62cabbbf03d",
@@ -2675,7 +2675,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:42.293Z",
+              "decidedAt": "2026-10-03T09:53:50.893Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2691,7 +2691,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:43.964Z",
+              "decidedAt": "2026-10-03T09:53:52.473Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2712,7 +2712,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:26:43.965Z",
+              "decidedAt": "2026-10-03T09:53:52.474Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -3608,7 +3608,7 @@
           }
         },
         {
-          "id": "src-fa7a022b4e429b09:6f04d9c801d5-p9-coolant-replacement-0",
+          "id": "src-fa7a022b4e429b09:590d5fa86afc-p9-coolant-replacement-0",
           "sourceId": "src-fa7a022b4e429b09",
           "operationKey": "coolant",
           "task": "coolant",
@@ -3662,7 +3662,7 @@
             ]
           },
           "requirement": {
-            "id": "6f04d9c801d5-p9-coolant-replacement-0",
+            "id": "590d5fa86afc-p9-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
             "action": "replacement",
@@ -3699,14 +3699,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+                "documentId": "590d5fa86afc8fc08f06804b342fafc3618b547eb5b266ffd33d1c7d37b0be29",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 9,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \"",
-                "documentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89"
+                "documentSha256": "590d5fa86afc8fc08f06804b342fafc3618b547eb5b266ffd33d1c7d37b0be29"
               }
             ],
             "verification": "candidate",
@@ -3729,7 +3729,7 @@
           }
         },
         {
-          "id": "src-fa7a022b4e429b09:6f04d9c801d5-p5-s-air_filter-replacement-0",
+          "id": "src-fa7a022b4e429b09:590d5fa86afc-p5-s-air_filter-replacement-0",
           "sourceId": "src-fa7a022b4e429b09",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -3778,7 +3778,7 @@
             ]
           },
           "requirement": {
-            "id": "6f04d9c801d5-p5-s-air_filter-replacement-0",
+            "id": "590d5fa86afc-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Replacement interval for the air filter is 15,000 km .",
             "action": "replacement",
@@ -3809,14 +3809,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+                "documentId": "590d5fa86afc8fc08f06804b342fafc3618b547eb5b266ffd33d1c7d37b0be29",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Replacement interval for the air filter is 15,000 km .\"",
-                "documentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89"
+                "documentSha256": "590d5fa86afc8fc08f06804b342fafc3618b547eb5b266ffd33d1c7d37b0be29"
               }
             ],
             "verification": "candidate",
@@ -3839,7 +3839,7 @@
           }
         },
         {
-          "id": "src-fa7a022b4e429b09:6f04d9c801d5-p6-s-spark_plugs-replacement-1",
+          "id": "src-fa7a022b4e429b09:590d5fa86afc-p6-s-spark_plugs-replacement-1",
           "sourceId": "src-fa7a022b4e429b09",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -3888,7 +3888,7 @@
             ]
           },
           "requirement": {
-            "id": "6f04d9c801d5-p6-s-spark_plugs-replacement-1",
+            "id": "590d5fa86afc-p6-s-spark_plugs-replacement-1",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 45,000 km .",
             "action": "replacement",
@@ -3919,14 +3919,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+                "documentId": "590d5fa86afc8fc08f06804b342fafc3618b547eb5b266ffd33d1c7d37b0be29",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 45,000 km .\"",
-                "documentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89"
+                "documentSha256": "590d5fa86afc8fc08f06804b342fafc3618b547eb5b266ffd33d1c7d37b0be29"
               }
             ],
             "verification": "candidate",
@@ -3949,7 +3949,7 @@
           }
         },
         {
-          "id": "src-fa7a022b4e429b09:6f04d9c801d5-p7-s-timing_belt-replacement-2",
+          "id": "src-fa7a022b4e429b09:590d5fa86afc-p7-s-timing_belt-replacement-2",
           "sourceId": "src-fa7a022b4e429b09",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -4002,7 +4002,7 @@
             ]
           },
           "requirement": {
-            "id": "6f04d9c801d5-p7-s-timing_belt-replacement-2",
+            "id": "590d5fa86afc-p7-s-timing_belt-replacement-2",
             "task": "timing_belt",
             "taskText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
             "action": "replacement",
@@ -4038,14 +4038,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89",
+                "documentId": "590d5fa86afc8fc08f06804b342fafc3618b547eb5b266ffd33d1c7d37b0be29",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Timing belt",
                 "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\"",
-                "documentSha256": "6f04d9c801d5cfc3e78a97e23fe397c5af795489ee0acd06f975199d8fa5fb89"
+                "documentSha256": "590d5fa86afc8fc08f06804b342fafc3618b547eb5b266ffd33d1c7d37b0be29"
               }
             ],
             "verification": "candidate",
@@ -4068,7 +4068,7 @@
           }
         },
         {
-          "id": "src-eb6a78d835e0d942:5a4daebfe9ee-p9-coolant-replacement-0",
+          "id": "src-eb6a78d835e0d942:c62721fa202f-p9-coolant-replacement-0",
           "sourceId": "src-eb6a78d835e0d942",
           "operationKey": "coolant",
           "task": "coolant",
@@ -4122,7 +4122,7 @@
             ]
           },
           "requirement": {
-            "id": "5a4daebfe9ee-p9-coolant-replacement-0",
+            "id": "c62721fa202f-p9-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
             "action": "replacement",
@@ -4159,14 +4159,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+                "documentId": "c62721fa202f0e374432fb72ffe9525c229e68efdc64511c88aacb9076d5620b",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 9,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \"",
-                "documentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543"
+                "documentSha256": "c62721fa202f0e374432fb72ffe9525c229e68efdc64511c88aacb9076d5620b"
               }
             ],
             "verification": "candidate",
@@ -4189,7 +4189,7 @@
           }
         },
         {
-          "id": "src-eb6a78d835e0d942:5a4daebfe9ee-p5-s-air_filter-replacement-0",
+          "id": "src-eb6a78d835e0d942:c62721fa202f-p5-s-air_filter-replacement-0",
           "sourceId": "src-eb6a78d835e0d942",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -4238,7 +4238,7 @@
             ]
           },
           "requirement": {
-            "id": "5a4daebfe9ee-p5-s-air_filter-replacement-0",
+            "id": "c62721fa202f-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Air filter change interval is 15,000 km .",
             "action": "replacement",
@@ -4269,14 +4269,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+                "documentId": "c62721fa202f0e374432fb72ffe9525c229e68efdc64511c88aacb9076d5620b",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Air filter change interval is 15,000 km .\"",
-                "documentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543"
+                "documentSha256": "c62721fa202f0e374432fb72ffe9525c229e68efdc64511c88aacb9076d5620b"
               }
             ],
             "verification": "candidate",
@@ -4299,7 +4299,7 @@
           }
         },
         {
-          "id": "src-eb6a78d835e0d942:5a4daebfe9ee-p6-s-spark_plugs-replacement-1",
+          "id": "src-eb6a78d835e0d942:c62721fa202f-p6-s-spark_plugs-replacement-1",
           "sourceId": "src-eb6a78d835e0d942",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -4348,7 +4348,7 @@
             ]
           },
           "requirement": {
-            "id": "5a4daebfe9ee-p6-s-spark_plugs-replacement-1",
+            "id": "c62721fa202f-p6-s-spark_plugs-replacement-1",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 45,000 km .",
             "action": "replacement",
@@ -4379,14 +4379,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+                "documentId": "c62721fa202f0e374432fb72ffe9525c229e68efdc64511c88aacb9076d5620b",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Replacement interval for spark plugs is 45,000 km .\"",
-                "documentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543"
+                "documentSha256": "c62721fa202f0e374432fb72ffe9525c229e68efdc64511c88aacb9076d5620b"
               }
             ],
             "verification": "candidate",
@@ -4409,7 +4409,7 @@
           }
         },
         {
-          "id": "src-eb6a78d835e0d942:5a4daebfe9ee-p7-s-timing_belt-replacement-2",
+          "id": "src-eb6a78d835e0d942:c62721fa202f-p7-s-timing_belt-replacement-2",
           "sourceId": "src-eb6a78d835e0d942",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -4462,7 +4462,7 @@
             ]
           },
           "requirement": {
-            "id": "5a4daebfe9ee-p7-s-timing_belt-replacement-2",
+            "id": "c62721fa202f-p7-s-timing_belt-replacement-2",
             "task": "timing_belt",
             "taskText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
             "action": "replacement",
@@ -4498,14 +4498,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543",
+                "documentId": "c62721fa202f0e374432fb72ffe9525c229e68efdc64511c88aacb9076d5620b",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Timing belt",
                 "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\"",
-                "documentSha256": "5a4daebfe9eeb752780b236972d3a0f03f8bbbd1c5b4198d3bea97459f4c3543"
+                "documentSha256": "c62721fa202f0e374432fb72ffe9525c229e68efdc64511c88aacb9076d5620b"
               }
             ],
             "verification": "candidate",
@@ -4528,7 +4528,7 @@
           }
         },
         {
-          "id": "src-32dfd8bff25dd769:912f65f95368-p9-coolant-replacement-0",
+          "id": "src-32dfd8bff25dd769:0025bb0179a0-p9-coolant-replacement-0",
           "sourceId": "src-32dfd8bff25dd769",
           "operationKey": "coolant",
           "task": "coolant",
@@ -4582,7 +4582,7 @@
             ]
           },
           "requirement": {
-            "id": "912f65f95368-p9-coolant-replacement-0",
+            "id": "0025bb0179a0-p9-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
             "action": "replacement",
@@ -4619,14 +4619,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+                "documentId": "0025bb0179a02c89c74b64f5fefb1a623490c9f511b180ec8976f4942f2cac62",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 9,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \"",
-                "documentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492"
+                "documentSha256": "0025bb0179a02c89c74b64f5fefb1a623490c9f511b180ec8976f4942f2cac62"
               }
             ],
             "verification": "candidate",
@@ -4649,7 +4649,7 @@
           }
         },
         {
-          "id": "src-32dfd8bff25dd769:912f65f95368-p5-s-air_filter-replacement-0",
+          "id": "src-32dfd8bff25dd769:0025bb0179a0-p5-s-air_filter-replacement-0",
           "sourceId": "src-32dfd8bff25dd769",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -4698,7 +4698,7 @@
             ]
           },
           "requirement": {
-            "id": "912f65f95368-p5-s-air_filter-replacement-0",
+            "id": "0025bb0179a0-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Air filter change interval is 15,000 km .",
             "action": "replacement",
@@ -4729,14 +4729,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+                "documentId": "0025bb0179a02c89c74b64f5fefb1a623490c9f511b180ec8976f4942f2cac62",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Air filter change interval is 15,000 km .\"",
-                "documentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492"
+                "documentSha256": "0025bb0179a02c89c74b64f5fefb1a623490c9f511b180ec8976f4942f2cac62"
               }
             ],
             "verification": "candidate",
@@ -4759,7 +4759,7 @@
           }
         },
         {
-          "id": "src-32dfd8bff25dd769:912f65f95368-p6-s-spark_plugs-replacement-1",
+          "id": "src-32dfd8bff25dd769:0025bb0179a0-p6-s-spark_plugs-replacement-1",
           "sourceId": "src-32dfd8bff25dd769",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -4808,7 +4808,7 @@
             ]
           },
           "requirement": {
-            "id": "912f65f95368-p6-s-spark_plugs-replacement-1",
+            "id": "0025bb0179a0-p6-s-spark_plugs-replacement-1",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 45,000 km .",
             "action": "replacement",
@@ -4839,14 +4839,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+                "documentId": "0025bb0179a02c89c74b64f5fefb1a623490c9f511b180ec8976f4942f2cac62",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Replacement interval for spark plugs is 45,000 km .\"",
-                "documentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492"
+                "documentSha256": "0025bb0179a02c89c74b64f5fefb1a623490c9f511b180ec8976f4942f2cac62"
               }
             ],
             "verification": "candidate",
@@ -4869,7 +4869,7 @@
           }
         },
         {
-          "id": "src-32dfd8bff25dd769:912f65f95368-p7-s-timing_belt-replacement-2",
+          "id": "src-32dfd8bff25dd769:0025bb0179a0-p7-s-timing_belt-replacement-2",
           "sourceId": "src-32dfd8bff25dd769",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -4922,7 +4922,7 @@
             ]
           },
           "requirement": {
-            "id": "912f65f95368-p7-s-timing_belt-replacement-2",
+            "id": "0025bb0179a0-p7-s-timing_belt-replacement-2",
             "task": "timing_belt",
             "taskText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
             "action": "replacement",
@@ -4958,14 +4958,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492",
+                "documentId": "0025bb0179a02c89c74b64f5fefb1a623490c9f511b180ec8976f4942f2cac62",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, AT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Timing belt",
                 "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\"",
-                "documentSha256": "912f65f95368eb9fbedabd2d05d600e9751fbcf5abe00e5608146057531c0492"
+                "documentSha256": "0025bb0179a02c89c74b64f5fefb1a623490c9f511b180ec8976f4942f2cac62"
               }
             ],
             "verification": "candidate",
@@ -4988,7 +4988,7 @@
           }
         },
         {
-          "id": "src-5c3dc646d1fb8848:1810e8e3ab2c-p9-coolant-replacement-0",
+          "id": "src-5c3dc646d1fb8848:463759e86934-p9-coolant-replacement-0",
           "sourceId": "src-5c3dc646d1fb8848",
           "operationKey": "coolant",
           "task": "coolant",
@@ -5042,7 +5042,7 @@
             ]
           },
           "requirement": {
-            "id": "1810e8e3ab2c-p9-coolant-replacement-0",
+            "id": "463759e86934-p9-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 petrol is 150,000 km or 10 years , which",
             "action": "replacement",
@@ -5079,14 +5079,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+                "documentId": "463759e86934210358634c50780a75b4297579671638a7f2fdf7989b33971e3b",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 9,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Ford Focus 1.6 \"",
-                "documentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a"
+                "documentSha256": "463759e86934210358634c50780a75b4297579671638a7f2fdf7989b33971e3b"
               }
             ],
             "verification": "candidate",
@@ -5109,7 +5109,7 @@
           }
         },
         {
-          "id": "src-5c3dc646d1fb8848:1810e8e3ab2c-p5-s-air_filter-replacement-0",
+          "id": "src-5c3dc646d1fb8848:463759e86934-p5-s-air_filter-replacement-0",
           "sourceId": "src-5c3dc646d1fb8848",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -5158,7 +5158,7 @@
             ]
           },
           "requirement": {
-            "id": "1810e8e3ab2c-p5-s-air_filter-replacement-0",
+            "id": "463759e86934-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Replacement interval for the air filter is 15,000 km .",
             "action": "replacement",
@@ -5189,14 +5189,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+                "documentId": "463759e86934210358634c50780a75b4297579671638a7f2fdf7989b33971e3b",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Replacement interval for the air filter is 15,000 km .\"",
-                "documentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a"
+                "documentSha256": "463759e86934210358634c50780a75b4297579671638a7f2fdf7989b33971e3b"
               }
             ],
             "verification": "candidate",
@@ -5219,7 +5219,7 @@
           }
         },
         {
-          "id": "src-5c3dc646d1fb8848:1810e8e3ab2c-p6-s-spark_plugs-replacement-1",
+          "id": "src-5c3dc646d1fb8848:463759e86934-p6-s-spark_plugs-replacement-1",
           "sourceId": "src-5c3dc646d1fb8848",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -5268,7 +5268,7 @@
             ]
           },
           "requirement": {
-            "id": "1810e8e3ab2c-p6-s-spark_plugs-replacement-1",
+            "id": "463759e86934-p6-s-spark_plugs-replacement-1",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 45,000 km .",
             "action": "replacement",
@@ -5299,14 +5299,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+                "documentId": "463759e86934210358634c50780a75b4297579671638a7f2fdf7989b33971e3b",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 45,000 km .\"",
-                "documentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a"
+                "documentSha256": "463759e86934210358634c50780a75b4297579671638a7f2fdf7989b33971e3b"
               }
             ],
             "verification": "candidate",
@@ -5329,7 +5329,7 @@
           }
         },
         {
-          "id": "src-5c3dc646d1fb8848:1810e8e3ab2c-p7-s-timing_belt-replacement-2",
+          "id": "src-5c3dc646d1fb8848:463759e86934-p7-s-timing_belt-replacement-2",
           "sourceId": "src-5c3dc646d1fb8848",
           "operationKey": "timing_belt",
           "task": "timing_belt",
@@ -5382,7 +5382,7 @@
             ]
           },
           "requirement": {
-            "id": "1810e8e3ab2c-p7-s-timing_belt-replacement-2",
+            "id": "463759e86934-p7-s-timing_belt-replacement-2",
             "task": "timing_belt",
             "taskText": "Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 petrol is 120,000 km .",
             "action": "replacement",
@@ -5418,14 +5418,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a",
+                "documentId": "463759e86934210358634c50780a75b4297579671638a7f2fdf7989b33971e3b",
                 "documentTitle": "Ford Focus 1.6 (Petrol, 125 HP, MT) 2014 - 2018",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Timing belt",
                 "locator": "column sentence \"Manufacturers recommended timing belt replacement interval for Ford Focus 1.6 pe\"",
-                "documentSha256": "1810e8e3ab2ce3868348ca85e90ea181b06b76098aa37f6847fd1321146cd71a"
+                "documentSha256": "463759e86934210358634c50780a75b4297579671638a7f2fdf7989b33971e3b"
               }
             ],
             "verification": "candidate",
@@ -5448,7 +5448,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:26:44.056Z",
+      "resolvedAt": "2026-10-03T09:53:52.571Z",
       "msourceVersion": "msource/1"
     }
   }

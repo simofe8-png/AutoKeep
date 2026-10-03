@@ -4,14 +4,14 @@
     "vehicleRef": "M05",
     "fingerprintKey": "car|hyundai|i30|2014|1591||petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:28:07.435Z",
-    "finishedAt": "2026-10-03T05:28:34.481Z",
+    "startedAt": "2026-10-03T09:55:18.073Z",
+    "finishedAt": "2026-10-03T09:55:45.918Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:28:07.435Z",
-        "finishedAt": "2026-10-03T05:28:07.435Z",
+        "startedAt": "2026-10-03T09:55:18.073Z",
+        "finishedAt": "2026-10-03T09:55:18.073Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,9 +25,9 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:28:07.435Z",
-        "finishedAt": "2026-10-03T05:28:07.438Z",
-        "durationMs": 3,
+        "startedAt": "2026-10-03T09:55:18.073Z",
+        "finishedAt": "2026-10-03T09:55:18.080Z",
+        "durationMs": 7,
         "counts": {
           "fable": 16,
           "registry": 0,
@@ -39,8 +39,8 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:28:07.438Z",
-        "finishedAt": "2026-10-03T05:28:07.439Z",
+        "startedAt": "2026-10-03T09:55:18.080Z",
+        "finishedAt": "2026-10-03T09:55:18.081Z",
         "durationMs": 1,
         "counts": {
           "discovered": 17,
@@ -54,9 +54,9 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:28:07.439Z",
-        "finishedAt": "2026-10-03T05:28:34.384Z",
-        "durationMs": 26945,
+        "startedAt": "2026-10-03T09:55:18.081Z",
+        "finishedAt": "2026-10-03T09:55:45.810Z",
+        "durationMs": 27729,
         "counts": {
           "acquired": 16
         },
@@ -72,14 +72,14 @@
             "sourceId": "src-50a1baeeee5620cc"
           },
           {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt 429: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-15eb50956f95efb7"
-          },
-          {
             "code": "ACCESS_CONTROL_DETECTED",
             "detail": "HTTP 403",
             "sourceId": "src-18f066b17b4da07b"
+          },
+          {
+            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
+            "detail": "robots.txt 429: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
+            "sourceId": "src-15eb50956f95efb7"
           },
           {
             "code": "ACCESS_CONTROL_DETECTED",
@@ -102,9 +102,9 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:28:34.384Z",
-        "finishedAt": "2026-10-03T05:28:34.481Z",
-        "durationMs": 97,
+        "startedAt": "2026-10-03T09:55:45.810Z",
+        "finishedAt": "2026-10-03T09:55:45.917Z",
+        "durationMs": 107,
         "counts": {
           "extracted": 40,
           "grounded": 40
@@ -156,8 +156,8 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:28:34.481Z",
-        "finishedAt": "2026-10-03T05:28:34.481Z",
+        "startedAt": "2026-10-03T09:55:45.917Z",
+        "finishedAt": "2026-10-03T09:55:45.917Z",
         "durationMs": 0,
         "counts": {
           "INSUFFICIENT": 2,
@@ -198,8 +198,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:28:34.481Z",
-        "finishedAt": "2026-10-03T05:28:34.481Z",
+        "startedAt": "2026-10-03T09:55:45.918Z",
+        "finishedAt": "2026-10-03T09:55:45.918Z",
         "durationMs": 0,
         "counts": {
           "obligations": 4,
@@ -217,8 +217,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:28:34.481Z",
-        "finishedAt": "2026-10-03T05:28:34.481Z",
+        "startedAt": "2026-10-03T09:55:45.918Z",
+        "finishedAt": "2026-10-03T09:55:45.918Z",
         "durationMs": 0,
         "counts": {
           "items": 3,
@@ -235,8 +235,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:28:34.481Z",
-        "finishedAt": "2026-10-03T05:28:34.481Z",
+        "startedAt": "2026-10-03T09:55:45.918Z",
+        "finishedAt": "2026-10-03T09:55:45.918Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -245,8 +245,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:28:34.481Z",
-        "finishedAt": "2026-10-03T05:28:34.481Z",
+        "startedAt": "2026-10-03T09:55:45.918Z",
+        "finishedAt": "2026-10-03T09:55:45.918Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -501,9 +501,9 @@
           "rule": "DISTANCE_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-907d69a1eaa08b93:1fca984e6f4a-p5-s-air_filter-replacement-0",
-            "src-502d1a0f2f7f9605:c2db1e13cce7-p5-s-air_filter-replacement-0",
-            "src-aa2002566139c1c4:551d24e962b7-p5-s-air_filter-replacement-0"
+            "src-907d69a1eaa08b93:0833564350e3-p5-s-air_filter-replacement-0",
+            "src-502d1a0f2f7f9605:8b920d6b03e6-p5-s-air_filter-replacement-0",
+            "src-aa2002566139c1c4:751c8afaa5cb-p5-s-air_filter-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -525,9 +525,9 @@
           "rule": "WHICHEVER_COMES_FIRST",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-907d69a1eaa08b93:1fca984e6f4a-p10-coolant-replacement-0",
-            "src-502d1a0f2f7f9605:c2db1e13cce7-p10-coolant-replacement-0",
-            "src-aa2002566139c1c4:551d24e962b7-p10-coolant-replacement-0"
+            "src-907d69a1eaa08b93:0833564350e3-p10-coolant-replacement-0",
+            "src-502d1a0f2f7f9605:8b920d6b03e6-p10-coolant-replacement-0",
+            "src-aa2002566139c1c4:751c8afaa5cb-p10-coolant-replacement-0"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -549,9 +549,9 @@
           "rule": "DISTANCE_ONLY",
           "quality": "SUPPORTED",
           "evidenceIds": [
-            "src-907d69a1eaa08b93:1fca984e6f4a-p6-s-fuel_filter-replacement-1",
-            "src-502d1a0f2f7f9605:c2db1e13cce7-p6-s-fuel_filter-replacement-1",
-            "src-aa2002566139c1c4:551d24e962b7-p6-s-fuel_filter-replacement-1"
+            "src-907d69a1eaa08b93:0833564350e3-p6-s-fuel_filter-replacement-1",
+            "src-502d1a0f2f7f9605:8b920d6b03e6-p6-s-fuel_filter-replacement-1",
+            "src-aa2002566139c1c4:751c8afaa5cb-p6-s-fuel_filter-replacement-1"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -575,9 +575,9 @@
           "rule": "DISTANCE_ONLY",
           "quality": "CONFLICTING",
           "evidenceIds": [
-            "src-907d69a1eaa08b93:1fca984e6f4a-p7-s-spark_plugs-replacement-2",
-            "src-502d1a0f2f7f9605:c2db1e13cce7-p7-s-spark_plugs-replacement-2",
-            "src-aa2002566139c1c4:551d24e962b7-p7-s-spark_plugs-replacement-2"
+            "src-907d69a1eaa08b93:0833564350e3-p7-s-spark_plugs-replacement-2",
+            "src-502d1a0f2f7f9605:8b920d6b03e6-p7-s-spark_plugs-replacement-2",
+            "src-aa2002566139c1c4:751c8afaa5cb-p7-s-spark_plugs-replacement-2"
           ],
           "independentSources": 1,
           "officialSources": 0,
@@ -587,15 +587,15 @@
               "intervalKm": 60000,
               "intervalMonths": null,
               "evidenceIds": [
-                "src-907d69a1eaa08b93:1fca984e6f4a-p7-s-spark_plugs-replacement-2"
+                "src-907d69a1eaa08b93:0833564350e3-p7-s-spark_plugs-replacement-2"
               ]
             },
             {
               "intervalKm": 75000,
               "intervalMonths": null,
               "evidenceIds": [
-                "src-502d1a0f2f7f9605:c2db1e13cce7-p7-s-spark_plugs-replacement-2",
-                "src-aa2002566139c1c4:551d24e962b7-p7-s-spark_plugs-replacement-2"
+                "src-502d1a0f2f7f9605:8b920d6b03e6-p7-s-spark_plugs-replacement-2",
+                "src-aa2002566139c1c4:751c8afaa5cb-p7-s-spark_plugs-replacement-2"
               ]
             }
           ],
@@ -616,8 +616,8 @@
           "sourceName": "Hyundai Motor Company (ownersmanual.hyundai.com)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:07.436Z",
-          "retrievedAt": "2026-10-03T05:28:11.727Z",
+          "discoveredAt": "2026-10-03T09:55:18.073Z",
+          "retrievedAt": "2026-10-03T09:55:21.012Z",
           "format": "html",
           "documentType": "maintenance_schedule",
           "contentSha256": "3e34b6576fa4b03bd9052ac0a0a781f63356c37c42d132a1802dd579bd00b1cd",
@@ -654,7 +654,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:10.939Z",
+              "decidedAt": "2026-10-03T09:55:19.800Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -670,7 +670,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:11.278Z",
+              "decidedAt": "2026-10-03T09:55:20.665Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -686,7 +686,7 @@
                   "detail": "documentCachingAllowed=REQUIRES_PERMISSION (basis documentCaching)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:11.727Z",
+              "decidedAt": "2026-10-03T09:55:21.012Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -707,7 +707,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:11.727Z",
+              "decidedAt": "2026-10-03T09:55:21.012Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -730,8 +730,8 @@
           "sourceName": "Hyundai Motor Company (ownersmanual.hyundai.com)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:07.436Z",
-          "retrievedAt": "2026-10-03T05:28:15.791Z",
+          "discoveredAt": "2026-10-03T09:55:18.073Z",
+          "retrievedAt": "2026-10-03T09:55:25.479Z",
           "format": "html",
           "documentType": "maintenance_schedule",
           "contentSha256": "5af47b4801607ad8cde8d1cf4d7f4f29daf0818de63932bc6b64d8f8a8af514e",
@@ -768,7 +768,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:12.748Z",
+              "decidedAt": "2026-10-03T09:55:21.678Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -784,7 +784,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:15.759Z",
+              "decidedAt": "2026-10-03T09:55:25.439Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -800,7 +800,7 @@
                   "detail": "documentCachingAllowed=REQUIRES_PERMISSION (basis documentCaching)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:15.791Z",
+              "decidedAt": "2026-10-03T09:55:25.478Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -821,7 +821,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:15.791Z",
+              "decidedAt": "2026-10-03T09:55:25.479Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -843,11 +843,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:07.436Z",
-          "retrievedAt": "2026-10-03T05:28:19.259Z",
+          "discoveredAt": "2026-10-03T09:55:18.073Z",
+          "retrievedAt": "2026-10-03T09:55:30.162Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "1fca984e6f4a6d23785ed56e927bd1c7f4246df37314cc3b8d3ddc00aad6e37a",
+          "contentSha256": "0833564350e3885b378e6f6cb92f762bf6619fa268fcb72ebe951deaa663f06a",
           "byteLength": 37464,
           "locale": "en",
           "markets": [],
@@ -886,7 +886,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:19.130Z",
+              "decidedAt": "2026-10-03T09:55:29.864Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -902,7 +902,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:19.259Z",
+              "decidedAt": "2026-10-03T09:55:30.162Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -923,7 +923,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:19.259Z",
+              "decidedAt": "2026-10-03T09:55:30.162Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -945,11 +945,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:07.436Z",
-          "retrievedAt": "2026-10-03T05:28:20.782Z",
+          "discoveredAt": "2026-10-03T09:55:18.073Z",
+          "retrievedAt": "2026-10-03T09:55:31.503Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "c2db1e13cce7d8ac90ea5e8b391c201d4b117a0221c3d930a3895089be8be739",
+          "contentSha256": "8b920d6b03e66e0e3c661a14a3649b6647967b3356df48c558dbcb075831449e",
           "byteLength": 37454,
           "locale": "en",
           "markets": [],
@@ -988,7 +988,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:19.130Z",
+              "decidedAt": "2026-10-03T09:55:29.865Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1004,7 +1004,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:20.782Z",
+              "decidedAt": "2026-10-03T09:55:31.503Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1025,7 +1025,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:20.782Z",
+              "decidedAt": "2026-10-03T09:55:31.503Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1047,11 +1047,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:07.436Z",
-          "retrievedAt": "2026-10-03T05:28:22.270Z",
+          "discoveredAt": "2026-10-03T09:55:18.073Z",
+          "retrievedAt": "2026-10-03T09:55:33.013Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "551d24e962b7a67c47719cbc47173c64cb1bdddf8bac920a86cda2e06d313f87",
+          "contentSha256": "751c8afaa5cb2f3f0f98207ac12cea5b1088daf9206ddc00d2ec4f670d0992ef",
           "byteLength": 37476,
           "locale": "en",
           "markets": [],
@@ -1090,7 +1090,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:20.783Z",
+              "decidedAt": "2026-10-03T09:55:31.504Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1106,7 +1106,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:22.270Z",
+              "decidedAt": "2026-10-03T09:55:33.013Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1127,7 +1127,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:22.270Z",
+              "decidedAt": "2026-10-03T09:55:33.013Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1149,11 +1149,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:07.436Z",
-          "retrievedAt": "2026-10-03T05:28:23.761Z",
+          "discoveredAt": "2026-10-03T09:55:18.073Z",
+          "retrievedAt": "2026-10-03T09:55:34.505Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "10b44dfba35d6c1a2440cb0a5104b4c319a0aaa3227dd9eb05ba9d858b45235e",
+          "contentSha256": "05764fba03ced419b530c819822ae5ffb832d9aecc34f60eef15867f8d72edf9",
           "byteLength": 37191,
           "locale": "en",
           "markets": [],
@@ -1192,7 +1192,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:20.783Z",
+              "decidedAt": "2026-10-03T09:55:31.504Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1208,7 +1208,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:23.761Z",
+              "decidedAt": "2026-10-03T09:55:34.505Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1229,7 +1229,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:23.761Z",
+              "decidedAt": "2026-10-03T09:55:34.505Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1251,8 +1251,8 @@
           "sourceName": "repareo.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:07.436Z",
-          "retrievedAt": "2026-10-03T05:28:24.482Z",
+          "discoveredAt": "2026-10-03T09:55:18.073Z",
+          "retrievedAt": "2026-10-03T09:55:35.319Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "b7f752ca180c12b13a46fe7a7e07d842ae7379f62359fc045c9320451c8d251c",
@@ -1320,7 +1320,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:23.995Z",
+              "decidedAt": "2026-10-03T09:55:34.745Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1336,7 +1336,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:24.481Z",
+              "decidedAt": "2026-10-03T09:55:35.319Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1357,7 +1357,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:24.482Z",
+              "decidedAt": "2026-10-03T09:55:35.319Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1379,11 +1379,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:07.436Z",
-          "retrievedAt": "2026-10-03T05:28:25.282Z",
+          "discoveredAt": "2026-10-03T09:55:18.073Z",
+          "retrievedAt": "2026-10-03T09:55:36.010Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "5075da03ad927cc494f379af2ce6215ad0d109e9433b781e342905d054fd6ed8",
+          "contentSha256": "e37467b84f6ce2b1c801d71931bceec189a161539181204bf0e13a651b62f9b1",
           "byteLength": 37159,
           "locale": "en",
           "markets": [],
@@ -1422,7 +1422,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:23.762Z",
+              "decidedAt": "2026-10-03T09:55:34.506Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1438,7 +1438,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:25.282Z",
+              "decidedAt": "2026-10-03T09:55:36.010Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1459,7 +1459,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:25.282Z",
+              "decidedAt": "2026-10-03T09:55:36.010Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1481,12 +1481,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:07.436Z",
-          "retrievedAt": "2026-10-03T05:28:27.612Z",
+          "discoveredAt": "2026-10-03T09:55:18.073Z",
+          "retrievedAt": "2026-10-03T09:55:39.117Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "b05f3e58f1db468d82e1431bc1da7f986afa1cadc7a39502af0015d7085c4c6b",
-          "byteLength": 173635,
+          "contentSha256": "3c3e0f6e666b2f9ddd2656be19090e2c1485744fdb5e4c38a683c907d650b9d9",
+          "byteLength": 173649,
           "locale": "de",
           "markets": [],
           "statedApplicability": {
@@ -1518,7 +1518,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:27.442Z",
+              "decidedAt": "2026-10-03T09:55:38.605Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1534,7 +1534,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:27.611Z",
+              "decidedAt": "2026-10-03T09:55:39.117Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1555,7 +1555,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:27.612Z",
+              "decidedAt": "2026-10-03T09:55:39.117Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1577,8 +1577,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:24.494Z",
-          "retrievedAt": "2026-10-03T05:28:28.033Z",
+          "discoveredAt": "2026-10-03T09:55:35.353Z",
+          "retrievedAt": "2026-10-03T09:55:39.458Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "8e8412a9df2290f7925f8ebab75da6a985e92f6405a262ef2a47ba3c2e8f205f",
@@ -1624,7 +1624,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:27.738Z",
+              "decidedAt": "2026-10-03T09:55:39.125Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1640,7 +1640,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:28.033Z",
+              "decidedAt": "2026-10-03T09:55:39.457Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1661,7 +1661,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:28.033Z",
+              "decidedAt": "2026-10-03T09:55:39.458Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1683,8 +1683,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:24.495Z",
-          "retrievedAt": "2026-10-03T05:28:29.639Z",
+          "discoveredAt": "2026-10-03T09:55:35.353Z",
+          "retrievedAt": "2026-10-03T09:55:41.201Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "d029b405f1b1ca5901a4554db71e6dd134c84895dd2bececf5504a502db0e3ba",
@@ -1730,7 +1730,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:27.739Z",
+              "decidedAt": "2026-10-03T09:55:39.125Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1746,7 +1746,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:29.639Z",
+              "decidedAt": "2026-10-03T09:55:41.201Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1767,7 +1767,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:29.639Z",
+              "decidedAt": "2026-10-03T09:55:41.201Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1789,8 +1789,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:24.495Z",
-          "retrievedAt": "2026-10-03T05:28:31.066Z",
+          "discoveredAt": "2026-10-03T09:55:35.353Z",
+          "retrievedAt": "2026-10-03T09:55:42.466Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "f6a2956def13f1bd63f8b7b91e43239e615688981505309fa6e8c0fcb8136680",
@@ -1836,7 +1836,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:29.645Z",
+              "decidedAt": "2026-10-03T09:55:41.209Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1852,7 +1852,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:31.066Z",
+              "decidedAt": "2026-10-03T09:55:42.466Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1873,7 +1873,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:31.066Z",
+              "decidedAt": "2026-10-03T09:55:42.466Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1895,8 +1895,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:24.495Z",
-          "retrievedAt": "2026-10-03T05:28:32.557Z",
+          "discoveredAt": "2026-10-03T09:55:35.354Z",
+          "retrievedAt": "2026-10-03T09:55:43.958Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "fa70b6a8a777e0f2c1ada33db2e251038d668557a761228b021b89fda90b0f7b",
@@ -1934,7 +1934,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:29.645Z",
+              "decidedAt": "2026-10-03T09:55:41.209Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1950,7 +1950,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:32.557Z",
+              "decidedAt": "2026-10-03T09:55:43.958Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1971,7 +1971,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:32.557Z",
+              "decidedAt": "2026-10-03T09:55:43.958Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1993,11 +1993,11 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:27.617Z",
-          "retrievedAt": "2026-10-03T05:28:32.771Z",
+          "discoveredAt": "2026-10-03T09:55:39.124Z",
+          "retrievedAt": "2026-10-03T09:55:44.933Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "74d58c043df8f865ed63dd0ca814ab25ffb5d144c5a93bb31e843982b7f99127",
+          "contentSha256": "0675cb592936a6952f4f89a99349aaad0b73c12ee89a38c5186f8b9f7560cc05",
           "byteLength": 319586,
           "locale": null,
           "markets": [],
@@ -2031,7 +2031,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:32.559Z",
+              "decidedAt": "2026-10-03T09:55:43.960Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2047,7 +2047,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:32.771Z",
+              "decidedAt": "2026-10-03T09:55:44.933Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2068,7 +2068,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:32.771Z",
+              "decidedAt": "2026-10-03T09:55:44.933Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2090,8 +2090,8 @@
           "sourceName": "www.repareo.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:24.495Z",
-          "retrievedAt": "2026-10-03T05:28:34.209Z",
+          "discoveredAt": "2026-10-03T09:55:35.354Z",
+          "retrievedAt": "2026-10-03T09:55:45.662Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "d1f0dfd6aa14ee1956c4044504894ec3e4bf0d8ba4f10044bc8ef010f9f4c10e",
@@ -2159,7 +2159,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:32.559Z",
+              "decidedAt": "2026-10-03T09:55:43.960Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2175,7 +2175,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:34.209Z",
+              "decidedAt": "2026-10-03T09:55:45.662Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2196,7 +2196,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:34.209Z",
+              "decidedAt": "2026-10-03T09:55:45.662Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2218,12 +2218,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:27.618Z",
-          "retrievedAt": "2026-10-03T05:28:34.382Z",
+          "discoveredAt": "2026-10-03T09:55:39.124Z",
+          "retrievedAt": "2026-10-03T09:55:45.807Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "3ccd769f0f072c60c8580ee9d18f7974880c976e36bce67b002c8f7c9723cf99",
-          "byteLength": 148633,
+          "contentSha256": "ed435b4809d4c63abd7a303836dc30da0a58884ceca0ae6e5318f33f8830d1c6",
+          "byteLength": 148364,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2256,7 +2256,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:34.217Z",
+              "decidedAt": "2026-10-03T09:55:45.674Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2272,7 +2272,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:34.382Z",
+              "decidedAt": "2026-10-03T09:55:45.807Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2293,7 +2293,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:34.382Z",
+              "decidedAt": "2026-10-03T09:55:45.807Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -4152,7 +4152,7 @@
           }
         },
         {
-          "id": "src-907d69a1eaa08b93:1fca984e6f4a-p10-coolant-replacement-0",
+          "id": "src-907d69a1eaa08b93:0833564350e3-p10-coolant-replacement-0",
           "sourceId": "src-907d69a1eaa08b93",
           "operationKey": "coolant",
           "task": "coolant",
@@ -4204,7 +4204,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "1fca984e6f4a-p10-coolant-replacement-0",
+            "id": "0833564350e3-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6 petrol is 120,000 km or 8 years , which",
             "action": "replacement",
@@ -4241,14 +4241,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "1fca984e6f4a6d23785ed56e927bd1c7f4246df37314cc3b8d3ddc00aad6e37a",
+                "documentId": "0833564350e3885b378e6f6cb92f762bf6619fa268fcb72ebe951deaa663f06a",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6\"",
-                "documentSha256": "1fca984e6f4a6d23785ed56e927bd1c7f4246df37314cc3b8d3ddc00aad6e37a"
+                "documentSha256": "0833564350e3885b378e6f6cb92f762bf6619fa268fcb72ebe951deaa663f06a"
               }
             ],
             "verification": "candidate",
@@ -4271,7 +4271,7 @@
           }
         },
         {
-          "id": "src-907d69a1eaa08b93:1fca984e6f4a-p5-s-air_filter-replacement-0",
+          "id": "src-907d69a1eaa08b93:0833564350e3-p5-s-air_filter-replacement-0",
           "sourceId": "src-907d69a1eaa08b93",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -4318,7 +4318,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "1fca984e6f4a-p5-s-air_filter-replacement-0",
+            "id": "0833564350e3-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Air filter change interval is 45,000 km .",
             "action": "replacement",
@@ -4349,14 +4349,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "1fca984e6f4a6d23785ed56e927bd1c7f4246df37314cc3b8d3ddc00aad6e37a",
+                "documentId": "0833564350e3885b378e6f6cb92f762bf6619fa268fcb72ebe951deaa663f06a",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Air filter change interval is 45,000 km .\"",
-                "documentSha256": "1fca984e6f4a6d23785ed56e927bd1c7f4246df37314cc3b8d3ddc00aad6e37a"
+                "documentSha256": "0833564350e3885b378e6f6cb92f762bf6619fa268fcb72ebe951deaa663f06a"
               }
             ],
             "verification": "candidate",
@@ -4379,7 +4379,7 @@
           }
         },
         {
-          "id": "src-907d69a1eaa08b93:1fca984e6f4a-p6-s-fuel_filter-replacement-1",
+          "id": "src-907d69a1eaa08b93:0833564350e3-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-907d69a1eaa08b93",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -4430,7 +4430,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "1fca984e6f4a-p6-s-fuel_filter-replacement-1",
+            "id": "0833564350e3-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Hyundai i30 1.6 petrol fuel filter change interval is 60,000 km",
             "action": "replacement",
@@ -4466,14 +4466,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "1fca984e6f4a6d23785ed56e927bd1c7f4246df37314cc3b8d3ddc00aad6e37a",
+                "documentId": "0833564350e3885b378e6f6cb92f762bf6619fa268fcb72ebe951deaa663f06a",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Hyundai i30 1.6 petrol fuel filter change interval is 60,000 km\"",
-                "documentSha256": "1fca984e6f4a6d23785ed56e927bd1c7f4246df37314cc3b8d3ddc00aad6e37a"
+                "documentSha256": "0833564350e3885b378e6f6cb92f762bf6619fa268fcb72ebe951deaa663f06a"
               }
             ],
             "verification": "candidate",
@@ -4496,7 +4496,7 @@
           }
         },
         {
-          "id": "src-907d69a1eaa08b93:1fca984e6f4a-p7-s-spark_plugs-replacement-2",
+          "id": "src-907d69a1eaa08b93:0833564350e3-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-907d69a1eaa08b93",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -4543,7 +4543,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "1fca984e6f4a-p7-s-spark_plugs-replacement-2",
+            "id": "0833564350e3-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 60,000 km .",
             "action": "replacement",
@@ -4574,14 +4574,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "1fca984e6f4a6d23785ed56e927bd1c7f4246df37314cc3b8d3ddc00aad6e37a",
+                "documentId": "0833564350e3885b378e6f6cb92f762bf6619fa268fcb72ebe951deaa663f06a",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Replacement interval for spark plugs is 60,000 km .\"",
-                "documentSha256": "1fca984e6f4a6d23785ed56e927bd1c7f4246df37314cc3b8d3ddc00aad6e37a"
+                "documentSha256": "0833564350e3885b378e6f6cb92f762bf6619fa268fcb72ebe951deaa663f06a"
               }
             ],
             "verification": "candidate",
@@ -4604,7 +4604,7 @@
           }
         },
         {
-          "id": "src-502d1a0f2f7f9605:c2db1e13cce7-p10-coolant-replacement-0",
+          "id": "src-502d1a0f2f7f9605:8b920d6b03e6-p10-coolant-replacement-0",
           "sourceId": "src-502d1a0f2f7f9605",
           "operationKey": "coolant",
           "task": "coolant",
@@ -4656,7 +4656,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "c2db1e13cce7-p10-coolant-replacement-0",
+            "id": "8b920d6b03e6-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6 petrol is 120,000 km or 8 years , which",
             "action": "replacement",
@@ -4693,14 +4693,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "c2db1e13cce7d8ac90ea5e8b391c201d4b117a0221c3d930a3895089be8be739",
+                "documentId": "8b920d6b03e66e0e3c661a14a3649b6647967b3356df48c558dbcb075831449e",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6\"",
-                "documentSha256": "c2db1e13cce7d8ac90ea5e8b391c201d4b117a0221c3d930a3895089be8be739"
+                "documentSha256": "8b920d6b03e66e0e3c661a14a3649b6647967b3356df48c558dbcb075831449e"
               }
             ],
             "verification": "candidate",
@@ -4723,7 +4723,7 @@
           }
         },
         {
-          "id": "src-502d1a0f2f7f9605:c2db1e13cce7-p5-s-air_filter-replacement-0",
+          "id": "src-502d1a0f2f7f9605:8b920d6b03e6-p5-s-air_filter-replacement-0",
           "sourceId": "src-502d1a0f2f7f9605",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -4770,7 +4770,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "c2db1e13cce7-p5-s-air_filter-replacement-0",
+            "id": "8b920d6b03e6-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Air filter change interval is 45,000 km .",
             "action": "replacement",
@@ -4801,14 +4801,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "c2db1e13cce7d8ac90ea5e8b391c201d4b117a0221c3d930a3895089be8be739",
+                "documentId": "8b920d6b03e66e0e3c661a14a3649b6647967b3356df48c558dbcb075831449e",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Air filter change interval is 45,000 km .\"",
-                "documentSha256": "c2db1e13cce7d8ac90ea5e8b391c201d4b117a0221c3d930a3895089be8be739"
+                "documentSha256": "8b920d6b03e66e0e3c661a14a3649b6647967b3356df48c558dbcb075831449e"
               }
             ],
             "verification": "candidate",
@@ -4831,7 +4831,7 @@
           }
         },
         {
-          "id": "src-502d1a0f2f7f9605:c2db1e13cce7-p6-s-fuel_filter-replacement-1",
+          "id": "src-502d1a0f2f7f9605:8b920d6b03e6-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-502d1a0f2f7f9605",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -4882,7 +4882,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "c2db1e13cce7-p6-s-fuel_filter-replacement-1",
+            "id": "8b920d6b03e6-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Hyundai i30 1.6 petrol fuel filter change interval is 60,000 km",
             "action": "replacement",
@@ -4918,14 +4918,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "c2db1e13cce7d8ac90ea5e8b391c201d4b117a0221c3d930a3895089be8be739",
+                "documentId": "8b920d6b03e66e0e3c661a14a3649b6647967b3356df48c558dbcb075831449e",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Hyundai i30 1.6 petrol fuel filter change interval is 60,000 km\"",
-                "documentSha256": "c2db1e13cce7d8ac90ea5e8b391c201d4b117a0221c3d930a3895089be8be739"
+                "documentSha256": "8b920d6b03e66e0e3c661a14a3649b6647967b3356df48c558dbcb075831449e"
               }
             ],
             "verification": "candidate",
@@ -4948,7 +4948,7 @@
           }
         },
         {
-          "id": "src-502d1a0f2f7f9605:c2db1e13cce7-p7-s-spark_plugs-replacement-2",
+          "id": "src-502d1a0f2f7f9605:8b920d6b03e6-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-502d1a0f2f7f9605",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -4995,7 +4995,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "c2db1e13cce7-p7-s-spark_plugs-replacement-2",
+            "id": "8b920d6b03e6-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 75,000 km .",
             "action": "replacement",
@@ -5026,14 +5026,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "c2db1e13cce7d8ac90ea5e8b391c201d4b117a0221c3d930a3895089be8be739",
+                "documentId": "8b920d6b03e66e0e3c661a14a3649b6647967b3356df48c558dbcb075831449e",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Replacement interval for spark plugs is 75,000 km .\"",
-                "documentSha256": "c2db1e13cce7d8ac90ea5e8b391c201d4b117a0221c3d930a3895089be8be739"
+                "documentSha256": "8b920d6b03e66e0e3c661a14a3649b6647967b3356df48c558dbcb075831449e"
               }
             ],
             "verification": "candidate",
@@ -5056,7 +5056,7 @@
           }
         },
         {
-          "id": "src-aa2002566139c1c4:551d24e962b7-p10-coolant-replacement-0",
+          "id": "src-aa2002566139c1c4:751c8afaa5cb-p10-coolant-replacement-0",
           "sourceId": "src-aa2002566139c1c4",
           "operationKey": "coolant",
           "task": "coolant",
@@ -5108,7 +5108,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "551d24e962b7-p10-coolant-replacement-0",
+            "id": "751c8afaa5cb-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6 petrol is 120,000 km or 8 years , which",
             "action": "replacement",
@@ -5145,14 +5145,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "551d24e962b7a67c47719cbc47173c64cb1bdddf8bac920a86cda2e06d313f87",
+                "documentId": "751c8afaa5cb2f3f0f98207ac12cea5b1088daf9206ddc00d2ec4f670d0992ef",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance (variant 3)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6\"",
-                "documentSha256": "551d24e962b7a67c47719cbc47173c64cb1bdddf8bac920a86cda2e06d313f87"
+                "documentSha256": "751c8afaa5cb2f3f0f98207ac12cea5b1088daf9206ddc00d2ec4f670d0992ef"
               }
             ],
             "verification": "candidate",
@@ -5175,7 +5175,7 @@
           }
         },
         {
-          "id": "src-aa2002566139c1c4:551d24e962b7-p5-s-air_filter-replacement-0",
+          "id": "src-aa2002566139c1c4:751c8afaa5cb-p5-s-air_filter-replacement-0",
           "sourceId": "src-aa2002566139c1c4",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -5222,7 +5222,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "551d24e962b7-p5-s-air_filter-replacement-0",
+            "id": "751c8afaa5cb-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Replacement interval for the air filter is 45,000 km .",
             "action": "replacement",
@@ -5253,14 +5253,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "551d24e962b7a67c47719cbc47173c64cb1bdddf8bac920a86cda2e06d313f87",
+                "documentId": "751c8afaa5cb2f3f0f98207ac12cea5b1088daf9206ddc00d2ec4f670d0992ef",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance (variant 3)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Replacement interval for the air filter is 45,000 km .\"",
-                "documentSha256": "551d24e962b7a67c47719cbc47173c64cb1bdddf8bac920a86cda2e06d313f87"
+                "documentSha256": "751c8afaa5cb2f3f0f98207ac12cea5b1088daf9206ddc00d2ec4f670d0992ef"
               }
             ],
             "verification": "candidate",
@@ -5283,7 +5283,7 @@
           }
         },
         {
-          "id": "src-aa2002566139c1c4:551d24e962b7-p6-s-fuel_filter-replacement-1",
+          "id": "src-aa2002566139c1c4:751c8afaa5cb-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-aa2002566139c1c4",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -5334,7 +5334,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "551d24e962b7-p6-s-fuel_filter-replacement-1",
+            "id": "751c8afaa5cb-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Hyundai i30 1.6 petrol fuel filter replacement interval: 60,000 km",
             "action": "replacement",
@@ -5370,14 +5370,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "551d24e962b7a67c47719cbc47173c64cb1bdddf8bac920a86cda2e06d313f87",
+                "documentId": "751c8afaa5cb2f3f0f98207ac12cea5b1088daf9206ddc00d2ec4f670d0992ef",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance (variant 3)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Hyundai i30 1.6 petrol fuel filter replacement interval: 60,000 km\"",
-                "documentSha256": "551d24e962b7a67c47719cbc47173c64cb1bdddf8bac920a86cda2e06d313f87"
+                "documentSha256": "751c8afaa5cb2f3f0f98207ac12cea5b1088daf9206ddc00d2ec4f670d0992ef"
               }
             ],
             "verification": "candidate",
@@ -5400,7 +5400,7 @@
           }
         },
         {
-          "id": "src-aa2002566139c1c4:551d24e962b7-p7-s-spark_plugs-replacement-2",
+          "id": "src-aa2002566139c1c4:751c8afaa5cb-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-aa2002566139c1c4",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -5447,7 +5447,7 @@
             "reasons": []
           },
           "requirement": {
-            "id": "551d24e962b7-p7-s-spark_plugs-replacement-2",
+            "id": "751c8afaa5cb-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 75,000 km .",
             "action": "replacement",
@@ -5478,14 +5478,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "551d24e962b7a67c47719cbc47173c64cb1bdddf8bac920a86cda2e06d313f87",
+                "documentId": "751c8afaa5cb2f3f0f98207ac12cea5b1088daf9206ddc00d2ec4f670d0992ef",
                 "documentTitle": "Hyundai i30 2013 1.6 petrol service and maintenance (variant 3)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 75,000 km .\"",
-                "documentSha256": "551d24e962b7a67c47719cbc47173c64cb1bdddf8bac920a86cda2e06d313f87"
+                "documentSha256": "751c8afaa5cb2f3f0f98207ac12cea5b1088daf9206ddc00d2ec4f670d0992ef"
               }
             ],
             "verification": "candidate",
@@ -5508,7 +5508,7 @@
           }
         },
         {
-          "id": "src-475ed9d636b58a30:10b44dfba35d-p10-coolant-replacement-0",
+          "id": "src-475ed9d636b58a30:05764fba03ce-p10-coolant-replacement-0",
           "sourceId": "src-475ed9d636b58a30",
           "operationKey": "coolant",
           "task": "coolant",
@@ -5562,7 +5562,7 @@
             ]
           },
           "requirement": {
-            "id": "10b44dfba35d-p10-coolant-replacement-0",
+            "id": "05764fba03ce-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6 petrol is 120,000 km or 8 years , which",
             "action": "replacement",
@@ -5599,14 +5599,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "10b44dfba35d6c1a2440cb0a5104b4c319a0aaa3227dd9eb05ba9d858b45235e",
+                "documentId": "05764fba03ced419b530c819822ae5ffb832d9aecc34f60eef15867f8d72edf9",
                 "documentTitle": "Hyundai i30 2015 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6\"",
-                "documentSha256": "10b44dfba35d6c1a2440cb0a5104b4c319a0aaa3227dd9eb05ba9d858b45235e"
+                "documentSha256": "05764fba03ced419b530c819822ae5ffb832d9aecc34f60eef15867f8d72edf9"
               }
             ],
             "verification": "candidate",
@@ -5629,7 +5629,7 @@
           }
         },
         {
-          "id": "src-475ed9d636b58a30:10b44dfba35d-p5-s-air_filter-replacement-0",
+          "id": "src-475ed9d636b58a30:05764fba03ce-p5-s-air_filter-replacement-0",
           "sourceId": "src-475ed9d636b58a30",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -5678,7 +5678,7 @@
             ]
           },
           "requirement": {
-            "id": "10b44dfba35d-p5-s-air_filter-replacement-0",
+            "id": "05764fba03ce-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Replacement interval for the air filter is 45,000 km .",
             "action": "replacement",
@@ -5709,14 +5709,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "10b44dfba35d6c1a2440cb0a5104b4c319a0aaa3227dd9eb05ba9d858b45235e",
+                "documentId": "05764fba03ced419b530c819822ae5ffb832d9aecc34f60eef15867f8d72edf9",
                 "documentTitle": "Hyundai i30 2015 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Replacement interval for the air filter is 45,000 km .\"",
-                "documentSha256": "10b44dfba35d6c1a2440cb0a5104b4c319a0aaa3227dd9eb05ba9d858b45235e"
+                "documentSha256": "05764fba03ced419b530c819822ae5ffb832d9aecc34f60eef15867f8d72edf9"
               }
             ],
             "verification": "candidate",
@@ -5739,7 +5739,7 @@
           }
         },
         {
-          "id": "src-475ed9d636b58a30:10b44dfba35d-p6-s-fuel_filter-replacement-1",
+          "id": "src-475ed9d636b58a30:05764fba03ce-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-475ed9d636b58a30",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -5792,7 +5792,7 @@
             ]
           },
           "requirement": {
-            "id": "10b44dfba35d-p6-s-fuel_filter-replacement-1",
+            "id": "05764fba03ce-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Hyundai i30 1.6 petrol fuel filter replacement interval: 60,000 km",
             "action": "replacement",
@@ -5828,14 +5828,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "10b44dfba35d6c1a2440cb0a5104b4c319a0aaa3227dd9eb05ba9d858b45235e",
+                "documentId": "05764fba03ced419b530c819822ae5ffb832d9aecc34f60eef15867f8d72edf9",
                 "documentTitle": "Hyundai i30 2015 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Hyundai i30 1.6 petrol fuel filter replacement interval: 60,000 km\"",
-                "documentSha256": "10b44dfba35d6c1a2440cb0a5104b4c319a0aaa3227dd9eb05ba9d858b45235e"
+                "documentSha256": "05764fba03ced419b530c819822ae5ffb832d9aecc34f60eef15867f8d72edf9"
               }
             ],
             "verification": "candidate",
@@ -5858,7 +5858,7 @@
           }
         },
         {
-          "id": "src-475ed9d636b58a30:10b44dfba35d-p7-s-spark_plugs-replacement-2",
+          "id": "src-475ed9d636b58a30:05764fba03ce-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-475ed9d636b58a30",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -5907,7 +5907,7 @@
             ]
           },
           "requirement": {
-            "id": "10b44dfba35d-p7-s-spark_plugs-replacement-2",
+            "id": "05764fba03ce-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 75,000 km .",
             "action": "replacement",
@@ -5938,14 +5938,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "10b44dfba35d6c1a2440cb0a5104b4c319a0aaa3227dd9eb05ba9d858b45235e",
+                "documentId": "05764fba03ced419b530c819822ae5ffb832d9aecc34f60eef15867f8d72edf9",
                 "documentTitle": "Hyundai i30 2015 1.6 petrol service and maintenance",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 75,000 km .\"",
-                "documentSha256": "10b44dfba35d6c1a2440cb0a5104b4c319a0aaa3227dd9eb05ba9d858b45235e"
+                "documentSha256": "05764fba03ced419b530c819822ae5ffb832d9aecc34f60eef15867f8d72edf9"
               }
             ],
             "verification": "candidate",
@@ -6268,7 +6268,7 @@
           }
         },
         {
-          "id": "src-1960182687238c60:5075da03ad92-p10-coolant-replacement-0",
+          "id": "src-1960182687238c60:e37467b84f6c-p10-coolant-replacement-0",
           "sourceId": "src-1960182687238c60",
           "operationKey": "coolant",
           "task": "coolant",
@@ -6322,7 +6322,7 @@
             ]
           },
           "requirement": {
-            "id": "5075da03ad92-p10-coolant-replacement-0",
+            "id": "e37467b84f6c-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6 petrol is 120,000 km or 8 years , which",
             "action": "replacement",
@@ -6359,14 +6359,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5075da03ad927cc494f379af2ce6215ad0d109e9433b781e342905d054fd6ed8",
+                "documentId": "e37467b84f6ce2b1c801d71931bceec189a161539181204bf0e13a651b62f9b1",
                 "documentTitle": "Hyundai i30 2015 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Hyundai i30 1.6\"",
-                "documentSha256": "5075da03ad927cc494f379af2ce6215ad0d109e9433b781e342905d054fd6ed8"
+                "documentSha256": "e37467b84f6ce2b1c801d71931bceec189a161539181204bf0e13a651b62f9b1"
               }
             ],
             "verification": "candidate",
@@ -6389,7 +6389,7 @@
           }
         },
         {
-          "id": "src-1960182687238c60:5075da03ad92-p5-s-air_filter-replacement-0",
+          "id": "src-1960182687238c60:e37467b84f6c-p5-s-air_filter-replacement-0",
           "sourceId": "src-1960182687238c60",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -6438,7 +6438,7 @@
             ]
           },
           "requirement": {
-            "id": "5075da03ad92-p5-s-air_filter-replacement-0",
+            "id": "e37467b84f6c-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Replacement interval for the air filter is 45,000 km .",
             "action": "replacement",
@@ -6469,14 +6469,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5075da03ad927cc494f379af2ce6215ad0d109e9433b781e342905d054fd6ed8",
+                "documentId": "e37467b84f6ce2b1c801d71931bceec189a161539181204bf0e13a651b62f9b1",
                 "documentTitle": "Hyundai i30 2015 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Replacement interval for the air filter is 45,000 km .\"",
-                "documentSha256": "5075da03ad927cc494f379af2ce6215ad0d109e9433b781e342905d054fd6ed8"
+                "documentSha256": "e37467b84f6ce2b1c801d71931bceec189a161539181204bf0e13a651b62f9b1"
               }
             ],
             "verification": "candidate",
@@ -6499,7 +6499,7 @@
           }
         },
         {
-          "id": "src-1960182687238c60:5075da03ad92-p6-s-fuel_filter-replacement-1",
+          "id": "src-1960182687238c60:e37467b84f6c-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-1960182687238c60",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -6552,7 +6552,7 @@
             ]
           },
           "requirement": {
-            "id": "5075da03ad92-p6-s-fuel_filter-replacement-1",
+            "id": "e37467b84f6c-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Hyundai i30 1.6 petrol fuel filter replacement interval: 60,000 km",
             "action": "replacement",
@@ -6588,14 +6588,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5075da03ad927cc494f379af2ce6215ad0d109e9433b781e342905d054fd6ed8",
+                "documentId": "e37467b84f6ce2b1c801d71931bceec189a161539181204bf0e13a651b62f9b1",
                 "documentTitle": "Hyundai i30 2015 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Hyundai i30 1.6 petrol fuel filter replacement interval: 60,000 km\"",
-                "documentSha256": "5075da03ad927cc494f379af2ce6215ad0d109e9433b781e342905d054fd6ed8"
+                "documentSha256": "e37467b84f6ce2b1c801d71931bceec189a161539181204bf0e13a651b62f9b1"
               }
             ],
             "verification": "candidate",
@@ -6618,7 +6618,7 @@
           }
         },
         {
-          "id": "src-1960182687238c60:5075da03ad92-p7-s-spark_plugs-replacement-2",
+          "id": "src-1960182687238c60:e37467b84f6c-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-1960182687238c60",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -6667,7 +6667,7 @@
             ]
           },
           "requirement": {
-            "id": "5075da03ad92-p7-s-spark_plugs-replacement-2",
+            "id": "e37467b84f6c-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 60,000 km .",
             "action": "replacement",
@@ -6698,14 +6698,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5075da03ad927cc494f379af2ce6215ad0d109e9433b781e342905d054fd6ed8",
+                "documentId": "e37467b84f6ce2b1c801d71931bceec189a161539181204bf0e13a651b62f9b1",
                 "documentTitle": "Hyundai i30 2015 1.6 petrol service and maintenance (variant 2)",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 60,000 km .\"",
-                "documentSha256": "5075da03ad927cc494f379af2ce6215ad0d109e9433b781e342905d054fd6ed8"
+                "documentSha256": "e37467b84f6ce2b1c801d71931bceec189a161539181204bf0e13a651b62f9b1"
               }
             ],
             "verification": "candidate",
@@ -6728,7 +6728,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:28:34.479Z",
+      "resolvedAt": "2026-10-03T09:55:45.916Z",
       "msourceVersion": "msource/1"
     }
   }

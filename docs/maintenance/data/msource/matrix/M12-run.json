@@ -4,14 +4,14 @@
     "vehicleRef": "M12",
     "fingerprintKey": "car|honda|civic|2017|1498||petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:35:00.268Z",
-    "finishedAt": "2026-10-03T05:35:40.011Z",
+    "startedAt": "2026-10-03T10:01:16.604Z",
+    "finishedAt": "2026-10-03T10:02:09.684Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:35:00.268Z",
-        "finishedAt": "2026-10-03T05:35:00.268Z",
+        "startedAt": "2026-10-03T10:01:16.604Z",
+        "finishedAt": "2026-10-03T10:01:16.604Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,9 +25,9 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:35:00.268Z",
-        "finishedAt": "2026-10-03T05:35:00.271Z",
-        "durationMs": 3,
+        "startedAt": "2026-10-03T10:01:16.604Z",
+        "finishedAt": "2026-10-03T10:01:16.609Z",
+        "durationMs": 5,
         "counts": {
           "fable": 14,
           "registry": 0,
@@ -39,9 +39,9 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:35:00.271Z",
-        "finishedAt": "2026-10-03T05:35:00.271Z",
-        "durationMs": 0,
+        "startedAt": "2026-10-03T10:01:16.609Z",
+        "finishedAt": "2026-10-03T10:01:16.610Z",
+        "durationMs": 1,
         "counts": {
           "discovered": 16,
           "unique": 16,
@@ -54,11 +54,11 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:35:00.271Z",
-        "finishedAt": "2026-10-03T05:35:39.947Z",
-        "durationMs": 39676,
+        "startedAt": "2026-10-03T10:01:16.610Z",
+        "finishedAt": "2026-10-03T10:02:09.631Z",
+        "durationMs": 53021,
         "counts": {
-          "acquired": 17
+          "acquired": 16
         },
         "failures": [
           {
@@ -72,8 +72,8 @@
             "sourceId": "src-71db7e76a2a97d3c"
           },
           {
-            "code": "SOURCE_GONE",
-            "detail": "HTTP 404",
+            "code": "HTTP_ERROR",
+            "detail": "HTTP 429",
             "sourceId": "src-82ae63a5cd6debeb"
           },
           {
@@ -117,12 +117,12 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:35:39.947Z",
-        "finishedAt": "2026-10-03T05:35:40.011Z",
-        "durationMs": 64,
+        "startedAt": "2026-10-03T10:02:09.631Z",
+        "finishedAt": "2026-10-03T10:02:09.684Z",
+        "durationMs": 53,
         "counts": {
-          "extracted": 24,
-          "grounded": 24
+          "extracted": 14,
+          "grounded": 14
         },
         "failures": [
           {
@@ -196,11 +196,11 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "partial",
-        "startedAt": "2026-10-03T05:35:40.011Z",
-        "finishedAt": "2026-10-03T05:35:40.011Z",
+        "startedAt": "2026-10-03T10:02:09.684Z",
+        "finishedAt": "2026-10-03T10:02:09.684Z",
         "durationMs": 0,
         "counts": {
-          "PARTIAL": 14,
+          "PARTIAL": 13,
           "NOT_APPLICABLE": 2,
           "SUPPORTED": 1
         },
@@ -214,11 +214,6 @@
             "code": "SOURCE_NOT_APPLICABLE",
             "detail": "NOT_APPLICABLE: the document does not state its model years; fuel: diesel only",
             "sourceId": "src-4127a79490632b22"
-          },
-          {
-            "code": "SOURCE_NOT_APPLICABLE",
-            "detail": "PARTIAL: the document does not state its model years; market stated: EU (not IL)",
-            "sourceId": "src-ba188d8cfa137c5a"
           }
         ],
         "notes": []
@@ -226,8 +221,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:35:40.011Z",
-        "finishedAt": "2026-10-03T05:35:40.011Z",
+        "startedAt": "2026-10-03T10:02:09.684Z",
+        "finishedAt": "2026-10-03T10:02:09.684Z",
         "durationMs": 0,
         "counts": {
           "obligations": 0,
@@ -240,8 +235,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "failed",
-        "startedAt": "2026-10-03T05:35:40.011Z",
-        "finishedAt": "2026-10-03T05:35:40.011Z",
+        "startedAt": "2026-10-03T10:02:09.684Z",
+        "finishedAt": "2026-10-03T10:02:09.684Z",
         "durationMs": 0,
         "counts": {
           "items": 0,
@@ -263,8 +258,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:35:40.011Z",
-        "finishedAt": "2026-10-03T05:35:40.011Z",
+        "startedAt": "2026-10-03T10:02:09.684Z",
+        "finishedAt": "2026-10-03T10:02:09.684Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -273,8 +268,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:35:40.011Z",
-        "finishedAt": "2026-10-03T05:35:40.011Z",
+        "startedAt": "2026-10-03T10:02:09.684Z",
+        "finishedAt": "2026-10-03T10:02:09.684Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -333,8 +328,8 @@
         "by": "fable",
         "outcome": "failed",
         "failure": {
-          "code": "SOURCE_GONE",
-          "detail": "HTTP 404"
+          "code": "HTTP_ERROR",
+          "detail": "HTTP 429"
         }
       },
       {
@@ -522,15 +517,6 @@
           "code": "NO_SCHEDULE_SECTION",
           "detail": "no maintenance schedule section"
         }
-      },
-      {
-        "url": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-        "by": "archive",
-        "outcome": "not_applicable",
-        "failure": {
-          "code": "SOURCE_NOT_APPLICABLE",
-          "detail": "PARTIAL: the document does not state its model years; market stated: EU (not IL)"
-        }
       }
     ],
     "restricted": [
@@ -581,8 +567,8 @@
           "sourceName": "Honda Singapore (honda.com.sg)",
           "sourceType": "oem_schedule",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:35:00.268Z",
-          "retrievedAt": "2026-10-03T05:35:03.317Z",
+          "discoveredAt": "2026-10-03T10:01:16.604Z",
+          "retrievedAt": "2026-10-03T10:01:23.823Z",
           "format": "pdf",
           "documentType": "maintenance_schedule",
           "contentSha256": "61ae0b8ae28c59ba7d906ad099b2d7cd80cc3fff6a575b6f2fb7f90b9ec25689",
@@ -619,7 +605,7 @@
                   "detail": "robots.txt 403: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:01.011Z",
+              "decidedAt": "2026-10-03T10:01:20.355Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -635,7 +621,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:03.317Z",
+              "decidedAt": "2026-10-03T10:01:23.823Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -656,7 +642,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:03.317Z",
+              "decidedAt": "2026-10-03T10:01:23.823Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -679,8 +665,8 @@
           "sourceName": "Honda Motor Europe (honda.co.uk)",
           "sourceType": "oem_manual",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:35:00.268Z",
-          "retrievedAt": "2026-10-03T05:35:06.473Z",
+          "discoveredAt": "2026-10-03T10:01:16.604Z",
+          "retrievedAt": "2026-10-03T10:01:28.979Z",
           "format": "html",
           "documentType": "owners_manual",
           "contentSha256": "b7cb81d4591ba953a716aa06bf2cf5465152754ec1301be0b9113de6d17731be",
@@ -719,7 +705,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:06.183Z",
+              "decidedAt": "2026-10-03T10:01:28.339Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -735,7 +721,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:06.345Z",
+              "decidedAt": "2026-10-03T10:01:28.775Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -751,7 +737,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:06.472Z",
+              "decidedAt": "2026-10-03T10:01:28.979Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -772,7 +758,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:06.473Z",
+              "decidedAt": "2026-10-03T10:01:28.979Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -794,8 +780,8 @@
           "sourceName": "Honda Singapore (honda.com.sg)",
           "sourceType": "oem_schedule",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:35:00.268Z",
-          "retrievedAt": "2026-10-03T05:35:05.487Z",
+          "discoveredAt": "2026-10-03T10:01:16.604Z",
+          "retrievedAt": "2026-10-03T10:01:28.312Z",
           "format": "pdf",
           "documentType": "maintenance_schedule",
           "contentSha256": "c61732e31b4c25962b9f0ca0d91694f8f65d005b4f6e70b41b10ac54267aecd9",
@@ -832,7 +818,7 @@
                   "detail": "robots.txt 403: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:04.465Z",
+              "decidedAt": "2026-10-03T10:01:25.495Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -848,7 +834,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:05.486Z",
+              "decidedAt": "2026-10-03T10:01:28.312Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -869,7 +855,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:05.487Z",
+              "decidedAt": "2026-10-03T10:01:28.312Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -891,11 +877,11 @@
           "sourceName": "WhoCanFixMyCar (UK)",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:35:00.268Z",
-          "retrievedAt": "2026-10-03T05:35:15.050Z",
+          "discoveredAt": "2026-10-03T10:01:16.604Z",
+          "retrievedAt": "2026-10-03T10:01:33.896Z",
           "format": "html",
           "documentType": "maintenance_schedule",
-          "contentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+          "contentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
           "byteLength": 428081,
           "locale": "en",
           "markets": [
@@ -945,7 +931,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:14.753Z",
+              "decidedAt": "2026-10-03T10:01:33.522Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -961,7 +947,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:15.050Z",
+              "decidedAt": "2026-10-03T10:01:33.896Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -982,7 +968,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:15.050Z",
+              "decidedAt": "2026-10-03T10:01:33.896Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1005,12 +991,12 @@
           "sourceName": "CarsGuide (Australia)",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:35:00.268Z",
-          "retrievedAt": "2026-10-03T05:35:17.356Z",
+          "discoveredAt": "2026-10-03T10:01:16.604Z",
+          "retrievedAt": "2026-10-03T10:01:46.016Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "12aa96f7d28a835130100ac2bfc60c12275ce087f8ccb7a8aec3b99c4d533d25",
-          "byteLength": 338258,
+          "contentSha256": "b886bdba3ec2d80975925282d9c4ce1e90b2c00a8e9aef916e6c2cf1f79b70e6",
+          "byteLength": 338478,
           "locale": "en",
           "markets": [
             "AU"
@@ -1047,7 +1033,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:16.319Z",
+              "decidedAt": "2026-10-03T10:01:40.451Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1063,7 +1049,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:16.874Z",
+              "decidedAt": "2026-10-03T10:01:40.991Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1079,7 +1065,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:17.356Z",
+              "decidedAt": "2026-10-03T10:01:46.015Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1100,7 +1086,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:17.356Z",
+              "decidedAt": "2026-10-03T10:01:46.016Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1122,12 +1108,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "knowledge",
-          "discoveredAt": "2026-10-03T05:35:00.271Z",
-          "retrievedAt": "2026-10-03T05:35:21.965Z",
+          "discoveredAt": "2026-10-03T10:01:16.609Z",
+          "retrievedAt": "2026-10-03T10:01:52.708Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "b43d34f3120f6a91f57b4771474aa17b1a5b4aef35a5359cf35bf294a13ac0c9",
-          "byteLength": 172194,
+          "contentSha256": "ae3aebc250f3f003d3161f65e0857c227ddd6f7f5adb35af459374323307a1b3",
+          "byteLength": 172396,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1170,7 +1156,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:20.722Z",
+              "decidedAt": "2026-10-03T10:01:51.571Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1186,7 +1172,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:21.965Z",
+              "decidedAt": "2026-10-03T10:01:52.708Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1207,7 +1193,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:21.965Z",
+              "decidedAt": "2026-10-03T10:01:52.708Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1230,12 +1216,12 @@
           "sourceName": "CivicX.com (10th-gen owner forum)",
           "sourceType": "forum",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:35:00.268Z",
-          "retrievedAt": "2026-10-03T05:35:25.107Z",
+          "discoveredAt": "2026-10-03T10:01:16.604Z",
+          "retrievedAt": "2026-10-03T10:01:57.048Z",
           "format": "html",
           "documentType": "maintenance_schedule",
-          "contentSha256": "cc200838b53337ea31223ef89c88a5a8319a0311c85d3632d1173e31dc622198",
-          "byteLength": 193512,
+          "contentSha256": "7dfc128c0aa5c306e26678ff84d45df88017ac65cf56d5c0bf3d008e7acca1a9",
+          "byteLength": 193994,
           "locale": "en",
           "markets": [
             "US",
@@ -1275,7 +1261,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:24.528Z",
+              "decidedAt": "2026-10-03T10:01:56.297Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1291,7 +1277,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:24.719Z",
+              "decidedAt": "2026-10-03T10:01:56.519Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1307,7 +1293,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:25.106Z",
+              "decidedAt": "2026-10-03T10:01:57.048Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1328,7 +1314,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:25.106Z",
+              "decidedAt": "2026-10-03T10:01:57.048Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1350,8 +1336,8 @@
           "sourceName": "www.honda.co.uk",
           "sourceType": "oem_manual",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:35:06.482Z",
-          "retrievedAt": "2026-10-03T05:35:26.488Z",
+          "discoveredAt": "2026-10-03T10:01:28.995Z",
+          "retrievedAt": "2026-10-03T10:01:57.175Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "a5762c936a7c724fd464155b140fa39ba400297198e48e4c62598ec2a267249c",
@@ -1392,7 +1378,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:26.220Z",
+              "decidedAt": "2026-10-03T10:01:57.053Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1408,7 +1394,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:26.488Z",
+              "decidedAt": "2026-10-03T10:01:57.174Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1429,7 +1415,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:26.488Z",
+              "decidedAt": "2026-10-03T10:01:57.175Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1451,8 +1437,8 @@
           "sourceName": "www.honda.co.uk",
           "sourceType": "oem_manual",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:35:06.482Z",
-          "retrievedAt": "2026-10-03T05:35:27.940Z",
+          "discoveredAt": "2026-10-03T10:01:28.995Z",
+          "retrievedAt": "2026-10-03T10:01:58.768Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "e14b144709c608f80765d0e3968b34e38c4f40b457f4fb35f34ee56b824c6d36",
@@ -1489,7 +1475,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:26.220Z",
+              "decidedAt": "2026-10-03T10:01:57.053Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1505,7 +1491,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:27.940Z",
+              "decidedAt": "2026-10-03T10:01:58.767Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1526,7 +1512,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:27.940Z",
+              "decidedAt": "2026-10-03T10:01:58.768Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1548,12 +1534,12 @@
           "sourceName": "www.honda.co.uk",
           "sourceType": "oem_manual",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:35:06.483Z",
-          "retrievedAt": "2026-10-03T05:35:29.440Z",
+          "discoveredAt": "2026-10-03T10:01:28.995Z",
+          "retrievedAt": "2026-10-03T10:02:00.269Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "3c107b67be62423f0d6591b519979efd59bc10cd5c2b22c4c302ef6c941fa18e",
-          "byteLength": 853515,
+          "contentSha256": "e19c36f1ce9509fe99752196a7c60c9a9fb21399477970552be73cef7c4fb27c",
+          "byteLength": 853667,
           "locale": null,
           "markets": [
             "EU"
@@ -1601,7 +1587,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:27.946Z",
+              "decidedAt": "2026-10-03T10:01:58.776Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1617,7 +1603,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:29.440Z",
+              "decidedAt": "2026-10-03T10:02:00.269Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1638,7 +1624,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:29.440Z",
+              "decidedAt": "2026-10-03T10:02:00.269Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1660,8 +1646,8 @@
           "sourceName": "www.honda.co.uk",
           "sourceType": "oem_manual",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:35:06.483Z",
-          "retrievedAt": "2026-10-03T05:35:30.872Z",
+          "discoveredAt": "2026-10-03T10:01:28.995Z",
+          "retrievedAt": "2026-10-03T10:02:01.710Z",
           "format": "html",
           "documentType": "other",
           "contentSha256": "4a9c1258f443a6475e2fee0a76467e7a109720029e7061efadc11a76cf8eb9c1",
@@ -1699,7 +1685,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:27.946Z",
+              "decidedAt": "2026-10-03T10:01:58.776Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1715,7 +1701,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:30.872Z",
+              "decidedAt": "2026-10-03T10:02:01.710Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1736,7 +1722,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:30.872Z",
+              "decidedAt": "2026-10-03T10:02:01.710Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1758,12 +1744,12 @@
           "sourceName": "www.carsguide.com.au",
           "sourceType": "publication",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:35:17.363Z",
-          "retrievedAt": "2026-10-03T05:35:31.643Z",
+          "discoveredAt": "2026-10-03T10:01:46.025Z",
+          "retrievedAt": "2026-10-03T10:02:04.179Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "85e017a21581b5c410735365286f4a756ed6aedfef381afd0d78ae77d337f6b7",
-          "byteLength": 494679,
+          "contentSha256": "9e0ce633c8d8a1622935a613136e6472e968ddd7701f42bf6de3f7cf9097bb86",
+          "byteLength": 494639,
           "locale": null,
           "markets": [
             "AU"
@@ -1803,7 +1789,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:30.878Z",
+              "decidedAt": "2026-10-03T10:02:01.718Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1819,7 +1805,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:31.643Z",
+              "decidedAt": "2026-10-03T10:02:04.178Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1840,7 +1826,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:31.643Z",
+              "decidedAt": "2026-10-03T10:02:04.179Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1862,11 +1848,11 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:35:21.972Z",
-          "retrievedAt": "2026-10-03T05:35:34.509Z",
+          "discoveredAt": "2026-10-03T10:01:52.720Z",
+          "retrievedAt": "2026-10-03T10:02:06.254Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "ede96c0e7529b4212eac3ad2a7e72229ec3afd97918b71d0e83540959d486c7e",
+          "contentSha256": "795f57b8aa106da61e3337df637adc02541707e4075ad74ac1f0f4be149a9832",
           "byteLength": 269190,
           "locale": null,
           "markets": [],
@@ -1909,7 +1895,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:32.448Z",
+              "decidedAt": "2026-10-03T10:02:04.187Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1925,7 +1911,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:34.508Z",
+              "decidedAt": "2026-10-03T10:02:06.253Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1946,7 +1932,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:34.509Z",
+              "decidedAt": "2026-10-03T10:02:06.254Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1968,12 +1954,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:35:21.972Z",
-          "retrievedAt": "2026-10-03T05:35:35.361Z",
+          "discoveredAt": "2026-10-03T10:01:52.720Z",
+          "retrievedAt": "2026-10-03T10:02:07.079Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "93d228b95d75a1e735403ac8cf6e7b324c8eb635ed97c0659c9aaf52f571524d",
-          "byteLength": 278384,
+          "contentSha256": "41758364f39c588a7d5ab22af849837de4ef04cb56632c14dce631489ed1f1a5",
+          "byteLength": 278293,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2006,7 +1992,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:32.448Z",
+              "decidedAt": "2026-10-03T10:02:04.187Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2022,7 +2008,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:35.361Z",
+              "decidedAt": "2026-10-03T10:02:07.078Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2043,7 +2029,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:35.361Z",
+              "decidedAt": "2026-10-03T10:02:07.079Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2065,21 +2051,19 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:35:21.972Z",
-          "retrievedAt": "2026-10-03T05:35:38.035Z",
+          "discoveredAt": "2026-10-03T10:01:52.720Z",
+          "retrievedAt": "2026-10-03T10:02:08.582Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "7bc18ea081c516e2431eef6da5a3befc4c15a151696044abaf867d46db928014",
-          "byteLength": 166939,
+          "contentSha256": "1a7c4ab34e426d2cdc6c763c31c8516bcefba8d7903d039c4546a489b17f0e99",
+          "byteLength": 166870,
           "locale": null,
           "markets": [],
           "statedApplicability": {
             "models": [
               "Civic"
             ],
-            "modelVariants": [
-              "e"
-            ],
+            "modelVariants": [],
             "yearFrom": null,
             "yearTo": null,
             "engineCodes": [],
@@ -2103,7 +2087,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:35.363Z",
+              "decidedAt": "2026-10-03T10:02:07.082Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2119,7 +2103,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:38.035Z",
+              "decidedAt": "2026-10-03T10:02:08.581Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2140,7 +2124,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:38.035Z",
+              "decidedAt": "2026-10-03T10:02:08.582Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2162,12 +2146,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:35:21.972Z",
-          "retrievedAt": "2026-10-03T05:35:38.199Z",
+          "discoveredAt": "2026-10-03T10:01:52.720Z",
+          "retrievedAt": "2026-10-03T10:02:09.629Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "f549e57bd5a5eb348e359bab4d6eae525ff47440b3655da8cd1bc93a60abbc6d",
-          "byteLength": 176516,
+          "contentSha256": "d86e33797ab04690745188b766171f063d2dcdc33f1e5bd125bc9d91e6be89f4",
+          "byteLength": 176321,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -2201,7 +2185,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:35.364Z",
+              "decidedAt": "2026-10-03T10:02:07.082Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2217,7 +2201,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:38.199Z",
+              "decidedAt": "2026-10-03T10:02:09.629Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -2238,7 +2222,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:35:38.199Z",
+              "decidedAt": "2026-10-03T10:02:09.629Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -2249,125 +2233,11 @@
             "basis": "none",
             "detail": "carwiki.de"
           }
-        },
-        {
-          "sourceId": "src-ba188d8cfa137c5a",
-          "canonicalUrl": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-          "finalUrl": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-          "chain": [
-            "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide"
-          ],
-          "sourceName": "web.archive.org",
-          "sourceType": "other",
-          "discoveredBy": "archive",
-          "discoveredAt": "2026-10-03T05:35:20.819Z",
-          "retrievedAt": "2026-10-03T05:35:39.943Z",
-          "format": "html",
-          "documentType": "maintenance_schedule",
-          "contentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-          "byteLength": 402467,
-          "locale": null,
-          "markets": [
-            "EU"
-          ],
-          "statedApplicability": {
-            "models": [
-              "Civic"
-            ],
-            "modelVariants": [
-              "e"
-            ],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [
-              1000,
-              1200,
-              1300,
-              1335,
-              1400,
-              1500,
-              1600,
-              1700,
-              1800,
-              2000,
-              2200
-            ],
-            "fuels": [],
-            "markets": [
-              "EU"
-            ],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_unavailable",
-              "url": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-              "host": "web.archive.org",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://web.archive.org/robots.txt",
-                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:35:38.870Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-              "host": "web.archive.org",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:35:39.942Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-              "host": "web.archive.org",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://web.archive.org/robots.txt",
-                  "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:35:39.943Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "archiveOf": "https://www.whocanfixmycar.com/advice/honda-Civic-owners-guide",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "web.archive.org"
-          }
         }
       ],
       "evidence": [
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-engine_oil-replacement-0",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-engine_oil-replacement-0",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "engine_oil",
           "task": "engine_oil",
@@ -2418,7 +2288,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-engine_oil-replacement-0",
+            "id": "a021de811010-p4-engine_oil-replacement-0",
             "task": "engine_oil",
             "taskText": "Replace engine oil Every 6,000 miles/1 year",
             "action": "replacement",
@@ -2452,7 +2322,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2462,7 +2332,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace engine oil Every 6,000 miles/1 year\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -2482,7 +2352,7 @@
           }
         },
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-oil_filter-replacement-1",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-oil_filter-replacement-1",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "oil_filter",
           "task": "oil_filter",
@@ -2533,7 +2403,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-oil_filter-replacement-1",
+            "id": "a021de811010-p4-oil_filter-replacement-1",
             "task": "oil_filter",
             "taskText": "Replace engine oil filter Every 12,000 miles/2 years",
             "action": "replacement",
@@ -2567,7 +2437,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2577,7 +2447,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace engine oil filter Every 12,000 miles/2 years\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -2597,7 +2467,7 @@
           }
         },
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-air_filter-replacement-2",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-air_filter-replacement-2",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -2648,7 +2518,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-air_filter-replacement-2",
+            "id": "a021de811010-p4-air_filter-replacement-2",
             "task": "air_filter",
             "taskText": "Replace air cleaner element Every 18,500 miles",
             "action": "replacement",
@@ -2681,7 +2551,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2691,7 +2561,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace air cleaner element Every 18,500 miles\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -2711,7 +2581,7 @@
           }
         },
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-spark_plugs-replacement-3",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-spark_plugs-replacement-3",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -2762,7 +2632,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-spark_plugs-replacement-3",
+            "id": "a021de811010-p4-spark_plugs-replacement-3",
             "task": "spark_plugs",
             "taskText": "Replace spark plugs Every 62,000 miles",
             "action": "replacement",
@@ -2795,7 +2665,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2805,7 +2675,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace spark plugs Every 62,000 miles\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -2825,7 +2695,7 @@
           }
         },
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-coolant-replacement-4",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-coolant-replacement-4",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "coolant",
           "task": "coolant",
@@ -2876,7 +2746,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-coolant-replacement-4",
+            "id": "a021de811010-p4-coolant-replacement-4",
             "task": "coolant",
             "taskText": "Replace coolant Every 124,000 miles/10 years. Thereafter every 62,000 miles/5 years",
             "action": "replacement",
@@ -2910,7 +2780,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -2920,7 +2790,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace coolant Every 124,000 miles/10 years. Thereafter every 62,000 miles/5 ye\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -2940,7 +2810,7 @@
           }
         },
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-transmission_fluid-replacement-5",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-transmission_fluid-replacement-5",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "transmission_fluid",
           "task": "transmission_fluid",
@@ -2991,7 +2861,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-transmission_fluid-replacement-5",
+            "id": "a021de811010-p4-transmission_fluid-replacement-5",
             "task": "transmission_fluid",
             "taskText": "Replace transmission fluid Every 93,000 miles/6 years",
             "action": "replacement",
@@ -3025,7 +2895,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3035,7 +2905,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace transmission fluid Every 93,000 miles/6 years\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -3055,7 +2925,7 @@
           }
         },
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-cabin_filter-replacement-6",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-cabin_filter-replacement-6",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "cabin_filter",
           "task": "cabin_filter",
@@ -3104,7 +2974,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-cabin_filter-replacement-6",
+            "id": "a021de811010-p4-cabin_filter-replacement-6",
             "task": "cabin_filter",
             "taskText": "Replace dust and pollen filter Every year",
             "action": "replacement",
@@ -3134,7 +3004,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3144,7 +3014,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace dust and pollen filter Every year\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -3164,7 +3034,7 @@
           }
         },
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-brake_system-inspection-7",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-brake_system-inspection-7",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "brakes_inspection",
           "task": "brake_system",
@@ -3215,7 +3085,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-brake_system-inspection-7",
+            "id": "a021de811010-p4-brake_system-inspection-7",
             "task": "brake_system",
             "taskText": "Inspect front and rear brakes Every 6,000 miles/1 year",
             "action": "inspection",
@@ -3249,7 +3119,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3259,7 +3129,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Inspect front and rear brakes Every 6,000 miles/1 year\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -3279,7 +3149,7 @@
           }
         },
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-brake_fluid-replacement-8",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-brake_fluid-replacement-8",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "brake_fluid",
           "task": "brake_fluid",
@@ -3328,7 +3198,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-brake_fluid-replacement-8",
+            "id": "a021de811010-p4-brake_fluid-replacement-8",
             "task": "brake_fluid",
             "taskText": "Replace brake fluid Every 3 years",
             "action": "replacement",
@@ -3358,7 +3228,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3368,7 +3238,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace brake fluid Every 3 years\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -3388,7 +3258,7 @@
           }
         },
         {
-          "id": "src-3714d4c6abee7cbc:5d73258842a7-p4-fuel_filter-replacement-9",
+          "id": "src-3714d4c6abee7cbc:a021de811010-p4-fuel_filter-replacement-9",
           "sourceId": "src-3714d4c6abee7cbc",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -3439,7 +3309,7 @@
             ]
           },
           "requirement": {
-            "id": "5d73258842a7-p4-fuel_filter-replacement-9",
+            "id": "a021de811010-p4-fuel_filter-replacement-9",
             "task": "fuel_filter",
             "taskText": "Replace fuel filter Every 111,500 miles",
             "action": "replacement",
@@ -3472,7 +3342,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742",
+                "documentId": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843",
                 "documentTitle": "Honda Civic Owners' Guide — WhoCanFixMyCar",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3482,7 +3352,7 @@
                 "page": 4,
                 "table": "Service intervals",
                 "locator": "line \"Replace fuel filter Every 111,500 miles\"",
-                "documentSha256": "5d73258842a77c29127101f0271b377732c5df0cb69326fb58386f0e9c8ce742"
+                "documentSha256": "a021de8110108d97eb061f99e61cbe04fa1d9f80f8f4b13d069cea144fcbf843"
               }
             ],
             "verification": "candidate",
@@ -3502,7 +3372,7 @@
           }
         },
         {
-          "id": "src-4127a79490632b22:b43d34f3120f-p4-s-periodic_service-other-0",
+          "id": "src-4127a79490632b22:ae3aebc250f3-p4-s-periodic_service-other-0",
           "sourceId": "src-4127a79490632b22",
           "operationKey": "periodic_service",
           "task": "periodic_service",
@@ -3549,7 +3419,7 @@
             ]
           },
           "requirement": {
-            "id": "b43d34f3120f-p4-s-periodic_service-other-0",
+            "id": "ae3aebc250f3-p4-s-periodic_service-other-0",
             "task": "periodic_service",
             "taskText": "Alle Honda Civic Modelle der letzten vier Modellgenerationen müssen immer nach 20.000 km zur Inspektion in den Fachbetrieb.",
             "action": "other",
@@ -3576,14 +3446,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "b43d34f3120f6a91f57b4771474aa17b1a5b4aef35a5359cf35bf294a13ac0c9",
+                "documentId": "ae3aebc250f3f003d3161f65e0857c227ddd6f7f5adb35af459374323307a1b3",
                 "documentTitle": "https://carwiki.de/honda-civic-inspektion",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 4,
                 "section": "Zusammenfassung der Intervalle bei der Honda Civic Inspektion",
                 "locator": "column sentence \"Alle Honda Civic Modelle der letzten vier Modellgenerationen müssen immer nach 2\"",
-                "documentSha256": "b43d34f3120f6a91f57b4771474aa17b1a5b4aef35a5359cf35bf294a13ac0c9"
+                "documentSha256": "ae3aebc250f3f003d3161f65e0857c227ddd6f7f5adb35af459374323307a1b3"
               }
             ],
             "verification": "candidate",
@@ -3603,7 +3473,7 @@
           }
         },
         {
-          "id": "src-4d63f5a19927f1e7:cc200838b533-p2-brake_system-replacement-0",
+          "id": "src-4d63f5a19927f1e7:7dfc128c0aa5-p2-brake_system-replacement-0",
           "sourceId": "src-4d63f5a19927f1e7",
           "operationKey": "OTHER",
           "task": "brake_system",
@@ -3656,7 +3526,7 @@
             ]
           },
           "requirement": {
-            "id": "cc200838b533-p2-brake_system-replacement-0",
+            "id": "7dfc128c0aa5-p2-brake_system-replacement-0",
             "task": "brake_system",
             "taskText": "My MM recently signaled that service was needed. I knew an oil change was coming up. However the MM code said I also nee",
             "action": "replacement",
@@ -3688,7 +3558,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "cc200838b53337ea31223ef89c88a5a8319a0311c85d3632d1173e31dc622198",
+                "documentId": "7dfc128c0aa5c306e26678ff84d45df88017ac65cf56d5c0bf3d008e7acca1a9",
                 "documentTitle": "Maintenance schedule — CivicX.com forum",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3698,7 +3568,7 @@
                 "page": 2,
                 "table": "Maintenance Schedule ?",
                 "locator": "line \"My MM recently signaled that service was needed. I knew an oil change was coming\"",
-                "documentSha256": "cc200838b53337ea31223ef89c88a5a8319a0311c85d3632d1173e31dc622198"
+                "documentSha256": "7dfc128c0aa5c306e26678ff84d45df88017ac65cf56d5c0bf3d008e7acca1a9"
               }
             ],
             "verification": "candidate",
@@ -3721,7 +3591,7 @@
           }
         },
         {
-          "id": "src-4d63f5a19927f1e7:cc200838b533-p2-brake_fluid-replacement-1",
+          "id": "src-4d63f5a19927f1e7:7dfc128c0aa5-p2-brake_fluid-replacement-1",
           "sourceId": "src-4d63f5a19927f1e7",
           "operationKey": "brake_fluid",
           "task": "brake_fluid",
@@ -3774,7 +3644,7 @@
             ]
           },
           "requirement": {
-            "id": "cc200838b533-p2-brake_fluid-replacement-1",
+            "id": "7dfc128c0aa5-p2-brake_fluid-replacement-1",
             "task": "brake_fluid",
             "taskText": "And, in the chart that #12 provided, it also mentions that brake fluid change is every 3 years.",
             "action": "replacement",
@@ -3806,7 +3676,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "cc200838b53337ea31223ef89c88a5a8319a0311c85d3632d1173e31dc622198",
+                "documentId": "7dfc128c0aa5c306e26678ff84d45df88017ac65cf56d5c0bf3d008e7acca1a9",
                 "documentTitle": "Maintenance schedule — CivicX.com forum",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3816,7 +3686,7 @@
                 "page": 2,
                 "table": "Maintenance Schedule ?",
                 "locator": "line \"And, in the chart that #12 provided, it also mentions that brake fluid change is\"",
-                "documentSha256": "cc200838b53337ea31223ef89c88a5a8319a0311c85d3632d1173e31dc622198"
+                "documentSha256": "7dfc128c0aa5c306e26678ff84d45df88017ac65cf56d5c0bf3d008e7acca1a9"
               }
             ],
             "verification": "candidate",
@@ -3839,7 +3709,7 @@
           }
         },
         {
-          "id": "src-4d63f5a19927f1e7:cc200838b533-p2-transmission_fluid-replacement-2",
+          "id": "src-4d63f5a19927f1e7:7dfc128c0aa5-p2-transmission_fluid-replacement-2",
           "sourceId": "src-4d63f5a19927f1e7",
           "operationKey": "transmission_fluid",
           "task": "transmission_fluid",
@@ -3895,7 +3765,7 @@
             ]
           },
           "requirement": {
-            "id": "cc200838b533-p2-transmission_fluid-replacement-2",
+            "id": "7dfc128c0aa5-p2-transmission_fluid-replacement-2",
             "task": "transmission_fluid",
             "taskText": "Now, I have a 2017 Civic EX-T. I'm up to 41,000 miles and I've never seen MM code 3 (replace transmission fluid). I've b",
             "action": "replacement",
@@ -3930,7 +3800,7 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "cc200838b53337ea31223ef89c88a5a8319a0311c85d3632d1173e31dc622198",
+                "documentId": "7dfc128c0aa5c306e26678ff84d45df88017ac65cf56d5c0bf3d008e7acca1a9",
                 "documentTitle": "Maintenance schedule — CivicX.com forum",
                 "authority": "vehicle_document",
                 "markets": [
@@ -3940,7 +3810,7 @@
                 "page": 2,
                 "table": "Maintenance Schedule ?",
                 "locator": "line \"Now, I have a 2017 Civic EX-T. I'm up to 41,000 miles and I've never seen MM cod\"",
-                "documentSha256": "cc200838b53337ea31223ef89c88a5a8319a0311c85d3632d1173e31dc622198"
+                "documentSha256": "7dfc128c0aa5c306e26678ff84d45df88017ac65cf56d5c0bf3d008e7acca1a9"
               }
             ],
             "verification": "candidate",
@@ -3961,1144 +3831,9 @@
             },
             "yearsBasis": "section"
           }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-engine_oil-replacement-0",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "engine_oil",
-          "task": "engine_oil",
-          "originalText": "Replace engine oil Every 6,000 miles/1 year",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 9656,
-          "intervalMiles": 6000,
-          "intervalMonths": 12,
-          "intervalYears": 1,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": true,
-          "rule": "WHICHEVER_COMES_FIRST",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [
-            "stated in miles: 6000 mi ≈ 9656 km"
-          ],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Replace engine oil Every 6,000 miles/1 year\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-engine_oil-replacement-0",
-            "task": "engine_oil",
-            "taskText": "Replace engine oil Every 6,000 miles/1 year",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 6000,
-                "unit": "mi"
-              },
-              "everyMonths": 12,
-              "first": null,
-              "rule": "whichever_first",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Replace engine oil Every 6,000 miles/1 year\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-oil_filter-replacement-1",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "oil_filter",
-          "task": "oil_filter",
-          "originalText": "Replace engine oil filter Every 12,000 miles/2 years",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 19312,
-          "intervalMiles": 12000,
-          "intervalMonths": 24,
-          "intervalYears": 2,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": true,
-          "rule": "WHICHEVER_COMES_FIRST",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [
-            "stated in miles: 12000 mi ≈ 19312 km"
-          ],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Replace engine oil filter Every 12,000 miles/2 years\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-oil_filter-replacement-1",
-            "task": "oil_filter",
-            "taskText": "Replace engine oil filter Every 12,000 miles/2 years",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 12000,
-                "unit": "mi"
-              },
-              "everyMonths": 24,
-              "first": null,
-              "rule": "whichever_first",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Replace engine oil filter Every 12,000 miles/2 years\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-air_filter-replacement-2",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "air_filter",
-          "task": "air_filter",
-          "originalText": "Replace air cleaner element Every 18,500 miles",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 29773,
-          "intervalMiles": 18500,
-          "intervalMonths": null,
-          "intervalYears": null,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": false,
-          "rule": "DISTANCE_ONLY",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [
-            "stated in miles: 18500 mi ≈ 29773 km"
-          ],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Replace air cleaner element Every 18,500 miles\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-air_filter-replacement-2",
-            "task": "air_filter",
-            "taskText": "Replace air cleaner element Every 18,500 miles",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 18500,
-                "unit": "mi"
-              },
-              "first": null,
-              "rule": "distance_only",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Replace air cleaner element Every 18,500 miles\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-spark_plugs-replacement-3",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "spark_plugs",
-          "task": "spark_plugs",
-          "originalText": "Replace spark plugs Every 62,000 miles",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 99779,
-          "intervalMiles": 62000,
-          "intervalMonths": null,
-          "intervalYears": null,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": false,
-          "rule": "DISTANCE_ONLY",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [
-            "stated in miles: 62000 mi ≈ 99779 km"
-          ],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Replace spark plugs Every 62,000 miles\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-spark_plugs-replacement-3",
-            "task": "spark_plugs",
-            "taskText": "Replace spark plugs Every 62,000 miles",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 62000,
-                "unit": "mi"
-              },
-              "first": null,
-              "rule": "distance_only",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Replace spark plugs Every 62,000 miles\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-coolant-replacement-4",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "coolant",
-          "task": "coolant",
-          "originalText": "Replace coolant Every 124,000 miles/10 years. Thereafter every 62,000 miles/5 years",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 199559,
-          "intervalMiles": 124000,
-          "intervalMonths": 120,
-          "intervalYears": 10,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": true,
-          "rule": "WHICHEVER_COMES_FIRST",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [
-            "stated in miles: 124000 mi ≈ 199559 km"
-          ],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Replace coolant Every 124,000 miles/10 years. Thereafter every 62,000 miles/5 ye\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-coolant-replacement-4",
-            "task": "coolant",
-            "taskText": "Replace coolant Every 124,000 miles/10 years. Thereafter every 62,000 miles/5 years",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 124000,
-                "unit": "mi"
-              },
-              "everyMonths": 120,
-              "first": null,
-              "rule": "whichever_first",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Replace coolant Every 124,000 miles/10 years. Thereafter every 62,000 miles/5 ye\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-transmission_fluid-replacement-5",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "transmission_fluid",
-          "task": "transmission_fluid",
-          "originalText": "Replace transmission fluid Every 93,000 miles/6 years",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 149669,
-          "intervalMiles": 93000,
-          "intervalMonths": 72,
-          "intervalYears": 6,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": true,
-          "rule": "WHICHEVER_COMES_FIRST",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [
-            "stated in miles: 93000 mi ≈ 149669 km"
-          ],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Replace transmission fluid Every 93,000 miles/6 years\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-transmission_fluid-replacement-5",
-            "task": "transmission_fluid",
-            "taskText": "Replace transmission fluid Every 93,000 miles/6 years",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 93000,
-                "unit": "mi"
-              },
-              "everyMonths": 72,
-              "first": null,
-              "rule": "whichever_first",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Replace transmission fluid Every 93,000 miles/6 years\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-cabin_filter-replacement-6",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "cabin_filter",
-          "task": "cabin_filter",
-          "originalText": "Replace dust and pollen filter Every year",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": null,
-          "intervalMiles": null,
-          "intervalMonths": 12,
-          "intervalYears": 1,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": false,
-          "rule": "TIME_ONLY",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Replace dust and pollen filter Every year\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-cabin_filter-replacement-6",
-            "task": "cabin_filter",
-            "taskText": "Replace dust and pollen filter Every year",
-            "action": "replacement",
-            "interval": {
-              "everyMonths": 12,
-              "first": null,
-              "rule": "time_only",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Replace dust and pollen filter Every year\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-brake_system-inspection-7",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "brakes_inspection",
-          "task": "brake_system",
-          "originalText": "Inspect front and rear brakes Every 6,000 miles/1 year",
-          "action": "inspection",
-          "inspectionOrReplacement": "inspection",
-          "intervalKm": 9656,
-          "intervalMiles": 6000,
-          "intervalMonths": 12,
-          "intervalYears": 1,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": true,
-          "rule": "WHICHEVER_COMES_FIRST",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [
-            "stated in miles: 6000 mi ≈ 9656 km"
-          ],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Inspect front and rear brakes Every 6,000 miles/1 year\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-brake_system-inspection-7",
-            "task": "brake_system",
-            "taskText": "Inspect front and rear brakes Every 6,000 miles/1 year",
-            "action": "inspection",
-            "interval": {
-              "every": {
-                "value": 6000,
-                "unit": "mi"
-              },
-              "everyMonths": 12,
-              "first": null,
-              "rule": "whichever_first",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Inspect front and rear brakes Every 6,000 miles/1 year\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-brake_fluid-replacement-8",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "brake_fluid",
-          "task": "brake_fluid",
-          "originalText": "Replace brake fluid Every 3 years",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": null,
-          "intervalMiles": null,
-          "intervalMonths": 36,
-          "intervalYears": 3,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": false,
-          "rule": "TIME_ONLY",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Replace brake fluid Every 3 years\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-brake_fluid-replacement-8",
-            "task": "brake_fluid",
-            "taskText": "Replace brake fluid Every 3 years",
-            "action": "replacement",
-            "interval": {
-              "everyMonths": 36,
-              "first": null,
-              "rule": "time_only",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Replace brake fluid Every 3 years\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
-        },
-        {
-          "id": "src-ba188d8cfa137c5a:1138567b56ea-p4-fuel_filter-replacement-9",
-          "sourceId": "src-ba188d8cfa137c5a",
-          "operationKey": "fuel_filter",
-          "task": "fuel_filter",
-          "originalText": "Replace fuel filter Every 111,500 miles",
-          "action": "replacement",
-          "inspectionOrReplacement": "replacement",
-          "intervalKm": 179442,
-          "intervalMiles": 111500,
-          "intervalMonths": null,
-          "intervalYears": null,
-          "firstKm": null,
-          "firstMonths": null,
-          "whicheverComesFirst": false,
-          "rule": "DISTANCE_ONLY",
-          "normalConditions": true,
-          "severeConditions": false,
-          "engineApplicability": [],
-          "modelApplicability": [
-            "Civic"
-          ],
-          "yearApplicability": null,
-          "marketApplicability": [
-            "EU"
-          ],
-          "notes": [
-            "stated in miles: 111500 mi ≈ 179442 km"
-          ],
-          "sourceLocation": {
-            "page": 4,
-            "section": "Service intervals",
-            "locator": "line \"Replace fuel filter Every 111,500 miles\""
-          },
-          "extractionMethod": "sentence",
-          "grounded": true,
-          "match": {
-            "status": "PARTIAL",
-            "dimensions": {
-              "make": "match",
-              "model": "match",
-              "year": "unstated",
-              "displacement": "unstated",
-              "engineCode": "unstated",
-              "market": "unstated"
-            },
-            "reasons": [
-              "the document does not state its model years",
-              "market stated: EU (not IL)"
-            ]
-          },
-          "requirement": {
-            "id": "1138567b56ea-p4-fuel_filter-replacement-9",
-            "task": "fuel_filter",
-            "taskText": "Replace fuel filter Every 111,500 miles",
-            "action": "replacement",
-            "interval": {
-              "every": {
-                "value": 111500,
-                "unit": "mi"
-              },
-              "first": null,
-              "rule": "distance_only",
-              "repeats": true
-            },
-            "applicability": {
-              "kinds": [
-                "car"
-              ],
-              "makes": [
-                "honda"
-              ],
-              "models": [
-                "Civic"
-              ],
-              "markets": [
-                "EU"
-              ],
-              "coverageUnknown": [
-                "modelYear"
-              ]
-            },
-            "authority": "vehicle_document",
-            "evidence": [
-              {
-                "documentId": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d",
-                "documentTitle": "https://web.archive.org/web/20250616032706id_/https://www.whocanfixmycar.com/advice/honda-civic-owners-guide",
-                "authority": "vehicle_document",
-                "markets": [
-                  "EU"
-                ],
-                "edition": "versions were introduced, giving drivers more o",
-                "page": 4,
-                "table": "Service intervals",
-                "locator": "line \"Replace fuel filter Every 111,500 miles\"",
-                "documentSha256": "1138567b56ea86bd4a10508436b82e6a7efb04ff2d3cfc815fc4985e9a171f0d"
-              }
-            ],
-            "verification": "candidate",
-            "extraction": {
-              "method": "deterministic_parser",
-              "by": "autokeep-extractor/2",
-              "at": "2026-10-03",
-              "grounded": true
-            }
-          },
-          "itemApplicability": {
-            "scope": "MODEL_GENERIC",
-            "basis": "the source names the model only",
-            "sufficient": false,
-            "years": null,
-            "yearsBasis": "none"
-          }
         }
       ],
-      "resolvedAt": "2026-10-03T05:35:40.011Z",
+      "resolvedAt": "2026-10-03T10:02:09.684Z",
       "msourceVersion": "msource/1"
     }
   }

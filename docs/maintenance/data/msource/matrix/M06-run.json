@@ -4,14 +4,14 @@
     "vehicleRef": "M06",
     "fingerprintKey": "car|kia|picanto|2018|998||petrol|",
     "msourceVersion": "msource/1",
-    "startedAt": "2026-10-03T05:28:34.492Z",
-    "finishedAt": "2026-10-03T05:29:07.578Z",
+    "startedAt": "2026-10-03T09:55:45.930Z",
+    "finishedAt": "2026-10-03T09:56:13.130Z",
     "stages": [
       {
         "stage": "VEHICLE_VERIFIED",
         "status": "ok",
-        "startedAt": "2026-10-03T05:28:34.492Z",
-        "finishedAt": "2026-10-03T05:28:34.492Z",
+        "startedAt": "2026-10-03T09:55:45.930Z",
+        "finishedAt": "2026-10-03T09:55:45.930Z",
         "durationMs": 0,
         "counts": {
           "engineCodes": 0,
@@ -25,8 +25,8 @@
       {
         "stage": "DISCOVERY",
         "status": "ok",
-        "startedAt": "2026-10-03T05:28:34.492Z",
-        "finishedAt": "2026-10-03T05:28:34.495Z",
+        "startedAt": "2026-10-03T09:55:45.930Z",
+        "finishedAt": "2026-10-03T09:55:45.933Z",
         "durationMs": 3,
         "counts": {
           "fable": 13,
@@ -39,9 +39,9 @@
       {
         "stage": "SOURCE_CANDIDATES",
         "status": "ok",
-        "startedAt": "2026-10-03T05:28:34.495Z",
-        "finishedAt": "2026-10-03T05:28:34.495Z",
-        "durationMs": 0,
+        "startedAt": "2026-10-03T09:55:45.933Z",
+        "finishedAt": "2026-10-03T09:55:45.934Z",
+        "durationMs": 1,
         "counts": {
           "discovered": 14,
           "unique": 14,
@@ -54,43 +54,13 @@
       {
         "stage": "ACQUISITION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:28:34.495Z",
-        "finishedAt": "2026-10-03T05:29:07.549Z",
-        "durationMs": 33054,
+        "startedAt": "2026-10-03T09:55:45.934Z",
+        "finishedAt": "2026-10-03T09:56:13.070Z",
+        "durationMs": 27136,
         "counts": {
-          "acquired": 13
+          "acquired": 19
         },
         "failures": [
-          {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-003f2b20f4df067e"
-          },
-          {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-737875d3a8057e95"
-          },
-          {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-83e86e8904b77217"
-          },
-          {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-e3bc72424e433090"
-          },
-          {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-60279c568cf25b54"
-          },
-          {
-            "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-            "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)",
-            "sourceId": "src-4ac170ce333dd854"
-          },
           {
             "code": "HTTP_ERROR",
             "detail": "HTTP 429",
@@ -117,14 +87,19 @@
       {
         "stage": "EXTRACTION",
         "status": "partial",
-        "startedAt": "2026-10-03T05:29:07.549Z",
-        "finishedAt": "2026-10-03T05:29:07.578Z",
-        "durationMs": 29,
+        "startedAt": "2026-10-03T09:56:13.070Z",
+        "finishedAt": "2026-10-03T09:56:13.130Z",
+        "durationMs": 60,
         "counts": {
-          "extracted": 10,
-          "grounded": 10
+          "extracted": 33,
+          "grounded": 33
         },
         "failures": [
+          {
+            "code": "NO_REQUIREMENTS_EXTRACTED",
+            "detail": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
+            "sourceId": "src-003f2b20f4df067e"
+          },
           {
             "code": "NO_SCHEDULE_SECTION",
             "detail": "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf",
@@ -181,15 +156,40 @@
       {
         "stage": "VEHICLE_MATCHING",
         "status": "failed",
-        "startedAt": "2026-10-03T05:29:07.578Z",
-        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "startedAt": "2026-10-03T09:56:13.130Z",
+        "finishedAt": "2026-10-03T09:56:13.130Z",
         "durationMs": 0,
         "counts": {
-          "INSUFFICIENT": 2,
-          "PARTIAL": 9,
+          "PARTIAL": 11,
+          "INSUFFICIENT": 6,
           "NOT_APPLICABLE": 2
         },
         "failures": [
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "INSUFFICIENT: the document does not name \"Picanto\"; the document does not state its model years; market stated: EU (not IL)",
+            "sourceId": "src-737875d3a8057e95"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "INSUFFICIENT: the document does not name \"Picanto\"; the document does not state its model years; market stated: EU (not IL)",
+            "sourceId": "src-83e86e8904b77217"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "INSUFFICIENT: the document does not name \"Picanto\"; the document does not state its model years; market stated: EU (not IL)",
+            "sourceId": "src-e3bc72424e433090"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "INSUFFICIENT: the document does not name \"Picanto\"; the document does not state its model years; market stated: EU (not IL)",
+            "sourceId": "src-60279c568cf25b54"
+          },
+          {
+            "code": "SOURCE_NOT_APPLICABLE",
+            "detail": "PARTIAL: the document does not state its model years",
+            "sourceId": "src-4ac170ce333dd854"
+          },
           {
             "code": "SOURCE_NOT_APPLICABLE",
             "detail": "PARTIAL: the document does not state its model years",
@@ -211,8 +211,8 @@
       {
         "stage": "CROSS_SOURCE_VALIDATION",
         "status": "ok",
-        "startedAt": "2026-10-03T05:29:07.578Z",
-        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "startedAt": "2026-10-03T09:56:13.130Z",
+        "finishedAt": "2026-10-03T09:56:13.130Z",
         "durationMs": 0,
         "counts": {
           "obligations": 0,
@@ -225,8 +225,8 @@
       {
         "stage": "SCHEDULE_RESOLUTION",
         "status": "failed",
-        "startedAt": "2026-10-03T05:29:07.578Z",
-        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "startedAt": "2026-10-03T09:56:13.130Z",
+        "finishedAt": "2026-10-03T09:56:13.130Z",
         "durationMs": 0,
         "counts": {
           "items": 0,
@@ -248,8 +248,8 @@
       {
         "stage": "PERSISTENCE",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:29:07.578Z",
-        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "startedAt": "2026-10-03T09:56:13.130Z",
+        "finishedAt": "2026-10-03T09:56:13.130Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -258,8 +258,8 @@
       {
         "stage": "NEXT_SERVICE_CALCULATION",
         "status": "skipped",
-        "startedAt": "2026-10-03T05:29:07.578Z",
-        "finishedAt": "2026-10-03T05:29:07.578Z",
+        "startedAt": "2026-10-03T09:56:13.130Z",
+        "finishedAt": "2026-10-03T09:56:13.130Z",
         "durationMs": 0,
         "counts": {},
         "failures": [],
@@ -280,10 +280,10 @@
       {
         "url": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "no_evidence",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "NO_REQUIREMENTS_EXTRACTED",
+          "detail": "schedule section without readable intervals"
         }
       },
       {
@@ -298,46 +298,46 @@
       {
         "url": "https://ownersmanual.kia.com/docview/webhelp/doc/1e653121-4428-4a48-91bb-5179c409e82d/topics/chapter8_4_1.html",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "not_applicable",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "INSUFFICIENT: the document does not name \"Picanto\"; the document does not state its model years; market stated: EU (not IL)"
         }
       },
       {
         "url": "https://ownersmanual.kia.com/docview/webhelp/doc/e83e7a0d-ccee-4ea8-aee4-4f85bce163a6/topics/chapter8_4_1.html",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "not_applicable",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "INSUFFICIENT: the document does not name \"Picanto\"; the document does not state its model years; market stated: EU (not IL)"
         }
       },
       {
         "url": "https://ownersmanual.kia.com/docview/webhelp/doc/c983d192-c0bb-42cd-b59a-825ea904742d/topics/chapter8_4_1.html",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "not_applicable",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "INSUFFICIENT: the document does not name \"Picanto\"; the document does not state its model years; market stated: EU (not IL)"
         }
       },
       {
         "url": "https://ownersmanual.kia.com/docview/webhelp/doc/dc4a45ed-aed8-471b-b9bd-4c2f7422d133/topics/chapter8_4_2.html",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "not_applicable",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "INSUFFICIENT: the document does not name \"Picanto\"; the document does not state its model years; market stated: EU (not IL)"
         }
       },
       {
         "url": "https://www.kia.com/om/en/service/scheduled-servicing.html",
         "by": "fable",
-        "outcome": "blocked",
+        "outcome": "not_applicable",
         "failure": {
-          "code": "ACCESS_TEMPORARILY_UNREACHABLE",
-          "detail": "robots.txt error: unreachable — treated as disallowed for now, retry later (RFC 9309 §2.3.1.4)"
+          "code": "SOURCE_NOT_APPLICABLE",
+          "detail": "PARTIAL: the document does not state its model years"
         }
       },
       {
@@ -509,6 +509,117 @@
       "unresolved": [],
       "sources": [
         {
+          "sourceId": "src-003f2b20f4df067e",
+          "canonicalUrl": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
+          "finalUrl": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
+          "chain": [
+            "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf"
+          ],
+          "sourceName": "Kia (kia.com)",
+          "sourceType": "oem_schedule",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:55:47.990Z",
+          "format": "pdf",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "cd4516d9e323444ea4c0f653a46d8ac94adaa2a7028643507efe0010cad42fd4",
+          "byteLength": 5576430,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1000,
+              1200,
+              1400,
+              1500,
+              1600,
+              2000,
+              2200,
+              2400,
+              2500,
+              3300,
+              3500,
+              3800,
+              5000
+            ],
+            "fuels": [
+              "petrol"
+            ],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
+              "host": "www.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.kia.com/robots.txt",
+                  "detail": "group *; Allow: /content/dam/"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:46.971Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
+              "host": "www.kia.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:47.990Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
+              "host": "www.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.kia.com/robots.txt",
+                  "detail": "group *; Allow: /content/dam/"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.kia.com/content/dam/kwcms/nmc/en/images/service/SERVICE_MPI_And_GDI.pdf",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:47.990Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": true,
+            "basis": "brand_domain",
+            "detail": "kia.com is the kia brand domain; document type maintenance_schedule"
+          }
+        },
+        {
           "sourceId": "src-104145c1b385a23f",
           "canonicalUrl": "https://m.auto.co.il/Attachment/Catalog/pdf/1638,.pdf",
           "finalUrl": "https://images.auto.co.il/attachment/catalog/pdf/1638,.pdf",
@@ -520,8 +631,8 @@
           "sourceName": "auto.co.il",
           "sourceType": "importer",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:34.492Z",
-          "retrievedAt": "2026-10-03T05:28:38.320Z",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:55:52.135Z",
           "format": "pdf",
           "documentType": "other",
           "contentSha256": "1b04efe201d55e546042211adecb6b54d413defe32b4518d66e8bc2be1468e3b",
@@ -558,7 +669,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:34.660Z",
+              "decidedAt": "2026-10-03T09:55:47.063Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -574,7 +685,7 @@
                   "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:34.700Z",
+              "decidedAt": "2026-10-03T09:55:47.528Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -590,7 +701,7 @@
                   "detail": "robots.txt 404: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:35.563Z",
+              "decidedAt": "2026-10-03T09:55:48.595Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -606,7 +717,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:38.319Z",
+              "decidedAt": "2026-10-03T09:55:52.135Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -627,7 +738,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:38.320Z",
+              "decidedAt": "2026-10-03T09:55:52.135Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -640,6 +751,567 @@
           }
         },
         {
+          "sourceId": "src-737875d3a8057e95",
+          "canonicalUrl": "https://ownersmanual.kia.com/docview/webhelp/doc/1e653121-4428-4a48-91bb-5179c409e82d/topics/chapter8_4_1.html",
+          "finalUrl": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_GB/topics/chapter8_4_1.html",
+          "chain": [
+            "https://ownersmanual.kia.com/docview/webhelp/doc/1e653121-4428-4a48-91bb-5179c409e82d/topics/chapter8_4_1.html",
+            "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_GB/topics/chapter8_4_1.html"
+          ],
+          "sourceName": "Kia (ownersmanual.kia.com)",
+          "sourceType": "oem_schedule",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:55:55.218Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "cb3f3040f92b195079474ede933779ba1a7b4119cefebe0b15094983ab3e57a3",
+          "byteLength": 96475,
+          "locale": "en",
+          "markets": [
+            "EU"
+          ],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "EU"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://ownersmanual.kia.com/docview/webhelp/doc/1e653121-4428-4a48-91bb-5179c409e82d/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:54.433Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_GB/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:54.805Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "MANUAL_ONLY",
+              "reason": "registry_requires_permission",
+              "url": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_GB/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "registry_policy",
+                  "ref": "global-kia-ownersmanual#v1",
+                  "detail": "documentCachingAllowed=REQUIRES_PERMISSION (basis documentCaching)"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:55.217Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_GB/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_GB/topics/chapter8_4_1.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:55.218Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": true,
+            "basis": "registry",
+            "detail": "global-kia-ownersmanual (proposed)"
+          }
+        },
+        {
+          "sourceId": "src-83e86e8904b77217",
+          "canonicalUrl": "https://ownersmanual.kia.com/docview/webhelp/doc/e83e7a0d-ccee-4ea8-aee4-4f85bce163a6/topics/chapter8_4_1.html",
+          "finalUrl": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_RG/topics/chapter8_4_1.html",
+          "chain": [
+            "https://ownersmanual.kia.com/docview/webhelp/doc/e83e7a0d-ccee-4ea8-aee4-4f85bce163a6/topics/chapter8_4_1.html",
+            "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_RG/topics/chapter8_4_1.html"
+          ],
+          "sourceName": "Kia (ownersmanual.kia.com)",
+          "sourceType": "oem_schedule",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:55:56.854Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "30a4f4a153e5c7845629063ecb8893a16ff0a9f120f60ca46ac26a2ba6961a3d",
+          "byteLength": 96512,
+          "locale": "en",
+          "markets": [
+            "EU"
+          ],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "EU"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://ownersmanual.kia.com/docview/webhelp/doc/e83e7a0d-ccee-4ea8-aee4-4f85bce163a6/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:54.434Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_RG/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:56.318Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "MANUAL_ONLY",
+              "reason": "registry_requires_permission",
+              "url": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_RG/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "registry_policy",
+                  "ref": "global-kia-ownersmanual#v1",
+                  "detail": "documentCachingAllowed=REQUIRES_PERMISSION (basis documentCaching)"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:56.854Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_RG/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://ownersmanual.kia.com/full_webhelp/SK3KV/2022/en_RG/topics/chapter8_4_1.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:56.854Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": true,
+            "basis": "registry",
+            "detail": "global-kia-ownersmanual (proposed)"
+          }
+        },
+        {
+          "sourceId": "src-e3bc72424e433090",
+          "canonicalUrl": "https://ownersmanual.kia.com/docview/webhelp/doc/c983d192-c0bb-42cd-b59a-825ea904742d/topics/chapter8_4_1.html",
+          "finalUrl": "https://ownersmanual.kia.com/full_webhelp/DEEV/2022/en_GB/topics/chapter8_4_1.html",
+          "chain": [
+            "https://ownersmanual.kia.com/docview/webhelp/doc/c983d192-c0bb-42cd-b59a-825ea904742d/topics/chapter8_4_1.html",
+            "https://ownersmanual.kia.com/full_webhelp/DEEV/2022/en_GB/topics/chapter8_4_1.html"
+          ],
+          "sourceName": "Kia (ownersmanual.kia.com)",
+          "sourceType": "oem_schedule",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:55:57.826Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "980b99f0640a06f0e4259b74ee6356afec016620490a36e8dc890020ea2e7605",
+          "byteLength": 95732,
+          "locale": "en",
+          "markets": [
+            "EU"
+          ],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [
+              "EU"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://ownersmanual.kia.com/docview/webhelp/doc/c983d192-c0bb-42cd-b59a-825ea904742d/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:56.857Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://ownersmanual.kia.com/full_webhelp/DEEV/2022/en_GB/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:57.787Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "MANUAL_ONLY",
+              "reason": "registry_requires_permission",
+              "url": "https://ownersmanual.kia.com/full_webhelp/DEEV/2022/en_GB/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "registry_policy",
+                  "ref": "global-kia-ownersmanual#v1",
+                  "detail": "documentCachingAllowed=REQUIRES_PERMISSION (basis documentCaching)"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:57.826Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://ownersmanual.kia.com/full_webhelp/DEEV/2022/en_GB/topics/chapter8_4_1.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://ownersmanual.kia.com/full_webhelp/DEEV/2022/en_GB/topics/chapter8_4_1.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:57.826Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": true,
+            "basis": "registry",
+            "detail": "global-kia-ownersmanual (proposed)"
+          }
+        },
+        {
+          "sourceId": "src-60279c568cf25b54",
+          "canonicalUrl": "https://ownersmanual.kia.com/docview/webhelp/doc/dc4a45ed-aed8-471b-b9bd-4c2f7422d133/topics/chapter8_4_2.html",
+          "finalUrl": "https://ownersmanual.kia.com/full_webhelp/AB/2023/en_GB/topics/chapter8_4_2.html",
+          "chain": [
+            "https://ownersmanual.kia.com/docview/webhelp/doc/dc4a45ed-aed8-471b-b9bd-4c2f7422d133/topics/chapter8_4_2.html",
+            "https://ownersmanual.kia.com/full_webhelp/AB/2023/en_GB/topics/chapter8_4_2.html"
+          ],
+          "sourceName": "Kia (ownersmanual.kia.com)",
+          "sourceType": "oem_schedule",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:55:59.481Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+          "byteLength": 128449,
+          "locale": "en",
+          "markets": [
+            "EU"
+          ],
+          "statedApplicability": {
+            "models": [],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1400
+            ],
+            "fuels": [],
+            "markets": [
+              "EU"
+            ],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://ownersmanual.kia.com/docview/webhelp/doc/dc4a45ed-aed8-471b-b9bd-4c2f7422d133/topics/chapter8_4_2.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:56.857Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://ownersmanual.kia.com/full_webhelp/AB/2023/en_GB/topics/chapter8_4_2.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:59.344Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "MANUAL_ONLY",
+              "reason": "registry_requires_permission",
+              "url": "https://ownersmanual.kia.com/full_webhelp/AB/2023/en_GB/topics/chapter8_4_2.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "registry_policy",
+                  "ref": "global-kia-ownersmanual#v1",
+                  "detail": "documentCachingAllowed=REQUIRES_PERMISSION (basis documentCaching)"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:59.481Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://ownersmanual.kia.com/full_webhelp/AB/2023/en_GB/topics/chapter8_4_2.html",
+              "host": "ownersmanual.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://ownersmanual.kia.com/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://ownersmanual.kia.com/full_webhelp/AB/2023/en_GB/topics/chapter8_4_2.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:59.481Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": true,
+            "basis": "registry",
+            "detail": "global-kia-ownersmanual (proposed)"
+          }
+        },
+        {
+          "sourceId": "src-4ac170ce333dd854",
+          "canonicalUrl": "https://www.kia.com/om/en/service/scheduled-servicing.html",
+          "finalUrl": "https://www.kia.com/om/en/service/scheduled-servicing.html",
+          "chain": [
+            "https://www.kia.com/om/en/service/scheduled-servicing.html"
+          ],
+          "sourceName": "Kia Oman (kia.com/om)",
+          "sourceType": "importer",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:55:59.585Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "1b59207902938ba8f615fef542bb683883120dfe7a0b6871462957e429333469",
+          "byteLength": 68394,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [
+              1250,
+              1400,
+              2000,
+              2400,
+              3000,
+              3500,
+              3800
+            ],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_no_matching_rule",
+              "url": "https://www.kia.com/om/en/service/scheduled-servicing.html",
+              "host": "www.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.kia.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:59.485Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.kia.com/om/en/service/scheduled-servicing.html",
+              "host": "www.kia.com",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.kia.com/om/en/service/scheduled-servicing.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:59.585Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.kia.com/om/en/service/scheduled-servicing.html",
+              "host": "www.kia.com",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.kia.com/robots.txt",
+                  "detail": "group *; no matching rule"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.kia.com/om/en/service/scheduled-servicing.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:55:59.585Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": true,
+            "basis": "brand_domain",
+            "detail": "kia.com is the kia brand domain; document type maintenance_schedule"
+          }
+        },
+        {
           "sourceId": "src-52cd0e36b566e194",
           "canonicalUrl": "https://www.auto-abc.eu/service/Kia-Picanto",
           "finalUrl": "https://www.auto-abc.eu/service/Kia-Picanto",
@@ -649,11 +1321,11 @@
           "sourceName": "auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:34.492Z",
-          "retrievedAt": "2026-10-03T05:28:56.027Z",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:56:01.992Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "2ca3675a4087f5387d94597af8e752746f837b6b8981d0328a2c6f5e29eef6a6",
+          "contentSha256": "55ce42846f05b69bca41cb007f80e0772469c07b31bea953bc94d2107f945974",
           "byteLength": 26308,
           "locale": "en",
           "markets": [],
@@ -688,7 +1360,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:55.857Z",
+              "decidedAt": "2026-10-03T09:56:01.848Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -704,7 +1376,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:56.027Z",
+              "decidedAt": "2026-10-03T09:56:01.992Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -725,7 +1397,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:56.027Z",
+              "decidedAt": "2026-10-03T09:56:01.992Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -748,11 +1420,11 @@
           "sourceName": "queenoftheroad.co.il",
           "sourceType": "publication",
           "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:34.492Z",
-          "retrievedAt": "2026-10-03T05:28:57.208Z",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:56:04.266Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "629039a0e5a5979b1804fc3cbda2700c8913dfec5950a8e1a0a5cc8364a30332",
+          "contentSha256": "c1303e2e90fe7f84e27218b190f3d3c05f21e2827d8adb21b42e34821df9d703",
           "byteLength": 181012,
           "locale": "he",
           "markets": [
@@ -786,7 +1458,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:56.082Z",
+              "decidedAt": "2026-10-03T09:56:02.471Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -802,7 +1474,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:57.175Z",
+              "decidedAt": "2026-10-03T09:56:04.063Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -818,7 +1490,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:57.207Z",
+              "decidedAt": "2026-10-03T09:56:04.265Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -839,7 +1511,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:28:57.208Z",
+              "decidedAt": "2026-10-03T09:56:04.266Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -852,6 +1524,101 @@
           }
         },
         {
+          "sourceId": "src-6aadb4d7a43855a5",
+          "canonicalUrl": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+          "finalUrl": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+          "chain": [
+            "https://www.servicingstop.co.uk/kia_picanto_service.html"
+          ],
+          "sourceName": "Servicing Stop",
+          "sourceType": "other",
+          "discoveredBy": "fable",
+          "discoveredAt": "2026-10-03T09:55:45.930Z",
+          "retrievedAt": "2026-10-03T09:56:05.349Z",
+          "format": "html",
+          "documentType": "maintenance_schedule",
+          "contentSha256": "ead04f39c32eb75bc6cfe8dcf3f4f74dab6cae925e77a57532960bcc10fdd964",
+          "byteLength": 149258,
+          "locale": "en",
+          "markets": [],
+          "statedApplicability": {
+            "models": [
+              "Picanto"
+            ],
+            "modelVariants": [],
+            "yearFrom": null,
+            "yearTo": null,
+            "engineCodes": [],
+            "displacementsCc": [],
+            "displacementsMentioned": [],
+            "fuels": [],
+            "markets": [],
+            "allEnginesStated": false
+          },
+          "access": [
+            {
+              "operation": "FETCH",
+              "status": "ALLOWED",
+              "reason": "robots_allows",
+              "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+              "host": "www.servicingstop.co.uk",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.servicingstop.co.uk/robots.txt",
+                  "detail": "group *; Allow: /"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:04.976Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "STORAGE",
+              "status": "UNKNOWN",
+              "reason": "no_storage_permission",
+              "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+              "host": "www.servicingstop.co.uk",
+              "evidence": [
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+                  "detail": "bytes discarded after extraction; sha256 kept"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:05.349Z",
+              "policyVersion": "msource-access/2"
+            },
+            {
+              "operation": "EXTRACTION",
+              "status": "ALLOWED",
+              "reason": "facts_only_after_permitted_fetch",
+              "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+              "host": "www.servicingstop.co.uk",
+              "evidence": [
+                {
+                  "kind": "robots",
+                  "ref": "https://www.servicingstop.co.uk/robots.txt",
+                  "detail": "group *; Allow: /"
+                },
+                {
+                  "kind": "operation_scope",
+                  "ref": "https://www.servicingstop.co.uk/kia_picanto_service.html",
+                  "detail": "structured interval facts + short locators only; the document is not reproduced"
+                }
+              ],
+              "decidedAt": "2026-10-03T09:56:05.349Z",
+              "policyVersion": "msource-access/2"
+            }
+          ],
+          "extractorVersion": "autokeep-extractor/2",
+          "msourceVersion": "msource/1",
+          "authority": {
+            "official": false,
+            "basis": "none",
+            "detail": "www.servicingstop.co.uk"
+          }
+        },
+        {
           "sourceId": "src-7b7a81e30d878d8d",
           "canonicalUrl": "https://carwiki.de/kia-picanto-inspektion",
           "finalUrl": "https://carwiki.de/kia-picanto-inspektion",
@@ -861,12 +1628,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "knowledge",
-          "discoveredAt": "2026-10-03T05:28:34.495Z",
-          "retrievedAt": "2026-10-03T05:29:00.515Z",
+          "discoveredAt": "2026-10-03T09:55:45.933Z",
+          "retrievedAt": "2026-10-03T09:56:05.775Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3",
-          "byteLength": 169117,
+          "contentSha256": "7c1e2a02a944e12a82760d19abb0a5a97c8de5f3e8614eb4c991efb1fc7c41f4",
+          "byteLength": 169094,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -899,7 +1666,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:00.344Z",
+              "decidedAt": "2026-10-03T09:56:04.913Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -915,7 +1682,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:00.515Z",
+              "decidedAt": "2026-10-03T09:56:05.774Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -936,7 +1703,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:00.515Z",
+              "decidedAt": "2026-10-03T09:56:05.775Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -949,101 +1716,6 @@
           }
         },
         {
-          "sourceId": "src-6aadb4d7a43855a5",
-          "canonicalUrl": "https://www.servicingstop.co.uk/kia_picanto_service.html",
-          "finalUrl": "https://www.servicingstop.co.uk/kia_picanto_service.html",
-          "chain": [
-            "https://www.servicingstop.co.uk/kia_picanto_service.html"
-          ],
-          "sourceName": "Servicing Stop",
-          "sourceType": "other",
-          "discoveredBy": "fable",
-          "discoveredAt": "2026-10-03T05:28:34.492Z",
-          "retrievedAt": "2026-10-03T05:29:00.945Z",
-          "format": "html",
-          "documentType": "maintenance_schedule",
-          "contentSha256": "252e8f031c4d97a71bfc7647a3355ee96d689d3e5607719b738745007fe072ee",
-          "byteLength": 149240,
-          "locale": "en",
-          "markets": [],
-          "statedApplicability": {
-            "models": [
-              "Picanto"
-            ],
-            "modelVariants": [],
-            "yearFrom": null,
-            "yearTo": null,
-            "engineCodes": [],
-            "displacementsCc": [],
-            "displacementsMentioned": [],
-            "fuels": [],
-            "markets": [],
-            "allEnginesStated": false
-          },
-          "access": [
-            {
-              "operation": "FETCH",
-              "status": "ALLOWED",
-              "reason": "robots_allows",
-              "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
-              "host": "www.servicingstop.co.uk",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.servicingstop.co.uk/robots.txt",
-                  "detail": "group *; Allow: /"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:29:00.524Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "STORAGE",
-              "status": "UNKNOWN",
-              "reason": "no_storage_permission",
-              "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
-              "host": "www.servicingstop.co.uk",
-              "evidence": [
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.servicingstop.co.uk/kia_picanto_service.html",
-                  "detail": "bytes discarded after extraction; sha256 kept"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:29:00.945Z",
-              "policyVersion": "msource-access/2"
-            },
-            {
-              "operation": "EXTRACTION",
-              "status": "ALLOWED",
-              "reason": "facts_only_after_permitted_fetch",
-              "url": "https://www.servicingstop.co.uk/kia_picanto_service.html",
-              "host": "www.servicingstop.co.uk",
-              "evidence": [
-                {
-                  "kind": "robots",
-                  "ref": "https://www.servicingstop.co.uk/robots.txt",
-                  "detail": "group *; Allow: /"
-                },
-                {
-                  "kind": "operation_scope",
-                  "ref": "https://www.servicingstop.co.uk/kia_picanto_service.html",
-                  "detail": "structured interval facts + short locators only; the document is not reproduced"
-                }
-              ],
-              "decidedAt": "2026-10-03T05:29:00.945Z",
-              "policyVersion": "msource-access/2"
-            }
-          ],
-          "extractorVersion": "autokeep-extractor/2",
-          "msourceVersion": "msource/1",
-          "authority": {
-            "official": false,
-            "basis": "none",
-            "detail": "www.servicingstop.co.uk"
-          }
-        },
-        {
           "sourceId": "src-e19d24900be38a32",
           "canonicalUrl": "https://es.auto-abc.eu/servicio/Kia-Picanto",
           "finalUrl": "https://es.auto-abc.eu/servicio/Kia-Picanto",
@@ -1053,11 +1725,11 @@
           "sourceName": "es.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:56.029Z",
-          "retrievedAt": "2026-10-03T05:29:01.242Z",
+          "discoveredAt": "2026-10-03T09:56:01.994Z",
+          "retrievedAt": "2026-10-03T09:56:06.148Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "a3c4c82c9f76552c7b28d02c90249eea275ddf822b804b4b32c9cb2b2c2e1ba0",
+          "contentSha256": "ab75a070765d76c892faee8298ca2e0ecc3a5f46c6b683245adb91f07f771d40",
           "byteLength": 26372,
           "locale": null,
           "markets": [],
@@ -1082,17 +1754,17 @@
             {
               "operation": "FETCH",
               "status": "ALLOWED",
-              "reason": "robots_unavailable",
+              "reason": "robots_allows",
               "url": "https://es.auto-abc.eu/servicio/Kia-Picanto",
               "host": "es.auto-abc.eu",
               "evidence": [
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.079Z",
+              "decidedAt": "2026-10-03T09:56:06.005Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1108,7 +1780,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.242Z",
+              "decidedAt": "2026-10-03T09:56:06.148Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1121,7 +1793,7 @@
                 {
                   "kind": "robots",
                   "ref": "https://es.auto-abc.eu/robots.txt",
-                  "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
+                  "detail": "group *; Allow: /"
                 },
                 {
                   "kind": "operation_scope",
@@ -1129,7 +1801,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.242Z",
+              "decidedAt": "2026-10-03T09:56:06.148Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1151,11 +1823,11 @@
           "sourceName": "www.auto-abc.lv",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:56.029Z",
-          "retrievedAt": "2026-10-03T05:29:01.243Z",
+          "discoveredAt": "2026-10-03T09:56:01.994Z",
+          "retrievedAt": "2026-10-03T09:56:06.162Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "36900b5f12e0af927160dca28c526d1a2b8c4b32cce72a7e113fe64a326ac9ca",
+          "contentSha256": "c197cab1ff1be819ac1dda540311ff5c6a66b1f11cf5fe060576b8f25f652662",
           "byteLength": 26812,
           "locale": null,
           "markets": [],
@@ -1190,7 +1862,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.080Z",
+              "decidedAt": "2026-10-03T09:56:06.032Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1206,7 +1878,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.243Z",
+              "decidedAt": "2026-10-03T09:56:06.162Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1227,7 +1899,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.243Z",
+              "decidedAt": "2026-10-03T09:56:06.162Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1249,11 +1921,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:56.029Z",
-          "retrievedAt": "2026-10-03T05:29:01.473Z",
+          "discoveredAt": "2026-10-03T09:56:01.994Z",
+          "retrievedAt": "2026-10-03T09:56:06.577Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+          "contentSha256": "5645b03158ac65bd4229846b48026aea918d181b79ed0119a476d4b5fcc04afa",
           "byteLength": 37213,
           "locale": null,
           "markets": [],
@@ -1292,7 +1964,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.244Z",
+              "decidedAt": "2026-10-03T09:56:06.162Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1308,7 +1980,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.473Z",
+              "decidedAt": "2026-10-03T09:56:06.577Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1329,7 +2001,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.473Z",
+              "decidedAt": "2026-10-03T09:56:06.577Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1351,11 +2023,11 @@
           "sourceName": "www.auto-abc.eu",
           "sourceType": "independent_database",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:28:56.029Z",
-          "retrievedAt": "2026-10-03T05:29:02.875Z",
+          "discoveredAt": "2026-10-03T09:56:01.994Z",
+          "retrievedAt": "2026-10-03T09:56:07.794Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+          "contentSha256": "ae5fc1c4554903f2aff79107297de546d3ef677389507779521abb845e1fc8c4",
           "byteLength": 37229,
           "locale": null,
           "markets": [],
@@ -1394,7 +2066,7 @@
                   "detail": "robots.txt 406: unavailable — no robots rule applies (RFC 9309 §2.3.1.3)"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:01.244Z",
+              "decidedAt": "2026-10-03T09:56:06.162Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1410,7 +2082,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:02.875Z",
+              "decidedAt": "2026-10-03T09:56:07.794Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1431,7 +2103,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:02.875Z",
+              "decidedAt": "2026-10-03T09:56:07.794Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1453,11 +2125,11 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:29:00.522Z",
-          "retrievedAt": "2026-10-03T05:29:03.047Z",
+          "discoveredAt": "2026-10-03T09:56:05.780Z",
+          "retrievedAt": "2026-10-03T09:56:08.874Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "a0b5fbf65979c357b67826d3e26e5c35550b35f9669d07204ec0a77291d79bec",
+          "contentSha256": "23c52860e77fc06e223411bb20291fd7e808a90e5df865d279eede8a70b1a395",
           "byteLength": 264561,
           "locale": null,
           "markets": [],
@@ -1491,7 +2163,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:02.876Z",
+              "decidedAt": "2026-10-03T09:56:07.795Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1507,7 +2179,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:03.046Z",
+              "decidedAt": "2026-10-03T09:56:08.873Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1528,7 +2200,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:03.047Z",
+              "decidedAt": "2026-10-03T09:56:08.874Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1550,12 +2222,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:29:00.522Z",
-          "retrievedAt": "2026-10-03T05:29:04.560Z",
+          "discoveredAt": "2026-10-03T09:56:05.780Z",
+          "retrievedAt": "2026-10-03T09:56:10.142Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "97e6bd5ebf6638ae9a0717a7ecdbee747a166aab5bf75d0ba16febaebb1d2ca7",
-          "byteLength": 156477,
+          "contentSha256": "90697a67eaff7d77f054f5d11b5168f095bfeebdd5f526cf7b598f35d847d7a8",
+          "byteLength": 156410,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1586,7 +2258,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:04.245Z",
+              "decidedAt": "2026-10-03T09:56:09.440Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1602,7 +2274,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:04.560Z",
+              "decidedAt": "2026-10-03T09:56:10.142Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1623,7 +2295,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:04.560Z",
+              "decidedAt": "2026-10-03T09:56:10.142Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1645,12 +2317,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:29:00.522Z",
-          "retrievedAt": "2026-10-03T05:29:06.054Z",
+          "discoveredAt": "2026-10-03T09:56:05.780Z",
+          "retrievedAt": "2026-10-03T09:56:12.132Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "dc02bc856143502205b14e566a80c81347acf578dcacf336085a049f7996c021",
-          "byteLength": 173269,
+          "contentSha256": "1e85c8a85b3854fb0a7e7ff5a4aba88efad73873f04556d3ec4aed3055acf262",
+          "byteLength": 173507,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1684,7 +2356,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:04.245Z",
+              "decidedAt": "2026-10-03T09:56:09.440Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1700,7 +2372,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:06.053Z",
+              "decidedAt": "2026-10-03T09:56:12.132Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1721,7 +2393,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:06.054Z",
+              "decidedAt": "2026-10-03T09:56:12.132Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1743,12 +2415,12 @@
           "sourceName": "carwiki.de",
           "sourceType": "other",
           "discoveredBy": "link",
-          "discoveredAt": "2026-10-03T05:29:00.523Z",
-          "retrievedAt": "2026-10-03T05:29:07.546Z",
+          "discoveredAt": "2026-10-03T09:56:05.780Z",
+          "retrievedAt": "2026-10-03T09:56:13.068Z",
           "format": "html",
           "documentType": "other",
-          "contentSha256": "66c97323f37921ac723eaccad716204b80adcd61cf9a410e4a69e3db4a946a07",
-          "byteLength": 150843,
+          "contentSha256": "7eabad06d9fb10ae6493408baf7d2c38b8bcaa04f65060c6990ed21bdf2c6039",
+          "byteLength": 150741,
           "locale": null,
           "markets": [],
           "statedApplicability": {
@@ -1779,7 +2451,7 @@
                   "detail": "group *; no matching rule"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:06.056Z",
+              "decidedAt": "2026-10-03T09:56:12.136Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1795,7 +2467,7 @@
                   "detail": "bytes discarded after extraction; sha256 kept"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:07.545Z",
+              "decidedAt": "2026-10-03T09:56:13.068Z",
               "policyVersion": "msource-access/2"
             },
             {
@@ -1816,7 +2488,7 @@
                   "detail": "structured interval facts + short locators only; the document is not reproduced"
                 }
               ],
-              "decidedAt": "2026-10-03T05:29:07.546Z",
+              "decidedAt": "2026-10-03T09:56:13.068Z",
               "policyVersion": "msource-access/2"
             }
           ],
@@ -1831,7 +2503,2504 @@
       ],
       "evidence": [
         {
-          "id": "src-7b7a81e30d878d8d:3beddbbab94d-p3-s-periodic_service-other-0",
+          "id": "src-737875d3a8057e95:cb3f3040f92b-p1-coolant-replacement-0",
+          "sourceId": "src-737875d3a8057e95",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Coolant *1",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": 36,
+          "intervalYears": 3,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Coolant *1\", note \"Replace every 60,000 km (37,500 miles) or 36 months\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "cb3f3040f92b-p1-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Coolant *1",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "everyMonths": 36,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "cb3f3040f92b195079474ede933779ba1a7b4119cefebe0b15094983ab3e57a3",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Coolant *1\", note \"Replace every 60,000 km (37,500 miles) or 36 months\"",
+                "documentSha256": "cb3f3040f92b195079474ede933779ba1a7b4119cefebe0b15094983ab3e57a3"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-737875d3a8057e95:cb3f3040f92b-p1-reduction_gear_oil-inspection-1",
+          "sourceId": "src-737875d3a8057e95",
+          "operationKey": "OTHER",
+          "task": "reduction_gear_oil",
+          "originalText": "Reduction gear oil",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Reduction gear oil\", I at 60, 120"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "cb3f3040f92b-p1-reduction_gear_oil-inspection-1",
+            "task": "reduction_gear_oil",
+            "taskText": "Reduction gear oil",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "cb3f3040f92b195079474ede933779ba1a7b4119cefebe0b15094983ab3e57a3",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Reduction gear oil\", I at 60, 120",
+                "documentSha256": "cb3f3040f92b195079474ede933779ba1a7b4119cefebe0b15094983ab3e57a3"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-737875d3a8057e95:cb3f3040f92b-p1-cabin_filter-replacement-2",
+          "sourceId": "src-737875d3a8057e95",
+          "operationKey": "cabin_filter",
+          "task": "cabin_filter",
+          "originalText": "Climate control air filter",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Climate control air filter\", R at 30, 60, 90, 120"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "cb3f3040f92b-p1-cabin_filter-replacement-2",
+            "task": "cabin_filter",
+            "taskText": "Climate control air filter",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "cb3f3040f92b195079474ede933779ba1a7b4119cefebe0b15094983ab3e57a3",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Climate control air filter\", R at 30, 60, 90, 120",
+                "documentSha256": "cb3f3040f92b195079474ede933779ba1a7b4119cefebe0b15094983ab3e57a3"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-737875d3a8057e95:cb3f3040f92b-p1-brake_system-inspection-3",
+          "sourceId": "src-737875d3a8057e95",
+          "operationKey": "brakes_inspection",
+          "task": "brake_system",
+          "originalText": "Disc brakes and pads",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Disc brakes and pads\", I at 15, 30, 45, 60, 75, 90, 105, 120"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "cb3f3040f92b-p1-brake_system-inspection-3",
+            "task": "brake_system",
+            "taskText": "Disc brakes and pads",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "cb3f3040f92b195079474ede933779ba1a7b4119cefebe0b15094983ab3e57a3",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Disc brakes and pads\", I at 15, 30, 45, 60, 75, 90, 105, 120",
+                "documentSha256": "cb3f3040f92b195079474ede933779ba1a7b4119cefebe0b15094983ab3e57a3"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-83e86e8904b77217:30a4f4a153e5-p1-coolant-replacement-0",
+          "sourceId": "src-83e86e8904b77217",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Coolant *1",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": 36,
+          "intervalYears": 3,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Coolant *1\", note \"Replace every 60,000 km (37,500 miles) or 36 months\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "30a4f4a153e5-p1-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Coolant *1",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "everyMonths": 36,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "30a4f4a153e5c7845629063ecb8893a16ff0a9f120f60ca46ac26a2ba6961a3d",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Coolant *1\", note \"Replace every 60,000 km (37,500 miles) or 36 months\"",
+                "documentSha256": "30a4f4a153e5c7845629063ecb8893a16ff0a9f120f60ca46ac26a2ba6961a3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-83e86e8904b77217:30a4f4a153e5-p1-reduction_gear_oil-inspection-1",
+          "sourceId": "src-83e86e8904b77217",
+          "operationKey": "OTHER",
+          "task": "reduction_gear_oil",
+          "originalText": "Reduction gear oil",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Reduction gear oil\", I at 60, 120"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "30a4f4a153e5-p1-reduction_gear_oil-inspection-1",
+            "task": "reduction_gear_oil",
+            "taskText": "Reduction gear oil",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "30a4f4a153e5c7845629063ecb8893a16ff0a9f120f60ca46ac26a2ba6961a3d",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Reduction gear oil\", I at 60, 120",
+                "documentSha256": "30a4f4a153e5c7845629063ecb8893a16ff0a9f120f60ca46ac26a2ba6961a3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-83e86e8904b77217:30a4f4a153e5-p1-cabin_filter-replacement-2",
+          "sourceId": "src-83e86e8904b77217",
+          "operationKey": "cabin_filter",
+          "task": "cabin_filter",
+          "originalText": "Climate control air filter",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Climate control air filter\", R at 30, 60, 90, 120"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "30a4f4a153e5-p1-cabin_filter-replacement-2",
+            "task": "cabin_filter",
+            "taskText": "Climate control air filter",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "30a4f4a153e5c7845629063ecb8893a16ff0a9f120f60ca46ac26a2ba6961a3d",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Climate control air filter\", R at 30, 60, 90, 120",
+                "documentSha256": "30a4f4a153e5c7845629063ecb8893a16ff0a9f120f60ca46ac26a2ba6961a3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-83e86e8904b77217:30a4f4a153e5-p1-brake_system-inspection-3",
+          "sourceId": "src-83e86e8904b77217",
+          "operationKey": "brakes_inspection",
+          "task": "brake_system",
+          "originalText": "Disc brakes and pads",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Disc brakes and pads\", I at 15, 30, 45, 60, 75, 90, 105, 120"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "30a4f4a153e5-p1-brake_system-inspection-3",
+            "task": "brake_system",
+            "taskText": "Disc brakes and pads",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "30a4f4a153e5c7845629063ecb8893a16ff0a9f120f60ca46ac26a2ba6961a3d",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Disc brakes and pads\", I at 15, 30, 45, 60, 75, 90, 105, 120",
+                "documentSha256": "30a4f4a153e5c7845629063ecb8893a16ff0a9f120f60ca46ac26a2ba6961a3d"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-e3bc72424e433090:980b99f0640a-p1-coolant-replacement-0",
+          "sourceId": "src-e3bc72424e433090",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Coolant *1",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": 36,
+          "intervalYears": 3,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Coolant *1\", note \"Replace every 60,000 km (40,000 miles) or 36 months\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "980b99f0640a-p1-coolant-replacement-0",
+            "task": "coolant",
+            "taskText": "Coolant *1",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "everyMonths": 36,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "980b99f0640a06f0e4259b74ee6356afec016620490a36e8dc890020ea2e7605",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Coolant *1\", note \"Replace every 60,000 km (40,000 miles) or 36 months\"",
+                "documentSha256": "980b99f0640a06f0e4259b74ee6356afec016620490a36e8dc890020ea2e7605"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-e3bc72424e433090:980b99f0640a-p1-reduction_gear_oil-inspection-1",
+          "sourceId": "src-e3bc72424e433090",
+          "operationKey": "OTHER",
+          "task": "reduction_gear_oil",
+          "originalText": "Reduction gear oil",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Reduction gear oil\", I at 60, 120"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "980b99f0640a-p1-reduction_gear_oil-inspection-1",
+            "task": "reduction_gear_oil",
+            "taskText": "Reduction gear oil",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "980b99f0640a06f0e4259b74ee6356afec016620490a36e8dc890020ea2e7605",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Reduction gear oil\", I at 60, 120",
+                "documentSha256": "980b99f0640a06f0e4259b74ee6356afec016620490a36e8dc890020ea2e7605"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-e3bc72424e433090:980b99f0640a-p1-cabin_filter-replacement-2",
+          "sourceId": "src-e3bc72424e433090",
+          "operationKey": "cabin_filter",
+          "task": "cabin_filter",
+          "originalText": "Climate control air filter",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Climate control air filter\", R at 30, 60, 90, 120"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "980b99f0640a-p1-cabin_filter-replacement-2",
+            "task": "cabin_filter",
+            "taskText": "Climate control air filter",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "980b99f0640a06f0e4259b74ee6356afec016620490a36e8dc890020ea2e7605",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Climate control air filter\", R at 30, 60, 90, 120",
+                "documentSha256": "980b99f0640a06f0e4259b74ee6356afec016620490a36e8dc890020ea2e7605"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-e3bc72424e433090:980b99f0640a-p1-brake_system-inspection-3",
+          "sourceId": "src-e3bc72424e433090",
+          "operationKey": "brakes_inspection",
+          "task": "brake_system",
+          "originalText": "Disc brakes and pads",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+            "locator": "table row \"Disc brakes and pads\", I at 15, 30, 45, 60, 75, 90, 105, 120"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "980b99f0640a-p1-brake_system-inspection-3",
+            "task": "brake_system",
+            "taskText": "Disc brakes and pads",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "980b99f0640a06f0e4259b74ee6356afec016620490a36e8dc890020ea2e7605",
+                "documentTitle": "Normal maintenance schedule [For Europe (Except Russia)]",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal maintenance schedule [For Europe (Except Russia)]",
+                "locator": "table row \"Disc brakes and pads\", I at 15, 30, 45, 60, 75, 90, 105, 120",
+                "documentSha256": "980b99f0640a06f0e4259b74ee6356afec016620490a36e8dc890020ea2e7605"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-oil_filter-replacement-0",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "oil_filter",
+          "task": "oil_filter",
+          "originalText": "Engine oil and engine oil filter *1",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 15000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+            "locator": "table row \"Engine oil and engine oil filter *1\", note \"(Gasoline) 1.4 MPI Replace every 15,000 km (10,000 miles) or\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-oil_filter-replacement-0",
+            "task": "oil_filter",
+            "taskText": "Engine oil and engine oil filter *1",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 15000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "usage": "normal",
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+                "locator": "table row \"Engine oil and engine oil filter *1\", note \"(Gasoline) 1.4 MPI Replace every 15,000 km (10,000 miles) or\"",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-coolant-replacement-1",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "coolant",
+          "task": "coolant",
+          "originalText": "Coolant (Engine) *2",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": 24,
+          "intervalYears": 2,
+          "firstKm": 210000,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+            "locator": "table row \"Coolant (Engine) *2\", note \"Replace every 30,000 km (20,000 miles) or 24 months\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-coolant-replacement-1",
+            "task": "coolant",
+            "taskText": "Coolant (Engine) *2",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "everyMonths": 24,
+              "first": {
+                "value": 210000,
+                "unit": "km"
+              },
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "usage": "normal",
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+                "locator": "table row \"Coolant (Engine) *2\", note \"Replace every 30,000 km (20,000 miles) or 24 months\"",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-auxiliary_belt-inspection-2",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "accessory_belt",
+          "task": "auxiliary_belt",
+          "originalText": "Drive belts (Engine) *3",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": 90000,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+            "locator": "table row \"Drive belts (Engine) *3\", I at 90, 120, 150, 180, 210, 240"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-auxiliary_belt-inspection-2",
+            "task": "auxiliary_belt",
+            "taskText": "Drive belts (Engine) *3",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "first": {
+                "value": 90000,
+                "unit": "km"
+              },
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "usage": "normal",
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+                "locator": "table row \"Drive belts (Engine) *3\", I at 90, 120, 150, 180, 210, 240",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-spark_plugs-replacement-3",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "spark_plugs",
+          "task": "spark_plugs",
+          "originalText": "Spark plugs *4",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+            "locator": "table row \"Spark plugs *4\", note \"(Gasoline) 1.4 MPI Replace every 60,000 km (40,000 mile)\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-spark_plugs-replacement-3",
+            "task": "spark_plugs",
+            "taskText": "Spark plugs *4",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "usage": "normal",
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+                "locator": "table row \"Spark plugs *4\", note \"(Gasoline) 1.4 MPI Replace every 60,000 km (40,000 mile)\"",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-air_filter-inspection-4",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Fuel tank air filter",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+            "locator": "table row \"Fuel tank air filter\", I at 60, 120, 180, 240"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-air_filter-inspection-4",
+            "task": "air_filter",
+            "taskText": "Fuel tank air filter",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "usage": "normal",
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+                "locator": "table row \"Fuel tank air filter\", I at 60, 120, 180, 240",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-air_filter-inspection-5",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Air cleaner filter",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+            "locator": "table row \"Air cleaner filter\", I at 30, 60, 90, 120, 150, 180, 210, 240"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-air_filter-inspection-5",
+            "task": "air_filter",
+            "taskText": "Air cleaner filter",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "usage": "normal",
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+                "locator": "table row \"Air cleaner filter\", I at 30, 60, 90, 120, 150, 180, 210, 240",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-air_filter-replacement-6",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "air_filter",
+          "task": "air_filter",
+          "originalText": "Air cleaner filter",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 60000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+            "locator": "table row \"Air cleaner filter\", R at 60, 120, 180, 240"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-air_filter-replacement-6",
+            "task": "air_filter",
+            "taskText": "Air cleaner filter",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 60000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "usage": "normal",
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+                "locator": "table row \"Air cleaner filter\", R at 60, 120, 180, 240",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-cabin_filter-replacement-7",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "cabin_filter",
+          "task": "cabin_filter",
+          "originalText": "Climate control air filter",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "DISTANCE_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+            "locator": "table row \"Climate control air filter\", R at 30, 60, 90, 120, 150, 180, 210, 240"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-cabin_filter-replacement-7",
+            "task": "cabin_filter",
+            "taskText": "Climate control air filter",
+            "action": "replacement",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "usage": "normal",
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+                "locator": "table row \"Climate control air filter\", R at 30, 60, 90, 120, 150, 180, 210, 240",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-brake_system-inspection-8",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "brakes_inspection",
+          "task": "brake_system",
+          "originalText": "Brake discs and pads",
+          "action": "inspection",
+          "inspectionOrReplacement": "inspection",
+          "intervalKm": 30000,
+          "intervalMiles": null,
+          "intervalMonths": null,
+          "intervalYears": null,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "INSPECTION_AT_INTERVAL",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "section": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+            "locator": "table row \"Brake discs and pads\", I at 30, 60, 90, 120, 150, 180, 210, 240"
+          },
+          "extractionMethod": "table",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-brake_system-inspection-8",
+            "task": "brake_system",
+            "taskText": "Brake discs and pads",
+            "action": "inspection",
+            "interval": {
+              "every": {
+                "value": 30000,
+                "unit": "km"
+              },
+              "first": null,
+              "rule": "distance_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "usage": "normal",
+              "coverageUnknown": [
+                "model",
+                "modelYear"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "table": "Home > Maintenance > Scheduled maintenance service > Normal Maintenance Schedule - For Europe (Except Russia)",
+                "locator": "table row \"Brake discs and pads\", I at 30, 60, 90, 120, 150, 180, 210, 240",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "autokeep-extractor/2",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-60279c568cf25b54:81064ef4c409-p1-s-fuel_filter-replacement-0",
+          "sourceId": "src-60279c568cf25b54",
+          "operationKey": "battery_inspection",
+          "task": "fuel_filter",
+          "originalText": "ERA-GLONASS system battery (if equipped) Replace every 3 years Fuel filter (gasoline engine): The fuel filter is considered to be maintenance free but periodic inspection is recommended for this maint",
+          "action": "replacement",
+          "inspectionOrReplacement": "replacement",
+          "intervalKm": null,
+          "intervalMiles": null,
+          "intervalMonths": 36,
+          "intervalYears": 3,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": false,
+          "rule": "TIME_ONLY",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [
+            "petrol",
+            "hybrid",
+            "plugin_hybrid"
+          ],
+          "modelApplicability": [],
+          "yearApplicability": null,
+          "marketApplicability": [
+            "EU"
+          ],
+          "notes": [],
+          "sourceLocation": {
+            "page": 1,
+            "locator": "column sentence \"ERA-GLONASS system battery (if equipped) Replace every 3 years Fuel filter (gaso\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "INSUFFICIENT",
+            "dimensions": {
+              "make": "match",
+              "model": "unstated",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not name \"Picanto\"",
+              "the document does not state its model years",
+              "market stated: EU (not IL)"
+            ]
+          },
+          "requirement": {
+            "id": "81064ef4c409-p1-s-fuel_filter-replacement-0",
+            "task": "fuel_filter",
+            "taskText": "ERA-GLONASS system battery (if equipped) Replace every 3 years Fuel filter (gasoline engine): The fuel filter is considered to be maintenance free but periodic inspection is recommended for this maint",
+            "action": "replacement",
+            "interval": {
+              "everyMonths": 36,
+              "first": null,
+              "rule": "time_only",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "markets": [
+                "EU"
+              ],
+              "powertrains": [
+                "petrol",
+                "hybrid",
+                "plugin_hybrid"
+              ]
+            },
+            "authority": "manufacturer",
+            "evidence": [
+              {
+                "documentId": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f",
+                "documentTitle": "Normal Maintenance Schedule - For Europe (Except Russia)",
+                "authority": "manufacturer",
+                "markets": [
+                  "EU"
+                ],
+                "page": 1,
+                "section": "Battery (12V) condition I I",
+                "locator": "column sentence \"ERA-GLONASS system battery (if equipped) Replace every 3 years Fuel filter (gaso\"",
+                "documentSha256": "81064ef4c409dcc6c180ff0abcd0740a1f9d03114abbe50818424c5ad002e59f"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-4ac170ce333dd854:1b5920790293-p2-s-periodic_service-other-0",
+          "sourceId": "src-4ac170ce333dd854",
+          "operationKey": "periodic_service",
+          "task": "periodic_service",
+          "originalText": "All vehicles in the current Kia range have a scheduled maintenance service interval of 10,000 km's or 1 year, whichever occurs first.",
+          "action": "other",
+          "inspectionOrReplacement": "other",
+          "intervalKm": 10000,
+          "intervalMiles": null,
+          "intervalMonths": 12,
+          "intervalYears": 1,
+          "firstKm": null,
+          "firstMonths": null,
+          "whicheverComesFirst": true,
+          "rule": "WHICHEVER_COMES_FIRST",
+          "normalConditions": true,
+          "severeConditions": false,
+          "engineApplicability": [],
+          "modelApplicability": [
+            "Picanto"
+          ],
+          "yearApplicability": null,
+          "marketApplicability": [],
+          "notes": [],
+          "sourceLocation": {
+            "page": 2,
+            "locator": "column sentence \"All vehicles in the current Kia range have a scheduled maintenance service inter\""
+          },
+          "extractionMethod": "sentence",
+          "grounded": true,
+          "match": {
+            "status": "PARTIAL",
+            "dimensions": {
+              "make": "match",
+              "model": "match",
+              "year": "unstated",
+              "displacement": "unstated",
+              "engineCode": "unstated",
+              "market": "unstated"
+            },
+            "reasons": [
+              "the document does not state its model years"
+            ]
+          },
+          "requirement": {
+            "id": "1b5920790293-p2-s-periodic_service-other-0",
+            "task": "periodic_service",
+            "taskText": "All vehicles in the current Kia range have a scheduled maintenance service interval of 10,000 km's or 1 year, whichever occurs first.",
+            "action": "other",
+            "interval": {
+              "every": {
+                "value": 10000,
+                "unit": "km"
+              },
+              "everyMonths": 12,
+              "first": null,
+              "rule": "whichever_first",
+              "repeats": true
+            },
+            "applicability": {
+              "kinds": [
+                "car"
+              ],
+              "makes": [
+                "kia"
+              ],
+              "models": [
+                "Picanto"
+              ]
+            },
+            "authority": "vehicle_document",
+            "evidence": [
+              {
+                "documentId": "1b59207902938ba8f615fef542bb683883120dfe7a0b6871462957e429333469",
+                "documentTitle": "Scheduled servicing",
+                "authority": "vehicle_document",
+                "markets": [],
+                "page": 2,
+                "section": "Owners Scheduled Servicing",
+                "locator": "column sentence \"All vehicles in the current Kia range have a scheduled maintenance service inter\"",
+                "documentSha256": "1b59207902938ba8f615fef542bb683883120dfe7a0b6871462957e429333469"
+              }
+            ],
+            "verification": "candidate",
+            "extraction": {
+              "method": "deterministic_parser",
+              "by": "msource-sentences/1",
+              "at": "2026-10-03",
+              "grounded": true
+            }
+          },
+          "itemApplicability": {
+            "scope": "MODEL_GENERIC",
+            "basis": "the source names the model only",
+            "sufficient": false,
+            "years": null,
+            "yearsBasis": "none"
+          }
+        },
+        {
+          "id": "src-7b7a81e30d878d8d:7c1e2a02a944-p3-s-periodic_service-other-0",
           "sourceId": "src-7b7a81e30d878d8d",
           "operationKey": "periodic_service",
           "task": "periodic_service",
@@ -1876,7 +5045,7 @@
             ]
           },
           "requirement": {
-            "id": "3beddbbab94d-p3-s-periodic_service-other-0",
+            "id": "7c1e2a02a944-p3-s-periodic_service-other-0",
             "task": "periodic_service",
             "taskText": "Diese Intervalle sind gemäß Inspektionsplan für die Kia Picanto Wartung vorgeschrieben Für alle Kia Picanto Modelle, egal welche Baureihe und welches Baujahr, betragen die Intervalle für die Wartung 1",
             "action": "other",
@@ -1904,13 +5073,13 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3",
+                "documentId": "7c1e2a02a944e12a82760d19abb0a5a97c8de5f3e8614eb4c991efb1fc7c41f4",
                 "documentTitle": "https://carwiki.de/kia-picanto-inspektion",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 3,
                 "locator": "column sentence \"Diese Intervalle sind gemäß Inspektionsplan für die Kia Picanto Wartung vorgesch\"",
-                "documentSha256": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3"
+                "documentSha256": "7c1e2a02a944e12a82760d19abb0a5a97c8de5f3e8614eb4c991efb1fc7c41f4"
               }
             ],
             "verification": "candidate",
@@ -1930,7 +5099,7 @@
           }
         },
         {
-          "id": "src-7b7a81e30d878d8d:3beddbbab94d-p4-s-periodic_service-other-1",
+          "id": "src-7b7a81e30d878d8d:7c1e2a02a944-p4-s-periodic_service-other-1",
           "sourceId": "src-7b7a81e30d878d8d",
           "operationKey": "periodic_service",
           "task": "periodic_service",
@@ -1979,7 +5148,7 @@
             ]
           },
           "requirement": {
-            "id": "3beddbbab94d-p4-s-periodic_service-other-1",
+            "id": "7c1e2a02a944-p4-s-periodic_service-other-1",
             "task": "periodic_service",
             "taskText": "Abgesehen vom Diesel gilt für alle Kia Picanto Modelle gemäß Inspektionsplan ein Intervall von 15.000 Kilometern bzw. 12 Monate für die Inspektion (abhängig davon, was zuerst erreicht wird).",
             "action": "other",
@@ -2010,14 +5179,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3",
+                "documentId": "7c1e2a02a944e12a82760d19abb0a5a97c8de5f3e8614eb4c991efb1fc7c41f4",
                 "documentTitle": "https://carwiki.de/kia-picanto-inspektion",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 4,
                 "section": "Zusammenfassung der Intervalle bei der Kia Picanto Inspektion",
                 "locator": "column sentence \"Abgesehen vom Diesel gilt für alle Kia Picanto Modelle gemäß Inspektionsplan ein\"",
-                "documentSha256": "3beddbbab94d2251531050db0caf4a43e122df4d0b880bbe3e7474d82f8124b3"
+                "documentSha256": "7c1e2a02a944e12a82760d19abb0a5a97c8de5f3e8614eb4c991efb1fc7c41f4"
               }
             ],
             "verification": "candidate",
@@ -2037,7 +5206,7 @@
           }
         },
         {
-          "id": "src-cbe38e86d0a697c0:5f2ef079393f-p10-coolant-replacement-0",
+          "id": "src-cbe38e86d0a697c0:5645b03158ac-p10-coolant-replacement-0",
           "sourceId": "src-cbe38e86d0a697c0",
           "operationKey": "coolant",
           "task": "coolant",
@@ -2091,7 +5260,7 @@
             ]
           },
           "requirement": {
-            "id": "5f2ef079393f-p10-coolant-replacement-0",
+            "id": "5645b03158ac-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2 petrol is 45,000 km or 3 years , whiche",
             "action": "replacement",
@@ -2128,14 +5297,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+                "documentId": "5645b03158ac65bd4229846b48026aea918d181b79ed0119a476d4b5fcc04afa",
                 "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, AT) 2017 - 2020",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2\"",
-                "documentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c"
+                "documentSha256": "5645b03158ac65bd4229846b48026aea918d181b79ed0119a476d4b5fcc04afa"
               }
             ],
             "verification": "candidate",
@@ -2158,7 +5327,7 @@
           }
         },
         {
-          "id": "src-cbe38e86d0a697c0:5f2ef079393f-p5-s-air_filter-replacement-0",
+          "id": "src-cbe38e86d0a697c0:5645b03158ac-p5-s-air_filter-replacement-0",
           "sourceId": "src-cbe38e86d0a697c0",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -2207,7 +5376,7 @@
             ]
           },
           "requirement": {
-            "id": "5f2ef079393f-p5-s-air_filter-replacement-0",
+            "id": "5645b03158ac-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Air filter change interval is 45,000 km .",
             "action": "replacement",
@@ -2238,14 +5407,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+                "documentId": "5645b03158ac65bd4229846b48026aea918d181b79ed0119a476d4b5fcc04afa",
                 "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, AT) 2017 - 2020",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Air filter change interval is 45,000 km .\"",
-                "documentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c"
+                "documentSha256": "5645b03158ac65bd4229846b48026aea918d181b79ed0119a476d4b5fcc04afa"
               }
             ],
             "verification": "candidate",
@@ -2268,7 +5437,7 @@
           }
         },
         {
-          "id": "src-cbe38e86d0a697c0:5f2ef079393f-p6-s-fuel_filter-replacement-1",
+          "id": "src-cbe38e86d0a697c0:5645b03158ac-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-cbe38e86d0a697c0",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -2321,7 +5490,7 @@
             ]
           },
           "requirement": {
-            "id": "5f2ef079393f-p6-s-fuel_filter-replacement-1",
+            "id": "5645b03158ac-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Kia Picanto 1.2 petrol fuel filter change interval is 60,000 km",
             "action": "replacement",
@@ -2357,14 +5526,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+                "documentId": "5645b03158ac65bd4229846b48026aea918d181b79ed0119a476d4b5fcc04afa",
                 "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, AT) 2017 - 2020",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Kia Picanto 1.2 petrol fuel filter change interval is 60,000 km\"",
-                "documentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c"
+                "documentSha256": "5645b03158ac65bd4229846b48026aea918d181b79ed0119a476d4b5fcc04afa"
               }
             ],
             "verification": "candidate",
@@ -2387,7 +5556,7 @@
           }
         },
         {
-          "id": "src-cbe38e86d0a697c0:5f2ef079393f-p7-s-spark_plugs-replacement-2",
+          "id": "src-cbe38e86d0a697c0:5645b03158ac-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-cbe38e86d0a697c0",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -2436,7 +5605,7 @@
             ]
           },
           "requirement": {
-            "id": "5f2ef079393f-p7-s-spark_plugs-replacement-2",
+            "id": "5645b03158ac-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Replacement interval for spark plugs is 45,000 km .",
             "action": "replacement",
@@ -2467,14 +5636,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c",
+                "documentId": "5645b03158ac65bd4229846b48026aea918d181b79ed0119a476d4b5fcc04afa",
                 "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, AT) 2017 - 2020",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Replacement interval for spark plugs is 45,000 km .\"",
-                "documentSha256": "5f2ef079393f1fe32a3a60f09aba8b3279b1a8c7d832c278c0924f0a1ef5875c"
+                "documentSha256": "5645b03158ac65bd4229846b48026aea918d181b79ed0119a476d4b5fcc04afa"
               }
             ],
             "verification": "candidate",
@@ -2497,7 +5666,7 @@
           }
         },
         {
-          "id": "src-a7b79ac97ea6b99f:7225919b0b06-p10-coolant-replacement-0",
+          "id": "src-a7b79ac97ea6b99f:ae5fc1c45549-p10-coolant-replacement-0",
           "sourceId": "src-a7b79ac97ea6b99f",
           "operationKey": "coolant",
           "task": "coolant",
@@ -2551,7 +5720,7 @@
             ]
           },
           "requirement": {
-            "id": "7225919b0b06-p10-coolant-replacement-0",
+            "id": "ae5fc1c45549-p10-coolant-replacement-0",
             "task": "coolant",
             "taskText": "Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2 petrol is 45,000 km or 3 years , whiche",
             "action": "replacement",
@@ -2588,14 +5757,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+                "documentId": "ae5fc1c4554903f2aff79107297de546d3ef677389507779521abb845e1fc8c4",
                 "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, MT) 2017 - 2020",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 10,
                 "table": "Always consult your vehicle manufacturer's service manual for service intervals and specifications!",
                 "locator": "line \"Engine coolant (antifreeze) recommended replacement interval for Kia Picanto 1.2\"",
-                "documentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b"
+                "documentSha256": "ae5fc1c4554903f2aff79107297de546d3ef677389507779521abb845e1fc8c4"
               }
             ],
             "verification": "candidate",
@@ -2618,7 +5787,7 @@
           }
         },
         {
-          "id": "src-a7b79ac97ea6b99f:7225919b0b06-p5-s-air_filter-replacement-0",
+          "id": "src-a7b79ac97ea6b99f:ae5fc1c45549-p5-s-air_filter-replacement-0",
           "sourceId": "src-a7b79ac97ea6b99f",
           "operationKey": "air_filter",
           "task": "air_filter",
@@ -2667,7 +5836,7 @@
             ]
           },
           "requirement": {
-            "id": "7225919b0b06-p5-s-air_filter-replacement-0",
+            "id": "ae5fc1c45549-p5-s-air_filter-replacement-0",
             "task": "air_filter",
             "taskText": "Replacement interval for the air filter is 45,000 km .",
             "action": "replacement",
@@ -2698,14 +5867,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+                "documentId": "ae5fc1c4554903f2aff79107297de546d3ef677389507779521abb845e1fc8c4",
                 "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, MT) 2017 - 2020",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 5,
                 "section": "Air filter",
                 "locator": "column sentence \"Replacement interval for the air filter is 45,000 km .\"",
-                "documentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b"
+                "documentSha256": "ae5fc1c4554903f2aff79107297de546d3ef677389507779521abb845e1fc8c4"
               }
             ],
             "verification": "candidate",
@@ -2728,7 +5897,7 @@
           }
         },
         {
-          "id": "src-a7b79ac97ea6b99f:7225919b0b06-p6-s-fuel_filter-replacement-1",
+          "id": "src-a7b79ac97ea6b99f:ae5fc1c45549-p6-s-fuel_filter-replacement-1",
           "sourceId": "src-a7b79ac97ea6b99f",
           "operationKey": "fuel_filter",
           "task": "fuel_filter",
@@ -2781,7 +5950,7 @@
             ]
           },
           "requirement": {
-            "id": "7225919b0b06-p6-s-fuel_filter-replacement-1",
+            "id": "ae5fc1c45549-p6-s-fuel_filter-replacement-1",
             "task": "fuel_filter",
             "taskText": "Kia Picanto 1.2 petrol fuel filter replacement interval: 60,000 km",
             "action": "replacement",
@@ -2817,14 +5986,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+                "documentId": "ae5fc1c4554903f2aff79107297de546d3ef677389507779521abb845e1fc8c4",
                 "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, MT) 2017 - 2020",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 6,
                 "section": "Fuel filter",
                 "locator": "column sentence \"Kia Picanto 1.2 petrol fuel filter replacement interval: 60,000 km\"",
-                "documentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b"
+                "documentSha256": "ae5fc1c4554903f2aff79107297de546d3ef677389507779521abb845e1fc8c4"
               }
             ],
             "verification": "candidate",
@@ -2847,7 +6016,7 @@
           }
         },
         {
-          "id": "src-a7b79ac97ea6b99f:7225919b0b06-p7-s-spark_plugs-replacement-2",
+          "id": "src-a7b79ac97ea6b99f:ae5fc1c45549-p7-s-spark_plugs-replacement-2",
           "sourceId": "src-a7b79ac97ea6b99f",
           "operationKey": "spark_plugs",
           "task": "spark_plugs",
@@ -2896,7 +6065,7 @@
             ]
           },
           "requirement": {
-            "id": "7225919b0b06-p7-s-spark_plugs-replacement-2",
+            "id": "ae5fc1c45549-p7-s-spark_plugs-replacement-2",
             "task": "spark_plugs",
             "taskText": "Recommended spark plugs change interval is 45,000 km .",
             "action": "replacement",
@@ -2927,14 +6096,14 @@
             "authority": "vehicle_document",
             "evidence": [
               {
-                "documentId": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b",
+                "documentId": "ae5fc1c4554903f2aff79107297de546d3ef677389507779521abb845e1fc8c4",
                 "documentTitle": "Kia Picanto 1.2 (Petrol, 84 HP, MT) 2017 - 2020",
                 "authority": "vehicle_document",
                 "markets": [],
                 "page": 7,
                 "section": "Spark plugs",
                 "locator": "column sentence \"Recommended spark plugs change interval is 45,000 km .\"",
-                "documentSha256": "7225919b0b060f2d8567da19316095b39adaf5833f533b92a3f5dfc6ee78a21b"
+                "documentSha256": "ae5fc1c4554903f2aff79107297de546d3ef677389507779521abb845e1fc8c4"
               }
             ],
             "verification": "candidate",
@@ -2957,7 +6126,7 @@
           }
         }
       ],
-      "resolvedAt": "2026-10-03T05:29:07.578Z",
+      "resolvedAt": "2026-10-03T09:56:13.129Z",
       "msourceVersion": "msource/1"
     }
   }
