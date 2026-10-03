@@ -11,18 +11,28 @@ import {
 
 import type { ExteriorPhase } from '@/domain';
 import { useAppData } from '@/features/data/DataContext';
-import { onboardingServices, referenceImageCatalog } from '@/features/data/dataSource';
+import {
+  modelPhotoHost,
+  onboardingServices,
+  referenceImageCatalog,
+} from '@/features/data/dataSource';
 import { vehicleClass, type VehicleClass } from '@/identification/vehicleClass';
-import type { ReferenceImageCatalog } from '@/providers/referenceImages/types';
 
-import { resolveReferenceImage, type ReferenceResolution } from './referenceResolution';
+import { resolveModelPhoto, type ModelPhotoResolution } from './modelPhoto';
+import {
+  IMAGE_SEARCH_TIMEOUT_MS,
+  resolveReferenceImage,
+  type ReferenceResolution,
+} from './referenceResolution';
 import type { VehicleSummary } from './types';
 
 /**
  * Vehicle image state (owner decisions 2026-09-29). Display priority:
  *   1. the user's own photo;
  *   2. the verified model reference image (credited, no visible label);
- *   3/4. the illustration.
+ *   3. a general model photo from Wikimedia (license-checked, credited, LABELLED as general: it
+ *      may show another generation / body / color — owner decision 2026-10-03);
+ *   4. the illustration.
  * While a reference is being resolved the image area says so (never a generic car presented as
  * the result); "no suitable image", "cannot search now" and "which front?" are distinct states.
  */
@@ -31,44 +41,87 @@ export type VehicleImageState =
   | { kind: 'searching' }
   | Extract<ReferenceResolution, { kind: 'reference' }>
   | Extract<ReferenceResolution, { kind: 'choose_phase' }>
+  | Extract<ModelPhotoResolution, { kind: 'model_photo' }>
   | { kind: 'not_found' }
   | { kind: 'unavailable' }
   /** No search in this build, or the user answered "לא עכשיו" / "לא בטוח". */
   | { kind: 'illustration' };
 
+type Resolved = ReferenceResolution | Extract<ModelPhotoResolution, { kind: 'model_photo' }>;
+
 interface Entry {
   sig: string;
-  state: ReferenceResolution | { kind: 'searching' };
+  state: Resolved | { kind: 'searching' };
 }
 
 interface Ctx {
-  catalog: ReferenceImageCatalog | null;
+  /** Some image search is configured (approved catalog and/or general model photos). */
+  enabled: boolean;
   entries: Record<string, Entry>;
-  ensure: (vehicleId: string, cls: VehicleClass, sig: string, force?: boolean) => void;
+  ensure: (
+    vehicleId: string,
+    cls: VehicleClass,
+    sig: string,
+    subject: { manufacturer: string; model: string },
+    force?: boolean,
+  ) => void;
   seed: (vehicleId: string, sig: string, state: ReferenceResolution) => void;
 }
 
 const VehicleImageCtx = createContext<Ctx | null>(null);
 
-const signature = (cls: VehicleClass) => JSON.stringify(cls);
+const signature = (cls: VehicleClass, subject?: { manufacturer?: string; model?: string }) =>
+  JSON.stringify([cls, subject?.manufacturer ?? '', subject?.model ?? '']);
+
+async function withTimeout<T>(work: Promise<T>, fallback: T, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<T>((resolve) => {
+    timer = setTimeout(() => resolve(fallback), ms);
+  });
+  try {
+    return await Promise.race([work.catch(() => fallback), timeout]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 export function VehicleImageProvider({ children }: { children: ReactNode }) {
   const [catalog] = useState(referenceImageCatalog);
+  const [photos] = useState(modelPhotoHost);
+  const { modelPhotoCache } = useAppData();
   const [entries, setEntries] = useState<Record<string, Entry>>({});
   const current = useRef(new Map<string, string>());
+  const enabled = Boolean(catalog || (photos && modelPhotoCache));
 
   const ensure = useCallback<Ctx['ensure']>(
-    (vehicleId, cls, sig, force = false) => {
-      if (!catalog) return;
+    (vehicleId, cls, sig, subject, force = false) => {
+      if (!enabled) return;
       if (!force && current.current.get(vehicleId) === sig) return;
       current.current.set(vehicleId, sig);
       setEntries((e) => ({ ...e, [vehicleId]: { sig, state: { kind: 'searching' } } }));
-      void resolveReferenceImage(cls, catalog).then((state) => {
+      const resolve = async (): Promise<Resolved> => {
+        const approved: ReferenceResolution =
+          catalog && cls.kind !== 'unsupported'
+            ? await resolveReferenceImage(cls, catalog)
+            : { kind: 'not_found' };
+        // The approved reference wins; a general model photo only when there is none.
+        if (approved.kind !== 'not_found' || !photos || !modelPhotoCache) return approved;
+        return withTimeout<Resolved>(
+          resolveModelPhoto(subject, {
+            ...photos,
+            cache: modelPhotoCache,
+            now: () => new Date().toISOString(),
+          }),
+          { kind: 'unavailable' },
+          IMAGE_SEARCH_TIMEOUT_MS,
+        );
+      };
+      void resolve().then((state) => {
         if (current.current.get(vehicleId) !== sig) return; // superseded
         setEntries((e) => ({ ...e, [vehicleId]: { sig, state } }));
       });
     },
-    [catalog],
+    [enabled, catalog, photos, modelPhotoCache],
   );
 
   const seed = useCallback<Ctx['seed']>((vehicleId, sig, state) => {
@@ -77,8 +130,8 @@ export function VehicleImageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ catalog, entries, ensure, seed }),
-    [catalog, entries, ensure, seed],
+    () => ({ enabled, entries, ensure, seed }),
+    [enabled, entries, ensure, seed],
   );
   return <VehicleImageCtx.Provider value={value}>{children}</VehicleImageCtx.Provider>;
 }
@@ -137,12 +190,16 @@ export function useVehicleImage(vehicle: ImageSubject): {
       full?.exteriorPhase,
     ],
   );
-  const sig = signature(cls);
-  const searchable = Boolean(ctx?.catalog && full && !isDemoData);
+  const sig = signature(cls, full ?? undefined);
+  const searchable = Boolean(ctx?.enabled && full && !isDemoData);
+  const subject = useMemo(
+    () => ({ manufacturer: full?.manufacturer ?? '', model: full?.model ?? '' }),
+    [full?.manufacturer, full?.model],
+  );
 
   useEffect(() => {
-    if (searchable && id) ctx!.ensure(id, cls, sig);
-  }, [searchable, id, sig, cls, ctx]);
+    if (searchable && id) ctx!.ensure(id, cls, sig, subject);
+  }, [searchable, id, sig, cls, ctx, subject]);
 
   const acquisition = isDemoData ? null : (onboardingServices()?.acquisition ?? null);
   const acquire = async (from: 'camera' | 'library') => {
@@ -154,7 +211,7 @@ export function useVehicleImage(vehicle: ImageSubject): {
 
   const actions: VehicleImageActions = {
     retry: () => {
-      if (searchable && id) ctx!.ensure(id, cls, sig, true);
+      if (searchable && id) ctx!.ensure(id, cls, sig, subject, true);
     },
     notNow: () => {
       if (id) setImagePromptDismissed(id, true);
@@ -171,7 +228,7 @@ export function useVehicleImage(vehicle: ImageSubject): {
         const option = entry.state.options.find((o) => o.phase === phase);
         const next = vehicleClass({ ...full, exteriorPhase: phase });
         if (option && ctx) {
-          ctx.seed(id, signature(next), {
+          ctx.seed(id, signature(next, full), {
             kind: 'reference',
             uri: option.uri,
             record: option.record,

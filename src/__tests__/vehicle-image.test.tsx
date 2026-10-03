@@ -311,3 +311,82 @@ describe('vehicle image: no suitable image and the user photo', () => {
     );
   }, 60000);
 });
+
+describe('general model photo (Wikimedia, license-checked; owner decision 2026-10-03)', () => {
+  /** SYNTHETIC answers shaped like the Wikipedia / Commons API; no network. */
+  function photoHost() {
+    const asked: string[] = [];
+    return {
+      asked,
+      host: {
+        getJson: async (url: string) => {
+          asked.push(url);
+          if (url.includes('imageinfo')) {
+            return {
+              query: {
+                pages: [
+                  {
+                    imageinfo: [
+                      {
+                        thumburl: 'https://upload.wikimedia.org/x/800px-Corolla.jpg',
+                        descriptionurl: 'https://commons.wikimedia.org/wiki/File:Corolla.jpg',
+                        mime: 'image/jpeg',
+                        extmetadata: {
+                          License: { value: 'cc-by-sa-4.0' },
+                          LicenseShortName: { value: 'CC BY-SA 4.0' },
+                          Artist: { value: 'Example Photographer' },
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+            };
+          }
+          return { query: { pages: [{ title: 'Toyota Corolla', pageimage: 'Corolla.jpg' }] } };
+        },
+        download: async () => 'file:///app/model-photos/corolla.jpg',
+        exists: async () => true,
+      },
+    };
+  }
+
+  it('no approved reference → the general photo, labelled and credited; the registry color badge', async () => {
+    const photos = photoHost();
+    configureDataSource({
+      kind: 'local',
+      openDatabase: async () => db,
+      ids: sequentialIds(1000),
+      clock,
+      files: new MemoryFileStore(),
+      services,
+      modelPhotos: photos.host,
+    });
+    await withVehicle(
+      { manufacturer: 'טויוטה יפן', model: 'COROLLA', year: 2017 },
+      { color: 'לבן שנהב' },
+    );
+    await home();
+    await waitFor(
+      () => expect(screen.getAllByTestId('vehicle-photo-general').length).toBeGreaterThan(0),
+      LONG,
+    );
+    expect(screen.getAllByTestId('vehicle-photo-general-label')[0]).toHaveTextContent(
+      'תמונת דגם כללית מוויקיפדיה · ייתכן שהדור או הגרסה שונים מהרכב שלך',
+    );
+    expect(screen.getAllByTestId('vehicle-reference-credit')[0]).toHaveTextContent(
+      /Example Photographer · CC BY-SA 4\.0 · Wikimedia Commons/,
+    );
+    expect(screen.getByTestId('vehicle-color-badge')).toHaveTextContent('צבע: לבן שנהב');
+    expect(screen.getByTestId('vehicle-color-swatch-white')).toBeOnTheScreen();
+    // Only make + model were sent (no plate, VIN or identity).
+    expect(photos.asked.join(' ')).not.toMatch(/12-345-67|1234567/);
+    expect(decodeURIComponent(photos.asked[0])).toContain('titles=Toyota Corolla');
+    // Cached locally by model class: what a restarted app would read without the network.
+    const reopened = await openTestDatabase(db.export());
+    const row = await reopened.first<{ status: string; local_uri: string }>(
+      "SELECT status, local_uri FROM model_photo_cache WHERE class_key = 'wm1/toyota/corolla'",
+    );
+    expect(row).toEqual({ status: 'found', local_uri: 'file:///app/model-photos/corolla.jpg' });
+  }, 40000);
+});

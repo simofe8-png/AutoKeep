@@ -251,6 +251,7 @@ export function PrototypeDataProvider({
       registerMaintenanceBooklet: () => undefined,
       retryMaintenanceDiscovery: () => undefined,
       reviewOwnerDocumentItem: () => undefined,
+      modelPhotoCache: null,
       network,
       setNetwork,
       account,

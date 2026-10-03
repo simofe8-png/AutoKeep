@@ -104,6 +104,14 @@ _Last updated: 2026-10-03_
     (migration v12). `npm run verify`: 95 suites / 782 tests.
   - Next: the Expo Go check on the phone, then photo OCR (D-A2).
   - See `SPEC_INGEST_PROVIDERS_2026-10-03.md` → Implementation log.
+- **General model photo + color badge (2026-10-03): DONE, phone check pending.**
+  - A license-checked Wikimedia photo is used when there is no approved reference. It is labelled
+    as general and credited, and cached locally (migration v13).
+  - Registry color badge on the hero.
+  - `npm run verify`: 97 suites / 799 tests.
+  - See VEHICLE_IMAGE_IMPLEMENTATION.md, amendment 2026-10-03.
+  - Owner decisions: the XR650L schedule comes only from the owner uploading the manual; no
+    community schedules (D-A4 kept).
 - **Owner backlog (recorded, not started):** Home shortcut tiles duplicate the bottom navigation
   (history / documents / maintenance). Keep the bottom navigation, and keep only unique Home
   shortcuts such as Garage Mode.

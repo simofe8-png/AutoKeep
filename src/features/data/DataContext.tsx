@@ -1,5 +1,6 @@
 import type { ExteriorPhase } from '@/domain';
 import type { OwnerEdit } from '@/discovery/maintenance/msource/ownerReview';
+import type { ModelPhotoDeps } from '@/features/vehicles/modelPhoto';
 import * as Crypto from 'expo-crypto';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import { createContext, useContext } from 'react';
@@ -153,6 +154,8 @@ export interface AppDataValue {
   registerMaintenanceBooklet: (vehicleId: string, documentId: string) => void;
   /** M-SOURCE: runs automatic maintenance-schedule discovery again for the vehicle. */
   retryMaintenanceDiscovery: (vehicleId: string) => void;
+  /** Local cache of general model photos (null in demo mode). */
+  modelPhotoCache: ModelPhotoDeps['cache'] | null;
   /** Owner review: accept (optionally corrected) or reject one item from the owner's document. */
   reviewOwnerDocumentItem: (
     vehicleId: string,

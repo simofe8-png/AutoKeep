@@ -65,7 +65,9 @@ import {
   DiscoveryMissRepository,
   MaintenanceKnowledgeRepository,
   MSourceRepository,
+  ModelPhotoCacheRepository,
   VehicleRegistryRecordRepository,
+  type CachedModelPhoto,
 } from '@/persistence';
 import { buildFingerprint, fingerprintKey } from '@/discovery/maintenance/msource/fingerprint';
 import type { CachedSource, MSourceRun } from '@/discovery/maintenance/msource/run';
@@ -995,6 +997,15 @@ export class LocalStore {
       this.clock.now(),
       edit,
     );
+  }
+
+  /** General model photo cache (model class, no vehicle data; migration v13). */
+  modelPhotoGet(classKey: string): Promise<CachedModelPhoto | null> {
+    return new ModelPhotoCacheRepository(this.db).get(classKey);
+  }
+
+  modelPhotoPut(classKey: string, value: CachedModelPhoto): Promise<void> {
+    return new ModelPhotoCacheRepository(this.db).put(classKey, value);
   }
 
   async registerMaintenanceBooklet(vehicleId: string, documentId: string): Promise<void> {

@@ -28,6 +28,7 @@ import { enableSyntheticMaintenance } from '@/features/maintenance/knowledge/syn
 import { localLicenseOcr } from '@/providers/ocr/localLicenseOcr';
 import { SupabaseReferenceCatalog } from '@/providers/referenceImages/supabaseCatalog';
 import type { ReferenceImageCatalog } from '@/providers/referenceImages/types';
+import { wikimediaHost, type ModelPhotoHost } from '@/providers/referenceImages/wikimediaHost';
 import { expoFileStore } from '@/providers/storage/expoFileStore';
 import type { OriginalFileStore } from '@/providers/storage/types';
 
@@ -60,6 +61,8 @@ export type DataSourceConfig =
       msource?: MSourceHost | null;
       /** Approved vehicle model reference images (absent/null: no image search in this build). */
       referenceImages?: ReferenceImageCatalog | null;
+      /** General model photos from Wikimedia, license-checked (absent/null: not looked up). */
+      modelPhotos?: ModelPhotoHost | null;
     };
 
 const openDefault = () => openExpoDatabase();
@@ -117,6 +120,7 @@ const production: DataSourceConfig = {
   },
   referenceImages: referenceCatalog(),
   msource: deviceMSourceHost(),
+  modelPhotos: wikimediaHost(),
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.
@@ -159,6 +163,11 @@ export function dataClock(): Clock {
 }
 
 /** The approved reference-image catalog, or null (demo mode / no backend in this build). */
+export function modelPhotoHost(): ModelPhotoHost | null {
+  const s = currentDataSource();
+  return s.kind === 'local' ? (s.modelPhotos ?? null) : null;
+}
+
 export function referenceImageCatalog(): ReferenceImageCatalog | null {
   const s = currentDataSource();
   return s.kind === 'local' ? (s.referenceImages ?? null) : null;

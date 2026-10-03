@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import { he } from '@/i18n/he';
+import { colorFamily, type ColorFamily } from '@/identification/vehicleClass';
 import type { ReferenceImageRecord } from '@/providers/referenceImages/types';
 import {
   AppText,
@@ -196,10 +197,20 @@ export function VehiclePhoto({
       </View>
     );
   }
-  if (state.kind === 'user' || state.kind === 'reference') {
-    const reference = state.kind === 'reference';
+  if (state.kind === 'user' || state.kind === 'reference' || state.kind === 'model_photo') {
+    const reference = state.kind !== 'user';
+    const general = state.kind === 'model_photo';
     return (
-      <View style={frame} testID={reference ? 'vehicle-photo-reference' : 'vehicle-photo-user'}>
+      <View
+        style={frame}
+        testID={
+          general
+            ? 'vehicle-photo-general'
+            : reference
+              ? 'vehicle-photo-reference'
+              : 'vehicle-photo-user'
+        }
+      >
         <Image
           source={{ uri: state.uri }}
           style={styles.image}
@@ -209,7 +220,14 @@ export function VehiclePhoto({
             reference ? [vehicle.manufacturer, vehicle.model].filter(Boolean).join(' ') : undefined
           }
         />
-        {reference && large ? (
+        {general && large ? (
+          <View style={styles.artLabel} testID="vehicle-photo-general-label">
+            <AppText variant="caption" color="textSecondary">
+              {he.vehicleImage.generalModelPhoto}
+            </AppText>
+          </View>
+        ) : null}
+        {state.kind !== 'user' && large ? (
           <View style={styles.creditOverlay}>
             <ReferenceCredit record={state.record} />
           </View>
@@ -419,7 +437,41 @@ export function VehicleHero({ vehicle }: { vehicle: VehicleSummary }) {
           {vehicleSpecLine(vehicle)}
         </AppText>
         <PlateBadge number={vehicle.registration} size="md" />
+        {vehicle.color ? <ColorBadge color={vehicle.color} /> : null}
       </View>
+    </View>
+  );
+}
+
+/** Swatch per color family (a known family only: an unknown color shows its name alone). */
+const SWATCH: Record<ColorFamily, string> = {
+  black: '#1B1B1F',
+  white: '#FFFFFF',
+  silver: '#C3C7CC',
+  grey: '#7D848C',
+  blue: '#2F5DA8',
+  red: '#B8262D',
+  green: '#2E7D4F',
+  yellow: '#E5BF1A',
+  orange: '#E07A1F',
+  brown: '#7A4E2D',
+  beige: '#D9C8A5',
+};
+
+/** The vehicle's color exactly as the registry states it (`tzeva_rechev`), with a swatch. */
+export function ColorBadge({ color }: { color: string }) {
+  const family = colorFamily(color);
+  return (
+    <View style={styles.colorBadge} testID="vehicle-color-badge" accessible>
+      {family ? (
+        <View
+          testID={`vehicle-color-swatch-${family}`}
+          style={[styles.swatch, { backgroundColor: SWATCH[family] }]}
+        />
+      ) : null}
+      <AppText variant="small" color="textSecondary">
+        {he.vehicleImage.color(color)}
+      </AppText>
     </View>
   );
 }
@@ -455,6 +507,24 @@ const styles = StyleSheet.create({
   },
   optionPressed: { borderColor: colors.primary },
   optionImage: { width: '100%', height: 96 },
+  colorBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 2,
+    borderRadius: radii.pill,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  swatch: {
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
   creditOverlay: {
     position: 'absolute',
     bottom: spacing.xs,

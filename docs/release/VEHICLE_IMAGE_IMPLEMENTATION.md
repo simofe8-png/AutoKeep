@@ -141,3 +141,34 @@ Research and rights evidence: `VEHICLE_IMAGE_RESOLVER_RESEARCH.md` (§4).
   the consented registry lookups and anonymous catalog reads.
 - **Cleanup:** the operator test image was removed from the phone and the staging app's data was
   cleared.
+
+## Amendment 2026-10-03: general model photo from Wikimedia (owner decision: "checked Wikimedia")
+
+Display priority becomes: user photo → approved reference → **general model photo** → illustration.
+
+- **Lookup:**
+  - The English Wikipedia article titled "<Make> <Model>", with redirects followed and
+    disambiguation pages skipped.
+  - If there is none, the first search hit, accepted only when its title names both the make and
+    the model.
+  - Hebrew registry makes map to English through the existing manufacturer aliases. Only make +
+    model are sent, never a plate, VIN or identity.
+- **License gate (Commons extmetadata):**
+  - Accepted: public domain, CC0, CC BY, CC BY-SA.
+  - Rejected: non-free (fair use), NC, ND, unknown.
+  - The credit "author · license · Wikimedia Commons" is shown and links to the file page.
+- **Label:** always shown on the large image: "תמונת דגם כללית מוויקיפדיה · ייתכן שהדור או הגרסה
+  שונים מהרכב שלך". An article's lead image is usually the newest generation. For example, the live
+  check returned a Corolla E210 photo.
+- **Cache:**
+  - SQLite table `model_photo_cache` (migration v13, local only), keyed by model class (`wm1/<make>/<model>`).
+  - The thumbnail is downloaded to app storage (`model-photos/`), so it shows offline.
+  - A "none" result is remembered for 30 days.
+- **Hosts:** the API at `en.wikipedia.org`; images at `upload.wikimedia.org` and `thumb.wikimedia.org`.
+  - HTTPS only.
+  - Tracking parameters are stripped.
+  - 10 s timeout and a 5 MB limit.
+- **Color:** the hero shows "צבע: <registry color>" (`tzeva_rechev`) with a swatch for known color
+  families.
+- **Live check (2026-10-03):** found, with free licenses, for Toyota Corolla, Honda XR650L, Hyundai
+  Ioniq, Kia Picanto and Suzuki Swift.

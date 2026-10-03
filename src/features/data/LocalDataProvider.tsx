@@ -425,6 +425,11 @@ export function LocalDataProvider({
         discover(vid);
       },
       retryMaintenanceDiscovery: (vid) => discover(vid),
+      // A cache, not user data: written outside the snapshot cycle (nothing on screen depends on it).
+      modelPhotoCache: {
+        get: (key) => runtime.read((s) => s.modelPhotoGet(key), null),
+        put: (key, value) => runtime.read((s) => s.modelPhotoPut(key, value), undefined),
+      },
       reviewOwnerDocumentItem: (vid, key, decision, edit) =>
         write((s) => s.decideOwnerProposal(vid, key, decision, edit ?? null)),
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),

@@ -7,3 +7,4 @@ export * from './repositories/records';
 export * as lifecycle from './lifecycle';
 export * from './repositories/maintenance';
 export * from './repositories/msource';
+export * from './repositories/modelPhotos';

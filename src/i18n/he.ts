@@ -78,6 +78,9 @@ export const he = {
     takePhoto: 'צלם תמונה',
     removeMyPhoto: 'הסר את התמונה שלי',
     changePhase: 'שינוי חזית הדגם',
+    /** A general model photo (Wikimedia): may show another generation / body / color. */
+    generalModelPhoto: 'תמונת דגם כללית מוויקיפדיה · ייתכן שהדור או הגרסה שונים מהרכב שלך',
+    color: (c: string) => `צבע: ${c}`,
   },
   vehicles: {
     genericIllustration: 'איור כללי · לא תמונת הרכב שלך',

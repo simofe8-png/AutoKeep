@@ -384,4 +384,19 @@ CREATE TABLE msource_owner_reviews (
     // (owner review). LOCAL ONLY. NULL = accepted as read.
     up: `ALTER TABLE msource_owner_reviews ADD COLUMN edit_json TEXT;`,
   },
+  {
+    version: 13,
+    name: 'model_photo_cache',
+    // General model photos (Wikimedia, license-checked; owner decision 2026-10-03). LOCAL ONLY,
+    // keyed by MODEL class (no vehicle, plate or VIN column). "none" remembers an empty lookup.
+    up: `
+CREATE TABLE model_photo_cache (
+  class_key TEXT PRIMARY KEY,
+  status TEXT NOT NULL CHECK (status IN ('found', 'none')),
+  record_json TEXT,
+  local_uri TEXT,
+  checked_at TEXT NOT NULL
+);
+`,
+  },
 ];
