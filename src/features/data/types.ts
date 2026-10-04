@@ -3,12 +3,10 @@ import type {
   OwnerProposal,
   UploadIssue,
 } from '@/discovery/maintenance/msource/ownerReview';
-import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 /**
  * UI view-models consumed by screens. They are shaped for display, not persistence. The domain
  * model (M04) and real adapters (M13) map into these types so the approved UI does not change.
  */
-import type { RegistryFact } from '@/providers/registry/vehicleRecord';
 import type { VerificationState } from '@/ui';
 
 export type ActionType = 'inspection' | 'replacement' | 'other';
@@ -216,24 +214,6 @@ export type PlanRequestVM =
   | { kind: 'in_service_date' }
   | { kind: 'odometer' }
   | { kind: 'awaiting_verification'; sources: { title: string; publishedOn?: string }[] }
-  | {
-      kind: 'official_source';
-      sources: {
-        sourceSystemId: string;
-        host: string;
-        url: string | null;
-        reason:
-          | 'manual_access_required'
-          | 'access_policy_unresolved'
-          | 'permission_required'
-          | 'no_digital_source'
-          | 'automatic';
-        israeli: boolean;
-        publishesSchedule: boolean;
-      }[];
-    }
-  | { kind: 'no_official_source' }
-  | { kind: 'official_source_pending' }
   | { kind: 'model_year_unproven' };
 
 export interface MaintenancePlanVM {
@@ -246,24 +226,8 @@ export interface MaintenancePlanVM {
   requests: PlanRequestVM[];
   /** A maintenance booklet was uploaded for this vehicle (awaiting professional review). */
   bookletUploaded: boolean;
-  /** M-SOURCE: automatic schedule discovery status (null = never run on this device). */
-  discovery?: DiscoveryStatus | null;
-  /**
-   * Identity facts as the Ministry of Transport record states them (make, model, year, engine
-   * code, displacement, fuel); null when the vehicle was not identified through the registry.
-   */
-  verifiedIdentity?: RegistryFact[] | null;
   /** Items read from the owner's own documents, awaiting or carrying the owner's decision. */
   ownerReview?: { proposals: OwnerProposalVM[]; issues: UploadIssue[] };
-  /**
-   * General guidance by propulsion type, ONLY while the plan has no schedule item (never part of
-   * the schedule, dues or reminders).
-   */
-  standardGuidance?: {
-    kind: 'engine_family' | 'propulsion';
-    family?: string;
-    rows: { key: string; item: string; label: string; interval: string }[];
-  } | null;
 }
 
 export type OwnerProposalVM = OwnerProposal & {

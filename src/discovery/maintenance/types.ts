@@ -1,5 +1,3 @@
-import type { AdapterFailureCode } from './adapters/types';
-import type { SourceStatus, SourceSystem } from './registry/sourceSystem';
 import type {
   EvidenceLevel,
   MaintenanceRequirement,
@@ -20,6 +18,16 @@ import type {
  * Core logic contains NO per-model rules. Manufacturer knowledge is DATA (the source registry:
  * domains, roles, access policy, library entry points); a new model never needs code.
  */
+
+/**
+ * Source-system types of the removed automatic search (owner decision 2026-10-04); kept as opaque
+ * shapes so records stored by earlier versions still type-check. The owner's documents carry none.
+ */
+type AdapterFailureCode = string;
+type SourceStatus = string;
+interface SourceSystem {
+  id: string;
+}
 
 /** What the pipeline is asked about — the registry/user facts of one vehicle (no plate / VIN). */
 export interface VehicleIdentity extends VehicleFacts {

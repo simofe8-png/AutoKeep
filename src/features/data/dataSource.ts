@@ -1,17 +1,8 @@
 import { getSupabase } from '@/cloud/client';
-import { HybridDiscoveryProvider, KnownSourceProvider } from '@/discovery/hybrid';
-import { OfficialSiteDiscoveryProvider } from '@/discovery/officialSiteDiscovery';
-import {
-  KNOWN_OFFICIAL_SOURCES,
-  MANUFACTURER_ALIASES,
-  OFFICIAL_DOMAINS,
-} from '@/discovery/registry';
 import type { IdGenerator } from '@/domain';
 import { supabaseAccountBackend, type AccountBackend } from '@/features/account/backend';
-import { deviceMSourceHost } from '@/features/maintenance/msource/deviceHost';
-import type { MSourceHost } from '@/features/maintenance/msource/service';
-import { httpRetriever } from '@/features/sources/httpRetriever';
-import type { SourceServices } from '@/features/sources/sourceService';
+import { deviceOwnerDocumentsHost } from '@/features/maintenance/msource/deviceHost';
+import type { OwnerDocumentsHost } from '@/features/maintenance/msource/service';
 import type { OnboardingServices } from '@/features/onboarding/services';
 import type { SqlDatabase } from '@/persistence';
 import { openExpoDatabase } from '@/persistence/db/expoDatabase';
@@ -24,11 +15,7 @@ import { netInfoNetwork } from '@/providers/network/netInfoNetwork';
 import type { NetworkMonitor } from '@/providers/network/types';
 import type { DocumentExporter } from '@/providers/export/types';
 import { DataGovIlRegistry } from '@/providers/registry/dataGovIl';
-import { enableSyntheticMaintenance } from '@/features/maintenance/knowledge/syntheticDemo';
 import { localLicenseOcr } from '@/providers/ocr/localLicenseOcr';
-import { SupabaseReferenceCatalog } from '@/providers/referenceImages/supabaseCatalog';
-import type { ReferenceImageCatalog } from '@/providers/referenceImages/types';
-import { wikimediaHost, type ModelPhotoHost } from '@/providers/referenceImages/wikimediaHost';
 import { expoFileStore } from '@/providers/storage/expoFileStore';
 import type { OriginalFileStore } from '@/providers/storage/types';
 
@@ -55,38 +42,11 @@ export type DataSourceConfig =
       exporter?: DocumentExporter | null;
       /** Connectivity (absent: assumed online). */
       network?: NetworkMonitor | null;
-      /** Official-source discovery + schedule reading (absent: none configured). */
-      sources?: Omit<SourceServices, 'uriFor'> | null;
-      /** M-SOURCE automatic maintenance-schedule discovery (absent: not run in this build). */
-      msource?: MSourceHost | null;
-      /** Approved vehicle model reference images (absent/null: no image search in this build). */
-      referenceImages?: ReferenceImageCatalog | null;
-      /** General model photos from Wikimedia, license-checked (absent/null: not looked up). */
-      modelPhotos?: ModelPhotoHost | null;
+      /** Reads the owner's uploaded maintenance documents (absent: not read in this build). */
+      ownerDocuments?: OwnerDocumentsHost | null;
     };
 
 const openDefault = () => openExpoDatabase();
-
-/** HTTPS GET of a small text resource (robots.txt / sitemaps) with a hard timeout and size cap. */
-async function boundedText(url: string): Promise<{ ok: boolean; text: string }> {
-  if (!url.startsWith('https://')) return { ok: false, text: '' };
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 10_000);
-  try {
-    const r = await fetch(url, { signal: controller.signal });
-    const text = r.ok ? (await r.text()).slice(0, 5_000_000) : '';
-    return { ok: r.ok, text };
-  } catch {
-    return { ok: false, text: '' };
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-function referenceCatalog(): ReferenceImageCatalog | null {
-  const sb = getSupabase();
-  return sb ? new SupabaseReferenceCatalog(sb) : null;
-}
 
 function accountBackend(): AccountBackend | null {
   const sb = getSupabase();
@@ -103,24 +63,7 @@ const production: DataSourceConfig = {
   account: accountBackend(),
   exporter: expoExporter,
   network: netInfoNetwork,
-  sources: {
-    // ADR-0016 hybrid discovery, zero-cost (G3): verified known sources first; otherwise crawl the
-    // verified official domains' robots/sitemaps (no paid search API). Reading the found manual
-    // needs an OCR/AI provider, which V1 does not buy — so without a curated schedule the honest
-    // outcome is "unable to verify".
-    discovery: new HybridDiscoveryProvider(
-      new KnownSourceProvider(KNOWN_OFFICIAL_SOURCES, MANUFACTURER_ALIASES),
-      new OfficialSiteDiscoveryProvider(OFFICIAL_DOMAINS, MANUFACTURER_ALIASES, boundedText),
-    ),
-    retriever: httpRetriever(expoFileStore),
-    registry: OFFICIAL_DOMAINS,
-    aliases: MANUFACTURER_ALIASES,
-    reader: null,
-    curated: KNOWN_OFFICIAL_SOURCES,
-  },
-  referenceImages: referenceCatalog(),
-  msource: deviceMSourceHost(),
-  modelPhotos: wikimediaHost(),
+  ownerDocuments: deviceOwnerDocumentsHost(),
   services: {
     acquisition: expoAcquisition,
     // G1: no OCR/AI runtime provider is approved yet — scans are not read automatically.
@@ -133,9 +76,6 @@ const production: DataSourceConfig = {
     invoiceReader: null,
   },
 };
-
-// Device-acceptance test data only (dev bundle flag); never set in normal builds.
-enableSyntheticMaintenance(process.env.EXPO_PUBLIC_SYNTHETIC_MAINTENANCE === '1');
 
 let override: DataSourceConfig | null = null;
 
@@ -160,17 +100,6 @@ export function notificationScheduler(): NotificationScheduler | null {
 export function dataClock(): Clock {
   const s = currentDataSource();
   return s.kind === 'local' ? s.clock : systemClock;
-}
-
-/** The approved reference-image catalog, or null (demo mode / no backend in this build). */
-export function modelPhotoHost(): ModelPhotoHost | null {
-  const s = currentDataSource();
-  return s.kind === 'local' ? (s.modelPhotos ?? null) : null;
-}
-
-export function referenceImageCatalog(): ReferenceImageCatalog | null {
-  const s = currentDataSource();
-  return s.kind === 'local' ? (s.referenceImages ?? null) : null;
 }
 
 /** Onboarding runtime services, or null in demo mode (which uses scripted scenarios). */

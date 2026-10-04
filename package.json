@@ -75,7 +75,6 @@
     "format:check": "prettier --check .",
     "verify": "npm run format:check && npm run lint && npm run typecheck && npm test -- --ci --maxWorkers=2",
     "start:device": "node tools/start-device.mjs",
-    "curate:check": "node --no-warnings=MODULE_TYPELESS_PACKAGE_JSON tools/curate-check.mjs",
     "test:cloud": "jest -c jest.cloud.config.js",
     "cloud:start": "supabase start",
     "cloud:stop": "supabase stop",

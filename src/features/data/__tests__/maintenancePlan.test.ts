@@ -72,23 +72,14 @@ describe('maintenance knowledge persistence (migration v6)', () => {
   it('each vehicle gets its own evidence-based plan with the exact missing information', async () => {
     const { store } = await setup();
     const snap = await store.snapshot();
-    expect(snap.bundles[FIESTA].plan).toMatchObject({
-      status: 'needs_information',
-      items: [],
-      requests: [
-        // (The acceptance vehicles' research claims are test fixtures, not production data.)
-        { kind: 'official_source_pending' },
-        { kind: 'upload_booklet', hint: 'generic' },
-      ],
-    });
-    expect(snap.bundles[IBIZA].plan).toMatchObject({
-      status: 'needs_information',
-      items: [],
-      requests: [
-        { kind: 'official_source', sources: [{ sourceSystemId: 'il-champion-service-routine' }] },
-        { kind: 'upload_booklet', hint: 'generic' },
-      ],
-    });
+    // No schedule until the owner enters one or accepts it from the booklet (2026-10-04).
+    for (const id of [FIESTA, IBIZA]) {
+      expect(snap.bundles[id].plan).toMatchObject({
+        status: 'needs_information',
+        items: [],
+        requests: [{ kind: 'upload_booklet', hint: 'generic' }],
+      });
+    }
   });
 
   it('answers and booklets are vehicle-scoped, survive a restart and never leak', async () => {

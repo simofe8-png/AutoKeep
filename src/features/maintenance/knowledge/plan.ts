@@ -1,5 +1,3 @@
-import { officialSourcesFor, type OfficialSourceStatus } from '@/discovery/maintenance/fallback';
-import { SOURCE_SYSTEMS } from '@/discovery/maintenance/registry/israelSources';
 import { MANUFACTURER_ALIASES } from '@/discovery/registry';
 import { normalizeManufacturer } from '@/discovery/authority';
 import {
@@ -78,13 +76,6 @@ export type EvidenceRequest =
   | { kind: 'in_service_date' }
   | { kind: 'odometer' }
   | { kind: 'awaiting_verification'; sources: { title: string; publishedOn?: IsoDate }[] }
-  /** Approved official pages the USER can open (AutoKeep may not fetch them automatically). */
-  /** Approved official sources of the make with the precise reason AutoKeep cannot read them. */
-  | { kind: 'official_source'; sources: OfficialSourceStatus[] }
-  /** No official source system is known for the make. */
-  | { kind: 'no_official_source' }
-  /** An official source was identified but is not yet approved as a trusted source. */
-  | { kind: 'official_source_pending' }
   /** The document found does not state the vehicle's model years. */
   | { kind: 'model_year_unproven' };
 
@@ -93,9 +84,6 @@ export type EvidenceRequest =
  * improved later — the record carries the vehicle CLASS only, never a vehicle, plate or VIN.
  */
 export type DiscoveryMissReason =
-  | Exclude<OfficialSourceStatus['reason'], 'automatic'>
-  | 'no_official_source'
-  | 'official_source_pending'
   | 'unknown_make'
   | 'model_year_unproven'
   | 'awaiting_verification'
@@ -223,20 +211,6 @@ function lastCompletionOf(
   return best;
 }
 
-// ---------- official sources (registry data; nothing is fetched) ----------
-
-/** The approved official sources of the vehicle's make, each with the precise fallback reason. */
-function identifiedSystems(make: string): number {
-  const key = normalizeManufacturer(make, MANUFACTURER_ALIASES);
-  return SOURCE_SYSTEMS.filter((x) => x.status === 'proposed' && x.manufacturers.includes(key))
-    .length;
-}
-
-export function officialSources(facts: VehicleFacts): OfficialSourceStatus[] {
-  if (!facts.make) return [];
-  return officialSourcesFor(facts.make, SOURCE_SYSTEMS, MANUFACTURER_ALIASES, facts.kind);
-}
-
 // ---------- market across the service family ----------
 
 const SERVICE_FAMILY: readonly TaskCode[] = ['periodic_service', 'engine_oil', 'oil_filter'];
@@ -310,14 +284,7 @@ function missReasons(
   const out = new Set<DiscoveryMissReason>();
   if (!facts.make) out.add('unknown_make');
   for (const r of requests) {
-    if (r.kind === 'official_source') {
-      for (const s of r.sources) if (s.reason !== 'automatic') out.add(s.reason);
-    } else if (
-      r.kind === 'no_official_source' ||
-      r.kind === 'official_source_pending' ||
-      r.kind === 'model_year_unproven' ||
-      r.kind === 'awaiting_verification'
-    ) {
+    if (r.kind === 'model_year_unproven' || r.kind === 'awaiting_verification') {
       out.add(r.kind);
     } else if (r.kind === 'service_regime' || r.kind === 'usage' || r.kind === 'engine_code') {
       out.add('missing_vehicle_fact');
@@ -413,17 +380,6 @@ export function buildMaintenancePlan(input: {
   };
   const needsFallback = items.length === 0 || !hasServiceInterval(facts, items);
   if (needsFallback) {
-    // Sources the pipeline may read automatically are not a user action; the rest are, with why.
-    const sources = officialSources(facts).filter((x) => x.reason !== 'automatic');
-    if (sources.length) add({ kind: 'official_source', sources });
-    else if (!officialSources(facts).length) {
-      // Never "not found" when a source is known: an identified, not-yet-approved source says so.
-      add(
-        facts.make && identifiedSystems(facts.make)
-          ? { kind: 'official_source_pending' }
-          : { kind: 'no_official_source' },
-      );
-    }
     add({ kind: 'upload_booklet', hint });
   }
   for (const r of unresolved) {

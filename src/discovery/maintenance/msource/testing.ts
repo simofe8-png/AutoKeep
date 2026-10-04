@@ -1,75 +1,7 @@
 import { htmlTextReader } from '../htmlText';
-import type { SourceSystem } from '../registry/sourceSystem';
-import type { AccessContext } from './accessEngine';
-import type { DiscoveryAdapter } from './adapters';
-import type { GuardedFetchDeps } from './netGuard';
-import type { RunnerDeps } from './run';
+import type { ReaderDeps } from './run';
 
-/**
- * Test-only fake web for M-SOURCE (fixtures, never real sources). Pages are synthetic documents
- * written for the tests; robots.txt, redirects, status codes and content types are simulated so
- * the real guard / access / acquisition code runs unchanged.
- */
-
-export interface FakePage {
-  status?: number;
-  contentType?: string;
-  body?: string | Uint8Array;
-  location?: string;
-}
-
-export class FakeWeb {
-  readonly requested: string[] = [];
-  constructor(readonly pages: Record<string, FakePage>) {}
-
-  fetch = (async (url: string) => {
-    this.requested.push(url);
-    const p = this.pages[url];
-    if (!p) return fakeResponse(404, 'text/plain', 'not found');
-    if (p.location)
-      return fakeResponse(p.status ?? 302, 'text/plain', '', { location: p.location });
-    return fakeResponse(p.status ?? 200, p.contentType ?? 'text/html', p.body ?? '');
-  }) as unknown as typeof fetch;
-
-  net(extra: Partial<GuardedFetchDeps> = {}): GuardedFetchDeps {
-    return {
-      fetch: this.fetch,
-      userAgent: 'AutoKeepBot/test',
-      sleep: async () => undefined,
-      ...extra,
-    };
-  }
-}
-
-export function fakeResponse(
-  status: number,
-  contentType: string,
-  body: string | Uint8Array,
-  headers: Record<string, string> = {},
-): Response {
-  const bytes = typeof body === 'string' ? new TextEncoder().encode(body) : body;
-  const h: Record<string, string> = { 'content-type': contentType, ...headers };
-  return {
-    status,
-    ok: status >= 200 && status < 300,
-    headers: { get: (k: string) => h[k.toLowerCase()] ?? null },
-    body: null,
-    arrayBuffer: async () =>
-      bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength),
-  } as unknown as Response;
-}
-
-export const ALLOW_ALL = 'User-agent: *\nAllow: /\n';
-
-export function fakeAccess(web: FakeWeb, registry: readonly SourceSystem[] = []): AccessContext {
-  let t = 0;
-  return {
-    registry,
-    net: web.net(),
-    now: () => new Date(Date.UTC(2026, 9, 2, 8, 0, t++)).toISOString(),
-    robots: new Map(),
-  };
-}
+/** Test helpers for reading the owner's documents (SYNTHETIC data only). */
 
 export async function fakeSha256(b: Uint8Array): Promise<string> {
   // Deterministic non-cryptographic stand-in for tests (64 hex chars).
@@ -83,24 +15,15 @@ export async function fakeSha256(b: Uint8Array): Promise<string> {
   return part.repeat(4).slice(0, 64);
 }
 
-export function fakeDeps(
-  web: FakeWeb,
-  adapters: DiscoveryAdapter[],
-  over: Partial<RunnerDeps> = {},
-): RunnerDeps {
-  const access = fakeAccess(web, over.access?.registry ?? []);
+export function readerDeps(over: Partial<ReaderDeps> = {}): ReaderDeps {
   return {
     runId: 'run-test',
     vehicleRef: 'veh-test',
-    adapters,
-    access,
-    net: web.net(),
     readers: { pdf: null, html: htmlTextReader },
     sha256: fakeSha256,
-    today: '2026-10-02' as RunnerDeps['today'],
-    now: access.now,
+    today: '2026-10-02' as ReaderDeps['today'],
+    now: () => '2026-10-02T09:00:00.000Z',
     ...over,
-    limits: { hostGapMs: 0, ...over.limits },
   };
 }
 

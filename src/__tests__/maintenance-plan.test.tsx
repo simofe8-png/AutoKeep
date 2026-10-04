@@ -1,23 +1,17 @@
 import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
 
-import { isoDate, type IsoDate, type Timestamp, type VehicleId } from '@/domain';
+import { isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds } from '@/domain/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
-import {
-  DiscoveryMissRepository,
-  MaintenanceKnowledgeRepository,
-  MSourceRepository,
-  VehicleRegistryRecordRepository,
-} from '@/persistence';
+import { MaintenanceKnowledgeRepository } from '@/persistence';
 import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { MemoryFileStore } from '@/providers/storage/types';
-import { FakeWeb } from '@/discovery/maintenance/msource/testing';
 import type { TextReader } from '@/discovery/maintenance/types';
 import {
-  startMaintenanceDiscovery,
-  type DiscoveryStore,
+  readOwnerDocumentsFor,
+  type OwnerDocumentsStore,
 } from '@/features/maintenance/msource/service';
 
 /**
@@ -140,87 +134,42 @@ const BOOKLET = new TextEncoder().encode(
     '<p>Brake fluid: replace every 24 months.</p></body></html>',
 );
 
-/** One discovery run for FIESTA with the owner's upload (offline: no web sources). */
+/** Reads the owner's upload for FIESTA (on the device; nothing is fetched). */
 async function discoverWithUpload(name: string, bytes: Uint8Array, uploadPdf?: TextReader) {
   const store = await LocalStore.open(db, sequentialIds(9000), clock, new MemoryFileStore());
-  const io: DiscoveryStore = {
+  const io: OwnerDocumentsStore = {
     load: async (id) => ({
-      ...(await store.msourceLoad(id))!,
+      ...(await store.ownerDocumentsLoad(id))!,
       uploads: [{ id: 'doc-owner-1', name, bytes }],
     }),
-    progress: (id, run, key, status) => store.msourceProgress(id, run, key, status),
-    complete: (id, run, status, reqs, cache) => store.msourceComplete(id, run, status, reqs, cache),
+    complete: (id, run) => store.ownerDocumentsComplete(id, run),
   };
-  const web = new FakeWeb({});
-  await startMaintenanceDiscovery(
+  await readOwnerDocumentsFor(
     FIESTA,
     io,
-    {
-      net: web.net(),
-      sha256: async () => 'c'.repeat(64),
-      registry: [],
-      catalog: () => [],
-      research: null,
-      uploadPdf: uploadPdf ?? null,
-    },
+    { sha256: async () => 'c'.repeat(64), uploadPdf: uploadPdf ?? null },
     clock,
   );
 }
 
 describe('Maintenance tab (Task 9)', () => {
-  it('insufficient evidence: no interval, the exact next action (generic booklet request)', async () => {
+  it('no schedule yet: no interval, the owner adds it (booklet upload), nothing searched', async () => {
     await seed(false);
     await open('/maintenance', 'screen-maintenance');
     await waitFor(() => expect(screen.getByTestId('plan-fallback')).toBeOnTheScreen(), LONG);
-    // Never an empty screen: general guidance by propulsion type, in its own labelled card —
-    // never a schedule item (owner decision 2026-10-03).
-    expect(screen.getByTestId('plan-standard-guidance')).toBeOnTheScreen();
-    expect(screen.getByText('שגרת טיפולים סטנדרטית (לפי סוג הנעה)')).toBeOnTheScreen();
-    expect(screen.getByTestId('plan-standard-oil_and_filter')).toHaveTextContent(
-      /כל 15,000 ק״מ או 12 חודשים/,
-    );
-    expect(screen.getByTestId('plan-standard-spark_plugs')).toBeOnTheScreen();
     expect(screen.queryByTestId('plan-items')).toBeNull();
     expect(screen.queryByTestId('plan-item-engine_oil')).toBeNull();
-    // §24: the owner-approved fallback message, verbatim, with a direct private upload action.
+    // Owner decision 2026-10-04: the schedule is what the owner enters or approves.
     expect(screen.getByTestId('plan-fallback-message-0')).toHaveTextContent(
-      'חיפשתי לוח טיפולים מתאים לרכב שלך, אך לא מצאתי מידע מספיק מדויק כדי לבנות לוח טיפולים אמין.',
-    );
-    expect(screen.getByTestId('plan-fallback-message-1')).toHaveTextContent(
-      'כדי שאוכל לבנות עבורך לוח טיפולים מדויק, פנה לסוכנות או ליבואן הרכב ובקש את לוח הטיפולים המתאים לרכב שלך.',
-    );
-    expect(screen.getByTestId('plan-fallback-message-2')).toHaveTextContent(
-      'לאחר שתקבל אותו, העלה אותו כאן ל־AutoKeep ואני אחלץ ממנו את הטיפולים ואבנה עבורך את לוח התחזוקה.',
+      'לוח הטיפולים נבנה ממה שאתה מזין ומספר הרכב שלך.',
     );
     expect(screen.getByTestId('plan-fallback-upload')).toHaveTextContent(/העלה את לוח הטיפולים/);
     expect(screen.getByTestId('plan-fallback-privacy')).toHaveTextContent(/פרטי.*PDF/);
-    expect(screen.queryByTestId('plan-needs-information')).toBeNull();
-    // The failure reason is recorded per vehicle CLASS — no vehicle id, plate or VIN.
-    const misses = await new DiscoveryMissRepository(db).all();
-    expect(misses).toEqual([
-      expect.objectContaining({
-        classKey: 'car|ford|fiesta|2015',
-        reasons: expect.arrayContaining(['official_source_pending']),
-      }),
-      expect.objectContaining({
-        classKey: 'car|seat|ibiza|2012',
-        reasons: expect.arrayContaining(['permission_required']),
-      }),
-    ]);
-    expect(JSON.stringify(misses)).not.toMatch(new RegExp(`${FIESTA}|12-345-67|1234567`));
-    // Generic for every make: no manufacturer-specific instructions in production.
     expect(screen.getByTestId('plan-booklet-hint')).toHaveTextContent(/טבלת הטיפולים/);
-    expect(screen.queryByTestId('plan-request-awaiting')).toBeNull();
-    // No interval anywhere, and no architecture terms.
-    expect(screen.queryByTestId('plan-items')).toBeNull();
-    // (The only numbers on the screen are the labelled general-guidance card's — owner decision
-    // 2026-10-03 — never in the plan, its fallback or its requests.)
-    expect(screen.getByTestId('plan-fallback')).not.toHaveTextContent(/15,000|claim|resolver/);
-    expect(screen.getByTestId('screen-maintenance')).not.toHaveTextContent(/claim|resolver/);
-    // The precise reason, never a generic "not found": Delek's Ford source is identified but not
-    // yet approved as a trusted source.
-    expect(screen.getByTestId('plan-request-official-pending')).toHaveTextContent(/עדיין בבדיקה/);
-    expect(screen.queryByTestId('plan-request-no-official-source')).toBeNull();
+    // No interval anywhere, no search wording, no architecture terms.
+    expect(screen.getByTestId('screen-maintenance')).not.toHaveTextContent(
+      /15,000|חיפשתי|מקור רשמי|claim|resolver/,
+    );
   }, 60000);
 
   it('verified evidence: each task with action, when, remaining and its source', async () => {
@@ -284,24 +233,6 @@ describe('Maintenance tab (Task 9)', () => {
   }, 60000);
 });
 
-describe('fallback reasons (M-SOURCE Step 15)', () => {
-  it('SEAT: the Israeli importer schedule needs written permission — the reason and its official page', async () => {
-    await seed(false, ['IL'], IBIZA);
-    await open('/maintenance', 'screen-maintenance');
-    await waitFor(
-      () => expect(screen.getByTestId('plan-request-official-source')).toBeOnTheScreen(),
-      LONG,
-    );
-    const src = screen.getByTestId('plan-official-source-il-champion-service-routine');
-    expect(src).toHaveTextContent(/היבואן הרשמי בישראל/);
-    expect(src).toHaveTextContent(/דורשים אישור בכתב לקריאה אוטומטית/);
-    expect(screen.getByTestId('plan-official-link-www.championmotors.co.il')).toHaveTextContent(
-      /פתח את www\.championmotors\.co\.il/,
-    );
-    expect(screen.getByTestId('screen-maintenance')).not.toHaveTextContent(/לא מצאנו|לא נמצא/);
-  }, 60000);
-});
-
 describe('service journal (Task 10)', () => {
   it('recording a checked task updates only that task; unchecked tasks are not marked done', async () => {
     await seed(true);
@@ -336,91 +267,6 @@ describe('service journal (Task 10)', () => {
     );
     expect(screen.getByTestId('plan-item-brake_fluid')).toHaveTextContent(/טרם תועד ביצוע/);
   }, 90000);
-
-  describe('VERIFIED_IDENTITY_ONLY', () => {
-    /** A finished discovery run that matched no schedule (SYNTHETIC status). */
-    async function noSchedule() {
-      await new MSourceRepository(db).saveStatus(
-        FIESTA as VehicleId,
-        'run-test-1',
-        'car|ford|fiesta|2015|1242|SNJB|petrol|',
-        'msource/1',
-        {
-          state: 'INSUFFICIENT_EVIDENCE',
-          partial: false,
-          retryAvailable: true,
-          uploadDocumentAvailable: true,
-          sourcesFound: 12,
-          sourcesUsed: 0,
-          runId: 'run-test-1',
-          updatedAt: clock.now(),
-        },
-        clock.now(),
-      );
-    }
-
-    it('registry-identified vehicle without a matched schedule: its verified identity, no interval', async () => {
-      await seed(false);
-      // Ministry record facts as published (SYNTHETIC values; the VIN is altered).
-      await new VehicleRegistryRecordRepository(db).save(
-        FIESTA as VehicleId,
-        {
-          sources: ['test'],
-          retrievedAt: clock.now(),
-          facts: [
-            {
-              key: 'manufacturerRegistered',
-              group: 'identity',
-              kind: 'text',
-              value: 'פורד גרמניה',
-            },
-            { key: 'commercialName', group: 'identity', kind: 'text', value: 'FIESTA' },
-            { key: 'modelYear', group: 'identity', kind: 'number', value: 2015 },
-            { key: 'vin', group: 'identity', kind: 'text', value: 'WF0DXXGAKDF000001' },
-            { key: 'engineCode', group: 'technical', kind: 'text', value: 'SNJB' },
-            { key: 'displacement', group: 'technical', kind: 'number', value: 1242 },
-            { key: 'fuel', group: 'technical', kind: 'text', value: 'בנזין' },
-          ],
-        },
-        clock.now(),
-      );
-      await noSchedule();
-      await open('/maintenance', 'screen-maintenance');
-      await waitFor(
-        () => expect(screen.getByTestId('plan-discovery-VERIFIED_IDENTITY_ONLY')).toBeOnTheScreen(),
-        LONG,
-      );
-      expect(screen.getByTestId('plan-discovery-VERIFIED_IDENTITY_ONLY')).toHaveTextContent(
-        /פרטי הרכב אומתו מול משרד התחבורה. שגרת הטיפולים לדגם זה טרם אומתה./,
-      );
-      expect(screen.getByTestId('plan-identity-engineCode')).toHaveTextContent(/SNJB/);
-      expect(screen.getByTestId('plan-identity-commercialName')).toHaveTextContent(/FIESTA/);
-      expect(screen.getByTestId('plan-identity-modelYear')).toHaveTextContent(/2015/);
-      // The VIN is not part of the maintenance identity card (and never shown in full anywhere).
-      expect(screen.queryByTestId('plan-identity-vin')).toBeNull();
-      expect(screen.queryByText(/WF0DXXGAKDF000001/)).toBeNull();
-      // Fallback paths stay available; no interval is shown.
-      expect(screen.getByTestId('plan-discovery-retry')).toBeOnTheScreen();
-      expect(screen.getByTestId('plan-discovery-upload')).toBeOnTheScreen();
-      expect(screen.getByTestId('plan-discovery-upload')).toHaveTextContent(
-        /פרטי הרכב אומתו בהצלחה. לקבלת מפרט טיפולים מדויק לדגם זה, ניתן להעלות את ספר הרכב או להזין טיפולים ידנית./,
-      );
-      expect(screen.getByTestId('plan-fallback')).toBeOnTheScreen();
-      expect(screen.queryByTestId('plan-items')).toBeNull();
-    }, 60000);
-
-    it('a vehicle entered by hand (no registry record) keeps the plain not-found state', async () => {
-      await seed(false);
-      await noSchedule();
-      await open('/maintenance', 'screen-maintenance');
-      await waitFor(
-        () => expect(screen.getByTestId('plan-discovery-INSUFFICIENT_EVIDENCE')).toBeOnTheScreen(),
-        LONG,
-      );
-      expect(screen.queryByTestId('plan-discovery-VERIFIED_IDENTITY_ONLY')).toBeNull();
-      expect(screen.queryByTestId('plan-discovery-identity')).toBeNull();
-    }, 60000);
-  });
 
   it("owner review: items from the owner's own document enter the plan only once accepted", async () => {
     await seed(false);

@@ -1,5 +1,4 @@
 import {
-  type MaintenanceRequirement,
   addDays,
   asId,
   confirmServiceDraft,
@@ -8,7 +7,6 @@ import {
   createDocument,
   createGarageRecommendation,
   createOdometerReading,
-  createSchedule,
   createVehicle,
   updateVehicleDetails,
   type ExteriorPhase,
@@ -62,22 +60,15 @@ import {
   SourceRepository,
   VehicleRepository,
   type SqlDatabase,
-  DiscoveryMissRepository,
   MaintenanceKnowledgeRepository,
   MSourceRepository,
-  ModelPhotoCacheRepository,
   VehicleRegistryRecordRepository,
-  type CachedModelPhoto,
 } from '@/persistence';
-import { buildFingerprint, fingerprintKey } from '@/discovery/maintenance/msource/fingerprint';
-import type { CachedSource, MSourceRun } from '@/discovery/maintenance/msource/run';
-import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
-import { MSOURCE_VERSION } from '@/discovery/maintenance/msource/types';
+import type { MSourceRun } from '@/discovery/maintenance/msource/run';
 import type { OwnerEdit } from '@/discovery/maintenance/msource/ownerReview';
 import { ownerReviewState } from '@/features/maintenance/msource/ownerReview';
-import type { DiscoveryInput } from '@/features/maintenance/msource/service';
+import type { OwnerDocumentsInput } from '@/features/maintenance/msource/service';
 
-import type { SourcePlan } from '@/features/sources/sourceService';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 
 import { toBundle, toVehicleSummary, type VehicleRecords } from './adapters';
@@ -112,7 +103,6 @@ export const systemClock: Clock = {
 
 const PHOTO_KEY = 'vehiclePhotos';
 /** Vehicles whose image prompt the user answered with "לא עכשיו" / "לא בטוח" (device-local UX). */
-const IMAGE_PROMPT_KEY = 'vehicleImagePromptDismissed';
 
 export interface Snapshot {
   vehicles: VehicleSummary[];
@@ -124,7 +114,6 @@ export interface Snapshot {
   backup: BackupStatus;
   /** User-provided vehicle photos (device-local, not synced): vehicleId → viewable URI. */
   vehiclePhotos: Record<string, string>;
-  imagePromptDismissed: Record<string, boolean>;
 }
 
 export interface BackupStatus {
@@ -235,8 +224,6 @@ export class LocalStore {
       knowledgeDocuments: await new MaintenanceKnowledgeRepository(this.db).documents(id),
       claims: await new MaintenanceKnowledgeRepository(this.db).claims(id),
       msource: {
-        status: await new MSourceRepository(this.db).latestStatus(id),
-        requirements: (await new MSourceRepository(this.db).schedule(id))?.requirements ?? [],
         registry: await new VehicleRegistryRecordRepository(this.db).get(id).catch(() => null),
         owner: ownerReviewState(
           await new MSourceRepository(this.db).latestRun(id),
@@ -315,15 +302,6 @@ export class LocalStore {
       }
       summaries.push(toVehicleSummary(v, latestReading(rec.readings)));
       bundles[v.id] = toBundle(rec, result, candidates, this.clock.today());
-      const miss = bundles[v.id].plan?.fallback;
-      if (miss) {
-        // §24: record why no reliable schedule was found (vehicle class only).
-        await new DiscoveryMissRepository(this.db).record(
-          miss.classKey,
-          miss.reasons,
-          this.clock.now(),
-        );
-      }
     }
     const activeVehicleId = await new ActiveVehicleStore(this.db).get();
     const notificationsEnabled =
@@ -335,9 +313,6 @@ export class LocalStore {
       notificationsEnabled,
       backup: await this.backupStatus(),
       vehiclePhotos: await this.vehiclePhotoUris(),
-      imagePromptDismissed:
-        (await new SettingsRepository(this.db).get<Record<string, boolean>>(IMAGE_PROMPT_KEY)) ??
-        {},
     };
   }
 
@@ -369,15 +344,6 @@ export class LocalStore {
     if (previous) await this.files.remove(previous).catch(() => undefined);
   }
 
-  async setImagePromptDismissed(vehicleId: string, dismissed: boolean): Promise<void> {
-    const settings = new SettingsRepository(this.db);
-    const current = (await settings.get<Record<string, boolean>>(IMAGE_PROMPT_KEY)) ?? {};
-    const next = { ...current };
-    if (dismissed) next[vehicleId] = true;
-    else delete next[vehicleId];
-    await settings.set(IMAGE_PROMPT_KEY, next, this.clock.now());
-  }
-
   /** Removes the user's own photo; the approved model reference (if any) shows again. */
   async removeVehiclePhoto(vehicleId: string): Promise<void> {
     const keys = await this.photoKeys();
@@ -391,11 +357,7 @@ export class LocalStore {
 
   // ---------- writes ----------
 
-  async addVehicle(
-    vm: VehicleSummary,
-    details: VehicleDetails = {},
-    plan: SourcePlan | null = null,
-  ): Promise<VehicleId> {
+  async addVehicle(vm: VehicleSummary, details: VehicleDetails = {}): Promise<VehicleId> {
     const now = this.clock.now();
     const vehicle = must(
       createVehicle(
@@ -458,16 +420,6 @@ export class LocalStore {
           },
           now,
         );
-      }
-      // T170: the official source found during onboarding — retrieved original, its provenance,
-      // and the schedule (verification DECIDED by the domain from the evidence, never assumed).
-      if (plan && plan.status !== 'not_found' && plan.document.vehicleId === vehicle.id) {
-        await new DocumentRepository(tx).add(plan.document);
-        await new SourceRepository(tx).add(plan.source);
-        if (plan.schedule) {
-          const s = createSchedule(plan.schedule, this.ids, now);
-          if (s.ok) await new ScheduleRepository(tx).add(s.value);
-        }
       }
     });
     return vehicle.id;
@@ -735,7 +687,6 @@ export class LocalStore {
    */
   async deleteVehicle(id: string): Promise<void> {
     await this.removeVehiclePhoto(id);
-    await this.setImagePromptDismissed(id, false);
     const docs = await new DocumentRepository(this.db).list(id as VehicleId);
     await new VehicleRepository(this.db).deletePermanently(id as VehicleId);
     if (this.files) {
@@ -999,15 +950,6 @@ export class LocalStore {
     );
   }
 
-  /** General model photo cache (model class, no vehicle data; migration v13). */
-  modelPhotoGet(classKey: string): Promise<CachedModelPhoto | null> {
-    return new ModelPhotoCacheRepository(this.db).get(classKey);
-  }
-
-  modelPhotoPut(classKey: string, value: CachedModelPhoto): Promise<void> {
-    return new ModelPhotoCacheRepository(this.db).put(classKey, value);
-  }
-
   async registerMaintenanceBooklet(vehicleId: string, documentId: string): Promise<void> {
     const doc = await new DocumentRepository(this.db).get(
       vehicleId as VehicleId,
@@ -1035,19 +977,18 @@ export class LocalStore {
     return new VehicleRegistryRecordRepository(this.db).get(vehicleId as VehicleId);
   }
 
-  // ---------- M-SOURCE (ADR-0020; local-only, migration v10) ----------
+  // ---------- the owner's own maintenance documents (local-only, migration v10) ----------
 
   /**
-   * What a discovery run needs for one vehicle: its confirmed identity (no plate, no VIN), the
-   * owner's regime answer, the maintenance documents the owner uploaded (the same pipeline reads
-   * them) and the structured results this device already cached for the vehicle class.
+   * What reading the owner's documents needs for one vehicle: its confirmed identity (no plate, no
+   * VIN), the owner's regime answer and the maintenance documents the owner uploaded.
    */
-  async msourceLoad(vehicleId: string): Promise<DiscoveryInput | null> {
+  async ownerDocumentsLoad(vehicleId: string): Promise<OwnerDocumentsInput | null> {
     const vehicle = await new VehicleRepository(this.db).get(vehicleId as VehicleId);
     if (!vehicle || vehicle.lifecycle === 'archived') return null;
     const k = new MaintenanceKnowledgeRepository(this.db);
     const profile = await k.profile(vehicle.id);
-    const uploads: DiscoveryInput['uploads'] = [];
+    const uploads: OwnerDocumentsInput['uploads'] = [];
     if (this.files) {
       for (const kd of await k.documents(vehicle.id)) {
         if (!kd.documentId) continue;
@@ -1060,87 +1001,33 @@ export class LocalStore {
         if (bytes) uploads.push({ id: doc.id, name: doc.title, bytes });
       }
     }
-    const input = {
-      kind: vehicle.type,
-      manufacturer: vehicle.identity.manufacturer,
-      model: vehicle.identity.model,
-      year: vehicle.identity.year,
-      engine: vehicle.identity.engine ?? null,
-      engineCode: vehicle.identity.engineCode ?? null,
-      fuel: vehicle.identity.fuel ?? null,
-      // Body variant as the Ministry record states it (never derived from the model name).
-      body: await new VehicleRegistryRecordRepository(this.db)
-        .get(vehicle.id)
-        .then((r) => {
-          const v = r?.facts.find((f) => f.key === 'body')?.value;
-          return typeof v === 'string' ? v : null;
-        })
-        .catch(() => null),
-    };
-    const fp = buildFingerprint(input);
-    const cached = fp.ok
-      ? await new MSourceRepository(this.db).cachedSources(fingerprintKey(fp.fingerprint))
-      : [];
     return {
       vehicleId: vehicle.id,
-      input,
+      input: {
+        kind: vehicle.type,
+        manufacturer: vehicle.identity.manufacturer,
+        model: vehicle.identity.model,
+        year: vehicle.identity.year,
+        engine: vehicle.identity.engine ?? null,
+        engineCode: vehicle.identity.engineCode ?? null,
+        fuel: vehicle.identity.fuel ?? null,
+        // Body variant as the Ministry record states it (never derived from the model name).
+        body: await new VehicleRegistryRecordRepository(this.db)
+          .get(vehicle.id)
+          .then((r) => {
+            const v = r?.facts.find((f) => f.key === 'body')?.value;
+            return typeof v === 'string' ? v : null;
+          })
+          .catch(() => null),
+      },
       serviceRegime: profile?.serviceRegime ?? null,
       uploads,
-      cached,
     };
   }
 
-  async msourceProgress(
-    vehicleId: string,
-    runId: string,
-    classKey: string,
-    status: DiscoveryStatus,
-  ): Promise<void> {
-    await new MSourceRepository(this.db).saveStatus(
-      vehicleId as VehicleId,
-      runId,
-      classKey,
-      MSOURCE_VERSION,
-      status,
-      this.clock.now(),
-    );
-  }
-
-  /** Persists a finished run atomically: trace, status, resolved schedule, class cache. */
-  async msourceComplete(
-    vehicleId: string,
-    run: MSourceRun,
-    status: DiscoveryStatus,
-    requirements: MaintenanceRequirement[],
-    cache: { classKey: string; url: string; value: CachedSource }[],
-  ): Promise<void> {
-    const now = this.clock.now();
-    await this.db.transaction(async (tx) => {
-      const repo = new MSourceRepository(tx);
-      await repo.saveStatus(
-        vehicleId as VehicleId,
-        run.runId,
-        run.fingerprintKey,
-        MSOURCE_VERSION,
-        status,
-        now,
-      );
-      await repo.saveRun(vehicleId as VehicleId, run, status, now);
-      if (run.schedule) {
-        await repo.saveSchedule(
-          vehicleId as VehicleId,
-          {
-            runId: run.runId,
-            fingerprintKey: run.fingerprintKey,
-            schedule: run.schedule,
-            requirements,
-            resolvedAt: run.schedule.resolvedAt,
-          },
-          now,
-        );
-      }
-      for (const c of cache) await repo.cacheSource(c.classKey, c.url, c.value);
-    });
+  /** Stores one reading of the owner's documents (its items await owner review). */
+  async ownerDocumentsComplete(vehicleId: string, run: MSourceRun): Promise<void> {
+    await new MSourceRepository(this.db).saveRun(vehicleId as VehicleId, run, this.clock.now());
   }
 
   async openOriginal(vehicleId: string, documentId: string): Promise<boolean> {

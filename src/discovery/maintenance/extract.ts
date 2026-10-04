@@ -10,7 +10,7 @@ import type {
   UsageCondition,
 } from '@/domain';
 
-import { compact } from './sources';
+import { compact } from './match';
 import type {
   AcquiredDocument,
   DocumentProfile,

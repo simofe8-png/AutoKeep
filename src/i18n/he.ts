@@ -58,39 +58,11 @@ export const he = {
     previousVehicle: 'הרכב הקודם',
   },
   vehicleImage: {
-    searching: 'מחפש תמונה מתאימה לכלי הרכב שלך...',
-    searchingHint: 'זה עשוי להימשך מספר שניות',
-    sourceHint: 'הקישו לפרטי המקור והרישיון',
-    choosePhase: 'איזו מהן דומה לרכב שלך?',
-    phaseLabels: {
-      'pre-fl': 'חזית לפני מתיחת פנים',
-      fl1: 'חזית אחרי מתיחת פנים',
-      fl2: 'חזית אחרי מתיחת פנים שנייה',
-    },
-    notSure: 'לא בטוח',
-    notFoundTitle: 'לא מצאנו תמונת דגם מתאימה',
-    notFoundBody: 'צלם את כלי הרכב שלך או בחר תמונה מהגלריה, ואנחנו נשתמש בה כתמונת כלי הרכב.',
-    captureNow: 'צלם עכשיו',
     pickFromGallery: 'בחר מהגלריה',
-    notNow: 'לא עכשיו',
-    unavailableTitle: 'לא ניתן לחפש תמונה כרגע',
-    retry: 'נסה שוב',
     takePhoto: 'צלם תמונה',
     removeMyPhoto: 'הסר את התמונה שלי',
-    changePhase: 'שינוי חזית הדגם',
-    /** A general model photo (Wikimedia): may show another generation / body / color. */
-    generalModelPhoto: 'תמונת דגם כללית מוויקיפדיה · ייתכן שהדור או הגרסה שונים מהרכב שלך',
-    color: (c: string) => `צבע: ${c}`,
-    infoA11y: 'פרטי התמונה והרישיון',
-    infoTitle: 'פרטי התמונה',
-    openSource: 'לדף המקור',
-    viewToggle: 'תצוגת הרכב',
-    viewPhoto: 'תמונה',
-    viewColor: 'הצבע שלי',
-    colorIllustration: (c: string) => `איור בצבע הרישוי: ${c}`,
   },
   vehicles: {
-    genericIllustration: 'איור כללי · לא תמונת הרכב שלך',
     title: 'כלי הרכב שלי',
   },
   vehicleType: {
@@ -283,26 +255,9 @@ export const he = {
     odometerLabel: 'קריאת מד אוץ',
     odometerError: 'יש להזין מספר ק״מ תקין',
     measuredToday: 'תאריך מדידה: היום',
-    sourcesTitle: 'חיפוש מקורות רשמיים',
-    sourcesBody:
-      'AutoKeep מחפש את ספר הבעלים ולוח התחזוקה של היצרן עבור הגרסה המדויקת של כלי הרכב.',
-    sourceSteps: {
-      discovery: 'חיפוש מקורות אצל היצרן והיבואן הרשמי',
-      authority: 'סיווג אמינות המקור',
-      applicability: 'בדיקת התאמה לגרסה המדויקת',
-      retrieval: 'הורדת המסמך המקורי',
-      extraction: 'חילוץ לוח התחזוקה',
-      validation: 'אימות מול המסמך',
-    },
-    sourceFoundTitle: 'נמצא לוח תחזוקה רשמי ומאומת',
-    sourceFoundBody: 'לוח התחזוקה אומת מול מסמך היצרן ומקושר לעמודים המדויקים.',
-    sourceNotFoundTitle: 'לא נמצא מקור רשמי שניתן לאמת',
-    sourceNotFoundBody:
-      'לא נציג המלצות תחזוקה מקצועיות ללא מקור מאומת. אפשר להמשיך להשתמש באפליקציה, לתעד טיפולים ולהעלות את ספר הבעלים בעצמכם.',
-    sourcePendingTitle: 'נמצא מקור, אך לא אומתה התאמה מדויקת',
-    sourcePendingBody:
-      'נמצא מסמך של היצרן, אך לא ניתן לוודא שהוא מתאים בדיוק לגרסת כלי הרכב. לוח התחזוקה יישאר ממתין לאימות.',
-    finish: 'מעבר למסך הבית',
+    /** No maintenance schedule yet: it is the owner's to enter (owner decision 2026-10-04). */
+    noScheduleBody:
+      'עדיין לא הוזן לוח טיפולים. אפשר להוסיף טיפולים ידנית או לצלם את עמוד הטיפולים מספר הרכב.',
     step: (n: number, total: number) => `שלב ${n} מתוך ${total}`,
     fields: {
       kind: 'סוג כלי רכב',
@@ -328,11 +283,6 @@ export const he = {
       partial: 'זיהוי חלקי',
       ambiguous: 'כמה התאמות',
       failed: 'סריקה נכשלה',
-    },
-    sourceScenarios: {
-      verified: 'נמצא ואומת',
-      pending: 'לא אומתה התאמה',
-      notFound: 'לא נמצא',
     },
   },
   home: {
@@ -405,19 +355,19 @@ export const he = {
   maintenancePlan: {
     needInfoTitle: 'נדרש מידע נוסף כדי לבנות את לוח הטיפולים',
     /** §24 fallback: no sufficiently accurate schedule was found (text approved by the owner). */
-    fallbackTitle: 'אין עדיין לוח טיפולים אמין לרכב הזה',
+    fallbackTitle: 'אין עדיין לוח טיפולים לרכב הזה',
+    /** Owner decision 2026-10-04: the schedule is what the owner enters or approves. */
     fallbackMessage: [
-      'חיפשתי לוח טיפולים מתאים לרכב שלך, אך לא מצאתי מידע מספיק מדויק כדי לבנות לוח טיפולים אמין.',
-      'כדי שאוכל לבנות עבורך לוח טיפולים מדויק, פנה לסוכנות או ליבואן הרכב ובקש את לוח הטיפולים המתאים לרכב שלך.',
-      'לאחר שתקבל אותו, העלה אותו כאן ל־AutoKeep ואני אחלץ ממנו את הטיפולים ואבנה עבורך את לוח התחזוקה.',
+      'לוח הטיפולים נבנה ממה שאתה מזין ומספר הרכב שלך.',
+      'אפשר להוסיף טיפול ידנית, או להעלות את עמוד הטיפולים מספר הרכב — כל פריט נכנס ללוח רק אחרי שתאשר אותו.',
     ],
     fallbackUpload: 'העלה את לוח הטיפולים',
     fallbackPrivacy:
       'הקובץ נשמר באופן פרטי, לרכב הזה בלבד. אפשר להעלות תמונה (JPG, PNG, HEIC) או PDF.',
-    fallbackDetailsTitle: 'מה מצאנו בחיפוש',
+    fallbackDetailsTitle: 'פרטים נוספים',
     partialTitle: 'לוח טיפולים חלקי',
-    partialBody: 'זה אינו לוח טיפולים מלא: חלק מהטיפולים עדיין לא אומתו לרכב שלך ואינם מוצגים כאן.',
-    needInfoBody: 'לא נציג מרווחי טיפול שלא אומתו במקור רשמי המתאים לרכב שלך.',
+    partialBody: 'זה אינו לוח טיפולים מלא: חלק מהטיפולים עדיין לא הוזנו.',
+    needInfoBody: 'לא נציג מרווחי טיפול שלא הזנת או אישרת.',
     uploadBooklet: 'העלה את חוברת הטיפולים של הרכב',
     bookletHints: {
       service_plan_code:
@@ -440,28 +390,8 @@ export const he = {
     levelTNote: (sources: number) => `${sources} מקורות בלתי תלויים מסכימים`,
     levelTSingle: 'מבוסס על מקור טכני יחיד שהותאם לרכב',
     confidence: { high: 'רמת ביטחון גבוהה', medium: 'רמת ביטחון בינונית' },
-    officialSourceTitle: 'המקור הרשמי של היצרן או היבואן',
-    officialSourceReason: {
-      manual_access_required:
-        'המסמכים הרשמיים קיימים, אך הגישה אליהם דורשת התחברות, טופס או פעולה ידנית באתר.',
-      access_policy_unresolved:
-        'המקור הרשמי קיים, אך טרם הוכרע אם מותר ל-AutoKeep לקרוא אותו באופן אוטומטי.',
-      permission_required:
-        'תנאי השימוש של המקור הרשמי דורשים אישור בכתב לקריאה אוטומטית, ולכן AutoKeep אינה קוראת אותו.',
-      no_digital_source: 'היבואן אינו מפרסם תוכנית טיפולים או ספר רכב דיגיטלי.',
-      automatic: 'המקור הרשמי זמין לקריאה אוטומטית.',
-    },
-    officialSourceIsraeli: 'היבואן הרשמי בישראל',
-    officialSourceGlobal: 'אתר היצרן',
-    officialSourceUserStep:
-      'אפשר לפתוח את האתר, להוריד את ספר הרכב או את תוכנית הטיפולים לשימוש אישי ולהעלות אותם לכאן.',
-    openOfficialSource: (host: string) => `פתח את ${host}`,
-    noOfficialSource: 'לא ידוע לנו על מקור רשמי דיגיטלי של היצרן או היבואן לרכב זה.',
-    officialSourcePending:
-      'זוהה מקור רשמי של היצרן או היבואן לרכב זה, והוא עדיין בבדיקה ב-AutoKeep לפני שנשתמש בו.',
-    modelYearUnproven:
-      'המסמך הרשמי שנמצא אינו מציין לאילו שנות ייצור הוא חל, ולכן לא נבנה ממנו לוח.',
-    awaitingTitle: 'נמצא מקור רשמי שממתין לאימות',
+    modelYearUnproven: 'המסמך אינו מציין לאילו שנות ייצור הוא חל.',
+    awaitingTitle: 'מסמך שממתין לאישור',
     awaitingBody: 'לא נשתמש בו עד שיאומת שהוא חל על הרכב שלך.',
     scheduleTitle: 'לוח הטיפולים',
     nextTitle: 'הטיפול הבא',
@@ -505,51 +435,6 @@ export const he = {
     actions: { inspection: 'בדיקה', replacement: 'החלפה', adjustment: 'כיוון', other: 'טיפול' },
     recordTitle: 'פעולות מלוח הטיפולים',
     recordHint: 'סמנו רק מה שבוצע בפועל. פריט שלא סומן לא יסומן כבוצע.',
-    /** Standard guidance by propulsion type (owner decision 2026-10-03): never a schedule. */
-    standard: {
-      title: 'שגרת טיפולים סטנדרטית (לפי סוג הנעה)',
-      note: 'הנחיות כלליות לפי סוג ההנעה — לא שגרת היצרן לרכב שלך. הן אינן נכנסות ללוח הטיפולים ולתזכורות. מומלץ לבדוק מול ספר הרכב או המוסך.',
-      familyTitle: 'הנחיות תחזוקה לפי משפחת מנוע — שגרה מקובלת (טרם אומת מול ספר יצרן)',
-      familyNote:
-        'שגרה מקובלת למשפחת המנוע של הרכב, שטרם אומתה מול ספר היצרן. היא אינה נכנסת ללוח הטיפולים ולתזכורות. מומלץ לבדוק מול ספר הרכב או המוסך.',
-      familyName: (name: string) => `משפחת מנוע: ${name}`,
-      items: {
-        oil_and_filter: 'שמן מנוע ומסנן שמן',
-        air_filter: 'מסנן אוויר',
-        cabin_filter: 'מסנן מזגן',
-        brake_fluid: 'נוזל בלמים',
-        spark_plugs: 'מצתים',
-        coolant: 'נוזל קירור',
-        hybrid_coolant: 'נוזל קירור למערכת ההיברידית',
-        fuel_filter: 'מסנן סולר',
-        timing_belt: 'רצועת טיימינג',
-        timing_belt_inspection: 'בדיקת רצועת טיימינג',
-        timing_belt_water_pump: 'רצועת טיימינג ומשאבת מים',
-        wet_belt_inspection: 'בדיקת רצועת טיימינג רטובה',
-        wet_belt_oil_pump_belt: 'רצועת טיימינג רטובה ורצועת משאבת שמן',
-        chain_belt_inspection: 'בדיקת שרשרת ורצועת תזמון',
-        dsg_fluid: 'שמן תיבת הילוכים DSG',
-        dct_actuator_fluid: 'נוזל מפעיל המצמד (DCT)',
-        adblue_additive_check: 'בדיקת AdBlue ותוסף מסנן החלקיקים',
-        valve_clearance: 'בדיקת מרווח שסתומים',
-      },
-      /** Items whose label already says "inspection". */
-      inspectionItems: [
-        'timing_belt_inspection',
-        'wet_belt_inspection',
-        'chain_belt_inspection',
-        'adblue_additive_check',
-        'valve_clearance',
-      ] as readonly string[],
-      inspectionOf: (label: string) => `בדיקת ${label}`,
-      kmOrMonths: (km: string, months: number) => `כל ${km} ק״מ או ${months} חודשים`,
-      km: (km: string) => `כל ${km} ק״מ`,
-      months: (months: number) => `כל ${months} חודשים`,
-      firstKmOrMonths: (km: string, months: number) => `לראשונה ב-${km} ק״מ או ${months} חודשים`,
-      firstKm: (km: string) => `לראשונה ב-${km} ק״מ`,
-      firstMonths: (months: number) => `לראשונה אחרי ${months} חודשים`,
-      firstThen: (first: string, every: string) => `${first}, ואחר כך ${every}`,
-    },
     /** Owner review of items read from the owner's own document (spec Part A, D-A3). */
     ownerReview: {
       cardTitle: 'פריטים מהמסמך שהעלית',
@@ -592,36 +477,6 @@ export const he = {
       cardIssue: 'לא ניתן היה לקרוא את המסמך שהעלית',
     },
     /** M-SOURCE: automatic schedule discovery after the vehicle identity is confirmed. */
-    discovery: {
-      title: 'חיפוש לוח טיפולים',
-      progress: {
-        IDENTIFYING_VEHICLE: 'מאמת את פרטי הרכב…',
-        DISCOVERING_SOURCES: 'מחפש מקורות ללוח הטיפולים של הרכב…',
-        FOUND_SOURCES: 'נמצאו מקורות אפשריים — בודק אותם…',
-        VERIFYING_MATCH: 'בודק שהמקורות מתאימים בדיוק לרכב שלך…',
-        BUILDING_SCHEDULE: 'בונה את לוח הטיפולים…',
-      },
-      ready: 'לוח הטיפולים נבנה ממקורות שנבדקו והותאמו לרכב שלך.',
-      readyPartial: 'נמצא לוח טיפולים חלקי שהותאם לרכב שלך. חלק מהטיפולים עדיין לא אומתו.',
-      notFound: 'לא נמצא עדיין לוח טיפולים שניתן להתאים בוודאות לרכב הזה.',
-      identityOnly: 'פרטי הרכב אומתו מול משרד התחבורה. שגרת הטיפולים לדגם זה טרם אומתה.',
-      identityTitle: 'פרטי הרכב שאומתו',
-      // Wording only (owner decision 2026-10-03): no default numbers, no synthesized intervals.
-      identityFallback:
-        'פרטי הרכב אומתו בהצלחה. לקבלת מפרט טיפולים מדויק לדגם זה, ניתן להעלות את ספר הרכב או להזין טיפולים ידנית.',
-      conditional:
-        'נמצא לוח טיפולים רשמי שתלוי בקוד תוכנית השירות של הרכב. ענו על השאלה בהמשך כדי להפעיל אותו — אין צורך בחיפוש נוסף.',
-      conflicting:
-        'נמצאו מקורות שמציינים מרווחי טיפול שונים לרכב הזה. לא נציג מרווח עד שהסתירה תוכרע.',
-      error: 'החיפוש לא הושלם. אפשר לנסות שוב כשיש חיבור לאינטרנט.',
-      summary: (found: number, used: number) =>
-        used > 0 ? `נבדקו ${found} מקורות · ${used} שימשו ללוח` : `נבדקו ${found} מקורות`,
-      retry: 'חפש שוב',
-      uploadTitle: 'אפשר גם להעלות מסמך של הרכב:',
-      uploadManual: 'העלה ספר רכב',
-      uploadBooklet: 'העלה חוברת טיפולים',
-      uploadDocument: 'העלה מסמך טיפולים (PDF)',
-    },
   },
   actionType: {
     inspection: 'בדיקה',

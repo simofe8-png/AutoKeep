@@ -1,13 +1,11 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Linking, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { newLocalId, useAppData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
 import type { MaintenancePlanVM, PlanItemVM, PlanRequestVM } from '@/features/data/types';
-import { discoveryPresentation } from '@/features/maintenance/knowledge/planVM';
 import { OwnerReviewCard } from '@/features/maintenance/OwnerReview';
-import { displayValue } from '@/features/vehicles/RegistryFacts';
 import { formatDate, formatKm, formatNumber } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
@@ -253,52 +251,6 @@ function Request({
           }}
         />
       );
-    case 'official_source':
-      return (
-        <Stack gap={spacing.xs} testID="plan-request-official-source">
-          {request.sources.map((src) => (
-            <Stack key={src.sourceSystemId} gap={spacing.xs}>
-              <InlineNotice
-                testID={`plan-official-source-${src.sourceSystemId}`}
-                tone="info"
-                title={`${p.officialSourceTitle} · ${src.israeli ? p.officialSourceIsraeli : p.officialSourceGlobal}`}
-                message={`${p.officialSourceReason[src.reason]}${
-                  src.url && src.reason !== 'no_digital_source'
-                    ? `
-${p.officialSourceUserStep}`
-                    : ''
-                }`}
-              />
-              {src.url && src.reason !== 'no_digital_source' ? (
-                <Button
-                  testID={`plan-official-link-${src.host}`}
-                  label={p.openOfficialSource(src.host)}
-                  icon="open-in-new"
-                  variant="secondary"
-                  fullWidth
-                  onPress={() => void Linking.openURL(src.url!)}
-                />
-              ) : null}
-            </Stack>
-          ))}
-        </Stack>
-      );
-    case 'no_official_source':
-      return (
-        <InlineNotice
-          testID="plan-request-no-official-source"
-          tone="neutral"
-          message={p.noOfficialSource}
-        />
-      );
-    case 'official_source_pending':
-      return (
-        <InlineNotice
-          testID="plan-request-official-pending"
-          tone="neutral"
-          message={p.officialSourcePending}
-        />
-      );
     case 'model_year_unproven':
       return (
         <InlineNotice
@@ -319,145 +271,6 @@ ${p.officialSourceUserStep}`
   }
 }
 
-/** M-SOURCE discovery status: progress, result, retry and the document-upload fallback. */
-function DiscoveryCard({
-  status,
-  identity,
-  vehicleId,
-  onUpload,
-}: {
-  status: NonNullable<MaintenancePlanVM['discovery']>;
-  identity: MaintenancePlanVM['verifiedIdentity'];
-  vehicleId: string;
-  onUpload: () => void;
-}) {
-  const { retryMaintenanceDiscovery } = useAppData();
-  const d = he.maintenancePlan.discovery;
-  const state = discoveryPresentation(status, identity);
-  const identityOnly = state === 'VERIFIED_IDENTITY_ONLY';
-  const progress = state in d.progress ? d.progress[state as keyof typeof d.progress] : null;
-  const summary = progress ? null : d.summary(status.sourcesFound, status.sourcesUsed);
-  const message = progress
-    ? progress
-    : status.error
-      ? d.error
-      : state === 'READY'
-        ? status.partial
-          ? d.readyPartial
-          : d.ready
-        : state === 'CONDITIONALLY_READY'
-          ? d.conditional
-          : state === 'CONFLICTING_EVIDENCE'
-            ? d.conflicting
-            : identityOnly
-              ? d.identityOnly
-              : d.notFound;
-  const tone: 'info' | 'success' | 'warning' | 'neutral' = progress
-    ? 'info'
-    : state === 'READY' && !status.partial
-      ? 'success'
-      : state === 'CONFLICTING_EVIDENCE' || state === 'CONDITIONALLY_READY' || status.partial
-        ? 'warning'
-        : 'neutral';
-  return (
-    <Card testID="plan-discovery" compact>
-      <Stack gap={spacing.sm}>
-        <InlineNotice
-          testID={`plan-discovery-${state}`}
-          tone={tone}
-          title={d.title}
-          message={
-            summary
-              ? `${message}
-${summary}`
-              : message
-          }
-        />
-        {identityOnly && identity ? (
-          <Stack gap={spacing.xxs} testID="plan-discovery-identity">
-            <AppText variant="smallStrong">{d.identityTitle}</AppText>
-            {identity.map((fact) => (
-              <View key={fact.key} style={styles.identityRow} testID={`plan-identity-${fact.key}`}>
-                <AppText variant="small" color="textSecondary" style={styles.flex}>
-                  {he.vehicleSearch.facts[fact.key] ?? fact.key}
-                </AppText>
-                <AppText variant="smallStrong">{displayValue(fact)}</AppText>
-              </View>
-            ))}
-          </Stack>
-        ) : null}
-        {status.retryAvailable && !progress ? (
-          <Button
-            testID="plan-discovery-retry"
-            label={d.retry}
-            icon="refresh"
-            variant="secondary"
-            fullWidth
-            onPress={() => retryMaintenanceDiscovery(vehicleId)}
-          />
-        ) : null}
-        {status.uploadDocumentAvailable && !progress ? (
-          <Stack gap={spacing.xs} testID="plan-discovery-upload">
-            <AppText variant="caption" color="textSecondary">
-              {identityOnly ? d.identityFallback : d.uploadTitle}
-            </AppText>
-            {[d.uploadManual, d.uploadBooklet, d.uploadDocument].map((label, i) => (
-              <Button
-                key={label}
-                testID={`plan-discovery-upload-${i}`}
-                label={label}
-                icon="file-upload-outline"
-                variant="secondary"
-                fullWidth
-                onPress={onUpload}
-              />
-            ))}
-          </Stack>
-        ) : null}
-      </Stack>
-    </Card>
-  );
-}
-
-/**
- * Maintenance guidance (owner decisions 2026-10-03 / 2026-10-04): by engine family when the engine
- * code matches one, else by propulsion type. Its own card, clearly not the manufacturer's
- * schedule; never part of the plan, dues or reminders.
- */
-function StandardGuidanceCard({
-  guidance,
-}: {
-  guidance: MaintenancePlanVM['standardGuidance'] | null;
-}) {
-  if (!guidance?.rows.length) return null;
-  const g = he.maintenancePlan.standard;
-  const family = guidance.kind === 'engine_family';
-  const rows = guidance.rows;
-  return (
-    <Card testID="plan-standard-guidance">
-      <Stack gap={spacing.sm}>
-        <AppText variant="heading" accessibilityRole="header">
-          {family ? g.familyTitle : g.title}
-        </AppText>
-        {family && guidance.family ? (
-          <AppText variant="small" color="textSecondary" testID="plan-standard-family">
-            {g.familyName(guidance.family)}
-          </AppText>
-        ) : null}
-        <InlineNotice tone="info" message={family ? g.familyNote : g.note} />
-        {rows.map((r) => (
-          <View key={r.key} style={styles.whenRow} testID={`plan-standard-${r.item}`}>
-            <AppText variant="body" style={styles.flex}>
-              {r.label}
-            </AppText>
-            <AppText variant="bodyStrong">{r.interval}</AppText>
-          </View>
-        ))}
-      </Stack>
-    </Card>
-  );
-}
-
 /**
  * The evidence-based maintenance plan (Task 9): verified requirements as a useful schedule, or —
  * when the evidence is insufficient — no interval at all, only the exact next action.
@@ -471,17 +284,6 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
     const booklet = plan.requests.find((r) => r.kind === 'upload_booklet');
     return (
       <Stack testID="maintenance-plan">
-        {/* First: what the owner can act on now (device check 2026-10-04: below the search card it
-            was off-screen). */}
-        <StandardGuidanceCard guidance={plan.standardGuidance ?? null} />
-        {plan.discovery ? (
-          <DiscoveryCard
-            status={plan.discovery}
-            identity={plan.verifiedIdentity ?? null}
-            vehicleId={vehicleId}
-            onUpload={() => void upload()}
-          />
-        ) : null}
         <OwnerReviewCard
           proposals={plan.ownerReview?.proposals ?? []}
           issues={plan.ownerReview?.issues ?? []}
@@ -555,15 +357,6 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
   }
   return (
     <Stack testID="maintenance-plan">
-      <StandardGuidanceCard guidance={plan.standardGuidance ?? null} />
-      {plan.discovery ? (
-        <DiscoveryCard
-          status={plan.discovery}
-          identity={plan.verifiedIdentity ?? null}
-          vehicleId={vehicleId}
-          onUpload={() => void upload()}
-        />
-      ) : null}
       <OwnerReviewCard
         proposals={plan.ownerReview?.proposals ?? []}
         issues={plan.ownerReview?.issues ?? []}
@@ -620,7 +413,6 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  identityRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   itemHead: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   whenRow: {
     flexDirection: 'row',

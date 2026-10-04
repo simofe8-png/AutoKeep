@@ -8,7 +8,6 @@ import {
   vinPrefixOf,
   type VehicleFingerprint,
 } from '../fingerprint';
-import { generateQueries } from '../queries';
 
 export const FIESTA_INPUT = {
   kind: 'car' as const,
@@ -116,57 +115,7 @@ describe('fingerprint normalization', () => {
   });
 });
 
-describe('generic, progressively relaxed query generation', () => {
-  it('levels L1 → L5 are built from attributes only; unknown attributes skip their level', () => {
-    const q = generateQueries(fp(FIESTA_INPUT)).filter((x) => x.language === 'en');
-    expect(q.map((x) => [x.level, x.text])).toEqual([
-      [1, 'Ford Fiesta 2015 SNJB maintenance schedule'],
-      [2, 'Ford Fiesta 1.2 service intervals'],
-      [2, 'Ford Fiesta 1.25 service intervals'],
-      [3, 'Ford Fiesta 2015 maintenance manual'],
-      [5, 'Ford Fiesta maintenance schedule'],
-    ]);
-    // No engine code → no L1; a known generation / body → L4.
-    const noCode = generateQueries({ ...fp(FIESTA_INPUT), engineCodes: [], generation: 'Mk7' });
-    expect(noCode.some((x) => x.level === 1)).toBe(false);
-    expect(noCode.map((x) => x.text)).toContain('Ford Fiesta Mk7 1.2 service intervals');
-    expect(noCode.map((x) => x.text)).toContain('Ford Fiesta Mk7 service schedule');
-  });
-
-  it('the primary litre label is the 0.1-step marketing label; the 0.05 one is only a variant', () => {
-    const megane = fp({
-      kind: 'car',
-      manufacturer: 'Renault',
-      model: 'Megane',
-      year: 2016,
-      engine: 1461,
-      fuel: 'diesel',
-    });
-    const en = generateQueries(megane).filter((x) => x.language === 'en' && x.level === 2);
-    expect(en.map((x) => x.text)).toEqual([
-      'Renault Megane 1.5 service intervals',
-      'Renault Megane 1.45 service intervals',
-    ]);
-  });
-
-  it('languages: English, Hebrew (IL market), manufacturer + manufacturing-country language', () => {
-    const langs = (input: Parameters<typeof fp>[0]) => [
-      ...new Set(generateQueries(fp(input)).map((x) => x.language)),
-    ];
-    expect(langs(IBIZA_INPUT)).toEqual(['en', 'he', 'es']);
-    expect(langs(FIESTA_INPUT)).toEqual(['en', 'he', 'de']);
-    expect(langs({ ...FIESTA_INPUT, manufacturer: 'Toyota', model: 'Corolla' })).toEqual([
-      'en',
-      'he',
-    ]);
-  });
-
-  it('is deterministic and never contains plate or VIN data', () => {
-    const f = fp({ ...IBIZA_INPUT, vin: 'VSSZZZ6JZCR122118' });
-    expect(generateQueries(f)).toEqual(generateQueries(f));
-    expect(JSON.stringify(generateQueries(f))).not.toMatch(/VSS|122118/);
-  });
-
+describe('body variant', () => {
   it('body variant comes from registry body words, never from the model name', () => {
     expect(fp({ ...IBIZA_INPUT, body: "הצ'בק" }).bodyVariant).toBe('hatchback');
     expect(fp({ ...IBIZA_INPUT, body: 'סטיישן' }).bodyVariant).toBe('estate');

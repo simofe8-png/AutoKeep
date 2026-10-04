@@ -2,9 +2,6 @@ import type { MaintenancePlanVM, PlanItemVM, SourceAuthority } from '@/features/
 import { formatNumber } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 
-import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
-import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
-
 import type { MaintenancePlan, PlanItem } from './plan';
 import { distanceKm, type RequirementAuthority } from '@/domain';
 
@@ -77,55 +74,9 @@ function itemVM(item: PlanItem): PlanItemVM | null {
   };
 }
 
-/** Registry facts that identify the vehicle for maintenance purposes, in display order. */
-const IDENTITY_FACTS: readonly (readonly string[])[] = [
-  ['manufacturer', 'manufacturerRegistered'],
-  ['commercialName'],
-  ['modelYear'],
-  ['engineCode'],
-  ['displacement'],
-  ['fuel'],
-];
-
-/**
- * The vehicle's identity as the Ministry record states it — only facts present in the record,
- * nothing derived. Null without a registry record, or when it lacks make, model or year.
- */
-export function verifiedIdentity(
-  record: VehicleRegistryRecord | null | undefined,
-): MaintenancePlanVM['verifiedIdentity'] {
-  if (!record) return null;
-  const facts = IDENTITY_FACTS.map((keys) =>
-    keys.map((k) => record.facts.find((f) => f.key === k)).find(Boolean),
-  ).filter((f): f is NonNullable<typeof f> => f != null);
-  const has = (k: string) => facts.some((f) => f.key === k);
-  return (has('manufacturer') || has('manufacturerRegistered')) &&
-    has('commercialName') &&
-    has('modelYear')
-    ? facts
-    : null;
-}
-
-/**
- * Discovery presentation: VERIFIED_IDENTITY_ONLY when the registry identified the vehicle but no
- * schedule could be matched to it (no source / insufficient evidence; not a technical failure).
- */
-export function discoveryPresentation(
-  discovery: DiscoveryStatus,
-  identity: MaintenancePlanVM['verifiedIdentity'],
-): DiscoveryStatus['state'] | 'VERIFIED_IDENTITY_ONLY' {
-  const noSchedule =
-    discovery.state === 'NO_SOURCE_FOUND' || discovery.state === 'INSUFFICIENT_EVIDENCE';
-  return noSchedule && !discovery.error && identity?.length
-    ? 'VERIFIED_IDENTITY_ONLY'
-    : discovery.state;
-}
-
 export function toPlanVM(
   plan: MaintenancePlan,
   bookletUploaded: boolean,
-  discovery: DiscoveryStatus | null = null,
-  identity: MaintenancePlanVM['verifiedIdentity'] = null,
   ownerReview: NonNullable<MaintenancePlanVM['ownerReview']> = { proposals: [], issues: [] },
 ): MaintenancePlanVM {
   const items = plan.items.map(itemVM).filter((x): x is PlanItemVM => x !== null);
@@ -137,8 +88,6 @@ export function toPlanVM(
     next,
     requests: plan.requests,
     bookletUploaded,
-    discovery,
-    verifiedIdentity: identity,
     ownerReview,
   };
 }

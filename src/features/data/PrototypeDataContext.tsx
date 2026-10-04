@@ -243,15 +243,12 @@ export function PrototypeDataProvider({
       // Prototype: no stored photos (the illustration is shown).
       vehiclePhotos: {},
       removeVehiclePhoto: () => undefined,
-      imagePromptDismissed: {},
-      setImagePromptDismissed: () => undefined,
       setVehiclePhoto: () => undefined,
       // Prototype: the evidence-based plan is not simulated.
       setMaintenanceAnswers: () => undefined,
       registerMaintenanceBooklet: () => undefined,
       retryMaintenanceDiscovery: () => undefined,
       reviewOwnerDocumentItem: () => undefined,
-      modelPhotoCache: null,
       network,
       setNetwork,
       account,

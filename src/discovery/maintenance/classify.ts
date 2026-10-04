@@ -1,6 +1,6 @@
 import type { MarketCode, Powertrain } from '@/domain';
 
-import { compact } from './sources';
+import { compact } from './match';
 import type {
   AcquiredDocument,
   DocumentProfile,
@@ -151,13 +151,10 @@ export function profileDocument(
     .map((p) => p.text)
     .join('\n');
   const title = doc.lead.title ?? '';
-  const system = doc.system;
 
-  // Markets: stated by the document's front matter, else the Israeli system's own market (an
-  // importer publishes for Israel). A global system's document has no default market.
-  const stated = MARKET_PATTERNS.filter(([, re]) => re.test(head)).map(([m]) => m);
-  const markets = stated.length ? stated : system?.origin === 'israeli' ? ['IL'] : [];
-  const marketBasis = stated.length ? 'document_text' : markets.length ? 'host_default' : 'unknown';
+  // Markets: as stated by the document's front matter (the owner's own document has no host).
+  const markets = MARKET_PATTERNS.filter(([, re]) => re.test(head)).map(([m]) => m);
+  const marketBasis = markets.length ? 'document_text' : 'unknown';
 
   const km = (all.match(/\bkm\b|\bkilomet(er|re)s?\b|ק"מ/gi) ?? []).length;
   const mi = (all.match(/\bmiles?\b/gi) ?? []).length;
@@ -204,12 +201,9 @@ export function profileDocument(
 
   return {
     type: documentType(pages, title),
-    authority: !system
-      ? 'vehicle_document'
-      : system.authorityClass === 'importer'
-        ? 'importer'
-        : 'manufacturer',
-    manufacturer: system?.manufacturers.length === 1 ? system.manufacturers[0] : undefined,
+    // The owner's own vehicle document (AutoKeep reads no other documents).
+    authority: 'vehicle_document',
+    manufacturer: undefined,
     models: named ? [v.model] : [],
     modelVariants: mention.variants,
     yearFrom,

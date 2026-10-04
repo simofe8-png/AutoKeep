@@ -1,5 +1,4 @@
 import { parseRegistration, type RegistrationNumber } from '@/domain';
-import { engineLiters } from '@/discovery/applicability';
 import { identifyByRegistration } from '@/identification/registry';
 
 import { DataGovIlRegistry, PACKAGES, type HttpGet } from '../dataGovIl';
@@ -162,10 +161,9 @@ describe('data.gov.il registry provider (ADR-0012)', () => {
     });
     // `degem_manoa` is the engine code: it never fills the displacement field.
     expect(r.status === 'found' && r.candidates[0].engine).toBeUndefined();
-    expect(engineLiters('1ZR')).toBeNull();
   });
 
-  it('model code and a high-confidence exterior phase come with the record (never guessed)', async () => {
+  it('the model code comes with the record; no exterior phase is derived', async () => {
     const row = (extra: Record<string, unknown>) => ({
       ...carRow,
       tozeret_nm: 'סיאט ספרד',
@@ -182,17 +180,11 @@ describe('data.gov.il registry provider (ADR-0012)', () => {
       });
       return res.status === 'found' ? res.candidates[0] : null;
     };
-    // First batch (registered Jan 2012) → pre-facelift.
-    expect(await lookup(row({ moed_aliya_lakvish: '2012-1' }))).toMatchObject({
-      modelCode: '6J52E4',
-      exteriorPhase: 'pre-fl',
-    });
-    // Registered Aug 2012 → ambiguous: no phase.
-    const ambiguous = await lookup(
-      row({ moed_aliya_lakvish: '2012-8', misgeret: 'VSSZZZ6JZCR122118' }),
-    );
-    expect(ambiguous?.modelCode).toBe('6J52E4');
-    expect(ambiguous?.exteriorPhase).toBeUndefined();
+    // The model code is a registry fact; no exterior phase is derived (no automatic vehicle
+    // image, owner decision 2026-10-04).
+    const r = await lookup(row({ moed_aliya_lakvish: '2012-1' }));
+    expect(r?.modelCode).toBe('6J52E4');
+    expect(r?.exteriorPhase).toBeUndefined();
   });
 
   it('a named record wins over a supplementary code-only row of the same plate (A54 finding)', async () => {

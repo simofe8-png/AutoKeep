@@ -5,7 +5,6 @@
 import type { VehicleDraft } from '@/features/onboarding/types';
 
 export type ScanScenario = 'success' | 'partial' | 'ambiguous' | 'failed';
-export type SourceScenario = 'verified' | 'pending' | 'notFound';
 
 export const MOCK_SCAN_SUCCESS: VehicleDraft = {
   kind: 'car',

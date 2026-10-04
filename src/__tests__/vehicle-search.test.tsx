@@ -3,9 +3,7 @@ import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-li
 import { isoDate, type IsoDate, type Timestamp, type VehicleId } from '@/domain';
 import { sequentialIds } from '@/domain/testing';
 import { configureDataSource } from '@/features/data/dataSource';
-import { draftFromRegistry } from '@/features/onboarding/VehicleSearch';
 import type { OnboardingServices } from '@/features/onboarding/services';
-import { vehicleClass } from '@/identification/vehicleClass';
 import { VehicleRegistryRecordRepository, VehicleRepository } from '@/persistence';
 import { openTestDatabase, type TestDatabase } from '@/persistence/testing/sqljsDatabase';
 import type {
@@ -191,14 +189,12 @@ describe('Add Vehicle = "חיפוש רכב"', () => {
     expect(details).not.toHaveTextContent(new RegExp(VIN));
     expect(screen.getByTestId('vehicle-fact-vin')).toHaveTextContent(/••••0001‎?$/);
     // One vehicle image in the app: the Home card — not here.
-    expect(screen.queryAllByTestId(/^vehicle-photo-(art|reference|user)$/)).toHaveLength(0);
+    expect(screen.queryAllByTestId(/^vehicle-photo-(empty|user)$/)).toHaveLength(0);
 
     await fireEvent.press(screen.getByTestId('vehicle-details-add'));
     await waitFor(() => expect(screen.getByTestId('screen-onboarding-odometer')).toBeOnTheScreen());
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '100000');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
-    await waitFor(() => expect(screen.getByTestId('sources-finish')).toBeOnTheScreen(), LONG);
-    await fireEvent.press(screen.getByTestId('sources-finish'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
 
     const [v] = await new VehicleRepository(db).list();
@@ -225,31 +221,6 @@ describe('Add Vehicle = "חיפוש רכב"', () => {
     expect(screen.queryByTestId('vehicle-fact-reverseCamera')).toBeNull();
     expect(screen.getByTestId('screen-vehicle-manage')).not.toHaveTextContent(new RegExp(VIN));
     // The only vehicle image is on Home: none here.
-    expect(screen.queryAllByTestId(/^vehicle-photo-(art|reference|user)$/)).toHaveLength(0);
+    expect(screen.queryAllByTestId(/^vehicle-photo-(empty|user)$/)).toHaveLength(0);
   }, 90000);
-});
-
-describe('Home vehicle-card image from the Ministry identity', () => {
-  it('make → model → generation (model code) → phase → body → the ACTUAL color', () => {
-    const { draft } = draftFromRegistry('77-881-76', ibiza);
-    const cls = vehicleClass({
-      kind: draft.kind!,
-      manufacturer: draft.manufacturer!,
-      model: draft.model!,
-      modelCode: draft.modelCode,
-      color: draft.color,
-      exteriorPhase: draft.exteriorPhase,
-    });
-    expect(cls).toEqual({ kind: 'key', key: 'v1/seat/ibiza/6j/pre-fl/hatchback-5d/black' });
-    // A white car of the same class resolves to the white key (never a wrong color by default).
-    const white = vehicleClass({
-      kind: 'car',
-      manufacturer: 'סיאט',
-      model: 'IBIZA',
-      modelCode: '6J52E4',
-      color: 'לבן',
-      exteriorPhase: 'pre-fl',
-    });
-    expect(white).toEqual({ kind: 'key', key: 'v1/seat/ibiza/6j/pre-fl/hatchback-5d/white' });
-  });
 });

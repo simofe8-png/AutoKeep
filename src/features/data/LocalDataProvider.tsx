@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import { needsDiscovery } from '@/discovery/maintenance/msource/status';
 import { safeErrorText } from '@/security/redact';
 import { AppState, StyleSheet, View } from 'react-native';
 
@@ -7,11 +6,10 @@ import type { IdGenerator } from '@/domain';
 import { he } from '@/i18n/he';
 import type { SqlDatabase } from '@/persistence';
 import type { AccountBackend } from '@/features/account/backend';
-import { planOfficialSource, type SourceServices } from '@/features/sources/sourceService';
 import {
-  startMaintenanceDiscovery,
-  type DiscoveryStore,
-  type MSourceHost,
+  readOwnerDocumentsFor,
+  type OwnerDocumentsHost,
+  type OwnerDocumentsStore,
 } from '@/features/maintenance/msource/service';
 import type { NetworkMonitor } from '@/providers/network/types';
 import type { OriginalFileStore } from '@/providers/storage/types';
@@ -35,9 +33,8 @@ export interface LocalDataProviderProps {
   files: OriginalFileStore | null;
   account?: AccountBackend | null;
   network?: NetworkMonitor | null;
-  sources?: Omit<SourceServices, 'uriFor'> | null;
-  /** M-SOURCE host (null: automatic schedule discovery is not run, e.g. tests). */
-  msource?: MSourceHost | null;
+  /** Reads the owner's uploaded maintenance documents (null: not read, e.g. tests). */
+  ownerDocuments?: OwnerDocumentsHost | null;
   children: ReactNode;
 }
 
@@ -158,8 +155,7 @@ export function LocalDataProvider({
   files,
   account: backend = null,
   network: monitor = null,
-  sources = null,
-  msource = null,
+  ownerDocuments = null,
   children,
 }: LocalDataProviderProps) {
   const [phase, setPhase] = useState<Phase>({ kind: 'loading' });
@@ -267,51 +263,27 @@ export function LocalDataProvider({
     };
   }, [openDatabase, ids, clock, files, attempt, runtime, scheduler]);
 
-  // M-SOURCE (Phase 18): discovery starts automatically once a vehicle identity is confirmed.
-  // The network run happens OUTSIDE the write queue; its progress and result are written through
-  // it (each write refreshes the snapshot), so the app is never blocked by the research.
-  const [discover] = useState(() => (vehicleId: string) => {
-    if (!msource) return;
-    const ready = (next: Snapshot) => setPhase({ kind: 'ready', snapshot: next });
-    const failed = () => setPhase({ kind: 'failed' });
-    const store: DiscoveryStore = {
-      load: (id) => runtime.read((s) => s.msourceLoad(id), null),
-      progress: (id, runId, classKey, status) =>
+  // The owner's uploaded booklet is read OUTSIDE the write queue; its result is written through
+  // it (refreshing the snapshot), so the app is never blocked while a document is read.
+  const [readDocuments] = useState(() => (vehicleId: string) => {
+    if (!ownerDocuments) return;
+    const store: OwnerDocumentsStore = {
+      load: (id) => runtime.read((s) => s.ownerDocumentsLoad(id), null),
+      complete: (id, run) =>
         runtime.task(
-          (s) => s.msourceProgress(id, runId, classKey, status),
+          (s) => s.ownerDocumentsComplete(id, run),
           undefined,
-          ready,
-          failed,
-        ),
-      complete: (id, run, status, requirements, cache) =>
-        runtime.task(
-          (s) => s.msourceComplete(id, run, status, requirements, cache),
-          undefined,
-          ready,
-          failed,
+          (next) => setPhase({ kind: 'ready', snapshot: next }),
+          () => setPhase({ kind: 'failed' }),
         ),
     };
-    void startMaintenanceDiscovery(vehicleId, store, msource, {
+    void readOwnerDocumentsFor(vehicleId, store, ownerDocuments, {
       now: clock.now,
       today: () => clock.today(),
     }).catch((e) => {
-      if (__DEV__) console.warn('AutoKeep: maintenance discovery failed', safeErrorText(e));
+      if (__DEV__) console.warn('AutoKeep: reading the booklet failed', safeErrorText(e));
     });
   });
-
-  // Automatic (no "search again" needed): on app start each vehicle whose schedule is missing,
-  // interrupted, incomplete and stale, or searched against an older bundled catalog is searched
-  // again — once per app session.
-  const [resumed] = useState(() => new Set<string>());
-  useEffect(() => {
-    if (phase.kind !== 'ready' || !msource) return;
-    for (const v of phase.snapshot.vehicles) {
-      if (v.archived || resumed.has(v.id)) continue;
-      resumed.add(v.id);
-      const d = phase.snapshot.bundles[v.id]?.plan?.discovery;
-      if (needsDiscovery(d, msource.catalogVersion, Date.now())) discover(v.id);
-    }
-  }, [phase, msource, resumed, discover]);
 
   const snapshot = phase.kind === 'ready' ? phase.snapshot : null;
 
@@ -345,25 +317,7 @@ export function LocalDataProvider({
     return {
       vehicles: snapshot.vehicles,
       getBundle: (id) => snapshot.bundles[id] ?? emptyBundle(),
-      planOfficialSource: async (vehicleId, identity, onStep) => {
-        if (!sources || !files) {
-          onStep('discovery');
-          return { status: 'not_found' };
-        }
-        try {
-          return await planOfficialSource(
-            vehicleId as never,
-            identity,
-            { ...sources, uriFor: (k) => files.uriFor(k) },
-            ids,
-            clock.now,
-            onStep,
-          );
-        } catch {
-          return { status: 'not_found' };
-        }
-      },
-      addVehicle: (vehicle, _prototypeBundle, details, plan) => {
+      addVehicle: (vehicle, _prototypeBundle, details) => {
         // Shown immediately (onboarding navigates Home at once); the persisted snapshot replaces
         // it, or removes it again if the write fails (and the failure is reported).
         setPhase((p) =>
@@ -379,12 +333,9 @@ export function LocalDataProvider({
             : p,
         );
         write(async (s) => {
-          const id = await s.addVehicle(vehicle, details, plan ?? null);
+          const id = await s.addVehicle(vehicle, details);
           await s.setActiveVehicle(id);
         });
-        // The user confirmed this identity: start M-SOURCE (runs after the write is applied).
-        resumed.add(vehicle.id);
-        discover(vehicle.id);
       },
       updateVehicleDetails: (id, patch) => write((s) => s.updateVehicleDetails(id, patch)),
       archiveVehicle: (id) => write((s) => s.archiveVehicle(id)),
@@ -408,22 +359,14 @@ export function LocalDataProvider({
       addGarageRecommendation: (r) => write((s) => s.addGarageRecommendation(r)),
       vehiclePhotos: snapshot.vehiclePhotos,
       removeVehiclePhoto: (vid) => write((s) => s.removeVehiclePhoto(vid)),
-      imagePromptDismissed: snapshot.imagePromptDismissed,
-      setImagePromptDismissed: (vid, dismissed) =>
-        write((s) => s.setImagePromptDismissed(vid, dismissed)),
       setVehiclePhoto: (vid, file) => write((s) => s.setVehiclePhoto(vid, file)),
       setMaintenanceAnswers: (vid, answers) => write((s) => s.setMaintenanceAnswers(vid, answers)),
       registerMaintenanceBooklet: (vid, did) => {
         write((s) => s.registerMaintenanceBooklet(vid, did));
-        // The uploaded document enters the same M-SOURCE pipeline.
-        discover(vid);
+        // The owner's booklet is read; its items are proposed for owner review.
+        readDocuments(vid);
       },
-      retryMaintenanceDiscovery: (vid) => discover(vid),
       // A cache, not user data: written outside the snapshot cycle (nothing on screen depends on it).
-      modelPhotoCache: {
-        get: (key) => runtime.read((s) => s.modelPhotoGet(key), null),
-        put: (key, value) => runtime.read((s) => s.modelPhotoPut(key, value), undefined),
-      },
       reviewOwnerDocumentItem: (vid, key, decision, edit) =>
         write((s) => s.decideOwnerProposal(vid, key, decision, edit ?? null)),
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
@@ -477,21 +420,7 @@ export function LocalDataProvider({
       // Best effort: a selection that is no longer valid simply is not remembered.
       rememberActiveVehicle: (id) => write((s) => s.setActiveVehicle(id).catch(() => undefined)),
     };
-  }, [
-    snapshot,
-    runtime,
-    network,
-    account,
-    clock,
-    backend,
-    username,
-    sources,
-    files,
-    ids,
-    scheduler,
-    discover,
-    resumed,
-  ]);
+  }, [snapshot, runtime, network, account, clock, backend, username, scheduler, readDocuments]);
 
   if (phase.kind === 'failed') {
     return (

@@ -284,8 +284,6 @@ describe('manual entry in the app (real local store)', () => {
     await waitFor(() => expect(screen.getByTestId('screen-onboarding-odometer')).toBeOnTheScreen());
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '150,000');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
-    await waitFor(() => expect(screen.getByTestId('sources-finish')).toBeOnTheScreen(), LONG);
-    await fireEvent.press(screen.getByTestId('sources-finish'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
 
     const [saved] = await new VehicleRepository(db).list();
@@ -293,14 +291,10 @@ describe('manual entry in the app (real local store)', () => {
     // Nothing was inferred for the unknown displacement.
     expect(saved.identity.engine).toBeUndefined();
 
-    // Neutral, labeled placeholder — never presented as this vehicle's picture.
-    // (The image is decorative for screen readers, hence the hidden-elements query.)
+    // No photo yet: the image area is empty (only the user's own photo is ever shown).
     const hidden = { includeHiddenElements: true };
-    expect(screen.getAllByTestId('vehicle-photo-art', hidden).length).toBeGreaterThan(0);
+    expect(screen.getAllByTestId('vehicle-photo-empty', hidden).length).toBeGreaterThan(0);
     expect(screen.queryAllByTestId('vehicle-photo-user', hidden)).toEqual([]);
-    expect(screen.getAllByTestId('vehicle-photo-art-label', hidden)[0]).toHaveTextContent(
-      /איור כללי/,
-    );
 
     await renderRouter('./src/app', { initialUrl: `/vehicle/${saved.id}` });
     await waitFor(() => expect(screen.getByTestId('vehicle-details')).toBeOnTheScreen(), LONG);

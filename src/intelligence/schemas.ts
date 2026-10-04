@@ -18,52 +18,6 @@ export const evidenceRefSchema = z.object({
 });
 export type EvidenceRef = z.infer<typeof evidenceRefSchema>;
 
-const itemSchema = z.object({
-  title: z.string().trim().min(1).max(120),
-  actionType: z.enum(['inspection', 'replacement', 'other']),
-  manufacturerText: z.string().trim().min(1).max(400),
-  evidence: evidenceRefSchema,
-  confidence,
-});
-
-const intervalSchema = z
-  .object({
-    label: z.string().trim().min(1).max(80),
-    rule: z.enum(['earliest_of', 'distance_only', 'time_only']),
-    everyKm: z.number().int().positive().max(500_000).optional(),
-    everyMonths: z.number().int().positive().max(240).optional(),
-    firstAtKm: z.number().int().positive().max(500_000).optional(),
-    firstAtMonths: z.number().int().positive().max(240).optional(),
-    evidence: evidenceRefSchema,
-    items: z.array(itemSchema).min(1).max(80),
-  })
-  .refine(
-    (i) =>
-      (i.rule === 'earliest_of' && i.everyKm !== undefined && i.everyMonths !== undefined) ||
-      (i.rule === 'distance_only' && i.everyKm !== undefined) ||
-      (i.rule === 'time_only' && i.everyMonths !== undefined),
-    { message: 'interval rule does not match its limits' },
-  );
-
-export const coverageSchema = z.object({
-  manufacturer: z.string().trim().max(60).optional(),
-  models: z.array(z.string().trim().min(1).max(60)).max(40),
-  yearFrom: z.number().int().min(1950).max(2100).optional(),
-  yearTo: z.number().int().min(1950).max(2100).optional(),
-  engines: z.array(z.string().trim().max(40)).max(40).optional(),
-  modelCodes: z.array(z.string().trim().max(40)).max(80).optional(),
-  markets: z.array(z.string().trim().max(20)).max(40).optional(),
-  edition: z.string().trim().max(80).optional(),
-  documentKind: z.enum(['owners_manual', 'maintenance_schedule', 'other']),
-  evidence: evidenceRefSchema.optional(),
-});
-
-export const maintenanceExtractionSchema = z.object({
-  coverage: coverageSchema,
-  intervals: z.array(intervalSchema).max(40),
-});
-export type MaintenanceExtraction = z.infer<typeof maintenanceExtractionSchema>;
-
 const valueWithConfidence = <T extends z.ZodTypeAny>(v: T) =>
   z.object({ value: v, confidence, evidence: evidenceRefSchema.optional() });
 

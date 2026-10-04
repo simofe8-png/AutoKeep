@@ -1,6 +1,4 @@
-import { isoDate, type IsoDate, type MaintenanceRequirement, type Timestamp } from '@/domain';
-import { migrate, MIGRATIONS, DiscoveryMissRepository } from '@/persistence';
-import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
+import { isoDate, type IsoDate, type MaintenanceRequirement } from '@/domain';
 
 import { buildMaintenancePlan, vehicleClassKey, type PlanVehicle } from '../plan';
 
@@ -50,7 +48,7 @@ describe('§24 user fallback', () => {
     expect(p.items).toEqual([]);
     expect(p.status).toBe('needs_information');
     expect(p.fallback).toEqual({
-      reasons: ['no_official_source'],
+      reasons: ['no_applicable_requirement'],
       classKey: 'car|synthcar|alpha|2019',
     });
     expect(p.requests).toContainEqual({ kind: 'upload_booklet', hint: 'generic' });
@@ -104,29 +102,5 @@ describe('§24 user fallback', () => {
     const key = vehicleClassKey(build([]).facts);
     expect(key).not.toContain(vehicle.id);
     expect(vehicleClassKey({ kind: 'car', market: 'IL', engineCode: 'CGG' })).toBe('car|?|?|?|CGG');
-  });
-
-  it('misses are stored once per class + reasons (first / last seen)', async () => {
-    const db = await openTestDatabase();
-    await migrate(db, MIGRATIONS, () => '2026-09-30T00:00:00.000Z' as Timestamp);
-    const repo = new DiscoveryMissRepository(db);
-    await repo.record(
-      'car|synthcar|alpha|2019',
-      ['b', 'a'],
-      '2026-09-30T01:00:00.000Z' as Timestamp,
-    );
-    await repo.record(
-      'car|synthcar|alpha|2019',
-      ['a', 'b'],
-      '2026-09-30T02:00:00.000Z' as Timestamp,
-    );
-    expect(await repo.all()).toEqual([
-      {
-        classKey: 'car|synthcar|alpha|2019',
-        reasons: ['a', 'b'],
-        firstSeenAt: '2026-09-30T01:00:00.000Z',
-        lastSeenAt: '2026-09-30T02:00:00.000Z',
-      },
-    ]);
   });
 });

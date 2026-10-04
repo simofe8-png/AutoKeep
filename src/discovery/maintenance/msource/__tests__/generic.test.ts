@@ -1,18 +1,10 @@
+/// <reference types="node" />
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 
-import { officialVariantToken, sourceIdentity } from '../authority';
 import { buildFingerprint, type VehicleFingerprint } from '../fingerprint';
 import { matchItem, readDocumentApplicability, sectionContextOf } from '../matcher';
 import { extractSentences, regimeCodesIn, regimeMapOf } from '../sentences';
-import {
-  fillPattern,
-  isGeneralizable,
-  learnFromRun,
-  mergeKnowledge,
-  SourceKnowledgeAdapter,
-  tokenizeUrl,
-} from '../sourceKnowledge';
 import type { DocumentApplicability } from '../types';
 
 /**
@@ -117,18 +109,6 @@ describe('body variants (generic)', () => {
     },
   };
 
-  it('the variant token comes from the official document directory naming only', () => {
-    expect(
-      officialVariantToken(
-        'https://www.example-oem.com/manuals/astra_sportstourer/my16/manual.pdf',
-        'Astra',
-      ),
-    ).toBe('sportstourer');
-    expect(
-      officialVariantToken('https://www.example-oem.com/manuals/astra/my16/Astra_EN.pdf', 'Astra'),
-    ).toBeNull();
-  });
-
   it('a different known body is NOT_APPLICABLE; an unknown variant token is MODEL_VARIANT', () => {
     const estate = matchItem(doc({ variantToken: 'sportstourer' }), req, astra, ctx);
     expect(estate.match.status).toBe('NOT_APPLICABLE');
@@ -136,110 +116,6 @@ describe('body variants (generic)', () => {
     expect(unknown.item).toMatchObject({ scope: 'MODEL_VARIANT', sufficient: false });
     const plain = matchItem(doc(), req, astra, ctx);
     expect(plain.match.status).toBe('STRONG');
-  });
-});
-
-describe('self-improving source knowledge (source families, never intervals)', () => {
-  const leon = fpOf({
-    kind: 'car',
-    manufacturer: 'SEAT',
-    model: 'Leon',
-    year: 2015,
-    engine: 1395,
-    fuel: 'petrol',
-  });
-  const golf = fpOf({
-    kind: 'car',
-    manufacturer: 'Volkswagen',
-    model: 'Golf',
-    year: 2016,
-    engine: 1395,
-    fuel: 'petrol',
-  });
-
-  it('tokenizes a URL by the vehicle’s own model / year and fills it for another vehicle', () => {
-    const p = tokenizeUrl('https://www.example-oem.com/manuals/leon/my15_w45/en/Leon_EN.pdf', leon);
-    expect(p).toBe('https://www.example-oem.com/manuals/{model}/my{yy}_w45/en/{Model}_EN.pdf');
-    const ateca = fpOf({
-      kind: 'car',
-      manufacturer: 'SEAT',
-      model: 'Ateca',
-      year: 2018,
-      engine: 1395,
-      fuel: 'petrol',
-    });
-    expect(fillPattern(p!, ateca)).toBe(
-      'https://www.example-oem.com/manuals/ateca/my18_w45/en/Ateca_EN.pdf',
-    );
-    // A URL that does not carry the model cannot generalize.
-    expect(tokenizeUrl('https://www.example-oem.com/doc/12345.pdf', leon)).toBeNull();
-  });
-
-  it('learns only from sources with usable evidence; brand-domain patterns stay with their make', async () => {
-    const run = {
-      finishedAt: 't',
-      candidates: [
-        {
-          candidate: { canonicalUrl: 'https://blocked.example-data.com/x' },
-          decisions: [{ operation: 'FETCH', status: 'BLOCKED' }],
-        },
-      ],
-      schedule: {
-        sources: [
-          {
-            sourceId: 's1',
-            finalUrl: 'https://www.seat.co.uk/manuals/leon/my15_w45/en/Leon_EN.pdf',
-            sourceType: 'oem_manual',
-            documentType: 'owners_manual',
-            authority: { official: true, basis: 'brand_domain', detail: '' },
-            statedApplicability: { yearBasis: 'official_metadata', yearDesignation: 'my15' },
-          },
-        ],
-        evidence: [
-          {
-            sourceId: 's1',
-            grounded: true,
-            extractionMethod: 'sentence',
-            match: { status: 'STRONG', dimensions: {}, reasons: [] },
-          },
-        ],
-      },
-    } as never;
-    const learned = learnFromRun(run, leon);
-    const store = mergeKnowledge([], learned);
-    const seat = store.find((k) => k.domain === 'seat.co.uk')!;
-    expect(seat).toMatchObject({
-      identity: 'brand_domain',
-      make: 'seat',
-      urlPatterns: ['https://www.seat.co.uk/manuals/{model}/my{yy}_w45/en/{Model}_EN.pdf'],
-      applicabilityPatterns: ['official_metadata:my{yy}'],
-    });
-    expect(store.find((k) => k.domain === 'example-data.com')?.lastAccess).toBe('blocked');
-    const now = () => 't';
-    const forSeat = await new SourceKnowledgeAdapter(store).discover({
-      fingerprint: fpOf({
-        kind: 'car',
-        manufacturer: 'SEAT',
-        model: 'Arona',
-        year: 2019,
-        engine: 999,
-        fuel: 'petrol',
-      }),
-      queries: [],
-      now,
-    });
-    expect(forSeat.candidates.map((c) => c.url)).toEqual([
-      'https://www.seat.co.uk/manuals/arona/my19_w45/en/Arona_EN.pdf',
-    ]);
-    // Another make never inherits a brand domain's pattern.
-    const forVw = await new SourceKnowledgeAdapter(store).discover({
-      fingerprint: golf,
-      queries: [],
-      now,
-    });
-    expect(forVw.candidates).toEqual([]);
-    // Knowledge never contains intervals.
-    expect(JSON.stringify(store)).not.toMatch(/interval|km|months/i);
   });
 });
 
@@ -346,52 +222,9 @@ describe('generic rules found by the cross-manufacturer matrix', () => {
       'several values in one statement',
     ]);
   });
-
-  it('an official manual path on the brand domain establishes a manufacturer document', () => {
-    expect(
-      sourceIdentity(
-        'www.example.com',
-        'example',
-        'other',
-        [],
-        'https://www.example.com/datamanual-manual/x/my12/x_EN.pdf',
-      ),
-    ).toMatchObject({ official: true, basis: 'brand_domain' });
-    expect(
-      sourceIdentity(
-        'www.example.com',
-        'example',
-        'other',
-        [],
-        'https://www.example.com/news/2012.html',
-      ).official,
-    ).toBe(false);
-  });
 });
 
-describe('reflected-content defence and explicit all-models scope', () => {
-  const leon = fpOf({
-    kind: 'car',
-    manufacturer: 'SEAT',
-    model: 'Leon',
-    year: 2015,
-    engine: 1395,
-    fuel: 'petrol',
-  });
-
-  it('a URL carrying an opaque content id is never generalized to another vehicle', () => {
-    // Some sites serve the SAME data for any make/model slug and echo the slug into the text.
-    expect(
-      tokenizeUrl('https://www.example-data.com/seat-leon/v20433-2015/service', leon),
-    ).toBeNull();
-    expect(
-      isGeneralizable('https://www.example-data.com/{make}-{model}/v20433-{yyyy}/service'),
-    ).toBe(false);
-    expect(
-      isGeneralizable('https://www.example-oem.com/manuals/{model}/my{yy}/{Model}_EN.pdf'),
-    ).toBe(true);
-  });
-
+describe('explicit all-models scope', () => {
   it("the source's own heading stating ALL models gives all model years (stated, not inferred)", () => {
     const fiesta = fpOf({
       kind: 'car',

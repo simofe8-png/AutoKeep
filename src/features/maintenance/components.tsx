@@ -294,7 +294,7 @@ export function ScheduleUnavailable({
       <InlineNotice
         tone={schedule.status === 'pending' ? 'warning' : 'neutral'}
         title={he.home.scheduleUnavailableTitle}
-        message={schedule.statusReason ?? he.onboarding.sourceNotFoundBody}
+        message={schedule.statusReason ?? he.onboarding.noScheduleBody}
         action={
           onUploadManual
             ? { label: he.home.uploadManual, icon: 'file-upload-outline', onPress: onUploadManual }

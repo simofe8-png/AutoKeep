@@ -7,7 +7,6 @@ import { LocalDataProvider } from '@/features/data/LocalDataProvider';
 import { PrototypeDataProvider } from '@/features/data/PrototypeDataContext';
 import { PdfReaderHost } from '@/features/maintenance/msource/PdfReaderHost';
 import { ActiveVehicleProvider } from '@/features/vehicles/ActiveVehicleContext';
-import { VehicleImageProvider } from '@/features/vehicles/vehicleImage';
 import { MOCK_VEHICLE_DATA } from '@/mocks/vehicleData';
 import { MOCK_VEHICLES } from '@/mocks/vehicles';
 
@@ -20,7 +19,7 @@ function ActiveVehicleBridge({ children }: { children: ReactNode }) {
       initialActiveId={initialActiveVehicleId}
       onActiveChange={rememberActiveVehicle}
     >
-      <VehicleImageProvider>{children}</VehicleImageProvider>
+      {children}
       <NotificationsBridge />
     </ActiveVehicleProvider>
   );
@@ -47,8 +46,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
       files={source.files}
       account={source.account ?? null}
       network={source.network ?? null}
-      sources={source.sources ?? null}
-      msource={source.msource ?? null}
+      ownerDocuments={source.ownerDocuments ?? null}
     >
       <ActiveVehicleBridge>{children}</ActiveVehicleBridge>
       <PdfReaderHost />

@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
 
-import type { ScanScenario, SourceScenario } from '@/mocks/onboarding';
+import type { ScanScenario } from '@/mocks/onboarding';
 import type { AcquisitionResult } from '@/providers/acquisition/types';
 import type { RegistryVehicle } from '@/providers/registry/types';
 
@@ -11,7 +11,6 @@ export interface OnboardingState {
   origins: Partial<Record<DraftField, FieldOrigin>>;
   odometerKm?: number;
   scanScenario: ScanScenario;
-  sourceScenario: SourceScenario;
   /** The captured/picked registration image (real mode). */
   acquired: AcquisitionResult | null;
   /** Several Ministry records for one plate: the user chooses on the details step. */
@@ -32,7 +31,6 @@ export interface OnboardingValue extends OnboardingState {
   setUserFields: (fields: Partial<VehicleDraft>) => void;
   setOdometer: (km: number) => void;
   setScanScenario: (s: ScanScenario) => void;
-  setSourceScenario: (s: SourceScenario) => void;
   reset: () => void;
 }
 
@@ -40,7 +38,6 @@ const initial: OnboardingState = {
   draft: {},
   origins: {},
   scanScenario: 'success',
-  sourceScenario: 'verified',
   acquired: null,
   candidates: [],
 };
@@ -85,7 +82,6 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
       setCandidates: (candidates) => setState((s) => ({ ...s, candidates })),
       setOdometer: (km) => setState((s) => ({ ...s, odometerKm: km })),
       setScanScenario: (scanScenario) => setState((s) => ({ ...s, scanScenario })),
-      setSourceScenario: (sourceScenario) => setState((s) => ({ ...s, sourceScenario })),
       reset: () => setState(initial),
     }),
     [state],

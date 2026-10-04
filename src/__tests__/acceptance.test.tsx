@@ -109,11 +109,6 @@ describe('T175 scooter', () => {
     await waitFor(() => expect(screen.getByTestId('screen-onboarding-odometer')).toBeOnTheScreen());
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '9650');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
-    await waitFor(
-      () => expect(screen.getByTestId('sources-result-notFound')).toBeOnTheScreen(),
-      LONG,
-    );
-    await fireEvent.press(screen.getByTestId('sources-finish'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
     await waitFor(() =>
       expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/XMAX 300/),

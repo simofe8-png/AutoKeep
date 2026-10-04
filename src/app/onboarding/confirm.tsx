@@ -76,7 +76,7 @@ export default function OnboardingConfirm() {
         </>
       }
     >
-      <StepProgress step={2} total={4} />
+      <StepProgress step={2} total={3} />
       {draft.manufacturer && draft.model ? (
         <View style={styles.identity} testID="confirm-identity">
           <AppText variant="title" align="center" accessibilityRole="header">

@@ -22,12 +22,8 @@ import {
   requirementFromClaim,
 } from '@/domain';
 import type { AlertCandidate } from '@/engine/alerts';
-import type { DiscoveryStatus } from '@/discovery/maintenance/msource/status';
 import { buildMaintenancePlan } from '@/features/maintenance/knowledge/plan';
-import { toPlanVM, verifiedIdentity } from '@/features/maintenance/knowledge/planVM';
-import { guidanceFor } from '@/features/maintenance/knowledge/standardGuidance';
-import { triangulatedRequirements } from '@/features/maintenance/knowledge/triangulated';
-import { syntheticDemoRequirements } from '@/features/maintenance/knowledge/syntheticDemo';
+import { toPlanVM } from '@/features/maintenance/knowledge/planVM';
 import type { MaintenanceProfile, StoredKnowledgeDocument } from '@/persistence';
 import type { OwnerReviewState } from '@/features/maintenance/msource/ownerReview';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
@@ -73,10 +69,8 @@ export interface VehicleRecords {
   maintenanceProfile?: MaintenanceProfile | null;
   knowledgeDocuments?: StoredKnowledgeDocument[];
   claims?: CandidateClaim[];
-  /** M-SOURCE (local-only, migration v10): latest discovery status + resolved requirements. */
+  /** The registry record and the owner's own documents (local-only, migration v10). */
   msource?: {
-    status: DiscoveryStatus | null;
-    requirements: MaintenanceRequirement[];
     /** The Ministry record the vehicle was identified by (null when entered by hand). */
     registry?: VehicleRegistryRecord | null;
     /** Items read from the owner's own documents, with the owner's decisions (local only). */
@@ -431,15 +425,10 @@ export function vehicleRequirements(rec: VehicleRecords): MaintenanceRequirement
     const doc = docs.get(c.documentId);
     return doc ? [requirementFromClaim(c, doc)] : [];
   });
+  // Only what the owner entered or accepted (owner decision 2026-10-04: AutoKeep never looks for a
+  // schedule by itself).
   return [
-    // (The two acceptance vehicles' research claims, knownSources.ts, are test fixtures only:
-    // production requirements never depend on specific vehicles.)
-    ...triangulatedRequirements(),
-    ...syntheticDemoRequirements(),
     ...own,
-    // M-SOURCE: only EXACT / STRONG / SUPPORTED items ever become requirements; the engine
-    // re-checks their applicability against this vehicle's facts on every read.
-    ...(rec.msource?.requirements ?? []),
     // Items from the owner's own documents: only those the owner accepted (owner review).
     ...(rec.msource?.owner?.requirements ?? []),
   ];
@@ -475,29 +464,10 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
     readings: rec.readings.map((r) => ({ date: r.measuredAt, km: r.valueKm })),
     today,
   });
-  const vm = toPlanVM(
-    plan,
-    (rec.knowledgeDocuments ?? []).length > 0,
-    rec.msource?.status ?? null,
-    verifiedIdentity(rec.msource?.registry),
-    {
-      proposals: rec.msource?.owner?.proposals ?? [],
-      issues: rec.msource?.owner?.issues ?? [],
-    },
-  );
-  // Standard guidance only while there is no schedule item at all (owner decision 2026-10-03).
-  return {
-    ...vm,
-    standardGuidance:
-      vm.items.length === 0
-        ? guidanceFor({
-            kind: v.type,
-            manufacturer: v.identity.manufacturer,
-            engineCode: v.identity.engineCode,
-            fuel: v.identity.fuel,
-          })
-        : null,
-  };
+  return toPlanVM(plan, (rec.knowledgeDocuments ?? []).length > 0, {
+    proposals: rec.msource?.owner?.proposals ?? [],
+    issues: rec.msource?.owner?.issues ?? [],
+  });
 }
 
 // ---------- the full bundle ----------

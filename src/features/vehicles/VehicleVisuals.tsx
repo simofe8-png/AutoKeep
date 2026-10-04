@@ -1,45 +1,21 @@
-import { useState } from 'react';
-import {
-  ActivityIndicator,
-  Image,
-  Linking,
-  Pressable,
-  StyleSheet,
-  View,
-  type ImageSourcePropType,
-} from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
 
 import { he } from '@/i18n/he';
-import { colorFamily, type ColorFamily } from '@/identification/vehicleClass';
-import type { ReferenceImageRecord } from '@/providers/referenceImages/types';
 import {
   AppText,
   Button,
   colors,
-  Dialog,
   directionalIcons,
   elevation,
   Icon,
   PlateBadge,
-  SegmentedControl,
   radii,
   spacing,
   touchTarget,
 } from '@/ui';
 
-import { vehicleDisplayName, type VehicleKind, type VehicleSummary } from './types';
+import { vehicleDisplayName, type VehicleSummary } from './types';
 import { useVehicleImage } from './vehicleImage';
-
-/**
- * Bundled, self-made NEUTRAL placeholders (tools/vehicle-art.py): a colorless silhouette per
- * vehicle kind, labeled as a generic illustration. Shown only when there is neither the user's own
- * photo nor an approved model reference image (owner decisions 2026-09-28/29).
- */
-const ART: Record<VehicleKind, ImageSourcePropType> = {
-  car: require('@/assets/vehicles/car.png'),
-  motorcycle: require('@/assets/vehicles/motorcycle.png'),
-  scooter: require('@/assets/vehicles/scooter.png'),
-};
 
 export type PhotoVariant = 'hero' | 'wide' | 'card' | 'thumb';
 
@@ -57,9 +33,8 @@ const DIMS: Record<
 type PhotoSubject = Pick<VehicleSummary, 'kind'> & Partial<VehicleSummary>;
 
 /**
- * The vehicle image. Priority: the user's own photo → the verified model reference image
- * (with its license credit; no visible model-image label, owner decision 2026-09-29) → the
- * illustration. The large variants also show the resolution states: searching, which-front question, no suitable image, cannot search now.
+ * The vehicle image (owner decision 2026-10-04): only the photo the user added. Without one the
+ * frame stays empty, and the large variants offer to take or pick a photo.
  */
 export function VehiclePhoto({
   vehicle,
@@ -79,245 +54,42 @@ export function VehiclePhoto({
     d.width ? { width: d.width } : styles.stretch,
   ];
 
-  if (large && state.kind === 'searching') {
+  if (state.kind === 'user') {
     return (
-      <View
-        style={[styles.panel, { minHeight: d.height, borderRadius: d.radius }]}
-        testID="vehicle-image-searching"
-        accessibilityLiveRegion="polite"
-      >
-        <ActivityIndicator size="large" color={colors.primary} />
-        <AppText variant="bodyStrong" align="center">
-          {he.vehicleImage.searching}
-        </AppText>
-        <AppText variant="caption" color="textSecondary" align="center">
-          {he.vehicleImage.searchingHint}
-        </AppText>
-      </View>
-    );
-  }
-  if (large && state.kind === 'choose_phase') {
-    return (
-      <View style={[styles.panel, { borderRadius: d.radius }]} testID="vehicle-image-choose-phase">
-        <AppText variant="heading" align="center" accessibilityRole="header">
-          {he.vehicleImage.choosePhase}
-        </AppText>
-        <View style={styles.options}>
-          {state.options.map((o) => (
-            <Pressable
-              key={o.phase}
-              testID={`phase-option-${o.phase}`}
-              accessibilityRole="button"
-              accessibilityLabel={he.vehicleImage.phaseLabels[o.phase]}
-              onPress={() => actions.choosePhase(o.phase)}
-              style={({ pressed }) => [styles.option, pressed && styles.optionPressed]}
-            >
-              <Image
-                source={{ uri: o.uri }}
-                style={styles.optionImage}
-                resizeMode="contain"
-                accessibilityIgnoresInvertColors
-              />
-              <AppText variant="smallStrong" align="center">
-                {he.vehicleImage.phaseLabels[o.phase]}
-              </AppText>
-              <ReferenceCredit record={o.record} compact />
-            </Pressable>
-          ))}
-        </View>
-        <Button
-          testID="phase-not-sure"
-          label={he.vehicleImage.notSure}
-          variant="ghost"
-          size="sm"
-          onPress={() => actions.choosePhase(null)}
-        />
-      </View>
-    );
-  }
-  if (large && (state.kind === 'not_found' || state.kind === 'unavailable')) {
-    const notFound = state.kind === 'not_found';
-    return (
-      <View
-        style={[styles.panel, { minHeight: d.height, borderRadius: d.radius }]}
-        testID={notFound ? 'vehicle-image-not-found' : 'vehicle-image-unavailable'}
-      >
-        <Icon
-          name={notFound ? 'image-search-outline' : 'cloud-off-outline'}
-          size={32}
-          color="textSecondary"
-        />
-        <AppText variant="bodyStrong" align="center">
-          {notFound ? he.vehicleImage.notFoundTitle : he.vehicleImage.unavailableTitle}
-        </AppText>
-        {notFound ? (
-          <AppText variant="small" color="textSecondary" align="center">
-            {he.vehicleImage.notFoundBody}
-          </AppText>
-        ) : null}
-        <View style={styles.actions}>
-          {!notFound ? (
-            <Button
-              testID="image-retry"
-              label={he.vehicleImage.retry}
-              icon="refresh"
-              size="sm"
-              onPress={actions.retry}
-            />
-          ) : null}
-          {actions.canAcquire ? (
-            <>
-              <Button
-                testID="image-capture"
-                label={he.vehicleImage.captureNow}
-                icon="camera-outline"
-                variant={notFound ? 'primary' : 'tonal'}
-                size="sm"
-                onPress={() => void actions.capture()}
-              />
-              <Button
-                testID="image-pick"
-                label={he.vehicleImage.pickFromGallery}
-                icon="image-outline"
-                variant="tonal"
-                size="sm"
-                onPress={() => void actions.pick()}
-              />
-            </>
-          ) : null}
-        </View>
-        {notFound ? (
-          <Button
-            testID="image-not-now"
-            label={he.vehicleImage.notNow}
-            variant="ghost"
-            size="sm"
-            onPress={actions.notNow}
-          />
-        ) : null}
-      </View>
-    );
-  }
-
-  if (state.kind === 'searching') {
-    return (
-      <View style={[...frame, styles.center]} testID="vehicle-image-searching-small">
-        <ActivityIndicator color={colors.primary} />
-      </View>
-    );
-  }
-  if (state.kind === 'user' || state.kind === 'reference' || state.kind === 'model_photo') {
-    const reference = state.kind !== 'user';
-    const general = state.kind === 'model_photo';
-    return (
-      <View
-        style={frame}
-        testID={
-          general
-            ? 'vehicle-photo-general'
-            : reference
-              ? 'vehicle-photo-reference'
-              : 'vehicle-photo-user'
-        }
-      >
+      <View style={frame} testID="vehicle-photo-user">
         <Image
           source={{ uri: state.uri }}
           style={styles.image}
-          // Photos fill the frame edge to edge (owner decision 2026-10-03); the approved
-          // references are background-removed cut-outs and keep their whole outline.
-          resizeMode={state.kind === 'reference' ? 'contain' : 'cover'}
+          resizeMode="cover"
           accessibilityIgnoresInvertColors
-          accessibilityLabel={
-            reference ? [vehicle.manufacturer, vehicle.model].filter(Boolean).join(' ') : undefined
-          }
         />
-        {state.kind !== 'user' && large ? (
-          <PhotoInfo record={state.record} general={general} />
-        ) : null}
       </View>
     );
   }
   return (
-    <View style={frame} importantForAccessibility="no-hide-descendants" testID="vehicle-photo-art">
-      <Image
-        source={ART[vehicle.kind]}
-        style={styles.image}
-        resizeMode="cover"
-        accessibilityIgnoresInvertColors
-      />
-      {large ? (
-        <View style={styles.artLabel} testID="vehicle-photo-art-label">
-          <AppText variant="caption" color="textSecondary">
-            {he.vehicles.genericIllustration}
-          </AppText>
+    <View style={[...frame, styles.empty]} testID="vehicle-photo-empty">
+      {large && actions.canAcquire ? (
+        <View style={styles.actions}>
+          <Button
+            testID="image-capture"
+            label={he.vehicleImage.takePhoto}
+            icon="camera-outline"
+            size="sm"
+            onPress={() => void actions.capture()}
+          />
+          <Button
+            testID="image-pick"
+            label={he.vehicleImage.pickFromGallery}
+            icon="image-outline"
+            variant="tonal"
+            size="sm"
+            onPress={() => void actions.pick()}
+          />
         </View>
-      ) : null}
+      ) : (
+        <Icon name="image-plus" size={large ? 36 : 24} color="textMuted" />
+      )}
     </View>
-  );
-}
-
-/**
- * The photo's attribution behind a small (i) in the corner (owner decision 2026-10-03: the photo
- * stays unobstructed). Opens the author / license credit — and, for a general model photo, that it
- * may show another generation or version — with a link to the source page.
- */
-function PhotoInfo({ record, general }: { record: ReferenceImageRecord; general: boolean }) {
-  const [open, setOpen] = useState(false);
-  const t = he.vehicleImage;
-  return (
-    <>
-      <Pressable
-        testID="vehicle-photo-info"
-        accessibilityRole="button"
-        accessibilityLabel={t.infoA11y}
-        onPress={() => setOpen(true)}
-        hitSlop={12}
-        style={styles.infoButton}
-      >
-        <Icon name="information-outline" size={18} color="textSecondary" />
-      </Pressable>
-      <Dialog
-        visible={open}
-        testID="vehicle-photo-info-dialog"
-        title={t.infoTitle}
-        message={[general ? t.generalModelPhoto : null, record.credit].filter(Boolean).join('\n\n')}
-        confirmLabel={t.openSource}
-        onConfirm={() => {
-          setOpen(false);
-          void Linking.openURL(record.sourceUrl);
-        }}
-        cancelLabel={he.common.close}
-        onCancel={() => setOpen(false)}
-      />
-    </>
-  );
-}
-
-/** License attribution of a reference image; opens the source page (author, license, changes). */
-export function ReferenceCredit({
-  record,
-  compact = false,
-}: {
-  record: ReferenceImageRecord;
-  compact?: boolean;
-}) {
-  return (
-    <Pressable
-      testID="vehicle-reference-credit"
-      accessibilityRole="link"
-      accessibilityHint={he.vehicleImage.sourceHint}
-      onPress={() => void Linking.openURL(record.sourceUrl)}
-      hitSlop={8}
-    >
-      <AppText
-        variant="caption"
-        color="textSecondary"
-        align="center"
-        numberOfLines={compact ? 2 : 1}
-      >
-        {record.credit}
-      </AppText>
-    </Pressable>
   );
 }
 
@@ -465,27 +237,9 @@ export function VehicleSelectorCard({
 
 /** Home hero: wide vehicle image, then the name, spec line and plate, centred (Home reference). */
 export function VehicleHero({ vehicle }: { vehicle: VehicleSummary }) {
-  const family = colorFamily(vehicle.color);
-  const [view, setView] = useState<'photo' | 'color'>('photo');
   return (
     <View style={styles.hero} testID="vehicle-hero">
-      {view === 'color' && family ? (
-        <ColorSilhouette kind={vehicle.kind} family={family} color={vehicle.color!} />
-      ) : (
-        <VehiclePhoto vehicle={vehicle} variant="hero" />
-      )}
-      {family ? (
-        <SegmentedControl
-          testID="vehicle-hero-view"
-          accessibilityLabel={he.vehicleImage.viewToggle}
-          options={[
-            { value: 'photo', label: he.vehicleImage.viewPhoto },
-            { value: 'color', label: he.vehicleImage.viewColor },
-          ]}
-          value={view}
-          onChange={setView}
-        />
-      ) : null}
+      <VehiclePhoto vehicle={vehicle} variant="hero" />
       <View style={styles.heroText}>
         <AppText variant="title" align="center">
           {`${vehicle.manufacturer} ${vehicle.model}`}
@@ -494,80 +248,7 @@ export function VehicleHero({ vehicle }: { vehicle: VehicleSummary }) {
           {vehicleSpecLine(vehicle)}
         </AppText>
         <PlateBadge number={vehicle.registration} size="md" />
-        {vehicle.color ? <ColorBadge color={vehicle.color} /> : null}
       </View>
-    </View>
-  );
-}
-
-/** Light colors are drawn on a dark backdrop so the silhouette stays visible. */
-const LIGHT: readonly ColorFamily[] = ['white', 'silver', 'beige', 'yellow'];
-
-/**
- * The vehicle in its REGISTERED color (`tzeva_rechev`): the neutral silhouette of its kind,
- * filled with the color family's swatch. An illustration, labelled as such — not a photo.
- */
-function ColorSilhouette({
-  kind,
-  family,
-  color,
-}: {
-  kind: VehicleKind;
-  family: ColorFamily;
-  color: string;
-}) {
-  return (
-    <View
-      testID="vehicle-color-silhouette"
-      style={[
-        styles.photo,
-        styles.stretch,
-        { aspectRatio: 16 / 9, borderRadius: radii.lg },
-        { backgroundColor: LIGHT.includes(family) ? '#2B2F36' : '#E3E8EF' },
-      ]}
-    >
-      <Image
-        source={ART[kind]}
-        style={[styles.image, { tintColor: SWATCH[family] }]}
-        resizeMode="contain"
-        accessibilityLabel={he.vehicleImage.colorIllustration(color)}
-      />
-      <View style={styles.artLabel}>
-        <AppText variant="caption" color="textSecondary">
-          {he.vehicleImage.colorIllustration(color)}
-        </AppText>
-      </View>
-    </View>
-  );
-}
-
-/** Swatch per color family (a known family only: an unknown color shows its name alone). */
-const SWATCH: Record<ColorFamily, string> = {
-  black: '#1B1B1F',
-  white: '#FFFFFF',
-  silver: '#C3C7CC',
-  grey: '#7D848C',
-  blue: '#2F5DA8',
-  red: '#B8262D',
-  green: '#2E7D4F',
-  yellow: '#E5BF1A',
-  orange: '#E07A1F',
-  brown: '#7A4E2D',
-  beige: '#D9C8A5',
-};
-
-/** The vehicle's color exactly as the registry states it (`tzeva_rechev`), with a swatch. */
-export function ColorBadge({ color }: { color: string }) {
-  const family = colorFamily(color);
-  return (
-    <View style={styles.colorBadge} testID="vehicle-color-badge" accessible>
-      {family ? (
-        <View
-          testID={`vehicle-color-swatch-${family}`}
-          style={[styles.swatch, { backgroundColor: SWATCH[family] }]}
-        />
-      ) : null}
-      <AppText variant="bodyStrong">{he.vehicleImage.color(color)}</AppText>
     </View>
   );
 }
@@ -581,66 +262,14 @@ const styles = StyleSheet.create({
   photo: { overflow: 'hidden', backgroundColor: '#E3E8EF' },
   stretch: { alignSelf: 'stretch' },
   image: { width: '100%', height: '100%' },
-  center: { alignItems: 'center', justifyContent: 'center' },
-  panel: {
-    alignSelf: 'stretch',
+  empty: {
     alignItems: 'center',
     justifyContent: 'center',
-    gap: spacing.sm,
-    padding: spacing.md,
-    backgroundColor: '#E3E8EF',
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: colors.border,
   },
   actions: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: spacing.sm },
-  options: { flexDirection: 'row', gap: spacing.sm, alignSelf: 'stretch' },
-  option: {
-    flex: 1,
-    gap: spacing.xxs,
-    padding: spacing.xs,
-    borderRadius: radii.md,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  optionPressed: { borderColor: colors.primary },
-  optionImage: { width: '100%', height: 96 },
-  colorBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  swatch: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  infoButton: {
-    position: 'absolute',
-    top: spacing.xs,
-    end: spacing.xs,
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,0.8)',
-  },
-  artLabel: {
-    position: 'absolute',
-    top: spacing.sm,
-    start: spacing.sm,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: 2,
-    borderRadius: radii.pill,
-    backgroundColor: colors.surface,
-  },
   context: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -1,15 +1,11 @@
 import type { ExteriorPhase } from '@/domain';
 import type { OwnerEdit } from '@/discovery/maintenance/msource/ownerReview';
-import type { ModelPhotoDeps } from '@/features/vehicles/modelPhoto';
 import * as Crypto from 'expo-crypto';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import { createContext, useContext } from 'react';
 
 import type { AuthResult } from '@/cloud/auth';
 import type { VehicleSummary } from '@/features/vehicles/types';
-import type { DiscoveryStep } from '@/discovery/pipeline';
-import type { VehicleIdentityQuery } from '@/discovery/types';
-import type { SourcePlan } from '@/features/sources/sourceService';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import type { Integrity } from '@/providers/storage/types';
 
@@ -100,15 +96,7 @@ export interface AppDataValue {
     vehicle: VehicleSummary,
     bundle?: VehicleDataBundle,
     details?: VehicleDetailsInput,
-    /** Official source found during onboarding (persisted with the vehicle). */
-    plan?: SourcePlan | null,
   ) => void;
-  /** T170: searches the official source + schedule for a vehicle being added (not persisted). */
-  planOfficialSource: (
-    vehicleId: string,
-    identity: VehicleIdentityQuery,
-    onStep: (step: DiscoveryStep) => void,
-  ) => Promise<SourcePlan>;
   /** Corrects color / engine code / displacement ('' clears a field; absent keys unchanged). */
   updateVehicleDetails: (
     vehicleId: string,
@@ -140,22 +128,18 @@ export interface AppDataValue {
   addGarageRecommendation: (rec: GarageRecommendationVM) => void;
   /** The user's own photo of a vehicle (viewable URI), if they added one. */
   vehiclePhotos: Record<string, string>;
-  /** Removes the user's own vehicle photo (the model reference image returns). */
+  /** Removes the user's own vehicle photo (the image area is empty again). */
   removeVehiclePhoto: (vehicleId: string) => void;
-  /** Vehicles whose image prompt was answered "not now" / "not sure" on this device. */
-  imagePromptDismissed: Record<string, boolean>;
-  setImagePromptDismissed: (vehicleId: string, dismissed: boolean) => void;
   /** Owner answers that resolve maintenance applicability (null = "I don't know"). */
   setMaintenanceAnswers: (
     vehicleId: string,
     answers: { serviceRegime?: string | null; usage?: 'normal' | 'severe' | null },
   ) => void;
-  /** Marks a stored document as this vehicle's maintenance booklet (owner-confirmed, unverified). */
+  /**
+   * Marks a stored document as this vehicle's maintenance booklet (owner-confirmed) and reads it:
+   * its items are proposed for owner review.
+   */
   registerMaintenanceBooklet: (vehicleId: string, documentId: string) => void;
-  /** M-SOURCE: runs automatic maintenance-schedule discovery again for the vehicle. */
-  retryMaintenanceDiscovery: (vehicleId: string) => void;
-  /** Local cache of general model photos (null in demo mode). */
-  modelPhotoCache: ModelPhotoDeps['cache'] | null;
   /** Owner review: accept (optionally corrected) or reject one item from the owner's document. */
   reviewOwnerDocumentItem: (
     vehicleId: string,

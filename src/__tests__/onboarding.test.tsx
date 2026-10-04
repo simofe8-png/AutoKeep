@@ -17,7 +17,7 @@ async function goToScanWithScenario(label: RegExp) {
 }
 
 describe('onboarding flow (mock scenarios)', () => {
-  it('scan → confirm → odometer → verified source → Home with the new vehicle active', async () => {
+  it('scan → confirm → odometer → Home with the new vehicle active', async () => {
     await openOnboarding();
     await goToScanWithScenario(/זיהוי מלא/);
 
@@ -36,13 +36,6 @@ describe('onboarding flow (mock scenarios)', () => {
     expect(screen.getByTestId('odometer-continue')).toBeDisabled();
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '42,300');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
-
-    await waitFor(() => expect(screen.getByTestId('screen-onboarding-sources')).toBeOnTheScreen());
-    await waitFor(
-      () => expect(screen.getByTestId('sources-result-verified')).toBeOnTheScreen(),
-      LONG,
-    );
-    await fireEvent.press(screen.getByTestId('sources-finish'));
 
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
     expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/מאזדה 3/);
@@ -81,7 +74,7 @@ describe('onboarding flow (mock scenarios)', () => {
     expect(screen.getByTestId('confirm-details')).toBeEnabled();
   }, 20000);
 
-  it('no verifiable source: clearly stated, no schedule invented', async () => {
+  it('no schedule is searched for or invented: Home after the odometer, no schedule', async () => {
     await openOnboarding();
     await goToScanWithScenario(/זיהוי מלא/);
     await waitFor(
@@ -91,14 +84,7 @@ describe('onboarding flow (mock scenarios)', () => {
     await fireEvent.press(screen.getByTestId('confirm-details'));
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '1000');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
-    await waitFor(() => expect(screen.getByTestId('screen-onboarding-sources')).toBeOnTheScreen());
-    await fireEvent.press(screen.getByRole('radio', { name: /לא נמצא/ }));
-    await waitFor(
-      () => expect(screen.getByTestId('sources-result-notFound')).toBeOnTheScreen(),
-      LONG,
-    );
-    expect(screen.getByTestId('sources-result-notFound')).toHaveTextContent(
-      /לא נציג המלצות תחזוקה מקצועיות ללא מקור מאומת/,
-    );
+    await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
+    expect(screen.queryByTestId('next-service-summary')).toBeNull();
   }, 30000);
 });

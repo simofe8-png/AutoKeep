@@ -80,7 +80,7 @@ export default function OnboardingScan() {
         </View>
       </View>
       <ScrollView contentContainerStyle={styles.content}>
-        <StepProgressDark step={1} total={4} />
+        <StepProgressDark step={1} total={3} />
         <AppText color="textOnPrimary" align="center" testID="scan-hint">
           {services?.licenseOcr ? he.onboarding.scanCropHint : he.onboarding.scanHint}
         </AppText>

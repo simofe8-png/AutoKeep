@@ -11,7 +11,6 @@ import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
 import { RegistryFacts } from '@/features/vehicles/RegistryFacts';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import { vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
-import { vehicleClass } from '@/identification/vehicleClass';
 import { onboardingServices } from '@/features/data/dataSource';
 import { he } from '@/i18n/he';
 import {
@@ -71,8 +70,6 @@ export default function VehicleManageScreen() {
     setVehiclePhoto,
     vehiclePhotos,
     removeVehiclePhoto,
-    updateVehicleDetails,
-    setImagePromptDismissed,
     getRegistryRecord,
   } = useAppData();
   const [registryRecord, setRegistryRecord] = useState<VehicleRegistryRecord | null>(null);
@@ -125,9 +122,6 @@ export default function VehicleManageScreen() {
     if (r.status === 'acquired') setVehiclePhoto(vehicle.id, r.file);
   };
   const hasOwnPhoto = Boolean(vehiclePhotos[vehicle.id]);
-  // The front can be (re)chosen when it is not an established registry fact.
-  const phaseChangeable =
-    vehicleClass(vehicle).kind !== 'unsupported' && vehicle.exteriorPhaseSource !== 'registry';
 
   return (
     <Screen testID="screen-vehicle-manage" header={<ScreenHeader title={he.lifecycle.title} />}>
@@ -166,20 +160,6 @@ export default function VehicleManageScreen() {
               variant="ghost"
               size="sm"
               onPress={() => removeVehiclePhoto(vehicle.id)}
-            />
-          ) : null}
-          {phaseChangeable && !vehicle.archived ? (
-            <Button
-              testID="vehicle-phase-change"
-              label={he.vehicleImage.changePhase}
-              icon="swap-horizontal"
-              variant="ghost"
-              size="sm"
-              onPress={() => {
-                // Back to the visual question on the vehicle image.
-                updateVehicleDetails(vehicle.id, { exteriorPhase: null });
-                setImagePromptDismissed(vehicle.id, false);
-              }}
             />
           ) : null}
         </View>

@@ -105,13 +105,8 @@ describe('real local data behind the approved UI', () => {
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '84,250');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
 
-    // No discovery provider is configured: the honest outcome, never a fabricated schedule.
-    await waitFor(
-      () => expect(screen.getByTestId('sources-result-notFound')).toBeOnTheScreen(),
-      LONG,
-    );
-    expect(screen.queryByTestId('source-scenario')).toBeNull();
-    await fireEvent.press(screen.getByTestId('sources-finish'));
+    // The vehicle is added at once: AutoKeep does not search for a schedule (owner decision
+    // 2026-10-04).
 
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
     await waitFor(() =>

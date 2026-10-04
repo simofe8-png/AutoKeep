@@ -1,7 +1,6 @@
 import type { MaintenanceRequirement, RequirementAction, TaskCode } from '@/domain';
 
 import type { DocumentProfile, DocumentType } from '../types';
-import type { AccessDecision } from './accessEngine';
 
 /**
  * M-SOURCE V1 records (ADR-0020). Candidates are untrusted until acquired, extracted and matched;
@@ -68,6 +67,21 @@ export interface SourceCandidate {
   parentId?: string;
   /** A user-provided document (bytes in memory; never fetched). */
   upload?: { name: string; bytes: Uint8Array };
+}
+
+/**
+ * An access decision recorded with a source (web sources of earlier versions; the owner's own
+ * documents carry none).
+ */
+export interface AccessDecision {
+  operation: string;
+  status: string;
+  reason: string;
+  url: string;
+  host: string | null;
+  evidence: { kind: string; ref: string; detail?: string }[];
+  decidedAt: string;
+  policyVersion: string;
 }
 
 /** Immutable provenance of one acquired document. */
