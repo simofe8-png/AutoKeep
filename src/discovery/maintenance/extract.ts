@@ -80,6 +80,8 @@ export function taskOf(label: string, kind: VehicleIdentity['kind']): TaskCode |
   const k = kind === 'motorcycle' ? 'motorcycle' : 'car';
   // "Check transmission for leakage" is an inspection of a component, not its fluid.
   if (/\bleak/i.test(label)) return null;
+  // Hebrew "engine oil and oil filter" is the oil change: the engine oil names the item.
+  if (/שמן (ה)?מנוע/.test(label)) return 'engine_oil';
   for (const [task, re, only] of TASKS) if ((!only || only === k) && re.test(label)) return task;
   return null;
 }

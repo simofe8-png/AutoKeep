@@ -2,6 +2,7 @@ import * as Crypto from 'expo-crypto';
 
 import { toHex } from '@/providers/storage/types';
 
+import { photoReader } from './ocrBridge';
 import { uploadPdfReader } from './pdfBridge';
 import type { OwnerDocumentsHost } from './service';
 
@@ -14,5 +15,6 @@ export function deviceOwnerDocumentsHost(): OwnerDocumentsHost {
     sha256: async (b) =>
       toHex(await Crypto.digest(Crypto.CryptoDigestAlgorithm.SHA256, new Uint8Array(b))),
     uploadPdf: uploadPdfReader(),
+    uploadPhoto: photoReader(),
   };
 }

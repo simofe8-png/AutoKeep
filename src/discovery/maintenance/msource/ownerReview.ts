@@ -222,7 +222,8 @@ export function ownerDocumentRequirement(
 /** An uploaded document that could not be read, by reason (shown to the owner, never silent). */
 export interface UploadIssue {
   documentName: string;
-  reason: 'no_text';
+  /** no_text = a PDF without a text layer; unreadable_photo = no text recognized in a photo. */
+  reason: 'no_text' | 'unreadable_photo';
 }
 
 /** Uploads whose PDF has no selectable text (scanned / image-only), from the run trace. */
@@ -232,9 +233,11 @@ export function uploadIssues(
     failure?: { code: string };
   }[],
 ): UploadIssue[] {
-  return candidates.flatMap((c) =>
+  return candidates.flatMap((c): UploadIssue[] =>
     c.candidate.upload && c.failure?.code === 'NO_TEXT_LAYER'
       ? [{ documentName: c.candidate.upload.name, reason: 'no_text' as const }]
-      : [],
+      : c.candidate.upload && c.failure?.code === 'NO_TEXT_READ'
+        ? [{ documentName: c.candidate.upload.name, reason: 'unreadable_photo' as const }]
+        : [],
   );
 }

@@ -42,6 +42,8 @@ export type FailureCode =
   | 'EXTRACTOR_UNAVAILABLE'
   | 'MALFORMED_DOCUMENT'
   | 'NO_TEXT_LAYER'
+  /** A photo in which no text could be recognized. */
+  | 'NO_TEXT_READ'
   | 'NO_SCHEDULE_SECTION'
   | 'NO_REQUIREMENTS_EXTRACTED'
   | 'SOURCE_NOT_APPLICABLE'
@@ -95,8 +97,11 @@ export interface OwnerDocument {
 export interface ReaderDeps {
   runId: string;
   vehicleRef?: string;
-  /** Text readers: the on-device PDF reader (null where none) and the HTML reader. */
-  readers: { pdf: TextReader | null; html: TextReader };
+  /**
+   * Text readers: the on-device PDF reader, the on-device photo reader (OCR) — null where none —
+   * and the HTML reader.
+   */
+  readers: { pdf: TextReader | null; html: TextReader; image?: TextReader | null };
   sha256: (b: Uint8Array) => Promise<string>;
   today: IsoDate;
   now: () => string;
@@ -196,14 +201,20 @@ export async function readOwnerDocuments(
       continue;
     }
     const head = String.fromCharCode(...bytes.slice(0, 5));
-    const format: 'pdf' | 'html' | null =
+    // A photo: JPEG (FF D8 FF) or PNG (89 'PNG').
+    const photo =
+      (bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff) ||
+      (bytes[0] === 0x89 && head.slice(1, 4) === 'PNG');
+    const format: 'pdf' | 'html' | 'image' | null =
       head === '%PDF-'
         ? 'pdf'
-        : /^\s*</.test(new TextDecoder().decode(bytes.slice(0, 256)))
-          ? 'html'
-          : null;
+        : photo
+          ? 'image'
+          : /^\s*</.test(new TextDecoder().decode(bytes.slice(0, 256)))
+            ? 'html'
+            : null;
     if (!format) {
-      fail('UNSUPPORTED_FORMAT', 'upload is not a PDF or HTML document');
+      fail('UNSUPPORTED_FORMAT', 'upload is not a PDF, a photo (JPEG / PNG) or an HTML document');
       continue;
     }
     const html = format === 'html' ? new TextDecoder().decode(bytes) : undefined;
@@ -239,7 +250,12 @@ export async function readOwnerDocuments(
       continue;
     }
     bySha.set(sha, sourceId);
-    const reader = format === 'pdf' ? deps.readers.pdf : deps.readers.html;
+    const reader =
+      format === 'pdf'
+        ? deps.readers.pdf
+        : format === 'image'
+          ? (deps.readers.image ?? null)
+          : deps.readers.html;
     if (!reader) {
       fail('EXTRACTOR_UNAVAILABLE', `no ${format} reader on this host`);
       continue;
@@ -262,7 +278,8 @@ export async function readOwnerDocuments(
       continue;
     }
     if (!pages.some((p) => p.text.trim())) {
-      fail('NO_TEXT_LAYER', 'no text layer (scanned document?)');
+      if (format === 'image') fail('NO_TEXT_READ', 'no text could be read from the photo');
+      else fail('NO_TEXT_LAYER', 'no text layer (scanned document?)');
       continue;
     }
     t.outcome = 'acquired';
@@ -283,7 +300,7 @@ export async function readOwnerDocuments(
               (p) =>
                 (
                   p.text.match(
-                    /\b\d{1,3}(?:[,. ]\d{3})+\s*(?:km|miles?)\b|\b\d{1,2}\s*(?:months?|years?)\b/gi,
+                    /\b\d{1,3}(?:[,. ]\d{3})+\s*(?:km|miles?|ק"מ|ק״מ)(?![a-z])|\b\d{1,2}\s*(?:months?|years?|חודשים|שנים)(?![a-z])/gi,
                   ) ?? []
                 ).length >= 3,
             )

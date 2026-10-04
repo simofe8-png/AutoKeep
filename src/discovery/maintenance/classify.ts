@@ -234,7 +234,8 @@ export function findMaintenanceSections(pages: PageText[]): MaintenanceSection[]
     const heading = p.lines.find((l) => SECTION.test(l.text) && l.text.length < 120);
     const intervals = (
       p.text.match(
-        /\b\d{1,3}(?:[,. ]\d{3})*\s*(?:km|miles?|mi)\b|\b\d{1,3}\s*(?:months?|years?)\b/gi,
+        // (Hebrew units too: a `\b` after a Hebrew word never matches, hence the look-ahead.)
+        /\b\d{1,3}(?:[,. ]\d{3})*\s*(?:km|miles?|mi|ק"מ|ק״מ)(?![a-z])|\b\d{1,3}\s*(?:months?|years?|חודשים|שנים)(?![a-z])/gi,
       ) ?? []
     ).length;
     const marks = p.lines.filter(

@@ -172,7 +172,7 @@ export interface AcquiredDocument {
   finalUrl: string;
   host: string;
   sha256: string;
-  format: 'pdf' | 'html';
+  format: 'pdf' | 'html' | 'image';
   bytes: Uint8Array;
   /** The source system of the final host (null for user uploads). */
   system: SourceSystem | null;

@@ -48,6 +48,8 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@tesseract.js-data/eng": "^1.0.0",
+    "@tesseract.js-data/heb": "^1.0.0",
     "@testing-library/react-native": "^14.0.1",
     "@types/jest": "^29.5.14",
     "@types/react": "~19.2.2",
@@ -61,6 +63,7 @@
     "prettier": "^3.9.9",
     "sql.js": "^1.14.2",
     "supabase": "^2.118.0",
+    "tesseract.js-core": "^6.1.2",
     "typescript": "~6.0.3"
   },
   "scripts": {

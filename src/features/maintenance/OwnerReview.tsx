@@ -68,7 +68,7 @@ export function OwnerReviewCard({
             testID="plan-owner-review-no-text"
             tone="warning"
             title={r.cardIssue}
-            message={r.noText}
+            message={issues.some((x) => x.reason === 'no_text') ? r.noText : r.unreadablePhoto}
           />
         ) : null}
         <Button
@@ -265,7 +265,7 @@ export function OwnerReviewList({
           testID="owner-review-no-text"
           tone="warning"
           title={issue.documentName}
-          message={r.noText}
+          message={issue.reason === 'no_text' ? r.noText : r.unreadablePhoto}
         />
       ))}
       <InlineNotice tone="info" message={r.intro} />

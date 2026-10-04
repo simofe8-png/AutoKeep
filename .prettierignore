@@ -12,3 +12,5 @@ docs/release/evidence/maintenance-discovery/msource_results.json
 docs/maintenance/data/**/*.json
 # Generated: on-device PDF reader page with embedded pdf.js (tools/build-pdf-webview.mjs)
 assets/pdfjs/pdf-reader.html
+# Generated: on-device booklet-photo reader page with embedded OCR (tools/build-ocr-webview.mjs)
+assets/ocr/ocr-reader.html

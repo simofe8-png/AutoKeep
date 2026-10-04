@@ -29,19 +29,34 @@ import type { AcquiredDocument, ExtractedRequirement, PageText, TextLine } from 
 export const SENTENCE_EXTRACTOR_ID = 'msource-sentences/1';
 
 const TASKS_I18N: [TaskCode, RegExp][] = [
-  ['oil_filter', /ölfilter|filtro de aceite|filtre à huile/i],
-  ['engine_oil', /motoröl|ölwechsel|aceite (del )?motor|cambio de aceite|huile moteur|vidange/i],
+  ['oil_filter', /ölfilter|filtro de aceite|filtre à huile|מסנן (ה)?שמן/i],
+  [
+    'engine_oil',
+    /motoröl|ölwechsel|aceite (del )?motor|cambio de aceite|huile moteur|vidange|שמן (ה)?מנוע|החלפת שמן/i,
+  ],
   [
     'cabin_filter',
-    /pollenfilter|innenraumfilter|staubfilter|filtro (de )?(polen|habitáculo|antipolen)|filtre (à pollen|d'habitacle)/i,
+    /pollenfilter|innenraumfilter|staubfilter|filtro (de )?(polen|habitáculo|antipolen)|filtre (à pollen|d'habitacle)|מסנן (ה)?(מזגן|אבקה|אבק|תא (ה)?נוסעים)/i,
   ],
-  ['air_filter', /luftfilter|filtro de aire|filtre à air/i],
-  ['fuel_filter', /kraftstofffilter|filtro de combustible|filtre à (carburant|gazole)/i],
-  ['spark_plugs', /zündkerzen|bujías|bougies/i],
-  ['brake_fluid', /bremsflüssigkeit|líquido de frenos|liquide de frein/i],
-  ['coolant', /kühlmittel|kühlflüssigkeit|(líquido )?refrigerante|liquide de refroidissement/i],
-  ['timing_belt', /zahnriemen|correa de distribución|courroie de distribution/i],
-  ['auxiliary_belt', /keilrippenriemen|correa (auxiliar|de accesorios)|courroie d'accessoires/i],
+  ['air_filter', /luftfilter|filtro de aire|filtre à air|מסנן (ה)?אוויר/i],
+  [
+    'fuel_filter',
+    /kraftstofffilter|filtro de combustible|filtre à (carburant|gazole)|מסנן (ה)?(דלק|סולר)/i,
+  ],
+  ['spark_plugs', /zündkerzen|bujías|bougies|מצתים|מצת/i],
+  ['brake_fluid', /bremsflüssigkeit|líquido de frenos|liquide de frein|נוזל (ה)?בלמים/i],
+  [
+    'coolant',
+    /kühlmittel|kühlflüssigkeit|(líquido )?refrigerante|liquide de refroidissement|נוזל (ה)?(קירור|רדיאטור)/i,
+  ],
+  [
+    'timing_belt',
+    /zahnriemen|correa de distribución|courroie de distribution|רצועת (ה)?(טיימינג|תזמון)/i,
+  ],
+  [
+    'auxiliary_belt',
+    /keilrippenriemen|correa (auxiliar|de accesorios)|courroie d'accessoires|רצועת (ה)?(עזר|אביזרים)/i,
+  ],
 ];
 
 /** The periodic service itself (checked last: item tasks win). */
@@ -84,7 +99,7 @@ const WORD_NUMBERS: Record<string, number> = {
   cinq: 5,
 };
 const TIME = new RegExp(
-  `(\\d{1,2}|${Object.keys(WORD_NUMBERS).join('|')})\\s*(months?|years?|yrs?|monate?n?|jahre?n?|meses|años|anos|mois|ans?|חודשים|שנים|שנה)\\b`,
+  `(\\d{1,2}|${Object.keys(WORD_NUMBERS).join('|')})\\s*(months?|years?|yrs?|monate?n?|jahre?n?|meses|años|anos|mois|ans?|חודשים|שנים|שנה)(?![a-zà-ÿ])`,
   'i',
 );
 const ANNUAL =
@@ -140,6 +155,9 @@ const SEVERE =
 export function splitColumns(page: PageText): TextLine[][] {
   const items = page.lines.flatMap((l) => l.items.filter((i) => i.str.trim()));
   if (items.length < 20) return [page.lines];
+  // A Hebrew (right-to-left) page is read line by line: its lines are right-aligned and its words
+  // are positioned right to left, which the two-column split below is not made for.
+  if (items.filter((i) => /[֐-׿]/.test(i.str)).length > items.length / 2) return [page.lines];
   const maxX = Math.max(...items.map((i) => i.x + i.w));
   let best: { b: number; cross: number } | null = null;
   for (let b = maxX * 0.3; b <= maxX * 0.7; b += maxX / 100) {
@@ -181,7 +199,11 @@ const isHeading = (t: string) =>
   t.split(/\s+/).length <= 8 &&
   !/[.:;,]$/.test(t) &&
   /^[A-ZÄÖÜÁÉÍÓÚÑ֐-׿]/.test(t) &&
-  !/\d{3}/.test(t);
+  !/\d{3}/.test(t) &&
+  // A heading never states an interval ("Brake fluid: every 24 months" is an item).
+  !(/[֐-׿]/.test(t) && TIME.test(t));
+
+const HEBREW_ROW_END = /[֐-׿].*(ק"מ|ק״מ|חודשים|חודש|שנים|שנה|המוקדם מביניהם)\s*[,;:]?$/;
 
 export function sentencesOf(lines: TextLine[]): Sentence[] {
   const out: Sentence[] = [];
@@ -203,6 +225,8 @@ export function sentencesOf(lines: TextLine[]): Sentence[] {
     buf = buf.endsWith('-') && /^[a-zäöüéèáíóúñ]/.test(t) ? buf.slice(0, -1) + t : `${buf} ${t}`;
     // A sentence ends at ".", "!" or "?" followed by the end of the line (not "15.000").
     if (/[.!?)](\s*["”»])?$/.test(t) && !/\d[.,]$/.test(t)) flush();
+    // A Hebrew booklet row (often without a period, e.g. read from a photo) ends with its interval.
+    else if (HEBREW_ROW_END.test(t)) flush();
   });
   flush();
   // Sentences that ended mid-line are split further.

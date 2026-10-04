@@ -96,7 +96,8 @@ export interface SourceProvenance {
   discoveredBy: string;
   discoveredAt: string;
   retrievedAt: string;
-  format: 'pdf' | 'html';
+  /** image = a photo of a booklet page (read on the device by OCR). */
+  format: 'pdf' | 'html' | 'image';
   documentType: DocumentType | null;
   contentSha256: string;
   byteLength: number;

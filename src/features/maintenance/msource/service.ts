@@ -24,6 +24,8 @@ export interface OwnerDocumentsHost {
   sha256: (b: Uint8Array) => Promise<string>;
   /** Reads the owner's uploaded PDFs on the device (WebView pdf.js, D-A1). */
   uploadPdf: TextReader | null;
+  /** Reads the owner's booklet photos on the device (WebView OCR; absent: photos not read). */
+  uploadPhoto?: TextReader | null;
 }
 
 export interface OwnerDocumentsInput {
@@ -79,7 +81,7 @@ export async function readOwnerDocumentsFor(
     const run = await readOwnerDocuments(built.fingerprint, data.uploads, {
       runId: `owner-${vehicleId.slice(0, 8)}-${clock.now().replace(/[^0-9]/g, '')}`,
       vehicleRef: vehicleId,
-      readers: { pdf: host.uploadPdf, html: htmlTextReader },
+      readers: { pdf: host.uploadPdf, html: htmlTextReader, image: host.uploadPhoto ?? null },
       sha256: host.sha256,
       today: clock.today() as IsoDate,
       now: clock.now,

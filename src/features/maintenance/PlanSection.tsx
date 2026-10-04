@@ -134,18 +134,39 @@ export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: stri
   );
 }
 
-/** Adds an item to the schedule by hand (owner decision 2026-10-04). */
-function AddManualItem() {
+/**
+ * The owner builds the schedule (owner decision 2026-10-04): add an item by hand, photograph a
+ * booklet page (read on the device, every item approved by the owner), or upload a file.
+ */
+function PlanActions({ onUpload }: { onUpload: (from: 'file' | 'camera') => void }) {
   const router = useRouter();
+  const m = he.manualItem;
   return (
-    <Button
-      testID="plan-add-manual"
-      label={he.manualItem.add}
-      icon="plus"
-      variant="secondary"
-      fullWidth
-      onPress={() => router.push('/maintenance-item')}
-    />
+    <Stack gap={spacing.sm} testID="plan-actions">
+      <Button
+        testID="plan-add-manual"
+        label={m.add}
+        icon="plus"
+        fullWidth
+        onPress={() => router.push('/maintenance-item')}
+      />
+      <Button
+        testID="plan-booklet-photo"
+        label={m.photo}
+        icon="camera-outline"
+        variant="secondary"
+        fullWidth
+        onPress={() => onUpload('camera')}
+      />
+      <Button
+        testID="plan-booklet-file"
+        label={m.file}
+        icon="file-upload-outline"
+        variant="ghost"
+        fullWidth
+        onPress={() => onUpload('file')}
+      />
+    </Stack>
   );
 }
 
@@ -154,10 +175,14 @@ function useBookletUpload(vehicleId: string) {
   const { isDemoData, addDocument, registerMaintenanceBooklet, today } = useAppData();
   const [problem, setProblem] = useState<string | null>(null);
   const services = isDemoData ? null : onboardingServices();
-  const upload = async () => {
+  /** A file (PDF / photo) from the device, or a page photographed now from the booklet. */
+  const upload = async (from: 'file' | 'camera' = 'file') => {
     if (!services) return;
     setProblem(null);
-    const r = await services.acquisition.pickDocument();
+    const r =
+      from === 'camera'
+        ? await services.acquisition.captureWithCamera()
+        : await services.acquisition.pickDocument();
     if (r.status === 'cancelled') return;
     if (r.status !== 'acquired') {
       return setProblem(
@@ -313,7 +338,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
     const booklet = plan.requests.find((r) => r.kind === 'upload_booklet');
     return (
       <Stack testID="maintenance-plan">
-        <AddManualItem />
+        <PlanActions onUpload={(from) => void upload(from)} />
         <OwnerReviewCard
           proposals={plan.ownerReview?.proposals ?? []}
           issues={plan.ownerReview?.issues ?? []}
@@ -387,7 +412,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
   }
   return (
     <Stack testID="maintenance-plan">
-      <AddManualItem />
+      <PlanActions onUpload={(from) => void upload(from)} />
       <OwnerReviewCard
         proposals={plan.ownerReview?.proposals ?? []}
         issues={plan.ownerReview?.issues ?? []}
