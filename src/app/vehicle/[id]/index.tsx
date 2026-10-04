@@ -90,7 +90,7 @@ export default function VehicleManageScreen() {
   const [preview, setPreview] = useState<DeletionPreviewVM | null>(null);
   const [archiveOpen, setArchiveOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
-  const [typed, setTyped] = useState('');
+  const [sureOpen, setSureOpen] = useState(false);
   const [deleted, setDeleted] = useState(false);
 
   const vehicle = vehicles.find((v) => v.id === id);
@@ -115,7 +115,6 @@ export default function VehicleManageScreen() {
     );
   }
 
-  const confirmMatches = typed.trim() === vehicle.registration;
   /** The user's own photo of this vehicle (camera or library), stored on this device only. */
   const acquirePhoto = async (from: 'camera' | 'library') => {
     if (!services) return;
@@ -278,7 +277,6 @@ export default function VehicleManageScreen() {
             title={he.lifecycle.deleteTitle}
             subtitle={he.lifecycle.archiveInstead}
             onPress={async () => {
-              setTyped('');
               setPreview(await deletionPreview(vehicle.id));
               setDeleteOpen(true);
             }}
@@ -309,11 +307,36 @@ export default function VehicleManageScreen() {
         title={he.lifecycle.deleteTitle}
         message={he.lifecycle.deleteBody}
         confirmLabel={he.lifecycle.deleteTitle}
-        confirmDisabled={!confirmMatches}
         onCancel={() => setDeleteOpen(false)}
         onConfirm={() => {
-          if (!confirmMatches) return;
           setDeleteOpen(false);
+          setSureOpen(true);
+        }}
+      >
+        <VehicleTargetBanner vehicle={vehicle} label={he.alerts.vehicle} />
+        {/* The vehicle's plate, already filled in (owner decision 2026-10-05: no typing). */}
+        <TextField
+          testID="delete-confirm-input"
+          label={he.lifecycle.plateToDelete}
+          value={vehicle.registration}
+          onChangeText={() => undefined}
+          editable={false}
+          required
+        />
+      </Dialog>
+
+      {/* "Are you sure?" with what will be deleted; only "כן" deletes. */}
+      <Dialog
+        visible={sureOpen}
+        testID="delete-sure-dialog"
+        destructive
+        title={he.lifecycle.sureTitle}
+        message={he.lifecycle.deleteBody}
+        confirmLabel={he.lifecycle.yes}
+        cancelLabel={he.common.cancel}
+        onCancel={() => setSureOpen(false)}
+        onConfirm={() => {
+          setSureOpen(false);
           setDeleted(true);
           deleteVehicle(vehicle.id);
         }}
@@ -334,14 +357,6 @@ export default function VehicleManageScreen() {
               : ''
           }
           testID="delete-preview"
-        />
-        <TextField
-          testID="delete-confirm-input"
-          label={he.lifecycle.typeToConfirm}
-          value={typed}
-          onChangeText={setTyped}
-          placeholder={vehicle.registration}
-          required
         />
       </Dialog>
     </Screen>

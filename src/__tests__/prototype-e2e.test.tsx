@@ -218,10 +218,9 @@ describe('My Vehicles / lifecycle / dossier (T025, T028, T029)', () => {
     await fireEvent.press(screen.getByTestId('vehicle-manage-mock-vehicle-motorcycle'));
     await waitFor(() => expect(screen.getByTestId('vehicle-delete')).toBeOnTheScreen());
     await fireEvent.press(screen.getByTestId('vehicle-delete'));
-    expect(screen.getByTestId('delete-preview')).toHaveTextContent(/1 רישומי טיפול/);
-    expect(screen.getByTestId('delete-dialog-confirm')).toBeDisabled();
-    await fireEvent.changeText(screen.getByTestId('delete-confirm-input'), '123-45-678');
     await fireEvent.press(screen.getByTestId('delete-dialog-confirm'));
+    expect(screen.getByTestId('delete-preview')).toHaveTextContent(/1 רישומי טיפול/);
+    await fireEvent.press(screen.getByTestId('delete-sure-dialog-confirm'));
     await waitFor(() => expect(screen.getByTestId('screen-vehicle-deleted')).toBeOnTheScreen());
   }, 30000);
 

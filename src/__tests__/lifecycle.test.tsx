@@ -99,9 +99,21 @@ describe('archive / restore (T144)', () => {
 });
 
 describe('permanent deletion (T145, T146)', () => {
-  it('previews exact counts, requires the registration, removes rows and originals only for this vehicle', async () => {
+  it('plate filled in; "are you sure" with exact counts; removes rows and originals only for this vehicle', async () => {
     await open(`/vehicle/${world.car.id}`, 'screen-vehicle-manage');
     await fireEvent.press(screen.getByTestId('vehicle-delete'));
+    await waitFor(() => expect(screen.getByTestId('delete-dialog-confirm')).toBeOnTheScreen());
+    // The plate is already in the box; the delete button is enabled at once.
+    expect(screen.getByTestId('delete-confirm-input')).toHaveDisplayValue('12-345-67');
+    expect(screen.getByTestId('delete-dialog-confirm')).toBeEnabled();
+    await fireEvent.press(screen.getByTestId('delete-dialog-confirm'));
+    // "Are you sure?" — cancel keeps the vehicle.
+    await waitFor(() => expect(screen.getByTestId('delete-sure-dialog')).toBeOnTheScreen());
+    expect(screen.getByTestId('delete-sure-dialog')).toHaveTextContent(/האם אתה בטוח/);
+    await fireEvent.press(screen.getByTestId('delete-sure-dialog-cancel'));
+    expect(await new VehicleRepository(world.db).get(world.car.id)).not.toBeNull();
+    await fireEvent.press(screen.getByTestId('vehicle-delete'));
+    await fireEvent.press(screen.getByTestId('delete-dialog-confirm'));
     await waitFor(() => expect(screen.getByTestId('delete-preview')).toBeOnTheScreen());
     const preview = screen.getByTestId('delete-preview');
     expect(preview).toHaveTextContent(/1 רישומי טיפול/);
@@ -109,10 +121,7 @@ describe('permanent deletion (T145, T146)', () => {
     expect(preview).toHaveTextContent(/2 קריאות מד אוץ/);
     expect(preview).toHaveTextContent(/1 הערות מוסך/);
 
-    await fireEvent.changeText(screen.getByTestId('delete-confirm-input'), '12-345-00');
-    expect(screen.getByTestId('delete-dialog-confirm')).toBeDisabled();
-    await fireEvent.changeText(screen.getByTestId('delete-confirm-input'), '12-345-67');
-    await fireEvent.press(screen.getByTestId('delete-dialog-confirm'));
+    await fireEvent.press(screen.getByTestId('delete-sure-dialog-confirm'));
     await waitFor(() => expect(screen.getByTestId('screen-vehicle-deleted')).toBeOnTheScreen());
 
     const vehicles = new VehicleRepository(world.db);
