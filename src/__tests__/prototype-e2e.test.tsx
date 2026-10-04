@@ -38,7 +38,7 @@ describe('Home (T016)', () => {
     expect(screen.getByTestId('home-next-service')).toHaveTextContent(/81 ימים/);
     expect(screen.getByTestId('home-alerts')).toHaveTextContent(/טיפול מתקרב/);
     // The plan shows the service, its due status and the labeled forecast (צפי).
-    await fireEvent.press(screen.getByTestId('home-view-service'));
+    await fireEvent.press(screen.getByTestId('home-next-service'));
     await waitFor(() => expect(screen.getByTestId('screen-maintenance')).toBeOnTheScreen());
     expect(screen.getByTestId('plan-item-next')).toHaveTextContent(/טיפול 90,000/);
     expect(screen.getByTestId('due-upcoming')).toBeOnTheScreen();

@@ -16,8 +16,6 @@ import {
   Button,
   EmptyState,
   OfflineBanner,
-  QuickActionGrid,
-  QuickActionTile,
   Screen,
   spacing,
   StatTile,
@@ -176,32 +174,16 @@ export default function HomeScreen() {
           onPress={() => router.push('/alerts')}
         />
 
-        <QuickActionGrid testID="home-shortcuts">
-          <QuickActionTile
-            testID="home-garage-mode"
-            icon="car-wrench"
-            label={he.home.garageMode}
-            onPress={() => router.push('/garage')}
-          />
-          <QuickActionTile
-            testID="home-history"
-            icon="clock-outline"
-            label={he.history.title}
-            onPress={() => router.push('/history')}
-          />
-          <QuickActionTile
-            testID="home-documents"
-            icon="file-document-outline"
-            label={he.documents.title}
-            onPress={() => router.push('/documents')}
-          />
-          <QuickActionTile
-            testID="home-view-service"
-            icon="wrench-outline"
-            label={he.home.plan}
-            onPress={() => router.push('/maintenance')}
-          />
-        </QuickActionGrid>
+        {/* History, documents and the plan are in the tab bar (owner decision 2026-10-04: no
+            duplicate shortcuts); garage mode has no tab. */}
+        <Button
+          testID="home-garage-mode"
+          label={he.home.garageMode}
+          icon="car-wrench"
+          variant="secondary"
+          fullWidth
+          onPress={() => router.push('/garage')}
+        />
 
         {!account.hasAccount && hasValuableData ? (
           <AccountOfferCard onPress={() => router.push('/account')} />
