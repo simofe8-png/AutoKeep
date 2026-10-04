@@ -194,6 +194,9 @@ _Last updated: 2026-10-04_
 
 ## Pending approval gates
 
+- **Maintenance data provider (owner, 2026-10-04): left open for a future decision.** HaynesPro researched: workshop UI from £89/month (cars) and £29/month (MotoSET two-wheelers), not licensed for an app; the app API is quote-only (price unknown), B2B; no Israeli plate lookup. Next step if chosen: owner's 7-day trial on the test vehicles (Ibiza 2012 CGG, Fiesta 2015 SNJB, XR650L), then a quote request.
+- **Current schedule sources (owner decision 2026-10-04):** manual entry, the owner's digital booklet upload (PDF), and a photo of the booklet page — every document item approved by the owner. The owner's model-family table was NOT implemented. Importer booklet button: SEAT/Champion trial only (the library holds current models' summary booklets — wrong for an Ibiza 2012).
+
 - G1 decided 2026-09-26: data.gov.il primary; discovery/OCR/AI behind ports with labeled mocks; NO paid services/keys/calls. Next gate when a real runtime AI/discovery provider is required to continue V1.
 - **G2 decided 2026-09-26** (docs/gates/G2-release-providers.md, ADR-0016/17/18). **G3 open:** runtime providers (discovery, OCR/AI, registry entries), hosted Supabase (T065), release build/signing — docs/gates/G2-release-providers.md.
 
