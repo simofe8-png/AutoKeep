@@ -248,7 +248,10 @@ export function VehicleHero({ vehicle }: { vehicle: VehicleSummary }) {
         <AppText variant="body" color="textSecondary" align="center">
           {vehicleSpecLine(vehicle)}
         </AppText>
-        <PlateBadge number={vehicle.registration} size="md" />
+        {/* Centred under the name (the badge itself aligns to the reading start). */}
+        <View style={styles.heroPlate}>
+          <PlateBadge number={vehicle.registration} size="md" />
+        </View>
         <VehicleExpiryLines vehicle={vehicle} />
       </View>
     </View>
@@ -303,4 +306,5 @@ const styles = StyleSheet.create({
   selectorText: { flex: 1 },
   hero: { gap: spacing.md },
   heroText: { gap: spacing.xs, alignItems: 'center' },
+  heroPlate: { alignSelf: 'center' },
 });
