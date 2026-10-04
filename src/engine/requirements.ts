@@ -418,6 +418,11 @@ export interface DueInput {
   inServiceDate?: IsoDate | null;
   /** Last recorded completion that satisfies THIS requirement (linked, never inferred). */
   lastCompletion?: Completion | null;
+  /**
+   * Without a recorded completion, count from this point instead of from new (the owner's own item:
+   * from the odometer when it was entered). Never "overdue".
+   */
+  startFrom?: Completion | null;
   upcomingKm?: number;
   upcomingDays?: number;
   minRateSpanDays?: number;
@@ -432,7 +437,7 @@ export type RequirementDue =
       remainingDays: number | null;
       state: RequirementDueState;
       /** from the last completion, or the schedule from new (no recorded completion). */
-      basis: 'last_completion' | 'from_new';
+      basis: 'last_completion' | 'from_new' | 'from_entry';
       /** Dimensions that could not be computed (e.g. no odometer reading). */
       unknown: ('distance' | 'time')[];
       /** When the distance limit is forecast to be reached — a forecast (צפי), never a fact. */
@@ -451,9 +456,10 @@ export function computeRequirementDue(input: DueInput): RequirementDue {
   const usesTime = iv.rule !== 'distance_only' && iv.everyMonths != null;
   const sorted = [...input.readings].sort((a, b) => compareDates(a.date, b.date) || a.km - b.km);
   const current = sorted[sorted.length - 1] ?? null;
-  const last = input.lastCompletion ?? null;
+  const recorded = input.lastCompletion ?? null;
+  const last = recorded ?? input.startFrom ?? null;
 
-  if (!iv.repeats && last) {
+  if (!iv.repeats && recorded) {
     return {
       status: 'computed',
       nextKm: null,
@@ -519,7 +525,7 @@ export function computeRequirementDue(input: DueInput): RequirementDue {
     (remainingDays != null && remainingDays <= upDays);
   // "Overdue" only against a recorded completion: missing history is not a skipped service.
   const state: RequirementDueState = past
-    ? last
+    ? recorded
       ? 'overdue'
       : 'due'
     : atLimit
@@ -545,7 +551,7 @@ export function computeRequirementDue(input: DueInput): RequirementDue {
     nextDate,
     remainingDays,
     state,
-    basis: last ? 'last_completion' : 'from_new',
+    basis: recorded ? 'last_completion' : last ? 'from_entry' : 'from_new',
     unknown,
     kmForecast,
   };

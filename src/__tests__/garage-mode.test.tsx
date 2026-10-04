@@ -104,7 +104,7 @@ describe('Garage Mode on real data', () => {
     expect(screen.getByTestId('vehicle-target-banner')).toHaveTextContent(/CB500F/);
     const m = screen.getByTestId('garage-section-manufacturer');
     expect(m).toHaveTextContent(/אין לוח תחזוקה מאומת/);
-    expect(m).toHaveTextContent(/לא נמצא מקור רשמי מאומת/);
+    expect(m).toHaveTextContent(/עדיין לא הוזן לוח טיפולים/);
     expect(m).not.toHaveTextContent(/שמן מנוע/);
     // The car's garage notes do not leak into the motorcycle's Garage Mode.
     expect(screen.getByTestId('garage-section-garage')).not.toHaveTextContent(/רפידות/);

@@ -1,66 +1,72 @@
 import { isoDate, type IsoDate } from '@/domain';
-import { parseUserDate } from '@/features/vehicles/expiry';
 import type { ManualScheduleItem } from '@/persistence';
 
 import { buildMaintenancePlan, taskCompletionId } from '../knowledge/plan';
-import {
-  isCustom,
-  manualLastDone,
-  manualRequirement,
-  validateManualItem,
-  type ManualItemForm,
-} from '../manualSchedule';
+import { isCustom, manualLastDone, manualRequirement, tableToRows } from '../manualSchedule';
 
 /** The owner's own schedule items (owner decision 2026-10-04). SYNTHETIC values. */
 
 const TODAY = isoDate('2026-10-04') as IsoDate;
-const form = (over: Partial<ManualItemForm> = {}): ManualItemForm => ({
-  task: 'engine_oil',
-  title: '',
-  action: 'replacement',
-  km: '10,000',
-  months: '12',
-  lastDate: '01.06.2026',
-  lastKm: '30000',
-  ...over,
-});
-const valid = (f: ManualItemForm) => validateManualItem(f, TODAY, parseUserDate);
+describe("tableToRows (the owner's table)", () => {
+  const row = (title: string, km = '', months = '', key = title) => ({ key, title, km, months });
 
-describe('validateManualItem', () => {
-  it('a full entry: interval and last done parsed', () => {
-    expect(valid(form())).toEqual({
+  it('item / every km / every months; an empty row is ignored; a suggestion keeps its task', () => {
+    expect(
+      tableToRows([
+        row('שמן מנוע ומסנן שמן', '15,000', '12'),
+        row('', '', '', 'empty'),
+        row('נוזל בלמים', '', '24'),
+        row('שימון צירים', '5000'),
+        row('בדיקת לחץ אוויר', '', '1'),
+      ]),
+    ).toEqual({
       ok: true,
-      value: {
-        task: 'engine_oil',
-        action: 'replacement',
-        title: '',
-        intervalKm: 10000,
-        intervalMonths: 12,
-        lastDoneDate: '2026-06-01',
-        lastDoneKm: 30000,
-      },
+      rows: [
+        {
+          task: 'engine_oil',
+          action: 'replacement',
+          title: 'שמן מנוע ומסנן שמן',
+          intervalKm: 15000,
+          intervalMonths: 12,
+        },
+        {
+          task: 'brake_fluid',
+          action: 'replacement',
+          title: 'נוזל בלמים',
+          intervalKm: null,
+          intervalMonths: 24,
+        },
+        {
+          task: 'custom',
+          action: 'replacement',
+          title: 'שימון צירים',
+          intervalKm: 5000,
+          intervalMonths: null,
+        },
+        {
+          task: 'custom',
+          action: 'inspection',
+          title: 'בדיקת לחץ אוויר',
+          intervalKm: null,
+          intervalMonths: 1,
+        },
+      ],
     });
   });
 
-  it('requires an item, a name for a custom item, and km and / or months', () => {
-    expect(valid(form({ task: null }))).toMatchObject({ ok: false, errors: { task: true } });
-    expect(valid(form({ task: 'custom' }))).toMatchObject({ ok: false, errors: { title: true } });
-    expect(valid(form({ km: '', months: '' }))).toMatchObject({
+  it('a row needs a name and every km and / or months; values in range', () => {
+    expect(tableToRows([row('שמן', '', '')])).toEqual({
       ok: false,
-      errors: { interval: true },
+      errors: { שמן: { interval: true } },
     });
-    expect(valid(form({ km: '50', months: '300' }))).toMatchObject({
+    expect(tableToRows([row('', '15000', '', 'k')])).toEqual({
       ok: false,
-      errors: { km: true, months: true },
+      errors: { k: { title: true } },
     });
-  });
-
-  it('"last done" is optional, but states what the interval counts from; never in the future', () => {
-    expect(valid(form({ lastDate: '', lastKm: '' })).ok).toBe(true);
-    expect(valid(form({ lastDate: '' }))).toMatchObject({ errors: { lastDate: true } });
-    expect(valid(form({ lastKm: '' }))).toMatchObject({ errors: { lastKm: true } });
-    expect(valid(form({ months: '', lastDate: '' })).ok).toBe(true);
-    expect(valid(form({ lastDate: '01.01.2027' }))).toMatchObject({ errors: { lastDate: true } });
+    expect(tableToRows([row('שמן', '50', '300')])).toEqual({
+      ok: false,
+      errors: { שמן: { km: true, months: true } },
+    });
   });
 });
 

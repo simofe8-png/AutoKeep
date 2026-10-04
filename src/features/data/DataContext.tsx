@@ -5,7 +5,10 @@ import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import { createContext, useContext } from 'react';
 
 import type { AuthResult } from '@/cloud/auth';
-import type { ManualScheduleItem } from '@/persistence/repositories/manualSchedule';
+import type {
+  ManualScheduleItem,
+  ManualScheduleRow,
+} from '@/persistence/repositories/manualSchedule';
 import type { VehicleDates } from '@/persistence/repositories/vehicleDates';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import type { AcquiredFile } from '@/providers/acquisition/types';
@@ -149,6 +152,8 @@ export interface AppDataValue {
     id?: string,
   ) => void;
   removeManualItem: (vehicleId: string, id: string) => void;
+  /** The owner's whole maintenance table at once (rows not listed are removed). */
+  saveManualSchedule: (vehicleId: string, rows: ManualScheduleRow[]) => void;
   /** The owner's test / insurance dates (ISO; null clears; absent keys unchanged). */
   setVehicleDates: (vehicleId: string, patch: Partial<VehicleDates>) => void;
   /** Owner review: accept (optionally corrected) or reject one item from the owner's document. */

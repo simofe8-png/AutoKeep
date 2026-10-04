@@ -440,4 +440,14 @@ CREATE TABLE manual_schedule_items (
 CREATE INDEX manual_schedule_items_vehicle ON manual_schedule_items(vehicle_id);
 `,
   },
+  {
+    version: 16,
+    name: 'manual_schedule_start',
+    // Where the owner's item starts counting when its last service is not stated: the odometer and
+    // date at entry (owner decision 2026-10-04). LOCAL ONLY.
+    up: `
+ALTER TABLE manual_schedule_items ADD COLUMN start_km INTEGER;
+ALTER TABLE manual_schedule_items ADD COLUMN start_date TEXT;
+`,
+  },
 ];

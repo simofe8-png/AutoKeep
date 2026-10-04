@@ -1,197 +1,251 @@
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
+import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 
+import type { TaskCode } from '@/domain';
 import { useAppData, useVehicleData } from '@/features/data/DataContext';
 import {
-  MANUAL_TASKS,
-  validateManualItem,
-  type ManualItemErrors,
-  type ManualItemForm,
-  type ManualTask,
+  itemsToTable,
+  TABLE_SUGGESTIONS,
+  tableToRows,
+  type RowErrors,
+  type TableRow,
 } from '@/features/maintenance/manualSchedule';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { parseUserDate, toUserDate } from '@/features/vehicles/expiry';
 import { he } from '@/i18n/he';
-import {
-  AppText,
-  Button,
-  Dialog,
-  FilterChips,
-  Screen,
-  SegmentedControl,
-  spacing,
-  Stack,
-  TextField,
-} from '@/ui';
+import { AppText, Button, colors, fontFamily, Icon, radii, Screen, spacing, Stack } from '@/ui';
+
+/** Examples in the empty cells: light enough never to read as entered values. */
+const PLACEHOLDER = '#C5CCD6';
+
+/** A unique key per editor row (also across fast refreshes and re-opened screens). */
+const newRow = (title = ''): TableRow => ({
+  key: `new-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
+  title,
+  km: '',
+  months: '',
+});
 
 /**
- * The owner enters a maintenance item by hand (owner decision 2026-10-04): what, how often (km and /
- * or months) and when it was last done. The next due is computed from it.
+ * "לוח טיפולים תקופתי" (owner decision 2026-10-04): the owner types the schedule as a table — one
+ * row per item: the item, every km, every months. Saved as a whole; the next due of each item is
+ * counted from the odometer at entry until a service is recorded.
  */
-export default function MaintenanceItemScreen() {
+export default function MaintenanceTableScreen() {
   const router = useRouter();
-  const { id } = useLocalSearchParams<{ id?: string }>();
   const { activeVehicle } = useActiveVehicle();
   const { plan } = useVehicleData(activeVehicle?.id ?? null);
-  const { saveManualItem, removeManualItem, today } = useAppData();
-  const existing = id ? plan?.manual?.find((m) => m.id === id) : undefined;
+  const { saveManualSchedule } = useAppData();
   const t = he.manualItem;
-
-  const [form, setForm] = useState<ManualItemForm>(() => ({
-    task: existing
-      ? MANUAL_TASKS.includes(existing.task as never)
-        ? (existing.task as ManualTask)
-        : 'custom'
-      : null,
-    title: existing?.title ?? '',
-    action: existing?.action ?? 'replacement',
-    km: existing?.intervalKm != null ? String(existing.intervalKm) : '',
-    months: existing?.intervalMonths != null ? String(existing.intervalMonths) : '',
-    lastDate: toUserDate(existing?.lastDoneDate),
-    lastKm: existing?.lastDoneKm != null ? String(existing.lastDoneKm) : '',
-  }));
-  const [errors, setErrors] = useState<ManualItemErrors>({});
-  const [confirmDelete, setConfirmDelete] = useState(false);
-  const set = (patch: Partial<ManualItemForm>) => setForm((f) => ({ ...f, ...patch }));
+  const [rows, setRows] = useState<TableRow[]>(() => {
+    const existing = itemsToTable(
+      plan?.manual ?? [],
+      (task) => he.maintenancePlan.tasks[task as TaskCode] ?? task,
+    );
+    return existing.length ? existing : [newRow()];
+  });
+  const [errors, setErrors] = useState<Record<string, RowErrors>>({});
 
   if (!activeVehicle) return null;
 
+  const update = (key: string, patch: Partial<TableRow>) => {
+    setRows((rs) => rs.map((r) => (r.key === key ? { ...r, ...patch } : r)));
+    setErrors((e) => {
+      if (!e[key]) return e;
+      const next = { ...e };
+      delete next[key];
+      return next;
+    });
+  };
+  const suggest = (label: string) =>
+    setRows((rs) => {
+      const empty = rs.find((r) => !r.title.trim());
+      return empty
+        ? rs.map((r) => (r === empty ? { ...r, title: label } : r))
+        : [...rs, newRow(label)];
+    });
+  const used = new Set(rows.map((r) => r.title.trim()));
   const save = () => {
-    const r = validateManualItem(form, today(), parseUserDate);
+    const r = tableToRows(rows);
     if (!r.ok) return setErrors(r.errors);
-    saveManualItem(activeVehicle.id, r.value, existing?.id);
+    saveManualSchedule(activeVehicle.id, r.rows);
     router.back();
   };
+  const hasErrors = Object.keys(errors).length > 0;
 
   return (
     <Screen
-      testID="screen-maintenance-item"
-      header={<ScreenHeader title={existing ? t.editTitle : t.addTitle} />}
+      testID="screen-maintenance-table"
+      header={<ScreenHeader title={t.tableTitle} />}
       footer={
-        <Button testID="manual-item-save" label={t.save} icon="check" fullWidth onPress={save} />
+        <Button testID="manual-table-save" label={t.save} icon="check" fullWidth onPress={save} />
       }
     >
       <Stack gap={spacing.md}>
-        <AppText color="textSecondary">{t.intro}</AppText>
-        <Stack gap={spacing.xs}>
-          <AppText variant="smallStrong">{t.what}</AppText>
-          <FilterChips<ManualTask>
-            testID="manual-item-task"
-            accessibilityLabel={t.what}
-            options={[
-              ...MANUAL_TASKS.map((k) => ({
-                value: k as ManualTask,
-                label: he.maintenancePlan.tasks[k],
-              })),
-              { value: 'custom', label: t.custom },
-            ]}
-            value={form.task ?? ('' as ManualTask)}
-            onChange={(task) => set({ task })}
-          />
-          {errors.task ? (
-            <AppText variant="small" color="danger">
-              {t.errors.task}
+        <View style={styles.table} testID="manual-table">
+          <View style={[styles.row, styles.head]}>
+            <AppText variant="smallStrong" style={styles.colName}>
+              {t.colItem}
             </AppText>
-          ) : null}
-        </Stack>
-        {form.task === 'custom' ? (
-          <TextField
-            testID="manual-item-title"
-            label={t.title}
-            value={form.title}
-            onChangeText={(title) => set({ title })}
-            required
-            maxLength={80}
-            error={errors.title ? t.errors.title : undefined}
-          />
-        ) : null}
-        <Stack gap={spacing.xs}>
-          <AppText variant="smallStrong">{t.action}</AppText>
-          <SegmentedControl<'replacement' | 'inspection'>
-            testID="manual-item-action"
-            accessibilityLabel={t.action}
-            options={[
-              { value: 'replacement', label: he.maintenancePlan.actions.replacement },
-              { value: 'inspection', label: he.maintenancePlan.actions.inspection },
-            ]}
-            value={form.action}
-            onChange={(action) => set({ action })}
-          />
-        </Stack>
-        <AppText variant="smallStrong">{t.every}</AppText>
-        <TextField
-          testID="manual-item-km"
-          label={t.km}
-          value={form.km}
-          onChangeText={(km) => set({ km })}
-          keyboardType="number-pad"
-          suffix={he.common.km}
-          maxLength={7}
-          error={errors.km ? t.errors.km : undefined}
-        />
-        <TextField
-          testID="manual-item-months"
-          label={t.months}
-          value={form.months}
-          onChangeText={(months) => set({ months })}
-          keyboardType="number-pad"
-          suffix={t.monthsUnit}
-          maxLength={3}
-          error={errors.months ? t.errors.months : undefined}
-          hint={errors.interval ? undefined : t.everyHint}
-        />
-        {errors.interval ? (
-          <AppText variant="small" color="danger" testID="manual-item-interval-error">
-            {t.errors.interval}
+            <AppText variant="smallStrong" align="center" numberOfLines={1} style={styles.colKm}>
+              {t.colKm}
+            </AppText>
+            <AppText
+              variant="smallStrong"
+              align="center"
+              numberOfLines={1}
+              style={styles.colMonths}
+            >
+              {t.colMonths}
+            </AppText>
+            <View style={styles.colDelete} />
+          </View>
+          {rows.map((r, i) => {
+            const e = errors[r.key] ?? {};
+            return (
+              <View key={r.key} style={[styles.row, i % 2 ? styles.rowAlt : null]}>
+                <TextInput
+                  testID={`manual-row-${i}-title`}
+                  value={r.title}
+                  onChangeText={(title) => update(r.key, { title })}
+                  placeholder={t.namePlaceholder}
+                  placeholderTextColor={PLACEHOLDER}
+                  maxLength={80}
+                  accessibilityLabel={t.colItem}
+                  style={[styles.cell, styles.colName, e.title ? styles.cellError : null]}
+                />
+                <TextInput
+                  testID={`manual-row-${i}-km`}
+                  value={r.km}
+                  onChangeText={(km) => update(r.key, { km })}
+                  placeholder="15000"
+                  placeholderTextColor={PLACEHOLDER}
+                  keyboardType="number-pad"
+                  maxLength={7}
+                  accessibilityLabel={t.colKm}
+                  style={[
+                    styles.cell,
+                    styles.num,
+                    styles.colKm,
+                    e.km || e.interval ? styles.cellError : null,
+                  ]}
+                />
+                <TextInput
+                  testID={`manual-row-${i}-months`}
+                  value={r.months}
+                  onChangeText={(months) => update(r.key, { months })}
+                  placeholder="12"
+                  placeholderTextColor={PLACEHOLDER}
+                  keyboardType="number-pad"
+                  maxLength={3}
+                  accessibilityLabel={t.colMonths}
+                  style={[
+                    styles.cell,
+                    styles.num,
+                    styles.colMonths,
+                    e.months || e.interval ? styles.cellError : null,
+                  ]}
+                />
+                <Pressable
+                  testID={`manual-row-${i}-delete`}
+                  onPress={() => setRows((rs) => rs.filter((x) => x.key !== r.key))}
+                  accessibilityRole="button"
+                  accessibilityLabel={t.deleteRow}
+                  hitSlop={8}
+                  style={styles.colDelete}
+                >
+                  <Icon name="trash-can-outline" size={20} color="textMuted" />
+                </Pressable>
+              </View>
+            );
+          })}
+        </View>
+        {hasErrors ? (
+          <AppText variant="small" color="danger" testID="manual-table-error">
+            {t.tableError}
           </AppText>
         ) : null}
-        <AppText variant="smallStrong">{t.lastDone}</AppText>
-        <TextField
-          testID="manual-item-last-date"
-          label={t.lastDate}
-          value={form.lastDate}
-          onChangeText={(lastDate) => set({ lastDate })}
-          placeholder={he.vehicleDates.datePlaceholder}
-          keyboardType="numbers-and-punctuation"
-          error={errors.lastDate ? t.errors.lastDate : undefined}
+        <Button
+          testID="manual-table-add-row"
+          label={t.addRow}
+          icon="plus"
+          variant="secondary"
+          fullWidth
+          onPress={() => setRows((rs) => [...rs, newRow()])}
         />
-        <TextField
-          testID="manual-item-last-km"
-          label={t.lastKm}
-          value={form.lastKm}
-          onChangeText={(lastKm) => set({ lastKm })}
-          keyboardType="number-pad"
-          suffix={he.common.km}
-          maxLength={7}
-          error={errors.lastKm ? t.errors.lastKm : undefined}
-          hint={t.lastHint}
-        />
-        {existing ? (
-          <Button
-            testID="manual-item-delete"
-            label={t.delete}
-            icon="trash-can-outline"
-            variant="ghost"
-            onPress={() => setConfirmDelete(true)}
-          />
-        ) : null}
+        <Stack gap={spacing.xs}>
+          <AppText variant="smallStrong" color="textSecondary">
+            {t.suggestions}
+          </AppText>
+          <View style={styles.chips}>
+            {TABLE_SUGGESTIONS.filter((s) => !used.has(s.label)).map((s) => (
+              <Pressable
+                key={s.label}
+                testID={`manual-suggest-${s.task}`}
+                onPress={() => suggest(s.label)}
+                accessibilityRole="button"
+                style={({ pressed }) => [styles.chip, pressed ? styles.chipPressed : null]}
+              >
+                <Icon name="plus" size={14} color="primary" />
+                <AppText variant="small" color="primary">
+                  {s.label}
+                </AppText>
+              </Pressable>
+            ))}
+          </View>
+        </Stack>
       </Stack>
-      <Dialog
-        visible={confirmDelete}
-        testID="manual-item-delete-dialog"
-        title={t.deleteTitle}
-        message={t.deleteBody}
-        confirmLabel={t.delete}
-        destructive
-        onConfirm={() => {
-          setConfirmDelete(false);
-          if (existing) removeManualItem(activeVehicle.id, existing.id);
-          router.back();
-        }}
-        cancelLabel={he.common.cancel}
-        onCancel={() => setConfirmDelete(false)}
-      />
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  table: {
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    borderColor: colors.primaryBorder,
+    backgroundColor: colors.surface,
+    overflow: 'hidden',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs,
+  },
+  rowAlt: { backgroundColor: colors.surfaceTint },
+  head: { backgroundColor: colors.primarySoft, paddingVertical: spacing.sm },
+  colName: { flex: 2 },
+  colKm: { flex: 1.3 },
+  colMonths: { flex: 1.2 },
+  colDelete: { width: 28, alignItems: 'center' },
+  cell: {
+    minHeight: 44,
+    paddingHorizontal: spacing.sm,
+    borderRadius: radii.sm,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    fontFamily: fontFamily.regular,
+    fontSize: 15,
+    color: colors.textPrimary,
+    textAlign: 'right',
+  },
+  num: { textAlign: 'center', writingDirection: 'ltr', fontFamily: fontFamily.bold },
+  cellError: { borderColor: colors.danger, borderWidth: 1.5 },
+  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
+  chip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 6,
+    borderRadius: radii.pill,
+    borderWidth: 1,
+    borderColor: colors.primaryBorder,
+    backgroundColor: colors.surface,
+  },
+  chipPressed: { backgroundColor: colors.primarySoft },
+});

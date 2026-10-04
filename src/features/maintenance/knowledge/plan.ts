@@ -213,6 +213,8 @@ export interface ManualPlanItem {
   requirement: MaintenanceRequirement;
   /** When it was last done, as the owner stated it. */
   lastDone: { date: IsoDate; odometerKm: number } | null;
+  /** Without any last service: count from here (the odometer and date at entry). */
+  startFrom?: { date: IsoDate; odometerKm: number } | null;
 }
 
 function lastCompletionOf(
@@ -437,6 +439,7 @@ export function buildMaintenancePlan(input: {
         readings: input.readings,
         inServiceDate: facts.inServiceDate ?? null,
         lastCompletion,
+        startFrom: m.startFrom ?? null,
       }),
     });
   }

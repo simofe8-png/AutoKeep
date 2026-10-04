@@ -65,6 +65,7 @@ import {
   VehicleDatesRepository,
   ManualScheduleRepository,
   type ManualScheduleItem,
+  type ManualScheduleRow,
   VehicleRegistryRecordRepository,
   type VehicleDates,
 } from '@/persistence';
@@ -1039,6 +1040,45 @@ export class LocalStore {
 
   async removeManualItem(vehicleId: string, id: string): Promise<void> {
     await new ManualScheduleRepository(this.db).remove(vehicleId as VehicleId, id);
+  }
+
+  /**
+   * The owner's whole table at once (owner decision 2026-10-04): rows with an id are updated, new
+   * rows are added and start counting from the vehicle's current odometer and today, rows no
+   * longer in the table are removed.
+   */
+  async saveManualSchedule(vehicleId: string, rows: ManualScheduleRow[]): Promise<void> {
+    const vid = vehicleId as VehicleId;
+    const vehicle = await new VehicleRepository(this.db).get(vid);
+    if (!vehicle) throw new Error('Unknown vehicle');
+    const now = this.clock.now();
+    const today = this.clock.today();
+    const currentKm = (await new OdometerRepository(this.db).latest(vid))?.valueKm ?? null;
+    await this.db.transaction(async (tx) => {
+      const repo = new ManualScheduleRepository(tx);
+      const existing = await repo.list(vid);
+      const keep = new Set(rows.flatMap((r) => (r.id ? [r.id] : [])));
+      for (const e of existing) if (!keep.has(e.id)) await repo.remove(vid, e.id);
+      for (const r of rows) {
+        const prior = r.id ? existing.find((e) => e.id === r.id) : undefined;
+        await repo.save(
+          {
+            id: prior?.id ?? this.ids.next<'ManualItem'>(),
+            vehicleId,
+            task: r.task,
+            action: r.action,
+            title: r.title,
+            intervalKm: r.intervalKm,
+            intervalMonths: r.intervalMonths,
+            lastDoneDate: prior?.lastDoneDate ?? null,
+            lastDoneKm: prior?.lastDoneKm ?? null,
+            startKm: prior ? (prior.startKm ?? null) : currentKm,
+            startDate: prior ? (prior.startDate ?? null) : today,
+          },
+          now,
+        );
+      }
+    });
   }
 
   // ---------- test and insurance dates (local-only, migration v14) ----------

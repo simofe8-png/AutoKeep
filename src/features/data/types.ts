@@ -204,6 +204,8 @@ export interface PlanItemVM {
   state: 'ok' | 'upcoming' | 'due' | 'overdue';
   /** Missing history is shown as such, never as a skipped service. */
   fromNew: boolean;
+  /** Counted from when the owner entered the item (no service recorded yet). */
+  fromEntry?: boolean;
   lastDone?: { date: string; km: number };
   source: SourceRefVM;
   /** Links a recorded service action to this task on this vehicle. */

@@ -364,6 +364,7 @@ export function LocalDataProvider({
       setVehicleDates: (vid, patch) => write((s) => s.setVehicleDates(vid, patch)),
       saveManualItem: (vid, value, id) => write((s) => s.saveManualItem(vid, value, id)),
       removeManualItem: (vid, id) => write((s) => s.removeManualItem(vid, id)),
+      saveManualSchedule: (vid, rows) => write((s) => s.saveManualSchedule(vid, rows)),
       registerMaintenanceBooklet: (vid, did) => {
         write((s) => s.registerMaintenanceBooklet(vid, did));
         // The owner's booklet is read; its items are proposed for owner review.

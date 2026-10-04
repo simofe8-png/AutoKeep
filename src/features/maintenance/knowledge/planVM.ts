@@ -65,6 +65,7 @@ function itemVM(item: PlanItem): PlanItemVM | null {
     forecastDate: d.kmForecast?.value,
     state: d.state === 'completed' ? 'ok' : d.state,
     fromNew: d.basis === 'from_new',
+    fromEntry: d.basis === 'from_entry',
     lastDone: item.lastCompletion
       ? { date: item.lastCompletion.date, km: item.lastCompletion.odometerKm }
       : undefined,

@@ -250,6 +250,7 @@ export function PrototypeDataProvider({
       setVehicleDates: () => undefined,
       saveManualItem: () => undefined,
       removeManualItem: () => undefined,
+      saveManualSchedule: () => undefined,
       retryMaintenanceDiscovery: () => undefined,
       reviewOwnerDocumentItem: () => undefined,
       network,

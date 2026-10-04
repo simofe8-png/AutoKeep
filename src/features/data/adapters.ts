@@ -30,7 +30,12 @@ import type {
   ManualScheduleItem,
   StoredKnowledgeDocument,
 } from '@/persistence';
-import { isCustom, manualLastDone, manualRequirement } from '@/features/maintenance/manualSchedule';
+import {
+  isCustom,
+  manualLastDone,
+  manualRequirement,
+  manualStartFrom,
+} from '@/features/maintenance/manualSchedule';
 import type { OwnerReviewState } from '@/features/maintenance/msource/ownerReview';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import type { EngineResult, ItemDue } from '@/engine/maintenance';
@@ -480,6 +485,7 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
         today,
       ),
       lastDone: manualLastDone(m),
+      startFrom: manualStartFrom(m),
     })),
   });
   return {

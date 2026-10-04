@@ -1,5 +1,8 @@
 import type { IsoDate, MaintenanceRequirement, RequirementInterval, TaskCode } from '@/domain';
-import type { ManualScheduleItem } from '@/persistence/repositories/manualSchedule';
+import type {
+  ManualScheduleItem,
+  ManualScheduleRow,
+} from '@/persistence/repositories/manualSchedule';
 
 /**
  * The owner's own maintenance items (owner decision 2026-10-04: the schedule is what the owner
@@ -24,83 +27,11 @@ export const MANUAL_TASKS: readonly TaskCode[] = [
   'tire_rotation',
 ];
 
-export type ManualTask = TaskCode | 'custom';
-
-export interface ManualItemForm {
-  task: ManualTask | null;
-  /** The owner's own name (required for 'custom'). */
-  title: string;
-  action: 'replacement' | 'inspection';
-  km: string;
-  months: string;
-  lastDate: string;
-  lastKm: string;
-}
-
-export interface ManualItemErrors {
-  task?: boolean;
-  title?: boolean;
-  interval?: boolean;
-  km?: boolean;
-  months?: boolean;
-  lastDate?: boolean;
-  lastKm?: boolean;
-}
-
 const int = (s: string): number | null | undefined => {
   const t = s.replace(/[,\s]/g, '');
   if (!t) return null;
   return /^\d+$/.test(t) ? Number(t) : undefined;
 };
-
-/**
- * Validates the form. `parseDate` turns the typed date into ISO (null = empty, undefined =
- * invalid). The last-done date may not be in the future.
- */
-export function validateManualItem(
-  f: ManualItemForm,
-  today: string,
-  parseDate: (s: string) => string | null | undefined,
-):
-  | {
-      ok: true;
-      value: Omit<ManualScheduleItem, 'id' | 'vehicleId'>;
-    }
-  | { ok: false; errors: ManualItemErrors } {
-  const errors: ManualItemErrors = {};
-  const km = int(f.km);
-  const months = int(f.months);
-  const lastKm = int(f.lastKm);
-  const lastDate = parseDate(f.lastDate);
-  if (!f.task) errors.task = true;
-  if (f.task === 'custom' && !f.title.trim()) errors.title = true;
-  if (f.title.trim().length > 80) errors.title = true;
-  if (km === undefined || (km != null && (km < 100 || km > 500_000))) errors.km = true;
-  if (months === undefined || (months != null && (months < 1 || months > 240))) {
-    errors.months = true;
-  }
-  if (!errors.km && !errors.months && km == null && months == null) errors.interval = true;
-  if (lastDate === undefined || (lastDate != null && lastDate > today)) errors.lastDate = true;
-  if (lastKm === undefined || (lastKm != null && lastKm > 2_000_000)) errors.lastKm = true;
-  // "Last done" is optional, but what the interval counts from must be stated: the date for a
-  // time interval, the odometer for a distance interval.
-  const stated = lastDate != null || lastKm != null;
-  if (stated && months != null && lastDate == null) errors.lastDate = true;
-  if (stated && km != null && lastKm == null) errors.lastKm = true;
-  if (Object.keys(errors).length) return { ok: false, errors };
-  return {
-    ok: true,
-    value: {
-      task: f.task!,
-      action: f.action,
-      title: f.title.trim(),
-      intervalKm: km ?? null,
-      intervalMonths: months ?? null,
-      lastDoneDate: lastDate ?? null,
-      lastDoneKm: lastKm ?? null,
-    },
-  };
-}
 
 /**
  * When the item was last done, as the plan counts from it; a date the owner did not state (a
@@ -114,6 +45,15 @@ export function manualLastDone(
     date: (item.lastDoneDate ?? '1900-01-01') as IsoDate,
     odometerKm: item.lastDoneKm ?? 0,
   };
+}
+
+/** Where the owner's item starts counting without a stated last service (entry point). */
+export function manualStartFrom(
+  item: Pick<ManualScheduleItem, 'startKm' | 'startDate'>,
+): { date: IsoDate; odometerKm: number } | null {
+  return item.startKm != null && item.startDate
+    ? { date: item.startDate as IsoDate, odometerKm: item.startKm }
+    : null;
 }
 
 /** A custom item has no known task: it is tracked as its own item. */
@@ -154,4 +94,89 @@ export function manualRequirement(
     verification: 'candidate',
     extraction: { method: 'user_entered', by: 'owner', at },
   };
+}
+
+// ---------- the owner's table (owner decision 2026-10-04) ----------
+
+/** Suggested item names (tap to add a row); each maps to its task. */
+export const TABLE_SUGGESTIONS: readonly {
+  label: string;
+  task: TaskCode;
+  action: 'replacement' | 'inspection';
+}[] = [
+  { label: 'שמן מנוע ומסנן שמן', task: 'engine_oil', action: 'replacement' },
+  { label: 'מסנן אוויר', task: 'air_filter', action: 'replacement' },
+  { label: 'מסנן מזגן', task: 'cabin_filter', action: 'replacement' },
+  { label: 'נוזל בלמים', task: 'brake_fluid', action: 'replacement' },
+  { label: 'מצתים', task: 'spark_plugs', action: 'replacement' },
+  { label: 'נוזל קירור', task: 'coolant', action: 'replacement' },
+  { label: 'רצועת תזמון', task: 'timing_belt', action: 'replacement' },
+  { label: 'מסנן דלק', task: 'fuel_filter', action: 'replacement' },
+  { label: 'שמן תיבת הילוכים', task: 'transmission_fluid', action: 'replacement' },
+  { label: 'טיפול תקופתי', task: 'periodic_service', action: 'replacement' },
+  { label: 'שרשרת הנעה', task: 'drive_chain', action: 'replacement' },
+  { label: 'בדיקת מרווח שסתומים', task: 'valve_clearance', action: 'inspection' },
+];
+
+export interface TableRow {
+  /** Stable key in the editor. */
+  key: string;
+  /** The stored item (absent: a new row). */
+  id?: string;
+  title: string;
+  km: string;
+  months: string;
+}
+
+export type RowErrors = { title?: boolean; km?: boolean; months?: boolean; interval?: boolean };
+
+/**
+ * The table as rows to save: a fully empty row is ignored; every other row needs a name and every
+ * km and / or every months. A suggested name keeps its task; any other name is the owner's own item
+ * (an "inspection" when it says so).
+ */
+export function tableToRows(
+  rows: readonly TableRow[],
+): { ok: true; rows: ManualScheduleRow[] } | { ok: false; errors: Record<string, RowErrors> } {
+  const errors: Record<string, RowErrors> = {};
+  const out: ManualScheduleRow[] = [];
+  for (const r of rows) {
+    const title = r.title.trim();
+    if (!title && !r.km.trim() && !r.months.trim()) continue;
+    const km = int(r.km);
+    const months = int(r.months);
+    const e: RowErrors = {};
+    if (!title || title.length > 80) e.title = true;
+    if (km === undefined || (km != null && (km < 100 || km > 500_000))) e.km = true;
+    if (months === undefined || (months != null && (months < 1 || months > 240))) e.months = true;
+    if (!e.km && !e.months && km == null && months == null) e.interval = true;
+    if (Object.keys(e).length) {
+      errors[r.key] = e;
+      continue;
+    }
+    const known = TABLE_SUGGESTIONS.find((x) => x.label === title);
+    out.push({
+      ...(r.id ? { id: r.id } : {}),
+      task: known?.task ?? 'custom',
+      action: known?.action ?? (/^בדיק/.test(title) ? 'inspection' : 'replacement'),
+      title,
+      intervalKm: km ?? null,
+      intervalMonths: months ?? null,
+    });
+  }
+  return Object.keys(errors).length ? { ok: false, errors } : { ok: true, rows: out };
+}
+
+/** The stored items as editable rows (the owner's own name, else the task's name). */
+export function itemsToTable(
+  items: readonly ManualScheduleItem[],
+  taskName: (task: string) => string,
+): TableRow[] {
+  return items.map((m) => ({
+    key: m.id,
+    id: m.id,
+    title: m.title || taskName(m.task),
+    km: m.intervalKm != null ? String(m.intervalKm) : '',
+    months: m.intervalMonths != null ? String(m.intervalMonths) : '',
+  }));
 }

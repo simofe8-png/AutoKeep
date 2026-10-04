@@ -317,7 +317,7 @@ describe('service journal (Task 10)', () => {
       LONG,
     );
     const NO_TEXT =
-      /המסמך שהועלה הוא סריקה ללא טקסט קריא. אפשר לצלם את עמודי הטיפולים בטלפון \(״צלם עמוד מספר הרכב״\) או להזין את הטיפולים ידנית./;
+      /המסמך שהועלה הוא סריקה ללא טקסט קריא. אפשר לצלם את עמודי הטיפולים בטלפון \(״צלם את עמוד הטיפולים מספר הרכב״\) או להזין את הטיפולים ידנית./;
     expect(screen.getByTestId('plan-owner-review-no-text')).toHaveTextContent(NO_TEXT);
     await fireEvent.press(screen.getByTestId('plan-owner-review-open'));
     await waitFor(() => expect(screen.getByTestId('owner-review-no-text')).toBeOnTheScreen(), LONG);
