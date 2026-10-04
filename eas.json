@@ -32,5 +32,13 @@
         "APP_VARIANT": "rc-local"
       }
     }
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "track": "internal",
+        "releaseStatus": "completed"
+      }
+    }
   }
 }
