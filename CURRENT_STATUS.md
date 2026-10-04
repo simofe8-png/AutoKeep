@@ -1,8 +1,15 @@
 # AutoKeep — Current Status (resume pointer)
 
-_Last updated: 2026-10-03_
+_Last updated: 2026-10-04_
 
 ## Position
+
+- **Owner-driven redirection (2026-10-04): DONE, local commits `1082df7`, `ae3d26e`, `2ce07fe`.** The owner decided AutoKeep does not identify a vehicle's schedule or picture by itself:
+  - Removed: automatic schedule search (M-SOURCE web discovery, catalog, research, official-source registry/fallbacks, triangulated/known/synthetic requirements, engine-family/standard guidance, onboarding "official source" step) and automatic vehicle images (Wikimedia, reference catalog, illustrations, colour badge). Migrations unchanged; tables of removed features are no longer read.
+  - The schedule is the owner's: manual items (name, km/months, last done; migration v15), the owner's booklet PDF, or a **photographed booklet page read on the device** (Tesseract heb+eng in a WebView, `assets/ocr/ocr-reader.html`) — every document item approved by the owner.
+  - Vehicle image: only the owner's photo; otherwise an empty frame with take / pick.
+  - Home: test (registry licence validity for cars; owner-entered for two-wheelers, whose registry dataset has no test date) and insurance (owner-entered compulsory + optional comprehensive/third-party; migration v14) under the vehicle name: days left + date, orange ≤ 30 days, red once passed.
+  - verify: 77 suites / 547 tests. **Next:** owner checks on the phone (photograph a real booklet page; enter insurance; add a manual item). Not yet in cloud backup (v14/v15 tables are local only — adding them to sync is a gate).
 
 - **Baselines:** RC `35478a2`; P1 `7a1c798`; P2 plan `f6dd6a9`; P2A `6984342`.
 - **P2B technical cloud staging: PASS (2026-09-27)**, with a documented authentication limitation. Report: `docs/release/P2B_STAGING_REPORT.md`.
