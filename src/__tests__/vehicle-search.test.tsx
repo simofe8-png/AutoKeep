@@ -119,7 +119,8 @@ describe('Add Vehicle = "חיפוש רכב"', () => {
     expect(s).toHaveTextContent(/חיפוש רכב/);
     // Exactly one input on the screen.
     expect(JSON.stringify(screen.toJSON()).match(/"type":"TextInput"/g)).toHaveLength(1);
-    expect(screen.getByTestId('vehicle-search-find')).toHaveTextContent('מצא את פרטי הרכב');
+    expect(screen.getByTestId('vehicle-search-find')).toHaveTextContent(/מצא את פרטי הרכב/);
+    expect(s).toHaveTextContent(/הכנס מספר רישוי של הרכב/);
     // The old identification-method screen (scan / manual choice, stepper) is gone.
     expect(screen.queryByTestId('onboarding-start-scan')).toBeNull();
     expect(screen.queryByTestId('onboarding-manual')).toBeNull();

@@ -138,7 +138,9 @@ export const he = {
   /** Add Vehicle by plate (Ministry of Transport public data). */
   vehicleSearch: {
     title: 'חיפוש רכב',
-    plateLabel: 'מספר רישוי',
+    plateLabel: 'הכנס מספר רישוי של הרכב',
+    plateHint: 'נחפש את פרטי הרכב במאגר משרד התחבורה',
+    platePrivacy: 'רק מספר הרישוי נשלח למשרד התחבורה',
     find: 'מצא את פרטי הרכב',
     invalid: 'מספר הרישוי אינו תקין. יש להזין 5 עד 8 ספרות.',
     notFound: 'לא נמצאו פרטי רכב עבור מספר הרישוי שהוזן.',
@@ -249,8 +251,8 @@ export const he = {
     welcomeBody:
       'נזהה את כלי הרכב לפי מספר הרישוי, ונעזור לך לנהל את הטיפולים, הטסט והביטוח — מספר הרכב שלך או ממה שתזין, בלי להמציא מידע.',
     welcomeNoAccount: 'אין צורך בהרשמה כדי להתחיל.',
-    welcomeTagline: 'ניהול תחזוקת כלי הרכב שלך.',
-    welcomeTagline2: 'פשוט יותר.',
+    welcomeTagline: 'ניהול תחזוקת כלי הרכב שלך',
+    welcomeTagline2: 'עכשיו פשוט יותר.',
     benefits: ['לוח טיפולים מספר הרכב שלך', 'טסט וביטוח — כמה זמן נשאר', 'כל המסמכים במקום אחד'],
     /** One line under each benefit (welcome screen). */
     benefitDetails: [

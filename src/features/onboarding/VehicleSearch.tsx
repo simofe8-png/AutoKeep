@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
 
 import { parseRegistration } from '@/domain';
 import { onboardingServices } from '@/features/data/dataSource';
@@ -16,13 +16,17 @@ import {
   AppText,
   Button,
   Card,
+  colors,
+  elevation,
+  fontFamily,
+  Icon,
   InlineNotice,
   ListRow,
   PlateBadge,
+  radii,
   Screen,
   spacing,
   Stack,
-  TextField,
 } from '@/ui';
 
 import { useOnboarding } from './OnboardingContext';
@@ -57,6 +61,7 @@ type Problem = { kind: 'invalid' | 'not_found' | 'unavailable' } | null;
 /**
  * Add Vehicle = "חיפוש רכב": one plate field (hyphens added while typing) and one button. The
  * plate goes to the Ministry of Transport public vehicle data; nothing else is asked here.
+ * The input is an Israeli plate (owner's choice 2026-10-04): large and centred.
  */
 export function VehicleSearchScreen() {
   const router = useRouter();
@@ -65,6 +70,7 @@ export function VehicleSearchScreen() {
   const [value, setValue] = useState('');
   const [busy, setBusy] = useState(false);
   const [problem, setProblem] = useState<Problem>(null);
+  const t = he.vehicleSearch;
 
   const find = async () => {
     const plate = parseRegistration(value);
@@ -89,45 +95,106 @@ export function VehicleSearchScreen() {
 
   const message =
     problem?.kind === 'invalid'
-      ? he.vehicleSearch.invalid
+      ? t.invalid
       : problem?.kind === 'not_found'
-        ? he.vehicleSearch.notFound
+        ? t.notFound
         : undefined;
-
-  return (
-    <Screen
-      testID="screen-vehicle-search"
-      header={<ScreenHeader title={he.vehicleSearch.title} closeIcon />}
-    >
-      <TextField
-        testID="vehicle-search-plate"
-        label={he.vehicleSearch.plateLabel}
-        value={value}
-        onChangeText={(t) => {
-          setValue(formatPlateInput(t));
-          setProblem(null);
-        }}
-        keyboardType="number-pad"
-        maxLength={10}
-        required
-        error={message}
-      />
+  const onChange = (text: string) => {
+    setValue(formatPlateInput(text));
+    setProblem(null);
+  };
+  const input = (
+    <TextInput
+      testID="vehicle-search-plate"
+      value={value}
+      onChangeText={onChange}
+      keyboardType="number-pad"
+      maxLength={10}
+      placeholder="00-000-00"
+      placeholderTextColor="rgba(11,11,11,0.25)"
+      accessibilityLabel={t.plateLabel}
+      accessibilityHint={message}
+      maxFontSizeMultiplier={1.2}
+      style={styles.plateInput}
+    />
+  );
+  const feedback = (
+    <>
+      {message ? (
+        <AppText
+          variant="small"
+          color="danger"
+          align="center"
+          testID="vehicle-search-error"
+          accessibilityLiveRegion="polite"
+        >
+          {message}
+        </AppText>
+      ) : null}
       {problem?.kind === 'unavailable' ? (
         <InlineNotice
           testID="vehicle-search-unavailable"
           tone="warning"
-          message={he.vehicleSearch.unavailable}
-          action={{ label: he.vehicleSearch.retry, icon: 'refresh', onPress: () => void find() }}
+          message={t.unavailable}
+          action={{ label: t.retry, icon: 'refresh', onPress: () => void find() }}
         />
       ) : null}
-      <Button
-        testID="vehicle-search-find"
-        label={he.vehicleSearch.find}
-        fullWidth
-        loading={busy}
-        disabled={busy}
-        onPress={() => void find()}
-      />
+    </>
+  );
+  const findButton = (
+    <Button
+      testID="vehicle-search-find"
+      label={t.find}
+      icon="magnify"
+      fullWidth
+      loading={busy}
+      disabled={busy}
+      onPress={() => void find()}
+    />
+  );
+  const title = (
+    <AppText variant="title" align="center" accessibilityRole="header">
+      {t.plateLabel}
+    </AppText>
+  );
+  const hint = (
+    <AppText color="textSecondary" align="center">
+      {t.plateHint}
+    </AppText>
+  );
+  const privacy = (
+    <View style={styles.privacy}>
+      <Icon name="shield-lock-outline" size={16} color="textMuted" />
+      <AppText variant="caption" color="textMuted">
+        {t.platePrivacy}
+      </AppText>
+    </View>
+  );
+
+  return (
+    <Screen
+      testID="screen-vehicle-search"
+      header={<ScreenHeader title={t.title} closeIcon />}
+      contentStyle={styles.centered}
+    >
+      <Stack gap={spacing.xxl}>
+        {/* Owner request 2026-10-04: room between the text, the plate and the button. */}
+        <Stack gap={spacing.sm}>
+          {title}
+          {hint}
+        </Stack>
+        <View style={[styles.plate, message ? styles.plateError : null]}>
+          <View style={styles.plateStrip}>
+            <AppText style={styles.plateIl}>IL</AppText>
+          </View>
+          {input}
+        </View>
+        {feedback}
+        <Stack gap={spacing.md}>
+          {findButton}
+          {privacy}
+        </Stack>
+      </Stack>
     </Screen>
   );
 }
@@ -205,4 +272,44 @@ export function VehicleDetailsStep() {
 
 const styles = StyleSheet.create({
   center: { alignItems: 'center' },
+  centered: { flexGrow: 1, justifyContent: 'center', paddingBottom: spacing.xxxl },
+  privacy: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.xs,
+  },
+  // The plate input.
+  plate: {
+    direction: 'ltr',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: 360,
+    height: 84,
+    borderRadius: radii.md,
+    borderWidth: 3,
+    borderColor: colors.plateText,
+    backgroundColor: colors.plateYellow,
+    overflow: 'hidden',
+    ...elevation.raised,
+  },
+  plateError: { borderColor: colors.danger },
+  plateStrip: {
+    width: 44,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: spacing.sm,
+    backgroundColor: colors.plateBlue,
+  },
+  plateIl: { color: colors.textOnPrimary, fontFamily: fontFamily.bold, fontSize: 16 },
+  plateInput: {
+    flex: 1,
+    textAlign: 'center',
+    writingDirection: 'ltr',
+    fontFamily: fontFamily.bold,
+    fontSize: 40,
+    letterSpacing: 2,
+    color: colors.plateText,
+  },
 });
