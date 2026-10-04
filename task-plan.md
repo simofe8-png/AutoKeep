@@ -47,7 +47,7 @@ Evidence gives the concrete commands and results (or file references) proving th
 | T025 | My Vehicles, switcher and add vehicle. | PASS | vehicles.tsx (כלי הרכב שלי): VehicleCard with identity/odometer/status/alerts, active marked, switch, manage, add (reuses onboarding), archived section. Device screenshot verified. |
 | T026 | Account/backup UX. | PASS | AccountOfferCard shown only when data exists; account.tsx framed around backup, email validation, clear note that real auth arrives with Supabase (nothing sent in demo). Test: offer → create → backup status. |
 | T027 | Settings. | PASS | settings.tsx: profile/account, backup, notifications, vehicle management, documents, language, accessibility, about; demo-only offline simulation. Test: offline toggle shows offline banner in context. |
-| T028 | Archive/sale/permanent-delete UX. | PASS | vehicle/[id]: archive (keeps data) / restore / permanent delete with preview counts + typed registration confirmation + result screen. Test covers archive→restore→delete. |
+| T028 | Archive/sale/permanent-delete UX. | PASS | vehicle/[id]: archive (keeps data) / restore / permanent delete with preview counts + typed registration confirmation + result screen. Test covers archive→restore→delete. **2026-10-05 (owner):** plate shown filled in, then "האם אתה בטוח?" (כן / ביטול) with the preview; no typing (ADR-0021, `c2d6088`, lifecycle.test). |
 | T029 | Vehicle Dossier preview/share UX. | PASS | vehicle/[id]/dossier: generated from existing data; odometer readings, history with verification + user-reported labels, documents; share placeholder labeled. Test: user-reported labeling. |
 | T030 | Mock end-to-end navigation verification and M02 PASS. | PASS | M02 gate: prototype-e2e.test.tsx (15) + onboarding (5) + navigation (4); npm run verify green (7 suites/45 tests, lint 0 warnings); Android export OK; device pass on SM-A546E fixed: duplicated remaining label, split km/time stats, compact card padding, VehicleTargetBanner truncating plate, typedRoutes generator broken on this machine (disabled). M02 PASS. |
 
@@ -273,7 +273,7 @@ Evidence gives the concrete commands and results (or file references) proving th
 
 | T144 | Archive/restore. | PASS | Archive keeps every record, clears active context; restore returns the vehicle with history intact; archived excluded from notifications (M17). lifecycle.test (2). |
 | T145 | Permanent-delete preview. | PASS | Delete preview = exact DB counts (services, documents, readings, garage notes, alerts) via VehicleRepository.deletionPreview. lifecycle.test. |
-| T146 | Controlled deletion. | PASS | Typed-registration confirmation; one-transaction row deletion, then stored originals removed; other vehicles untouched. lifecycle.test (rows + files + isolation). |
+| T146 | Controlled deletion. | PASS | Typed-registration confirmation (since 2026-10-05: filled-in plate + "are you sure" with the preview, ADR-0021); one-transaction row deletion, then stored originals removed; other vehicles untouched. lifecycle.test (rows + files + isolation). |
 | T147 | Dossier generation. | PASS | Dossier from source-of-truth records incl. real odometer readings (bundle.readings) with source labels; device-verified screen. |
 | T148 | Provenance-aware dossier. | PASS | buildDossierHtml: RTL, provenance on every fact (user-reported labeled, authority · verification), schedule only if verified, HTML-escaped user text. lifecycle.test (HTML unit). |
 | T149 | Export/share. | PASS | DocumentExporter port: expo-print (base64) → app-private PDF → system share sheet (user chooses target; nothing uploaded). Device: PDF generated and share sheet opened. Fixed device-found: expo-print output outside readable scope. Failure explained (lifecycle.test). |
@@ -433,3 +433,14 @@ Evidence gives the concrete commands and results (or file references) proving th
 | MS6  | Vehicle matching + resolution                                              | PASS                                                  | `matcher.ts`, `resolver.ts`; units.test.ts (wrong engine, CGG↔CGGB family, conflicts kept, single non-official = INSUFFICIENT, manual copies count once)                                                               |
 | MS7  | Persistence, service, auto-start, UI states, upload path                   | PASS                                                  | SQLite v10; `features/maintenance/msource/service.ts`; LocalDataProvider auto-start/resume/retry/upload re-run; PlanSection DiscoveryCard; service.test.ts 6/6 on real store                                           |
 | MS8  | Live validation Fiesta + Ibiza                                             | PASS (factual result: INSUFFICIENT_EVIDENCE for both) | `npm run test:live -- msource` 2/2; traces docs/maintenance/data/msource/*-run.json; MSOURCE_V1_RESULTS_2026-10-02.md                                                                                                  |
+
+## Owner-driven redirection (2026-10-04 → 2026-10-05, ADR-0021)
+
+| Task | Description                                                                        | Status | Evidence                                                                        |
+| ---- | ---------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------- |
+| OD1  | Remove automatic schedule search and automatic vehicle images                      | PASS   | `1082df7` and after; verify green                                               |
+| OD2  | Test and insurance dates on Home (v14)                                             | PASS   | vehicle-dates.test, expiry.test                                                 |
+| OD3  | Photographed booklet page read on the device (Tesseract heb+eng)                   | PASS   | hebrew.test (OCR path); headless check of the WebView                           |
+| OD4  | "לוח טיפולים תקופתי" table, counted from entry (v15, v16); importer button removed | PASS   | `d18bc69`; manual-schedule.test, manualSchedule.test                            |
+| OD5  | "מפרט הרכב" and a note per table row (v17, v18)                                    | PASS   | `e66b21a`; vehicle-spec.test, vehicleSpec.test; checked on the phone            |
+| OD6  | Vehicle deletion: filled-in plate + "are you sure" with the preview                | PASS   | `c2d6088`; lifecycle.test, prototype-e2e.test; checked on the phone (cancelled) |

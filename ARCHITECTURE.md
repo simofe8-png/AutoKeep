@@ -18,7 +18,7 @@ Sync boundary (src/sync: versioned operations queue, entity-aware conflicts)
    ▼
 Cloud (Supabase: Auth, PostgreSQL + RLS, private Storage; supabase/ migrations)
    ▼
-Providers (src/providers: discovery, retrieval, OCR, AI extraction, notifications, all interfaces)
+Providers (src/providers: OCR, AI extraction, registry, storage, notifications, all interfaces; automatic schedule discovery removed 2026-10-04, ADR-0021)
    ▼
 Verification pipeline (evidence → verification record → verified schedule)
 ```

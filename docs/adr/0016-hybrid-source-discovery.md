@@ -1,6 +1,6 @@
 # ADR-0016: Hybrid official-source discovery
 
-- Status: accepted (G2, 2026-09-26)
+- Status: superseded by ADR-0021 (2026-10-05; code removed 2026-10-04). Accepted G2, 2026-09-26.
 
 ## Decision
 

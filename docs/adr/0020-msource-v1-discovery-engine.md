@@ -1,6 +1,7 @@
 # ADR-0020: M-SOURCE V1 — maintenance schedule discovery engine
 
-- **Status:** Accepted for implementation (owner instruction 2026-10-02, "M-SOURCE V1"). Items
+- **Status:** Superseded by ADR-0021 (2026-10-05; the web discovery was removed 2026-10-04 and
+  only the owner-upload reading remains). Previously: Accepted for implementation (owner instruction 2026-10-02, "M-SOURCE V1"). Items
   marked _owner decision_ below are still open.
 - **Date:** 2026-10-02
 
