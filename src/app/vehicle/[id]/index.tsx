@@ -13,6 +13,7 @@ import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import { vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
 import { onboardingServices } from '@/features/data/dataSource';
 import { VehicleDatesCard } from '@/features/vehicles/VehicleDates';
+import { specSummary } from '@/features/vehicles/vehicleSpec';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -213,6 +214,18 @@ export default function VehicleManageScreen() {
       </Card>
 
       {!vehicle.archived ? <VehicleDatesCard vehicle={vehicle} /> : null}
+
+      {!vehicle.archived ? (
+        <Card compact>
+          <ListRow
+            testID="vehicle-spec"
+            icon="clipboard-list-outline"
+            title={he.vehicleSpec.title}
+            subtitle={specSummary(vehicle.spec) ?? he.vehicleSpec.rowEmpty}
+            onPress={() => router.push(`/vehicle/${vehicle.id}/specification`)}
+          />
+        </Card>
+      ) : null}
 
       {registryRecord ? (
         <Stack gap={spacing.sm} testID="vehicle-registry">

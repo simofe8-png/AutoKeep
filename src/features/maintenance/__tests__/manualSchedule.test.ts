@@ -54,6 +54,15 @@ describe("tableToRows (the owner's table)", () => {
     });
   });
 
+  it('a row note is kept (trimmed); a note alone still needs a name', () => {
+    const r = tableToRows([{ ...row('נוזל בלמים', '', '24'), note: '  DOT 4  ' }]);
+    expect(r).toMatchObject({ ok: true, rows: [{ title: 'נוזל בלמים', note: 'DOT 4' }] });
+    expect(tableToRows([{ ...row('', '', '', 'n'), note: 'DOT 4' }])).toEqual({
+      ok: false,
+      errors: { n: { title: true, interval: true } },
+    });
+  });
+
   it('a row needs a name and every km and / or months; values in range', () => {
     expect(tableToRows([row('שמן', '', '')])).toEqual({
       ok: false,

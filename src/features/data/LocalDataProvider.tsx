@@ -362,6 +362,7 @@ export function LocalDataProvider({
       setVehiclePhoto: (vid, file) => write((s) => s.setVehiclePhoto(vid, file)),
       setMaintenanceAnswers: (vid, answers) => write((s) => s.setMaintenanceAnswers(vid, answers)),
       setVehicleDates: (vid, patch) => write((s) => s.setVehicleDates(vid, patch)),
+      setVehicleSpec: (vid, spec) => write((s) => s.setVehicleSpec(vid, spec)),
       saveManualItem: (vid, value, id) => write((s) => s.saveManualItem(vid, value, id)),
       removeManualItem: (vid, id) => write((s) => s.removeManualItem(vid, id)),
       saveManualSchedule: (vid, rows) => write((s) => s.saveManualSchedule(vid, rows)),

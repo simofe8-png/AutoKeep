@@ -126,7 +126,11 @@ export interface TableRow {
   title: string;
   km: string;
   months: string;
+  /** The owner's note on the row (optional; e.g. a part number). */
+  note?: string;
 }
+
+export const NOTE_MAX = 200;
 
 export type RowErrors = { title?: boolean; km?: boolean; months?: boolean; interval?: boolean };
 
@@ -142,7 +146,8 @@ export function tableToRows(
   const out: ManualScheduleRow[] = [];
   for (const r of rows) {
     const title = r.title.trim();
-    if (!title && !r.km.trim() && !r.months.trim()) continue;
+    const note = (r.note ?? '').trim().slice(0, NOTE_MAX);
+    if (!title && !r.km.trim() && !r.months.trim() && !note) continue;
     const km = int(r.km);
     const months = int(r.months);
     const e: RowErrors = {};
@@ -162,6 +167,7 @@ export function tableToRows(
       title,
       intervalKm: km ?? null,
       intervalMonths: months ?? null,
+      ...(note ? { note } : {}),
     });
   }
   return Object.keys(errors).length ? { ok: false, errors } : { ok: true, rows: out };
@@ -178,5 +184,6 @@ export function itemsToTable(
     title: m.title || taskName(m.task),
     km: m.intervalKm != null ? String(m.intervalKm) : '',
     months: m.intervalMonths != null ? String(m.intervalMonths) : '',
+    note: m.note ?? '',
   }));
 }

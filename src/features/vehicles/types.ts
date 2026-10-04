@@ -3,6 +3,7 @@
  * introduced in M04 (src/domain); adapters map domain → this view-model in M13.
  */
 import type { ExteriorPhase } from '@/domain';
+import type { VehicleSpec } from '@/persistence/repositories/vehicleSpec';
 
 export type VehicleKind = 'car' | 'motorcycle' | 'scooter';
 
@@ -43,6 +44,8 @@ export interface VehicleSummary {
     otherUntil?: string;
     otherKind?: 'comprehensive' | 'third_party';
   };
+  /** The vehicle's spec as the owner entered it (absent when nothing was entered). */
+  spec?: VehicleSpec;
 }
 
 export function vehicleDisplayName(v: Pick<VehicleSummary, 'manufacturer' | 'model' | 'year'>) {

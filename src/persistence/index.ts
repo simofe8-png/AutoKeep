@@ -8,4 +8,5 @@ export * as lifecycle from './lifecycle';
 export * from './repositories/maintenance';
 export * from './repositories/msource';
 export * from './repositories/vehicleDates';
+export * from './repositories/vehicleSpec';
 export * from './repositories/manualSchedule';

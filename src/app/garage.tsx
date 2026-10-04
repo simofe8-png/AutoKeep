@@ -9,6 +9,7 @@ import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate, formatKm, joinParts } from '@/features/vehicles/format';
 import { vehicleDisplayName } from '@/features/vehicles/types';
 import { vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
+import { specChips } from '@/features/vehicles/vehicleSpec';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -46,6 +47,9 @@ export default function GarageModeScreen() {
   if (!activeVehicle) return null;
   const { schedule, history, deferred, garageRecommendations } = data;
   const last = history[0];
+  const spec = specChips(activeVehicle.spec);
+  // The owner's notes on rows of their table (owner decision 2026-10-05), shown beside the spec.
+  const rowNotes = (data.plan?.manual ?? []).filter((m) => m.note);
 
   const next = schedule.status === 'verified' ? schedule.next : undefined;
   // "Send by WhatsApp": a plain-text summary handed to the user's own WhatsApp (no new service).
@@ -161,6 +165,27 @@ export default function GarageModeScreen() {
           fullWidth
           onPress={() => router.push('/service/new')}
         />
+
+        {spec.length > 0 || activeVehicle.spec?.notes || rowNotes.length > 0 ? (
+          <Section
+            testID="garage-section-spec"
+            icon="clipboard-list-outline"
+            title={he.vehicleSpec.title}
+            tone="primary"
+          >
+            <Stack gap={spacing.xs}>
+              {spec.map((c) => (
+                <KV key={c.label} label={c.label} value={c.value} />
+              ))}
+              {activeVehicle.spec?.notes ? (
+                <KV label={he.vehicleSpec.groups.notes} value={activeVehicle.spec.notes} />
+              ) : null}
+              {rowNotes.map((m) => (
+                <KV key={m.id} label={m.title} value={m.note ?? ''} />
+              ))}
+            </Stack>
+          </Section>
+        ) : null}
 
         <Section
           testID="garage-section-manufacturer"

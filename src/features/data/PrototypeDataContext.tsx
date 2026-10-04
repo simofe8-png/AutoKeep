@@ -248,6 +248,7 @@ export function PrototypeDataProvider({
       setMaintenanceAnswers: () => undefined,
       registerMaintenanceBooklet: () => undefined,
       setVehicleDates: () => undefined,
+      setVehicleSpec: () => undefined,
       saveManualItem: () => undefined,
       removeManualItem: () => undefined,
       saveManualSchedule: () => undefined,

@@ -39,6 +39,7 @@ import { adoptLocalData, readAdoptionState, type AdoptionStatus } from '@/accoun
 import { originalPath, type AccountBackend } from '@/features/account/backend';
 import type { DeleteAccountResult } from '@/cloud/auth';
 import type { VehicleSummary } from '@/features/vehicles/types';
+import { hasSpec } from '@/features/vehicles/vehicleSpec';
 import { parkedCount, pendingCount, syncOnce } from '@/sync/engine';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import type { OriginalFileStore } from '@/providers/storage/types';
@@ -63,6 +64,8 @@ import {
   MaintenanceKnowledgeRepository,
   MSourceRepository,
   VehicleDatesRepository,
+  VehicleSpecRepository,
+  type VehicleSpec,
   ManualScheduleRepository,
   type ManualScheduleItem,
   type ManualScheduleRow,
@@ -172,6 +175,7 @@ function withDates(
   summary: VehicleSummary,
   registry: VehicleRegistryRecord | null,
   dates: VehicleDates,
+  spec: VehicleSpec,
 ): VehicleSummary {
   const registryTest = registry?.facts.find((f) => f.key === 'licenseValidUntil')?.value;
   const testUntil =
@@ -192,6 +196,7 @@ function withDates(
     ...summary,
     ...(testUntil ? { testUntil, testSource: dates.testUntil ? 'user' : 'registry' } : {}),
     ...(insurance ? { insurance } : {}),
+    ...(hasSpec(spec) ? { spec } : {}),
   };
 }
 
@@ -342,6 +347,7 @@ export class LocalStore {
           toVehicleSummary(v, latestReading(rec.readings)),
           rec.msource?.registry ?? null,
           await new VehicleDatesRepository(this.db).get(v.id),
+          await new VehicleSpecRepository(this.db).get(v.id),
         ),
       );
       bundles[v.id] = toBundle(rec, result, candidates, this.clock.today());
@@ -1074,6 +1080,7 @@ export class LocalStore {
             lastDoneKm: prior?.lastDoneKm ?? null,
             startKm: prior ? (prior.startKm ?? null) : currentKm,
             startDate: prior ? (prior.startDate ?? null) : today,
+            note: r.note ?? null,
           },
           now,
         );
@@ -1088,6 +1095,13 @@ export class LocalStore {
     const repo = new VehicleDatesRepository(this.db);
     const current = await repo.get(vehicleId as VehicleId);
     await repo.save(vehicleId as VehicleId, { ...current, ...patch }, this.clock.now());
+  }
+
+  // ---------- the vehicle's specification (local-only, migration v17) ----------
+
+  /** The owner's spec of the vehicle (oil, fluids, tyres, notes), replaced as a whole. */
+  async setVehicleSpec(vehicleId: string, spec: VehicleSpec): Promise<void> {
+    await new VehicleSpecRepository(this.db).save(vehicleId as VehicleId, spec, this.clock.now());
   }
 
   // ---------- the owner's own maintenance documents (local-only, migration v10) ----------

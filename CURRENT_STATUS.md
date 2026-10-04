@@ -1,8 +1,10 @@
 # AutoKeep — Current Status (resume pointer)
 
-_Last updated: 2026-10-04_
+_Last updated: 2026-10-05_
 
 ## Position
+
+- **Vehicle spec + row notes (owner choice ג, 2026-10-05): DONE, local commit.** "מפרט הרכב" (`src/app/vehicle/[id]/specification.tsx`, migration v17 `vehicle_spec`, LOCAL ONLY): oil (viscosity, standard, capacity), fluids (coolant, brake, gearbox), tyres (size, front/rear pressure), free notes — owner-entered only. Shown as a row on the vehicle screen, beside the matching plan item ("מפרט: …" for engine oil / brake fluid / coolant / gearbox) and as a section in Garage Mode. Each row of "לוח טיפולים תקופתי" can carry a note (icon beside the bin; migration v18 `manual_schedule_items.note`), shown on its plan card and in Garage Mode. Plan redesign (owner's table, importer button removed) committed `d18bc69`. verify 79 suites / 554 tests; checked on the phone (table note line, spec row and page). Open: v14–v18 tables in cloud backup (gate, unanswered); remove the duplicate yellow "no schedule" card (unanswered).
 
 - **Owner-driven redirection (2026-10-04): DONE, local commits `1082df7`, `ae3d26e`, `2ce07fe`.** The owner decided AutoKeep does not identify a vehicle's schedule or picture by itself:
   - Removed: automatic schedule search (M-SOURCE web discovery, catalog, research, official-source registry/fallbacks, triangulated/known/synthetic requirements, engine-family/standard guidance, onboarding "official source" step) and automatic vehicle images (Wikimedia, reference catalog, illustrations, colour badge). Migrations unchanged; tables of removed features are no longer read.

@@ -6,7 +6,9 @@ import { newLocalId, useAppData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
 import type { MaintenancePlanVM, PlanItemVM, PlanRequestVM } from '@/features/data/types';
 import { OwnerReviewCard } from '@/features/maintenance/OwnerReview';
+import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate, formatKm, formatNumber } from '@/features/vehicles/format';
+import { specForTask } from '@/features/vehicles/vehicleSpec';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -22,6 +24,10 @@ import {
   Stack,
   type StatusTone,
 } from '@/ui';
+
+/** The owner's note on the table row behind a plan item (owner items only). */
+const noteOf = (plan: MaintenancePlanVM, item: PlanItemVM) =>
+  item.manualId ? plan.manual?.find((m) => m.id === item.manualId)?.note : null;
 
 const STATE_TONE: Record<PlanItemVM['state'], StatusTone> = {
   ok: 'success',
@@ -48,10 +54,21 @@ export function planItemWhen(item: PlanItemVM): string[] {
 }
 
 /** One maintenance task: what, inspection vs replacement, when, remaining, source. */
-export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: string }) {
+export function PlanItemCard({
+  item,
+  note,
+  testID,
+}: {
+  item: PlanItemVM;
+  /** The owner's note on this row of their table. */
+  note?: string | null;
+  testID?: string;
+}) {
   const p = he.maintenancePlan;
   const router = useRouter();
   const own = item.level === 'O';
+  const { activeVehicle } = useActiveVehicle();
+  const spec = specForTask(item.task, activeVehicle?.spec);
   return (
     <Card testID={testID ?? `plan-item-${item.key}`} compact>
       <View style={styles.itemHead}>
@@ -63,6 +80,22 @@ export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: stri
         </View>
         <Badge label={p.state[item.state]} tone={STATE_TONE[item.state]} />
       </View>
+      {spec ? (
+        <View style={styles.specLine} testID={`plan-item-${item.task}-spec`}>
+          <Icon name="clipboard-list-outline" size={16} color="primary" />
+          <AppText variant="small" style={styles.flex}>
+            {`${he.vehicleSpec.taskLine}: ${spec}`}
+          </AppText>
+        </View>
+      ) : null}
+      {note ? (
+        <View style={styles.specLine} testID={`plan-item-${item.key}-note`}>
+          <Icon name="note-text" size={16} color="primary" />
+          <AppText variant="small" style={styles.flex}>
+            {`${he.manualItem.noteLabel}: ${note}`}
+          </AppText>
+        </View>
+      ) : null}
       <View style={styles.whenRow}>
         {item.nextKm != null ? (
           <AppText variant="small" testID={`plan-item-${item.task}-km`}>
@@ -390,7 +423,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
             </AppText>
             <InlineNotice testID="plan-partial" tone="warning" message={p.partialBody} />
             {plan.items.map((item) => (
-              <PlanItemCard key={item.key} item={item} />
+              <PlanItemCard key={item.key} item={item} note={noteOf(plan, item)} />
             ))}
           </Stack>
         ) : null}
@@ -461,7 +494,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
             <InlineNotice testID="plan-partial" tone="warning" message={p.partialBody} />
           ) : null}
           {plan.items.map((item) => (
-            <PlanItemCard key={item.key} item={item} />
+            <PlanItemCard key={item.key} item={item} note={noteOf(plan, item)} />
           ))}
         </Stack>
       ) : null}
@@ -470,6 +503,14 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
 }
 
 const styles = StyleSheet.create({
+  specLine: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.xs,
+    padding: spacing.sm,
+    borderRadius: radii.sm,
+    backgroundColor: colors.primarySoft,
+  },
   flex: { flex: 1 },
   itemHead: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   whenRow: {

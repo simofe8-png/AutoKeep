@@ -1,11 +1,12 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 
 import type { TaskCode } from '@/domain';
 import { useAppData, useVehicleData } from '@/features/data/DataContext';
 import {
   itemsToTable,
+  NOTE_MAX,
   TABLE_SUGGESTIONS,
   tableToRows,
   type RowErrors,
@@ -25,6 +26,7 @@ const newRow = (title = ''): TableRow => ({
   title,
   km: '',
   months: '',
+  note: '',
 });
 
 /**
@@ -46,6 +48,15 @@ export default function MaintenanceTableScreen() {
     return existing.length ? existing : [newRow()];
   });
   const [errors, setErrors] = useState<Record<string, RowErrors>>({});
+  /** Rows whose note line is open (a row with a note shows a filled icon while closed). */
+  const [openNotes, setOpenNotes] = useState<ReadonlySet<string>>(new Set());
+  const toggleNote = (key: string) =>
+    setOpenNotes((s) => {
+      const next = new Set(s);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
 
   if (!activeVehicle) return null;
 
@@ -99,65 +110,104 @@ export default function MaintenanceTableScreen() {
             >
               {t.colMonths}
             </AppText>
-            <View style={styles.colDelete} />
+            <View style={styles.colIcon} />
+            <View style={styles.colIcon} />
           </View>
           {rows.map((r, i) => {
             const e = errors[r.key] ?? {};
+            const hasNote = Boolean(r.note?.trim());
+            const noteOpen = openNotes.has(r.key);
             return (
-              <View key={r.key} style={[styles.row, i % 2 ? styles.rowAlt : null]}>
-                <TextInput
-                  testID={`manual-row-${i}-title`}
-                  value={r.title}
-                  onChangeText={(title) => update(r.key, { title })}
-                  placeholder={t.namePlaceholder}
-                  placeholderTextColor={PLACEHOLDER}
-                  maxLength={80}
-                  accessibilityLabel={t.colItem}
-                  style={[styles.cell, styles.colName, e.title ? styles.cellError : null]}
-                />
-                <TextInput
-                  testID={`manual-row-${i}-km`}
-                  value={r.km}
-                  onChangeText={(km) => update(r.key, { km })}
-                  placeholder="15000"
-                  placeholderTextColor={PLACEHOLDER}
-                  keyboardType="number-pad"
-                  maxLength={7}
-                  accessibilityLabel={t.colKm}
-                  style={[
-                    styles.cell,
-                    styles.num,
-                    styles.colKm,
-                    e.km || e.interval ? styles.cellError : null,
-                  ]}
-                />
-                <TextInput
-                  testID={`manual-row-${i}-months`}
-                  value={r.months}
-                  onChangeText={(months) => update(r.key, { months })}
-                  placeholder="12"
-                  placeholderTextColor={PLACEHOLDER}
-                  keyboardType="number-pad"
-                  maxLength={3}
-                  accessibilityLabel={t.colMonths}
-                  style={[
-                    styles.cell,
-                    styles.num,
-                    styles.colMonths,
-                    e.months || e.interval ? styles.cellError : null,
-                  ]}
-                />
-                <Pressable
-                  testID={`manual-row-${i}-delete`}
-                  onPress={() => setRows((rs) => rs.filter((x) => x.key !== r.key))}
-                  accessibilityRole="button"
-                  accessibilityLabel={t.deleteRow}
-                  hitSlop={8}
-                  style={styles.colDelete}
-                >
-                  <Icon name="trash-can-outline" size={20} color="textMuted" />
-                </Pressable>
-              </View>
+              <Fragment key={r.key}>
+                <View style={[styles.row, i % 2 ? styles.rowAlt : null]}>
+                  <TextInput
+                    testID={`manual-row-${i}-title`}
+                    value={r.title}
+                    onChangeText={(title) => update(r.key, { title })}
+                    placeholder={t.namePlaceholder}
+                    placeholderTextColor={PLACEHOLDER}
+                    maxLength={80}
+                    accessibilityLabel={t.colItem}
+                    style={[styles.cell, styles.colName, e.title ? styles.cellError : null]}
+                  />
+                  <TextInput
+                    testID={`manual-row-${i}-km`}
+                    value={r.km}
+                    onChangeText={(km) => update(r.key, { km })}
+                    placeholder="15000"
+                    placeholderTextColor={PLACEHOLDER}
+                    keyboardType="number-pad"
+                    maxLength={7}
+                    accessibilityLabel={t.colKm}
+                    style={[
+                      styles.cell,
+                      styles.num,
+                      styles.colKm,
+                      e.km || e.interval ? styles.cellError : null,
+                    ]}
+                  />
+                  <TextInput
+                    testID={`manual-row-${i}-months`}
+                    value={r.months}
+                    onChangeText={(months) => update(r.key, { months })}
+                    placeholder="12"
+                    placeholderTextColor={PLACEHOLDER}
+                    keyboardType="number-pad"
+                    maxLength={3}
+                    accessibilityLabel={t.colMonths}
+                    style={[
+                      styles.cell,
+                      styles.num,
+                      styles.colMonths,
+                      e.months || e.interval ? styles.cellError : null,
+                    ]}
+                  />
+                  <Pressable
+                    testID={`manual-row-${i}-note-toggle`}
+                    onPress={() => toggleNote(r.key)}
+                    accessibilityRole="button"
+                    accessibilityLabel={t.noteToggle}
+                    accessibilityState={{ expanded: noteOpen }}
+                    hitSlop={8}
+                    style={styles.colIcon}
+                  >
+                    <Icon
+                      name={hasNote ? 'note-text' : 'note-plus-outline'}
+                      size={21}
+                      color={hasNote || noteOpen ? 'primary' : 'textMuted'}
+                    />
+                  </Pressable>
+                  <Pressable
+                    testID={`manual-row-${i}-delete`}
+                    onPress={() => setRows((rs) => rs.filter((x) => x.key !== r.key))}
+                    accessibilityRole="button"
+                    accessibilityLabel={t.deleteRow}
+                    hitSlop={8}
+                    style={styles.colIcon}
+                  >
+                    <Icon name="trash-can-outline" size={20} color="textMuted" />
+                  </Pressable>
+                </View>
+                {noteOpen ? (
+                  <View style={[styles.noteRow, i % 2 ? styles.rowAlt : null]}>
+                    <AppText variant="smallStrong" color="primary">
+                      {t.noteLabel}
+                    </AppText>
+                    <TextInput
+                      testID={`manual-row-${i}-note`}
+                      value={r.note ?? ''}
+                      onChangeText={(note) => update(r.key, { note })}
+                      placeholder={t.notePlaceholder}
+                      placeholderTextColor={PLACEHOLDER}
+                      maxLength={NOTE_MAX}
+                      multiline
+                      autoFocus={!hasNote}
+                      accessibilityLabel={t.noteLabel}
+                      style={[styles.cell, styles.noteInput]}
+                    />
+                  </View>
+                ) : null}
+              </Fragment>
             );
           })}
         </View>
@@ -220,7 +270,15 @@ const styles = StyleSheet.create({
   colName: { flex: 2 },
   colKm: { flex: 1.3 },
   colMonths: { flex: 1.2 },
-  colDelete: { width: 28, alignItems: 'center' },
+  colIcon: { width: 26, alignItems: 'center' },
+  noteRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingHorizontal: spacing.sm,
+    paddingBottom: spacing.sm,
+  },
+  noteInput: { flex: 1, minHeight: 40, paddingVertical: 6, backgroundColor: colors.primarySoft },
   cell: {
     minHeight: 44,
     paddingHorizontal: spacing.sm,

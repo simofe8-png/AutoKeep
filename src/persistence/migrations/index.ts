@@ -450,4 +450,35 @@ ALTER TABLE manual_schedule_items ADD COLUMN start_km INTEGER;
 ALTER TABLE manual_schedule_items ADD COLUMN start_date TEXT;
 `,
   },
+  {
+    version: 17,
+    name: 'vehicle_spec',
+    // The vehicle's specification as the owner enters it (owner decision 2026-10-05): oil, fluids,
+    // tyres and free notes. LOCAL ONLY (not in SYNC_TABLES). Free text; null = not entered.
+    up: `
+CREATE TABLE vehicle_spec (
+  vehicle_id TEXT PRIMARY KEY REFERENCES vehicles(id) ON DELETE CASCADE,
+  oil_viscosity TEXT,
+  oil_standard TEXT,
+  oil_capacity TEXT,
+  coolant TEXT,
+  brake_fluid TEXT,
+  transmission_oil TEXT,
+  tire_size TEXT,
+  tire_pressure_front TEXT,
+  tire_pressure_rear TEXT,
+  notes TEXT,
+  updated_at TEXT NOT NULL
+);
+`,
+  },
+  {
+    version: 18,
+    name: 'manual_schedule_note',
+    // The owner's note on one row of their table (owner decision 2026-10-05), e.g. a part number.
+    // LOCAL ONLY.
+    up: `
+ALTER TABLE manual_schedule_items ADD COLUMN note TEXT;
+`,
+  },
 ];

@@ -10,6 +10,7 @@ import type {
   ManualScheduleRow,
 } from '@/persistence/repositories/manualSchedule';
 import type { VehicleDates } from '@/persistence/repositories/vehicleDates';
+import type { VehicleSpec } from '@/persistence/repositories/vehicleSpec';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import type { Integrity } from '@/providers/storage/types';
@@ -156,6 +157,8 @@ export interface AppDataValue {
   saveManualSchedule: (vehicleId: string, rows: ManualScheduleRow[]) => void;
   /** The owner's test / insurance dates (ISO; null clears; absent keys unchanged). */
   setVehicleDates: (vehicleId: string, patch: Partial<VehicleDates>) => void;
+  /** The owner's vehicle spec (oil, fluids, tyres, notes), replaced as a whole. */
+  setVehicleSpec: (vehicleId: string, spec: VehicleSpec) => void;
   /** Owner review: accept (optionally corrected) or reject one item from the owner's document. */
   reviewOwnerDocumentItem: (
     vehicleId: string,
