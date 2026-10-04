@@ -321,7 +321,7 @@ export const he = {
     editDetails: 'תיקון פרטים',
     odometerTitle: 'מד אוץ נוכחי',
     odometerBody: 'הקריאה משמשת לחישוב מועדי הטיפולים. תאריך המדידה נשמר יחד עם הקריאה.',
-    odometerLabel: 'קריאת מד אוץ',
+    odometerLabel: 'קריאת מד אוץ (קילומטראז׳)',
     odometerError: 'יש להזין מספר ק״מ תקין',
     measuredToday: 'תאריך מדידה: היום',
     /** No maintenance schedule yet: it is the owner's to enter (owner decision 2026-10-04). */
