@@ -67,6 +67,9 @@ export const he = {
     add: 'הוספת טיפול',
     photo: 'צלם עמוד מספר הרכב',
     file: 'העלאת קובץ (PDF או תמונה)',
+    importerBooklet: (importer: string) => `ספר הרכב באתר היבואן (${importer})`,
+    importerTitle: 'ספר הרכב באתר היבואן',
+    importerBookletHint: 'הורידו שם את ספר הרכב שלכם, וחזרו להעלות אותו כאן (״העלאת קובץ״) או לצלם את עמוד הטיפולים',
     addTitle: 'הוספת טיפול ללוח',
     editTitle: 'עריכת טיפול',
     intro:

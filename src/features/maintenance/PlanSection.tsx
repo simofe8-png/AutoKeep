@@ -1,10 +1,11 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Linking, StyleSheet, View } from 'react-native';
 
 import { newLocalId, useAppData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
 import type { MaintenancePlanVM, PlanItemVM, PlanRequestVM } from '@/features/data/types';
+import { importerBookletFor } from '@/features/maintenance/importerBooklets';
 import { OwnerReviewCard } from '@/features/maintenance/OwnerReview';
 import { formatDate, formatKm, formatNumber } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
@@ -138,11 +139,45 @@ export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: stri
  * The owner builds the schedule (owner decision 2026-10-04): add an item by hand, photograph a
  * booklet page (read on the device, every item approved by the owner), or upload a file.
  */
-function PlanActions({ onUpload }: { onUpload: (from: 'file' | 'camera') => void }) {
+function PlanActions({
+  onUpload,
+  vehicleId,
+}: {
+  onUpload: (from: 'file' | 'camera') => void;
+  vehicleId: string;
+}) {
   const router = useRouter();
+  const { vehicles } = useAppData();
   const m = he.manualItem;
+  const vehicle = vehicles.find((v) => v.id === vehicleId);
+  const booklet = vehicle ? importerBookletFor(vehicle.manufacturer) : null;
   return (
     <Stack gap={spacing.sm} testID="plan-actions">
+      {booklet ? (
+        // The owner opens the importer's booklet library in the browser (AutoKeep does not
+        // download from it), then uploads or photographs the booklet here.
+        <Stack gap={spacing.xs}>
+          <Button
+            testID="plan-importer-booklet"
+            label={m.importerBooklet(booklet.importer)}
+            icon="book-open-page-variant-outline"
+            variant="tonal"
+            fullWidth
+            onPress={() =>
+              // In the phone's browser; without one (e.g. Chrome disabled), inside the app.
+              void Linking.openURL(booklet.url).catch(() =>
+                router.push({
+                  pathname: '/importer-booklet',
+                  params: { make: vehicle!.manufacturer },
+                }),
+              )
+            }
+          />
+          <AppText variant="caption" color="textSecondary" align="center">
+            {m.importerBookletHint}
+          </AppText>
+        </Stack>
+      ) : null}
       <Button
         testID="plan-add-manual"
         label={m.add}
@@ -338,7 +373,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
     const booklet = plan.requests.find((r) => r.kind === 'upload_booklet');
     return (
       <Stack testID="maintenance-plan">
-        <PlanActions onUpload={(from) => void upload(from)} />
+        <PlanActions onUpload={(from) => void upload(from)} vehicleId={vehicleId} />
         <OwnerReviewCard
           proposals={plan.ownerReview?.proposals ?? []}
           issues={plan.ownerReview?.issues ?? []}
@@ -412,7 +447,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
   }
   return (
     <Stack testID="maintenance-plan">
-      <PlanActions onUpload={(from) => void upload(from)} />
+      <PlanActions onUpload={(from) => void upload(from)} vehicleId={vehicleId} />
       <OwnerReviewCard
         proposals={plan.ownerReview?.proposals ?? []}
         issues={plan.ownerReview?.issues ?? []}
