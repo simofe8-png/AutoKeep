@@ -57,9 +57,9 @@ export function VehiclePhoto({
 
   if (state.kind === 'user') {
     return (
-      <View style={frame} testID="vehicle-photo-user">
-        {/* Keyed by the file: a new photo mounts a fresh image (device: a photo picked on another
-            screen stayed blank on Home until a reload). Absolute fill: no percentage sizing. */}
+      // Keyed per state: on Android a frame that had the dashed "empty" border stayed blank after
+      // a photo was added (device-verified); a fresh frame draws the photo.
+      <View key="user" style={frame} testID="vehicle-photo-user">
         <Image
           key={state.uri}
           source={{ uri: state.uri }}
@@ -71,7 +71,7 @@ export function VehiclePhoto({
     );
   }
   return (
-    <View style={[...frame, styles.empty]} testID="vehicle-photo-empty">
+    <View key="empty" style={[...frame, styles.empty]} testID="vehicle-photo-empty">
       {large && actions.canAcquire ? (
         <View style={styles.actions}>
           <Button
