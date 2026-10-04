@@ -11,6 +11,8 @@ import {
   type MaintenanceRequirement,
 } from '@/domain';
 
+import { buildMaintenancePlan } from '@/features/maintenance/knowledge/plan';
+
 import { validateOwnerEdit } from '../ownerReview';
 
 /** Owner corrections and unreadable uploads (SYNTHETIC values). */
@@ -87,6 +89,60 @@ describe('validateOwnerEdit', () => {
 });
 
 describe('ownerDocumentRequirement', () => {
+  it('the owner confirms what the document left unstated: the accepted item is scheduled', () => {
+    // A booklet that does not name the model / years (device check 2026-10-04, Honda XR650L).
+    const unstated = {
+      ...evidence,
+      requirement: {
+        ...base,
+        applicability: { kinds: ['motorcycle'], coverageUnknown: ['model', 'modelYear'] },
+      },
+    } as unknown as EvidenceRecord;
+    const r = ownerDocumentRequirement(
+      { ...proposal, fit: 'unstated' },
+      unstated,
+      'msource/1',
+      DAY,
+    );
+    // Only the "coverage unknown" marker is lifted; stated conditions stay.
+    expect(r.applicability).toEqual({ kinds: ['motorcycle'] });
+    const plan = buildMaintenancePlan({
+      vehicle: {
+        id: 'v1',
+        kind: 'motorcycle',
+        manufacturer: 'Honda',
+        model: 'XR650L',
+        year: 2001,
+        engine: '644 סמ״ק',
+      },
+      profile: null,
+      requirements: [r],
+      history: [],
+      readings: [{ date: DAY, km: 31250 }],
+      today: DAY,
+    });
+    expect(plan.items.map((i) => i.task)).toEqual(['engine_oil']);
+    // A stated condition still excludes: the same item for a car is not applied to a motorcycle.
+    const car = ownerDocumentRequirement(
+      proposal,
+      {
+        ...evidence,
+        requirement: { ...base, applicability: { kinds: ['car'], coverageUnknown: ['model'] } },
+      } as unknown as EvidenceRecord,
+      'msource/1',
+      DAY,
+    );
+    const none = buildMaintenancePlan({
+      vehicle: { id: 'v1', kind: 'motorcycle', manufacturer: 'Honda', model: 'XR650L', year: 2001 },
+      profile: null,
+      requirements: [car],
+      history: [],
+      readings: [{ date: DAY, km: 31250 }],
+      today: DAY,
+    });
+    expect(none.items).toEqual([]);
+  });
+
   it('as read: grounded parser output, owner-reviewed, verified', () => {
     const r = ownerDocumentRequirement(proposal, evidence, 'msource/1', DAY);
     expect(r.extraction).toMatchObject({ method: 'deterministic_parser', grounded: true });

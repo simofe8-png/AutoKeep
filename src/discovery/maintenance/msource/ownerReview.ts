@@ -141,6 +141,21 @@ function editedInterval(base: RequirementInterval, edit: OwnerEdit): Requirement
 }
 
 /**
+ * The owner accepted the item as from THIS vehicle's document (the review asks exactly that when
+ * the document does not state the model / years): what the document left unstated is confirmed by
+ * the owner. Only that "coverage unknown" marker is lifted — every condition the document DOES
+ * state (vehicle kind, make, engine, fuel, regime) stays and is still checked against the vehicle.
+ * (Device check 2026-10-04: an accepted item never reached the schedule because of it.)
+ */
+function ownerConfirmedCoverage(
+  a: MaintenanceRequirement['applicability'],
+): MaintenanceRequirement['applicability'] {
+  const rest = { ...a };
+  delete rest.coverageUnknown;
+  return rest;
+}
+
+/**
  * The requirement an ACCEPTED proposal becomes (verified for this vehicle, page cited). With the
  * owner's correction it is recorded as entered by the owner ("owner document, edited by user"),
  * the document's original reading kept in `extraction.ownerEdit`.
@@ -161,7 +176,7 @@ export function ownerDocumentRequirement(
     action: p.action,
     interval: edited ? editedInterval(base.interval, edited) : base.interval,
     applicability: {
-      ...base.applicability,
+      ...ownerConfirmedCoverage(base.applicability),
       ...(p.serviceRegimes ? { serviceRegimes: p.serviceRegimes } : {}),
     },
     authority: 'vehicle_document',
