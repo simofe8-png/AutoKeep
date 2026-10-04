@@ -361,6 +361,9 @@ export function LocalDataProvider({
       removeVehiclePhoto: (vid) => write((s) => s.removeVehiclePhoto(vid)),
       setVehiclePhoto: (vid, file) => write((s) => s.setVehiclePhoto(vid, file)),
       setMaintenanceAnswers: (vid, answers) => write((s) => s.setMaintenanceAnswers(vid, answers)),
+      setVehicleDates: (vid, patch) => write((s) => s.setVehicleDates(vid, patch)),
+      saveManualItem: (vid, value, id) => write((s) => s.saveManualItem(vid, value, id)),
+      removeManualItem: (vid, id) => write((s) => s.removeManualItem(vid, id)),
       registerMaintenanceBooklet: (vid, did) => {
         write((s) => s.registerMaintenanceBooklet(vid, did));
         // The owner's booklet is read; its items are proposed for owner review.

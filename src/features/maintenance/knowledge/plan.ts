@@ -54,9 +54,12 @@ export interface PlanItem {
   resolution: TaskResolution;
   /**
    * A = the vehicle's market (Israel) is named by the source; B = manufacturer, market unproven;
-   * T = triangulated from independent sources (confidence high / medium).
+   * T = triangulated from independent sources (confidence high / medium);
+   * O = entered by hand by the owner (owner decision 2026-10-04).
    */
-  level: 'A' | 'B' | 'T';
+  level: 'A' | 'B' | 'T' | 'O';
+  /** The owner's own item (O): its id. */
+  manualId?: string;
   confidence: 'high' | 'medium';
   due: RequirementDue;
   /** Id that links a recorded service action to this task on this vehicle (completion). */
@@ -193,6 +196,25 @@ export function taskCompletionId(
   return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-8${hex.slice(13, 16)}-${variant}${hex.slice(17, 20)}-${hex.slice(20, 32)}`;
 }
 
+/** Completion link of one of the owner's custom items (tracked on its own, by its id). */
+export function manualCompletionId(vehicleId: string, itemId: string): string {
+  const key = `autokeep:manual-item:${vehicleId}:${itemId}`;
+  const hex = [0x811c9dc5, 0x01234567, 0x89abcdef, 0x13579bdf]
+    .map((seed) => fnv1a(key, seed).toString(16).padStart(8, '0'))
+    .join('');
+  const variant = ((parseInt(hex[16], 16) & 0x3) | 0x8).toString(16);
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-8${hex.slice(13, 16)}-${variant}${hex.slice(17, 20)}-${hex.slice(20, 32)}`;
+}
+
+export interface ManualPlanItem {
+  id: string;
+  /** Not one of the known tasks: tracked on its own. */
+  custom: boolean;
+  requirement: MaintenanceRequirement;
+  /** When it was last done, as the owner stated it. */
+  lastDone: { date: IsoDate; odometerKm: number } | null;
+}
+
 function lastCompletionOf(
   completionId: string,
   history: readonly PlanHistoryEvent[],
@@ -315,6 +337,11 @@ export function buildMaintenancePlan(input: {
   history: readonly PlanHistoryEvent[];
   readings: readonly { date: IsoDate; km: number }[];
   today: IsoDate;
+  /**
+   * Items the owner entered by hand: the owner's word for that item — any other source's item
+   * for the same task and action is replaced. A custom item is tracked on its own.
+   */
+  manual?: readonly ManualPlanItem[];
 }): MaintenancePlan {
   const facts = factsOf(input.vehicle, input.profile);
   const resolutions = resolveRequirements(input.requirements, facts);
@@ -364,6 +391,54 @@ export function buildMaintenancePlan(input: {
       const i = items[k];
       if (SERVICE_FAMILY.includes(i.task) && foreignOnly(i.requirement, facts)) items.splice(k, 1);
     }
+  }
+
+  // The owner's own items replace any other source's item for the same task and action.
+  for (const m of input.manual ?? []) {
+    const r = m.requirement;
+    if (!m.custom) {
+      const same = (x: { task: TaskCode; action: RequirementAction }) =>
+        x.task === r.task && x.action === r.action;
+      for (let k = items.length - 1; k >= 0; k -= 1) {
+        if (same({ task: items[k].task, action: items[k].requirement.action })) items.splice(k, 1);
+      }
+      for (let k = unresolved.length - 1; k >= 0; k -= 1) {
+        if (same(unresolved[k])) unresolved.splice(k, 1);
+      }
+    }
+    const completionId = m.custom
+      ? manualCompletionId(input.vehicle.id, m.id)
+      : taskCompletionId(input.vehicle.id, r.task, r.action);
+    const recorded = lastCompletionOf(completionId, input.history);
+    const stated = m.lastDone ? { ...m.lastDone, serviceEventId: '' } : null;
+    const lastCompletion =
+      recorded && (!stated || compareDates(recorded.date, stated.date) >= 0) ? recorded : stated;
+    items.push({
+      task: r.task,
+      requirement: r,
+      resolution: {
+        task: r.task,
+        action: r.action,
+        status: 'resolved',
+        reason: 'owner_entered',
+        effective: r,
+        level: null,
+        missing: [],
+        considered: [],
+      },
+      level: 'O',
+      confidence: 'high',
+      manualId: m.id,
+      completionId,
+      lastCompletion,
+      due: computeRequirementDue({
+        requirement: r,
+        today: input.today,
+        readings: input.readings,
+        inServiceDate: facts.inServiceDate ?? null,
+        lastCompletion,
+      }),
+    });
   }
 
   // What is missing — the exact next actions, never an invented interval.

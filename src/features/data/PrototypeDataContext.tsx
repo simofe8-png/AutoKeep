@@ -247,6 +247,9 @@ export function PrototypeDataProvider({
       // Prototype: the evidence-based plan is not simulated.
       setMaintenanceAnswers: () => undefined,
       registerMaintenanceBooklet: () => undefined,
+      setVehicleDates: () => undefined,
+      saveManualItem: () => undefined,
+      removeManualItem: () => undefined,
       retryMaintenanceDiscovery: () => undefined,
       reviewOwnerDocumentItem: () => undefined,
       network,

@@ -50,6 +50,8 @@ export function planItemWhen(item: PlanItemVM): string[] {
 /** One maintenance task: what, inspection vs replacement, when, remaining, source. */
 export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: string }) {
   const p = he.maintenancePlan;
+  const router = useRouter();
+  const own = item.level === 'O';
   return (
     <Card testID={testID ?? `plan-item-${item.key}`} compact>
       <View style={styles.itemHead}>
@@ -94,20 +96,22 @@ export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: stri
           {/* Never presents the manufacturer's document as an Israeli requirement (level B). */}
           <AppText
             variant="smallStrong"
-            color={item.level === 'A' ? 'success' : 'warning'}
+            color={item.level === 'A' || own ? 'success' : 'warning'}
             testID={`plan-item-${item.key}-evidence`}
           >
-            {item.level === 'A'
-              ? p.levelA
-              : item.level === 'T'
-                ? (item.corroboratingSources ?? 0) <= 1
-                  ? [p.levelTSingle, p.confidence[item.confidence]].join(' · ')
-                  : [
-                      p.levelT,
-                      p.levelTNote(item.corroboratingSources ?? 0),
-                      p.confidence[item.confidence],
-                    ].join(' · ')
-                : `${p.levelB} · ${p.levelBNote}`}
+            {own
+              ? he.authority.owner_entered
+              : item.level === 'A'
+                ? p.levelA
+                : item.level === 'T'
+                  ? (item.corroboratingSources ?? 0) <= 1
+                    ? [p.levelTSingle, p.confidence[item.confidence]].join(' · ')
+                    : [
+                        p.levelT,
+                        p.levelTNote(item.corroboratingSources ?? 0),
+                        p.confidence[item.confidence],
+                      ].join(' · ')
+                  : `${p.levelB} · ${p.levelBNote}`}
           </AppText>
           <AppText variant="caption" color="textSecondary">
             {[item.source.sourceTitle, he.authority[item.source.authority], item.source.locator]
@@ -116,7 +120,32 @@ export function PlanItemCard({ item, testID }: { item: PlanItemVM; testID?: stri
           </AppText>
         </View>
       </View>
+      {own && item.manualId ? (
+        <Button
+          testID={`plan-item-${item.key}-edit`}
+          label={he.manualItem.edit}
+          icon="pencil-outline"
+          variant="secondary"
+          size="sm"
+          onPress={() => router.push(`/maintenance-item?id=${encodeURIComponent(item.manualId!)}`)}
+        />
+      ) : null}
     </Card>
+  );
+}
+
+/** Adds an item to the schedule by hand (owner decision 2026-10-04). */
+function AddManualItem() {
+  const router = useRouter();
+  return (
+    <Button
+      testID="plan-add-manual"
+      label={he.manualItem.add}
+      icon="plus"
+      variant="secondary"
+      fullWidth
+      onPress={() => router.push('/maintenance-item')}
+    />
   );
 }
 
@@ -284,6 +313,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
     const booklet = plan.requests.find((r) => r.kind === 'upload_booklet');
     return (
       <Stack testID="maintenance-plan">
+        <AddManualItem />
         <OwnerReviewCard
           proposals={plan.ownerReview?.proposals ?? []}
           issues={plan.ownerReview?.issues ?? []}
@@ -357,6 +387,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
   }
   return (
     <Stack testID="maintenance-plan">
+      <AddManualItem />
       <OwnerReviewCard
         proposals={plan.ownerReview?.proposals ?? []}
         issues={plan.ownerReview?.issues ?? []}

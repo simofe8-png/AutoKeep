@@ -176,7 +176,9 @@ export type RequirementAuthority =
   | 'official_publication'
   | 'vehicle_document'
   | 'user_report'
-  | 'secondary';
+  | 'secondary'
+  /** Entered by hand by the vehicle's owner (owner decision 2026-10-04: the schedule is theirs). */
+  | 'owner_entered';
 
 export const VERIFIABLE_AUTHORITIES: readonly RequirementAuthority[] = [
   'importer',

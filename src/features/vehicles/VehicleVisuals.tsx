@@ -15,6 +15,7 @@ import {
 } from '@/ui';
 
 import { vehicleDisplayName, type VehicleSummary } from './types';
+import { VehicleExpiryLines } from './VehicleDates';
 import { useVehicleImage } from './vehicleImage';
 
 export type PhotoVariant = 'hero' | 'wide' | 'card' | 'thumb';
@@ -248,6 +249,7 @@ export function VehicleHero({ vehicle }: { vehicle: VehicleSummary }) {
           {vehicleSpecLine(vehicle)}
         </AppText>
         <PlateBadge number={vehicle.registration} size="md" />
+        <VehicleExpiryLines vehicle={vehicle} />
       </View>
     </View>
   );

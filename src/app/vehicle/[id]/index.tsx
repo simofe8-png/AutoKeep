@@ -12,6 +12,7 @@ import { RegistryFacts } from '@/features/vehicles/RegistryFacts';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import { vehicleSpecLine } from '@/features/vehicles/VehicleVisuals';
 import { onboardingServices } from '@/features/data/dataSource';
+import { VehicleDatesCard } from '@/features/vehicles/VehicleDates';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -210,6 +211,8 @@ export default function VehicleManageScreen() {
           />
         </Stack>
       </Card>
+
+      {!vehicle.archived ? <VehicleDatesCard vehicle={vehicle} /> : null}
 
       {registryRecord ? (
         <Stack gap={spacing.sm} testID="vehicle-registry">

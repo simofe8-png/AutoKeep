@@ -7,6 +7,7 @@ import type {
  * UI view-models consumed by screens. They are shaped for display, not persistence. The domain
  * model (M04) and real adapters (M13) map into these types so the approved UI does not change.
  */
+import type { ManualScheduleItem } from '@/persistence/repositories/manualSchedule';
 import type { VerificationState } from '@/ui';
 
 export type ActionType = 'inspection' | 'replacement' | 'other';
@@ -20,7 +21,9 @@ export type SourceAuthority =
   | 'garage_document'
   /** A published technical source (web publication / database), not the manufacturer's. */
   | 'technical_source'
-  | 'user_report';
+  | 'user_report'
+  /** Entered by hand by the owner. */
+  | 'owner_entered';
 
 export interface SourceRefVM {
   sourceTitle: string;
@@ -182,7 +185,8 @@ export interface PlanItemVM {
    * B = the manufacturer's document for this model, Israeli-market applicability not verified;
    * T = triangulated from independent (possibly non-official) sources, with `confidence`.
    */
-  level: 'A' | 'B' | 'T';
+  /** O = entered by hand by the owner. */
+  level: 'A' | 'B' | 'T' | 'O';
   /** Requirement confidence (separate from source authority). */
   confidence: 'high' | 'medium';
   /** Independent corroborating sources (T only). */
@@ -204,6 +208,8 @@ export interface PlanItemVM {
   source: SourceRefVM;
   /** Links a recorded service action to this task on this vehicle. */
   completionId: string;
+  /** The owner's own item (editable): its id. */
+  manualId?: string;
 }
 
 export type PlanRequestVM =
@@ -226,6 +232,8 @@ export interface MaintenancePlanVM {
   requests: PlanRequestVM[];
   /** A maintenance booklet was uploaded for this vehicle (awaiting professional review). */
   bookletUploaded: boolean;
+  /** The items the owner entered by hand (for editing). */
+  manual?: ManualScheduleItem[];
   /** Items read from the owner's own documents, awaiting or carrying the owner's decision. */
   ownerReview?: { proposals: OwnerProposalVM[]; issues: UploadIssue[] };
 }

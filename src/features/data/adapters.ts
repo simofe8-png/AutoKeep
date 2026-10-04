@@ -11,6 +11,7 @@ import {
   type MaintenanceItem,
   type MaintenanceSchedule,
   type OdometerReading,
+  type TaskCode,
   type ServiceEvent,
   type Source,
   type SourceReference,
@@ -24,7 +25,12 @@ import {
 import type { AlertCandidate } from '@/engine/alerts';
 import { buildMaintenancePlan } from '@/features/maintenance/knowledge/plan';
 import { toPlanVM } from '@/features/maintenance/knowledge/planVM';
-import type { MaintenanceProfile, StoredKnowledgeDocument } from '@/persistence';
+import type {
+  MaintenanceProfile,
+  ManualScheduleItem,
+  StoredKnowledgeDocument,
+} from '@/persistence';
+import { isCustom, manualLastDone, manualRequirement } from '@/features/maintenance/manualSchedule';
 import type { OwnerReviewState } from '@/features/maintenance/msource/ownerReview';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import type { EngineResult, ItemDue } from '@/engine/maintenance';
@@ -76,6 +82,8 @@ export interface VehicleRecords {
     /** Items read from the owner's own documents, with the owner's decisions (local only). */
     owner?: OwnerReviewState;
   };
+  /** Items the owner entered by hand (local only, migration v15). */
+  manualItems?: ManualScheduleItem[];
 }
 
 // ---------- T103: vehicle / home ----------
@@ -463,11 +471,24 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
     })),
     readings: rec.readings.map((r) => ({ date: r.measuredAt, km: r.valueKm })),
     today,
+    manual: (rec.manualItems ?? []).map((m) => ({
+      id: m.id,
+      custom: isCustom(m),
+      requirement: manualRequirement(
+        m,
+        isCustom(m) ? m.title : m.title || he.maintenancePlan.tasks[m.task as TaskCode],
+        today,
+      ),
+      lastDone: manualLastDone(m),
+    })),
   });
-  return toPlanVM(plan, (rec.knowledgeDocuments ?? []).length > 0, {
-    proposals: rec.msource?.owner?.proposals ?? [],
-    issues: rec.msource?.owner?.issues ?? [],
-  });
+  return {
+    ...toPlanVM(plan, (rec.knowledgeDocuments ?? []).length > 0, {
+      proposals: rec.msource?.owner?.proposals ?? [],
+      issues: rec.msource?.owner?.issues ?? [],
+    }),
+    manual: rec.manualItems ?? [],
+  };
 }
 
 // ---------- the full bundle ----------

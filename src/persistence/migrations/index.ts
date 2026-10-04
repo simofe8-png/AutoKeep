@@ -399,4 +399,45 @@ CREATE TABLE model_photo_cache (
 );
 `,
   },
+  {
+    version: 14,
+    name: 'vehicle_dates',
+    // Test and insurance expiry dates the owner enters (owner decision 2026-10-04). LOCAL ONLY
+    // (not in SYNC_TABLES). test_until overrides the registry's licence validity (cars) and is the
+    // only source for two-wheelers (their registry dataset has no test date).
+    up: `
+CREATE TABLE vehicle_dates (
+  vehicle_id TEXT PRIMARY KEY REFERENCES vehicles(id) ON DELETE CASCADE,
+  test_until TEXT,
+  compulsory_until TEXT,
+  other_until TEXT,
+  other_kind TEXT CHECK (other_kind IN ('comprehensive', 'third_party')),
+  updated_at TEXT NOT NULL
+);
+`,
+  },
+  {
+    version: 15,
+    name: 'manual_schedule_items',
+    // Maintenance items the owner enters by hand (owner decision 2026-10-04: the schedule is the
+    // owner's). LOCAL ONLY (not in SYNC_TABLES). task = a known task code, or 'custom' with the
+    // owner's own title; at least one of interval_km / interval_months.
+    up: `
+CREATE TABLE manual_schedule_items (
+  id TEXT PRIMARY KEY,
+  vehicle_id TEXT NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
+  task TEXT NOT NULL,
+  action TEXT NOT NULL CHECK (action IN ('replacement', 'inspection')),
+  title TEXT NOT NULL,
+  interval_km INTEGER,
+  interval_months INTEGER,
+  last_done_date TEXT,
+  last_done_km INTEGER,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
+  CHECK (interval_km IS NOT NULL OR interval_months IS NOT NULL)
+);
+CREATE INDEX manual_schedule_items_vehicle ON manual_schedule_items(vehicle_id);
+`,
+  },
 ];

@@ -5,6 +5,8 @@ import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import { createContext, useContext } from 'react';
 
 import type { AuthResult } from '@/cloud/auth';
+import type { ManualScheduleItem } from '@/persistence/repositories/manualSchedule';
+import type { VehicleDates } from '@/persistence/repositories/vehicleDates';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import type { Integrity } from '@/providers/storage/types';
@@ -140,6 +142,15 @@ export interface AppDataValue {
    * its items are proposed for owner review.
    */
   registerMaintenanceBooklet: (vehicleId: string, documentId: string) => void;
+  /** The owner's own schedule item: added (no id) or updated. */
+  saveManualItem: (
+    vehicleId: string,
+    value: Omit<ManualScheduleItem, 'id' | 'vehicleId'>,
+    id?: string,
+  ) => void;
+  removeManualItem: (vehicleId: string, id: string) => void;
+  /** The owner's test / insurance dates (ISO; null clears; absent keys unchanged). */
+  setVehicleDates: (vehicleId: string, patch: Partial<VehicleDates>) => void;
   /** Owner review: accept (optionally corrected) or reject one item from the owner's document. */
   reviewOwnerDocumentItem: (
     vehicleId: string,

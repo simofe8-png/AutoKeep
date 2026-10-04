@@ -62,7 +62,11 @@ import {
   type SqlDatabase,
   MaintenanceKnowledgeRepository,
   MSourceRepository,
+  VehicleDatesRepository,
+  ManualScheduleRepository,
+  type ManualScheduleItem,
   VehicleRegistryRecordRepository,
+  type VehicleDates,
 } from '@/persistence';
 import type { MSourceRun } from '@/discovery/maintenance/msource/run';
 import type { OwnerEdit } from '@/discovery/maintenance/msource/ownerReview';
@@ -159,6 +163,37 @@ function must<T>(r: Result<T>): T {
   return r.value;
 }
 
+/**
+ * Test and insurance dates of a vehicle summary (owner decision 2026-10-04): the owner's test date,
+ * else the registry's licence validity; insurance only as the owner entered it.
+ */
+function withDates(
+  summary: VehicleSummary,
+  registry: VehicleRegistryRecord | null,
+  dates: VehicleDates,
+): VehicleSummary {
+  const registryTest = registry?.facts.find((f) => f.key === 'licenseValidUntil')?.value;
+  const testUntil =
+    dates.testUntil ??
+    (typeof registryTest === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(registryTest)
+      ? registryTest
+      : undefined);
+  const insurance =
+    dates.compulsoryUntil || dates.otherUntil
+      ? {
+          ...(dates.compulsoryUntil ? { compulsoryUntil: dates.compulsoryUntil } : {}),
+          ...(dates.otherUntil
+            ? { otherUntil: dates.otherUntil, otherKind: dates.otherKind ?? 'comprehensive' }
+            : {}),
+        }
+      : undefined;
+  return {
+    ...summary,
+    ...(testUntil ? { testUntil, testSource: dates.testUntil ? 'user' : 'registry' } : {}),
+    ...(insurance ? { insurance } : {}),
+  };
+}
+
 /** Uses the id the UI already generated (a UUID) for the first entity, then falls back. */
 function preferId(id: string, fallback: IdGenerator): IdGenerator {
   let used = !isUuid(id);
@@ -230,6 +265,7 @@ export class LocalStore {
           await new MSourceRepository(this.db).ownerDecisions(id),
         ),
       },
+      manualItems: await new ManualScheduleRepository(this.db).list(id),
     };
   }
 
@@ -300,7 +336,13 @@ export class LocalStore {
       if (await this.reconcileAlerts(rec, candidates)) {
         rec = { ...rec, alerts: await new AlertRepository(this.db).list(v.id) };
       }
-      summaries.push(toVehicleSummary(v, latestReading(rec.readings)));
+      summaries.push(
+        withDates(
+          toVehicleSummary(v, latestReading(rec.readings)),
+          rec.msource?.registry ?? null,
+          await new VehicleDatesRepository(this.db).get(v.id),
+        ),
+      );
       bundles[v.id] = toBundle(rec, result, candidates, this.clock.today());
     }
     const activeVehicleId = await new ActiveVehicleStore(this.db).get();
@@ -975,6 +1017,37 @@ export class LocalStore {
   /** The Ministry record saved at onboarding (vehicle-scoped). */
   async registryRecord(vehicleId: string): Promise<VehicleRegistryRecord | null> {
     return new VehicleRegistryRecordRepository(this.db).get(vehicleId as VehicleId);
+  }
+
+  // ---------- the owner's own schedule items (local-only, migration v15) ----------
+
+  /** Adds (no id) or updates the owner's item; returns its id. */
+  async saveManualItem(
+    vehicleId: string,
+    value: Omit<ManualScheduleItem, 'id' | 'vehicleId'>,
+    id?: string,
+  ): Promise<string> {
+    const vehicle = await new VehicleRepository(this.db).get(vehicleId as VehicleId);
+    if (!vehicle) throw new Error('Unknown vehicle');
+    const itemId = id ?? this.ids.next<'ManualItem'>();
+    await new ManualScheduleRepository(this.db).save(
+      { ...value, id: itemId, vehicleId },
+      this.clock.now(),
+    );
+    return itemId;
+  }
+
+  async removeManualItem(vehicleId: string, id: string): Promise<void> {
+    await new ManualScheduleRepository(this.db).remove(vehicleId as VehicleId, id);
+  }
+
+  // ---------- test and insurance dates (local-only, migration v14) ----------
+
+  /** The owner's test / insurance dates; absent keys stay unchanged, null clears a date. */
+  async setVehicleDates(vehicleId: string, patch: Partial<VehicleDates>): Promise<void> {
+    const repo = new VehicleDatesRepository(this.db);
+    const current = await repo.get(vehicleId as VehicleId);
+    await repo.save(vehicleId as VehicleId, { ...current, ...patch }, this.clock.now());
   }
 
   // ---------- the owner's own maintenance documents (local-only, migration v10) ----------

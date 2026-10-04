@@ -31,6 +31,18 @@ export interface VehicleSummary {
   exteriorPhaseSource?: 'registry' | 'user';
   /** VIN with the final characters masked for display (SPEC: minimise exposure). */
   vinMasked?: string;
+  /**
+   * Test (טסט) valid until (ISO): the owner's date, else the registry's licence validity (cars;
+   * the two-wheeler dataset states none). Absent when unknown.
+   */
+  testUntil?: string;
+  testSource?: 'registry' | 'user';
+  /** Insurance expiry dates the owner entered (absent when not entered). */
+  insurance?: {
+    compulsoryUntil?: string;
+    otherUntil?: string;
+    otherKind?: 'comprehensive' | 'third_party';
+  };
 }
 
 export function vehicleDisplayName(v: Pick<VehicleSummary, 'manufacturer' | 'model' | 'year'>) {

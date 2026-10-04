@@ -138,9 +138,10 @@ const AUTHORITY_RANK: Record<RequirementAuthority, number> = {
   official_publication: 2,
   user_report: 9,
   secondary: 9,
+  owner_entered: 9,
 };
 
-const NON_EVIDENCE: readonly RequirementAuthority[] = ['user_report', 'secondary'];
+const NON_EVIDENCE: readonly RequirementAuthority[] = ['user_report', 'secondary', 'owner_entered'];
 
 /** The source names the vehicle's own market (not only 'GLOBAL' or another market). */
 export function namesVehicleMarket(r: MaintenanceRequirement, f: VehicleFacts): boolean {
@@ -273,7 +274,9 @@ export type ResolutionReason =
   | 'conflict_same_precedence'
   | 'missing_vehicle_facts'
   | 'only_unverified_evidence'
-  | 'no_applicable_requirement';
+  | 'no_applicable_requirement'
+  /** The owner entered the item by hand (it replaces any other source for the same item). */
+  | 'owner_entered';
 
 export interface TaskResolution {
   task: TaskCode;

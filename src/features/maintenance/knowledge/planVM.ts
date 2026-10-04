@@ -14,6 +14,7 @@ const AUTHORITY: Record<RequirementAuthority, SourceAuthority> = {
   // A published technical source (not the owner's report): device check 2026-10-04 showed
   // carwiki.de labelled as a user report.
   secondary: 'technical_source',
+  owner_entered: 'owner_entered',
 };
 
 function intervalText(item: PlanItem): string {
@@ -39,12 +40,21 @@ function itemVM(item: PlanItem): PlanItemVM | null {
   const e = item.requirement.evidence[0];
   const action = item.requirement.action;
   return {
-    key: action === 'inspection' || action === 'adjustment' ? `${item.task}-${action}` : item.task,
+    key:
+      item.level === 'O' && item.requirement.task === 'general_inspection'
+        ? `manual-${item.manualId}`
+        : action === 'inspection' || action === 'adjustment'
+          ? `${item.task}-${action}`
+          : item.task,
     task: item.task,
     level: item.level,
     confidence: item.confidence,
     corroboratingSources: item.requirement.corroboration?.independentSources,
-    title: he.maintenancePlan.tasks[item.task],
+    // The owner's own item carries the owner's own name.
+    title:
+      item.level === 'O' && item.requirement.taskText
+        ? item.requirement.taskText
+        : he.maintenancePlan.tasks[item.task],
     actionType: action === 'adjustment' ? 'other' : action,
     actionLabel: he.maintenancePlan.actions[action],
     intervalText: intervalText(item),
@@ -71,6 +81,7 @@ function itemVM(item: PlanItem): PlanItemVM | null {
       documentId: e?.documentId,
     },
     completionId: item.completionId,
+    ...(item.manualId ? { manualId: item.manualId } : {}),
   };
 }
 

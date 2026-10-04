@@ -9,7 +9,11 @@ export function uploadAuthority(
   kind: DocumentKind,
 ): Exclude<
   SourceAuthority,
-  'manufacturer' | 'official_importer' | 'vehicle_document_edited' | 'technical_source'
+  | 'manufacturer'
+  | 'official_importer'
+  | 'vehicle_document_edited'
+  | 'technical_source'
+  | 'owner_entered'
 > {
   switch (kind) {
     case 'invoice':
