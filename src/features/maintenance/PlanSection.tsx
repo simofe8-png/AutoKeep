@@ -420,21 +420,33 @@ ${summary}`
 }
 
 /**
- * General guidance by propulsion type (owner decision 2026-10-03): its own card, clearly not the
- * manufacturer's schedule; never part of the plan, dues or reminders.
+ * Maintenance guidance (owner decisions 2026-10-03 / 2026-10-04): by engine family when the engine
+ * code matches one, else by propulsion type. Its own card, clearly not the manufacturer's
+ * schedule; never part of the plan, dues or reminders.
  */
-function StandardGuidanceCard({ rows }: { rows: MaintenancePlanVM['standardGuidance'] | null }) {
-  if (!rows?.length) return null;
+function StandardGuidanceCard({
+  guidance,
+}: {
+  guidance: MaintenancePlanVM['standardGuidance'] | null;
+}) {
+  if (!guidance?.rows.length) return null;
   const g = he.maintenancePlan.standard;
+  const family = guidance.kind === 'engine_family';
+  const rows = guidance.rows;
   return (
     <Card testID="plan-standard-guidance">
       <Stack gap={spacing.sm}>
         <AppText variant="heading" accessibilityRole="header">
-          {g.title}
+          {family ? g.familyTitle : g.title}
         </AppText>
-        <InlineNotice tone="info" message={g.note} />
+        {family && guidance.family ? (
+          <AppText variant="small" color="textSecondary" testID="plan-standard-family">
+            {g.familyName(guidance.family)}
+          </AppText>
+        ) : null}
+        <InlineNotice tone="info" message={family ? g.familyNote : g.note} />
         {rows.map((r) => (
-          <View key={r.key} style={styles.whenRow} testID={`plan-standard-${r.key}`}>
+          <View key={r.key} style={styles.whenRow} testID={`plan-standard-${r.item}`}>
             <AppText variant="body" style={styles.flex}>
               {r.label}
             </AppText>
@@ -461,7 +473,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
       <Stack testID="maintenance-plan">
         {/* First: what the owner can act on now (device check 2026-10-04: below the search card it
             was off-screen). */}
-        <StandardGuidanceCard rows={plan.standardGuidance ?? null} />
+        <StandardGuidanceCard guidance={plan.standardGuidance ?? null} />
         {plan.discovery ? (
           <DiscoveryCard
             status={plan.discovery}
@@ -543,7 +555,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
   }
   return (
     <Stack testID="maintenance-plan">
-      <StandardGuidanceCard rows={plan.standardGuidance ?? null} />
+      <StandardGuidanceCard guidance={plan.standardGuidance ?? null} />
       {plan.discovery ? (
         <DiscoveryCard
           status={plan.discovery}

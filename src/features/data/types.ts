@@ -259,7 +259,11 @@ export interface MaintenancePlanVM {
    * General guidance by propulsion type, ONLY while the plan has no schedule item (never part of
    * the schedule, dues or reminders).
    */
-  standardGuidance?: { key: string; label: string; interval: string }[] | null;
+  standardGuidance?: {
+    kind: 'engine_family' | 'propulsion';
+    family?: string;
+    rows: { key: string; item: string; label: string; interval: string }[];
+  } | null;
 }
 
 export type OwnerProposalVM = OwnerProposal & {

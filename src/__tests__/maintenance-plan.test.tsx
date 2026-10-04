@@ -176,8 +176,8 @@ describe('Maintenance tab (Task 9)', () => {
     // never a schedule item (owner decision 2026-10-03).
     expect(screen.getByTestId('plan-standard-guidance')).toBeOnTheScreen();
     expect(screen.getByText('שגרת טיפולים סטנדרטית (לפי סוג הנעה)')).toBeOnTheScreen();
-    expect(screen.getByTestId('plan-standard-engine_oil')).toHaveTextContent(
-      /כל 15,000 ק״מ או שנה/,
+    expect(screen.getByTestId('plan-standard-oil_and_filter')).toHaveTextContent(
+      /כל 15,000 ק״מ או 12 חודשים/,
     );
     expect(screen.getByTestId('plan-standard-spark_plugs')).toBeOnTheScreen();
     expect(screen.queryByTestId('plan-items')).toBeNull();
