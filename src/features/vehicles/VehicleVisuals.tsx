@@ -58,9 +58,12 @@ export function VehiclePhoto({
   if (state.kind === 'user') {
     return (
       <View style={frame} testID="vehicle-photo-user">
+        {/* Keyed by the file: a new photo mounts a fresh image (device: a photo picked on another
+            screen stayed blank on Home until a reload). Absolute fill: no percentage sizing. */}
         <Image
+          key={state.uri}
           source={{ uri: state.uri }}
-          style={styles.image}
+          style={StyleSheet.absoluteFill}
           resizeMode="cover"
           accessibilityIgnoresInvertColors
         />
@@ -266,7 +269,6 @@ export function RowChevron() {
 const styles = StyleSheet.create({
   photo: { overflow: 'hidden', backgroundColor: '#E3E8EF' },
   stretch: { alignSelf: 'stretch' },
-  image: { width: '100%', height: '100%' },
   empty: {
     alignItems: 'center',
     justifyContent: 'center',
