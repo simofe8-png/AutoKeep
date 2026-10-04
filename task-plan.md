@@ -444,3 +444,5 @@ Evidence gives the concrete commands and results (or file references) proving th
 | OD4  | "לוח טיפולים תקופתי" table, counted from entry (v15, v16); importer button removed | PASS   | `d18bc69`; manual-schedule.test, manualSchedule.test                            |
 | OD5  | "מפרט הרכב" and a note per table row (v17, v18)                                    | PASS   | `e66b21a`; vehicle-spec.test, vehicleSpec.test; checked on the phone            |
 | OD6  | Vehicle deletion: filled-in plate + "are you sure" with the preview                | PASS   | `c2d6088`; lifecycle.test, prototype-e2e.test; checked on the phone (cancelled) |
+| OD7  | Picked vehicle photo drawn at once on Android                                      | PASS   | `9f76a65`; device: remove → pick → Home shows the photo                         |
+| OD8  | Bottom menu on secondary screens                                                   | PASS   | navigation.test (secondary menu → tab); device: vehicle management → תחזוקה     |

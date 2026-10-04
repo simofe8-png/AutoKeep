@@ -42,6 +42,14 @@ plate lookup. The owner left a provider open for a future decision (approval gat
    This keeps the spec's preview → explicit confirmation → controlled deletion → result. Typing
    the registration is no longer required.
 
+7. **Bottom menu on secondary screens** (2026-10-05): the four primary destinations also show
+   under every secondary screen (vehicle management, settings, spec, table, alerts…), except the
+   first-run onboarding, the full-screen Garage Mode and the document viewer; hidden while the
+   keyboard is up. A tap returns to the tabs and opens that destination. One shared tab list
+   (`src/features/shell/BottomNav.tsx`) feeds both bars.
+8. **Vehicle photo on Android**: the photo frame is a fresh view per state (empty / photo); a
+   frame that had the dashed empty border did not draw a photo added later (device-verified).
+
 ## Consequences
 
 - Local SQLite migrations: v14 `vehicle_dates`, v15 `manual_schedule_items`, v16 start point

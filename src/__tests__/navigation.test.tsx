@@ -15,6 +15,19 @@ describe('navigation shell', () => {
     expect(screen.queryByTestId('tab-settings')).toBeNull();
   });
 
+  it('secondary screens show the bottom menu; a tap opens that tab (owner decision 2026-10-05)', async () => {
+    await renderApp();
+    expect(screen.queryByTestId('secondary-bottom-nav')).toBeNull();
+    await fireEvent.press(screen.getByTestId('header-settings'));
+    await waitFor(() => expect(screen.getByTestId('screen-settings')).toBeOnTheScreen());
+    const nav = screen.getByTestId('secondary-bottom-nav');
+    expect(nav).toHaveTextContent(/בית.*תחזוקה.*היסטוריה.*מסמכים/);
+    await fireEvent.press(screen.getByTestId('nav-tab-maintenance'));
+    await waitFor(() => expect(screen.getByTestId('screen-maintenance')).toBeOnTheScreen());
+    expect(screen.queryByTestId('screen-settings')).toBeNull();
+    expect(screen.queryByTestId('secondary-bottom-nav')).toBeNull();
+  });
+
   it('switches between tabs', async () => {
     await renderApp();
     await fireEvent.press(screen.getByTestId('tab-documents'));

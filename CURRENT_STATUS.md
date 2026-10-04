@@ -4,6 +4,7 @@ _Last updated: 2026-10-05_
 
 ## Position
 
+- **Bottom menu on secondary screens + photo fix (owner, 2026-10-05): DONE.** The four-tab menu shows under every secondary screen (not onboarding, Garage Mode, document viewer; hidden with the keyboard). A photo picked after the empty frame is now drawn (`9f76a65`). verify 79 / 555; checked on the phone.
 - **Vehicle deletion (owner, 2026-10-05): DONE, `c2d6088`.** Plate shown filled in, button enabled, then "האם אתה בטוח?" (כן / ביטול) with what will be deleted. Decisions of 2026-10-04/05 are recorded in ADR-0021 (supersedes ADR-0016 and ADR-0020); task-plan section "Owner-driven redirection".
 - **Vehicle spec + row notes (owner choice ג, 2026-10-05): DONE, `e66b21a`.** "מפרט הרכב" (`src/app/vehicle/[id]/specification.tsx`, migration v17 `vehicle_spec`, LOCAL ONLY): oil (viscosity, standard, capacity), fluids (coolant, brake, gearbox), tyres (size, front/rear pressure), free notes — owner-entered only. Shown as a row on the vehicle screen, beside the matching plan item ("מפרט: …" for engine oil / brake fluid / coolant / gearbox) and as a section in Garage Mode. Each row of "לוח טיפולים תקופתי" can carry a note (icon beside the bin; migration v18 `manual_schedule_items.note`), shown on its plan card and in Garage Mode. Plan redesign (owner's table, importer button removed) committed `d18bc69`. verify 79 suites / 554 tests; checked on the phone (table note line, spec row and page). Open: v14–v18 tables in cloud backup (gate, unanswered); remove the duplicate yellow "no schedule" card (unanswered).
 

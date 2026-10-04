@@ -6,6 +6,7 @@ import { StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { AppProviders } from '@/features/shell/AppProviders';
+import { WithSecondaryBottomNav } from '@/features/shell/BottomNav';
 import { APP_DIRECTION, colors, rootDirectionStyle, useAppFonts } from '@/ui';
 
 void SplashScreen.preventAutoHideAsync();
@@ -29,14 +30,16 @@ export default function RootLayout() {
         <View style={[styles.root, rootDirectionStyle]}>
           <AppProviders>
             <StatusBar style="dark" />
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                contentStyle: { backgroundColor: colors.background },
-              }}
-            >
-              <Stack.Screen name="(tabs)" />
-            </Stack>
+            <WithSecondaryBottomNav>
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                  contentStyle: { backgroundColor: colors.background },
+                }}
+              >
+                <Stack.Screen name="(tabs)" />
+              </Stack>
+            </WithSecondaryBottomNav>
           </AppProviders>
         </View>
       </LocaleProvider>

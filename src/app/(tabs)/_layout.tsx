@@ -3,7 +3,7 @@ import { Text, type ColorValue } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Tabs } from 'expo-router/js-tabs';
 
-import { he } from '@/i18n/he';
+import { barHeight, PRIMARY_TABS, TAB_LABEL_MAX_SCALE } from '@/features/shell/BottomNav';
 import { colors, fontFamily } from '@/ui';
 
 type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
@@ -12,7 +12,7 @@ type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
  * Tab labels scale with the system font but are capped: at the Android maximum (2.0) uncapped
  * labels were clipped/truncated in the fixed-height tab bar (device-verified, M03).
  */
-export const TAB_LABEL_MAX_SCALE = 1.3;
+export { TAB_LABEL_MAX_SCALE };
 
 function TabLabel({ color, children }: { color: ColorValue; children: string }) {
   return (
@@ -60,7 +60,7 @@ export default function TabsLayout() {
         tabBarStyle: {
           backgroundColor: colors.surface,
           borderTopColor: colors.border,
-          height: 62 + insets.bottom,
+          height: barHeight(insets.bottom),
           paddingTop: 6,
           paddingBottom: insets.bottom + 6,
         },
@@ -68,42 +68,18 @@ export default function TabsLayout() {
         sceneStyle: { backgroundColor: colors.background },
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: he.tabs.home,
-          tabBarAccessibilityLabel: he.tabs.home,
-          tabBarButtonTestID: 'tab-home',
-          tabBarIcon: tabIcon('home-outline', 'home'),
-        }}
-      />
-      <Tabs.Screen
-        name="maintenance"
-        options={{
-          title: he.tabs.maintenance,
-          tabBarAccessibilityLabel: he.tabs.maintenance,
-          tabBarButtonTestID: 'tab-maintenance',
-          tabBarIcon: tabIcon('wrench-outline', 'wrench'),
-        }}
-      />
-      <Tabs.Screen
-        name="history"
-        options={{
-          title: he.tabs.history,
-          tabBarAccessibilityLabel: he.tabs.history,
-          tabBarButtonTestID: 'tab-history',
-          tabBarIcon: tabIcon('clipboard-text-clock-outline', 'clipboard-text-clock'),
-        }}
-      />
-      <Tabs.Screen
-        name="documents"
-        options={{
-          title: he.tabs.documents,
-          tabBarAccessibilityLabel: he.tabs.documents,
-          tabBarButtonTestID: 'tab-documents',
-          tabBarIcon: tabIcon('file-document-multiple-outline', 'file-document-multiple'),
-        }}
-      />
+      {PRIMARY_TABS.map((t) => (
+        <Tabs.Screen
+          key={t.name}
+          name={t.name}
+          options={{
+            title: t.title,
+            tabBarAccessibilityLabel: t.title,
+            tabBarButtonTestID: t.testID,
+            tabBarIcon: tabIcon(t.icon, t.focusedIcon),
+          }}
+        />
+      ))}
     </Tabs>
   );
 }

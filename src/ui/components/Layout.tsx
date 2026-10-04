@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { createContext, useContext, type ReactNode } from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet, View, type ViewStyle } from 'react-native';
 import { SafeAreaView, type Edge } from 'react-native-safe-area-context';
 
@@ -18,6 +18,12 @@ export interface ScreenProps {
   testID?: string;
 }
 
+/**
+ * True under a bottom navigation bar drawn outside the screen (secondary screens): that bar pads
+ * the bottom safe area, so the screen does not.
+ */
+export const BottomBarBelow = createContext(false);
+
 /** Standard screen: safe area, keyboard avoidance, scrolling and page gutter. */
 export function Screen({
   children,
@@ -28,6 +34,8 @@ export function Screen({
   contentStyle,
   testID,
 }: ScreenProps) {
+  const barBelow = useContext(BottomBarBelow);
+  const padded = barBelow ? edges.filter((e) => e !== 'bottom') : edges;
   const content = scroll ? (
     <ScrollView
       contentContainerStyle={[styles.content, contentStyle]}
@@ -40,7 +48,7 @@ export function Screen({
     <View style={[styles.content, styles.fill, contentStyle]}>{children}</View>
   );
   return (
-    <SafeAreaView testID={testID} style={styles.safe} edges={edges}>
+    <SafeAreaView testID={testID} style={styles.safe} edges={padded}>
       {header}
       <KeyboardAvoidingView
         style={styles.fill}
