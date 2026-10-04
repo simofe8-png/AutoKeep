@@ -607,6 +607,7 @@ export const he = {
     vehicle_document: 'מסמך רכב',
     vehicle_document_edited: 'מסמך הבעלים (נערך על ידי המשתמש)',
     garage_document: 'מסמך מוסך',
+    technical_source: 'מקור טכני',
     user_report: 'דיווח משתמש',
   },
   garage: {

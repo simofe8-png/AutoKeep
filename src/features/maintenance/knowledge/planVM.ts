@@ -14,7 +14,9 @@ const AUTHORITY: Record<RequirementAuthority, SourceAuthority> = {
   official_publication: 'manufacturer',
   vehicle_document: 'vehicle_document',
   user_report: 'user_report',
-  secondary: 'user_report',
+  // A published technical source (not the owner's report): device check 2026-10-04 showed
+  // carwiki.de labelled as a user report.
+  secondary: 'technical_source',
 };
 
 function intervalText(item: PlanItem): string {

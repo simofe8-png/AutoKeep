@@ -459,6 +459,9 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
     const booklet = plan.requests.find((r) => r.kind === 'upload_booklet');
     return (
       <Stack testID="maintenance-plan">
+        {/* First: what the owner can act on now (device check 2026-10-04: below the search card it
+            was off-screen). */}
+        <StandardGuidanceCard rows={plan.standardGuidance ?? null} />
         {plan.discovery ? (
           <DiscoveryCard
             status={plan.discovery}
@@ -471,7 +474,6 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
           proposals={plan.ownerReview?.proposals ?? []}
           issues={plan.ownerReview?.issues ?? []}
         />
-        <StandardGuidanceCard rows={plan.standardGuidance ?? null} />
         <Card tone="warning" testID="plan-fallback">
           <Stack gap={spacing.sm}>
             <View style={styles.needHead}>
@@ -541,6 +543,7 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
   }
   return (
     <Stack testID="maintenance-plan">
+      <StandardGuidanceCard rows={plan.standardGuidance ?? null} />
       {plan.discovery ? (
         <DiscoveryCard
           status={plan.discovery}
@@ -553,7 +556,6 @@ export function PlanSection({ plan, vehicleId }: { plan: MaintenancePlanVM; vehi
         proposals={plan.ownerReview?.proposals ?? []}
         issues={plan.ownerReview?.issues ?? []}
       />
-      <StandardGuidanceCard rows={plan.standardGuidance ?? null} />
       {plan.requests.length > 0 ? (
         <Card tone="warning" testID="plan-needs-information">
           <Stack gap={spacing.sm}>

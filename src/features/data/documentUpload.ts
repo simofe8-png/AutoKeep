@@ -7,7 +7,10 @@ import type { DocumentKind, SourceAuthority } from './types';
  */
 export function uploadAuthority(
   kind: DocumentKind,
-): Exclude<SourceAuthority, 'manufacturer' | 'official_importer' | 'vehicle_document_edited'> {
+): Exclude<
+  SourceAuthority,
+  'manufacturer' | 'official_importer' | 'vehicle_document_edited' | 'technical_source'
+> {
   switch (kind) {
     case 'invoice':
       return 'garage_document';

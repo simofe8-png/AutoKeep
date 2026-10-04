@@ -20,6 +20,8 @@ export type SourceAuthority =
   /** The owner's own document, with a value the owner corrected before accepting it. */
   | 'vehicle_document_edited'
   | 'garage_document'
+  /** A published technical source (web publication / database), not the manufacturer's. */
+  | 'technical_source'
   | 'user_report';
 
 export interface SourceRefVM {
