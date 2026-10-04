@@ -249,7 +249,8 @@ export const he = {
     welcomeBody:
       'נזהה את כלי הרכב לפי מספר הרישוי, ונעזור לך לנהל את הטיפולים, הטסט והביטוח — מספר הרכב שלך או ממה שתזין, בלי להמציא מידע.',
     welcomeNoAccount: 'אין צורך בהרשמה כדי להתחיל.',
-    welcomeTagline: 'ניהול תחזוקת כלי הרכב שלך. פשוט יותר.',
+    welcomeTagline: 'ניהול תחזוקת כלי הרכב שלך.',
+    welcomeTagline2: 'פשוט יותר.',
     benefits: ['לוח טיפולים מספר הרכב שלך', 'טסט וביטוח — כמה זמן נשאר', 'כל המסמכים במקום אחד'],
     /** One line under each benefit (welcome screen). */
     benefitDetails: [

@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 import { he } from '@/i18n/he';
 import {
@@ -56,14 +56,24 @@ export function WelcomeScreen() {
         <View style={[styles.ring, styles.ringLarge]} />
         <View style={[styles.ring, styles.ringSmall]} />
         <View style={styles.mark}>
-          <Icon name="car-outline" size={44} color="primary" />
+          <Image
+            source={require('@/assets/images/icon.png')}
+            style={styles.markImage}
+            accessibilityLabel="AutoKeep"
+            accessibilityIgnoresInvertColors
+          />
         </View>
         <AppText variant="title" color="textOnPrimary" align="center" accessibilityRole="header">
           {o.welcomeTitle}
         </AppText>
-        <AppText color="textOnPrimary" align="center" style={styles.tagline}>
-          {o.welcomeTagline}
-        </AppText>
+        <View>
+          <AppText color="textOnPrimary" align="center" style={styles.tagline} numberOfLines={1}>
+            {o.welcomeTagline}
+          </AppText>
+          <AppText color="textOnPrimary" align="center" style={styles.tagline}>
+            {o.welcomeTagline2}
+          </AppText>
+        </View>
       </View>
 
       <Stack gap={spacing.md} testID="welcome-benefits">
@@ -109,15 +119,14 @@ const styles = StyleSheet.create({
   ringLarge: { width: 260, height: 260, top: -90, end: -80 },
   ringSmall: { width: 160, height: 160, bottom: -60, start: -50 },
   mark: {
-    width: 84,
-    height: 84,
-    borderRadius: 42,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surface,
+    width: 112,
+    height: 112,
+    borderRadius: 26,
+    overflow: 'hidden',
     marginBottom: spacing.xs,
     ...elevation.raised,
   },
+  markImage: { width: '100%', height: '100%' },
   tagline: { opacity: 0.9 },
   card: {
     flexDirection: 'row',
