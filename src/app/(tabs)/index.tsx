@@ -10,6 +10,8 @@ import { AppHeader } from '@/features/shell/AppHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { formatDate, formatKm, formatNumber } from '@/features/vehicles/format';
 import { VehiclePager } from '@/features/vehicles/VehiclePager';
+import { profileCompletion } from '@/features/vehicles/profileCompletion';
+import { ProfileCompletionCard, ProfileDoneCard } from '@/features/vehicles/ProfileCompletionCard';
 import { VehicleHero } from '@/features/vehicles/VehicleVisuals';
 import { he } from '@/i18n/he';
 import {
@@ -36,7 +38,7 @@ export default function HomeScreen() {
   const router = useRouter();
   const { activeVehicle, vehicles, setActiveVehicleId } = useActiveVehicle();
   const [switching, setSwitching] = useState(false);
-  const { network, account } = useAppData();
+  const { network, account, vehiclePhotos, profileCard, setProfileCard } = useAppData();
   const data = useVehicleData(activeVehicle?.id ?? null);
 
   if (vehicles.length === 0) {
@@ -61,6 +63,11 @@ export default function HomeScreen() {
   }
 
   const alerts = activeAlerts(data.alerts);
+  const completion = profileCompletion(activeVehicle, {
+    hasSchedule: data.schedule.status === 'verified' || (data.plan?.items.length ?? 0) > 0,
+    hasPhoto: Boolean(vehiclePhotos[activeVehicle.id]),
+  });
+  const cardState = profileCard[activeVehicle.id];
   const urgent = mostUrgentAlert(alerts);
   const { schedule } = data;
   const hasValuableData = data.history.length > 0 || data.documents.length > 0;
@@ -128,24 +135,21 @@ export default function HomeScreen() {
           />
         </TileRow>
 
+        {!completion.complete && cardState !== 'hidden' ? (
+          <ProfileCompletionCard
+            vehicle={activeVehicle}
+            completion={completion}
+            onHide={() => setProfileCard(activeVehicle.id, 'hidden')}
+          />
+        ) : completion.complete && cardState !== 'done' ? (
+          <ProfileDoneCard onClose={() => setProfileCard(activeVehicle.id, 'done')} />
+        ) : null}
+
         {urgent ? (
           <AlertStatusCard
             alert={urgent}
             testID="home-alerts"
             onPress={() => router.push(`/alerts/${urgent.id}`)}
-          />
-        ) : plan && plan.items.length === 0 ? (
-          <StatusCard
-            testID="schedule-unavailable"
-            tone="warning"
-            icon="clipboard-alert-outline"
-            title={he.maintenancePlan.needInfoTitle}
-            subtitle={
-              plan.requests.some((r) => r.kind === 'upload_booklet')
-                ? he.maintenancePlan.uploadBooklet
-                : undefined
-            }
-            onPress={() => router.push('/maintenance')}
           />
         ) : plan ? null : schedule.status !== 'verified' ? (
           <StatusCard

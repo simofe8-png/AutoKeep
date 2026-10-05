@@ -113,7 +113,8 @@ describe('real local data behind the approved UI', () => {
       expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/קורולה/),
     );
     expect(screen.getByTestId('home-odometer-card')).toHaveTextContent(/84,250/);
-    expect(screen.getByTestId('schedule-unavailable')).toBeOnTheScreen();
+    // No schedule yet: the profile card asks for it (owner decision 2026-10-05).
+    expect(screen.getByTestId('profile-item-schedule')).toBeOnTheScreen();
     expect(screen.queryByTestId('next-service-summary')).toBeNull();
     expect(screen.queryByTestId('demo-data-strip')).toBeNull();
 

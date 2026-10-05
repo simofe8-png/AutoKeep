@@ -136,6 +136,9 @@ export interface AppDataValue {
   addGarageRecommendation: (rec: GarageRecommendationVM) => void;
   /** The user's own photo of a vehicle (viewable URI), if they added one. */
   vehiclePhotos: Record<string, string>;
+  /** Home profile-completion card per vehicle: hidden, or its "done" message seen. */
+  profileCard: Record<string, 'hidden' | 'done'>;
+  setProfileCard: (vehicleId: string, state: 'hidden' | 'done' | null) => void;
   /** Removes the user's own vehicle photo (the image area is empty again). */
   removeVehiclePhoto: (vehicleId: string) => void;
   /** Owner answers that resolve maintenance applicability (null = "I don't know"). */

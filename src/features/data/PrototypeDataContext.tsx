@@ -243,6 +243,8 @@ export function PrototypeDataProvider({
       openOriginal: async () => false,
       // Prototype: no stored photos (the illustration is shown).
       vehiclePhotos: {},
+      profileCard: {},
+      setProfileCard: () => undefined,
       removeVehiclePhoto: () => undefined,
       setVehiclePhoto: () => undefined,
       // Prototype: the evidence-based plan is not simulated.

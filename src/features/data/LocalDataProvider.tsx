@@ -359,6 +359,8 @@ export function LocalDataProvider({
       setNotificationsEnabled: (enabled) => write((s) => s.setNotificationsEnabled(enabled)),
       addGarageRecommendation: (r) => write((s) => s.addGarageRecommendation(r)),
       vehiclePhotos: snapshot.vehiclePhotos,
+      profileCard: snapshot.profileCard,
+      setProfileCard: (vid, state) => write((s) => s.setProfileCard(vid, state)),
       removeVehiclePhoto: (vid) => write((s) => s.removeVehiclePhoto(vid)),
       setVehiclePhoto: (vid, file) => write((s) => s.setVehiclePhoto(vid, file)),
       setMaintenanceAnswers: (vid, answers) => write((s) => s.setMaintenanceAnswers(vid, answers)),

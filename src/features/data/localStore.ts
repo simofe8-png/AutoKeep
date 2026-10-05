@@ -110,6 +110,9 @@ export const systemClock: Clock = {
 };
 
 const PHOTO_KEY = 'vehiclePhotos';
+/** The Home "השלמת פרופיל הרכב" card per vehicle: hidden by the owner, or its "done" seen. */
+const PROFILE_CARD_KEY = 'profileCard';
+export type ProfileCardState = 'hidden' | 'done';
 /** Vehicles whose image prompt the user answered with "לא עכשיו" / "לא בטוח" (device-local UX). */
 
 export interface Snapshot {
@@ -122,6 +125,8 @@ export interface Snapshot {
   backup: BackupStatus;
   /** User-provided vehicle photos (device-local, not synced): vehicleId → viewable URI. */
   vehiclePhotos: Record<string, string>;
+  /** Home profile-completion card state per vehicle (device-local UX). */
+  profileCard: Record<string, ProfileCardState>;
 }
 
 export interface BackupStatus {
@@ -362,6 +367,10 @@ export class LocalStore {
       notificationsEnabled,
       backup: await this.backupStatus(),
       vehiclePhotos: await this.vehiclePhotoUris(),
+      profileCard:
+        (await new SettingsRepository(this.db).get<Record<string, ProfileCardState>>(
+          PROFILE_CARD_KEY,
+        )) ?? {},
     };
   }
 
@@ -377,6 +386,16 @@ export class LocalStore {
     for (const [id, key] of Object.entries(await this.photoKeys()))
       out[id] = this.files.uriFor(key);
     return out;
+  }
+
+  /** Hides the profile card, or records that its "done" message was seen; null shows it again. */
+  async setProfileCard(vehicleId: string, state: ProfileCardState | null): Promise<void> {
+    const settings = new SettingsRepository(this.db);
+    const all = (await settings.get<Record<string, ProfileCardState>>(PROFILE_CARD_KEY)) ?? {};
+    const next = { ...all };
+    if (state) next[vehicleId] = state;
+    else delete next[vehicleId];
+    await settings.set(PROFILE_CARD_KEY, next, this.clock.now());
   }
 
   /** Stores the user's own photo of a vehicle (replaces a previous one). */

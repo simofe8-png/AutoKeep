@@ -384,6 +384,31 @@ export const he = {
       failed: 'סריקה נכשלה',
     },
   },
+  /** Home "השלמת פרופיל הרכב" (owner decision 2026-10-05). */
+  profile: {
+    title: 'השלמת פרופיל הרכב',
+    percent: (n: number) => `${n}%`,
+    later: 'אפשר להשלים מתי שנוח',
+    hide: 'הסתרה',
+    importantBadge: 'הכי חשוב',
+    optionalBadge: 'רשות',
+    items: {
+      details: { title: 'פרטי רכב וטסט', titleNoTest: 'פרטי הרכב', done: 'ממשרד התחבורה' },
+      test: { title: 'טסט', todo: 'הזן את תאריך הטסט מרישיון הרכב' },
+      odometer: { title: 'קילומטראז׳' },
+      schedule: {
+        title: 'לוח טיפולים',
+        todo: 'מפעיל את "הטיפול הבא" ואת התזכורות',
+        done: 'הוזן',
+      },
+      insurance: { title: 'ביטוח', todo: 'תזכורת לפני שהביטוח פג' },
+      pressure: { title: 'לחץ אוויר בצמיגים', todo: 'לפי המדבקה במסגרת דלת הנהג' },
+      photo: { title: 'תמונה של הרכב', todo: 'מוצגת במסך הבית', done: 'נוספה' },
+    },
+    doneTitle: 'פרופיל הרכב הושלם',
+    doneBody: 'נזכיר לך לפני כל טיפול, טסט וביטוח.',
+    close: 'סגירה',
+  },
   home: {
     needInfoShort: 'נדרש מידע',
     nextService: 'הטיפול הבא',
