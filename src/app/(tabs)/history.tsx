@@ -10,6 +10,7 @@ import { formatDate, formatKm, joinParts } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
   AppText,
+  Badge,
   colors,
   Dialog,
   EmptyState,
@@ -20,7 +21,6 @@ import {
   Screen,
   spacing,
   Stack,
-  VerificationBadge,
 } from '@/ui';
 
 type Filter = 'all' | 'garage' | 'user' | 'withDocument';
@@ -151,13 +151,16 @@ function HistoryCard({ event, onPress }: { event: ServiceEventVM; onPress: () =>
           {joinParts(performed.map((a) => a.title))}
         </AppText>
         <AppText variant="caption" color="textMuted">
-          {joinParts([
-            `${he.history.source}: ${he.authority[event.sourceAuthority]}`,
-            event.garage,
-            event.notes ? `${he.history.notes}: ${event.notes}` : null,
-          ])}
+          {joinParts([event.garage, event.notes ? `${he.history.notes}: ${event.notes}` : null])}
         </AppText>
-        {!verified ? <VerificationBadge state={event.verification} /> : null}
+        {/* Who reported it and how (owner decision 2026-10-05): e.g. "דיווח משתמש · הזנה ידנית" —
+            never "חסר מידע / ממתין לאימות" for the owner's own past service. */}
+        <View style={styles.source} testID={`history-item-${event.id}-source`}>
+          <Badge
+            label={`${he.authority[event.sourceAuthority]} · ${he.history.origin[event.origin]}`}
+            tone="neutral"
+          />
+        </View>
         {event.documentIds.length > 0 ? (
           <AppText variant="smallStrong" color="primary">
             {he.history.viewDocumentAndSource}
@@ -178,6 +181,7 @@ function HistoryCard({ event, onPress }: { event: ServiceEventVM; onPress: () =>
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
+  source: { flexDirection: 'row' },
   dropdown: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -1,25 +1,13 @@
-import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { he } from '@/i18n/he';
 import { AppText, Badge, colors, directionalIcons, Icon, IconButton, radii, spacing } from '@/ui';
 
 import { formatDate, formatKm } from './format';
+import { ProfileItemSheet } from './ProfileItemSheet';
 import type { ProfileCompletion, ProfileItem, ProfileItemKey } from './profileCompletion';
 import type { VehicleSummary } from './types';
-
-/** Where each item is completed. */
-function hrefFor(key: ProfileItemKey, vehicleId: string): string {
-  switch (key) {
-    case 'schedule':
-      return '/maintenance';
-    case 'pressure':
-      return `/vehicle/${vehicleId}/specification`;
-    default:
-      // Test, insurance and the photo are on the vehicle screen.
-      return `/vehicle/${vehicleId}`;
-  }
-}
 
 function itemText(item: ProfileItem, v: VehicleSummary): { title: string; detail: string } {
   const t = he.profile.items;
@@ -58,21 +46,30 @@ export function ProfileCompletionCard({
   vehicle,
   completion,
   onHide,
+  showTitle = true,
 }: {
   vehicle: VehicleSummary;
   completion: ProfileCompletion;
-  onHide: () => void;
+  /** Absent: no "hide" link (the profile screen). */
+  onHide?: () => void;
+  /** False when the screen's own header already says "השלמת פרופיל הרכב". */
+  showTitle?: boolean;
 }) {
-  const router = useRouter();
   const p = he.profile;
+  /** The item whose window is open (completed in place, never by leaving the screen). */
+  const [open, setOpen] = useState<ProfileItemKey | null>(null);
   let step = 0;
   return (
     <View style={styles.card} testID="profile-card">
       <View style={styles.head}>
         <View style={styles.headRow}>
-          <AppText variant="heading" accessibilityRole="header">
-            {p.title}
-          </AppText>
+          {showTitle ? (
+            <AppText variant="heading" accessibilityRole="header">
+              {p.title}
+            </AppText>
+          ) : (
+            <View />
+          )}
           <AppText variant="bodyStrong" color="primary" testID="profile-card-percent">
             {p.percent(completion.percent)}
           </AppText>
@@ -128,7 +125,7 @@ export function ProfileCompletionCard({
           <Pressable
             key={item.key}
             testID={`profile-item-${item.key}`}
-            onPress={() => router.push(hrefFor(item.key, vehicle.id) as never)}
+            onPress={() => setOpen(item.key)}
             accessibilityRole="button"
             style={({ pressed }) => [styles.row, pressed ? styles.pressed : null]}
           >
@@ -141,17 +138,20 @@ export function ProfileCompletionCard({
         <AppText variant="caption" color="textMuted">
           {p.later}
         </AppText>
-        <Pressable
-          testID="profile-card-hide"
-          onPress={onHide}
-          accessibilityRole="button"
-          hitSlop={8}
-        >
-          <AppText variant="caption" color="primary">
-            {p.hide}
-          </AppText>
-        </Pressable>
+        {onHide ? (
+          <Pressable
+            testID="profile-card-hide"
+            onPress={onHide}
+            accessibilityRole="button"
+            hitSlop={8}
+          >
+            <AppText variant="caption" color="primary">
+              {p.hide}
+            </AppText>
+          </Pressable>
+        ) : null}
       </View>
+      <ProfileItemSheet item={open} vehicle={vehicle} onClose={() => setOpen(null)} />
     </View>
   );
 }

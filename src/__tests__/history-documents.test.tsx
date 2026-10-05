@@ -121,7 +121,7 @@ describe('history (T120, T121)', () => {
     const car = (await new ServiceRepository(world.db).list(world.car.id))[0];
     await open(`/service/${car.id}`, 'screen-service-detail');
     expect(screen.getByTestId('service-evidence')).toHaveTextContent(/מסמך מוסך/);
-    expect(screen.getByTestId('service-evidence')).toHaveTextContent(/אושר מתוך מסמך/);
+    expect(screen.getByTestId('service-evidence')).toHaveTextContent(/מסמך \/ תמונה/);
     expect(screen.getByText('שמן מנוע')).toBeOnTheScreen();
     expect(screen.getByText('שטיפה')).toBeOnTheScreen();
     await fireEvent.press(screen.getByText('חשבונית'));
@@ -139,8 +139,9 @@ describe('documents (T122–T125)', () => {
     });
     expect(doc.original.storageKey).toMatch(/^originals\//);
     const group = screen.getByTestId('documents-group-owners_manual');
-    expect(group).toHaveTextContent(/דיווח משתמש/);
-    expect(group).toHaveTextContent(/חסר מידע/);
+    // The list shows the document's name only (owner decision 2026-10-05).
+    expect(group).toHaveTextContent(/ספר בעלים/);
+    expect(group).not.toHaveTextContent(/חסר מידע|דיווח משתמש/);
     // The motorcycle's professional schedule stays unavailable; the upload changes nothing there.
     expect(await new ScheduleRepository(world.db).current(world.car.id)).not.toBeNull();
     expect(await new ScheduleRepository(world.db).current(world.moto.id)).toBeNull();

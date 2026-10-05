@@ -206,23 +206,25 @@ function PlanActions({ onUpload }: { onUpload: (from: 'file' | 'camera') => void
 }
 
 /** Uploads a maintenance booklet for the vehicle (stored privately, owner-confirmed). */
-function useBookletUpload(vehicleId: string) {
+export function useBookletUpload(vehicleId: string) {
   const { isDemoData, addDocument, registerMaintenanceBooklet } = useAppData();
   const [problem, setProblem] = useState<string | null>(null);
   const services = isDemoData ? null : onboardingServices();
   /** A file (PDF / photo) from the device, or a page photographed now from the booklet. */
-  const upload = async (from: 'file' | 'camera' = 'file') => {
-    if (!services) return;
+  /** Resolves true once a document was stored and queued for reading. */
+  const upload = async (from: 'file' | 'camera' = 'file'): Promise<boolean> => {
+    if (!services) return false;
     setProblem(null);
     const r =
       from === 'camera'
         ? await services.acquisition.captureWithCamera()
         : await services.acquisition.pickDocument();
-    if (r.status === 'cancelled') return;
+    if (r.status === 'cancelled') return false;
     if (r.status !== 'acquired') {
-      return setProblem(
+      setProblem(
         r.status === 'rejected' ? he.onboarding.fileRejected : he.states.genericErrorTitle,
       );
+      return false;
     }
     const documentId = newLocalId('doc');
     addDocument(
@@ -235,6 +237,7 @@ function useBookletUpload(vehicleId: string) {
       'maintenance_schedule',
     );
     registerMaintenanceBooklet(vehicleId, documentId);
+    return true;
   };
   return { upload, problem, available: services !== null };
 }

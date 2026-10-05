@@ -63,6 +63,8 @@ export default function OnboardingOdometer() {
     );
     setActiveVehicleId(id);
     router.dismissTo('/');
+    // Straight to "השלמת פרופיל הרכב" (owner decision 2026-10-05); Home is right behind it.
+    router.push(`/vehicle/${id}/profile`);
   };
 
   return (

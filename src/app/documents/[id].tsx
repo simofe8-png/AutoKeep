@@ -6,7 +6,6 @@ import { useAppData, type OriginalView } from '@/features/data/DataContext';
 import { documentIcon } from '@/features/documents/icons';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { VehicleTargetBanner } from '@/features/vehicles/ActiveVehicleBar';
-import { formatDate } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -124,9 +123,6 @@ export default function DocumentDetailScreen() {
               tone="neutral"
             />
           </Row>
-          <AppText variant="caption" color="textMuted">
-            {he.documents.addedAt}: {formatDate(doc.addedAt)}
-          </AppText>
           <Button
             testID="document-open-original"
             label={he.documents.openOriginal}

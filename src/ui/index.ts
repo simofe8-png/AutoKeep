@@ -5,6 +5,7 @@ export * from './components/Button';
 export * from './components/Card';
 export * from './components/Checkbox';
 export * from './components/Dialog';
+export * from './components/Sheet';
 export * from './components/Icon';
 export * from './components/IconButton';
 export * from './components/Layout';

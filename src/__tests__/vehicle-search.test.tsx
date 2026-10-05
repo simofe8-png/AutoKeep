@@ -196,6 +196,11 @@ describe('Add Vehicle = "חיפוש רכב"', () => {
     await waitFor(() => expect(screen.getByTestId('screen-onboarding-odometer')).toBeOnTheScreen());
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '100000');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
+    // After the odometer: "השלמת פרופיל הרכב" (owner decision 2026-10-05), then Home.
+    await waitFor(() => expect(screen.getByTestId('screen-vehicle-profile')).toBeOnTheScreen(), {
+      timeout: 10000,
+    });
+    await fireEvent.press(screen.getByTestId('profile-screen-continue'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
 
     const [v] = await new VehicleRepository(db).list();

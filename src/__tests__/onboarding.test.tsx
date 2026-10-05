@@ -36,6 +36,11 @@ describe('onboarding flow (mock scenarios)', () => {
     expect(screen.getByTestId('odometer-continue')).toBeDisabled();
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '42,300');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
+    // After the odometer: "השלמת פרופיל הרכב" (owner decision 2026-10-05), then Home.
+    await waitFor(() => expect(screen.getByTestId('screen-vehicle-profile')).toBeOnTheScreen(), {
+      timeout: 10000,
+    });
+    await fireEvent.press(screen.getByTestId('profile-screen-continue'));
 
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen());
     expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/מאזדה 3/);
@@ -84,6 +89,11 @@ describe('onboarding flow (mock scenarios)', () => {
     await fireEvent.press(screen.getByTestId('confirm-details'));
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '1000');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
+    // After the odometer: "השלמת פרופיל הרכב" (owner decision 2026-10-05), then Home.
+    await waitFor(() => expect(screen.getByTestId('screen-vehicle-profile')).toBeOnTheScreen(), {
+      timeout: 10000,
+    });
+    await fireEvent.press(screen.getByTestId('profile-screen-continue'));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
     expect(screen.queryByTestId('next-service-summary')).toBeNull();
   }, 30000);

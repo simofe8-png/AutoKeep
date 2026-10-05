@@ -143,6 +143,21 @@ export default function HomeScreen() {
           />
         ) : completion.complete && cardState !== 'done' ? (
           <ProfileDoneCard onClose={() => setProfileCard(activeVehicle.id, 'done')} />
+        ) : !completion.complete ? (
+          // The card is hidden but something required is missing: a short note to complete it.
+          <StatusCard
+            testID="profile-missing"
+            tone="warning"
+            icon="clipboard-alert-outline"
+            title={he.profile.missingTitle(
+              completion.items
+                .filter((i) => i.required && !i.done)
+                .map((i) => he.profile.items[i.key].title)
+                .join(', '),
+            )}
+            subtitle={he.profile.missingAction}
+            onPress={() => router.push(`/vehicle/${activeVehicle.id}/profile`)}
+          />
         ) : null}
 
         {urgent ? (

@@ -90,7 +90,9 @@ export default function ServiceDetailScreen() {
       <Card testID="service-evidence">
         <SectionHeader title={he.history.evidence} />
         <Row style={styles.wrap}>
-          <VerificationBadge state={event.verification} />
+          {event.verification === 'verified' ? (
+            <VerificationBadge state={event.verification} />
+          ) : null}
           <Badge label={he.authority[event.sourceAuthority]} tone="neutral" />
           <Badge label={he.history.origin[event.origin]} tone="info" />
         </Row>

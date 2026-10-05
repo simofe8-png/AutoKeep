@@ -64,46 +64,30 @@ const home = async () => {
   await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
 };
 
-describe('השלמת פרופיל הרכב', () => {
-  it('shows the open items in order with the percentage; an item opens its screen', async () => {
+describe('השלמת פרופיל הרכב — windows', () => {
+  it('tyre pressures and insurance are entered in their windows on Home', async () => {
     await home();
     await waitFor(() => expect(screen.getByTestId('profile-card')).toBeOnTheScreen(), LONG);
-    // details + odometer of 5 required (no registry test here: the test is an item).
-    expect(screen.getByTestId('profile-card-percent')).toHaveTextContent('40%');
-    expect(screen.getByTestId('profile-item-details-done')).toBeOnTheScreen();
-    expect(screen.getByTestId('profile-item-schedule')).toHaveTextContent(
-      /1.*לוח טיפולים.*הכי חשוב/,
-    );
-    expect(screen.getByTestId('profile-item-photo')).toHaveTextContent(/רשות/);
-    expect(screen.queryByTestId('schedule-unavailable')).toBeNull();
-    // The item opens a window on the same screen (owner decision 2026-10-05): the table is
-    // entered there, and the item is done when it is saved.
-    await fireEvent.press(screen.getByTestId('profile-item-schedule'));
+    await fireEvent.press(screen.getByTestId('profile-item-pressure'));
     await waitFor(() => expect(screen.getByTestId('profile-sheet')).toBeOnTheScreen(), LONG);
-    expect(screen.getByTestId('profile-schedule-photo')).toBeOnTheScreen();
-    expect(screen.getByTestId('profile-schedule-file')).toBeOnTheScreen();
-    await fireEvent.press(screen.getByTestId('profile-schedule-manual'));
-    await fireEvent.changeText(screen.getByTestId('manual-row-0-title'), 'שמן מנוע ומסנן שמן');
-    await fireEvent.changeText(screen.getByTestId('manual-row-0-km'), '15000');
-    await fireEvent.press(screen.getByTestId('manual-table-save'));
+    await fireEvent.changeText(screen.getByTestId('profile-pressure-front'), '2.3');
+    await fireEvent.changeText(screen.getByTestId('profile-pressure-rear'), '2.1');
+    await fireEvent.press(screen.getByTestId('profile-pressure-save'));
     await waitFor(
-      () => expect(screen.getByTestId('profile-item-schedule-done')).toBeOnTheScreen(),
+      () =>
+        expect(screen.getByTestId('profile-item-pressure-done')).toHaveTextContent(/2.3 \/ 2.1/),
       LONG,
     );
-    expect(screen.getByTestId('profile-card-percent')).toHaveTextContent('60%');
-    expect(screen.getByTestId('screen-home')).toBeOnTheScreen();
-  }, 60000);
-
-  it('hide is remembered', async () => {
-    await home();
-    await waitFor(() => expect(screen.getByTestId('profile-card')).toBeOnTheScreen(), LONG);
-    await fireEvent.press(screen.getByTestId('profile-card-hide'));
-    await waitFor(() => expect(screen.queryByTestId('profile-card')).toBeNull(), LONG);
-    // Hidden, but required items are missing: a short note on Home.
-    expect(screen.getByTestId('profile-missing')).toHaveTextContent(/חסר: לוח טיפולים, טסט, ביטוח/);
-    // Stored on the device: it stays hidden after a restart.
-    await waitFor(async () =>
-      expect((await store.snapshot()).profileCard[vehicleId]).toBe('hidden'),
+    await fireEvent.press(screen.getByTestId('profile-item-insurance'));
+    await waitFor(() =>
+      expect(screen.getByTestId('profile-insurance-compulsory')).toBeOnTheScreen(),
     );
+    await fireEvent.changeText(screen.getByTestId('profile-insurance-compulsory'), '31.8.2027');
+    await fireEvent.press(screen.getByTestId('profile-insurance-save'));
+    await waitFor(
+      () => expect(screen.getByTestId('profile-item-insurance-done')).toHaveTextContent(/31/),
+      LONG,
+    );
+    expect(screen.getByTestId('screen-home')).toBeOnTheScreen();
   }, 60000);
 });

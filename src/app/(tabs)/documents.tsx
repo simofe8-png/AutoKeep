@@ -9,7 +9,6 @@ import { documentIcon } from '@/features/documents/icons';
 import { useOpenDocument } from '@/features/documents/useOpenDocument';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { joinParts } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import {
@@ -223,15 +222,6 @@ export default function DocumentsScreen() {
                     <View style={styles.docText}>
                       <AppText variant="heading" numberOfLines={2}>
                         {d.title}
-                      </AppText>
-                      <AppText variant="small" color="textSecondary">
-                        {joinParts([
-                          he.documents.kindShort[d.kind],
-                          d.pages ? he.documents.pages(d.pages) : null,
-                        ])}
-                      </AppText>
-                      <AppText variant="caption" color="textMuted">
-                        {`${he.authority[d.authority]} · ${verificationLabel(d.verification)}`}
                       </AppText>
                     </View>
                     <IconCircle icon={documentIcon[d.kind]} tone={docTone[d.kind]} size={48} />

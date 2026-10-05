@@ -104,6 +104,11 @@ describe('real local data behind the approved UI', () => {
     await waitFor(() => expect(screen.getByTestId('screen-onboarding-odometer')).toBeOnTheScreen());
     await fireEvent.changeText(screen.getByTestId('input-odometer'), '84,250');
     await fireEvent.press(screen.getByTestId('odometer-continue'));
+    // After the odometer: "השלמת פרופיל הרכב" (owner decision 2026-10-05), then Home.
+    await waitFor(() => expect(screen.getByTestId('screen-vehicle-profile')).toBeOnTheScreen(), {
+      timeout: 10000,
+    });
+    await fireEvent.press(screen.getByTestId('profile-screen-continue'));
 
     // The vehicle is added at once: AutoKeep does not search for a schedule (owner decision
     // 2026-10-04).
