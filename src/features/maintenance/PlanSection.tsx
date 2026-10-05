@@ -207,7 +207,7 @@ function PlanActions({ onUpload }: { onUpload: (from: 'file' | 'camera') => void
 
 /** Uploads a maintenance booklet for the vehicle (stored privately, owner-confirmed). */
 function useBookletUpload(vehicleId: string) {
-  const { isDemoData, addDocument, registerMaintenanceBooklet, today } = useAppData();
+  const { isDemoData, addDocument, registerMaintenanceBooklet } = useAppData();
   const [problem, setProblem] = useState<string | null>(null);
   const services = isDemoData ? null : onboardingServices();
   /** A file (PDF / photo) from the device, or a page photographed now from the booklet. */
@@ -230,10 +230,7 @@ function useBookletUpload(vehicleId: string) {
       {
         documentId,
         file: r.file,
-        title: he.documents.uploadTitle(
-          he.documents.kinds.maintenance_schedule,
-          formatDate(today()),
-        ),
+        title: he.documents.kinds.maintenance_schedule,
       },
       'maintenance_schedule',
     );

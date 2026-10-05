@@ -19,7 +19,15 @@ import type { SourceAuthority, VerificationRecord } from './provenance';
  */
 
 export type DocumentKind =
-  'owners_manual' | 'maintenance_schedule' | 'invoice' | 'registration' | 'other';
+  | 'owners_manual'
+  | 'maintenance_schedule'
+  | 'invoice'
+  | 'registration'
+  /** ביטוח חובה (owner decision 2026-10-05). */
+  | 'insurance_compulsory'
+  /** ביטוח מקיף / צד ג׳. */
+  | 'insurance_other'
+  | 'other';
 
 export type DocumentOrigin = 'user_upload' | 'camera_scan' | 'source_discovery';
 

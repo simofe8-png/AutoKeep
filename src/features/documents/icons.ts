@@ -6,5 +6,7 @@ export const documentIcon: Record<DocumentKind, IconName> = {
   maintenance_schedule: 'calendar-check-outline',
   invoice: 'receipt',
   registration: 'card-account-details-outline',
+  insurance_compulsory: 'shield-car',
+  insurance_other: 'shield-check-outline',
   other: 'file-outline',
 };

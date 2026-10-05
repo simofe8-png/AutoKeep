@@ -9,7 +9,7 @@ import { documentIcon } from '@/features/documents/icons';
 import { useOpenDocument } from '@/features/documents/useOpenDocument';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
-import { formatDate, joinParts } from '@/features/vehicles/format';
+import { joinParts } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import {
@@ -28,6 +28,7 @@ import {
   Stack,
   UnderlineTabs,
   verificationLabel,
+  TextField,
   type StatusTone,
 } from '@/ui';
 
@@ -36,6 +37,8 @@ const KIND_ORDER: DocumentKind[] = [
   'maintenance_schedule',
   'invoice',
   'registration',
+  'insurance_compulsory',
+  'insurance_other',
   'other',
 ];
 
@@ -44,6 +47,8 @@ const docTone: Record<DocumentKind, StatusTone> = {
   maintenance_schedule: 'success',
   invoice: 'danger',
   registration: 'info',
+  insurance_compulsory: 'success',
+  insurance_other: 'success',
   other: 'neutral',
 };
 
@@ -57,9 +62,15 @@ export default function DocumentsScreen() {
   const { activeVehicle } = useActiveVehicle();
   const { documents } = useVehicleData(activeVehicle?.id ?? null);
   const [uploadInfo, setUploadInfo] = useState(false);
-  const { isDemoData, addDocument, today } = useAppData();
+  const { isDemoData, addDocument } = useAppData();
   const services = isDemoData ? null : onboardingServices();
   const [picked, setPicked] = useState<AcquiredFile | null>(null);
+  /** "Other" chosen: the owner types the document's title (null = the kind list). */
+  const [customTitle, setCustomTitle] = useState<string | null>(null);
+  const closePicked = () => {
+    setPicked(null);
+    setCustomTitle(null);
+  };
   const [problem, setProblem] = useState<string | null>(null);
   const { open, problem: openProblem } = useOpenDocument();
 
@@ -77,19 +88,13 @@ export default function DocumentsScreen() {
     setPicked(r.file);
   };
 
-  const save = (kind: DocumentKind) => {
+  /** The title is the kind's name, or the owner's own title for "other" (no upload date). */
+  const save = (kind: DocumentKind, title: string = he.documents.kinds[kind]) => {
     if (!picked || !activeVehicle) return;
-    addDocument(
-      activeVehicle.id,
-      {
-        documentId: newLocalId('doc'),
-        file: picked,
-        title: he.documents.uploadTitle(he.documents.kinds[kind], formatDate(today())),
-      },
-      kind,
-    );
-    setPicked(null);
+    addDocument(activeVehicle.id, { documentId: newLocalId('doc'), file: picked, title }, kind);
+    closePicked();
   };
+  const customReady = (customTitle ?? '').trim().length > 0;
 
   const [filter, setFilter] = useState<'all' | DocumentKind>('all');
   const kindsPresent = KIND_ORDER.filter((k) => documents.some((d) => d.kind === k));
@@ -122,22 +127,46 @@ export default function DocumentsScreen() {
         testID="documents-kind-dialog"
         title={he.documents.chooseKind}
         message={he.documents.uploadedNote}
-        confirmLabel={he.common.cancel}
-        onConfirm={() => setPicked(null)}
-        cancelLabel={he.common.close}
-        onCancel={() => setPicked(null)}
+        {...(customTitle === null
+          ? {
+              confirmLabel: he.common.cancel,
+              onConfirm: closePicked,
+              cancelLabel: he.common.close,
+              onCancel: closePicked,
+            }
+          : {
+              confirmLabel: he.documents.save,
+              confirmDisabled: !customReady,
+              onConfirm: () => {
+                if (customReady) save('other', (customTitle ?? '').trim());
+              },
+              cancelLabel: he.documents.back,
+              onCancel: () => setCustomTitle(null),
+            })}
       >
-        <Stack gap={0}>
-          {KIND_ORDER.map((kind) => (
-            <ListRow
-              key={kind}
-              testID={`documents-kind-${kind}`}
-              icon={documentIcon[kind]}
-              title={he.documents.kinds[kind]}
-              onPress={() => save(kind)}
-            />
-          ))}
-        </Stack>
+        {customTitle === null ? (
+          <Stack gap={0}>
+            {KIND_ORDER.map((kind) => (
+              <ListRow
+                key={kind}
+                testID={`documents-kind-${kind}`}
+                icon={documentIcon[kind]}
+                title={he.documents.kinds[kind]}
+                onPress={() => (kind === 'other' ? setCustomTitle('') : save(kind))}
+              />
+            ))}
+          </Stack>
+        ) : (
+          <TextField
+            testID="documents-custom-title"
+            label={he.documents.customTitleLabel}
+            value={customTitle}
+            onChangeText={setCustomTitle}
+            placeholder={he.documents.customTitlePlaceholder}
+            maxLength={80}
+            required
+          />
+        )}
       </Dialog>
       {documents.length === 0 ? (
         <EmptyState icon="file-document-multiple-outline" title={he.documents.empty} />
@@ -180,7 +209,7 @@ export default function DocumentsScreen() {
                       </AppText>
                       <AppText variant="small" color="textSecondary">
                         {joinParts([
-                          formatDate(d.addedAt),
+                          he.documents.kindShort[d.kind],
                           d.pages ? he.documents.pages(d.pages) : null,
                         ])}
                       </AppText>

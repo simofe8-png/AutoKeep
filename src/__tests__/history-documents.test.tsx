@@ -146,6 +146,42 @@ describe('documents (T122–T125)', () => {
     expect(await new ScheduleRepository(world.db).current(world.moto.id)).toBeNull();
   }, 30000);
 
+  it('titles have no upload date; insurance kinds; the other kind takes the owner title', async () => {
+    const manual = await uploadManual();
+    expect(manual.title).toBe('ספר בעלים');
+    // Compulsory insurance is a kind of its own.
+    await fireEvent.press(screen.getByTestId('documents-upload'));
+    await waitFor(() => expect(screen.getByTestId('documents-kind-dialog')).toBeOnTheScreen());
+    expect(screen.getByTestId('documents-kind-insurance_other')).toHaveTextContent(
+      /ביטוח מקיף \/ צד ג׳/,
+    );
+    await fireEvent.press(screen.getByTestId('documents-kind-insurance_compulsory'));
+    await waitFor(() =>
+      expect(screen.getByTestId('documents-group-insurance_compulsory')).toBeOnTheScreen(),
+    );
+    // "Other": the owner names it; save stays disabled until a title is typed.
+    await fireEvent.press(screen.getByTestId('documents-upload'));
+    await waitFor(() => expect(screen.getByTestId('documents-kind-other')).toBeOnTheScreen());
+    await fireEvent.press(screen.getByTestId('documents-kind-other'));
+    expect(screen.getByTestId('documents-kind-dialog-confirm')).toBeDisabled();
+    await fireEvent.changeText(screen.getByTestId('documents-custom-title'), ' אישור טסט 2026 ');
+    await fireEvent.press(screen.getByTestId('documents-kind-dialog-confirm'));
+    await waitFor(() => expect(screen.getByTestId('documents-group-other')).toBeOnTheScreen());
+    const docs = await new DocumentRepository(world.db).list(world.car.id);
+    expect(
+      docs
+        .filter((d) => d.kind !== 'invoice')
+        .map((d) => [d.kind, d.title])
+        .sort(),
+    ).toEqual(
+      [
+        ['insurance_compulsory', 'ביטוח חובה'],
+        ['other', 'אישור טסט 2026'],
+        ['owners_manual', 'ספר בעלים'],
+      ].sort(),
+    );
+  }, 30000);
+
   it('the original is re-verified: intact, opened through the system viewer, tamper detected', async () => {
     const doc = await uploadManual();
     await open(`/documents/${doc.id}`, 'screen-document-detail');

@@ -143,6 +143,35 @@ describe('מפרט הרכב', () => {
     expect(screen.getAllByText(/^הערה:/)).toHaveLength(1);
   }, 60000);
 
+  it('Home: tyre pressures under the plate; tap to add when not entered', async () => {
+    const view = await renderRouter('./src/app', { initialUrl: '/' });
+    await waitFor(
+      () => expect(screen.getByTestId('vehicle-tire-pressure')).toBeOnTheScreen(),
+      LONG,
+    );
+    expect(screen.getByTestId('vehicle-tire-pressure-text')).toHaveTextContent(
+      'לחץ אוויר: לא הוזן — הקישו להוספה',
+    );
+    view.unmount();
+    await new VehicleSpecRepository(db).save(
+      vehicleId as never,
+      {
+        ...(await new VehicleSpecRepository(db).get(vehicleId as never)),
+        tirePressureFront: '2.3',
+        tirePressureRear: '2.1',
+      },
+      clock.now(),
+    );
+    await renderRouter('./src/app', { initialUrl: '/' });
+    await waitFor(
+      () =>
+        expect(screen.getByTestId('vehicle-tire-pressure-text')).toHaveTextContent(
+          'לחץ אוויר: קדמי 2.3 · אחורי 2.1',
+        ),
+      LONG,
+    );
+  }, 60000);
+
   it('both in Garage Mode', async () => {
     await seedSpec();
     await renderRouter('./src/app', { initialUrl: '/garage' });

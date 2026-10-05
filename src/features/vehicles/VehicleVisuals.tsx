@@ -15,6 +15,7 @@ import {
 } from '@/ui';
 
 import { vehicleDisplayName, type VehicleSummary } from './types';
+import { TirePressureLine } from './TirePressureLine';
 import { VehicleExpiryLines } from './VehicleDates';
 import { useVehicleImage } from './vehicleImage';
 
@@ -255,6 +256,7 @@ export function VehicleHero({ vehicle }: { vehicle: VehicleSummary }) {
         <View style={styles.heroPlate}>
           <PlateBadge number={vehicle.registration} size="md" />
         </View>
+        <TirePressureLine vehicle={vehicle} />
         <VehicleExpiryLines vehicle={vehicle} />
       </View>
     </View>
