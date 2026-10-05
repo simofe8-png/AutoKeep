@@ -50,7 +50,8 @@ Run from the project root. Each step must pass before the next one.
 
 ## History
 
-| versionCode | Commit    | EAS build                              | Track            | Result                                                                                                        |
-| ----------- | --------- | -------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------- |
-| 2           | `bec73cd` | (2026-10-01)                           | Internal testing | uploaded by the owner                                                                                         |
-| 3           | `ea2cd93` | `4f2bff7a-8e4e-4690-8218-e495b472db43` | Internal testing | released (completed) 2026-10-05 via EAS Submit `f06979e2-3b3f-42ca-ba1c-a8b9d8279c31`; production track empty |
+| versionCode | Commit    | EAS build                              | Track            | Result                                                                                                                          |
+| ----------- | --------- | -------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| 2           | `bec73cd` | (2026-10-01)                           | Internal testing | uploaded by the owner                                                                                                           |
+| 3           | `ea2cd93` | `4f2bff7a-8e4e-4690-8218-e495b472db43` | Internal testing | released (completed) 2026-10-05 via EAS Submit `f06979e2-3b3f-42ca-ba1c-a8b9d8279c31`; production track empty                   |
+| 4           | `6ebf064` | `c890d971-c702-4c98-b59a-12943b3e80a4` | Internal testing | released (completed) 2026-10-05 via EAS Submit `18bcfb9b-83d9-4783-83ed-9ffa423e9670`; sha256 95af9270…; production track empty |
