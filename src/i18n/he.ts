@@ -108,10 +108,10 @@ export const he = {
   /** "מפרט הרכב": oil, fluids and tyres as the owner enters them (owner decision 2026-10-05). */
   vehicleSpec: {
     title: 'מפרט הרכב',
-    rowSubtitle: 'שמן, נוזלים, צמיגים',
-    rowEmpty: 'שמן, נוזלים, צמיגים — הקישו להוספה',
+    rowSubtitle: 'שמן, נוזלים, לחץ אוויר',
+    rowEmpty: 'שמן, נוזלים, לחץ אוויר — הקישו להוספה',
     intro: 'רשמו את הנתונים כפי שהם מופיעים בספר הרכב. הם יוצגו ליד הטיפול המתאים ובמצב מוסך.',
-    groups: { oil: 'שמן מנוע', fluids: 'נוזלים', tires: 'צמיגים', notes: 'הערות' },
+    groups: { oil: 'שמן מנוע', fluids: 'נוזלים', tires: 'לחץ אוויר בצמיגים', notes: 'הערות' },
     fields: {
       oilViscosity: 'צמיגות',
       oilStandard: 'תקן יצרן',

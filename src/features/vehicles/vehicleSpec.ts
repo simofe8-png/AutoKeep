@@ -22,7 +22,8 @@ export const SPEC_GROUPS: readonly {
 }[] = [
   { key: 'oil', fields: ['oilViscosity', 'oilStandard', 'oilCapacity'] },
   { key: 'fluids', fields: ['coolant', 'brakeFluid', 'transmissionOil'] },
-  { key: 'tires', fields: ['tireSize', 'tirePressureFront', 'tirePressureRear'] },
+  // Tyre sizes come from the registry (vehicle details), so only the pressures are entered here.
+  { key: 'tires', fields: ['tirePressureFront', 'tirePressureRear'] },
   { key: 'notes', fields: ['notes'] },
 ];
 
@@ -75,7 +76,6 @@ export function specChips(spec: VehicleSpec | undefined): { label: string; value
     [s.coolant, spec.coolant],
     [s.brakeFluid, spec.brakeFluid],
     [s.transmissionOil, spec.transmissionOil],
-    [s.tires, spec.tireSize],
     [s.pressure, tirePressure(spec)],
   ];
   return rows
