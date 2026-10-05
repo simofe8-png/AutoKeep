@@ -37,7 +37,8 @@
     "production": {
       "android": {
         "track": "internal",
-        "releaseStatus": "completed"
+        "releaseStatus": "completed",
+        "serviceAccountKeyPath": "C:/Users/משייה/.autokeep/play-service-account.json"
       }
     }
   }

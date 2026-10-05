@@ -53,3 +53,8 @@ coverage/
 # supabase local
 supabase/.temp/
 supabase/.branches/
+
+# Google Play service-account keys: never in Git (kept in ~/.autokeep, outside the repo).
+*service-account*.json
+play-service-account*.json
+google-play-*.json
