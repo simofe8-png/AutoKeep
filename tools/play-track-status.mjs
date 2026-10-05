@@ -5,6 +5,7 @@
 import { readFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
+import { Buffer } from 'node:buffer';
 import { createSign } from 'node:crypto';
 
 const PACKAGE = 'com.moshenahum.autokeep';
