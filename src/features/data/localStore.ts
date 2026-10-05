@@ -734,6 +734,15 @@ export class LocalStore {
    * in one transaction; the stored original files are removed only after that succeeded, so a
    * failure never leaves records pointing at deleted files.
    */
+  /** Deletes one document: the record first, then its stored original. */
+  async deleteDocument(vehicleId: string, id: string): Promise<void> {
+    const repo = new DocumentRepository(this.db);
+    const doc = await repo.get(vehicleId as VehicleId, id as VehicleDocument['id']);
+    if (!doc) return;
+    await repo.remove(vehicleId as VehicleId, doc.id);
+    if (this.files) await this.files.remove(doc.original.storageKey).catch(() => undefined);
+  }
+
   async deleteVehicle(id: string): Promise<void> {
     await this.removeVehiclePhoto(id);
     const docs = await new DocumentRepository(this.db).list(id as VehicleId);

@@ -117,6 +117,8 @@ export interface AppDataValue {
   archiveVehicle: (vehicleId: string) => void;
   restoreVehicle: (vehicleId: string) => void;
   deleteVehicle: (vehicleId: string) => void;
+  /** Deletes one of the vehicle's documents and its stored original. */
+  deleteDocument: (vehicleId: string, documentId: string) => void;
   deletionPreview: (vehicleId: string) => Promise<DeletionPreviewVM>;
   updateOdometer: (vehicleId: string, km: number, measuredAt: string) => void;
   /** Explicit user confirmation: stores the record (and its original document) atomically. */

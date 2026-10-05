@@ -341,6 +341,7 @@ export function LocalDataProvider({
       archiveVehicle: (id) => write((s) => s.archiveVehicle(id)),
       restoreVehicle: (id) => write((s) => s.restoreVehicle(id)),
       deleteVehicle: (id) => write((s) => s.deleteVehicle(id)),
+      deleteDocument: (vid, id) => write((s) => s.deleteDocument(vid, id)),
       deletionPreview: (id) =>
         runtime.read((s) => s.deletionPreview(id), {
           serviceEvents: 0,

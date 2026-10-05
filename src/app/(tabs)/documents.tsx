@@ -19,6 +19,7 @@ import {
   Dialog,
   DocumentThumb,
   EmptyState,
+  IconButton,
   IconCircle,
   InlineNotice,
   ListRow,
@@ -62,7 +63,9 @@ export default function DocumentsScreen() {
   const { activeVehicle } = useActiveVehicle();
   const { documents } = useVehicleData(activeVehicle?.id ?? null);
   const [uploadInfo, setUploadInfo] = useState(false);
-  const { isDemoData, addDocument } = useAppData();
+  const { isDemoData, addDocument, deleteDocument } = useAppData();
+  /** The document awaiting "are you sure?" before deletion. */
+  const [toDelete, setToDelete] = useState<{ id: string; title: string } | null>(null);
   const services = isDemoData ? null : onboardingServices();
   const [picked, setPicked] = useState<AcquiredFile | null>(null);
   /** "Other" chosen: the owner types the document's title (null = the kind list). */
@@ -168,6 +171,20 @@ export default function DocumentsScreen() {
           />
         )}
       </Dialog>
+      <Dialog
+        visible={toDelete !== null}
+        testID="documents-delete-dialog"
+        destructive
+        title={he.documents.deleteTitle}
+        message={toDelete ? he.documents.deleteBody(toDelete.title) : ''}
+        confirmLabel={he.documents.yes}
+        cancelLabel={he.common.cancel}
+        onCancel={() => setToDelete(null)}
+        onConfirm={() => {
+          if (toDelete && activeVehicle) deleteDocument(activeVehicle.id, toDelete.id);
+          setToDelete(null);
+        }}
+      />
       {documents.length === 0 ? (
         <EmptyState icon="file-document-multiple-outline" title={he.documents.empty} />
       ) : (
@@ -218,6 +235,15 @@ export default function DocumentsScreen() {
                       </AppText>
                     </View>
                     <IconCircle icon={documentIcon[d.kind]} tone={docTone[d.kind]} size={48} />
+                    {!isDemoData ? (
+                      <IconButton
+                        testID={`document-${d.id}-delete`}
+                        icon="trash-can-outline"
+                        color="textMuted"
+                        accessibilityLabel={he.documents.delete}
+                        onPress={() => setToDelete({ id: d.id, title: d.title })}
+                      />
+                    ) : null}
                   </Pressable>
                 ))}
             </View>

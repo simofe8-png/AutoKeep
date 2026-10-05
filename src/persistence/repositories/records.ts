@@ -159,6 +159,14 @@ export class DocumentRepository {
     );
     return rows.map(toDocument);
   }
+
+  /**
+   * Deletes the owner's document (owner decision 2026-10-05). Its extractions and service links
+   * cascade; a service event or garage note that referenced it stays.
+   */
+  async remove(vehicleId: VehicleId, id: DocumentId): Promise<void> {
+    await this.db.run('DELETE FROM documents WHERE vehicle_id = ? AND id = ?', [vehicleId, id]);
+  }
 }
 
 interface ExtractionRow extends Meta {

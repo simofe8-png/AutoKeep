@@ -725,6 +725,11 @@ export const he = {
     },
     /** "Other": the owner names the document (owner decision 2026-10-05). */
     customTitleLabel: 'כותרת המסמך',
+    delete: 'מחיקת המסמך',
+    deleteTitle: 'האם אתה בטוח?',
+    deleteBody: (title: string) =>
+      `המסמך "${title}" יימחק מהמכשיר לצמיתות. לא ניתן לבטל. אם הוא מצורף לטיפול, הטיפול נשאר — רק המסמך נמחק.`,
+    yes: 'כן',
     customTitlePlaceholder: 'לדוגמה: אישור טסט, קבלת צמיגים',
     save: 'שמירה',
     back: 'חזרה',

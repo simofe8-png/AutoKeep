@@ -214,6 +214,7 @@ export function PrototypeDataProvider({
       archiveVehicle: (id) => setArchived(id, true),
       restoreVehicle: (id) => setArchived(id, false),
       deleteVehicle,
+      deleteDocument: () => undefined,
       updateOdometer,
       addServiceEvent,
       setAlertHandled,

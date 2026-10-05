@@ -182,6 +182,22 @@ describe('documents (T122–T125)', () => {
     );
   }, 30000);
 
+  it('a document can be deleted after "are you sure?"; cancel keeps it', async () => {
+    const doc = await uploadManual();
+    const repo = new DocumentRepository(world.db);
+    await fireEvent.press(screen.getByTestId(`document-${doc.id}-delete`));
+    await waitFor(() => expect(screen.getByTestId('documents-delete-dialog')).toBeOnTheScreen());
+    expect(screen.getByTestId('documents-delete-dialog')).toHaveTextContent(/ספר בעלים/);
+    await fireEvent.press(screen.getByTestId('documents-delete-dialog-cancel'));
+    expect(await repo.get(world.car.id, doc.id)).not.toBeNull();
+    await fireEvent.press(screen.getByTestId(`document-${doc.id}-delete`));
+    await fireEvent.press(screen.getByTestId('documents-delete-dialog-confirm'));
+    await waitFor(async () => expect(await repo.get(world.car.id, doc.id)).toBeNull(), LONG);
+    await waitFor(() => expect(screen.queryByTestId(`document-${doc.id}`)).toBeNull());
+    // The stored original is removed too.
+    expect(files.files.has(doc.original.storageKey)).toBe(false);
+  }, 30000);
+
   it('the original is re-verified: intact, opened through the system viewer, tamper detected', async () => {
     const doc = await uploadManual();
     await open(`/documents/${doc.id}`, 'screen-document-detail');
