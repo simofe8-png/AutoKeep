@@ -436,13 +436,14 @@ Evidence gives the concrete commands and results (or file references) proving th
 
 ## Owner-driven redirection (2026-10-04 → 2026-10-05, ADR-0021)
 
-| Task | Description                                                                        | Status | Evidence                                                                        |
-| ---- | ---------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------- |
-| OD1  | Remove automatic schedule search and automatic vehicle images                      | PASS   | `1082df7` and after; verify green                                               |
-| OD2  | Test and insurance dates on Home (v14)                                             | PASS   | vehicle-dates.test, expiry.test                                                 |
-| OD3  | Photographed booklet page read on the device (Tesseract heb+eng)                   | PASS   | hebrew.test (OCR path); headless check of the WebView                           |
-| OD4  | "לוח טיפולים תקופתי" table, counted from entry (v15, v16); importer button removed | PASS   | `d18bc69`; manual-schedule.test, manualSchedule.test                            |
-| OD5  | "מפרט הרכב" and a note per table row (v17, v18)                                    | PASS   | `e66b21a`; vehicle-spec.test, vehicleSpec.test; checked on the phone            |
-| OD6  | Vehicle deletion: filled-in plate + "are you sure" with the preview                | PASS   | `c2d6088`; lifecycle.test, prototype-e2e.test; checked on the phone (cancelled) |
-| OD7  | Picked vehicle photo drawn at once on Android                                      | PASS   | `9f76a65`; device: remove → pick → Home shows the photo                         |
-| OD8  | Bottom menu on secondary screens                                                   | PASS   | navigation.test (secondary menu → tab); device: vehicle management → תחזוקה     |
+| Task | Description                                                                        | Status | Evidence                                                                                                                               |
+| ---- | ---------------------------------------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| OD1  | Remove automatic schedule search and automatic vehicle images                      | PASS   | `1082df7` and after; verify green                                                                                                      |
+| OD2  | Test and insurance dates on Home (v14)                                             | PASS   | vehicle-dates.test, expiry.test                                                                                                        |
+| OD3  | Photographed booklet page read on the device (Tesseract heb+eng)                   | PASS   | hebrew.test (OCR path); headless check of the WebView                                                                                  |
+| OD4  | "לוח טיפולים תקופתי" table, counted from entry (v15, v16); importer button removed | PASS   | `d18bc69`; manual-schedule.test, manualSchedule.test                                                                                   |
+| OD5  | "מפרט הרכב" and a note per table row (v17, v18)                                    | PASS   | `e66b21a`; vehicle-spec.test, vehicleSpec.test; checked on the phone                                                                   |
+| OD6  | Vehicle deletion: filled-in plate + "are you sure" with the preview                | PASS   | `c2d6088`; lifecycle.test, prototype-e2e.test; checked on the phone (cancelled)                                                        |
+| OD7  | Picked vehicle photo drawn at once on Android                                      | PASS   | `9f76a65`; device: remove → pick → Home shows the photo                                                                                |
+| OD8  | Bottom menu on secondary screens                                                   | PASS   | navigation.test (secondary menu → tab); device: vehicle management → תחזוקה                                                            |
+| OD9  | Automated Google Play Internal testing release path; versionCode 3 released        | PASS   | EAS Submit `f06979e2`; `node tools/play-track-status.mjs internal` → [3, completed]; production empty; key never in Git (`.gitignore`) |
