@@ -1,11 +1,11 @@
 import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
 
-import { isoDate, type IsoDate, type Timestamp } from '@/domain';
+import { isoDate, type IsoDate, type ServiceTable, type Timestamp } from '@/domain';
 import { sequentialIds } from '@/domain/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
-import { ManualScheduleRepository, VehicleSpecRepository } from '@/persistence';
+import { ServiceTableRepository, VehicleSpecRepository } from '@/persistence';
 import { openTestDatabase, type TestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { MemoryFileStore } from '@/providers/storage/types';
 
@@ -32,6 +32,32 @@ const services: OnboardingServices = {
 };
 let db: TestDatabase;
 let vehicleId: string;
+/** The owner's table (SYNTHETIC): oil replaced, the belt checked, with its own note. */
+const TABLE: ServiceTable = {
+  kmStep: 15000,
+  monthsStep: 12,
+  columns: 2,
+  footnotes: [],
+  rows: [
+    {
+      id: 'r1',
+      group: 'מנוע',
+      title: 'שמן מנוע ומסנן שמן',
+      footnote: null,
+      cells: [['replace'], ['replace']],
+      rule: null,
+    },
+    {
+      id: 'r2',
+      group: 'מנוע',
+      title: 'רצועת אביזרים',
+      footnote: null,
+      cells: [['check'], ['check']],
+      rule: null,
+      note: 'מק״ט 6PK1050',
+    },
+  ],
+};
 
 beforeEach(async () => {
   db = await openTestDatabase();
@@ -48,23 +74,13 @@ beforeEach(async () => {
     archived: false,
   });
   await store.setActiveVehicle(vehicleId);
-  await store.saveManualSchedule(vehicleId, [
-    {
-      task: 'engine_oil',
-      action: 'replacement',
-      title: 'שמן מנוע ומסנן שמן',
-      intervalKm: 15000,
-      intervalMonths: 12,
-    },
-    {
-      task: 'custom',
-      action: 'replacement',
-      title: 'רצועת אביזרים',
-      intervalKm: 60000,
-      intervalMonths: null,
-      note: 'מק״ט 6PK1050',
-    },
-  ]);
+  await store.saveServiceTable(vehicleId, {
+    table: TABLE,
+    status: 'confirmed',
+    source: 'manual',
+    documentId: null,
+    unsure: [],
+  });
   configureDataSource({
     kind: 'local',
     openDatabase: async () => db,
@@ -129,18 +145,15 @@ describe('מפרט הרכב', () => {
   it('the spec beside the oil item; the row note on its own item', async () => {
     await seedSpec();
     await renderRouter('./src/app', { initialUrl: '/maintenance' });
-    await waitFor(
-      () => expect(screen.getByTestId('plan-item-engine_oil-spec')).toBeOnTheScreen(),
-      LONG,
+    await waitFor(() => expect(screen.getByTestId('periodic-next')).toBeOnTheScreen(), LONG);
+    expect(screen.getByTestId('periodic-group-replace')).toHaveTextContent(
+      /שמן מנוע ומסנן שמן.*מפרט: 5W-30 · VW 504.00 · 4.0 ליטר/,
     );
-    expect(screen.getByTestId('plan-item-engine_oil-spec')).toHaveTextContent(
-      /מפרט: 5W-30 · VW 504.00 · 4.0 ליטר/,
+    await fireEvent.press(screen.getByTestId('periodic-toggle-checks'));
+    expect(screen.getByTestId('periodic-group-check')).toHaveTextContent(
+      /רצועת אביזרים.*הערה: מק״ט 6PK1050/,
     );
-    const belt = (await new ManualScheduleRepository(db).list(vehicleId as never))[1];
-    expect(screen.getByTestId(`plan-item-manual-${belt.id}-note`)).toHaveTextContent(
-      /הערה: מק״ט 6PK1050/,
-    );
-    expect(screen.getAllByText(/^הערה:/)).toHaveLength(1);
+    expect(screen.getAllByText(/הערה:/)).toHaveLength(1);
   }, 60000);
 
   it('Home: tyre pressures under the plate; tap to add when not entered', async () => {
@@ -185,24 +198,23 @@ describe('מפרט הרכב', () => {
 
 describe('a note on a row of the table', () => {
   it('the note icon opens the note line; the note is saved with the row', async () => {
-    await renderRouter('./src/app', { initialUrl: '/maintenance' });
-    await waitFor(() => expect(screen.getByTestId('plan-add-manual')).toBeOnTheScreen(), LONG);
-    await fireEvent.press(screen.getByTestId('plan-add-manual'));
-    await waitFor(() => expect(screen.getByTestId('manual-row-0-title')).toBeOnTheScreen(), LONG);
-    expect(screen.queryByTestId('manual-row-0-note')).toBeNull();
-    await fireEvent.press(screen.getByTestId('manual-row-0-note-toggle'));
-    await fireEvent.changeText(screen.getByTestId('manual-row-0-note'), 'שמן 5W-30 בלבד');
-    // The stored note of row 2 opens with its value.
-    await fireEvent.press(screen.getByTestId('manual-row-1-note-toggle'));
-    expect(screen.getByTestId('manual-row-1-note')).toHaveDisplayValue('מק״ט 6PK1050');
-    await fireEvent.press(screen.getByTestId('manual-table-save'));
+    await renderRouter('./src/app', { initialUrl: '/maintenance?tab=table' });
+    await waitFor(() => expect(screen.getByTestId('table-edit')).toBeOnTheScreen(), LONG);
+    expect(screen.getByTestId('table-row-r2-note')).toHaveTextContent('הערה: מק״ט 6PK1050');
+    expect(screen.queryByTestId('table-row-r1-note')).toBeNull();
+    await fireEvent.press(screen.getByTestId('table-edit'));
+    await fireEvent.press(screen.getByTestId('table-row-r1-title'));
+    await waitFor(() => expect(screen.getByTestId('table-row-note')).toBeOnTheScreen(), LONG);
+    await fireEvent.changeText(screen.getByTestId('table-row-note'), 'שמן 5W-30 בלבד');
+    await fireEvent.press(screen.getByTestId('table-row-save'));
 
     await waitFor(async () => {
-      const saved = await new ManualScheduleRepository(db).list(vehicleId as never);
-      expect(saved.map((s) => [s.title, s.note])).toEqual([
+      const saved = await new ServiceTableRepository(db).get(vehicleId as never);
+      expect(saved?.table.rows.map((r) => [r.title, r.note])).toEqual([
         ['שמן מנוע ומסנן שמן', 'שמן 5W-30 בלבד'],
         ['רצועת אביזרים', 'מק״ט 6PK1050'],
       ]);
+      expect(saved?.status).toBe('confirmed');
     }, LONG);
   }, 60000);
 });

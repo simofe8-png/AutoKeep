@@ -49,7 +49,7 @@ export default function GarageModeScreen() {
   const last = history[0];
   const spec = specChips(activeVehicle.spec);
   // The owner's notes on rows of their table (owner decision 2026-10-05), shown beside the spec.
-  const rowNotes = (data.plan?.manual ?? []).filter((m) => m.note);
+  const rowNotes = (data.serviceTable?.table.rows ?? []).filter((r) => r.note);
 
   const next = schedule.status === 'verified' ? schedule.next : undefined;
   // "Send by WhatsApp": a plain-text summary handed to the user's own WhatsApp (no new service).

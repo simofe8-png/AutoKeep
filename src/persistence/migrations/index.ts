@@ -481,4 +481,40 @@ CREATE TABLE vehicle_spec (
 ALTER TABLE manual_schedule_items ADD COLUMN note TEXT;
 `,
   },
+  {
+    version: 19,
+    name: 'service_table',
+    // The owner's maintenance table built like the booklet (owner decision 2026-10-06): items ×
+    // periodic-service columns with action letters, as JSON; 'proposed' until the owner approves a
+    // table read from their booklet. service_table_done = periodic services / rule items the owner
+    // recorded as done (with the history record, when there is one). LOCAL ONLY (not in
+    // SYNC_TABLES). The table replaces the earlier per-item entry: its rows are removed (owner
+    // approval 2026-10-06; recorded services stay in the history).
+    up: `
+CREATE TABLE service_tables (
+  vehicle_id TEXT PRIMARY KEY REFERENCES vehicles(id) ON DELETE CASCADE,
+  data TEXT NOT NULL,
+  status TEXT NOT NULL CHECK (status IN ('proposed', 'confirmed')),
+  source TEXT NOT NULL CHECK (source IN ('manual', 'photo', 'transcribed')),
+  document_id TEXT,
+  unsure TEXT NOT NULL DEFAULT '[]',
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+CREATE TABLE service_table_done (
+  id TEXT PRIMARY KEY,
+  vehicle_id TEXT NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
+  kind TEXT NOT NULL CHECK (kind IN ('periodic', 'rule')),
+  service_no INTEGER,
+  row_id TEXT,
+  done_km INTEGER,
+  done_date TEXT NOT NULL,
+  service_event_id TEXT,
+  created_at TEXT NOT NULL,
+  CHECK ((kind = 'periodic' AND service_no IS NOT NULL) OR (kind = 'rule' AND row_id IS NOT NULL))
+);
+CREATE INDEX service_table_done_vehicle ON service_table_done(vehicle_id);
+DELETE FROM manual_schedule_items;
+`,
+  },
 ];

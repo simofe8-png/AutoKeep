@@ -64,7 +64,10 @@ export default function HomeScreen() {
 
   const alerts = activeAlerts(data.alerts);
   const completion = profileCompletion(activeVehicle, {
-    hasSchedule: data.schedule.status === 'verified' || (data.plan?.items.length ?? 0) > 0,
+    hasSchedule:
+      data.serviceTable?.status === 'confirmed' ||
+      data.schedule.status === 'verified' ||
+      (data.plan?.items.length ?? 0) > 0,
     hasPhoto: Boolean(vehiclePhotos[activeVehicle.id]),
   });
   const cardState = profileCard[activeVehicle.id];
@@ -76,6 +79,14 @@ export default function HomeScreen() {
   // Without a curated schedule, the evidence-based plan decides (never an invented interval).
   const plan = schedule.status !== 'verified' ? data.plan : undefined;
   const planNext = plan?.next[0];
+  // The owner's approved table decides first (owner decision 2026-10-06).
+  const tableNext = data.serviceTable?.plan?.next;
+  const tableTile = tableNext
+    ? {
+        value: he.serviceTable.periodic.serviceTitle(formatNumber(tableNext.km)),
+        detail: tableNext.dueDate ? formatDate(tableNext.dueDate) : formatKm(tableNext.km),
+      }
+    : null;
   const planTile = planNext
     ? {
         value: plan!.next.map((n) => n.title).join(', '),
@@ -113,15 +124,17 @@ export default function HomeScreen() {
             icon="calendar-month-outline"
             label={he.home.nextService}
             value={
-              tile
-                ? tile.value
-                : planTile
-                  ? planTile.value
-                  : plan
-                    ? he.home.needInfoShort
-                    : verificationLabel(schedule.status)
+              tableTile
+                ? tableTile.value
+                : tile
+                  ? tile.value
+                  : planTile
+                    ? planTile.value
+                    : plan
+                      ? he.home.needInfoShort
+                      : verificationLabel(schedule.status)
             }
-            detail={tile?.detail ?? planTile?.detail}
+            detail={tableTile?.detail ?? tile?.detail ?? planTile?.detail}
             onPress={() => router.push('/maintenance')}
           />
           <StatTile

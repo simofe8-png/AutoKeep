@@ -21,6 +21,7 @@ import {
   type DomainIssue,
   type IdGenerator,
   type IsoDate,
+  tableIssues,
   type LocalProfile,
   type Result,
   type SourceId,
@@ -35,6 +36,8 @@ import {
 } from '@/domain';
 import { alertCandidates, planAlerts, type AlertCandidate } from '@/engine/alerts';
 import { computeMaintenance, type EngineResult } from '@/engine/maintenance';
+import type { TableDone } from '@/engine/serviceTable';
+import { tableAction } from '@/features/maintenance/table/serviceActions';
 import { adoptLocalData, readAdoptionState, type AdoptionStatus } from '@/account/adoption';
 import { originalPath, type AccountBackend } from '@/features/account/backend';
 import type { DeleteAccountResult } from '@/cloud/auth';
@@ -71,6 +74,9 @@ import {
   type ManualScheduleRow,
   VehicleRegistryRecordRepository,
   type VehicleDates,
+  ServiceTableRepository,
+  type StoredServiceTable,
+  type Executor,
 } from '@/persistence';
 import type { MSourceRun } from '@/discovery/maintenance/msource/run';
 import type { OwnerEdit } from '@/discovery/maintenance/msource/ownerReview';
@@ -86,6 +92,7 @@ import type {
   DocumentKind,
   GarageRecommendationVM,
   ServiceEventVM,
+  TableServiceInput,
   VehicleDataBundle,
 } from './types';
 
@@ -277,6 +284,8 @@ export class LocalStore {
         ),
       },
       manualItems: await new ManualScheduleRepository(this.db).list(id),
+      serviceTable: await new ServiceTableRepository(this.db).get(id),
+      tableDone: await new ServiceTableRepository(this.db).done(id),
     };
   }
 
@@ -841,6 +850,8 @@ export class LocalStore {
     documentIds: Id<'Document'>[],
     now: Timestamp,
     doc: VehicleDocument | null,
+    /** Written in the same transaction as the record (e.g. what the table service completed). */
+    also?: (tx: Executor, eventId: string) => Promise<void>,
   ): Promise<void> {
     const event = must(
       confirmServiceDraft(
@@ -914,6 +925,7 @@ export class LocalStore {
         this.clock.today(),
       );
       if (reading.ok) await odo.add(reading.value);
+      if (also) await also(tx, event.id);
     });
   }
 
@@ -1110,6 +1122,101 @@ export class LocalStore {
             startDate: prior ? (prior.startDate ?? null) : today,
             note: r.note ?? null,
           },
+          now,
+        );
+      }
+    });
+  }
+
+  // ---------- the owner's maintenance table (local-only, migration v19) ----------
+
+  /**
+   * Saves the owner's table: a proposal read from the owner's booklet (reviewed next), or the
+   * owner's approved table. An approved table must be complete enough to count.
+   */
+  async saveServiceTable(
+    vehicleId: string,
+    value: Omit<StoredServiceTable, 'updatedAt'>,
+  ): Promise<void> {
+    const vid = vehicleId as VehicleId;
+    if (!(await new VehicleRepository(this.db).get(vid))) throw new Error('Unknown vehicle');
+    if (value.status === 'confirmed' && tableIssues(value.table).length) {
+      throw new Error('The table is incomplete');
+    }
+    await new ServiceTableRepository(this.db).save(
+      vid,
+      value.status === 'confirmed' ? { ...value, unsure: [] } : value,
+      this.clock.now(),
+    );
+  }
+
+  /** Removes the table and what was recorded by it; the history records stay. */
+  async removeServiceTable(vehicleId: string): Promise<void> {
+    await new ServiceTableRepository(this.db).remove(vehicleId as VehicleId);
+  }
+
+  /**
+   * The owner states when a periodic service or a rule item was last done, without a record
+   * ("the last service was 150,000 in March"). Never in the future.
+   */
+  async recordTableDone(vehicleId: string, done: TableDone): Promise<void> {
+    const vid = vehicleId as VehicleId;
+    if (!(await new VehicleRepository(this.db).get(vid))) throw new Error('Unknown vehicle');
+    if (done.date > this.clock.today()) throw new Error('A date in the future');
+    if (done.km != null && (!Number.isInteger(done.km) || done.km < 0)) throw new Error('Bad km');
+    await new ServiceTableRepository(this.db).addDone(
+      vid,
+      { ...done, id: this.ids.next<'TableDone'>(), serviceEventId: null },
+      this.clock.now(),
+    );
+  }
+
+  /**
+   * A periodic service by the table, as the owner checked it item by item: ONE history record (a
+   * user report) and, in the same transaction, the service and every rule item done.
+   */
+  async saveTableService(vehicleId: string, input: TableServiceInput): Promise<void> {
+    const vid = vehicleId as VehicleId;
+    const stored = await new ServiceTableRepository(this.db).get(vid);
+    if (!stored || stored.status !== 'confirmed') throw new Error('No approved table');
+    if (!input.items.length && !input.rules.length) throw new Error('Nothing performed');
+    const now = this.clock.now();
+    const vm: ServiceEventVM = {
+      id: '',
+      vehicleId,
+      date: input.date,
+      odometerKm: input.odometerKm,
+      garage: input.garage,
+      notes: input.notes,
+      origin: 'manual',
+      verification: 'pending',
+      sourceAuthority: 'user_report',
+      documentIds: [],
+      actions: [
+        ...input.items.map((i) => tableAction(i.title, i.actions)),
+        ...input.rules.map((r) => tableAction(r.title, [r.action])),
+      ],
+    };
+    await this.saveServiceEvent(vm, vid, [], now, null, async (tx, eventId) => {
+      const repo = new ServiceTableRepository(tx);
+      const base = { km: input.odometerKm, date: input.date as IsoDate, serviceEventId: eventId };
+      if (input.items.length) {
+        await repo.addDone(
+          vid,
+          {
+            ...base,
+            id: this.ids.next(),
+            kind: 'periodic',
+            serviceNo: input.serviceNo,
+            rowId: null,
+          },
+          now,
+        );
+      }
+      for (const r of input.rules) {
+        await repo.addDone(
+          vid,
+          { ...base, id: this.ids.next(), kind: 'rule', serviceNo: null, rowId: r.rowId },
           now,
         );
       }

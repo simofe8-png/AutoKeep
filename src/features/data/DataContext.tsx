@@ -10,6 +10,8 @@ import type {
   ManualScheduleRow,
 } from '@/persistence/repositories/manualSchedule';
 import type { VehicleDates } from '@/persistence/repositories/vehicleDates';
+import type { StoredServiceTable } from '@/persistence/repositories/serviceTable';
+import type { TableDone } from '@/engine/serviceTable';
 import type { VehicleSpec } from '@/persistence/repositories/vehicleSpec';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import type { AcquiredFile } from '@/providers/acquisition/types';
@@ -19,6 +21,7 @@ import type {
   DocumentKind,
   GarageRecommendationVM,
   ServiceEventVM,
+  TableServiceInput,
   VehicleDataBundle,
 } from './types';
 
@@ -160,6 +163,14 @@ export interface AppDataValue {
   removeManualItem: (vehicleId: string, id: string) => void;
   /** The owner's whole maintenance table at once (rows not listed are removed). */
   saveManualSchedule: (vehicleId: string, rows: ManualScheduleRow[]) => void;
+  /** The owner's table built like the booklet: a proposal to review, or the approved table. */
+  saveServiceTable: (vehicleId: string, value: Omit<StoredServiceTable, 'updatedAt'>) => void;
+  /** Removes the table and what was recorded by it (history records stay). */
+  removeServiceTable: (vehicleId: string) => void;
+  /** The owner states when a periodic service / a rule item was last done (no record). */
+  recordTableDone: (vehicleId: string, done: TableDone) => void;
+  /** A periodic service checked item by item: one history record (a user report). */
+  saveTableService: (vehicleId: string, input: TableServiceInput) => void;
   /** The owner's test / insurance dates (ISO; null clears; absent keys unchanged). */
   setVehicleDates: (vehicleId: string, patch: Partial<VehicleDates>) => void;
   /** The owner's vehicle spec (oil, fluids, tyres, notes), replaced as a whole. */

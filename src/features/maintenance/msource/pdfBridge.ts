@@ -51,9 +51,33 @@ const PagesSchema = z
   )
   .max(1000);
 
+/** A page read as a maintenance table (tools/ocr/table-reader.js; null: no ruled table). */
+const TableSchema = z
+  .object({
+    dataColumns: z.number().int().min(1).max(40),
+    rtl: z.boolean(),
+    rows: z
+      .array(
+        z.object({
+          group: z.string().max(400),
+          label: z.array(z.string().max(400)).max(4),
+          data: z.array(z.string().max(40).nullable()).max(40),
+          merged: z.string().max(1000).nullable(),
+          numbers: z.boolean().optional(),
+          unsure: z.array(z.number().int().min(0).max(40)).max(40).optional(),
+        }),
+      )
+      .max(300),
+    below: z.array(z.string().max(1000)).max(80),
+  })
+  .nullable();
+
+export type TableReading = z.infer<typeof TableSchema>;
+
 const MessageSchema = z.union([
   z.object({ ready: z.literal(true) }),
   z.object({ id: z.string(), ok: z.literal(true), pages: PagesSchema }),
+  z.object({ id: z.string(), ok: z.literal(true), table: TableSchema }),
   z.object({ id: z.string(), ok: z.literal(false), error: z.string() }),
 ]);
 
@@ -74,7 +98,7 @@ export function toBase64(bytes: Uint8Array): string {
 }
 
 interface Pending {
-  resolve: (pages: PageText[]) => void;
+  resolve: (reply: { pages: PageText[] } | { table: TableReading }) => void;
   reject: (e: Error) => void;
   timer: ReturnType<typeof setTimeout>;
 }
@@ -141,44 +165,66 @@ export class PdfBridge {
     if (!p) return;
     clearTimeout(p.timer);
     this.requests.delete(parsed.id);
-    if (parsed.ok) p.resolve(parsed.pages);
-    else p.reject(new Error(`pdf reader: ${parsed.error.slice(0, 120)}`));
+    if (!parsed.ok) p.reject(new Error(`pdf reader: ${parsed.error.slice(0, 120)}`));
+    else p.resolve('pages' in parsed ? { pages: parsed.pages } : { table: parsed.table });
   }
 
   async read(bytes: Uint8Array): Promise<PageText[]> {
+    const reply = await this.request(bytes, null);
+    if (!('pages' in reply)) throw new Error('pdf reader: unexpected reply');
+    return reply.pages;
+  }
+
+  /** Reads one page image as a maintenance table (the photo reader only). */
+  async readTable(bytes: Uint8Array): Promise<TableReading> {
+    const reply = await this.request(bytes, 'table');
+    if (!('table' in reply)) throw new Error('table reader: unexpected reply');
+    return reply.table;
+  }
+
+  private async request(
+    bytes: Uint8Array,
+    mode: 'table' | null,
+  ): Promise<{ pages: PageText[] } | { table: TableReading }> {
     if (bytes.length > this.opts.maxBytes) {
       throw new Error('the document is too large for the on-device PDF reader');
     }
     this.setActive(true);
     const started = Date.now();
-    uploadLog('pdf reader: start', { bytes: bytes.length });
+    uploadLog('pdf reader: start', { bytes: bytes.length, mode });
     try {
       await this.waitReady();
       uploadLog('pdf reader: page ready', { ms: Date.now() - started });
       const id = `r${++this.seq}`;
-      const done = new Promise<PageText[]>((resolve, reject) => {
-        const timer = setTimeout(() => {
-          this.requests.delete(id);
-          reject(new Error('the PDF reader timed out'));
-        }, this.opts.readTimeoutMs);
-        this.requests.set(id, { resolve, reject, timer });
-      });
+      const done = new Promise<{ pages: PageText[] } | { table: TableReading }>(
+        (resolve, reject) => {
+          const timer = setTimeout(() => {
+            this.requests.delete(id);
+            reject(new Error('the PDF reader timed out'));
+          }, this.opts.readTimeoutMs);
+          this.requests.set(id, { resolve, reject, timer });
+        },
+      );
       for (let at = 0; at < bytes.length || at === 0; at += CHUNK_BYTES) {
         const chunk = toBase64(bytes.subarray(at, at + CHUNK_BYTES));
         const last = at + CHUNK_BYTES >= bytes.length;
         if (!this.transport) throw new Error('the PDF reader closed');
         this.transport.inject(
-          `window.__akChunk(${JSON.stringify(id)},${JSON.stringify(chunk)},${last});true;`,
+          `window.__akChunk(${JSON.stringify(id)},${JSON.stringify(chunk)},${last},${JSON.stringify(mode)});true;`,
         );
         if (last) break;
       }
-      const pages = await done;
+      const reply = await done;
       uploadLog('pdf reader: done', {
         ms: Date.now() - started,
-        pages: pages.length,
-        pagesWithText: pages.filter((p) => p.text.trim()).length,
+        ...('pages' in reply
+          ? {
+              pages: reply.pages.length,
+              pagesWithText: reply.pages.filter((p) => p.text.trim()).length,
+            }
+          : { tableRows: reply.table?.rows.length ?? null }),
       });
-      return pages;
+      return reply;
     } catch (e) {
       uploadLog('pdf reader: failed', {
         ms: Date.now() - started,

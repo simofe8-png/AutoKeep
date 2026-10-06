@@ -2,12 +2,12 @@ import { PdfBridge, toBase64 } from '../pdfBridge';
 
 /**
  * The on-device PDF bridge against a FAKE reader page: it decodes the injected chunks exactly
- * like assets/pdfjs/pdf-reader.html (`window.__akChunk(id, b64, last)`), so the transport,
+ * like assets/pdfjs/pdf-reader.html (`window.__akChunk(id, b64, last, mode)`), so the transport,
  * chunking, validation and timeouts are tested without a WebView. The page itself is verified
  * separately in a real Chromium (see the implementation notes).
  */
 
-const CALL = /^window\.__akChunk\(("[^"]*"),("[^"]*"),(true|false)\);true;$/;
+const CALL = /^window\.__akChunk\(("[^"]*"),("[^"]*"),(true|false),(null|"table")\);true;$/;
 
 function fakePage(bridge: PdfBridge, reply: (id: string, bytes: Uint8Array) => unknown) {
   const chunks = new Map<string, Buffer[]>();
@@ -72,6 +72,29 @@ describe('PdfBridge', () => {
     const malformed = new PdfBridge({ idleMs: 5, readTimeoutMs: 50 });
     fakePage(malformed, (id) => ({ id, ok: true, pages: [{ n: 1, text: 42 }] }));
     await expect(malformed.read(new Uint8Array([1, 2, 3]))).rejects.toThrow(/timed out/);
+  });
+
+  it('reads a page as a table in "table" mode, validated like every reply', async () => {
+    const bridge = new PdfBridge({ idleMs: 5, readTimeoutMs: 50 });
+    const modes: string[] = [];
+    const injected = fakePage(bridge, (id) => ({
+      id,
+      ok: true,
+      table: {
+        dataColumns: 2,
+        rtl: true,
+        rows: [{ group: 'מנוע', label: ['שמן מנוע'], data: ['ה', 'ה'], merged: null }],
+        below: [],
+      },
+    }));
+    const table = await bridge.readTable(new Uint8Array([1, 2]));
+    modes.push(...injected.map((js) => CALL.exec(js)![4]));
+    expect(modes).toEqual(['"table"']);
+    expect(table?.rows[0].data).toEqual(['ה', 'ה']);
+
+    const malformed = new PdfBridge({ idleMs: 5, readTimeoutMs: 50 });
+    fakePage(malformed, (id) => ({ id, ok: true, table: { dataColumns: 'x' } }));
+    await expect(malformed.readTable(new Uint8Array([1]))).rejects.toThrow(/timed out/);
   });
 
   it('refuses an oversized document before starting the reader', async () => {

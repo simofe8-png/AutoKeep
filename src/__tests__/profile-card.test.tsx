@@ -76,16 +76,24 @@ describe('השלמת פרופיל הרכב', () => {
     );
     expect(screen.getByTestId('profile-item-photo')).toHaveTextContent(/רשות/);
     expect(screen.queryByTestId('schedule-unavailable')).toBeNull();
-    // The item opens a window on the same screen (owner decision 2026-10-05): the table is
-    // entered there, and the item is done when it is saved.
+    // The item opens a window on the same screen (owner decision 2026-10-05): photograph, upload
+    // or type the table; typing opens the table screen (owner decision 2026-10-06), and the item
+    // is done once the owner approves the table.
     await fireEvent.press(screen.getByTestId('profile-item-schedule'));
     await waitFor(() => expect(screen.getByTestId('profile-sheet')).toBeOnTheScreen(), LONG);
     expect(screen.getByTestId('profile-schedule-photo')).toBeOnTheScreen();
     expect(screen.getByTestId('profile-schedule-file')).toBeOnTheScreen();
     await fireEvent.press(screen.getByTestId('profile-schedule-manual'));
-    await fireEvent.changeText(screen.getByTestId('manual-row-0-title'), 'שמן מנוע ומסנן שמן');
-    await fireEvent.changeText(screen.getByTestId('manual-row-0-km'), '15000');
-    await fireEvent.press(screen.getByTestId('manual-table-save'));
+    await waitFor(() => expect(screen.getByTestId('table-shape-create')).toBeOnTheScreen(), LONG);
+    await fireEvent.press(screen.getByTestId('table-shape-create'));
+    await waitFor(() => expect(screen.getByTestId('table-row-title')).toBeOnTheScreen(), LONG);
+    await fireEvent.changeText(screen.getByTestId('table-row-title'), 'שמן מנוע ומסנן שמן');
+    await fireEvent.press(screen.getByTestId('table-row-fill-replace'));
+    await fireEvent.press(screen.getByTestId('table-row-save'));
+    await waitFor(() => expect(screen.getByTestId('table-approve')).toBeOnTheScreen(), LONG);
+    await fireEvent.press(screen.getByTestId('table-approve'));
+    await waitFor(() => expect(screen.getByTestId('periodic-next')).toBeOnTheScreen(), LONG);
+    await fireEvent.press(screen.getByTestId('tab-home'));
     await waitFor(
       () => expect(screen.getByTestId('profile-item-schedule-done')).toBeOnTheScreen(),
       LONG,

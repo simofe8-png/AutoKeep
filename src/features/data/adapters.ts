@@ -7,6 +7,7 @@ import {
   type DerivedExtraction,
   type GarageRecommendation,
   type IsoDate,
+  latestReading,
   type MaintenanceInterval,
   type MaintenanceItem,
   type MaintenanceSchedule,
@@ -39,6 +40,9 @@ import {
 import type { OwnerReviewState } from '@/features/maintenance/msource/ownerReview';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import type { EngineResult, ItemDue } from '@/engine/maintenance';
+import { tablePlan } from '@/engine/serviceTable';
+import { isFiesta2012 } from '@/features/maintenance/table/fiesta2012';
+import type { StoredServiceTable, StoredTableDone } from '@/persistence/repositories/serviceTable';
 import { formatDate, formatKm } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import { he } from '@/i18n/he';
@@ -53,6 +57,7 @@ import type {
   NextServiceVM,
   ScheduleVM,
   ServiceEventVM,
+  ServiceTableVM,
   SourceRefVM,
   UpcomingServiceVM,
   VehicleDataBundle,
@@ -89,6 +94,9 @@ export interface VehicleRecords {
   };
   /** Items the owner entered by hand (local only, migration v15). */
   manualItems?: ManualScheduleItem[];
+  /** The owner's maintenance table and what was done by it (local only, migration v19). */
+  serviceTable?: StoredServiceTable | null;
+  tableDone?: StoredTableDone[];
 }
 
 // ---------- T103: vehicle / home ----------
@@ -497,6 +505,31 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
   };
 }
 
+// ---------- the owner's maintenance table ----------
+
+export function serviceTableVM(rec: VehicleRecords, today: IsoDate): ServiceTableVM | null {
+  const t = rec.serviceTable;
+  if (!t) return null;
+  // What was done by the table counts while its history record exists (a deleted record no
+  // longer completes the service).
+  const events = new Set(rec.history.map((e) => e.id as string));
+  const done = (rec.tableDone ?? []).filter(
+    (d) => d.serviceEventId == null || events.has(d.serviceEventId),
+  );
+  const latest = latestReading(rec.readings);
+  return {
+    table: t.table,
+    status: t.status,
+    source: t.source,
+    documentId: t.documentId,
+    unsure: t.unsure,
+    plan:
+      t.status === 'confirmed'
+        ? tablePlan({ table: t.table, odometerKm: latest?.valueKm ?? 0, today, done })
+        : null,
+  };
+}
+
 // ---------- the full bundle ----------
 
 export function toBundle(
@@ -517,6 +550,8 @@ export function toBundle(
     garageRecommendations: rec.garageRecommendations.map(toGarageRecommendationVM),
     deferred: rec.deferred.map((d) => toDeferredVM(d, rec.schedule)),
     plan: maintenancePlanVM(rec, today),
+    serviceTable: serviceTableVM(rec, today),
+    serviceTableOffer: !rec.serviceTable && isFiesta2012(rec.vehicle.identity),
     readings: rec.readings.map((r) => ({
       id: r.id,
       date: r.measuredAt,

@@ -9,7 +9,8 @@
  *   - a Content-Security-Policy with no network access at all (connect-src limited to blob:/data:),
  *     so a photo's content can never leave the device from this page.
  * The photo is reduced (longest side ≤ 2400 px) and turned grey before reading; the reply is the
- * same positioned-lines format as the PDF reader (y grows downwards).
+ * same positioned-lines format as the PDF reader (y grows downwards). In "table" mode the page is
+ * read as a maintenance table instead (tools/ocr/table-reader.js): its cells by column.
  *
  * Usage: node tools/build-ocr-webview.mjs   (re-run after upgrading the OCR packages)
  */
@@ -40,6 +41,8 @@ const literal = (s) =>
     .replace(new RegExp(String.fromCharCode(0x2029), 'g'), '\\u2029');
 
 const MAX_SIDE = 2400;
+// The service-table reader (grid → cells by column), shared with its Node test harness.
+const tableReader = readFileSync(join(ROOT, 'tools', 'ocr', 'table-reader.js'), 'utf8');
 
 const html = `<!doctype html>
 <html>
@@ -148,7 +151,68 @@ function linesOf(tsv) {
   lines.sort(function (a, b) { return a.y - b.y; });
   return lines;
 }
-window.__akChunk = function (id, b64, last) {
+${tableReader}
+/** The photo as grey pixels (longest side <= ${MAX_SIDE} px), for the table reader. */
+function greyPixels(bytes) {
+  return createImageBitmap(new Blob([bytes])).then(function (bmp) {
+    var scale = Math.min(1, ${MAX_SIDE} / Math.max(bmp.width, bmp.height));
+    var w = Math.max(1, Math.round(bmp.width * scale));
+    var h = Math.max(1, Math.round(bmp.height * scale));
+    var c = document.createElement('canvas');
+    c.width = w;
+    c.height = h;
+    var g = c.getContext('2d');
+    g.drawImage(bmp, 0, 0, w, h);
+    var d = g.getImageData(0, 0, w, h).data;
+    var out = new Uint8Array(w * h);
+    for (var i = 0, j = 0; j < out.length; i += 4, j++) {
+      out[j] = Math.round(0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]);
+    }
+    return { w: w, h: h, data: out };
+  });
+}
+/** One small image read by Tesseract (PGM through the in-memory file system). */
+function cellReader(e) {
+  return function (im, o) {
+    var head = 'P5
+' + im.w + ' ' + im.h + '
+255
+';
+    var buf = new Uint8Array(head.length + im.data.length);
+    for (var i = 0; i < head.length; i++) buf[i] = head.charCodeAt(i);
+    buf.set(im.data, head.length);
+    e.M.FS.writeFile('/input', buf);
+    e.api.SetVariable('tessedit_pageseg_mode', String(o.psm));
+    e.api.SetVariable('tessedit_char_whitelist', o.whitelist || '');
+    if (e.api.SetImageFile(1, 0) === 1) return [];
+    e.api.Recognize(null);
+    var tsv = e.api.GetTSVText() || '';
+    e.api.Clear();
+    var words = [];
+    tsv.split('
+').forEach(function (row) {
+      var c = row.split('	');
+      if (c[0] !== '5' || c.length < 12) return;
+      var text = c.slice(11).join('	').trim();
+      if (!text || Number(c[10]) < 0) return;
+      words.push({ text: text, x: Number(c[6]), y: Number(c[7]), w: Number(c[8]), h: Number(c[9]), conf: Number(c[10]) });
+    });
+    return words;
+  };
+}
+function readTable(e, bytes) {
+  return greyPixels(bytes).then(function (img) {
+    e.api.SetVariable('user_defined_dpi', '300');
+    try {
+      return readServiceTable(img, cellReader(e));
+    } finally {
+      e.api.SetVariable('tessedit_pageseg_mode', '3');
+      e.api.SetVariable('tessedit_char_whitelist', '');
+      e.api.SetVariable('user_defined_dpi', '0');
+    }
+  });
+}
+window.__akChunk = function (id, b64, last, mode) {
   (chunks[id] = chunks[id] || []).push(decode(b64));
   if (!last) return;
   var parts = chunks[id];
@@ -157,6 +221,18 @@ window.__akChunk = function (id, b64, last) {
   var data = new Uint8Array(size);
   var at = 0;
   parts.forEach(function (p) { data.set(p, at); at += p.length; });
+  if (mode === 'table') {
+    engine()
+      .then(function (e) { return readTable(e, data); })
+      .then(
+        function (table) {
+          if (table) delete table.clusters;
+          post({ id: id, ok: true, table: table });
+        },
+        function (err) { post({ id: id, ok: false, error: String((err && err.message) || err).slice(0, 200) }); },
+      );
+    return;
+  }
   Promise.all([engine(), prepare(data)])
     .then(function (r) {
       var e = r[0];

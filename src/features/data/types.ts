@@ -7,6 +7,8 @@ import type {
  * UI view-models consumed by screens. They are shaped for display, not persistence. The domain
  * model (M04) and real adapters (M13) map into these types so the approved UI does not change.
  */
+import type { ServiceTable, TableAction } from '@/domain';
+import type { TablePlan } from '@/engine/serviceTable';
 import type { ManualScheduleItem } from '@/persistence/repositories/manualSchedule';
 import type { VerificationState } from '@/ui';
 
@@ -253,7 +255,34 @@ export type OwnerProposalVM = OwnerProposal & {
   edit: OwnerEdit | null;
 };
 
+/** The owner's maintenance table (owner decision 2026-10-06) and the services it derives. */
+export interface ServiceTableVM {
+  table: ServiceTable;
+  status: 'proposed' | 'confirmed';
+  source: 'manual' | 'photo' | 'transcribed';
+  documentId: string | null;
+  /** Cells ("rowId:column") and rule rows ("rowId") the owner should check. */
+  unsure: string[];
+  /** The next services (an approved table only). */
+  plan: TablePlan | null;
+}
+
+/** A periodic service by the table, checked item by item (one history record). */
+export interface TableServiceInput {
+  serviceNo: number;
+  date: string;
+  odometerKm: number;
+  garage?: string;
+  notes?: string;
+  items: { rowId: string; title: string; actions: TableAction[] }[];
+  rules: { rowId: string; title: string; action: TableAction }[];
+}
+
 export interface VehicleDataBundle {
+  /** The owner's table (null: none yet; absent in prototype bundles). */
+  serviceTable?: ServiceTableVM | null;
+  /** A transcribed booklet table can be offered to this vehicle (Ford Fiesta 2012). */
+  serviceTableOffer?: boolean;
   /** Evidence-based plan from the requirement engine (absent in prototype bundles). */
   plan?: MaintenancePlanVM;
   schedule: ScheduleVM;

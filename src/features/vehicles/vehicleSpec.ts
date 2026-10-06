@@ -67,6 +67,22 @@ export function specForTask(task: TaskCode | string, spec: VehicleSpec | undefin
   return line || null;
 }
 
+/** The spec for an item of the owner's table, by its name ("שמן מנוע" → the oil). */
+export function specForItem(title: string, spec: VehicleSpec | undefined): string | null {
+  const task = /^מסנן/.test(title)
+    ? null
+    : /שמן מנוע/.test(title)
+      ? 'engine_oil'
+      : /נוזל בלמים/.test(title)
+        ? 'brake_fluid'
+        : /נוזל קירור/.test(title)
+          ? 'coolant'
+          : /תיבת הילוכים/.test(title)
+            ? 'transmission_fluid'
+            : null;
+  return task ? specForTask(task, spec) : null;
+}
+
 /** The spec in short pieces (Garage Mode chips, the vehicle row); empty when nothing entered. */
 export function specChips(spec: VehicleSpec | undefined): { label: string; value: string }[] {
   if (!hasSpec(spec)) return [];

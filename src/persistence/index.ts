@@ -10,3 +10,4 @@ export * from './repositories/msource';
 export * from './repositories/vehicleDates';
 export * from './repositories/vehicleSpec';
 export * from './repositories/manualSchedule';
+export * from './repositories/serviceTable';

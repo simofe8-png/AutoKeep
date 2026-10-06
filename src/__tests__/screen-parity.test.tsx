@@ -1,4 +1,4 @@
-import { fireEvent, renderRouter, screen, waitFor, within } from 'expo-router/testing-library';
+import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
 
 import { isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds, T0 } from '@/domain/testing';
@@ -110,19 +110,7 @@ describe('alerts after the approved reference', () => {
   }, 40000);
 });
 
-describe('maintenance plan and next-service detail', () => {
-  it('timeline shows recorded, next and upcoming services; filters narrow it', async () => {
-    await open('/maintenance', 'screen-maintenance');
-    expect(screen.getByTestId('plan-source-banner')).toHaveTextContent(/מאומתת/);
-    const timeline = screen.getByTestId('plan-timeline');
-    expect(within(timeline).getByTestId('plan-item-next')).toHaveTextContent(/הטיפול הבא/);
-    expect(within(timeline).getByTestId('plan-item-svc-car-1')).toHaveTextContent(/בוצע/);
-    await fireEvent.press(screen.getByTestId('plan-filter-future'));
-    expect(screen.queryByTestId('plan-item-next')).toBeNull();
-    expect(screen.queryByTestId('plan-item-svc-car-1')).toBeNull();
-    expect(screen.getByTestId('plan-timeline')).toHaveTextContent(/105,000/);
-  }, 40000);
-
+describe('next-service detail', () => {
   it('next-service detail keeps garage recommendations apart as "not mandatory"; no AI group', async () => {
     await open('/next-service', 'screen-next-service');
     expect(screen.getByTestId('next-service-manufacturer')).toHaveTextContent(/שמן מנוע/);

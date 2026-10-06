@@ -3,8 +3,7 @@ import { useState } from 'react';
 
 import { useAppData } from '@/features/data/DataContext';
 import { onboardingServices } from '@/features/data/dataSource';
-import { ManualScheduleTable } from '@/features/maintenance/ManualScheduleTable';
-import { useBookletUpload } from '@/features/maintenance/PlanSection';
+import { useTableImport } from '@/features/maintenance/table/useTableImport';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -63,69 +62,69 @@ export function ProfileItemSheet({
 
 type Props = { vehicle: VehicleSummary; onClose: () => void };
 
-/** Photograph the booklet page, upload a file, or type the table — all three in the window. */
+/**
+ * Photograph the booklet's table or upload it — read here, in the window — or type it; then the
+ * owner checks and approves it on the maintenance table screen.
+ */
 function ScheduleSheet({ vehicle, onClose }: Props) {
   const router = useRouter();
-  const s = he.profile.sheets;
-  const m = he.manualItem;
-  const { upload, problem, available } = useBookletUpload(vehicle.id);
-  const [mode, setMode] = useState<'choose' | 'table' | 'uploaded'>('choose');
-  if (mode === 'table') return <ManualScheduleTable vehicleId={vehicle.id} onSaved={onClose} />;
-  if (mode === 'uploaded') {
-    return (
-      <Stack gap={spacing.md}>
-        <InlineNotice
-          testID="profile-schedule-uploaded"
-          tone="success"
-          message={s.scheduleUploaded}
-        />
-        <Button
-          testID="profile-schedule-review"
-          label={s.toReview}
-          icon="clipboard-check-outline"
-          fullWidth
-          onPress={() => {
-            onClose();
-            router.push('/maintenance');
-          }}
-        />
-      </Stack>
-    );
-  }
-  const send = async (from: 'camera' | 'file') => {
-    if (await upload(from)) setMode('uploaded');
+  const t = he.serviceTable;
+  const { state, start, available } = useTableImport(vehicle.id);
+  const toTable = (fresh = false) => {
+    onClose();
+    router.push(fresh ? '/maintenance?tab=table&new=1' : '/maintenance?tab=table');
+  };
+  const read = async (from: 'camera' | 'file') => {
+    if (await start(from)) toTable();
   };
   return (
     <Stack gap={spacing.sm}>
-      <AppText color="textSecondary">{s.scheduleIntro}</AppText>
+      <AppText color="textSecondary">{t.empty.body}</AppText>
+      {state.kind === 'reading' ? (
+        <InlineNotice
+          testID="profile-schedule-reading"
+          tone="info"
+          title={t.reading(state.page, state.pages)}
+          message={t.readingHint}
+        />
+      ) : null}
+      {state.kind === 'failed' ? (
+        <InlineNotice tone="warning" message={t.readFailed[state.reason]} />
+      ) : null}
       {available ? (
         <>
           <Button
             testID="profile-schedule-photo"
-            label={m.photo}
+            label={t.photo}
             icon="camera-outline"
             fullWidth
-            onPress={() => void send('camera')}
+            disabled={state.kind === 'reading'}
+            onPress={() => void read('camera')}
           />
           <Button
             testID="profile-schedule-file"
-            label={m.file}
+            label={t.file}
             icon="file-upload-outline"
             variant="secondary"
             fullWidth
-            onPress={() => void send('file')}
+            disabled={state.kind === 'reading'}
+            onPress={() => void read('file')}
           />
         </>
       ) : null}
       <Button
         testID="profile-schedule-manual"
-        label={m.add}
+        label={t.manual}
         icon="table-edit"
         variant="secondary"
         fullWidth
-        onPress={() => setMode('table')}
+        onPress={() => toTable(true)}
       />
-      {problem ? <InlineNotice tone="warning" message={problem} /> : null}
+      {available ? (
+        <AppText variant="caption" color="textSecondary">
+          {t.privacy}
+        </AppText>
+      ) : null}
     </Stack>
   );
 }

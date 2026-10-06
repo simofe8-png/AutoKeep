@@ -369,6 +369,10 @@ export function LocalDataProvider({
       saveManualItem: (vid, value, id) => write((s) => s.saveManualItem(vid, value, id)),
       removeManualItem: (vid, id) => write((s) => s.removeManualItem(vid, id)),
       saveManualSchedule: (vid, rows) => write((s) => s.saveManualSchedule(vid, rows)),
+      saveServiceTable: (vid, value) => write((s) => s.saveServiceTable(vid, value)),
+      removeServiceTable: (vid) => write((s) => s.removeServiceTable(vid)),
+      recordTableDone: (vid, done) => write((s) => s.recordTableDone(vid, done)),
+      saveTableService: (vid, input) => write((s) => s.saveTableService(vid, input)),
       registerMaintenanceBooklet: (vid, did) => {
         write((s) => s.registerMaintenanceBooklet(vid, did));
         // The owner's booklet is read; its items are proposed for owner review.
