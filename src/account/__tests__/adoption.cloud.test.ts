@@ -27,9 +27,12 @@ describe('M08 no-data-loss adoption against the local Supabase stack (T071)', ()
       expect({ t, n: r.inserted[t] }).toEqual({ t, n: bundle[t].length });
 
     // Field-level comparison for representative tables.
-    const { data: vehicles } = await user.client.from('vehicles').select('*').order('created_at');
+    // Rows with the same created_at come back in any order: both sides sorted by id.
+    const { data: vehicles } = await user.client.from('vehicles').select('*').order('id');
+    const byId = (a: Record<string, unknown>, b: Record<string, unknown>) =>
+      String(a.id).localeCompare(String(b.id));
     expect(vehicles?.map((v) => [v.id, v.registration, v.vin, v.owner_id])).toEqual(
-      bundle.vehicles.map((v) => [v.id, v.registration, v.vin, user.userId]),
+      [...bundle.vehicles].sort(byId).map((v) => [v.id, v.registration, v.vin, user.userId]),
     );
     const { data: actions } = await user.client
       .from('service_actions')
