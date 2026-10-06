@@ -24,17 +24,33 @@
         "buildType": "app-bundle"
       },
       "environment": "production",
-      "autoIncrement": true
+      "autoIncrement": true,
+      "channel": "production"
     },
     "rc-local": {
       "extends": "preview",
       "env": {
         "APP_VARIANT": "rc-local"
       }
+    },
+    "staging-internal": {
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "environment": "production",
+      "channel": "staging",
+      "autoIncrement": true
     }
   },
   "submit": {
     "production": {
+      "android": {
+        "track": "internal",
+        "releaseStatus": "completed",
+        "serviceAccountKeyPath": "C:/Users/משייה/.autokeep/play-service-account.json"
+      }
+    },
+    "staging-internal": {
       "android": {
         "track": "internal",
         "releaseStatus": "completed",

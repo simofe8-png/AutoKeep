@@ -96,6 +96,14 @@
         "projectId": "d243d46c-a4fb-4232-b17d-ae39b158b3a8"
       }
     },
-    "owner": "vr47252"
+    "owner": "vr47252",
+    "runtimeVersion": {
+      "policy": "fingerprint"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d243d46c-a4fb-4232-b17d-ae39b158b3a8",
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    }
   }
 }

@@ -1,0 +1,47 @@
+name: Staging OTA update
+
+# After CI passes on master, publish the commit as an EAS Update to the STAGING channel only
+# (docs/release/STAGING_OTA.md). Failed tests never publish; a native/runtime change stops with
+# "new build required"; the production channel is never touched.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: staging-ota
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Require the Expo token secret
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: test -n "$EXPO_TOKEN" || { echo "Repository secret EXPO_TOKEN is missing"; exit 1; }
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: npm ci
+      - name: Publish to staging (stops when a new build is required)
+        env:
+          COMMIT_MESSAGE: ${{ github.event.workflow_run.head_commit.message }}
+          COMMIT_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: node tools/ota-staging.mjs --message "${COMMIT_SHA::7} ${COMMIT_MESSAGE%%$'\n'*}"

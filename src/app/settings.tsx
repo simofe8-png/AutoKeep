@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { useAppData } from '@/features/data/DataContext';
 import { notificationScheduler } from '@/features/data/dataSource';
+import { checkForUpdateNow, runningVersion, type UpdateCheck } from '@/features/shell/appUpdate';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
 import { he } from '@/i18n/he';
@@ -24,6 +25,7 @@ import {
 export default function SettingsScreen() {
   const router = useRouter();
   const { activeVehicle } = useActiveVehicle();
+  const [updateCheck, setUpdateCheck] = useState<UpdateCheck | null>(null);
   const {
     account,
     network,
@@ -141,9 +143,16 @@ export default function SettingsScreen() {
       <Card compact>
         <ListRow
           plainIcon
+          testID="settings-about"
           icon="information-outline"
           title={he.settings.about}
-          subtitle={he.settings.aboutValue}
+          subtitle={`${he.settings.aboutValue} · ${runningVersion()}
+${
+  updateCheck && updateCheck !== 'reloading'
+    ? he.settings.update[updateCheck]
+    : he.settings.update.check
+}`}
+          onPress={() => void checkForUpdateNow().then(setUpdateCheck)}
         />
       </Card>
 
