@@ -174,10 +174,7 @@ function greyPixels(bytes) {
 /** One small image read by Tesseract (PGM through the in-memory file system). */
 function cellReader(e) {
   return function (im, o) {
-    var head = 'P5
-' + im.w + ' ' + im.h + '
-255
-';
+    var head = 'P5\\n' + im.w + ' ' + im.h + '\\n255\\n';
     var buf = new Uint8Array(head.length + im.data.length);
     for (var i = 0; i < head.length; i++) buf[i] = head.charCodeAt(i);
     buf.set(im.data, head.length);
@@ -189,11 +186,10 @@ function cellReader(e) {
     var tsv = e.api.GetTSVText() || '';
     e.api.Clear();
     var words = [];
-    tsv.split('
-').forEach(function (row) {
-      var c = row.split('	');
+    tsv.split('\\n').forEach(function (row) {
+      var c = row.split('\\t');
       if (c[0] !== '5' || c.length < 12) return;
-      var text = c.slice(11).join('	').trim();
+      var text = c.slice(11).join('\\t').trim();
       if (!text || Number(c[10]) < 0) return;
       words.push({ text: text, x: Number(c[6]), y: Number(c[7]), w: Number(c[8]), h: Number(c[9]), conf: Number(c[10]) });
     });

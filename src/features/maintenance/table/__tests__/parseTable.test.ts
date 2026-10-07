@@ -14,7 +14,7 @@ import scan from './fiesta-scan.json';
 describe('reading the owner’s booklet table (Ford Fiesta 2012 scan, pages 143–144)', () => {
   const parsed = parseTablePages(scan as RawTablePage[]);
 
-  it('finds the shape: every 15,000 km / 12 months, 16 columns, all 39 items', () => {
+  it('finds the shape: every 15,000 km / 12 months, 16 columns, all 38 items', () => {
     if (!parsed.ok) throw new Error(parsed.reason);
     expect(parsed.table.kmStep).toBe(15_000);
     expect(parsed.table.monthsStep).toBe(12);

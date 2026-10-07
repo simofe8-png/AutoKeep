@@ -60,6 +60,27 @@ export function TableSection({
       title={t.reading(reading.page, reading.pages)}
       subtitle={t.readingHint}
     />
+  ) : imp.state.kind === 'pages' ? (
+    <Card testID="table-pages" tone="tint">
+      <Stack gap={spacing.sm}>
+        <AppText variant="bodyStrong">{t.pagesTaken(imp.state.count)}</AppText>
+        <Button
+          testID="table-read-pages"
+          label={t.readPages}
+          icon="text-recognition"
+          fullWidth
+          onPress={() => void imp.readPages()}
+        />
+        <Button
+          testID="table-add-page"
+          label={t.addPage}
+          icon="camera-plus-outline"
+          variant="secondary"
+          fullWidth
+          onPress={() => void imp.start('camera')}
+        />
+      </Stack>
+    </Card>
   ) : imp.state.kind === 'failed' ? (
     <InlineNotice
       testID="table-read-failed"
@@ -125,7 +146,7 @@ export function TableSection({
                   icon="camera-outline"
                   variant={offer ? 'secondary' : 'primary'}
                   fullWidth
-                  disabled={Boolean(reading)}
+                  disabled={Boolean(reading) || imp.state.kind === 'pages'}
                   onPress={() => void imp.start('camera')}
                 />
                 <Button

@@ -10,8 +10,10 @@ import {
   ACCEPTED_IMAGE_TYPES,
   screenAcquiredFile,
   type AcquisitionProvider,
+  type AcquiredFile,
   type AcquisitionResult,
   type CaptureOptions,
+  type MultiAcquisitionResult,
 } from './types';
 
 function fromImageResult(
@@ -74,6 +76,33 @@ export const expoAcquisition: AcquisitionProvider = {
         await ImagePicker.launchImageLibraryAsync(imageOptions(options)),
         'library',
       );
+    } catch (e) {
+      return { status: 'error', message: safeErrorText(e) };
+    }
+  },
+
+  async pickDocuments(): Promise<MultiAcquisitionResult> {
+    try {
+      const r = await DocumentPicker.getDocumentAsync({
+        type: [...ACCEPTED_DOCUMENT_TYPES],
+        copyToCacheDirectory: false,
+        multiple: true,
+      });
+      if (r.canceled || !r.assets?.length) return { status: 'cancelled' };
+      const files: AcquiredFile[] = [];
+      for (const a of r.assets) {
+        const file = {
+          uri: a.uri,
+          mimeType: a.mimeType ?? 'application/octet-stream',
+          sizeBytes: a.size ?? null,
+          source: 'file' as const,
+        };
+        // Every file is screened; one unsuitable file rejects the selection (said clearly).
+        const screened = screenAcquiredFile(file, ACCEPTED_DOCUMENT_TYPES);
+        if (screened.status !== 'acquired') return screened;
+        files.push({ ...file, uri: await toPrivateCache(a.uri) });
+      }
+      return { status: 'acquired', files };
     } catch (e) {
       return { status: 'error', message: safeErrorText(e) };
     }

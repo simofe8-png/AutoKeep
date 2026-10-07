@@ -44,7 +44,7 @@ states the schedule: items × service columns, with an action letter in each cel
 
    The result is always a **proposal**. Uncertain cells and every rule row are marked, and only an
    approved table counts. On the owner's own scan, the result is the right shape (16 columns,
-   15,000 km / 12 months, all 39 items in order). One cell was wrong without a mark. Every other
+   15,000 km / 12 months, all 38 items in order). One cell was wrong without a mark. Every other
    misread cell was marked.
 
 4. **The Fiesta table transcribed from the owner's scan** is offered as a proposal to a Ford

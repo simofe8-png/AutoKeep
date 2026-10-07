@@ -69,7 +69,7 @@ type Props = { vehicle: VehicleSummary; onClose: () => void };
 function ScheduleSheet({ vehicle, onClose }: Props) {
   const router = useRouter();
   const t = he.serviceTable;
-  const { state, start, available } = useTableImport(vehicle.id);
+  const { state, start, readPages, available } = useTableImport(vehicle.id);
   const toTable = (fresh = false) => {
     onClose();
     router.push(fresh ? '/maintenance?tab=table&new=1' : '/maintenance?tab=table');
@@ -87,6 +87,26 @@ function ScheduleSheet({ vehicle, onClose }: Props) {
           title={t.reading(state.page, state.pages)}
           message={t.readingHint}
         />
+      ) : null}
+      {state.kind === 'pages' ? (
+        <>
+          <InlineNotice tone="info" message={t.pagesTaken(state.count)} />
+          <Button
+            testID="profile-schedule-read-pages"
+            label={t.readPages}
+            icon="text-recognition"
+            fullWidth
+            onPress={() => void readPages().then((ok) => ok && toTable())}
+          />
+          <Button
+            testID="profile-schedule-add-page"
+            label={t.addPage}
+            icon="camera-plus-outline"
+            variant="secondary"
+            fullWidth
+            onPress={() => void start('camera')}
+          />
+        </>
       ) : null}
       {state.kind === 'failed' ? (
         <InlineNotice tone="warning" message={t.readFailed[state.reason]} />

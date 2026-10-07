@@ -29,7 +29,13 @@ export interface AcquisitionProvider {
   captureWithCamera(options?: CaptureOptions): Promise<AcquisitionResult>;
   pickImage(options?: CaptureOptions): Promise<AcquisitionResult>;
   pickDocument(): Promise<AcquisitionResult>;
+  /** Several files at once (e.g. the pages of a maintenance table); absent: one file only. */
+  pickDocuments?(): Promise<MultiAcquisitionResult>;
 }
+
+export type MultiAcquisitionResult =
+  | { status: 'acquired'; files: AcquiredFile[] }
+  | Exclude<AcquisitionResult, { status: 'acquired' }>;
 
 export const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/heic'] as const;
 export const ACCEPTED_DOCUMENT_TYPES = [...ACCEPTED_IMAGE_TYPES, 'application/pdf'] as const;
