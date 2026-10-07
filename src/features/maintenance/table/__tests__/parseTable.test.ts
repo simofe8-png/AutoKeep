@@ -39,9 +39,8 @@ describe('reading the ownerâ€™s booklet table (Ford Fiesta 2012 scan, pages 143â
         else missed.push(`${truth.title}:${k}`);
       });
     });
-    // One cell of the scan is misread without a warning (parking brake, last column): the owner
-    // reviews the whole table before it counts. Everything else wrong is flagged.
-    expect(missed.length).toBeLessThanOrEqual(1);
+    // Every misread cell of the scan is marked for the owner; none is wrong without a mark.
+    expect(missed).toEqual([]);
     expect(flaggedWrong).toBeGreaterThan(0);
   });
 

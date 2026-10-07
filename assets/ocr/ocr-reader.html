@@ -332,21 +332,113 @@ function readServiceTable(img, ocr) {
   });
   if (vLines.length < 6) return null;
 
-  // ---- 4. erase the lines (letters never cross them) ----
+  // ---- 4. erase the lines — only where a line is actually drawn ----
+  // A line is erased along its long dark runs only. Where it is interrupted (a heading spanning
+  // several rows, a rule written across the columns) the text there stays intact.
   var clean = new Uint8Array(g.data);
-  function eraseH(l, x0, x1) {
-    for (var yy = l.from - 2; yy <= l.to + 2; yy++) {
-      if (yy < 0 || yy >= h) continue;
-      for (var xx = x0; xx < x1; xx++) clean[yy * w + xx] = 255;
+  var minRun = Math.max(40, Math.round(Math.min(w, h) * 0.02));
+  /** Erases long runs, and short stubs (≤ 12 px) where a crossing line meets (`nearCross(i)`). */
+  function eraseRuns(len, darkAt, erase, nearCross) {
+    var start = -1;
+    for (var i = 0; i <= len; i++) {
+      if (i < len && darkAt(i)) {
+        if (start < 0) start = i;
+      } else if (start >= 0) {
+        if (i - start >= minRun || (i - start <= 12 && (nearCross(start) || nearCross(i - 1)))) {
+          for (var k = start; k < i; k++) erase(k);
+        }
+        start = -1;
+      }
     }
   }
+  var nearLine = function (list, at) {
+    return list.some(function (l) {
+      return at >= l.from - 6 && at <= l.to + 6;
+    });
+  };
+  // Pixel row by pixel row (column by column for vertical lines): a slanted or broken line is
+  // removed, while a letter stroke touching the line (the ascender of ל, the tail of ף) is a short
+  // run in any single row and stays.
+  var white = function (x, y) {
+    if (x >= 0 && x < w && y >= 0 && y < h) clean[y * w + x] = 255;
+  };
+  // Where a letter stroke continues beyond a row line (an ascender or a tail), the line pixels
+  // there are kept: they belong to the letter as much as to the line.
+  var dark = function (x, y) {
+    return x >= 0 && x < w && y >= 0 && y < h && bin[y * w + x] === 1;
+  };
   lines.forEach(function (l) {
-    eraseH(l, 0, w);
+    for (var y = Math.max(0, l.from - 4); y <= Math.min(h - 1, l.to + 4); y++) {
+      eraseRuns(
+        w,
+        function (x) {
+          return bin[y * w + x] === 1;
+        },
+        function (x) {
+          if (dark(x, l.from - 6) || dark(x, l.to + 6)) return;
+          white(x, y - 1);
+          white(x, y);
+          white(x, y + 1);
+        },
+        function (x) {
+          return nearLine(vLines, x);
+        },
+      );
+    }
   });
+  /** Inside a row where this column line is not drawn (a rule written across), nothing is erased. */
+  function drawnInRow(l, y) {
+    for (var k = 0; k + 1 < lines.length; k++) {
+      if (y > lines[k].to && y < lines[k + 1].from) {
+        return vPresent(l.at, lines[k].to + 1, lines[k + 1].from - 1);
+      }
+    }
+    return true;
+  }
   vLines.forEach(function (l) {
-    for (var yy = top; yy <= bottom; yy++) {
-      for (var xx = l.from - 2; xx <= l.to + 2; xx++)
-        if (xx >= 0 && xx < w) clean[yy * w + xx] = 255;
+    var drawn = [];
+    for (var yy = top; yy <= bottom; yy++) drawn.push(drawnInRow(l, yy));
+    for (var x = Math.max(0, l.from - 4); x <= Math.min(w - 1, l.to + 4); x++) {
+      eraseRuns(
+        bottom - top + 1,
+        function (i) {
+          return bin[(top + i) * w + x] === 1;
+        },
+        function (i) {
+          if (!drawn[i]) return;
+          white(x - 1, top + i);
+          white(x, top + i);
+          white(x + 1, top + i);
+        },
+        function (i) {
+          return nearLine(lines, top + i);
+        },
+      );
+    }
+  });
+  // Inside a rule row the column line is not drawn, but its ends may poke in from the row lines:
+  // a short stroke at the line's position that starts at a row line and ends in white space is
+  // such a stub (a letter stroke there continues into the letter instead).
+  vLines.forEach(function (l) {
+    for (var k = 0; k + 1 < lines.length; k++) {
+      var y0 = lines[k].to + 1,
+        y1 = lines[k + 1].from - 1;
+      if (y1 - y0 < 8 || vPresent(l.at, y0, y1)) continue;
+      for (var x = Math.max(0, l.from - 2); x <= Math.min(w - 1, l.to + 2); x++) {
+        [
+          [y0, 1],
+          [y1, -1],
+        ].forEach(function (end) {
+          var y = end[0],
+            n = 0;
+          while (n < 30 && dark(x, y + n * end[1])) n++;
+          if (n === 0 || n >= 30) return;
+          var beyond = y + n * end[1];
+          for (var dx = -4; dx <= 4; dx++)
+            if (dark(x + dx, beyond) || dark(x + dx, beyond + end[1])) return;
+          for (var m = 0; m < n; m++) white(x, y + m * end[1]);
+        });
+      }
     }
   });
   var cleanImg = { w: w, h: h, data: clean };
@@ -407,16 +499,19 @@ function readServiceTable(img, ocr) {
     }
     return t > 0 && n / t >= 0.6;
   }
+  /** A drawn line across [x0, x1]: one continuous run (a line of text has gaps between letters). */
   function hPresent(l, x0, x1) {
-    var n = 0,
+    var run = 0,
+      best = 0,
       t = 0;
     for (var xx = Math.round(x0 + (x1 - x0) * 0.1); xx < x1 - (x1 - x0) * 0.1; xx++) {
       t++;
       var hit = false;
       for (var yy = l.from - 2; yy <= l.to + 2 && !hit; yy++) if (bin[yy * w + xx]) hit = true;
-      if (hit) n++;
+      run = hit ? run + 1 : 0;
+      if (run > best) best = run;
     }
-    return t > 0 && n / t >= 0.6;
+    return t > 0 && best / t >= 0.85;
   }
 
   /** Nearest-neighbour enlargement: single letters read better at a larger size. */
