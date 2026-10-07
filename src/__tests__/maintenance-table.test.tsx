@@ -179,7 +179,7 @@ describe('לוח טיפולים → טיפול תקופתי', () => {
     expect(stored).toMatchObject({ status: 'confirmed', source: 'manual' });
   }, 120000);
 
-  it('a table read from a photo: uncertain cells are marked until the owner fixes them', async () => {
+  it('a table read from a photo: uncertain cells are marked, and it cannot be approved until each is checked', async () => {
     await seed();
     await store.saveServiceTable(FIESTA, {
       table: FIESTA_2012_TABLE,
@@ -196,6 +196,24 @@ describe('לוח טיפולים → טיפול תקופתי', () => {
     expect(screen.getByTestId('periodic-no-table')).toBeOnTheScreen();
     await fireEvent.press(screen.getByTestId('periodic-to-table'));
 
+    // Not approvable while a cell is uncertain: it stays a proposal.
+    await fireEvent.press(screen.getByTestId('table-approve'));
+    expect(screen.getByTestId('table-unverified')).toHaveTextContent(/1 תאים או שורות/);
+    expect(screen.queryByTestId('periodic-next')).toBeNull();
+    expect((await new ServiceTableRepository(db).get(FIESTA as VehicleId))?.status).toBe(
+      'proposed',
+    );
+    // And the store refuses it too.
+    await expect(
+      store.saveServiceTable(FIESTA, {
+        table: FIESTA_2012_TABLE,
+        status: 'confirmed',
+        source: 'photo',
+        documentId: null,
+        unsure: [],
+      }),
+    ).rejects.toThrow(/uncertain/);
+
     await fireEvent.press(screen.getByTestId(`table-cell-${row('שמן מנוע')}:0`));
     await fireEvent.press(screen.getByTestId('table-cell-save'));
     await waitFor(
@@ -203,5 +221,8 @@ describe('לוח טיפולים → טיפול תקופתי', () => {
       LONG,
     );
     expect(screen.getByTestId('table-proposed')).not.toHaveTextContent(/מסומנים בצהוב/);
+    // Every cell checked: now it can be approved.
+    await fireEvent.press(screen.getByTestId('table-approve'));
+    await waitFor(() => expect(screen.getByTestId('periodic-next')).toBeOnTheScreen(), LONG);
   }, 120000);
 });

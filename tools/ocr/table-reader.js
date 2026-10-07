@@ -419,9 +419,37 @@ function readServiceTable(img, ocr) {
     return { w: W, h: H, data: out, ox: im.ox, oy: im.oy };
   }
 
+  /** Black and white by the crop's own Otsu threshold (stronger contrast for a re-read). */
+  function otsuCrop(im) {
+    var hist = new Array(256).fill(0);
+    for (var i = 0; i < im.data.length; i++) hist[im.data[i]]++;
+    var sum = 0;
+    for (var t = 0; t < 256; t++) sum += t * hist[t];
+    var sumB = 0,
+      wB = 0,
+      best = 0,
+      thr = 127;
+    for (var t2 = 0; t2 < 256; t2++) {
+      wB += hist[t2];
+      if (!wB) continue;
+      var wF = im.data.length - wB;
+      if (!wF) break;
+      sumB += t2 * hist[t2];
+      var between = wB * wF * Math.pow(sumB / wB - (sum - sumB) / wF, 2);
+      if (between > best) {
+        best = between;
+        thr = t2;
+      }
+    }
+    var out = new Uint8Array(im.data.length);
+    for (var j = 0; j < out.length; j++) out[j] = im.data[j] > thr ? 255 : 0;
+    return { w: im.w, h: im.h, data: out, ox: im.ox, oy: im.oy };
+  }
+
   function read(x0, y0, x1, y1, opts) {
     var im = cropImg(cleanImg, x0, y0, x1, y1, 12);
     if (!im) return [];
+    if (opts.otsu) im = otsuCrop(im);
     var f = opts.scale || 1;
     if (f > 1) im = enlarge(im, f);
     return ocr(im, opts).map(function (wd) {
@@ -681,9 +709,7 @@ function readServiceTable(img, ocr) {
     // Sure: most readings agree.
     cl.sure = Boolean(top) && topN / asked >= 0.6;
   });
-  // A cell still unread (a slash touching a letter, a lone odd print): the most similar cell
-  // that was read, if it is close enough — never sure.
-  var resolved = [];
+  // Every cell's reading from its cluster; a cell is sure only when all its letters are.
   rows.forEach(function (r) {
     if (!r.cells || r.numbers) return;
     r.cells.forEach(function (c) {
@@ -698,24 +724,74 @@ function readServiceTable(img, ocr) {
         c.parts.every(function (p) {
           return p.slash || p.cluster.sure;
         });
-      if (c.sure) resolved.push(c);
     });
   });
+
+  // An uncertain cell is read again on its own: enlarged, with and without its own black-and-
+  // white threshold, as one character and as a word. A value is taken only when at least three
+  // readings agree and none disagrees; otherwise the cell stays uncertain ('?'). Never guessed.
+  var REREAD = [
+    { psm: 10, scale: 3 },
+    { psm: 10, scale: 4, otsu: true },
+    { psm: 8, scale: 4 },
+    { psm: 10, scale: 5, otsu: true },
+    { psm: 8, scale: 3, otsu: true },
+  ];
+  // A combined code is read as one symbol group (single-character mode keeps its slash).
+  var REREAD_COMBINED = [
+    { psm: 10, scale: 3 },
+    { psm: 10, scale: 4 },
+    { psm: 10, scale: 5 },
+    { psm: 10, scale: 3, otsu: true },
+    { psm: 10, scale: 4, otsu: true },
+  ];
+  function reread(box, whitelist, valid, variants) {
+    var votes = {};
+    (variants || REREAD).forEach(function (v) {
+      var ws = read(box[0] - 6, box[1] - 6, box[2] + 7, box[3] + 7, {
+        psm: v.psm,
+        scale: v.scale,
+        otsu: v.otsu,
+        whitelist: whitelist,
+      });
+      var t = ws
+        .map(function (wd) {
+          return wd.text;
+        })
+        .join('')
+        .replace(/\s/g, '');
+      if (!valid.test(t)) return;
+      votes[t] = (votes[t] || 0) + 1;
+    });
+    var keys = Object.keys(votes);
+    return keys.length === 1 && votes[keys[0]] >= 3 ? keys[0] : null;
+  }
   rows.forEach(function (r) {
     if (!r.cells || r.numbers) return;
     r.cells.forEach(function (c) {
-      if (!c || LETTER.test(c.text)) return;
-      var best = null,
-        bestD = 0.35;
-      resolved.forEach(function (o) {
-        if (Math.abs(o.whole.aspect - c.whole.aspect) > o.whole.aspect * 0.3) return;
-        var d = distance(o.whole.v, c.whole.v);
-        if (d < bestD) {
-          bestD = d;
-          best = o;
+      if (!c || c.sure) return;
+      var wide = c.parts.length === 1 && c.parts[0].aspect > 1.5;
+      if (wide) {
+        // A combined code whose slash touches a letter: read as a whole, slash included.
+        var whole = reread(c.whole.box, 'בכהסחנ/', LETTER, REREAD_COMBINED);
+        if (whole) {
+          c.text = whole;
+          c.sure = true;
         }
+        return;
+      }
+      var texts = c.parts.map(function (p) {
+        if (p.slash) return '/';
+        return p.cluster.sure ? p.cluster.text : reread(p.box, 'בכהסחנ', /^[בכהסחנ]$/);
       });
-      if (best) c.text = best.text;
+      var combined =
+        texts.every(Boolean) && LETTER.test(texts.join(''))
+          ? texts.join('')
+          : c.parts.length > 1
+            ? reread(c.whole.box, 'בכהסחנ/', LETTER, REREAD_COMBINED)
+            : null;
+      c.text = combined || '?';
+      c.sure = Boolean(combined);
     });
   });
   rows.forEach(function (r) {

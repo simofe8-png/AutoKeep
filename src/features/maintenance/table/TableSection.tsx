@@ -41,6 +41,7 @@ export function TableSection({
   const [shape, setShape] = useState(Boolean(newTable && !vm));
   const [discard, setDiscard] = useState(false);
   const [incomplete, setIncomplete] = useState(false);
+  const [unverified, setUnverified] = useState(false);
 
   const save = (table: ServiceTable, unsure: string[], status = vm?.status ?? 'proposed') =>
     saveServiceTable(vehicleId, {
@@ -221,6 +222,13 @@ export function TableSection({
   };
 
   const approve = () => {
+    // Every cell must be verified first: nothing uncertain from the reading may count.
+    if (unsure.length) {
+      setIncomplete(false);
+      setUnverified(true);
+      return;
+    }
+    setUnverified(false);
     if (tableIssues(table).length) {
       setIncomplete(true);
       return;
@@ -252,6 +260,13 @@ export function TableSection({
         onCellPress={editable ? (rowId, column) => setCell({ rowId, column }) : undefined}
         onRowPress={editable ? setRow : undefined}
       />
+      {unverified && unsure.length ? (
+        <InlineNotice
+          testID="table-unverified"
+          tone="warning"
+          message={t.unverified(unsure.length)}
+        />
+      ) : null}
       {incomplete ? (
         <InlineNotice testID="table-incomplete" tone="warning" message={t.incomplete} />
       ) : null}

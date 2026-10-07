@@ -1143,6 +1143,11 @@ export class LocalStore {
     if (value.status === 'confirmed' && tableIssues(value.table).length) {
       throw new Error('The table is incomplete');
     }
+    // A proposal with uncertain cells is never approved: each is checked by the owner first.
+    const current = await new ServiceTableRepository(this.db).get(vid);
+    if (value.status === 'confirmed' && current?.status === 'proposed' && current.unsure.length) {
+      throw new Error('The table still has uncertain cells');
+    }
     await new ServiceTableRepository(this.db).save(
       vid,
       value.status === 'confirmed' ? { ...value, unsure: [] } : value,
