@@ -25,8 +25,14 @@ const args = process.argv.slice(2);
 const checkOnly = args.includes('--check');
 const message = args[args.indexOf('--message') + 1];
 
+// On Windows `npx` needs a shell, which splits arguments on spaces: quote them there.
+const win = process.platform === 'win32';
 const run = (cmd, a, opts = {}) =>
-  execFileSync(cmd, a, { encoding: 'utf8', shell: process.platform === 'win32', ...opts });
+  execFileSync(cmd, win ? a.map((x) => (/[\s()]/.test(x) ? `"${x.replace(/"/g, '')}"` : x)) : a, {
+    encoding: 'utf8',
+    shell: win,
+    ...opts,
+  });
 
 const local = JSON.parse(
   run('npx', ['expo-updates', 'runtimeversion:resolve', '--platform', 'android']),
