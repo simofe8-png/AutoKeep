@@ -48,14 +48,17 @@ const builds = JSON.parse(
     '--json',
   ]),
 );
-const match = builds.find((b) => b.runtimeVersion === local && b.channel === CHANNEL);
+// eas-cli JSON: the runtime is `runtime.version`, the channel `updateChannel.name`.
+const runtimeOf = (b) => b.runtime?.version ?? b.runtimeVersion;
+const channelOf = (b) => b.updateChannel?.name ?? b.channel;
+const match = builds.find((b) => runtimeOf(b) === local && channelOf(b) === CHANNEL);
 
 if (!match) {
   console.error(
     [
       'STOP: no finished staging build has this runtime — native code or native config changed.',
       `  runtime of this commit: ${local}`,
-      `  staging builds:         ${builds.map((b) => b.runtimeVersion).join(', ') || 'none'}`,
+      `  staging builds:         ${builds.map(runtimeOf).join(', ') || 'none'}`,
       'An OTA update would never reach the installed app. Build a new staging version:',
       `  npx eas-cli@latest build --platform android --profile ${PROFILE}`,
       'then submit it to Internal testing (docs/release/STAGING_OTA.md).',
