@@ -523,6 +523,7 @@ export function serviceTableVM(rec: VehicleRecords, today: IsoDate): ServiceTabl
     source: t.source,
     documentId: t.documentId,
     unsure: t.unsure,
+    evidence: t.evidence ?? null,
     plan:
       t.status === 'confirmed'
         ? tablePlan({ table: t.table, odometerKm: latest?.valueKm ?? 0, today, done })

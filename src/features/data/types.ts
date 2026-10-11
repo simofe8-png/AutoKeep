@@ -9,6 +9,7 @@ import type {
  */
 import type { ServiceTable, TableAction } from '@/domain';
 import type { TablePlan } from '@/engine/serviceTable';
+import type { TableEvidence } from '@/features/maintenance/table/parseTable';
 import type { ManualScheduleItem } from '@/persistence/repositories/manualSchedule';
 import type { VerificationState } from '@/ui';
 
@@ -263,6 +264,8 @@ export interface ServiceTableVM {
   documentId: string | null;
   /** Cells ("rowId:column") and rule rows ("rowId") the owner should check. */
   unsure: string[];
+  /** Where each row / column is on the saved page images (a table read from pages). */
+  evidence: TableEvidence | null;
   /** The next services (an approved table only). */
   plan: TablePlan | null;
 }

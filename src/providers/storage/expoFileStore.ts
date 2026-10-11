@@ -101,6 +101,13 @@ export const expoFileStore: OriginalFileStore = {
     f.write(bytes);
   },
 
+  async listKeys(): Promise<string[]> {
+    return dir()
+      .list()
+      .filter((e): e is File => e instanceof File)
+      .map((f) => `${ROOT}/${f.name}`);
+  },
+
   /**
    * Opens the original directly in the device's viewer (Android ACTION_VIEW with a temporary
    * read grant on a content URI of the private file; nothing is copied or uploaded). Falls back

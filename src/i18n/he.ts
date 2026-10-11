@@ -1108,6 +1108,7 @@ export const he = {
     reading: (page: number, pages: number) =>
       pages > 1 ? `קורא את הטבלה… עמוד ${page} מתוך ${pages}` : 'קורא את הטבלה…',
     readingHint: 'זה לוקח עד דקה לכל עמוד.',
+    inBooklet: 'כך זה מופיע בספר:',
     pagesTaken: (n: number) => (n === 1 ? 'צולם עמוד אחד' : `צולמו ${n} עמודים`),
     addPage: 'צלם עמוד נוסף',
     readPages: 'קרא את הלוח',

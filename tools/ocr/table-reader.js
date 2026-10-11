@@ -59,29 +59,47 @@ function readServiceTable(img, ocr) {
   }
 
   /** Small rotation (±4°) that makes the ruled lines horizontal. */
+  /**
+   * The page's tilt (±6°) that makes the ruled lines horizontal: a coarse search, then a fine one
+   * (0.02°) — a residue of a few tenths of a degree already shifts a column line across the page.
+   */
   function skew(bin, w, h) {
-    var best = 0,
-      bestScore = -1;
     var hist = new Float64Array(h * 2);
-    for (var a = -4; a <= 4.001; a += 0.2) {
+    function score(a, step) {
       var t = Math.tan((a * Math.PI) / 180);
       hist.fill(0);
-      for (var y = 0; y < h; y += 2) {
-        for (var x = 0; x < w; x += 2) {
+      // The page's inside only: edges and the background around a photographed page would
+      // pull the estimate to 0°.
+      for (var y = Math.round(h * 0.06); y < h * 0.94; y += step) {
+        for (var x = Math.round(w * 0.06); x < w * 0.94; x += step) {
           if (bin[y * w + x]) {
-            var yy = Math.round(y - x * t + h / 2);
+            // Bins as wide as the sampling step (otherwise 0° alone fills every other bin and
+            // scores falsely high).
+            var yy = Math.round((y - (x - w / 2) * t + h / 2) / step);
             if (yy >= 0 && yy < hist.length) hist[yy]++;
           }
         }
       }
       var s = 0;
       for (var i = 0; i < hist.length; i++) s += hist[i] * hist[i];
-      if (s > bestScore) {
-        bestScore = s;
-        best = a;
-      }
+      return s;
     }
-    return Math.abs(best) < 0.15 ? 0 : best;
+    function search(from, to, by, step, start) {
+      var best = start,
+        bestScore = -1;
+      for (var a = from; a <= to + 1e-9; a += by) {
+        var sc = score(a, step);
+        if (sc > bestScore) {
+          bestScore = sc;
+          best = a;
+        }
+      }
+      return best;
+    }
+    var coarse = search(-6, 6, 0.25, 2, 0);
+    var fine = search(coarse - 0.3, coarse + 0.3, 0.02, 1, coarse);
+    // Below half a degree the grid is found as it is; turning it would only blur the letters.
+    return Math.abs(fine) < 0.5 ? 0 : fine;
   }
 
   function rotate(g, deg) {
@@ -94,10 +112,22 @@ function readServiceTable(img, ocr) {
       cy = h / 2;
     for (var y = 0; y < h; y++) {
       for (var x = 0; x < w; x++) {
-        // Inverse mapping: the source pixel that lands on (x, y).
-        var sx = Math.round(c * (x - cx) - s * (y - cy) + cx);
-        var sy = Math.round(s * (x - cx) + c * (y - cy) + cy);
-        out[y * w + x] = sx >= 0 && sx < w && sy >= 0 && sy < h ? g.data[sy * w + sx] : 255;
+        // Inverse mapping, interpolated (a nearest pixel would break thin letter strokes).
+        var fx = c * (x - cx) - s * (y - cy) + cx;
+        var fy = s * (x - cx) + c * (y - cy) + cy;
+        var x0 = Math.floor(fx),
+          y0 = Math.floor(fy);
+        if (x0 < 0 || y0 < 0 || x0 + 1 >= w || y0 + 1 >= h) {
+          out[y * w + x] = 255;
+          continue;
+        }
+        var ax = fx - x0,
+          ay = fy - y0,
+          i0 = y0 * w + x0;
+        out[y * w + x] = Math.round(
+          (g.data[i0] * (1 - ax) + g.data[i0 + 1] * ax) * (1 - ay) +
+            (g.data[i0 + w] * (1 - ax) + g.data[i0 + w + 1] * ax) * ay,
+        );
       }
     }
     return { w: w, h: h, data: out };
@@ -163,14 +193,40 @@ function readServiceTable(img, ocr) {
     return n;
   }
 
+  /**
+   * Words in reading order: lines top to bottom, each right to left (Hebrew), except a run of
+   * English / numbers inside it, which keeps its own left-to-right order ("1.6L Ti-VCT").
+   */
+  var LTR = /^[A-Za-z0-9][A-Za-z0-9.,:+\-/%]*$/;
   function text(words) {
-    return words
+    var lines = [];
+    words
       .slice()
       .sort(function (a, b) {
-        return Math.abs(a.y - b.y) > a.h * 0.7 ? a.y - b.y : b.x - a.x;
+        return a.y + a.h / 2 - (b.y + b.h / 2);
       })
-      .map(function (wd) {
-        return wd.text;
+      .forEach(function (wd) {
+        var last = lines[lines.length - 1];
+        if (last && Math.abs(last.yc - (wd.y + wd.h / 2)) < Math.max(wd.h, last.h) * 0.6) {
+          last.words.push(wd);
+        } else lines.push({ yc: wd.y + wd.h / 2, h: wd.h, words: [wd] });
+      });
+    return lines
+      .map(function (l) {
+        var w = l.words.sort(function (a, b) {
+          return b.x - a.x;
+        });
+        var out = [];
+        for (var i = 0; i < w.length;) {
+          if (!LTR.test(w[i].text)) {
+            out.push(w[i++].text);
+            continue;
+          }
+          var run = [];
+          while (i < w.length && LTR.test(w[i].text)) run.push(w[i++].text);
+          out.push.apply(out, run.reverse());
+        }
+        return out.join(' ');
       })
       .join(' ')
       .replace(/\s+/g, ' ')
@@ -182,7 +238,7 @@ function readServiceTable(img, ocr) {
   var bin = binarize(g);
   var angle = skew(bin, g.w, g.h);
   if (angle) {
-    g = rotate(g, -angle);
+    g = rotate(g, angle);
     bin = binarize(g);
   }
   var w = g.w,
@@ -375,23 +431,30 @@ function readServiceTable(img, ocr) {
 
   var rtl = labelCols[0].x0 > dataCols[0].x0;
 
+  /**
+   * A column line drawn through a row: within a few pixels of its position (a page is never
+   * perfectly straight, so a line drifts across the table), one pixel column dark over at least
+   * 85% of the row's middle. A letter stroke there is shorter.
+   */
   function vPresent(xAt, y0, y1) {
-    var n = 0,
+    var from = Math.round(y0 + (y1 - y0) * 0.15),
+      to = y1 - (y1 - y0) * 0.15,
+      best = 0,
       t = 0;
-    for (var yy = Math.round(y0 + (y1 - y0) * 0.15); yy < y1 - (y1 - y0) * 0.15; yy++) {
-      t++;
-      var r = yy * w;
-      if (
-        bin[r + xAt] ||
-        bin[r + xAt - 1] ||
-        bin[r + xAt + 1] ||
-        bin[r + xAt - 2] ||
-        bin[r + xAt + 2]
-      )
-        n++;
+    for (var yy0 = from; yy0 < to; yy0++) t++;
+    if (!t) return false;
+    for (var x = xAt - 6; x <= xAt + 6; x++) {
+      if (x < 1 || x >= w - 1) continue;
+      var n = 0;
+      for (var yy = from; yy < to; yy++) {
+        var r = yy * w;
+        if (bin[r + x] || bin[r + x - 1] || bin[r + x + 1]) n++;
+      }
+      if (n > best) best = n;
     }
-    return t > 0 && n / t >= 0.6;
+    return best / t >= 0.85;
   }
+
   /** A drawn line across [x0, x1]: one continuous run (a line of text has gaps between letters). */
   function hPresent(l, x0, x1) {
     var run = 0,
@@ -556,6 +619,131 @@ function readServiceTable(img, ocr) {
     return uni ? 1 - inter / uni : 0;
   }
 
+  var LATIN = /[A-Za-z]/;
+  var HEBREW = /[א-ת]/;
+  /** Specks read as text: bars, vowel points, lone punctuation. */
+  var SPECK = /^[|֑-ׇ'`.,:;~_\-]+$/;
+  /** A footnote marker as read: "(*1)", ")1%(", "3%(", ')"6', "(*)". */
+  var MARKER = /^[()[\]*%"'°\d]{2,5}$/;
+  function minConf(ws) {
+    return ws.length
+      ? Math.min.apply(
+          null,
+          ws.map(function (wd) {
+            return wd.conf;
+          }),
+        )
+      : 0;
+  }
+  /**
+   * A text cell read word by word: a word read in English letters is read again in Hebrew only
+   * (the more confident reading wins); a footnote marker is read again on its own; specks are
+   * dropped. `unsure`: a word stays below 70% confidence or a marker has no number.
+   */
+  /**
+   * The digit of a footnote marker, printed "(N*)": the digit, then a small raised asterisk (often
+   * read as 7 / 9). The first digit of each reading is taken; null unless the readings agree.
+   */
+  function markerDigit(wd) {
+    var own = wd.text.replace(/\D/g, '');
+    var seen = own ? [own[0]] : [];
+    [
+      { psm: 8, scale: 3 },
+      { psm: 7, scale: 4 },
+      { psm: 8, scale: 5, otsu: true },
+      { psm: 7, scale: 3, otsu: true },
+    ].forEach(function (v) {
+      var d = read(wd.x - 6, wd.y - 6, wd.x + wd.w + 6, wd.y + wd.h + 6, {
+        psm: v.psm,
+        scale: v.scale,
+        otsu: v.otsu,
+        whitelist: '()*0123456789',
+      })
+        .map(function (t) {
+          return t.text;
+        })
+        .join('')
+        .replace(/\D/g, '');
+      if (d) seen.push(d[0]);
+    });
+    var votes = {};
+    seen.forEach(function (d) {
+      votes[d] = (votes[d] || 0) + 1;
+    });
+    var keys = Object.keys(votes);
+    // One digit only, seen at least three times (the first reading counts as one).
+    return keys.length === 1 && votes[keys[0]] >= 3 ? keys[0] : null;
+  }
+
+  /**
+   * A text cell read twice — Hebrew and English together, and Hebrew only. In a Hebrew table a
+   * word read in English letters is replaced by the Hebrew-only word at the same place, unless
+   * it was read with high confidence ("EVAP", "1.6L"). A footnote marker is read again on its
+   * own; specks are dropped. `unsure`: any word below 70% confidence, an English word kept with
+   * low confidence, or a marker without an agreed number ("(*?)").
+   */
+  function readText(x0, y0, x1, y1, opts) {
+    var unsure = false;
+    // Invisible direction marks the engine adds are not part of the print.
+    var both = read(x0, y0, x1, y1, opts).map(function (wd) {
+      return {
+        text: wd.text.replace(/[‎‏]/g, ''),
+        x: wd.x,
+        y: wd.y,
+        w: wd.w,
+        h: wd.h,
+        conf: wd.conf,
+      };
+    });
+    var hebOnly = null;
+    var overlap = function (a, b) {
+      return (
+        Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) > Math.min(a.w, b.w) * 0.5 &&
+        Math.abs(a.y + a.h / 2 - (b.y + b.h / 2)) < Math.max(a.h, b.h) * 0.6
+      );
+    };
+    var words = both
+      .map(function (wd) {
+        if (MARKER.test(wd.text) && /[()]/.test(wd.text)) {
+          var n = markerDigit(wd);
+          if (!n) unsure = true;
+          return { text: '(*' + (n || '?') + ')', x: wd.x, y: wd.y, w: wd.w, h: wd.h, conf: 90 };
+        }
+        // A term with a digit or a hyphen ("Ti-VCT", "1.6L") is real English: kept, and checked
+        // by the owner when not read with confidence.
+        var term = /[\d-]/.test(wd.text);
+        if (LATIN.test(wd.text) && term && wd.conf < 85) unsure = true;
+        if (LATIN.test(wd.text) && !term && wd.conf < 85) {
+          if (!hebOnly)
+            hebOnly = read(x0, y0, x1, y1, { psm: opts.psm, scale: opts.scale, lang: 'heb' });
+          var same = hebOnly.filter(function (h) {
+            return overlap(h, wd);
+          });
+          var ht = same
+            .map(function (h) {
+              return h.text;
+            })
+            .join(' ');
+          if (same.length && HEBREW.test(ht) && !LATIN.test(ht)) {
+            return { text: ht, x: wd.x, y: wd.y, w: wd.w, h: wd.h, conf: minConf(same) };
+          }
+          unsure = true;
+        }
+        return wd;
+      })
+      .filter(function (wd) {
+        return !SPECK.test(wd.text);
+      });
+    if (
+      words.some(function (wd) {
+        return wd.conf < 70;
+      })
+    ) {
+      unsure = true;
+    }
+    return { text: text(words), unsure: unsure };
+  }
+
   // ---- 6. group column spans (merged vertically) ----
   var groupCol = labelCols.length > 1 ? labelCols[1] : null;
   var groupSpans = [];
@@ -570,7 +758,7 @@ function readServiceTable(img, ocr) {
     groupSpans.forEach(function (sp) {
       sp.text =
         ink(cleanBin, w, groupCol.x0, sp.y0, groupCol.x1, sp.y1) > 20
-          ? text(read(groupCol.x0, sp.y0, groupCol.x1, sp.y1, { psm: 6 }))
+          ? readText(groupCol.x0, sp.y0, groupCol.x1, sp.y1, { psm: 6 }).text
           : '';
     });
   }
@@ -588,11 +776,13 @@ function readServiceTable(img, ocr) {
       if (y0 >= sp.y0 - 3 && y1 <= sp.y1 + 3) row.group = sp.text;
     }
     var itemCol = labelCols[0];
-    row.label.push(
+    var lab =
       ink(cleanBin, w, itemCol.x0, y0, itemCol.x1, y1) > 20
-        ? text(read(itemCol.x0, y0, itemCol.x1, y1, { psm: 6 }))
-        : '',
-    );
+        ? readText(itemCol.x0, y0, itemCol.x1, y1, { psm: 6 })
+        : { text: '', unsure: false };
+    row.label.push(lab.text);
+    // The item name / the rule text is not proven: the owner checks the row.
+    if (lab.unsure) row.textUnsure = true;
     var open = 0;
     for (var ci = 1; ci < dataCols.length; ci++) {
       if (!vPresent(vLines[dataFrom + ci].at, y0, y1)) open++;
@@ -601,7 +791,9 @@ function readServiceTable(img, ocr) {
       dx1 = dataCols[dataCols.length - 1].x1;
     if (open >= (dataCols.length - 1) * 0.6) {
       // Merged across the service columns: a rule written as text ("החלף כל שנתיים").
-      row.merged = text(read(dx0, y0, dx1, y1, { psm: 6, scale: 2 }));
+      var rule = readText(dx0, y0, dx1, y1, { psm: 6, scale: 2 });
+      row.merged = rule.text;
+      if (rule.unsure) row.textUnsure = true;
       rows.push(row);
       continue;
     }
@@ -706,9 +898,31 @@ function readServiceTable(img, ocr) {
       }
     cl.text = top;
     cl.votes = votes;
-    // Sure: most readings agree.
-    cl.sure = Boolean(top) && topN / asked >= 0.6;
+    // Sure only when every sampled reading agrees (a cluster mixing ב and כ is never sure: its
+    // cells are then read one by one).
+    cl.sure = Boolean(top) && topN === asked && Object.keys(votes).length === 1;
   });
+  // A letter almost as close to another letter's cluster as to its own (ב / כ are alike) is a
+  // close call: it is read again on its own before it counts.
+  var labeled = clusters.filter(function (cl) {
+    return cl.text;
+  });
+  rows.forEach(function (r) {
+    if (!r.cells || r.numbers) return;
+    r.cells.forEach(function (c) {
+      if (!c) return;
+      c.parts.forEach(function (p) {
+        if (p.slash || !p.cluster.text) return;
+        var own = distance(p.v, p.cluster.rep),
+          alt = 1;
+        labeled.forEach(function (cl) {
+          if (cl.text !== p.cluster.text) alt = Math.min(alt, distance(p.v, cl.rep));
+        });
+        p.closeCall = alt - own < 0.1;
+      });
+    });
+  });
+
   // Every cell's reading from its cluster; a cell is sure only when all its letters are.
   rows.forEach(function (r) {
     if (!r.cells || r.numbers) return;
@@ -722,7 +936,7 @@ function readServiceTable(img, ocr) {
       c.sure =
         LETTER.test(c.text) &&
         c.parts.every(function (p) {
-          return p.slash || p.cluster.sure;
+          return p.slash || (p.cluster.sure && !p.closeCall);
         });
     });
   });
@@ -782,7 +996,9 @@ function readServiceTable(img, ocr) {
       }
       var texts = c.parts.map(function (p) {
         if (p.slash) return '/';
-        return p.cluster.sure ? p.cluster.text : reread(p.box, 'בכהסחנ', /^[בכהסחנ]$/);
+        return p.cluster.sure && !p.closeCall
+          ? p.cluster.text
+          : reread(p.box, 'בכהסחנ', /^[בכהסחנ]$/);
       });
       var combined =
         texts.every(Boolean) && LETTER.test(texts.join(''))
@@ -842,8 +1058,18 @@ function readServiceTable(img, ocr) {
     });
   }
 
+  // Where everything is on the (straightened) page, so the app can show the owner the original
+  // spot of a cell or a row next to its reading.
+  var colsInOrder = dataCols.map(function (c) {
+    return [c.x0, c.x1];
+  });
+  if (rtl) colsInOrder.reverse();
   return {
     angle: angle,
+    width: w,
+    height: h,
+    columns: colsInOrder,
+    itemColumn: [labelCols[0].x0, labelCols[0].x1],
     dataColumns: dataCols.length,
     // The service columns as they appear on the page: right to left for a Hebrew table.
     rtl: rtl,

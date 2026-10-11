@@ -1,5 +1,6 @@
 import type { IsoDate, ServiceTable, Timestamp, VehicleId } from '@/domain';
 import type { TableDone } from '@/engine/serviceTable';
+import type { TableEvidence } from '@/features/maintenance/table/parseTable';
 
 import type { Executor } from './base';
 
@@ -16,6 +17,8 @@ export interface StoredServiceTable {
   documentId: string | null;
   /** Cells ("rowId:column") and rule rows ("rowId") the reading was not sure of. */
   unsure: string[];
+  /** Positions on the saved page images (a table read from the owner's pages). */
+  evidence?: TableEvidence | null;
   updatedAt: string;
 }
 
@@ -31,6 +34,7 @@ interface TableRow {
   source: StoredServiceTable['source'];
   document_id: string | null;
   unsure: string;
+  evidence: string | null;
   updated_at: string;
 }
 
@@ -49,7 +53,7 @@ export class ServiceTableRepository {
 
   async get(vehicleId: VehicleId): Promise<StoredServiceTable | null> {
     const r = await this.db.first<TableRow>(
-      `SELECT data, status, source, document_id, unsure, updated_at
+      `SELECT data, status, source, document_id, unsure, evidence, updated_at
        FROM service_tables WHERE vehicle_id = ?`,
       [vehicleId],
     );
@@ -60,6 +64,7 @@ export class ServiceTableRepository {
       source: r.source,
       documentId: r.document_id,
       unsure: JSON.parse(r.unsure) as string[],
+      evidence: r.evidence ? (JSON.parse(r.evidence) as TableEvidence) : null,
       updatedAt: r.updated_at,
     };
   }
@@ -71,11 +76,11 @@ export class ServiceTableRepository {
   ): Promise<void> {
     await this.db.run(
       `INSERT INTO service_tables
-         (vehicle_id, data, status, source, document_id, unsure, created_at, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+         (vehicle_id, data, status, source, document_id, unsure, evidence, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
        ON CONFLICT(vehicle_id) DO UPDATE SET data = excluded.data, status = excluded.status,
          source = excluded.source, document_id = excluded.document_id, unsure = excluded.unsure,
-         updated_at = excluded.updated_at`,
+         evidence = excluded.evidence, updated_at = excluded.updated_at`,
       [
         vehicleId,
         JSON.stringify(value.table),
@@ -83,6 +88,7 @@ export class ServiceTableRepository {
         value.source,
         value.documentId,
         JSON.stringify(value.unsure),
+        value.evidence ? JSON.stringify(value.evidence) : null,
         now,
         now,
       ],

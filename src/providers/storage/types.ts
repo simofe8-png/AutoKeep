@@ -25,10 +25,12 @@ export interface OriginalFileStore {
   verify(storageKey: string, sha256: string): Promise<Integrity>;
   /** Hands the original to the system viewer (share sheet); false if it cannot be opened. */
   open(storageKey: string, mimeType: string): Promise<boolean>;
-  /** Raw bytes of a stored original (for the encrypted-in-transit cloud backup). */
+  /** Raw bytes of a stored original (for the user's backup file). */
   readBytes(storageKey: string): Promise<Uint8Array>;
-  /** Restores an original under its key (e.g. downloaded from the account's private backup). */
+  /** Restores an original under its key (from the user's backup file). */
   writeBytes(storageKey: string, bytes: Uint8Array): Promise<void>;
+  /** Keys of every stored file (to find files no record refers to). */
+  listKeys(): Promise<string[]>;
 }
 
 const EXT: Record<string, string> = {
@@ -127,5 +129,9 @@ export class MemoryFileStore implements OriginalFileStore {
 
   async writeBytes(storageKey: string, bytes: Uint8Array): Promise<void> {
     this.files.set(storageKey, { bytes, mimeType: 'application/octet-stream' });
+  }
+
+  async listKeys(): Promise<string[]> {
+    return [...this.files.keys()];
   }
 }

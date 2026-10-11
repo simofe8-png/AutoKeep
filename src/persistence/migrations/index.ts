@@ -517,4 +517,13 @@ CREATE INDEX service_table_done_vehicle ON service_table_done(vehicle_id);
 DELETE FROM manual_schedule_items;
 `,
   },
+  {
+    version: 20,
+    name: 'service_table_evidence',
+    // Where each row / column of a table read from the owner's pages is on the saved page images,
+    // so the owner checks a reading against the original spot (owner, 2026-10-08). LOCAL ONLY.
+    up: `
+ALTER TABLE service_tables ADD COLUMN evidence TEXT;
+`,
+  },
 ];

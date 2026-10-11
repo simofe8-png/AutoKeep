@@ -1,4 +1,4 @@
-import { File } from 'expo-file-system';
+import { Directory, File, Paths } from 'expo-file-system';
 import { useSyncExternalStore } from 'react';
 
 import { newLocalId, useAppData } from '@/features/data/DataContext';
@@ -41,6 +41,23 @@ const subscribe = (l: () => void) => {
   listeners.add(l);
   return () => void listeners.delete(l);
 };
+
+/**
+ * A copy of a read page image in the app's private storage, so the owner can compare each reading
+ * with the original spot. Undefined when it could not be kept (the reading still counts).
+ */
+function keepPage(bytes: Uint8Array): string | undefined {
+  try {
+    const dir = new Directory(Paths.document, 'table-pages');
+    if (!dir.exists) dir.create({ intermediates: true });
+    const f = new File(dir, `${newLocalId('page')}.jpg`);
+    f.create();
+    f.write(bytes);
+    return f.uri;
+  } catch {
+    return undefined;
+  }
+}
 
 export function useTableImport(vehicleId: string) {
   const { isDemoData, addDocument, saveServiceTable } = useAppData();
@@ -87,6 +104,12 @@ export function useTableImport(vehicleId: string) {
         source: 'photo',
         documentId: documentIds[0],
         unsure: parsed.unsure,
+        evidence: parsed.evidence
+          ? {
+              ...parsed.evidence,
+              pages: parsed.evidence.pages.map((p, i) => ({ ...p, uri: keepPage(images[i]) })),
+            }
+          : null,
       });
       set(vehicleId, IDLE);
       return true;

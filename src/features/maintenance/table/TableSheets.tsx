@@ -24,6 +24,8 @@ import {
   TextField,
 } from '@/ui';
 
+import type { TableEvidence } from './parseTable';
+import { SourceCrop } from './SourceCrop';
 import { ActionLetters } from './TableGrid';
 
 const ORDER: TableAction[] = ['check', 'replace', 'adjust', 'lube', 'tighten', 'clean'];
@@ -59,11 +61,14 @@ function ActionChip({
 /** One cell: one or two actions (a combined cell like ב/ח), or empty. */
 export function CellSheet({
   table,
+  evidence,
   target,
   onSave,
   onClose,
 }: {
   table: ServiceTable;
+  /** Positions on the page images: the original cell is shown above the choices. */
+  evidence?: TableEvidence | null;
   target: { rowId: string; column: number } | null;
   onSave: (actions: TableAction[], wholeRow: boolean) => void;
   onClose: () => void;
@@ -80,6 +85,9 @@ export function CellSheet({
       onClose={onClose}
       testID="table-cell-sheet"
     >
+      {row && target ? (
+        <SourceCrop evidence={evidence} rowId={target.rowId} column={target.column} />
+      ) : null}
       {row && target ? (
         <CellForm
           key={`${target.rowId}:${target.column}`}
@@ -151,12 +159,15 @@ const int = (s: string): number | null | undefined => {
 /** A row: its name, heading, footnote, and either cells (by the table) or a rule. */
 export function RowSheet({
   table,
+  evidence,
   rowId,
   onSave,
   onDelete,
   onClose,
 }: {
   table: ServiceTable;
+  /** Positions on the page images: the original row is shown above the fields. */
+  evidence?: TableEvidence | null;
   /** 'new': a row to add. */
   rowId: string | 'new' | null;
   /** `refilled`: every cell was set from "פעולה בכל הטיפולים". */
@@ -172,6 +183,7 @@ export function RowSheet({
       onClose={onClose}
       testID="table-row-sheet"
     >
+      {rowId != null && rowId !== 'new' ? <SourceCrop evidence={evidence} rowId={rowId} /> : null}
       {rowId != null ? (
         <RowForm key={rowId} table={table} row={row} onSave={onSave} onDelete={onDelete} />
       ) : null}

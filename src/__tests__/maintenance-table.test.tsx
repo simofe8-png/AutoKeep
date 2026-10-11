@@ -187,6 +187,23 @@ describe('לוח טיפולים → טיפול תקופתי', () => {
       source: 'photo',
       documentId: null,
       unsure: [`${row('שמן מנוע')}:0`],
+      // Where the oil row is on the saved page image (SYNTHETIC positions).
+      evidence: {
+        pages: [
+          {
+            uri: 'file:///table-pages/page1.jpg',
+            width: 1600,
+            height: 2400,
+            angle: 0,
+            columns: Array.from({ length: 16 }, (_, k): [number, number] => [
+              1200 - k * 60,
+              1250 - k * 60,
+            ]),
+            itemColumn: [1300, 1500],
+          },
+        ],
+        rows: { [row('שמן מנוע')]: { page: 0, y0: 600, y1: 640 } },
+      },
     });
     await open('/maintenance', 'screen-maintenance');
     await waitFor(() => expect(screen.getByTestId('table-proposed')).toBeOnTheScreen(), LONG);
@@ -215,6 +232,8 @@ describe('לוח טיפולים → טיפול תקופתי', () => {
     ).rejects.toThrow(/uncertain/);
 
     await fireEvent.press(screen.getByTestId(`table-cell-${row('שמן מנוע')}:0`));
+    // The original cell from the page is shown above the choices.
+    expect(screen.getByTestId('table-source-crop')).toHaveTextContent('כך זה מופיע בספר:');
     await fireEvent.press(screen.getByTestId('table-cell-save'));
     await waitFor(
       () => expect(screen.getByTestId('table-proposed')).toHaveTextContent(/^.*השווה לספר/),

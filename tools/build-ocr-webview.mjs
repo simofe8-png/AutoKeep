@@ -172,19 +172,31 @@ function greyPixels(bytes) {
   });
 }
 /** One small image read by Tesseract (PGM through the in-memory file system). */
+/** A Hebrew-only engine (opts.lang 'heb'), started on first use: Hebrew words are never read as
+ * English letters there. */
+function hebApi(e) {
+  if (!e.heb) {
+    e.heb = new e.M.TessBaseAPI();
+    if (e.heb.Init(null, 'heb', 1) !== 0) throw new Error('OCR engine failed to start');
+    e.heb.SetVariable('preserve_interword_spaces', '1');
+    e.heb.SetVariable('user_defined_dpi', '300');
+  }
+  return e.heb;
+}
 function cellReader(e) {
   return function (im, o) {
+    var api = o.lang === 'heb' ? hebApi(e) : e.api;
     var head = 'P5\\n' + im.w + ' ' + im.h + '\\n255\\n';
     var buf = new Uint8Array(head.length + im.data.length);
     for (var i = 0; i < head.length; i++) buf[i] = head.charCodeAt(i);
     buf.set(im.data, head.length);
     e.M.FS.writeFile('/input', buf);
-    e.api.SetVariable('tessedit_pageseg_mode', String(o.psm));
-    e.api.SetVariable('tessedit_char_whitelist', o.whitelist || '');
-    if (e.api.SetImageFile(1, 0) === 1) return [];
-    e.api.Recognize(null);
-    var tsv = e.api.GetTSVText() || '';
-    e.api.Clear();
+    api.SetVariable('tessedit_pageseg_mode', String(o.psm));
+    api.SetVariable('tessedit_char_whitelist', o.whitelist || '');
+    if (api.SetImageFile(1, 0) === 1) return [];
+    api.Recognize(null);
+    var tsv = api.GetTSVText() || '';
+    api.Clear();
     var words = [];
     tsv.split('\\n').forEach(function (row) {
       var c = row.split('\\t');

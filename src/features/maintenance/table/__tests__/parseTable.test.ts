@@ -94,3 +94,19 @@ describe('table parsing rules', () => {
     expect(isFiesta2012({ manufacturer: 'מאזדה', model: 'FIESTA', year: 2012 })).toBe(false);
   });
 });
+
+describe('positions for checking against the page (owner, 2026-10-08)', () => {
+  it('every row keeps its page and place; every page its columns', () => {
+    const parsed = parseTablePages(scan as RawTablePage[]);
+    if (!parsed.ok) throw new Error(parsed.reason);
+    expect(parsed.evidence?.pages).toHaveLength(2);
+    expect(parsed.evidence?.pages[0].columns).toHaveLength(16);
+    for (const r of parsed.table.rows) {
+      const at = parsed.evidence?.rows[r.id];
+      expect(at && at.y1 > at.y0).toBe(true);
+    }
+    // Rows of page 144 point to the second page image.
+    const last = parsed.table.rows[parsed.table.rows.length - 1];
+    expect(parsed.evidence?.rows[last.id].page).toBe(1);
+  });
+});

@@ -56,15 +56,26 @@ const TableSchema = z
   .object({
     dataColumns: z.number().int().min(1).max(40),
     rtl: z.boolean(),
+    angle: z.number().optional(),
+    width: z.number().positive().optional(),
+    height: z.number().positive().optional(),
+    columns: z
+      .array(z.tuple([z.number(), z.number()]))
+      .max(40)
+      .optional(),
+    itemColumn: z.tuple([z.number(), z.number()]).optional(),
     rows: z
       .array(
         z.object({
+          y0: z.number().optional(),
+          y1: z.number().optional(),
           group: z.string().max(400),
           label: z.array(z.string().max(400)).max(4),
           data: z.array(z.string().max(40).nullable()).max(40),
           merged: z.string().max(1000).nullable(),
           numbers: z.boolean().optional(),
           unsure: z.array(z.number().int().min(0).max(40)).max(40).optional(),
+          textUnsure: z.boolean().optional(),
         }),
       )
       .max(300),

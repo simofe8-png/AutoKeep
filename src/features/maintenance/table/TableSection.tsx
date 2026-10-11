@@ -50,6 +50,7 @@ export function TableSection({
       source: vm?.source ?? 'manual',
       documentId: vm?.documentId ?? null,
       unsure,
+      evidence: vm?.evidence ?? null,
     });
 
   const reading = imp.state.kind === 'reading' ? imp.state : null;
@@ -301,9 +302,16 @@ export function TableSection({
         onPress={() => setDiscard(true)}
       />
 
-      <CellSheet table={table} target={cell} onSave={saveCell} onClose={() => setCell(null)} />
+      <CellSheet
+        table={table}
+        evidence={vm.evidence}
+        target={cell}
+        onSave={saveCell}
+        onClose={() => setCell(null)}
+      />
       <RowSheet
         table={table}
+        evidence={vm.evidence}
         rowId={row}
         onSave={saveRow}
         onDelete={(id) => {

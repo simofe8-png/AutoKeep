@@ -15,19 +15,45 @@ import {
  */
 
 export interface RawTableRow {
+  /** Where the row is on its page (top / bottom, in page pixels). */
+  y0?: number;
+  y1?: number;
   group: string;
   label: string[];
   data: (string | null)[];
   merged: string | null;
   numbers?: boolean;
   unsure?: number[];
+  /** The item name or the rule text was not read with confidence. */
+  textUnsure?: boolean;
 }
 
 export interface RawTablePage {
   dataColumns: number;
   rtl: boolean;
+  /** The straightened page the positions refer to. */
+  angle?: number;
+  width?: number;
+  height?: number;
+  /** The service columns in reading order, and the item column: [left, right] in page pixels. */
+  columns?: [number, number][];
+  itemColumn?: [number, number];
   rows: RawTableRow[];
   below: string[];
+}
+
+/** Where each row and column of the table is on the owner's page images. */
+export interface TableEvidence {
+  pages: {
+    /** The saved page image (device file), when the import kept it. */
+    uri?: string;
+    width: number;
+    height: number;
+    angle: number;
+    columns: [number, number][];
+    itemColumn: [number, number];
+  }[];
+  rows: Record<string, { page: number; y0: number; y1: number }>;
 }
 
 export type ParsedTable =
@@ -36,6 +62,8 @@ export type ParsedTable =
       table: ServiceTable;
       /** "rowId:column" of cells, or "rowId" of rules, the owner should check. */
       unsure: string[];
+      /** Positions on the page images (absent when the reading had none). */
+      evidence: TableEvidence | null;
     }
   | { ok: false; reason: 'no_table' | 'no_intervals' };
 
@@ -134,8 +162,22 @@ export function parseTablePages(pages: RawTablePage[]): ParsedTable {
   const unsure: string[] = [];
   let group = '';
 
+  const evidence: TableEvidence = { pages: [], rows: {} };
+  let located = true;
+  pages.forEach((page) => {
+    evidence.pages.push({
+      width: page?.width ?? 0,
+      height: page?.height ?? 0,
+      angle: page?.angle ?? 0,
+      columns: page?.columns ?? [],
+      itemColumn: page?.itemColumn ?? [0, 0],
+    });
+    if (!page?.width || !page.columns) located = false;
+  });
+
   for (const page of usable) {
     if (page.dataColumns !== columns) continue;
+    const pageIndex = pages.indexOf(page);
     const headerAt = page.rows.findIndex((r) => r.numbers);
     // Rows above the header (the legend line) are not items.
     const body = headerAt >= 0 ? page.rows.slice(headerAt) : page.rows;
@@ -157,9 +199,14 @@ export function parseTablePages(pages: RawTablePage[]): ParsedTable {
       if (g) group = g;
       if (!title && !r.merged && r.data.every((c) => !c)) continue;
       const id = `r${rows.length + 1}`;
+      if (r.y0 != null && r.y1 != null) {
+        evidence.rows[id] = { page: pageIndex, y0: r.y0, y1: r.y1 };
+      }
+      // A name or rule not read with confidence: the owner checks the row.
+      if (r.textUnsure) unsure.push(id);
       if (r.merged != null) {
         rows.push({ id, group, title, footnote, cells: null, rule: parseRule(r.merged) });
-        unsure.push(id);
+        if (!unsure.includes(id)) unsure.push(id);
         continue;
       }
       const cells = r.data.map((c, k) => {
@@ -189,5 +236,6 @@ export function parseTablePages(pages: RawTablePage[]): ParsedTable {
       footnotes: parseFootnotes(usable.flatMap((p) => p.below)),
     },
     unsure,
+    evidence: located ? evidence : null,
   };
 }
