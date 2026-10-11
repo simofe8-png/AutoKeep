@@ -7,15 +7,7 @@ module.exports = defineConfig([
   expoConfig,
   prettierConfig,
   {
-    ignores: [
-      'dist/*',
-      '.expo/*',
-      'coverage/*',
-      'supabase/.temp/*',
-      // Deno Edge Functions: typechecked by the Deno runtime, not the app's TS config.
-      'supabase/functions/**',
-      'AutoKeep_Bootstrap_Package/*',
-    ],
+    ignores: ['dist/*', '.expo/*', 'coverage/*', 'AutoKeep_Bootstrap_Package/*'],
   },
   {
     rules: {

@@ -1,6 +1,7 @@
 # ADR-0011: Sync protocol, outbox and entity-aware conflict resolution
 
 - Status: accepted
+- Superseded by ADR-0023 (2026-10-11): local-first without an AutoKeep backend. HISTORICAL — the code it describes was removed.
 - Date: 2026-09-26
 
 ## Context

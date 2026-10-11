@@ -6,11 +6,11 @@ module.exports = {
   // --no-cache: 20 s was not enough). Warm runs are unaffected.
   testTimeout: 90000,
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  // Cloud (local Supabase) and live (public internet) suites run via their own configs.
+  // Live suites (public internet) run via their own config.
   testPathIgnorePatterns: [
     '/node_modules/',
     '/AutoKeep_Bootstrap_Package/',
-    '\\.(cloud|live)\\.test\\.ts$',
+    '\\.live\\.test\\.ts$',
   ],
   moduleNameMapper: {
     '^@/assets/(.*)$': '<rootDir>/assets/$1',

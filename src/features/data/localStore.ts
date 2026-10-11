@@ -38,12 +38,8 @@ import { alertCandidates, planAlerts, type AlertCandidate } from '@/engine/alert
 import { computeMaintenance, type EngineResult } from '@/engine/maintenance';
 import type { TableDone } from '@/engine/serviceTable';
 import { tableAction } from '@/features/maintenance/table/serviceActions';
-import { adoptLocalData, readAdoptionState, type AdoptionStatus } from '@/account/adoption';
-import { originalPath, type AccountBackend } from '@/features/account/backend';
-import type { DeleteAccountResult } from '@/cloud/auth';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import { hasSpec } from '@/features/vehicles/vehicleSpec';
-import { parkedCount, pendingCount, syncOnce } from '@/sync/engine';
 import type { AcquiredFile } from '@/providers/acquisition/types';
 import type { OriginalFileStore } from '@/providers/storage/types';
 import {
@@ -78,6 +74,15 @@ import {
   type StoredServiceTable,
   type Executor,
 } from '@/persistence';
+import {
+  createBackup,
+  LAST_BACKUP_SETTING,
+  restoreBackup,
+  type BackupCrypto,
+  type BackupManifest,
+  type RestoreResult,
+} from '@/persistence/backup/backup';
+import { sweepOrphanFiles, VEHICLE_PHOTOS_SETTING } from '@/persistence/files';
 import type { MSourceRun } from '@/discovery/maintenance/msource/run';
 import type { OwnerEdit } from '@/discovery/maintenance/msource/ownerReview';
 import { ownerReviewState } from '@/features/maintenance/msource/ownerReview';
@@ -116,7 +121,7 @@ export const systemClock: Clock = {
   },
 };
 
-const PHOTO_KEY = 'vehiclePhotos';
+const PHOTO_KEY = VEHICLE_PHOTOS_SETTING;
 /** The Home "השלמת פרופיל הרכב" card per vehicle: hidden by the owner, or its "done" seen. */
 const PROFILE_CARD_KEY = 'profileCard';
 export type ProfileCardState = 'hidden' | 'done';
@@ -128,28 +133,17 @@ export interface Snapshot {
   activeVehicleId: string | null;
   /** The user opted in to device notifications (T130). */
   notificationsEnabled: boolean;
-  /** Backup/sync state from the local database (T140). */
+  /** The user's own backup file: when one was last produced or restored. */
   backup: BackupStatus;
-  /** User-provided vehicle photos (device-local, not synced): vehicleId → viewable URI. */
+  /** User-provided vehicle photos (device-local): vehicleId → viewable URI. */
   vehiclePhotos: Record<string, string>;
   /** Home profile-completion card state per vehicle (device-local UX). */
   profileCard: Record<string, ProfileCardState>;
 }
 
 export interface BackupStatus {
-  adoption: AdoptionStatus;
-  /** Local changes not yet accepted by the server. */
-  pending: number;
-  lastSyncAt: string | null;
-  lastError: 'network' | 'server_rejected' | 'different_account' | 'not_signed_in' | null;
-  /** Fields changed on two devices at once, reconciled by sync and not yet acknowledged (T158). */
-  conflicts: number;
-  /** Local changes the server permanently refused (kept on this device; P2A). */
-  notBackedUp: number;
+  lastBackupAt: string | null;
 }
-
-/** Result of one sync attempt, for the scheduler (retry with backoff on transient failures). */
-export type SyncAttempt = { ok: true } | { ok: false; transient: boolean; retryInMs?: number };
 
 /** Optional identity details captured at onboarding (beyond the display summary). */
 export interface VehicleDetails {
@@ -242,12 +236,9 @@ export class LocalStore {
   ): Promise<LocalStore> {
     await migrate(db, MIGRATIONS, clock.now);
     const profile = await new ProfileRepository(db).getOrCreate(ids, clock.now());
-    const store = new LocalStore(db, ids, clock, profile, files);
-    // An account deletion that succeeded on the server but was interrupted before this device
-    // was wiped is completed now (never left half-done).
-    const pending = await new SettingsRepository(db).get<{ status: string }>('accountDeletion');
-    if (pending?.status === 'local_pending') await store.wipeLocalData();
-    return store;
+    // Files no record refers to (an interrupted import or deletion) are removed before any write.
+    if (files) await sweepOrphanFiles(db, files).catch(() => undefined);
+    return new LocalStore(db, ids, clock, profile, files);
   }
 
   // ---------- reads ----------
@@ -502,217 +493,36 @@ export class LocalStore {
     return vehicle.id;
   }
 
-  // ---------- account / backup (M19) ----------
+  // ---------- backup file (local-first, ADR-0023) ----------
 
   async backupStatus(): Promise<BackupStatus> {
-    const settings = new SettingsRepository(this.db);
-    const adoption = await readAdoptionState(this.db);
-    const lastError = (await settings.get<BackupStatus['lastError']>('syncLastError')) ?? null;
-    const conflicts =
-      (
-        await this.db.first<{ n: number }>(
-          'SELECT COUNT(*) AS n FROM sync_conflicts WHERE resolved = 0',
-        )
-      )?.n ?? 0;
-    const originalsPending =
-      adoption.status === 'adopted' ? (await this.originalsToUpload()).length : 0;
     return {
-      conflicts,
-      notBackedUp: adoption.status === 'adopted' ? await parkedCount(this.db) : 0,
-      adoption: adoption.status,
-      pending: adoption.status === 'adopted' ? (await pendingCount(this.db)) + originalsPending : 0,
-      lastSyncAt: await settings.get<string>('lastSyncAt'),
-      lastError:
-        adoption.lastError === 'network' ||
-        adoption.lastError === 'server_rejected' ||
-        adoption.lastError === 'different_account' ||
-        adoption.lastError === 'not_signed_in'
-          ? adoption.lastError
-          : lastError,
+      lastBackupAt: await new SettingsRepository(this.db).get<string>(LAST_BACKUP_SETTING),
     };
   }
 
-  /**
-   * After sign-in: adopt this device's local data into the account (one server transaction,
-   * read-back verified — local data is never deleted), then run the first sync.
-   */
-  async connectAccount(backend: AccountBackend): Promise<void> {
-    const r = await adoptLocalData(this.db, backend.adoption, this.profile.id, this.clock.now);
-    if (!r.ok) throw new Error(`adoption: ${r.failure}`);
-    await this.sync(backend);
+  /** The text of a backup file of all local data (read-only; the caller saves it). */
+  async createBackup(crypto: BackupCrypto): Promise<{ text: string; manifest: BackupManifest }> {
+    if (!this.files) throw new Error('No original-file storage configured');
+    return createBackup(this.db, this.files, crypto, this.clock.now());
   }
 
-  /**
-   * One automatic backup step (P2A, Y4): a signed-in device whose adoption did not complete
-   * (network drop, app killed) retries it; an adopted device syncs.
-   */
-  async backUp(backend: AccountBackend): Promise<SyncAttempt> {
-    if ((await readAdoptionState(this.db)).status !== 'adopted') {
-      const r = await adoptLocalData(this.db, backend.adoption, this.profile.id, this.clock.now);
-      if (!r.ok) {
-        const transient = r.failure === 'network' || r.failure === 'verification_mismatch';
-        return { ok: false, transient };
-      }
-    }
-    return this.sync(backend);
-  }
-
-  /**
-   * P2A: permanently deletes the account and everything it holds.
-   *   1. the server deletes every backed-up original, then the account (rows cascade);
-   *   2. only after the server confirmed, this device is wiped (vehicles, records, originals,
-   *      sync queue and bookkeeping) and signed out.
-   * A failure at step 1 changes nothing on this device and is reported. Step 2 is recorded first,
-   * so an interruption is completed on the next start. Retrying is always safe (idempotent).
-   */
-  async deleteAccount(backend: AccountBackend): Promise<DeleteAccountResult> {
-    const settings = new SettingsRepository(this.db);
-    const r = await backend.deleteAccount();
-    if (!r.ok) {
-      // The server may have removed some originals before failing: make sure the next backup
-      // re-checks every original instead of trusting the "already uploaded" list.
-      await settings.set('uploadedOriginals', [], this.clock.now());
-      return r;
-    }
-    await settings.set('accountDeletion', { status: 'local_pending' }, this.clock.now());
-    await this.wipeLocalData();
-    await backend.signOut().catch(() => undefined);
-    return { ok: true };
-  }
-
-  /** Removes every user record and original from this device (the device profile stays). */
-  async wipeLocalData(): Promise<void> {
-    const docs = await this.allDocuments();
-    const photos = Object.values(await this.photoKeys());
-    await this.db.transaction(async (tx) => {
-      // Local bookkeeping only: nothing of this may be queued for sync.
-      await tx.run('UPDATE sync_control SET applying = 1 WHERE id = 1');
-      await tx.run('DELETE FROM sources');
-      await tx.run('DELETE FROM vehicles'); // every vehicle-scoped table cascades
-      await tx.run('DELETE FROM sync_outbox');
-      await tx.run('DELETE FROM sync_shadow');
-      await tx.run('DELETE FROM sync_conflicts');
-      await tx.run('DELETE FROM discovery_misses');
-      await tx.run('UPDATE profiles SET account_user_id = NULL');
-      await tx.run("DELETE FROM settings WHERE key <> 'accountDeletion'");
-      await tx.run('UPDATE sync_control SET applying = 0 WHERE id = 1');
-    });
-    if (this.files) {
-      for (const d of docs) await this.files.remove(d.original.storageKey).catch(() => undefined);
-      for (const key of photos) await this.files.remove(key).catch(() => undefined);
-    }
-    await this.db.run("DELETE FROM settings WHERE key = 'accountDeletion'");
-  }
-
-  private async allDocuments(): Promise<VehicleDocument[]> {
-    const out: VehicleDocument[] = [];
-    for (const v of await new VehicleRepository(this.db).list({ includeArchived: true })) {
-      out.push(...(await new DocumentRepository(this.db).list(v.id)));
-    }
-    return out;
-  }
-
-  /**
-   * Intact local originals not yet in the account's private bucket. A missing or modified file
-   * can never be uploaded, so it is not reported as "waiting for backup".
-   */
-  private async originalsToUpload(): Promise<VehicleDocument[]> {
-    const files = this.files;
-    if (!files) return [];
-    const done = new Set(
-      (await new SettingsRepository(this.db).get<string[]>('uploadedOriginals')) ?? [],
+  /** Records that the user saved a backup file. */
+  async markBackedUp(): Promise<void> {
+    await new SettingsRepository(this.db).set(
+      LAST_BACKUP_SETTING,
+      this.clock.now(),
+      this.clock.now(),
     );
-    const refused = new Set(
-      (
-        await this.db.all<{ entity_id: string }>(
-          "SELECT entity_id FROM sync_outbox WHERE entity_table = 'documents' AND parked = 1",
-        )
-      ).map((r) => r.entity_id),
-    );
-    const out: VehicleDocument[] = [];
-    for (const d of await this.allDocuments()) {
-      if (done.has(d.id) || refused.has(d.id)) continue;
-      if ((await files.verify(d.original.storageKey, d.original.sha256)) === 'intact') out.push(d);
-    }
-    return out;
   }
 
   /**
-   * T162: uploads intact originals to the private bucket (after their rows synced). A file that
-   * is missing or no longer matches its recorded hash is never uploaded.
+   * Replaces all local data with a backup file, only after it validated completely. The store
+   * must be reopened afterwards (the device profile row comes from the backup).
    */
-  private async uploadOriginals(backend: AccountBackend): Promise<void> {
-    if (!this.files) return;
-    const userId = await backend.adoption.currentUserId();
-    if (!userId) return;
-    const settings = new SettingsRepository(this.db);
-    const done = (await settings.get<string[]>('uploadedOriginals')) ?? [];
-    // originalsToUpload() already re-verified each file against its recorded hash.
-    for (const d of await this.originalsToUpload()) {
-      const bytes = await this.files.readBytes(d.original.storageKey);
-      await backend.originals.upload(
-        originalPath(userId, d.vehicleId, d.id),
-        bytes,
-        d.original.mimeType,
-      );
-      done.push(d.id);
-      await settings.set('uploadedOriginals', done, this.clock.now());
-    }
-  }
-
-  private async removeDeletedVehicleOriginals(backend: AccountBackend): Promise<void> {
-    const pending = await this.db.all<{ entity_id: string }>(
-      "SELECT DISTINCT entity_id FROM sync_outbox WHERE entity_table = 'vehicles' AND op = 'delete'",
-    );
-    if (pending.length === 0) return;
-    const userId = await backend.adoption.currentUserId();
-    if (!userId) return;
-    for (const { entity_id } of pending) {
-      await backend.originals.removeFolder(`${userId}/${entity_id}`);
-    }
-  }
-
-  /** The user has seen the reconciled conflicts (the kept values stay; this only clears the notice). */
-  async acknowledgeConflicts(): Promise<void> {
-    await this.db.run('UPDATE sync_conflicts SET resolved = 1 WHERE resolved = 0');
-  }
-
-  /**
-   * One sync round (push, then pull). Only for adopted data; failures are recorded, not lost.
-   * Returns whether a retry makes sense (transient failure) and when (backoff).
-   */
-  async sync(backend: AccountBackend): Promise<SyncAttempt> {
-    const settings = new SettingsRepository(this.db);
-    const failed = async (retryInMs?: number): Promise<SyncAttempt> => {
-      await settings.set('syncLastError', 'network', this.clock.now());
-      return { ok: false, transient: true, retryInMs };
-    };
-    // A permanently deleted vehicle takes its backed-up originals with it. This must happen before
-    // the deletion is pushed (storage RLS needs the vehicle row); on failure nothing is pushed.
-    try {
-      await this.removeDeletedVehicleOriginals(backend);
-    } catch {
-      return failed();
-    }
-    const r = await syncOnce(this.db, backend.transport, this.clock.now);
-    if (!r.ok) {
-      if (r.reason === 'network') return failed(r.retryInMs);
-      return { ok: false, transient: false };
-    }
-    // Vehicles deleted on another device: their rows are gone, so are the local originals.
-    if (this.files) {
-      for (const key of r.pull.removedOriginals) {
-        await this.files.remove(key).catch(() => undefined);
-      }
-    }
-    try {
-      await this.uploadOriginals(backend);
-    } catch {
-      return failed();
-    }
-    await settings.set('lastSyncAt', this.clock.now(), this.clock.now());
-    await settings.set('syncLastError', null, this.clock.now());
-    return { ok: true };
+  async restoreBackup(text: string, crypto: BackupCrypto): Promise<RestoreResult> {
+    if (!this.files) return { ok: false, reason: 'write_failed' };
+    return restoreBackup(this.db, this.files, text, crypto, this.clock.now());
   }
 
   async setNotificationsEnabled(enabled: boolean): Promise<void> {
@@ -958,37 +768,15 @@ export class LocalStore {
     }
   }
 
-  /**
-   * T123/T125: the stored original, re-hashed against the hash recorded at import. On a device
-   * that does not hold it yet (e.g. restored from the account), it is fetched from the private
-   * backup and accepted only if its hash matches the record.
-   */
-  async original(
-    vehicleId: string,
-    documentId: string,
-    backend: AccountBackend | null = null,
-  ): Promise<OriginalView | null> {
+  /** T123/T125: the stored original, re-hashed against the hash recorded at import. */
+  async original(vehicleId: string, documentId: string): Promise<OriginalView | null> {
     const doc = await new DocumentRepository(this.db).get(
       vehicleId as VehicleId,
       documentId as VehicleDocument['id'],
     );
     if (!doc || !this.files) return null;
     const key = doc.original.storageKey;
-    let integrity = await this.files.verify(key, doc.original.sha256);
-    if (integrity === 'missing' && backend) {
-      const userId = await backend.adoption.currentUserId().catch(() => null);
-      const bytes = userId
-        ? await backend.originals
-            .download(originalPath(userId, doc.vehicleId, doc.id))
-            .catch(() => null)
-        : null;
-      if (bytes) {
-        await this.files.writeBytes(key, bytes);
-        integrity = await this.files.verify(key, doc.original.sha256);
-        if (integrity !== 'intact') await this.files.remove(key); // never keep a mismatching copy
-        if (integrity !== 'intact') integrity = 'missing';
-      }
-    }
+    const integrity = await this.files.verify(key, doc.original.sha256);
     return { uri: this.files.uriFor(key), mimeType: doc.original.mimeType, integrity };
   }
 

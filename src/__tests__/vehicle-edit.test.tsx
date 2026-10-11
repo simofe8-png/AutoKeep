@@ -61,10 +61,9 @@ describe('vehicle details → edit (real local store)', () => {
   });
   afterEach(() => configureDataSource({ kind: 'demo' }));
 
-  it('a legacy engine code in the engine field is corrected by the user, then synced', async () => {
+  it('a legacy engine code in the engine field is corrected by the user and saved', async () => {
     // Legacy registry value: the engine code was stored as the engine.
     await world.db.run("UPDATE vehicles SET engine = 'CGG' WHERE id = ?", [world.moto.id]);
-    await world.db.run('DELETE FROM sync_outbox');
 
     await renderRouter('./src/app', { initialUrl: `/vehicle/${world.moto.id}` });
     await waitFor(
@@ -94,12 +93,6 @@ describe('vehicle details → edit (real local store)', () => {
     );
     await waitFor(() =>
       expect(screen.getByTestId('vehicle-details')).toHaveTextContent(/קוד מנוע.*CGG/),
-    );
-    const ops = await world.db.all<{ entity_table: string; entity_id: string }>(
-      'SELECT entity_table, entity_id FROM sync_outbox',
-    );
-    expect(ops).toContainEqual(
-      expect.objectContaining({ entity_table: 'vehicles', entity_id: world.moto.id }),
     );
   }, 40000);
 

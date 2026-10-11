@@ -1,13 +1,13 @@
-import { act, fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
+import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
 
 import { isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds, T0 } from '@/domain/testing';
-import { MemoryAccountBackend, TEST_PASSWORD } from '@/features/account/testing';
 import { configureDataSource } from '@/features/data/dataSource';
 import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
 import type { RegistrationExtractor } from '@/identification/contract';
-import { DocumentRepository, ServiceRepository } from '@/persistence';
+import { DocumentRepository, OdometerRepository, ServiceRepository } from '@/persistence';
+import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { populatedWorld, type PopulatedWorld } from '@/persistence/testing/world';
 import type { AcquisitionProvider } from '@/providers/acquisition/types';
 import { MockOcrProvider, MockStructuredExtractor } from '@/providers/intelligence/mocks';
@@ -18,7 +18,7 @@ import { MemoryFileStore } from '@/providers/storage/types';
 /**
  * M21 (T151–T159): every failure is explained in context, offers a way forward, loses nothing and
  * fabricates nothing. Covered here: no network, failed/ambiguous identification, unreadable or
- * hostile documents, OCR/AI failure, storage and sync failures, conflicts and interrupted writes.
+ * hostile documents, OCR/AI failure, storage failures, orphaned files and interrupted writes.
  */
 
 const LONG = { timeout: 10000 };
@@ -30,7 +30,6 @@ const clock = {
 let world: PopulatedWorld;
 let files: MemoryFileStore;
 let net: MemoryNetwork;
-let backend: MemoryAccountBackend;
 
 const acquired: AcquisitionProvider = {
   captureWithCamera: async () => ({
@@ -49,7 +48,6 @@ function configure(services: Partial<OnboardingServices> = {}) {
     clock,
     files,
     network: net,
-    account: backend,
     services: {
       acquisition: acquired,
       extractor: null,
@@ -64,7 +62,6 @@ beforeEach(async () => {
   world = await populatedWorld(sequentialIds(1), T0);
   files = new MemoryFileStore();
   net = new MemoryNetwork(true);
-  backend = new MemoryAccountBackend();
   configure();
 });
 afterEach(() => configureDataSource({ kind: 'demo' }));
@@ -93,27 +90,21 @@ describe('no network (T151, T156)', () => {
     expect(screen.getByTestId('registry-lookup-button')).toBeDisabled();
   });
 
-  it('pending backups resume by themselves when the connection returns', async () => {
-    await open('/account', 'screen-account');
-    backend.addAccount('owner');
-    await fireEvent.changeText(screen.getByTestId('account-username'), 'owner');
-    await fireEvent.changeText(screen.getByTestId('account-password'), TEST_PASSWORD);
-    await fireEvent.press(screen.getByTestId('account-sign-in'));
-    await waitFor(
-      () => expect(screen.getByTestId('backup-status')).toHaveTextContent(/מחובר/),
-      LONG,
-    );
-
-    await act(async () => net.set(false));
-    backend.offline = true;
+  it('a change made offline is saved at once and survives a restart (no server, no queue)', async () => {
     const store = await LocalStore.open(world.db, sequentialIds(90000), clock);
     await store.updateOdometer(world.car.id, 90_000, '2026-09-26');
-    const pushed = backend.pushed.length;
-
-    backend.offline = false;
-    await act(async () => net.set(true));
-    await waitFor(() => expect(backend.pushed.length).toBeGreaterThan(pushed), LONG);
-  }, 40000);
+    const reopened = await LocalStore.open(
+      await openTestDatabase(world.db.export()),
+      sequentialIds(90100),
+      clock,
+    );
+    const snapshot = await reopened.snapshot();
+    expect(snapshot.vehicles.find((v) => v.id === world.car.id)?.odometerKm).toBe(90_000);
+    const tables = await world.db.all<{ name: string }>(
+      "SELECT name FROM sqlite_master WHERE type IN ('table', 'trigger') AND name LIKE 'sync%'",
+    );
+    expect(tables).toEqual([]);
+  });
 });
 
 describe('identification failures (T152)', () => {
@@ -225,7 +216,7 @@ describe('documents, OCR/AI (T154, T155)', () => {
   });
 });
 
-describe('interrupted writes, conflicts (T158)', () => {
+describe('interrupted writes and orphaned files (T158)', () => {
   it('a write that fails midway leaves no partial record and no orphaned file', async () => {
     const store = await LocalStore.open(world.db, sequentialIds(91000), clock, files);
     const existing = (await new ServiceRepository(world.db).list(world.car.id))[0];
@@ -263,18 +254,33 @@ describe('interrupted writes, conflicts (T158)', () => {
     expect(files.files.size).toBe(0);
   });
 
-  it('two-device conflicts are explained once and can be acknowledged', async () => {
-    const store = await LocalStore.open(world.db, sequentialIds(92000), clock);
-    await backend.signInAs('o');
-    await store.connectAccount(backend);
-    await world.db.run(
-      `INSERT INTO sync_conflicts (entity_table, entity_id, field, local_value, remote_value, kept, detected_at)
-       VALUES ('vehicles', ?, 'model', '"A"', '"B"', 'remote', ?)`,
-      [world.car.id, T0],
+  it('a file no record refers to (interrupted import) is removed on the next start', async () => {
+    const store = await LocalStore.open(world.db, sequentialIds(92000), clock, files);
+    await store.addDocument(
+      world.car.id,
+      {
+        documentId: '00000000-0000-4000-8000-00000000beef',
+        file: {
+          uri: 'file:///cache/d.pdf',
+          mimeType: 'application/pdf',
+          sizeBytes: 1,
+          source: 'file',
+        },
+        title: 'רישיון',
+      },
+      'registration',
     );
-    await open('/account', 'screen-account');
-    await waitFor(() => expect(screen.getByTestId('backup-conflicts')).toBeOnTheScreen(), LONG);
-    await fireEvent.press(screen.getByRole('button', { name: 'הבנתי' }));
-    await waitFor(() => expect(screen.queryByTestId('backup-conflicts')).toBeNull());
+    const kept = [...files.files.keys()];
+    // An import interrupted after the copy, before its record was written.
+    await files.importFile({
+      uri: 'file:///cache/lost.jpg',
+      mimeType: 'image/jpeg',
+      sizeBytes: 1,
+      source: 'camera',
+    });
+    expect(files.files.size).toBe(2);
+    await LocalStore.open(world.db, sequentialIds(92100), clock, files);
+    expect([...files.files.keys()]).toEqual(kept);
+    expect(await new OdometerRepository(world.db).listForVehicle(world.car.id)).not.toHaveLength(0);
   });
 });

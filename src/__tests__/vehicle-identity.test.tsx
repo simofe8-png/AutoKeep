@@ -18,14 +18,13 @@ import { MIGRATIONS, VehicleRepository } from '@/persistence';
 import { migrate } from '@/persistence/migrations/runner';
 import { openTestDatabase, type TestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { populatedWorld } from '@/persistence/testing/world';
+import { createBackup, restoreBackup } from '@/persistence/backup/backup';
+import { nodeBackupCrypto } from '@/persistence/backup/testing';
 import { MemoryFileStore } from '@/providers/storage/types';
-import { pullChanges, pushPending } from '@/sync/engine';
-import { mergeRows } from '@/sync/merge';
-import { MemoryServer } from '@/sync/testing/memoryServer';
 
 /**
  * Vehicle identity correction (owner, 2026-09-28): color and engine code are first-class,
- * optional identity attributes — entered manually, persisted, synced, restored on another
+ * optional identity attributes — entered manually, persisted, backed up, restored on another
  * device, never inferred. The vehicle image is a labeled neutral placeholder unless the user
  * adds their own photo.
  */
@@ -146,87 +145,45 @@ describe('persistence', () => {
   });
 });
 
-describe('sync, backup and restore on another device', () => {
+describe('backup and restore on another device', () => {
   async function emptyDevice(): Promise<TestDatabase> {
     const db = await openTestDatabase();
     await migrate(db, MIGRATIONS, now);
     return db;
   }
 
-  it('both fields reach the account and a second device restores them', async () => {
+  async function throughBackup(a: TestDatabase): Promise<TestDatabase> {
+    const { text } = await createBackup(a, new MemoryFileStore(), nodeBackupCrypto, now());
+    const b = await emptyDevice();
+    const r = await restoreBackup(b, new MemoryFileStore(), text, nodeBackupCrypto, now());
+    expect(r.ok).toBe(true);
+    return b;
+  }
+
+  it('color and engine code reach a second device through the backup file', async () => {
     const a = await populatedWorld(sequentialIds(1), T0);
     await a.db.run(
       "UPDATE vehicles SET color = 'אדום', engine_code = 'CGGB', version = version + 1 WHERE id = ?",
       [a.car.id],
     );
-    const server = new MemoryServer();
-    await pushPending(a.db, server.transport(), now);
-    expect(server.all('vehicles').find((v) => v.id === a.car.id)).toMatchObject({
-      color: 'אדום',
-      engine_code: 'CGGB',
-    });
-
-    const b = await emptyDevice();
-    await pullChanges(b, server.transport(), now);
+    const b = await throughBackup(a.db);
     expect((await new VehicleRepository(b).get(a.car.id))?.identity).toMatchObject({
       color: 'אדום',
       engineCode: 'CGGB',
     });
   });
 
-  it('the exterior phase and its source travel together through sync and restore', async () => {
+  it('the exterior phase and its source travel together through backup and restore', async () => {
     const a = await populatedWorld(sequentialIds(1), T0);
     await a.db.run(
       "UPDATE vehicles SET exterior_phase = 'pre-fl', exterior_phase_source = 'user', version = version + 1 WHERE id = ?",
       [a.car.id],
     );
-    const server = new MemoryServer();
-    await pushPending(a.db, server.transport(), now);
-    const b = await emptyDevice();
-    await pullChanges(b, server.transport(), now);
+    const b = await throughBackup(a.db);
     expect((await new VehicleRepository(b).get(a.car.id))?.identity).toMatchObject({
       exteriorPhase: 'pre-fl',
       exteriorPhaseSource: 'user',
     });
-    // Merge keeps a phase with its own provenance (never one device's value + another's source).
-    const base = {
-      id: 'v',
-      exterior_phase: null,
-      exterior_phase_source: null,
-      updated_at: '1',
-      version: 1,
-    };
-    const r = mergeRows(
-      'vehicles',
-      base,
-      {
-        ...base,
-        exterior_phase: 'fl1',
-        exterior_phase_source: 'user',
-        updated_at: '3',
-        version: 2,
-      },
-      {
-        ...base,
-        exterior_phase: 'pre-fl',
-        exterior_phase_source: 'registry',
-        updated_at: '2',
-        version: 2,
-      },
-    );
-    expect([r.row.exterior_phase, r.row.exterior_phase_source]).toEqual(['fl1', 'user']);
-  });
-
-  it('color set on one device and engine code on another are both kept', () => {
-    const base = { id: 'v', color: null, engine_code: null, updated_at: '1', version: 1 };
-    const r = mergeRows(
-      'vehicles',
-      base,
-      { ...base, color: 'לבן', updated_at: '2', version: 2 },
-      { ...base, engine_code: 'CGGB', updated_at: '3', version: 2 },
-    );
-    expect(r.row).toMatchObject({ color: 'לבן', engine_code: 'CGGB' });
-    expect(r.conflicts).toEqual([]);
   });
 });
 

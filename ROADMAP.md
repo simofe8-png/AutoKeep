@@ -2,18 +2,24 @@
 
 The task list is in `AutoKeep_Bootstrap_Package/TASK_PLAN.md`. Live status is in `task-plan.md`.
 
+| Milestone | Theme                                  | Tasks     |
+| --------- | -------------------------------------- | --------- |
+| M00       | Foundation                             | T001–T006 |
+| M01       | Design System                          | T007–T012 |
+| M02       | Full UI Prototype (mock data)          | T013–T030 |
+| M03       | Visual Acceptance (Android), UI freeze | T031–T035 |
+| M04       | Domain                                 | T036–T042 |
+| M05       | Local-first Persistence                | T043–T050 |
+| M06       | Vehicle Identification                 | T051–T057 |
+| M07       | Cloud Foundation (Supabase)            | T058–T066 |
+| M08       | Account Migration                      | T067–T071 |
+| M09       | Sync                                   | T072–T078 |
+
+> 2026-10-11 (ADR-0023): the cloud parts of M07–M09 and M19 (Supabase, accounts, sync) were removed.
+> AutoKeep is local-first with a user-controlled backup file and no backend.
+
 | Milestone | Theme                                              | Tasks     |
 | --------- | -------------------------------------------------- | --------- |
-| M00       | Foundation                                         | T001–T006 |
-| M01       | Design System                                      | T007–T012 |
-| M02       | Full UI Prototype (mock data)                      | T013–T030 |
-| M03       | Visual Acceptance (Android), UI freeze             | T031–T035 |
-| M04       | Domain                                             | T036–T042 |
-| M05       | Local-first Persistence                            | T043–T050 |
-| M06       | Vehicle Identification                             | T051–T057 |
-| M07       | Cloud Foundation (Supabase)                        | T058–T066 |
-| M08       | Account Migration                                  | T067–T071 |
-| M09       | Sync                                               | T072–T078 |
 | M10       | Official Source Discovery (superseded by ADR-0021) | T079–T086 |
 | M11       | Document Intelligence                              | T087–T094 |
 | M12       | Maintenance Engine                                 | T095–T102 |

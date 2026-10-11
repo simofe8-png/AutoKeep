@@ -1,6 +1,6 @@
 /**
- * T063 server-side boundary guard: app code must never reference privileged Supabase credentials.
- * Only the anon/publishable key may reach the client (docs/cloud/SUPABASE.md).
+ * Boundary guards (T063, local-first ADR-0023): app code holds no credentials, and there is no
+ * AutoKeep backend — no cloud client, account, sync or upload of user data exists in the app.
  */
 declare const require: (id: string) => unknown;
 
@@ -33,5 +33,35 @@ describe('client secret boundary', () => {
   ])('no %s in app code', (_label, pattern) => {
     const offenders = files.filter((f) => pattern.test(fs.readFileSync(f, 'utf8')));
     expect(offenders).toEqual([]);
+  });
+});
+
+/**
+ * Every app file that can open a network connection (docs/security/NETWORK.md): the public
+ * Ministry of Transport registry (the plate the owner typed) and the OS connectivity state.
+ */
+const EXPECTED_NETWORK_FILES = [
+  'src/providers/network/netInfoNetwork.ts',
+  'src/providers/registry/dataGovIl.ts',
+];
+
+describe('local-first: no AutoKeep user-data backend', () => {
+  const files = sourceFiles('src');
+
+  it.each([
+    ['a Supabase client or reference', /supabase/i],
+    ['a backend URL variable', /EXPO_PUBLIC_[A-Z_]*(URL|KEY|ENDPOINT|BACKEND)/],
+    ['a cloud/sync/account module', /from '@\/(cloud|sync|account)\//],
+    ['a key/session store for an account', /expo-secure-store/],
+  ])('no %s in app code', (_label, pattern) => {
+    const offenders = files.filter((f) => pattern.test(fs.readFileSync(f, 'utf8')));
+    expect(offenders).toEqual([]);
+  });
+
+  it('the only network clients are the public registry and the connectivity check', () => {
+    const network = files.filter((f) =>
+      /\bfetch\(|XMLHttpRequest|axios/.test(fs.readFileSync(f, 'utf8')),
+    );
+    expect(network.sort()).toEqual(EXPECTED_NETWORK_FILES);
   });
 });

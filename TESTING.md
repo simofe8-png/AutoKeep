@@ -22,6 +22,9 @@ formatting → lint → TypeScript → unit → integration → persistence → 
 - Never weaken or delete a test to obtain a PASS.
 - Tests live beside the code as `*.test.ts(x)`, or in `__tests__/`.
 - Domain and engine: pure unit tests with fixtures, and "now" injected.
-- Persistence: repository tests against SQLite. In Jest, expo-sqlite is backed by an in-memory adapter (see ADR when introduced).
+- Persistence: repository tests against real SQLite (sql.js) with the same migrations, including upgrade paths and restart (export → reopen).
+- Backup/restore: `src/persistence/backup/__tests__` — export from a populated device → restore on a clean one → identical tables and files; corrupted, truncated, foreign, newer and tampered files are rejected with the data intact; a failing commit rolls back.
+- Local-first guards: `src/__tests__/secrets-boundary.test.ts` — no backend client, backend URL, account/sync module or key store in app code; the set of network-capable files is fixed.
+- `npm run test:live` (opt-in, public internet): the data.gov.il registry adapter. There is no cloud test suite.
 - UI: RNTL render tests, including RTL, accessibility labels and state variants.
 - Android device: the user's phone through Expo Go. Evidence is recorded as a checklist in `task-plan.md`.

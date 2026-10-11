@@ -24,7 +24,7 @@ const BENEFIT_ICONS: readonly IconName[] = [
 /**
  * First-run welcome (owner request 2026-10-04: a fuller design). A blue hero with the vehicle mark,
  * name, title and tagline; three benefit cards; the actions fixed at the bottom — add the first
- * vehicle, or sign in on a new device.
+ * vehicle, or restore a backup file on a new device.
  */
 export function WelcomeScreen() {
   const router = useRouter();
@@ -43,11 +43,11 @@ export function WelcomeScreen() {
             onPress={() => router.push('/onboarding/method')}
           />
           <Button
-            testID="onboarding-sign-in"
-            label={o.haveAccount}
+            testID="onboarding-restore"
+            label={o.restoreBackup}
             variant="tonal"
             fullWidth
-            onPress={() => router.push({ pathname: '/account', params: { from: 'welcome' } })}
+            onPress={() => router.push({ pathname: '/backup', params: { from: 'welcome' } })}
           />
         </Stack>
       }

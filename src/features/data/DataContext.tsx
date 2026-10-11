@@ -4,7 +4,6 @@ import * as Crypto from 'expo-crypto';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import { createContext, useContext } from 'react';
 
-import type { AuthResult } from '@/cloud/auth';
 import type {
   ManualScheduleItem,
   ManualScheduleRow,
@@ -15,6 +14,7 @@ import type { TableDone } from '@/engine/serviceTable';
 import type { VehicleSpec } from '@/persistence/repositories/vehicleSpec';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import type { AcquiredFile } from '@/providers/acquisition/types';
+import type { RestoreFailure } from '@/persistence/backup/backup';
 import type { Integrity } from '@/providers/storage/types';
 
 import type {
@@ -34,28 +34,21 @@ import type {
 
 export type NetworkMode = 'online' | 'offline';
 
-export interface AccountState {
-  hasAccount: boolean;
-  /** The signed-in account's username (Private Beta: the only user-facing identity). */
-  username?: string;
+/** The user's own backup file (local-first: there is no AutoKeep account or cloud copy). */
+export interface BackupState {
+  /** This build can write and read backup files (false in the labeled prototype). */
+  available: boolean;
+  /** When this device last produced a backup file or restored one (YYYY-MM-DD). */
   lastBackupAt?: string;
-  /** A cloud backend is configured in this build (false: local-only, said so honestly). */
-  available?: boolean;
-  /** Adoption of this device's data into the account. */
-  adoption?: 'none' | 'pending' | 'adopted';
-  /** Local changes not yet backed up. */
-  pending?: number;
-  syncError?: 'network' | 'server_rejected' | 'different_account' | 'not_signed_in' | null;
-  /** Reconciled two-device edits awaiting acknowledgement. */
-  conflicts?: number;
-  /** Local changes the server permanently refused (kept on this device). */
-  notBackedUp?: number;
 }
 
-export type DeleteAccountOutcome =
-  { ok: true } | { ok: false; reason: 'network' | 'not_signed_in' | 'server' };
+export type BackupExportOutcome =
+  | { ok: true; fileCount: number; missingFiles: number }
+  | { ok: false; reason: 'cancelled' | 'failed' | 'unavailable' };
 
-export type AccountResult = AuthResult;
+export type BackupRestoreOutcome =
+  | { ok: true; vehicles: number; files: number; missingFiles: number }
+  | { ok: false; reason: RestoreFailure | 'cancelled' | 'unavailable' };
 
 /** Identity details captured at onboarding beyond the display summary. */
 export interface VehicleDetailsInput {
@@ -186,27 +179,17 @@ export interface AppDataValue {
   setVehiclePhoto: (vehicleId: string, file: AcquiredFile) => void;
   network: NetworkMode;
   setNetwork: (mode: NetworkMode) => void;
-  account: AccountState;
-  setAccount: (account: AccountState) => void;
-  /** Username + Password sign-in; on success this device's data is adopted and backed up. */
-  signInAccount: (username: string, password: string) => Promise<AccountResult>;
-  /** Invitation registration (Private Beta), then signed in like signInAccount. */
-  registerAccount: (
-    invitation: string,
-    username: string,
-    password: string,
-  ) => Promise<AccountResult>;
-  /** Changes the signed-in account's password. */
-  changeAccountPassword: (password: string) => Promise<AccountResult>;
-  syncNow: () => void;
-  acknowledgeConflicts: () => void;
-  /** Signs out of the account on this device; local data stays on the device. */
-  signOutAccount: () => Promise<void>;
+  backup: BackupState;
   /**
-   * Permanently deletes the account, every backed-up original and — only after the server
-   * confirmed — all data on this device. Never reports success otherwise.
+   * Writes a backup file of all local data where the user chooses: a folder on the device, or the
+   * share sheet (Google Drive, Files, …). Nothing is uploaded by AutoKeep.
    */
-  deleteAccount: () => Promise<DeleteAccountOutcome>;
+  exportBackup: (via: 'folder' | 'share') => Promise<BackupExportOutcome>;
+  /**
+   * Lets the user pick a backup file and, only if it is complete and intact, replaces all local
+   * data with it. An invalid file changes nothing.
+   */
+  restoreBackup: () => Promise<BackupRestoreOutcome>;
   /**
    * Today's date (YYYY-MM-DD) from the data source's clock — the same clock that validates writes,
    * so a record dated "today" by a screen can never be judged to be in the future.

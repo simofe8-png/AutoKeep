@@ -8,6 +8,5 @@
     },
     "types": ["jest"]
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["supabase/functions/**"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

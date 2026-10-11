@@ -1,5 +1,12 @@
 # AutoKeep V1 — Threat Model & Security Review (M22)
 
+> **Update 2026-10-11 (ADR-0023, local-first without a backend):** the Supabase backend, accounts,
+> sessions, sync and the private bucket were removed. Boundary 2 (app ⇄ Supabase) and rows S1, R1,
+> I2, F-01, F-03 and MASVS-AUTH below are **HISTORICAL**. Current boundaries: the app's private
+> storage on the device, the user's backup file (format/schema/SHA-256 validated, atomic restore —
+> `src/persistence/backup`), and the public registry lookup. Every network path is in
+> [NETWORK.md](NETWORK.md). There are no credentials on the device.
+
 _Date: 2026-09-26 · Scope: the Expo app, the local SQLite store, provider ports, and the Supabase
 backend schema, RLS and storage (local stack; a hosted project is an approval gate, T065/M24).
 Method: asset/actor/boundary analysis with STRIDE per boundary, then an OWASP MASVS-oriented

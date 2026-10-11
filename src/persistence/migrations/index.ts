@@ -1,10 +1,11 @@
 import type { Migration } from './runner';
-import { V2_SYNC, V3_SYNC_PARKED } from './v2_sync';
+import { SYNCED_TABLES, V2_SYNC, V3_SYNC_PARKED } from './v2_sync';
 
 /**
  * Schema history. Append-only: add a new migration for every change (ADR-0008).
  * Every vehicle-scoped table carries `vehicle_id` (invariant 14). Entity rows carry
- * created_at / updated_at / version for sync (ADR-0002).
+ * created_at / updated_at / version (optimistic concurrency). v2/v3 created the former cloud
+ * replication bookkeeping; v21 removed it (ADR-0023) — they stay only as schema history.
  */
 const META = `created_at TEXT NOT NULL, updated_at TEXT NOT NULL, version INTEGER NOT NULL DEFAULT 1`;
 
@@ -524,6 +525,23 @@ DELETE FROM manual_schedule_items;
     // so the owner checks a reading against the original spot (owner, 2026-10-08). LOCAL ONLY.
     up: `
 ALTER TABLE service_tables ADD COLUMN evidence TEXT;
+`,
+  },
+  {
+    version: 21,
+    name: 'local_first',
+    // Local-first (ADR-0023): the device is the only home of the data; there is no cloud account
+    // or replication. The replication bookkeeping (v2/v3) and the account state are removed;
+    // every user record stays.
+    up: `
+${SYNCED_TABLES.map(({ table }) => `DROP TRIGGER IF EXISTS sync_ins_${table};\nDROP TRIGGER IF EXISTS sync_upd_${table};`).join('\n')}
+DROP TRIGGER IF EXISTS sync_del_vehicles;
+DROP TABLE IF EXISTS sync_outbox;
+DROP TABLE IF EXISTS sync_shadow;
+DROP TABLE IF EXISTS sync_conflicts;
+DROP TABLE IF EXISTS sync_control;
+UPDATE profiles SET account_user_id = NULL;
+DELETE FROM settings WHERE key IN ('accountAdoption', 'accountDeletion', 'lastSyncAt', 'syncLastError', 'uploadedOriginals');
 `,
   },
 ];

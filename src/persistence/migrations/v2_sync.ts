@@ -1,6 +1,9 @@
 import type { Migration } from './runner';
 
-/** Tables replicated to the cloud, with the column holding the vehicle scope (for coalescing). */
+/**
+ * HISTORICAL (removed by v21, ADR-0023): tables the former cloud replication tracked. Kept only
+ * because released migrations are append-only and fresh installs still replay v2/v3.
+ */
 export const SYNCED_TABLES: readonly { table: string; key: string; vehicleCol: string | null }[] = [
   { table: 'profiles', key: 'NEW.id', vehicleCol: null },
   { table: 'vehicles', key: 'NEW.id', vehicleCol: 'NEW.id' },

@@ -2,7 +2,7 @@ import { Redirect, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { AccountOfferCard } from '@/features/account/AccountOfferCard';
+import { BackupOfferCard } from '@/features/backup/BackupOfferCard';
 import { activeAlerts, AlertStatusCard, mostUrgentAlert } from '@/features/alerts/components';
 import { useAppData, useVehicleData } from '@/features/data/DataContext';
 import { nextServiceTile } from '@/features/maintenance/components';
@@ -38,7 +38,7 @@ export default function HomeScreen() {
   const router = useRouter();
   const { activeVehicle, vehicles, setActiveVehicleId } = useActiveVehicle();
   const [switching, setSwitching] = useState(false);
-  const { network, account, vehiclePhotos, profileCard, setProfileCard } = useAppData();
+  const { network, backup, vehiclePhotos, profileCard, setProfileCard } = useAppData();
   const data = useVehicleData(activeVehicle?.id ?? null);
 
   if (vehicles.length === 0) {
@@ -217,8 +217,8 @@ export default function HomeScreen() {
           onPress={() => router.push('/garage')}
         />
 
-        {!account.hasAccount && hasValuableData ? (
-          <AccountOfferCard onPress={() => router.push('/account')} />
+        {backup.available && !backup.lastBackupAt && hasValuableData ? (
+          <BackupOfferCard onPress={() => router.push('/backup')} />
         ) : null}
       </View>
     </Screen>

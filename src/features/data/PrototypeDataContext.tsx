@@ -7,7 +7,6 @@ import type { VehicleSummary } from '@/features/vehicles/types';
 import {
   DataCtx,
   emptyBundle,
-  type AccountState,
   type AttachmentInput,
   type AppDataValue,
   type NetworkMode,
@@ -45,7 +44,6 @@ export function PrototypeDataProvider({
   const [vehicles, setVehicles] = useState<VehicleSummary[]>(() => [...initialVehicles]);
   const [data, setData] = useState<Record<string, VehicleDataBundle>>(() => ({ ...initialData }));
   const [network, setNetwork] = useState<NetworkMode>(initialNetwork);
-  const [account, setAccount] = useState<AccountState>({ hasAccount: false });
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
   const getBundle = useCallback((vehicleId: string) => data[vehicleId] ?? emptyBundle(), [data]);
@@ -263,26 +261,10 @@ export function PrototypeDataProvider({
       reviewOwnerDocumentItem: () => undefined,
       network,
       setNetwork,
-      account,
-      setAccount,
-      // Prototype: nothing is sent anywhere (the demo account screen sets the state directly).
-      signInAccount: async (username: string) => {
-        setAccount({ hasAccount: true, username: username.trim(), lastBackupAt: todayIso() });
-        return { ok: true } as const;
-      },
-      registerAccount: async (_invitation: string, username: string) => {
-        setAccount({ hasAccount: true, username: username.trim(), lastBackupAt: todayIso() });
-        return { ok: true } as const;
-      },
-      changeAccountPassword: async () => ({ ok: true }) as const,
-      syncNow: () => undefined,
-      acknowledgeConflicts: () => undefined,
-      signOutAccount: async () => setAccount({ hasAccount: false }),
-      // Prototype: there is no server account; the demo state is simply cleared.
-      deleteAccount: async () => {
-        setAccount({ hasAccount: false });
-        return { ok: true } as const;
-      },
+      // Prototype: there is no local database to back up; nothing is written or read.
+      backup: { available: false },
+      exportBackup: async () => ({ ok: false, reason: 'unavailable' }) as const,
+      restoreBackup: async () => ({ ok: false, reason: 'unavailable' }) as const,
       today: () => todayIso(),
       notificationsEnabled,
       setNotificationsEnabled,
@@ -303,7 +285,6 @@ export function PrototypeDataProvider({
       updateBundle,
       data,
       network,
-      account,
       notificationsEnabled,
       isDemoData,
     ],

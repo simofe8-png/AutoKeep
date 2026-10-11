@@ -27,12 +27,6 @@
       "autoIncrement": true,
       "channel": "production"
     },
-    "rc-local": {
-      "extends": "preview",
-      "env": {
-        "APP_VARIANT": "rc-local"
-      }
-    },
     "staging-internal": {
       "android": {
         "buildType": "app-bundle"

@@ -51,45 +51,48 @@ two images are **not** used.
 
 ## 3. Screen → reference map
 
-| Screen                                                           | Route                                           | Reference                                           |
-| ---------------------------------------------------------------- | ----------------------------------------------- | --------------------------------------------------- |
-| Welcome (existing-user sign-in)                                  | `/onboarding` (first run)                       | D1, E1                                              |
-| Add vehicle (method)                                             | `/onboarding/method`, `/onboarding` when adding | C3                                                  |
-| License scan                                                     | `/onboarding/scan`                              | D2, E3                                              |
-| Identification / confirm                                         | `/onboarding/confirm`                           | D3, E4                                              |
-| Home                                                             | `/`                                             | **C1 (left)**                                       |
-| Maintenance plan                                                 | `/maintenance`                                  | A, D5, E8                                           |
-| Next-service detail                                              | `/next-service`                                 | D6, E9                                              |
-| History                                                          | `/history`                                      | D7, E10                                             |
-| Documents                                                        | `/documents`                                    | D9, E12                                             |
-| Alerts / alert detail                                            | `/alerts`, `/alerts/[id]`                       | B1 (+ D11), B2                                      |
-| Service recording                                                | `/service/new` → `/service/manual` → review     | B3                                                  |
-| My vehicles                                                      | `/vehicles`                                     | C2                                                  |
-| Vehicle detail ("הרכב שלי")                                      | `/vehicle/[id]`                                 | D10                                                 |
-| Garage Mode                                                      | `/garage`                                       | D8 (light variant)                                  |
-| Settings                                                         | `/settings`                                     | D12 (items limited to approved scope)               |
-| Account / login / invitation, dossier, odometer, document detail | —                                               | no reference; shared components and visual language |
+| Screen                                               | Route                                           | Reference                                           |
+| ---------------------------------------------------- | ----------------------------------------------- | --------------------------------------------------- |
+| Welcome (restore from a backup file)                 | `/onboarding` (first run)                       | D1, E1                                              |
+| Add vehicle (method)                                 | `/onboarding/method`, `/onboarding` when adding | C3                                                  |
+| License scan                                         | `/onboarding/scan`                              | D2, E3                                              |
+| Identification / confirm                             | `/onboarding/confirm`                           | D3, E4                                              |
+| Home                                                 | `/`                                             | **C1 (left)**                                       |
+| Maintenance plan                                     | `/maintenance`                                  | A, D5, E8                                           |
+| Next-service detail                                  | `/next-service`                                 | D6, E9                                              |
+| History                                              | `/history`                                      | D7, E10                                             |
+| Documents                                            | `/documents`                                    | D9, E12                                             |
+| Alerts / alert detail                                | `/alerts`, `/alerts/[id]`                       | B1 (+ D11), B2                                      |
+| Service recording                                    | `/service/new` → `/service/manual` → review     | B3                                                  |
+| My vehicles                                          | `/vehicles`                                     | C2                                                  |
+| Vehicle detail ("הרכב שלי")                          | `/vehicle/[id]`                                 | D10                                                 |
+| Garage Mode                                          | `/garage`                                       | D8 (light variant)                                  |
+| Settings                                             | `/settings`                                     | D12 (items limited to approved scope)               |
+| Backup / restore, dossier, odometer, document detail | —                                               | no reference; shared components and visual language |
 
 (A = the single-phone plan image; B, C = the three-phone images, numbered left to right;
 D, E = the 12-screen images, numbered as printed.)
 
 ## 4. Intentional differences from the references
 
-| Difference                                                                                                                | Why                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| Bottom navigation                                                                                                         | §2.1                                                                                      |
-| Vehicle photo → illustration; no manufacturer logo                                                                        | §2.7                                                                                      |
-| No AI group, no "טסט", no tips, no usage/frequency/location, no VIN method                                                | §2.2–2.6                                                                                  |
-| Garage Mode: no QR / WhatsApp buttons; "שיתוף כמסמך PDF" opens the existing dossier export (system share covers WhatsApp) | New sharing capabilities are not part of this correction                                  |
-| Service recording keeps method choice → form → **review with explicit confirmation**                                      | SPEC: no auto-commit; explicit confirmation before saving history                         |
-| Service form: no invoice-number field; date typed (no native date picker)                                                 | No new data field / native dependency in this correction                                  |
-| Home keeps a "רישום טיפול" button and the account/backup offer                                                            | UX baseline: service capture from Home; account offered once data worth protecting exists |
-| Maintenance plan tiles as a 2×2 grid                                                                                      | Four in a row do not fit legibly at Android font scaling                                  |
-| "כלי הרכב שלי" instead of "הרכבים שלי"                                                                                    | `UX_DESIGN_BASELINE.md` §09 terminology (cars, motorcycles, scooters)                     |
-| Document thumbnails are type-marked page tiles, not rendered previews                                                     | No file decoding for list rows                                                            |
-| Back arrow drawn "<" at the physical left, as in the references                                                           | Parity with the references                                                                |
+| Difference                                                                                                                | Why                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Bottom navigation                                                                                                         | §2.1                                                                                     |
+| Vehicle photo → illustration; no manufacturer logo                                                                        | §2.7                                                                                     |
+| No AI group, no "טסט", no tips, no usage/frequency/location, no VIN method                                                | §2.2–2.6                                                                                 |
+| Garage Mode: no QR / WhatsApp buttons; "שיתוף כמסמך PDF" opens the existing dossier export (system share covers WhatsApp) | New sharing capabilities are not part of this correction                                 |
+| Service recording keeps method choice → form → **review with explicit confirmation**                                      | SPEC: no auto-commit; explicit confirmation before saving history                        |
+| Service form: no invoice-number field; date typed (no native date picker)                                                 | No new data field / native dependency in this correction                                 |
+| Home keeps a "רישום טיפול" button and the backup offer                                                                    | UX baseline: service capture from Home; backup offered once data worth protecting exists |
+| Maintenance plan tiles as a 2×2 grid                                                                                      | Four in a row do not fit legibly at Android font scaling                                 |
+| "כלי הרכב שלי" instead of "הרכבים שלי"                                                                                    | `UX_DESIGN_BASELINE.md` §09 terminology (cars, motorcycles, scooters)                    |
+| Document thumbnails are type-marked page tiles, not rendered previews                                                     | No file decoding for list rows                                                           |
+| Back arrow drawn "<" at the physical left, as in the references                                                           | Parity with the references                                                               |
 
 ## 5. Physical acceptance (Galaxy A54, hosted staging, 2026-09-28): PASS
+
+> HISTORICAL record (2026-09-28). The account, invitation, sign-in and staging rows describe the cloud
+> backend removed by ADR-0023; the welcome now offers "יש לי קובץ גיבוי — שחזור".
 
 Standalone release APK `com.autokeep.app.staging`:
 

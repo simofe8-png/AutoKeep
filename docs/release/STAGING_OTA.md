@@ -10,7 +10,7 @@ change as an over-the-air update (EAS Update). New installs are not needed.
 | Package         | `com.moshenahum.autokeep` (the app installed from Play Internal testing)                                                                                |
 | Update channel  | `staging` (build profile `staging-internal`). The `production` profile is bound to channel `production`, and nothing is ever published to it from here. |
 | Runtime version | `runtimeVersion.policy: fingerprint`: a hash of the native project. It changes with any native code or native config change.                            |
-| Backend         | EAS environment `production` (the owner's account and backup), for the build and for updates                                                            |
+| Backend         | None (local-first, ADR-0023). The EAS environment `production` holds no variables the app reads                                                         |
 | Delivery        | `staging-internal` builds go to Google Play **Internal testing** only (submit profile `staging-internal`, track `internal`)                             |
 
 The app checks for an update every time it starts. It downloads the update and runs it on the

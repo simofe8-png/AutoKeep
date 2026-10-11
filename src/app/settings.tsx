@@ -6,6 +6,7 @@ import { notificationScheduler } from '@/features/data/dataSource';
 import { checkForUpdateNow, runningVersion, type UpdateCheck } from '@/features/shell/appUpdate';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
+import { formatDate } from '@/features/vehicles/format';
 import { he } from '@/i18n/he';
 import {
   AppText,
@@ -19,21 +20,15 @@ import {
 } from '@/ui';
 
 /**
- * Settings (T027): manages behavior and reaches account/backup, notifications, vehicles,
+ * Settings (T027): manages behavior and reaches backup/restore, notifications, vehicles,
  * documents, language, accessibility and about — without duplicating content screens.
  */
 export default function SettingsScreen() {
   const router = useRouter();
   const { activeVehicle } = useActiveVehicle();
   const [updateCheck, setUpdateCheck] = useState<UpdateCheck | null>(null);
-  const {
-    account,
-    network,
-    setNetwork,
-    isDemoData,
-    notificationsEnabled,
-    setNotificationsEnabled,
-  } = useAppData();
+  const { backup, network, setNetwork, isDemoData, notificationsEnabled, setNotificationsEnabled } =
+    useAppData();
   const [denied, setDenied] = useState(false);
   const scheduler = isDemoData ? null : notificationScheduler();
   const unavailable = !isDemoData && scheduler === null;
@@ -64,21 +59,15 @@ export default function SettingsScreen() {
       <Card compact>
         <ListRow
           plainIcon
-          testID="settings-account"
-          icon="account-circle-outline"
-          title={he.settings.profile}
-          subtitle={account.hasAccount ? account.username : he.account.notBackedUp}
-          onPress={() => router.push('/account')}
-        />
-      </Card>
-      <Card compact>
-        <ListRow
-          plainIcon
           testID="settings-backup"
-          icon="cloud-sync-outline"
+          icon="backup-restore"
           title={he.settings.backup}
-          subtitle={account.hasAccount ? he.account.connected : he.account.notBackedUp}
-          onPress={() => router.push('/account')}
+          subtitle={
+            backup.lastBackupAt
+              ? `${he.backup.lastBackup}: ${formatDate(backup.lastBackupAt)}`
+              : he.backup.never
+          }
+          onPress={() => router.push('/backup')}
         />
       </Card>
 

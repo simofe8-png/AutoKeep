@@ -1,13 +1,14 @@
-import { getSupabase } from '@/cloud/client';
 import type { IdGenerator } from '@/domain';
-import { supabaseAccountBackend, type AccountBackend } from '@/features/account/backend';
 import { deviceOwnerDocumentsHost } from '@/features/maintenance/msource/deviceHost';
 import type { OwnerDocumentsHost } from '@/features/maintenance/msource/service';
 import type { OnboardingServices } from '@/features/onboarding/services';
 import type { SqlDatabase } from '@/persistence';
+import type { BackupCrypto } from '@/persistence/backup/backup';
 import { openExpoDatabase } from '@/persistence/db/expoDatabase';
 import { uuidIds } from '@/persistence/ids';
 import { expoAcquisition } from '@/providers/acquisition/expoAcquisition';
+import { expoBackupCrypto, expoBackupFiles } from '@/providers/backup/expoBackupFiles';
+import type { BackupFiles } from '@/providers/backup/types';
 import { createExpoNotifications } from '@/providers/notifications/expoNotifications';
 import type { NotificationScheduler } from '@/providers/notifications/types';
 import { expoExporter } from '@/providers/export/expoExporter';
@@ -36,8 +37,9 @@ export type DataSourceConfig =
       services: OnboardingServices;
       /** Local notifications (optional: tests and platforms without them pass null). */
       notifications?: NotificationScheduler | null;
-      /** Cloud account/backup (null when this build has no cloud configuration). */
-      account?: AccountBackend | null;
+      /** The user's backup files: saved and picked where the user chooses (absent: not offered). */
+      backupFiles?: BackupFiles | null;
+      backupCrypto?: BackupCrypto | null;
       /** Dossier export (PDF + share sheet). */
       exporter?: DocumentExporter | null;
       /** Connectivity (absent: assumed online). */
@@ -48,11 +50,6 @@ export type DataSourceConfig =
 
 const openDefault = () => openExpoDatabase();
 
-function accountBackend(): AccountBackend | null {
-  const sb = getSupabase();
-  return sb ? supabaseAccountBackend(sb) : null;
-}
-
 const production: DataSourceConfig = {
   kind: 'local',
   openDatabase: openDefault,
@@ -60,7 +57,8 @@ const production: DataSourceConfig = {
   clock: systemClock,
   files: expoFileStore,
   notifications: createExpoNotifications(),
-  account: accountBackend(),
+  backupFiles: expoBackupFiles,
+  backupCrypto: expoBackupCrypto,
   exporter: expoExporter,
   network: netInfoNetwork,
   ownerDocuments: deviceOwnerDocumentsHost(),

@@ -50,9 +50,8 @@ example
 # test/coverage
 coverage/
 
-# supabase local
-supabase/.temp/
-supabase/.branches/
+# User backup files (all of a user's data): never in Git.
+autokeep-backup-*.json
 
 # Google Play service-account keys: never in Git (kept in ~/.autokeep, outside the repo).
 *service-account*.json

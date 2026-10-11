@@ -1,8 +1,31 @@
 # AutoKeep — Current Status (resume pointer)
 
-_Last updated: 2026-10-06_
+_Last updated: 2026-10-11_
 
 ## Position
+
+- **Local-First Migration (owner plan V1, 2026-10-11): stages 1–18 PASS; STOPPED at stage 19 (device).**
+  ADR-0023. **Local device is the source of truth. AutoKeep operates without an AutoKeep user-data
+  backend.** Rollback: tag `pre-local-first` (`d41baa0`, includes the table-reader work that was
+  uncommitted) and `pre-local-first-head` (`5d60ba7`, last pushed).
+  - Removed: `src/cloud`, `src/sync`, `src/account`, `src/features/account`, account/invite screens,
+    sync scheduler, `src/config`, `supabase/`, `tools/beta-admin.mjs`, `app.config.js` variants +
+    cleartext plugin, cloud Jest config/tests, CI `cloud-security`, npm `@supabase/supabase-js`,
+    `supabase`, `expo-secure-store`, `expo-web-browser`, `expo-device`, cloud operational docs.
+  - Added: backup/restore (`src/persistence/backup`, `src/app/backup.tsx`, welcome "יש לי קובץ
+    גיבוי — שחזור", Home backup offer), file ownership + startup orphan sweep
+    (`src/persistence/files.ts`), migration **v21** (drops sync triggers/tables and account state),
+    local-first guard tests, `docs/security/NETWORK.md`.
+  - Evidence: `npm ci` clean; verify **76 suites / 510 tests**; Android bundle export OK with 0
+    "supabase" strings. Native runtime changed (expo-secure-store etc. removed) → needs a new
+    `staging-internal` build; **no OTA** for this change.
+  - **Next (stage 19):** connect the phone (USB debugging) → `npm run start:device` → Expo Go: add
+    / edit / delete vehicle, mileage, photo, document, OCR table, periodic service, insurance, test,
+    spec, restart, airplane mode, backup save + restore. Then stage 20 (push; note CI then runs the
+    staging OTA workflow, whose guard stops on the runtime change) → 21 (staging-internal build +
+    Internal testing) → 22 (Vercel: nothing deployed from this repo) → 23 (owner: confirm a phone
+    backup reports 0 missing originals, then delete the hosted Supabase project and the EAS
+    `EXPO_PUBLIC_SUPABASE_*` variables; `.env.local`; `~/.autokeep/staging.env`).
 
 - **Maintenance = "לוח טיפולים" + "טיפול תקופתי" (owner, 2026-10-06): IMPLEMENTED, not yet on the phone.** ADR-0022. The table is built like the booklet: items × service columns, the letters ב/כ/ה/ס/ח/נ, rules written across the columns, and footnotes. Manual entry uses the same table. The next service and the one after are derived from it by the km column or 12 months after the last service; each item is checked; one history record is written. A free on-device table reader (Tesseract WebView, `tools/ocr/table-reader.js`) handles photos and scanned PDFs. On the owner's Fiesta scan: right shape, all 38 items, 1 cell wrong without a mark. The transcribed Fiesta 2012 table is offered as a proposal. Migration v19 (local only); per-item manual rows removed with owner approval. **Next:** owner checks on the phone (photograph the booklet table, review, approve, save a service). Then release vc6 on Internal testing.
 - **versionCode 5 RELEASED to Internal testing (2026-10-05)** from `c32552a`: profile screen after adding a vehicle, each item completed in a window (schedule / tyres / insurance / test / photo), Home 'missing' note, history shows who and how, documents list names only. verify 83 / 565. Device check on the A54 interrupted by another app (not completed).

@@ -2,17 +2,19 @@ import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-li
 
 import { isoDate, type IsoDate, type Timestamp } from '@/domain';
 import { sequentialIds, T0 } from '@/domain/testing';
-import { MemoryAccountBackend, TEST_PASSWORD } from '@/features/account/testing';
 import { configureDataSource } from '@/features/data/dataSource';
+import { LocalStore } from '@/features/data/localStore';
 import type { OnboardingServices } from '@/features/onboarding/services';
+import { nodeBackupCrypto } from '@/persistence/backup/testing';
 import { openTestDatabase } from '@/persistence/testing/sqljsDatabase';
 import { populatedWorld } from '@/persistence/testing/world';
 import type { SqlDatabase } from '@/persistence';
+import { MemoryBackupFiles } from '@/providers/backup/types';
 import { MemoryFileStore } from '@/providers/storage/types';
 
 /**
  * Screen parity with the approved visual references (docs/design/README.md): the behaviours the
- * corrected screens add or move — existing-user sign-in from the welcome screen, alerts grouped by
+ * corrected screens add or move — restoring a backup from the welcome screen, alerts grouped by
  * urgency with their actions, the plan timeline and the next-service detail, the vehicle details.
  */
 
@@ -22,15 +24,20 @@ const clock = {
   today: () => isoDate('2026-09-26') as IsoDate,
 };
 
-function configureLocal(db: SqlDatabase, account: MemoryAccountBackend) {
+function configureLocal(
+  db: SqlDatabase,
+  backupFiles: MemoryBackupFiles | null = null,
+  files = new MemoryFileStore(),
+) {
   configureDataSource({
     kind: 'local',
     openDatabase: async () => db,
     ids: sequentialIds(8000),
     clock,
-    files: new MemoryFileStore(),
+    files,
     notifications: null,
-    account,
+    backupFiles,
+    backupCrypto: backupFiles ? nodeBackupCrypto : null,
     services: {
       acquisition: {} as OnboardingServices['acquisition'],
       extractor: null,
@@ -47,47 +54,48 @@ async function open(url: string, testID: string) {
 
 afterEach(() => configureDataSource({ kind: 'demo' }));
 
-describe('existing Private Beta user on a new device', () => {
-  it('fresh install → welcome → "יש לי חשבון — התחברות" → Username + Password, no vehicle first', async () => {
-    const backend = new MemoryAccountBackend();
-    backend.addAccount('Dana');
-    configureLocal(await openTestDatabase(), backend);
+describe("a new device restored from the owner's backup file", () => {
+  it('fresh install → welcome → "יש לי קובץ גיבוי — שחזור" → confirm → Home with the vehicle', async () => {
+    // The backup file comes from another device holding the data.
+    const source = await populatedWorld(sequentialIds(1), T0);
+    const sourceFiles = new MemoryFileStore();
+    const made = await (
+      await LocalStore.open(source.db, sequentialIds(500), clock, sourceFiles)
+    ).createBackup(nodeBackupCrypto);
+    const picker = new MemoryBackupFiles();
+    picker.next = made.text;
+    configureLocal(await openTestDatabase(), picker);
 
     await renderRouter('./src/app', { initialUrl: '/' });
     await waitFor(
       () => expect(screen.getByTestId('screen-onboarding-welcome')).toBeOnTheScreen(),
       LONG,
     );
-    // The approved welcome: add the first vehicle, or sign in to an existing account.
+    // The approved welcome: add the first vehicle, or restore a backup file.
     expect(screen.getByTestId('onboarding-add-first')).toBeOnTheScreen();
-    await fireEvent.press(screen.getByTestId('onboarding-sign-in'));
-    await waitFor(() => expect(screen.getByTestId('screen-account')).toBeOnTheScreen(), LONG);
-
-    await fireEvent.changeText(screen.getByTestId('account-username'), 'dana');
-    await fireEvent.changeText(screen.getByTestId('account-password'), TEST_PASSWORD);
-    await fireEvent.press(screen.getByTestId('account-sign-in'));
-    await waitFor(() => expect(screen.getByTestId('account-restoring')).toBeOnTheScreen(), LONG);
-    expect(screen.getByTestId('account-signed-in')).toHaveTextContent(/Dana/);
-    // No vehicle in this account yet: the user continues into the app explicitly.
-    await fireEvent.press(screen.getByTestId('account-continue'));
-    await waitFor(
-      () => expect(screen.getByTestId('screen-onboarding-welcome')).toBeOnTheScreen(),
-      LONG,
-    );
-  }, 40000);
-
-  it('once the account data is on the device, signing in from the welcome lands on Home', async () => {
-    const world = await populatedWorld(sequentialIds(1), T0);
-    const backend = new MemoryAccountBackend();
-    backend.addAccount('Dana');
-    configureLocal(world.db, backend);
-
-    await open('/account?from=welcome', 'screen-account');
-    await fireEvent.changeText(screen.getByTestId('account-username'), 'Dana');
-    await fireEvent.changeText(screen.getByTestId('account-password'), TEST_PASSWORD);
-    await fireEvent.press(screen.getByTestId('account-sign-in'));
+    await fireEvent.press(screen.getByTestId('onboarding-restore'));
+    await waitFor(() => expect(screen.getByTestId('screen-backup')).toBeOnTheScreen(), LONG);
+    await fireEvent.press(screen.getByTestId('backup-restore'));
+    await fireEvent.press(screen.getByRole('button', { name: 'בחירת קובץ ושחזור' }));
     await waitFor(() => expect(screen.getByTestId('screen-home')).toBeOnTheScreen(), LONG);
     expect(screen.getByTestId('home-active-vehicle')).toHaveTextContent(/קורולה/);
+  }, 40000);
+
+  it('a file that is not a backup changes nothing and says so', async () => {
+    const world = await populatedWorld(sequentialIds(1), T0);
+    const picker = new MemoryBackupFiles();
+    picker.next = '{"hello":"world"}';
+    configureLocal(world.db, picker);
+
+    await open('/backup', 'screen-backup');
+    await fireEvent.press(screen.getByTestId('backup-restore'));
+    await fireEvent.press(screen.getByRole('button', { name: 'בחירת קובץ ושחזור' }));
+    await waitFor(
+      () => expect(screen.getByTestId('backup-notice')).toHaveTextContent(/אינו קובץ גיבוי/),
+      LONG,
+    );
+    const n = await world.db.first<{ n: number }>('SELECT COUNT(*) AS n FROM vehicles');
+    expect(n?.n).toBeGreaterThan(0);
   }, 40000);
 });
 

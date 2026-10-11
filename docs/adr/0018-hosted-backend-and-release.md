@@ -1,6 +1,7 @@
 # ADR-0018: Hosted backend and Android release pipeline
 
 - Status: accepted (G2, 2026-09-26)
+- Superseded by ADR-0023 (2026-10-11): local-first without an AutoKeep backend. HISTORICAL — the code it describes was removed.
 
 ## Decision
 

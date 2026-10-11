@@ -227,21 +227,18 @@ describe('My Vehicles / lifecycle / dossier (T025, T028, T029)', () => {
   });
 });
 
-describe('Account & settings (T026, T027)', () => {
-  it('account is offered once valuable data exists, framed as backup', async () => {
+describe('Backup & settings (T026, T027)', () => {
+  it('the prototype has no database to back up and says so; no backup offer is shown', async () => {
     await open('/', 'screen-home');
-    await fireEvent.press(screen.getByTestId('account-offer-action'));
-    await waitFor(() => expect(screen.getByTestId('screen-account')).toBeOnTheScreen());
-    expect(screen.getByTestId('backup-status')).toHaveTextContent(/הנתונים שמורים במכשיר בלבד/);
-    expect(screen.getByTestId('account-sign-in')).toBeDisabled();
-    await fireEvent.changeText(screen.getByTestId('account-username'), 'owner');
-    await fireEvent.press(screen.getByTestId('account-sign-in'));
-    await waitFor(() => expect(screen.getByTestId('backup-status')).toHaveTextContent(/מחובר/));
+    expect(screen.queryByTestId('backup-offer')).toBeNull();
+    await open('/backup', 'screen-backup');
+    expect(screen.getByTestId('backup-unavailable')).toBeOnTheScreen();
+    expect(screen.queryByTestId('backup-restore')).toBeNull();
   });
 
   it('settings reach behaviour controls; offline mode shows the offline state in context', async () => {
     await open('/settings', 'screen-settings');
-    expect(screen.getByTestId('settings-account')).toBeOnTheScreen();
+    expect(screen.getByTestId('settings-backup')).toBeOnTheScreen();
     await fireEvent(screen.getByTestId('settings-offline'), 'valueChange', true);
     await fireEvent.press(screen.getByTestId('screen-header-back'));
     await waitFor(() => expect(screen.getByTestId('offline-banner')).toBeOnTheScreen());

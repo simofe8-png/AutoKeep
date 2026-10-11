@@ -1,37 +1,32 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { safeErrorText } from '@/security/redact';
-import { AppState, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import type { IdGenerator } from '@/domain';
 import { he } from '@/i18n/he';
 import type { SqlDatabase } from '@/persistence';
-import type { AccountBackend } from '@/features/account/backend';
 import {
   readOwnerDocumentsFor,
   type OwnerDocumentsHost,
   type OwnerDocumentsStore,
 } from '@/features/maintenance/msource/service';
+import type { BackupCrypto } from '@/persistence/backup/backup';
+import type { BackupFiles } from '@/providers/backup/types';
 import type { NetworkMonitor } from '@/providers/network/types';
 import type { OriginalFileStore } from '@/providers/storage/types';
 import { colors, Dialog, ErrorState, LoadingState } from '@/ui';
 
-import {
-  DataCtx,
-  emptyBundle,
-  type AccountResult,
-  type AccountState,
-  type AppDataValue,
-  type NetworkMode,
-} from './DataContext';
-import { LocalStore, type Clock, type Snapshot, type SyncAttempt } from './localStore';
-import { SyncScheduler } from './syncScheduler';
+import { DataCtx, emptyBundle, type AppDataValue, type NetworkMode } from './DataContext';
+import { LocalStore, type Clock, type Snapshot } from './localStore';
 
 export interface LocalDataProviderProps {
   openDatabase: () => Promise<SqlDatabase>;
   ids: IdGenerator;
   clock: Clock;
   files: OriginalFileStore | null;
-  account?: AccountBackend | null;
+  /** Where the user saves and picks backup files (null: backup not offered, e.g. tests). */
+  backupFiles?: BackupFiles | null;
+  backupCrypto?: BackupCrypto | null;
   network?: NetworkMonitor | null;
   /** Reads the owner's uploaded maintenance documents (null: not read, e.g. tests). */
   ownerDocuments?: OwnerDocumentsHost | null;
@@ -44,32 +39,6 @@ type Phase = { kind: 'loading' } | { kind: 'ready'; snapshot: Snapshot } | { kin
 class StoreRuntime {
   private store: LocalStore | null = null;
   private queue: Promise<unknown> = Promise.resolve();
-  /** Latest connectivity and account backend, read by the background backup. */
-  private online = true;
-  private backend: AccountBackend | null = null;
-
-  setOnline(on: boolean) {
-    this.online = on;
-  }
-
-  setBackend(b: AccountBackend | null) {
-    this.backend = b;
-  }
-
-  /** One automatic backup step (skipped offline or signed out). */
-  backUp(onSnapshot: (s: Snapshot) => void, onReadFailed: () => void) {
-    return this.task<SyncAttempt | 'skipped'>(
-      async (s) => {
-        const backend = this.backend;
-        if (!backend || !this.online) return 'skipped';
-        if ((await backend.currentUsername()) === null) return 'skipped';
-        return s.backUp(backend);
-      },
-      { ok: false, transient: true },
-      onSnapshot,
-      onReadFailed,
-    );
-  }
 
   attach(store: LocalStore) {
     this.store = store;
@@ -153,15 +122,14 @@ export function LocalDataProvider({
   ids,
   clock,
   files,
-  account: backend = null,
+  backupFiles = null,
+  backupCrypto = null,
   network: monitor = null,
   ownerDocuments = null,
   children,
 }: LocalDataProviderProps) {
   const [phase, setPhase] = useState<Phase>({ kind: 'loading' });
   const [saveFailed, setSaveFailed] = useState<string | null>(null);
-  const [account, setAccount] = useState<AccountState>({ hasAccount: false });
-  const [username, setUsername] = useState<string | null>(null);
   const [network, setNetwork] = useState<NetworkMode>('online');
   const [runtime] = useState(() => new StoreRuntime());
   const [attempt, setAttempt] = useState(0);
@@ -169,37 +137,12 @@ export function LocalDataProvider({
   const toReady = (next: Snapshot) => setPhase({ kind: 'ready', snapshot: next });
   const toFailed = () => setPhase({ kind: 'failed' });
 
-  // P2A (Y4): WHEN to back up is decided by one scheduler; every trigger is best effort.
-  const [scheduler] = useState(
-    () =>
-      new SyncScheduler({
-        run: () =>
-          runtime.backUp(
-            (next) => setPhase({ kind: 'ready', snapshot: next }),
-            () => setPhase({ kind: 'failed' }),
-          ),
-      }),
-  );
-  useEffect(() => () => scheduler.dispose(), [scheduler]);
-  useEffect(() => runtime.setBackend(backend), [runtime, backend]);
-
-  // T151: real connectivity. The app never blocks on it; it explains, and resumes when back.
-  // T156: when the connection returns, pending changes are backed up.
+  // T151: real connectivity (registry lookups need it). The app never blocks on it; it explains.
   useEffect(() => {
     if (!monitor) return;
     let cancelled = false;
-    let offline = false;
     const apply = (on: boolean) => {
-      if (cancelled) return;
-      runtime.setOnline(on);
-      setNetwork(on ? 'online' : 'offline');
-      if (!on) {
-        offline = true;
-        return;
-      }
-      if (!offline) return;
-      offline = false;
-      scheduler.request('now');
+      if (!cancelled) setNetwork(on ? 'online' : 'offline');
     };
     void monitor.isOnline().then(apply);
     const unsubscribe = monitor.subscribe(apply);
@@ -207,40 +150,7 @@ export function LocalDataProvider({
       cancelled = true;
       unsubscribe();
     };
-  }, [monitor, scheduler, runtime]);
-
-  // Foreground: refresh tokens only while active (React Native guidance) and back up.
-  useEffect(() => {
-    if (!backend) return;
-    backend.setActive(AppState.currentState === 'active');
-    const sub = AppState.addEventListener('change', (state) => {
-      const active = state === 'active';
-      backend.setActive(active);
-      if (active) scheduler.request('now');
-    });
-    return () => sub.remove();
-  }, [backend, scheduler]);
-
-  // Session changes made elsewhere (refresh failed, signed out, account deleted) are reflected.
-  useEffect(() => {
-    if (!backend) return;
-    return backend.onSessionChange((u) => setUsername(u));
-  }, [backend]);
-
-  // The signed-in account (session persisted securely by the backend).
-  useEffect(() => {
-    if (!backend) return;
-    let cancelled = false;
-    void backend
-      .currentUsername()
-      .then((e) => {
-        if (!cancelled) setUsername(e);
-      })
-      .catch(() => undefined);
-    return () => {
-      cancelled = true;
-    };
-  }, [backend]);
+  }, [monitor]);
 
   useEffect(() => {
     let cancelled = false;
@@ -252,7 +162,6 @@ export function LocalDataProvider({
         if (cancelled) return;
         runtime.attach(s);
         setPhase({ kind: 'ready', snapshot });
-        scheduler.request('now');
       } catch (e) {
         if (__DEV__) console.warn('AutoKeep: local data failed to open', safeErrorText(e));
         if (!cancelled) setPhase({ kind: 'failed' });
@@ -261,7 +170,7 @@ export function LocalDataProvider({
     return () => {
       cancelled = true;
     };
-  }, [openDatabase, ids, clock, files, attempt, runtime, scheduler]);
+  }, [openDatabase, ids, clock, files, attempt, runtime]);
 
   // The owner's uploaded booklet is read OUTSIDE the write queue; its result is written through
   // it (refreshing the snapshot), so the app is never blocked while a document is read.
@@ -297,22 +206,6 @@ export function LocalDataProvider({
         (e) => setSaveFailed(__DEV__ ? safeErrorText(e) : ''),
         () => setPhase({ kind: 'failed' }),
       );
-      // A local change is backed up after a short quiet period (if signed in and online).
-      if (username !== null) scheduler.request('soon');
-    };
-    // Adoption/sync failures are recorded in the backup status, not raised as write failures.
-    const quietly = (op: (s: LocalStore) => Promise<unknown>) =>
-      write((s) => op(s).catch(() => undefined));
-    // After signing in or registering: this device's data is adopted into the account, then
-    // backed up (retried if needed).
-    const signedIn = async (typed: string, op: () => Promise<AccountResult>) => {
-      if (!backend) return { ok: false, reason: 'unknown' } as const;
-      const r = await op();
-      if (r.ok) {
-        setUsername((await backend.currentUsername().catch(() => null)) || typed.trim());
-        scheduler.request('now');
-      }
-      return r;
     };
     return {
       vehicles: snapshot.vehicles,
@@ -383,56 +276,53 @@ export function LocalDataProvider({
         write((s) => s.decideOwnerProposal(vid, key, decision, edit ?? null)),
       addDocument: (vid, attachment, kind) => write((s) => s.addDocument(vid, attachment, kind)),
       // Reads of the original go straight to the store (no snapshot change).
-      getOriginal: (vid, did) =>
-        runtime.read((s) => s.original(vid, did, username !== null ? backend : null), null),
+      getOriginal: (vid, did) => runtime.read((s) => s.original(vid, did), null),
       openOriginal: (vid, did) => runtime.read((s) => s.openOriginal(vid, did), false),
       getRegistryRecord: (vid) => runtime.read((s) => s.registryRecord(vid), null),
       network,
       setNetwork,
-      account: backend
-        ? {
-            hasAccount: username !== null,
-            username: username ?? undefined,
-            lastBackupAt: snapshot.backup.lastSyncAt?.slice(0, 10),
-            available: true,
-            adoption: snapshot.backup.adoption,
-            pending: snapshot.backup.pending,
-            syncError: snapshot.backup.lastError,
-            conflicts: snapshot.backup.conflicts,
-            notBackedUp: snapshot.backup.notBackedUp,
-          }
-        : { ...account, available: false },
-      setAccount,
-      signInAccount: (username, password) =>
-        signedIn(username, () => backend!.signIn(username, password)),
-      registerAccount: (invitation, username, password) =>
-        signedIn(username, () => backend!.register(invitation, username, password)),
-      changeAccountPassword: async (password) =>
-        backend ? backend.changePassword(password) : { ok: false, reason: 'unknown' },
-      syncNow: () => scheduler.request('now'),
-      deleteAccount: async () => {
-        if (!backend) return { ok: false, reason: 'server' };
+      backup: {
+        available: backupFiles !== null && backupCrypto !== null,
+        lastBackupAt: snapshot.backup.lastBackupAt?.slice(0, 10),
+      },
+      exportBackup: async (via) => {
+        if (!backupFiles || !backupCrypto) return { ok: false, reason: 'unavailable' };
+        const made = await runtime.read((s) => s.createBackup(backupCrypto), null);
+        if (!made) return { ok: false, reason: 'failed' };
+        const name = `autokeep-backup-${clock.today()}.json`;
+        const outcome =
+          via === 'folder'
+            ? await backupFiles.saveToFolder(made.text, name).catch(() => 'failed' as const)
+            : await backupFiles.share(made.text, name).catch(() => 'failed' as const);
+        if (outcome !== 'saved') return { ok: false, reason: outcome };
+        write((s) => s.markBackedUp());
+        return {
+          ok: true,
+          fileCount: made.manifest.fileCount,
+          missingFiles: made.manifest.missingFiles.length,
+        };
+      },
+      restoreBackup: async () => {
+        if (!backupFiles || !backupCrypto) return { ok: false, reason: 'unavailable' };
+        const text = await backupFiles.pick().catch(() => null);
+        if (text === null) return { ok: false, reason: 'cancelled' };
         const r = await runtime.task(
-          (s) => s.deleteAccount(backend),
-          { ok: false, reason: 'server' } as const,
+          (s) => s.restoreBackup(text, backupCrypto),
+          { ok: false, reason: 'write_failed' } as const,
           toReady,
           toFailed,
         );
-        if (r.ok) setUsername(null);
-        return r;
-      },
-      acknowledgeConflicts: () => quietly((s) => s.acknowledgeConflicts()),
-      signOutAccount: async () => {
-        if (!backend) return;
-        await backend.signOut().catch(() => undefined);
-        setUsername(null);
+        if (!r.ok) return r;
+        // The device profile and every record now come from the backup: reopen the store.
+        setAttempt((n) => n + 1);
+        return { ok: true, vehicles: r.vehicles, files: r.files, missingFiles: r.missingFiles };
       },
       isDemoData: false,
       initialActiveVehicleId: snapshot.activeVehicleId,
       // Best effort: a selection that is no longer valid simply is not remembered.
       rememberActiveVehicle: (id) => write((s) => s.setActiveVehicle(id).catch(() => undefined)),
     };
-  }, [snapshot, runtime, network, account, clock, backend, username, scheduler, readDocuments]);
+  }, [snapshot, runtime, network, clock, backupFiles, backupCrypto, readDocuments]);
 
   if (phase.kind === 'failed') {
     return (

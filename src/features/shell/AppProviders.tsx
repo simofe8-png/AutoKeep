@@ -44,7 +44,8 @@ export function AppProviders({ children }: { children: ReactNode }) {
       ids={source.ids}
       clock={source.clock}
       files={source.files}
-      account={source.account ?? null}
+      backupFiles={source.backupFiles ?? null}
+      backupCrypto={source.backupCrypto ?? null}
       network={source.network ?? null}
       ownerDocuments={source.ownerDocuments ?? null}
     >

@@ -1,6 +1,7 @@
 # ADR-0002: Local-first persistence with a sync boundary
 
 - Status: accepted
+- Amended by ADR-0023 (2026-10-11): the sync boundary and cloud replica are removed; SQLite on the device is the only store. Writes no longer enqueue sync operations.
 - Date: 2026-09-25
 
 ## Context

@@ -1,5 +1,6 @@
 # ADR-0019: Private Beta sign-in, Invitation → Username + Password
 
+- **Superseded by ADR-0023 (2026-10-11):** local-first without an AutoKeep backend. HISTORICAL — accounts, invitations and the beta admin tool were removed.
 - **Status:** Accepted (owner decision, 2026-09-28). Supersedes the e-mail-code sign-in of M19 and
   the Gmail SMTP plan (P2C pre-gate) for the Private Beta.
 - **Context:** Real testers need sign-in without a custom domain. E-mail codes need a sending
