@@ -38,8 +38,9 @@ The script publishes only to `staging`. That is equivalent to
 Before publishing, `tools/ota-staging.mjs` compares the commit's runtime fingerprint with the
 finished `staging-internal` builds. Without a match (a native module, a config plugin or native
 app.json/eas.json settings changed), it **stops with exit code 2** and prints "new build
-required". Nothing is published. EAS also never delivers an update to a build with a different
-runtime version.
+required". Nothing is published. In the GitHub workflow this is an expected result, not a
+failure: the job skips the OTA and succeeds with an "OTA skipped: new build required" notice and
+summary. EAS also never delivers an update to a build with a different runtime version.
 
 New build (owner approval required for each build):
 
