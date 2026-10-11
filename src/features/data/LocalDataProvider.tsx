@@ -304,7 +304,13 @@ export function LocalDataProvider({
       },
       restoreBackup: async () => {
         if (!backupFiles || !backupCrypto) return { ok: false, reason: 'unavailable' };
-        const text = await backupFiles.pick().catch(() => null);
+        let text: string | null;
+        try {
+          text = await backupFiles.pick();
+        } catch (e) {
+          if (__DEV__) console.warn('AutoKeep: reading the backup file failed', safeErrorText(e));
+          return { ok: false, reason: 'unreadable' };
+        }
         if (text === null) return { ok: false, reason: 'cancelled' };
         const r = await runtime.task(
           (s) => s.restoreBackup(text, backupCrypto),

@@ -48,7 +48,7 @@ export type BackupExportOutcome =
 
 export type BackupRestoreOutcome =
   | { ok: true; vehicles: number; files: number; missingFiles: number }
-  | { ok: false; reason: RestoreFailure | 'cancelled' | 'unavailable' };
+  | { ok: false; reason: RestoreFailure | 'cancelled' | 'unreadable' | 'unavailable' };
 
 /** Identity details captured at onboarding beyond the display summary. */
 export interface VehicleDetailsInput {

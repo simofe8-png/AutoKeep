@@ -4,7 +4,7 @@ _Last updated: 2026-10-11_
 
 ## Position
 
-- **Local-First Migration (owner plan V1, 2026-10-11): stages 1–18 PASS; STOPPED at stage 19 (device).**
+- **Local-First Migration (owner plan V1, 2026-10-11): stages 1–19 PASS; waiting for approval of stage 20 (push).**
   ADR-0023. **Local device is the source of truth. AutoKeep operates without an AutoKeep user-data
   backend.** Rollback: tag `pre-local-first` (`d41baa0`, includes the table-reader work that was
   uncommitted) and `pre-local-first-head` (`5d60ba7`, last pushed).
@@ -19,7 +19,8 @@ _Last updated: 2026-10-11_
   - Evidence: `npm ci` clean; verify **76 suites / 510 tests**; Android bundle export OK with 0
     "supabase" strings. Native runtime changed (expo-secure-store etc. removed) → needs a new
     `staging-internal` build; **no OTA** for this change.
-  - **Next (stage 19):** connect the phone (USB debugging) → `npm run start:device` → Expo Go: add
+  - Stage 19 PASS on the Galaxy A54 (Expo Go, airplane mode); backup reports 0 missing files. Two device-found backup fixes (shared file kept until the next share; picked file copied into the app cache before reading).
+  - **Next:** stage 20 (owner approval). Earlier stage 19 plan, for reference: connect the phone (USB debugging) → `npm run start:device` → Expo Go: add
     / edit / delete vehicle, mileage, photo, document, OCR table, periodic service, insurance, test,
     spec, restart, airplane mode, backup save + restore. Then stage 20 (push; note CI then runs the
     staging OTA workflow, whose guard stops on the runtime change) → 21 (staging-internal build +

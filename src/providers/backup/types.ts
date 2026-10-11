@@ -7,7 +7,7 @@ export interface BackupFiles {
   saveToFolder(text: string, fileName: string): Promise<SaveOutcome>;
   /** The system share sheet: Google Drive, Files, e-mail… as the user chooses. */
   share(text: string, fileName: string): Promise<SaveOutcome>;
-  /** Lets the user pick a backup file; its text, or null when cancelled. */
+  /** Lets the user pick a backup file; its text, or null when cancelled (throws if unreadable). */
   pick(): Promise<string | null>;
 }
 
