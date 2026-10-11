@@ -920,7 +920,8 @@ export class LocalStore {
 
   /**
    * Saves the owner's table: a proposal read from the owner's booklet (reviewed next), or the
-   * owner's approved table. An approved table must be complete enough to count.
+   * owner's approved table. An approved table must be complete enough to count; cells still marked
+   * uncertain do not block it (the owner confirmed them in the UI).
    */
   async saveServiceTable(
     vehicleId: string,
@@ -930,11 +931,6 @@ export class LocalStore {
     if (!(await new VehicleRepository(this.db).get(vid))) throw new Error('Unknown vehicle');
     if (value.status === 'confirmed' && tableIssues(value.table).length) {
       throw new Error('The table is incomplete');
-    }
-    // A proposal with uncertain cells is never approved: each is checked by the owner first.
-    const current = await new ServiceTableRepository(this.db).get(vid);
-    if (value.status === 'confirmed' && current?.status === 'proposed' && current.unsure.length) {
-      throw new Error('The table still has uncertain cells');
     }
     await new ServiceTableRepository(this.db).save(
       vid,

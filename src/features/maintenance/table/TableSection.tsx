@@ -41,7 +41,7 @@ export function TableSection({
   const [shape, setShape] = useState(Boolean(newTable && !vm));
   const [discard, setDiscard] = useState(false);
   const [incomplete, setIncomplete] = useState(false);
-  const [unverified, setUnverified] = useState(false);
+  const [confirmUnsure, setConfirmUnsure] = useState(false);
 
   const save = (table: ServiceTable, unsure: string[], status = vm?.status ?? 'proposed') =>
     saveServiceTable(vehicleId, {
@@ -222,21 +222,22 @@ export function TableSection({
     setRow(null);
   };
 
+  const commit = () => {
+    setConfirmUnsure(false);
+    save(table, [], 'confirmed');
+    onApproved();
+  };
+
+  // Approving is always the owner's call: cells still marked uncertain only ask for confirmation,
+  // and the table is saved exactly as shown.
   const approve = () => {
-    // Every cell must be verified first: nothing uncertain from the reading may count.
-    if (unsure.length) {
-      setIncomplete(false);
-      setUnverified(true);
-      return;
-    }
-    setUnverified(false);
     if (tableIssues(table).length) {
       setIncomplete(true);
       return;
     }
     setIncomplete(false);
-    save(table, [], 'confirmed');
-    onApproved();
+    if (unsure.length) setConfirmUnsure(true);
+    else commit();
   };
 
   return (
@@ -261,13 +262,6 @@ export function TableSection({
         onCellPress={editable ? (rowId, column) => setCell({ rowId, column }) : undefined}
         onRowPress={editable ? setRow : undefined}
       />
-      {unverified && unsure.length ? (
-        <InlineNotice
-          testID="table-unverified"
-          tone="warning"
-          message={t.unverified(unsure.length)}
-        />
-      ) : null}
       {incomplete ? (
         <InlineNotice testID="table-incomplete" tone="warning" message={t.incomplete} />
       ) : null}
@@ -322,6 +316,16 @@ export function TableSection({
           setRow(null);
         }}
         onClose={() => setRow(null)}
+      />
+      <Dialog
+        testID="table-approve-dialog"
+        visible={confirmUnsure}
+        title={t.approveUnsureTitle}
+        message={t.approveUnsureBody(unsure.length)}
+        confirmLabel={t.confirm}
+        cancelLabel={he.common.cancel}
+        onConfirm={commit}
+        onCancel={() => setConfirmUnsure(false)}
       />
       <Dialog
         testID="table-discard-dialog"
