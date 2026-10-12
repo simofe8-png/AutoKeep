@@ -119,6 +119,17 @@ export interface AppDataValue {
   updateOdometer: (vehicleId: string, km: number, measuredAt: string) => void;
   /** Explicit user confirmation: stores the record (and its original document) atomically. */
   addServiceEvent: (event: ServiceEventVM, attachment?: AttachmentInput) => void;
+  /** Deletes a service record (after explicit confirmation); "last performed" is recomputed. */
+  deleteServiceEvent: (vehicleId: string, eventId: string) => void;
+  /** Tracks an item beyond the schedule; with date + km it is recorded as done (history). */
+  addTrackedItem: (
+    vehicleId: string,
+    title: string,
+    done: { date: string; km: number } | null,
+  ) => void;
+  removeTrackedItem: (vehicleId: string, id: string) => void;
+  /** Records when an item was last done, as a history record (a user report). */
+  recordItemDone: (vehicleId: string, title: string, date: string, km: number) => void;
   setAlertHandled: (vehicleId: string, alertId: string) => void;
   /** "Remind me later": hidden until the date, then shown again if still justified. */
   snoozeAlert: (vehicleId: string, alertId: string, days: number) => void;

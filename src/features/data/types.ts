@@ -1,3 +1,4 @@
+import type { LastPerformed } from '@/engine/lastPerformed';
 import type {
   OwnerEdit,
   OwnerProposal,
@@ -256,6 +257,13 @@ export type OwnerProposalVM = OwnerProposal & {
   edit: OwnerEdit | null;
 };
 
+/** An item the owner tracks beyond the schedule ("החלפת מצבר"); last done comes from history. */
+export interface TrackedItemVM {
+  id: string;
+  title: string;
+  lastDone: LastPerformed | null;
+}
+
 /** The owner's maintenance table (owner decision 2026-10-06) and the services it derives. */
 export interface ServiceTableVM {
   table: ServiceTable;
@@ -286,6 +294,8 @@ export interface VehicleDataBundle {
   serviceTable?: ServiceTableVM | null;
   /** A transcribed booklet table can be offered to this vehicle (Ford Fiesta 2012). */
   serviceTableOffer?: boolean;
+  /** Items the owner tracks beyond the schedule, each with its latest event from history. */
+  trackedItems?: TrackedItemVM[];
   /** Evidence-based plan from the requirement engine (absent in prototype bundles). */
   plan?: MaintenancePlanVM;
   schedule: ScheduleVM;

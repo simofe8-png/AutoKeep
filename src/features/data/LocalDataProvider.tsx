@@ -245,6 +245,11 @@ export function LocalDataProvider({
         }),
       updateOdometer: (id, km, at) => write((s) => s.updateOdometer(id, km, at)),
       addServiceEvent: (e, attachment) => write((s) => s.addServiceEvent(e, attachment)),
+      deleteServiceEvent: (vid, id) => write((s) => s.deleteServiceEvent(vid, id)),
+      addTrackedItem: (vid, title, done) => write((s) => s.addTrackedItem(vid, title, done)),
+      removeTrackedItem: (vid, id) => write((s) => s.removeTrackedItem(vid, id)),
+      recordItemDone: (vid, title, date, km) =>
+        write((s) => s.recordItemDone(vid, title, date, km)),
       setAlertHandled: (vid, aid) => write((s) => s.setAlertHandled(vid, aid)),
       snoozeAlert: (vid, aid, days) => write((s) => s.snoozeAlert(vid, aid, days)),
       today: () => clock.today(),

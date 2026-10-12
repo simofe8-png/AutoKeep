@@ -1,4 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { useAppData } from '@/features/data/DataContext';
@@ -10,7 +11,9 @@ import { he } from '@/i18n/he';
 import {
   AppText,
   Badge,
+  Button,
   Card,
+  Dialog,
   Divider,
   EmptyState,
   Icon,
@@ -27,7 +30,8 @@ import {
 export default function ServiceDetailScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { vehicles, getBundle } = useAppData();
+  const { vehicles, getBundle, deleteServiceEvent } = useAppData();
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   // Resolve by explicit id across vehicles; the owning vehicle is shown, never assumed active.
   const owner = vehicles.find((v) => getBundle(v.id).history.some((e) => e.id === id));
@@ -116,6 +120,30 @@ export default function ServiceDetailScreen() {
           ))
         )}
       </Card>
+
+      <Button
+        testID="service-delete"
+        label={he.history.deleteRecord}
+        icon="delete-outline"
+        variant="dangerOutline"
+        fullWidth
+        onPress={() => setConfirmDelete(true)}
+      />
+      <Dialog
+        visible={confirmDelete}
+        testID="service-delete-dialog"
+        title={he.history.deleteTitle}
+        message={he.history.deleteBody}
+        confirmLabel={he.common.delete}
+        cancelLabel={he.common.cancel}
+        destructive
+        onConfirm={() => {
+          setConfirmDelete(false);
+          deleteServiceEvent(owner.id, event.id);
+          router.back();
+        }}
+        onCancel={() => setConfirmDelete(false)}
+      />
     </Screen>
   );
 }

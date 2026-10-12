@@ -11,3 +11,4 @@ export * from './repositories/vehicleDates';
 export * from './repositories/vehicleSpec';
 export * from './repositories/manualSchedule';
 export * from './repositories/serviceTable';
+export * from './repositories/trackedItems';

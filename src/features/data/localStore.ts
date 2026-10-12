@@ -70,6 +70,7 @@ import {
   VehicleRegistryRecordRepository,
   type VehicleDates,
   ServiceTableRepository,
+  TrackedItemRepository,
   type StoredServiceTable,
   type Executor,
 } from '@/persistence';
@@ -276,6 +277,7 @@ export class LocalStore {
       manualItems: await new ManualScheduleRepository(this.db).list(id),
       serviceTable: await new ServiceTableRepository(this.db).get(id),
       tableDone: await new ServiceTableRepository(this.db).done(id),
+      trackedItems: await new TrackedItemRepository(this.db).list(id),
     };
   }
 
@@ -933,6 +935,62 @@ export class LocalStore {
       value.status === 'confirmed' ? { ...value, unsure: [] } : value,
       this.clock.now(),
     );
+  }
+
+  /**
+   * Deletes one service record. Everything derived from history ("last performed", the table's
+   * next services) is recomputed from the remaining records on the next snapshot.
+   */
+  async deleteServiceEvent(vehicleId: string, eventId: string): Promise<void> {
+    await new ServiceRepository(this.db).remove(
+      vehicleId as VehicleId,
+      eventId as Id<'ServiceEvent'>,
+      this.clock.now(),
+    );
+  }
+
+  /**
+   * An item the owner tracks beyond the schedule. With a date and km it is recorded as done at once
+   * (a history record), so history stays the one place "last performed" comes from.
+   */
+  async addTrackedItem(
+    vehicleId: string,
+    title: string,
+    done: { date: string; km: number } | null,
+  ): Promise<void> {
+    const vid = vehicleId as VehicleId;
+    const name = title.trim();
+    if (!name || name.length > 80) throw new Error('Bad title');
+    if (!(await new VehicleRepository(this.db).get(vid))) throw new Error('Unknown vehicle');
+    await new TrackedItemRepository(this.db).add({
+      id: this.ids.next<'TrackedItem'>(),
+      vehicleId: vid,
+      title: name,
+      createdAt: this.clock.now(),
+    });
+    if (done) await this.recordItemDone(vehicleId, name, done.date, done.km);
+  }
+
+  async removeTrackedItem(vehicleId: string, id: string): Promise<void> {
+    await new TrackedItemRepository(this.db).remove(vehicleId as VehicleId, id);
+  }
+
+  /** "Last done" of one item, as a history record (a user report) with that item performed. */
+  async recordItemDone(vehicleId: string, title: string, date: string, km: number): Promise<void> {
+    const vm: ServiceEventVM = {
+      id: '',
+      vehicleId,
+      date,
+      odometerKm: km,
+      origin: 'manual',
+      verification: 'pending',
+      sourceAuthority: 'user_report',
+      documentIds: [],
+      actions: [
+        { id: '', title: title.trim(), actionType: 'other', performed: true, unlisted: true },
+      ],
+    };
+    await this.saveServiceEvent(vm, vehicleId as VehicleId, [], this.clock.now(), null);
   }
 
   /** Removes the table and what was recorded by it; the history records stay. */

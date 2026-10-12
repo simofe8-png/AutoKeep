@@ -544,4 +544,19 @@ UPDATE profiles SET account_user_id = NULL;
 DELETE FROM settings WHERE key IN ('accountAdoption', 'accountDeletion', 'lastSyncAt', 'syncLastError', 'uploadedOriginals');
 `,
   },
+  {
+    version: 22,
+    name: 'tracked_items',
+    // Items the owner tracks beyond the schedule ("החלפת מצבר", "כיוון פרונט"…). Only the name is
+    // kept here: when each was last done comes from the history records (2026-10-12).
+    up: `
+CREATE TABLE tracked_items (
+  id TEXT PRIMARY KEY,
+  vehicle_id TEXT NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
+  title TEXT NOT NULL,
+  created_at TEXT NOT NULL
+);
+CREATE INDEX tracked_items_vehicle ON tracked_items(vehicle_id);
+`,
+  },
 ];

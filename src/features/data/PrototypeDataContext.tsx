@@ -254,6 +254,11 @@ export function PrototypeDataProvider({
       removeManualItem: () => undefined,
       saveManualSchedule: () => undefined,
       saveServiceTable: () => undefined,
+      // Prototype: history edits and tracked items are not kept (labeled demo data).
+      deleteServiceEvent: () => undefined,
+      addTrackedItem: () => undefined,
+      removeTrackedItem: () => undefined,
+      recordItemDone: () => undefined,
       removeServiceTable: () => undefined,
       recordTableDone: () => undefined,
       saveTableService: () => undefined,

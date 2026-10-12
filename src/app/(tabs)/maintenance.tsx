@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { useVehicleData } from '@/features/data/DataContext';
 import { PeriodicSection } from '@/features/maintenance/table/PeriodicSection';
+import { TrackedItemsCard } from '@/features/maintenance/table/TrackedItems';
 import { TableSection } from '@/features/maintenance/table/TableSection';
 import { ScreenHeader } from '@/features/shell/ScreenHeader';
 import { useActiveVehicle } from '@/features/vehicles/ActiveVehicleContext';
@@ -74,14 +75,22 @@ export default function MaintenanceScreen() {
               onApproved={() => setTab('periodic')}
             />
           ) : (
-            <PeriodicSection
-              key={activeVehicle.id}
-              vehicleId={activeVehicle.id}
-              odometerKm={activeVehicle.odometerKm}
-              spec={activeVehicle.spec}
-              vm={vm}
-              onToTable={() => setTab('table')}
-            />
+            <>
+              <PeriodicSection
+                key={activeVehicle.id}
+                vehicleId={activeVehicle.id}
+                odometerKm={activeVehicle.odometerKm}
+                spec={activeVehicle.spec}
+                vm={vm}
+                onToTable={() => setTab('table')}
+              />
+              <TrackedItemsCard
+                key={`tracked-${activeVehicle.id}`}
+                vehicleId={activeVehicle.id}
+                items={data.trackedItems ?? []}
+                odometerKm={activeVehicle.odometerKm}
+              />
+            </>
           )}
         </>
       ) : (

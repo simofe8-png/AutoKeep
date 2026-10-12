@@ -387,6 +387,43 @@ export class ServiceRepository {
     return sortHistory(events);
   }
 
+  /**
+   * Deletes one service record atomically: its actions and document links (cascade), what the
+   * table recorded with it, the odometer reading it created (unless another record shares it), and
+   * reopens deferrals it had resolved. Attached documents stay with the vehicle.
+   */
+  async remove(vehicleId: VehicleId, id: ServiceEventId, now: string): Promise<void> {
+    await atomic(this.db, async (tx) => {
+      const e = await tx.first<{ date: string; odometer_km: number }>(
+        'SELECT date, odometer_km FROM service_events WHERE vehicle_id = ? AND id = ?',
+        [vehicleId, id],
+      );
+      if (!e) return;
+      await tx.run(
+        `UPDATE deferred_items SET resolved_by_service_event_id = NULL, updated_at = ?, version = version + 1
+         WHERE vehicle_id = ? AND resolved_by_service_event_id = ?`,
+        [now, vehicleId, id],
+      );
+      await tx.run('DELETE FROM service_table_done WHERE vehicle_id = ? AND service_event_id = ?', [
+        vehicleId,
+        id,
+      ]);
+      const shared = await tx.first<{ n: number }>(
+        `SELECT COUNT(*) AS n FROM service_events
+         WHERE vehicle_id = ? AND id <> ? AND date = ? AND odometer_km = ?`,
+        [vehicleId, id, e.date, e.odometer_km],
+      );
+      if (!shared?.n) {
+        await tx.run(
+          `DELETE FROM odometer_readings
+           WHERE vehicle_id = ? AND source = 'service_event' AND measured_at = ? AND value_km = ?`,
+          [vehicleId, e.date, e.odometer_km],
+        );
+      }
+      await tx.run('DELETE FROM service_events WHERE vehicle_id = ? AND id = ?', [vehicleId, id]);
+    });
+  }
+
   async get(vehicleId: VehicleId, id: ServiceEventId): Promise<ServiceEvent | null> {
     const r = await this.db.first<EventRow>(
       'SELECT * FROM service_events WHERE vehicle_id = ? AND id = ?',

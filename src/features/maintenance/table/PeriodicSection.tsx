@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { TABLE_ACTIONS, type IsoDate, type TableAction } from '@/domain';
+import type { LastPerformed } from '@/engine/lastPerformed';
 import type { PeriodicService, TablePlan, TableRuleItem } from '@/engine/serviceTable';
 import { useAppData } from '@/features/data/DataContext';
 import type { ServiceTableVM } from '@/features/data/types';
@@ -44,6 +45,11 @@ const groupOf = (actions: readonly TableAction[]): TableAction =>
 
 const actionNames = (actions: readonly TableAction[]) =>
   actions.map((a) => t.actions[a]).join(' / ');
+
+/** "11.10.2026 · 295,000 ק״מ" of a last-performed event. */
+export function lastWhen(l: LastPerformed): string {
+  return [formatDate(l.date), l.km != null ? formatKm(l.km) : null].filter(Boolean).join(' · ');
+}
 
 function ruleWhen(r: TableRuleItem): string {
   const parts = [
@@ -314,8 +320,33 @@ function NextService({
                 checked={checked.has(`rule:${r.rowId}`)}
                 onChange={() => toggle(`rule:${r.rowId}`)}
                 label={`${r.title} — ${t.actions[r.action]}`}
-                description={[ruleWhen(r), ...details(r.rowId, r.title)].join(' · ')}
+                description={[
+                  ruleWhen(r),
+                  ...(r.lastDone ? [p.lastLine(lastWhen(r.lastDone), r.lastDone.source)] : []),
+                  ...details(r.rowId, r.title),
+                ].join(' · ')}
               />
+            ))}
+          </Stack>
+        ) : null}
+
+        {service.recent.length ? (
+          <Stack gap={spacing.xxs} testID="periodic-recent">
+            <AppText variant="smallStrong">{p.recentTitle}</AppText>
+            {service.recent.map((r) => (
+              <AppText
+                key={r.rowId}
+                variant="small"
+                color="textSecondary"
+                testID={`periodic-recent-${r.rowId}`}
+              >
+                {`${r.title} — ${p.recentLine(
+                  lastWhen(r.lastDone),
+                  [r.dueKm != null ? formatKm(r.dueKm) : null, formatDate(r.dueDate)]
+                    .filter(Boolean)
+                    .join(t.rule.or),
+                )}`}
+              </AppText>
             ))}
           </Stack>
         ) : null}

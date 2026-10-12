@@ -40,9 +40,11 @@ import {
 import type { OwnerReviewState } from '@/features/maintenance/msource/ownerReview';
 import type { VehicleRegistryRecord } from '@/providers/registry/vehicleRecord';
 import type { EngineResult, ItemDue } from '@/engine/maintenance';
+import { lastFromHistory, type HistoryItemEvent } from '@/engine/lastPerformed';
 import { tablePlan } from '@/engine/serviceTable';
 import { isFiesta2012 } from '@/features/maintenance/table/fiesta2012';
 import type { StoredServiceTable, StoredTableDone } from '@/persistence/repositories/serviceTable';
+import type { TrackedItem } from '@/persistence/repositories/trackedItems';
 import { formatDate, formatKm } from '@/features/vehicles/format';
 import type { VehicleSummary } from '@/features/vehicles/types';
 import { he } from '@/i18n/he';
@@ -58,6 +60,7 @@ import type {
   ScheduleVM,
   ServiceEventVM,
   ServiceTableVM,
+  TrackedItemVM,
   SourceRefVM,
   UpcomingServiceVM,
   VehicleDataBundle,
@@ -97,6 +100,8 @@ export interface VehicleRecords {
   /** The owner's maintenance table and what was done by it (local only, migration v19). */
   serviceTable?: StoredServiceTable | null;
   tableDone?: StoredTableDone[];
+  /** Items the owner tracks beyond the schedule (local only, migration v22). */
+  trackedItems?: TrackedItem[];
 }
 
 // ---------- T103: vehicle / home ----------
@@ -507,6 +512,31 @@ export function maintenancePlanVM(rec: VehicleRecords, today: IsoDate) {
 
 // ---------- the owner's maintenance table ----------
 
+/** Every performed action of the vehicle's history records: the source of "last performed". */
+export function historyItemEvents(rec: Pick<VehicleRecords, 'history'>): HistoryItemEvent[] {
+  return rec.history.flatMap((e) =>
+    e.actions
+      .filter((a) => a.performed)
+      .map((a) => ({
+        eventId: e.id as string,
+        date: e.date,
+        km: e.odometerKm,
+        title: a.title,
+        actionType: a.actionType,
+      })),
+  );
+}
+
+/** The owner's tracked items, each with its latest performed event from history. */
+export function trackedItemsVM(rec: VehicleRecords): TrackedItemVM[] {
+  const items = rec.trackedItems ?? [];
+  const last = lastFromHistory(
+    items.map((i) => i.title),
+    historyItemEvents(rec),
+  );
+  return items.map((i, k) => ({ id: i.id, title: i.title, lastDone: last[k] }));
+}
+
 export function serviceTableVM(rec: VehicleRecords, today: IsoDate): ServiceTableVM | null {
   const t = rec.serviceTable;
   if (!t) return null;
@@ -526,7 +556,13 @@ export function serviceTableVM(rec: VehicleRecords, today: IsoDate): ServiceTabl
     evidence: t.evidence ?? null,
     plan:
       t.status === 'confirmed'
-        ? tablePlan({ table: t.table, odometerKm: latest?.valueKm ?? 0, today, done })
+        ? tablePlan({
+            table: t.table,
+            odometerKm: latest?.valueKm ?? 0,
+            today,
+            done,
+            history: historyItemEvents(rec),
+          })
         : null,
   };
 }
@@ -553,6 +589,7 @@ export function toBundle(
     plan: maintenancePlanVM(rec, today),
     serviceTable: serviceTableVM(rec, today),
     serviceTableOffer: !rec.serviceTable && isFiesta2012(rec.vehicle.identity),
+    trackedItems: trackedItemsVM(rec),
     readings: rec.readings.map((r) => ({
       id: r.id,
       date: r.measuredAt,
