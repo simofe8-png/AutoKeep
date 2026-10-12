@@ -263,4 +263,36 @@ describe('לוח טיפולים → טיפול תקופתי', () => {
     expect(stored?.unsure).toEqual([]);
     await waitFor(() => expect(screen.getByTestId('periodic-next')).toBeOnTheScreen(), LONG);
   }, 120000);
+  it('a row without a name or action never blocks approval: one warning, saved exactly as shown', async () => {
+    await seed();
+    // A row as a reading can leave it: no name, no actions in any column.
+    const shown = {
+      ...FIESTA_2012_TABLE,
+      rows: [
+        ...FIESTA_2012_TABLE.rows,
+        { id: 'row-unnamed', group: '', title: '', footnote: null, cells: null, rule: null },
+      ],
+    };
+    await store.saveServiceTable(FIESTA, {
+      table: shown,
+      status: 'proposed',
+      source: 'photo',
+      documentId: null,
+      unsure: [],
+    });
+    await open('/maintenance', 'screen-maintenance');
+    await waitFor(() => expect(screen.getByTestId('table-proposed')).toBeOnTheScreen(), LONG);
+    await fireEvent.press(screen.getByTestId('table-approve'));
+    expect(screen.getByTestId('table-approve-dialog')).toHaveTextContent(
+      /שורות בלי שם או בלי פעולה/,
+    );
+    await fireEvent.press(screen.getByTestId('table-approve-dialog-confirm'));
+    await waitFor(async () =>
+      expect((await new ServiceTableRepository(db).get(FIESTA as VehicleId))?.status).toBe(
+        'confirmed',
+      ),
+    );
+    expect((await new ServiceTableRepository(db).get(FIESTA as VehicleId))?.table).toEqual(shown);
+    await waitFor(() => expect(screen.getByTestId('periodic-next')).toBeOnTheScreen(), LONG);
+  }, 120000);
 });

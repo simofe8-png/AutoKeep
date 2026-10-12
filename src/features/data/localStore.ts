@@ -21,7 +21,6 @@ import {
   type DomainIssue,
   type IdGenerator,
   type IsoDate,
-  tableIssues,
   type LocalProfile,
   type Result,
   type SourceId,
@@ -920,8 +919,8 @@ export class LocalStore {
 
   /**
    * Saves the owner's table: a proposal read from the owner's booklet (reviewed next), or the
-   * owner's approved table. An approved table must be complete enough to count; cells still marked
-   * uncertain do not block it (the owner confirmed them in the UI).
+   * owner's approved table. Rows without a name or action and cells still marked uncertain do not
+   * block approval: the owner confirmed the table as shown in the UI.
    */
   async saveServiceTable(
     vehicleId: string,
@@ -929,9 +928,6 @@ export class LocalStore {
   ): Promise<void> {
     const vid = vehicleId as VehicleId;
     if (!(await new VehicleRepository(this.db).get(vid))) throw new Error('Unknown vehicle');
-    if (value.status === 'confirmed' && tableIssues(value.table).length) {
-      throw new Error('The table is incomplete');
-    }
     await new ServiceTableRepository(this.db).save(
       vid,
       value.status === 'confirmed' ? { ...value, unsure: [] } : value,

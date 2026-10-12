@@ -40,7 +40,6 @@ export function TableSection({
   const [row, setRow] = useState<string | 'new' | null>(null);
   const [shape, setShape] = useState(Boolean(newTable && !vm));
   const [discard, setDiscard] = useState(false);
-  const [incomplete, setIncomplete] = useState(false);
   const [confirmUnsure, setConfirmUnsure] = useState(false);
 
   const save = (table: ServiceTable, unsure: string[], status = vm?.status ?? 'proposed') =>
@@ -228,15 +227,11 @@ export function TableSection({
     onApproved();
   };
 
-  // Approving is always the owner's call: cells still marked uncertain only ask for confirmation,
-  // and the table is saved exactly as shown.
+  // Approving is always the owner's call: rows without a name or action and cells still marked
+  // uncertain only ask for one confirmation, and the table is saved exactly as shown.
+  const issues = tableIssues(table).length;
   const approve = () => {
-    if (tableIssues(table).length) {
-      setIncomplete(true);
-      return;
-    }
-    setIncomplete(false);
-    if (unsure.length) setConfirmUnsure(true);
+    if (unsure.length || issues) setConfirmUnsure(true);
     else commit();
   };
 
@@ -262,9 +257,6 @@ export function TableSection({
         onCellPress={editable ? (rowId, column) => setCell({ rowId, column }) : undefined}
         onRowPress={editable ? setRow : undefined}
       />
-      {incomplete ? (
-        <InlineNotice testID="table-incomplete" tone="warning" message={t.incomplete} />
-      ) : null}
       {editable ? (
         <Button
           testID="table-add-row"
@@ -321,7 +313,7 @@ export function TableSection({
         testID="table-approve-dialog"
         visible={confirmUnsure}
         title={t.approveUnsureTitle}
-        message={t.approveUnsureBody(unsure.length)}
+        message={t.approveUnsureBody(unsure.length, issues)}
         confirmLabel={t.confirm}
         cancelLabel={he.common.cancel}
         onConfirm={commit}
