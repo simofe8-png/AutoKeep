@@ -249,4 +249,34 @@ describe('History → latest performed event → maintenance due', () => {
       }),
     ]);
   }, 120000);
+  it('a manual service can be dated in the past (DD.MM.YYYY) and counts at once; the future is blocked', async () => {
+    await seed();
+    await renderRouter('./src/app', { initialUrl: '/service/new' });
+    await waitFor(() => expect(screen.getByTestId('screen-service-new')).toBeOnTheScreen(), LONG);
+    await fireEvent.press(screen.getByTestId('service-method-manual'));
+    await waitFor(() => expect(screen.getByTestId('screen-service-manual')).toBeOnTheScreen());
+    await fireEvent.changeText(screen.getByTestId('new-action-input'), 'נוזל בלמים');
+    await fireEvent.press(screen.getByTestId('add-action'));
+    await fireEvent.press(screen.getByRole('radio', { name: 'החלפה' }));
+    await fireEvent.changeText(screen.getByTestId('service-odometer'), '280,000');
+
+    // A future date is blocked with a clear message.
+    await fireEvent.changeText(screen.getByTestId('service-date'), '13.10.2026');
+    await fireEvent.press(screen.getByTestId('service-to-review'));
+    expect(screen.getByTestId('screen-service-manual')).toHaveTextContent(/תאריך עתידי/);
+
+    // Any past date, typed like every other date in the app, with the mileage of that day.
+    await fireEvent.changeText(screen.getByTestId('service-date'), '01.11.2025');
+    await fireEvent.press(screen.getByTestId('service-to-review'));
+    await waitFor(() => expect(screen.getByTestId('screen-service-review')).toBeOnTheScreen());
+    await fireEvent.press(screen.getByTestId('service-confirm'));
+    await fireEvent.press(screen.getByTestId('service-confirm-dialog-confirm'));
+    await waitFor(() => expect(screen.getByTestId('screen-history')).toBeOnTheScreen(), LONG);
+    expect((await events()).map((e) => [e.date, e.odometerKm])).toEqual([['2025-11-01', 280_000]]);
+
+    // It answers "when was it last done" and drives the due date at once.
+    await periodic();
+    expect(screen.queryByTestId('periodic-unknown-brake')).toBeNull();
+    expect(screen.getByTestId('periodic-after')).toHaveTextContent(/1\.11\.2027/);
+  }, 120000);
 });

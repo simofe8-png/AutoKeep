@@ -65,7 +65,13 @@ export function ServiceForm({ draft, onChange, errors, showErrors }: ServiceForm
                 value={draft.date}
                 onChangeText={(date) => onChange({ date })}
                 hint={uncertain('date') ? he.service.uncertainField : he.service.dateHint}
-                error={showErrors && errors.date ? he.service.errors.date : undefined}
+                error={
+                  showErrors && errors.date
+                    ? errors.dateFuture
+                      ? he.service.errors.dateFuture
+                      : he.service.errors.date
+                    : undefined
+                }
                 required
                 maxLength={10}
               />

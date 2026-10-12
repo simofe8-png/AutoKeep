@@ -6,6 +6,7 @@ import type {
   ServiceEventVM,
 } from '@/features/data/types';
 import type { AttachmentInput } from '@/features/data/DataContext';
+import { parseUserDate } from '@/features/vehicles/expiry';
 import { parseOdometer } from '@/features/vehicles/format';
 
 export type DraftOrigin = 'manual' | 'document';
@@ -74,24 +75,26 @@ export function unlistedAction(
 
 export interface DraftErrors {
   date?: boolean;
+  /** The date is valid but in the future (only services already done are recorded). */
+  dateFuture?: boolean;
   odometer?: boolean;
   actions?: boolean;
 }
 
-const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
-
-export function isValidIsoDate(value: string, today: string): boolean {
-  if (!ISO_DATE.test(value)) return false;
-  const [y, m, d] = value.split('-').map(Number);
-  const dt = new Date(Date.UTC(y, m - 1, d));
-  const real = dt.getUTCFullYear() === y && dt.getUTCMonth() === m - 1 && dt.getUTCDate() === d;
-  return real && value <= today;
+/**
+ * The service date as YYYY-MM-DD, typed as 30.12.2025 (like every date field in the app) or as
+ * 2025-12-30; null when it is not a real date. Any past date is accepted.
+ */
+export function draftDate(value: string): string | null {
+  return parseUserDate(value) || null;
 }
 
 /** Minimum manual data (spec §11): date, odometer, work performed. */
 export function validateDraft(draft: ServiceDraft, today: string): DraftErrors {
+  const date = draftDate(draft.date);
   return {
-    date: !isValidIsoDate(draft.date, today) || undefined,
+    date: !date || date > today || undefined,
+    dateFuture: (date != null && date > today) || undefined,
     odometer: parseOdometer(draft.odometer) == null || undefined,
     actions: !draft.actions.some((a) => a.performed && a.title.trim() !== '') || undefined,
   };
@@ -106,7 +109,7 @@ export function draftToEvent(draft: ServiceDraft, id: string): ServiceEventVM {
   return {
     id,
     vehicleId: draft.vehicleId,
-    date: draft.date,
+    date: draftDate(draft.date) ?? draft.date,
     odometerKm: parseOdometer(draft.odometer) ?? 0,
     garage: draft.garage.trim() || undefined,
     notes: draft.notes.trim() || undefined,

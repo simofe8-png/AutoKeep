@@ -685,7 +685,7 @@ export const he = {
     manual: 'הזנה ידנית',
     manualHint: 'תאריך, ק״מ ומה בוצע',
     date: 'תאריך הטיפול',
-    dateHint: 'בפורמט YYYY-MM-DD',
+    dateHint: 'לדוגמה 30.12.2025 — אפשר כל תאריך שעבר',
     odometer: 'מד אוץ בעת הטיפול',
     garage: 'מוסך',
     notes: 'הערות',
@@ -705,6 +705,7 @@ export const he = {
     confirmDialogBody: 'הטיפול יתווסף להיסטוריה של כלי הרכב הבא:',
     errors: {
       date: 'יש להזין תאריך תקין',
+      dateFuture: 'תאריך עתידי — אפשר לתעד רק טיפול שכבר בוצע',
       odometer: 'יש להזין מספר ק״מ תקין',
       actions: 'יש לסמן לפחות פעולה אחת שבוצעה',
     },
